@@ -242,12 +242,24 @@
             "client": "عميل",
             "influencer": "مؤثر",
             "addSocialLink": "إضافة رابط اجتماعي",
+            "selectPlatform": "اختر المنصة",
+            "socialPlatforms": {
+                "instagram": "إنستجرام",
+                "tiktok": "تيك توك",
+                "youtube": "يوتيوب",
+                "facebook": "فيسبوك",
+                "twitter": "تويتر",
+                "linkedin": "لينكد إن",
+                "snapchat": "سناب شات",
+                "other": "أخرى"
+            },
             "form": {
                 "name": "الاسم",
                 "email": "البريد الإلكتروني",
                 "phone": "الهاتف",
                 "subject": "الموضوع",
                 "message": "الرسالة",
+                "link": "الرابط",
                 "submit": "تواصل معنا"
             }
         }

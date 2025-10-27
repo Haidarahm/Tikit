@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import GradientText from "../../components/GradientText";
 import { useTheme } from "../../store/ThemeContext";
 import { useTranslation } from "react-i18next";
@@ -13,6 +13,7 @@ import {
   FaSnapchat,
   FaLink,
 } from "react-icons/fa";
+import "./contact.css";
 
 // Social media platforms with icons
 const SOCIAL_PLATFORMS = [
@@ -51,7 +52,99 @@ const FloatingInput = ({ id, label, containerClassName }) => {
   );
 };
 
-// GradientText Component (placeholder - replace with your actual component)
+// Social Platform Dropdown with translations
+const SocialPlatformDropdown = ({ id, value, onChange, isRtl, t }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const selectedOption = SOCIAL_PLATFORMS.find((opt) => opt.value === value);
+  const SelectedIcon = selectedOption?.icon || FaLink;
+
+  // Get translated label
+  const getTranslatedLabel = (platformValue) => {
+    return (
+      t(`contact.action.socialPlatforms.${platformValue}`) ||
+      selectedOption?.label
+    );
+  };
+
+  return (
+    <div className="relative" ref={dropdownRef}>
+      <button
+        type="button"
+        onClick={() => setIsOpen(!isOpen)}
+        className={`w-full px-4 py-3 bg-transparent border border-[#363737] dark:border-white/30 rounded-lg text-[var(--foreground)] focus:border-[var(--foreground)] focus:outline-none social-select flex items-center gap-2 ${
+          isRtl ? "text-right" : "text-left"
+        } ${isOpen ? "border-[var(--secondary)]" : ""}`}
+      >
+        <SelectedIcon
+          className="text-[var(--foreground)] opacity-70 flex-shrink-0"
+          size={22}
+        />
+        <span className="flex-1 truncate">
+          {getTranslatedLabel(value) || t("contact.action.selectPlatform")}
+        </span>
+        <svg
+          className={`w-4 h-4 text-[var(--foreground)] transition-transform duration-200 ${
+            isOpen ? "rotate-180" : ""
+          }`}
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M19 9l-7 7-7-7"
+          />
+        </svg>
+      </button>
+
+      {/* Dropdown Menu */}
+      {isOpen && (
+        <div className="custom-dropdown-menu">
+          {SOCIAL_PLATFORMS.map((option) => {
+            const OptionIcon = option.icon;
+            return (
+              <button
+                key={option.value}
+                type="button"
+                onClick={() => {
+                  onChange(option.value);
+                  setIsOpen(false);
+                }}
+                className={`custom-dropdown-item ${
+                  value === option.value ? "selected" : ""
+                }`}
+              >
+                <OptionIcon
+                  className="text-[var(--foreground)] flex-shrink-0"
+                  size={22}
+                />
+                <span className="truncate">
+                  {getTranslatedLabel(option.value)}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+};
 
 const SocialLinkInput = ({
   id,
@@ -63,74 +156,24 @@ const SocialLinkInput = ({
   onRemove,
   canRemove,
   isRtl,
+  removingIndex,
+  t,
 }) => {
-  const selectedPlatform = SOCIAL_PLATFORMS.find((p) => p.value === platform);
-  const Icon = selectedPlatform?.icon || FaLink;
-
   return (
-    <div className="col-span-1 sm:col-span-2 flex gap-2 md:gap-3">
+    <div
+      className={`col-span-1 sm:col-span-2 flex gap-2 md:gap-3 social-link-container ${
+        removingIndex === index ? "removing" : ""
+      }`}
+    >
       {/* Platform Dropdown */}
       <div className="relative flex-none w-40 md:w-48">
-        <div className="relative">
-          <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-            <Icon className="text-[var(--foreground)]" size={20} />
-          </div>
-          <select
-            id={`${id}-platform`}
-            value={platform}
-            onChange={(e) => onPlatformChange(index, e.target.value)}
-            className={`w-full pl-10 pr-4 py-3 bg-transparent border border-[#363737] dark:border-white/30 rounded-lg text-[var(--foreground)] focus:border-[var(--foreground)] focus:outline-none appearance-none ${
-              isRtl ? "text-right" : ""
-            }`}
-            style={{
-              paddingLeft: isRtl ? "0.75rem" : "2.5rem",
-              paddingRight: isRtl ? "2.5rem" : "1rem",
-            }}
-          >
-            {SOCIAL_PLATFORMS.map((social) => {
-              const SocialIcon = social.icon;
-              return (
-                <option key={social.value} value={social.value}>
-                  {social.label}
-                </option>
-              );
-            })}
-          </select>
-          {!isRtl && (
-            <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-              <svg
-                className="w-5 h-5 text-[var(--foreground)]"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </div>
-          )}
-          {isRtl && (
-            <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-              <svg
-                className="w-5 h-5 text-[var(--foreground)]"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </div>
-          )}
-        </div>
+        <SocialPlatformDropdown
+          id={`${id}-platform`}
+          value={platform}
+          onChange={(value) => onPlatformChange(index, value)}
+          isRtl={isRtl}
+          t={t}
+        />
       </div>
 
       {/* Link Input */}
@@ -140,7 +183,7 @@ const SocialLinkInput = ({
           id={`${id}-link`}
           value={link}
           onChange={(e) => onLinkChange(index, e.target.value)}
-          className={`w-full px-4 py-3 bg-transparent border border-[#363737] dark:border-white/30 rounded-lg text-[var(--foreground)] placeholder-transparent focus:border-[var(--foreground)] focus:outline-none peer ${
+          className={`w-full px-4 py-3 bg-transparent border border-[#363737] dark:border-white/30 rounded-lg text-[var(--foreground)] placeholder-transparent focus:border-[var(--foreground)] focus:outline-none peer social-link-input ${
             isRtl ? "text-right" : ""
           }`}
           placeholder="Enter link"
@@ -151,7 +194,7 @@ const SocialLinkInput = ({
             isRtl ? "right-4" : "left-4"
           } -top-2.5 bg-[var(--background)] px-1 text-[var(--foreground)] text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-focus:-top-2.5 peer-focus:text-sm`}
         >
-          Link
+          {t("contact.action.form.link")}
         </label>
       </div>
 
@@ -160,7 +203,7 @@ const SocialLinkInput = ({
         <button
           type="button"
           onClick={() => onRemove(index)}
-          className="flex-none w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-lg border border-red-500/50 text-red-500 hover:bg-red-500/10 transition-colors hover:scale-105"
+          className="flex-none w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-lg border border-red-500/50 text-red-500 hover:bg-red-500/10 social-remove-btn"
         >
           ×
         </button>
@@ -183,6 +226,7 @@ const Action = () => {
   const [socialLinks, setSocialLinks] = useState([
     { platform: "instagram", link: "" },
   ]);
+  const [removingIndex, setRemovingIndex] = useState(null);
 
   const handleSlideClick = (slideNumber) => {
     setIsSecondSlide(slideNumber === 2);
@@ -194,7 +238,11 @@ const Action = () => {
 
   const removeSocialLink = (index) => {
     if (socialLinks.length > 1) {
-      setSocialLinks(socialLinks.filter((_, i) => i !== index));
+      setRemovingIndex(index);
+      setTimeout(() => {
+        setSocialLinks(socialLinks.filter((_, i) => i !== index));
+        setRemovingIndex(null);
+      }, 300);
     }
   };
 
@@ -332,6 +380,8 @@ const Action = () => {
                   onRemove={removeSocialLink}
                   canRemove={socialLinks.length > 1}
                   isRtl={isRtl}
+                  removingIndex={removingIndex}
+                  t={t}
                 />
               ))}
 
@@ -339,7 +389,7 @@ const Action = () => {
               <button
                 type="button"
                 onClick={addSocialLink}
-                className="col-span-1 sm:col-span-2 flex items-center justify-center gap-2 px-4 py-3 bg-transparent border border-[var(--secondary)] dark:border-white/30 rounded-lg text-[var(--secondary)] hover:bg-[var(--secondary)]/10 transition-all hover:scale-105"
+                className="col-span-1 sm:col-span-2 flex items-center justify-center gap-2 px-4 py-3 bg-transparent border border-[var(--secondary)] dark:border-white/30 rounded-lg text-[var(--secondary)] hover:bg-[var(--secondary)]/10 social-add-btn"
               >
                 <span className="text-xl font-bold">+</span>
                 <span>

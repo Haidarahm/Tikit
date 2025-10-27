@@ -1,0 +1,249 @@
+/* Social Links Animations and Design */
+.social-link-container {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.social-link-container.removing {
+  animation: slideOut 0.3s ease-out forwards;
+}
+
+@keyframes slideOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+/* Custom Dropdown Menu */
+.custom-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background-color: var(--background);
+  border: 1px solid #363737;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  animation: dropdownSlideIn 0.2s ease-out;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.dark .custom-dropdown-menu {
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes dropdownSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Dropdown Items */
+.custom-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 12px 16px;
+  text-align: left;
+  background-color: transparent;
+  border: none;
+  color: var(--foreground);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.dark .custom-dropdown-item {
+  border-bottom-color: rgba(255, 255, 255, 0.05);
+}
+
+.custom-dropdown-item:hover {
+  background-color: rgba(82, 195, 197, 0.1);
+  transform: translateX(4px);
+}
+
+.dark .custom-dropdown-item:hover {
+  background-color: rgba(82, 195, 197, 0.15);
+}
+
+.custom-dropdown-item.selected {
+  background-color: rgba(82, 195, 197, 0.2);
+  font-weight: 600;
+}
+
+.dark .custom-dropdown-item.selected {
+  background-color: rgba(82, 195, 197, 0.25);
+}
+
+.custom-dropdown-item:last-child {
+  border-bottom: none;
+}
+
+/* Smooth scrollbar for dropdown */
+.custom-dropdown-menu::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-dropdown-menu::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-dropdown-menu::-webkit-scrollbar-thumb {
+  background: rgba(82, 195, 197, 0.3);
+  border-radius: 3px;
+}
+
+.custom-dropdown-menu::-webkit-scrollbar-thumb:hover {
+  background: rgba(82, 195, 197, 0.5);
+}
+
+/* Social Platform Selector */
+.social-select {
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.social-select:focus {
+  border-color: var(--secondary) !important;
+  box-shadow: 0 0 0 2px rgba(82, 195, 197, 0.1);
+}
+
+/* Dropdown Options Styling */
+.social-select {
+  background-color: var(--background);
+}
+
+.social-select option {
+  background-color: var(--background);
+  color: var(--foreground);
+  padding: 12px 16px;
+  font-size: 14px;
+  min-height: 40px;
+}
+
+/* Light mode option styling */
+.social-select option {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.social-select option:hover,
+.social-select option:checked {
+  background-color: rgba(82, 195, 197, 0.1) !important;
+  color: #000000;
+}
+
+/* Dark mode option styling */
+.dark .social-select option {
+  background-color: #0a0a0a;
+  color: #ffffff;
+}
+
+.dark .social-select option:hover,
+.dark .social-select option:checked {
+  background-color: rgba(82, 195, 197, 0.2) !important;
+  color: #ffffff;
+}
+
+/* Ensure proper sizing and appearance */
+.social-select {
+  min-height: 48px;
+  line-height: 1.5;
+}
+
+/* Custom select arrow styling */
+.social-select-wrapper {
+  position: relative;
+}
+
+.social-select-wrapper select {
+  padding-right: 2rem;
+}
+
+/* Link Input */
+.social-link-input {
+  transition: all 0.2s ease;
+}
+
+.social-link-input:focus {
+  border-color: var(--secondary) !important;
+  box-shadow: 0 0 0 2px rgba(82, 195, 197, 0.1);
+}
+
+/* Remove Button */
+.social-remove-btn {
+  transition: all 0.2s ease;
+}
+
+.social-remove-btn:hover {
+  transform: scale(1.1);
+  background-color: rgba(239, 68, 68, 0.15);
+}
+
+/* Add Button Animation */
+.social-add-btn {
+  transition: all 0.2s ease;
+}
+
+.social-add-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(82, 195, 197, 0.2);
+}
+
+/* Smooth transitions for all social link elements */
+.social-link-input,
+.social-select,
+.social-remove-btn,
+.social-add-btn {
+  will-change: transform, opacity;
+}
+
+/* Swiper/Toggle Switch Design */
+.move-item {
+  border-radius: 9999px !important;
+  box-shadow: 0 4px 12px rgba(82, 195, 197, 0.3);
+}
+
+/* Swiper Slide Button */
+.swiper-slide {
+  position: relative;
+  z-index: 10;
+  transition: all 0.3s ease;
+  user-select: none;
+  border-radius: 9999px;
+}
+
+.swiper-slide:hover {
+  transform: translateY(-2px);
+}
+
+/* Add smooth transitions for text color change */
+.swiper-slide.text-transition {
+  transition: color 0.3s ease;
+}
+

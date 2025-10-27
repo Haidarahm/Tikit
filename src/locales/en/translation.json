@@ -242,12 +242,24 @@
             "client": "Client",
             "influencer": "Influencer",
             "addSocialLink": "Add Social Link",
+            "selectPlatform": "Select platform",
+            "socialPlatforms": {
+                "instagram": "Instagram",
+                "tiktok": "TikTok",
+                "youtube": "YouTube",
+                "facebook": "Facebook",
+                "twitter": "Twitter",
+                "linkedin": "LinkedIn",
+                "snapchat": "Snapchat",
+                "other": "Other"
+            },
             "form": {
                 "name": "Name",
                 "email": "Email",
                 "phone": "Phone",
                 "subject": "Subject",
                 "message": "Message",
+                "link": "Link",
                 "submit": "Contact Us"
             }
         }
