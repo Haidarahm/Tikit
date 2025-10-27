@@ -241,6 +241,7 @@
             "description": "We want to hear from you. Let us know how we can help!",
             "client": "Client",
             "influencer": "Influencer",
+            "addSocialLink": "Add Social Link",
             "form": {
                 "name": "Name",
                 "email": "Email",

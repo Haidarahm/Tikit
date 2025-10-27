@@ -241,6 +241,7 @@
             "description": "Nous voulons vous entendre. Faites-nous savoir comment nous pouvons vous aider !",
             "client": "Client",
             "influencer": "Influenceur",
+            "addSocialLink": "Ajouter un lien social",
             "form": {
                 "name": "Nom",
                 "email": "Email",
