@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+    <meta charset="UTF-8" />
+    <link id="favicon" rel="icon" type="image/svg+xml" href="/logo-light.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tikit Agency | Creative Design, Development & Digital Experiences</title>
+    <meta name="description" content="Tikit Agency crafts impactful brand strategy, design systems, websites, and immersive digital experiences. Explore our featured work, services, and case studies." />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://tikit.ae/" />
+
+    <!-- Theme color -->
+    <meta name="theme-color" content="#52C3C5" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://tikit.ae/" />
+    <meta property="og:title" content="Tikit Agency | Creative Design, Development & Digital Experiences" />
+    <meta property="og:description" content="Tikit Agency crafts impactful brand strategy, design systems, websites, and immersive digital experiences." />
+    <meta property="og:image" content="https://tikit.ae/mainlogo.svg" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Tikit Agency | Creative Design, Development & Digital Experiences" />
+    <meta name="twitter:description" content="Tikit Agency crafts impactful brand strategy, design systems, websites, and immersive digital experiences." />
+    <meta name="twitter:image" content="https://tikit.ae/mainlogo.svg" />
+
+    <!-- JSON-LD Organization Schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Tikit Agency",
+        "url": "https://tikit.ae/",
+        "logo": "https://tikit.ae/mainlogo.svg",
+        "sameAs": [],
+        "description": "Tikit Agency crafts impactful brand strategy, design systems, websites, and immersive digital experiences."
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      window.addEventListener('DOMContentLoaded', function(){
+        if (window.AOS) {
+          window.AOS.init({ duration: 800, easing: 'ease-out-quart', once: true });
+        }
+        // Update favicon based on theme class set on <html>
+        try {
+          var link = document.querySelector('link#favicon');
+          var applyFavicon = function() {
+            if (!link) return;
+            var isDark = document.documentElement.classList.contains('dark');
+            link.href = isDark ? '/logo-dark.svg' : '/logo-light.svg';
+          };
+          applyFavicon();
+          var mo = new MutationObserver(function(){ applyFavicon(); });
+          mo.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+        } catch(e) {}
+      });
+    </script>
+  </body>
+</html>

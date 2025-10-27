@@ -1,0 +1,54 @@
+/* Title effect styles (SplitType-like) */
+.section-title {
+  text-transform: uppercase;
+  /* approximate Bebas Neue look if not installed; using existing fonts */
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  line-height: 5.9rem; /* tuned for large sizes */
+}
+
+.section-title .char {
+  display: inline-block;
+  transform: translateY(115px);
+  transition: transform 0.5s ease;
+}
+
+/* Window-level scroll snap */
+html {
+  scroll-snap-type: y mandatory;
+  
+}
+
+body {
+  scroll-snap-type: y mandatory;
+}
+
+/* Background image styling for sections */
+.snap-section {
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+/* Services section specific styles */
+.services-section .snap-section {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+/* Ensure text remains readable in light mode */
+.services-section .section-title {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.services-section .section-list li {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark mode specific adjustments */
+.dark .services-section .section-title,
+.dark .services-section .section-list li {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}

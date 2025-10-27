@@ -1,0 +1,402 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap");
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@font-face {
+  font-family: "HeroLight";
+  src: url("./assets/fonts/HeroLight-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "HeroLight";
+  src: url("./assets/fonts/HeroLight-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "HeroLight";
+  src: url("./assets/fonts/HeroLight-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PlusJakartaSans";
+  src: url("./assets/fonts/PlusJakartaSans-VariableFont_wght.ttf")
+    format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PlusJakartaSans";
+  src: url("./assets/fonts/PlusJakartaSans-Italic-VariableFont_wght.ttf")
+    format("truetype");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cairo";
+  src: url("./assets/fonts/Cairo-VariableFont_slnt,wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Utility to apply Cairo font */
+.font-cairo {
+  font-family: "Cairo", "Source Sans 3", sans-serif;
+}
+
+/* Utility to apply HeroLight font globally */
+.font-hero-light {
+  font-family: "HeroLight", "Source Sans 3", sans-serif;
+}
+
+
+
+* {
+  box-sizing: border-box;
+}
+@theme {
+  --font-display: "Source Sans 3", sans-serif;
+  --font-hero-light: "HeroLight", sans-serif;
+  --font-hero-regular: "HeroRegular", sans-serif;
+  --font-hero-bold: "HeroBold", sans-serif;
+  --font-cairo: "Cairo", sans-serif;
+
+}
+
+
+
+
+
+
+html,
+body,
+#root {
+  height: 100%;
+  /* background-color: oklch(16.5% 0.012 236.6); */
+  background: var(--background);
+
+}
+
+/* Enable global vertical scroll snapping (works with elements using snap-start/snap-always) */
+html,
+body {
+  scroll-snap-type: y mandatory;
+}
+
+/* Global scrollbar styling */
+html,
+body {
+  /* Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: #3a55ac83 transparent;
+}
+
+/* WebKit (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #3b82f6, #4e6dde);
+  border-radius: 6px;
+  border: none;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #2563eb, #3e3587);
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+.section {
+  position: relative;
+  color: white;
+  overflow: hidden;
+  /* scroll-snap-stop: always; */
+}
+
+/* Helper in case you want to mark sections explicitly */
+.snap-section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+/* ScrollStack specific styles */
+.scroll-stack-card {
+  /* background: rgba(255, 255, 255, 0.05); */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+ 
+  /* margin-top: 0; */
+}
+
+/* Floating animation for decorative elements */
+@keyframes floatUpDown {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-16px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* .float-up-down {
+  animation: floatUpDown 6s ease-in-out infinite;
+}
+
+.float-up-down-delayed {
+  animation: floatUpDown 7.5s ease-in-out infinite;
+  animation-delay: 1s;
+} */
+
+/* Performance optimization for scroll-triggered elements */
+
+/* Full-page snapping container */
+
+
+/* Dark theme overrides */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+:root {
+  /* Light theme: only required colors */
+  --background: white;
+  --foreground: #363737;
+  --primary: #fff;
+  --secondary:#52C3C5;
+  --base:#52C3C5;
+  --radius: 0.625rem;
+  --tooltip: #363737;
+  --container-bg: #ECFBFB;
+}
+
+.dark {
+  /* Dark theme: background + text only */
+  --background: #000000;
+  --container-bg: #101b22;
+  --foreground: #ffffff;
+  --base:#000;
+  --secondary:#ffffff;
+  --tooltip: #fff;
+  --radius: 0.625rem;
+}
+@layer utilities {
+  @keyframes fadeInOut {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+
+  .animate-fade-loop {
+    animation: fadeInOut 2s ease-in-out infinite;
+  }
+}
+@theme {
+  --translate-101: 101%;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0%);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  --animate-marquee: marquee 15s linear infinite;
+}
+
+/* Simple fade-in used for first-render appearance */
+@keyframes fadeInOnce {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Gradient text animation for Tailwind v4 usage: class `animate-gradient` */
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient {
+  animation: gradient 8s linear infinite;
+}
+
+.fade-in-delay-1s {
+  opacity: 0;
+  animation: fadeInOnce 0.6s ease-out 1s forwards;
+  will-change: opacity, transform;
+}
+
+/* GPU hint for transform-heavy elements */
+.gpu-transform {
+  will-change: transform;
+  transform: translateZ(0);
+}
+#lights canvas{
+  width: 100% !important;
+  height: 100% !important;
+}
+footer .bottom-section .right-section .items li{
+  cursor: pointer;
+}
+
+/* Goals Section Height Media Queries */
+/* .goals-section {
+  min-height: 100vh;
+}
+
+@media (max-width: 767px) {
+  .goals-section {
+    min-height: 100vh;
+  }
+  
+  .goals-section .container-goals > div {
+    min-height: 80vh;
+  }
+}
+
+@media (min-width: 768px) {
+  .goals-section {
+    min-height: 100vh;
+  }
+  
+  .goals-section .scroll-stack-card {
+    height: 100vh;
+  }
+}
+
+@media (min-width: 1024px) {
+  .goals-section {
+    min-height: 100vh;
+  }
+  
+  .goals-section .scroll-stack-card {
+    height: 100vh;
+  }
+} */
+
+/* Extra large screens (1280px and up) */
+@media (min-width: 1280px) {
+  .goals-section {
+    min-height: 345vh;
+  }
+  
+  .goals-section .scroll-stack-card {
+    height: 65vh;
+  }
+}
+
+@media (min-width: 1380px) {
+  .goals-section {
+    min-height: 335vh;
+  }
+  
+  .goals-section .scroll-stack-card {
+    height: 65vh;
+  }
+}
+@media (min-width: 1480px) {
+  .goals-section {
+    min-height: 340vh;
+  }
+  
+  .goals-section .scroll-stack-card {
+    height: 65vh;
+  }
+}
+@media (min-width: 1080px) {
+.work-section-container{
+  height: 345vh;
+}
+}
+
+@media (min-width: 1280px) {
+  .work-section-container{
+    height: 365vh;
+  }
+  }
+  @media (min-width: 1450px) {
+    .work-section-container{
+      height: 370vh;
+    }
+    }
+    @media (min-width: 1650px) {
+      .work-section-container{
+        height: 375vh;
+      }
+}

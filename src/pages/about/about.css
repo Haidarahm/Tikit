@@ -1,0 +1,100 @@
+/* Initial hidden state */
+.reveal-img,
+.reveal-text {
+  overflow: hidden;
+}
+.animated-text-about-us .line {
+  color: rgb(123, 61, 182);
+}
+.reveal-img img {
+  clip-path: inset(100% 0 0 0);
+  transition: clip-path 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.reveal-text {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease-out;
+}
+
+/* Active state */
+.is-inview.reveal-img img {
+  clip-path: inset(0 0 0 0);
+}
+
+.is-inview.reveal-text {
+  opacity: 1;
+  transform: translateY(0);
+}
+#team-section .left-section.dark {
+  box-shadow: 20px 1px 49px 70px rgba(0, 0, 0, 0.5);
+}
+#team-section .left-section.light {
+  box-shadow: 20px 1px 49px 70px rgba(255, 255, 255, 0.5);
+}
+
+/* Strategy section - Locomotive reveal animations */
+[data-scroll].loco-reveal-card {
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 800ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+[data-scroll].loco-reveal-card.is-inview {
+  transform: scaleX(1);
+}
+
+[data-scroll].loco-reveal-text {
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(6px);
+  overflow: hidden;
+  transition: max-height 700ms ease 150ms, opacity 500ms ease 250ms,
+    transform 500ms ease 250ms;
+  will-change: max-height, opacity, transform;
+}
+
+[data-scroll].loco-reveal-text.is-inview {
+  max-height: 480px; /* large enough to reveal content */
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Generic text fade-up for section headings and inline texts */
+[data-scroll].loco-text-up {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 600ms ease, transform 600ms ease;
+  will-change: opacity, transform;
+}
+
+[data-scroll].loco-text-up.is-inview {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Growth section animations */
+[data-scroll].loco-growth-text {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 700ms ease, transform 700ms ease;
+  will-change: opacity, transform;
+}
+
+[data-scroll].loco-growth-text.is-inview {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+[data-scroll].loco-growth-circle {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 600ms ease, transform 600ms ease;
+  will-change: opacity, transform;
+}
+
+[data-scroll].loco-growth-circle.is-inview {
+  opacity: 1;
+  transform: scale(1);
+}

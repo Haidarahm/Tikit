@@ -1,0 +1,264 @@
+{
+    "nav": {
+        "home": "Accueil",
+        "work": "Travaux",
+        "about": "À propos",
+        "services": "Services",
+        "contact": "Contactez-nous"
+    },
+    "seo": {
+        "defaultDescription": "Nous sommes Tikit — une agence de marketing complète guidée par l'insight et la créativité. Nous nous associons aux marques pour livrer des résultats grâce à une stratégie experte, une puissance créative et une exécution impeccable.",
+        "defaultKeywords": "agence marketing, marketing numérique, marketing d'influence, gestion des médias sociaux, branding, production, agence créative, stratégie marketing",
+        "home": {
+            "title": "Agence Tikit - Agence de Marketing Complète",
+            "description": "Agence de marketing axée sur le ROI livrant une stratégie experte, une puissance créative et une exécution impeccable. Partenaire avec Tikit pour le marketing d'influence, la gestion des médias sociaux, le branding et la production.",
+            "keywords": "agence marketing, marketing ROI, marketing d'influence, gestion des médias sociaux, branding, production, agence créative, stratégie marketing numérique"
+        },
+        "about": {
+            "title": "À propos de l'Agence Tikit - Notre Histoire et Équipe",
+            "description": "Découvrez le parcours de l'Agence Tikit en tant qu'agence de marketing complète. Découvrez notre équipe créative, les valeurs de l'entreprise et notre engagement à livrer des résultats exceptionnels à nos clients.",
+            "keywords": "à propos agence tik, équipe agence marketing, équipe créative, histoire entreprise, valeurs agence marketing"
+        },
+        "services": {
+            "title": "Nos Services Marketing - Agence Tikit",
+            "description": "Explorez les services marketing complets de l'Agence Tikit incluant le marketing d'influence, la gestion des médias sociaux, le branding et la production. Stratégie experte et exécution créative.",
+            "keywords": "services marketing, services marketing d'influence, gestion des médias sociaux, services branding, services production, stratégie marketing"
+        },
+        "work": {
+            "title": "Nos Travaux et Études de Cas - Agence Tikit",
+            "description": "Consultez le portfolio de l'Agence Tikit de campagnes marketing réussies et d'études de cas. Voyez comment nous avons aidé les marques à atteindre leurs objectifs marketing grâce à une stratégie créative.",
+            "keywords": "portfolio marketing, études de cas, campagnes marketing, histoires de succès de marques, résultats marketing"
+        },
+        "contact": {
+            "title": "Contactez l'Agence Tikit - Commencez Aujourd'hui",
+            "description": "Prêt à élever votre marque ? Contactez l'Agence Tikit pour des services marketing experts. Entrez en contact avec notre équipe de professionnels du marketing et commencez votre parcours vers le succès.",
+            "keywords": "contacter agence marketing, obtenir devis marketing, consultation marketing, consultation marque, demande services marketing"
+        }
+    },
+    "home": {
+        "title": "Accueil",
+        "description": "Page d'accueil",
+        "hero": {
+            "tagline": "Agence marketing",
+            "title": "ROI REBELS",
+            "subtitle": "Propulser les marques avec de l'influence",
+            "clients": "+300 clients satisfaits"
+        },
+        "numbers": {
+            "headline": "La meilleure mesure du succès ?",
+            "subheadline": "Des clients fidèles. La plupart travaillent avec nous bien au-delà d'un seul projet",
+            "items": {
+                "happyClients": { "text1": "Clients", "text2": "Heureux" },
+                "years": { "text1": "Années", "text2": "d'expérience" },
+                "projects": { "text1": "Projets", "text2": "Réalisés" },
+                "awards": { "text1": "Prix", "text2": "et Distinctions" }
+            }
+        },
+        "goals": {
+            "items": [
+                {
+                    "title": "Amplifier la portée de votre marque",
+                    "description": "Touchez de vrais publics avec un contenu pertinent. Nous faisons croître un trafic qui convertit réellement."
+                },
+                {
+                    "title": "Booster la performance des campagnes",
+                    "description": "Suivez les résultats en temps réel et optimisez chaque action — le tout géré sur une plateforme intelligente."
+                },
+                {
+                    "title": "Générer un engagement réel",
+                    "description": "Touchez de vrais publics avec un contenu pertinent. Nous faisons croître un trafic qui convertit réellement."
+                },
+                {
+                    "title": "Générer un engagement réel",
+                    "description": "Touchez de vrais publics avec un contenu pertinent. Nous faisons croître un trafic qui convertit réellement."
+                }
+            ]
+        },
+        "services": {
+            "title": "Ce que nous faisons le mieux",
+            "explore": "Explorer les services"
+        },
+        "connections": {
+            "question": "Êtes-vous un influenceur ?",
+            "headline": "Rejoignez notre liste dès aujourd'hui !",
+            "description": "Alliez données et créativité pour aider les marques à atteindre et à résonner avec la bonne audience",
+            "cta": "Contactez-nous"
+        },
+        "work": {
+            "title": "Travaux en vedette",
+            "explore": "Explorer les projets",
+            "viewWork": "Voir le travail",
+            "noWorks": "Aucun travail trouvé.",
+            "prev": "Préc",
+            "next": "Suiv",
+            "page": "Page"
+        },
+        "aboutUs": {
+            "title": "Qui nous sommes",
+            "description": "Nous créons et innovons des expériences numériques grâce à la collaboration stratégique et à la créativité. Chaque projet engage et inspire, visant à obtenir des résultats impactants."
+        },
+        "contactUs": {
+            "subtitle": "Commencez avec Tikit !",
+            "title": "Contactez-nous maintenant",
+            "description": "Nous voulons vous entendre. Faites-nous savoir",
+            "description2": "comment nous pouvons vous aider !",
+            "helpText": "Faites-nous savoir comment nous pouvons vous aider !",
+            "client": "Client",
+            "influencer": "Influenceur",
+            "name": "Nom",
+            "email": "Email",
+            "button": "Contactez-nous",
+            "brandsTrust": "20+ marques nous font confiance"
+        },
+        "reviews": {
+            "testimonials": [
+                {
+                    "name": "Sophia Martinez",
+                    "company": "Global Enterprises Ltd.",
+                    "text": "AtomWallet a complètement transformé notre gestion des paiements internationaux. Les transactions sont rapides, sécurisées et sans effort."
+                },
+                {
+                    "name": "David Lee",
+                    "company": "TechBridge Solutions",
+                    "text": "Envoyer de l'argent à des partenaires à l'étranger n'a jamais été aussi fluide. Le suivi en temps réel d'AtomWallet nous donne une tranquillité d'esprit totale."
+                },
+                {
+                    "name": "Amira Hassan",
+                    "company": "FinEdge Capital",
+                    "text": "Les fonctionnalités de sécurité sont exceptionnelles. La protection multicouche garantit que nos transactions commerciales restent privées et protégées."
+                },
+                {
+                    "name": "Liam Anderson",
+                    "company": "Anderson Trading Co.",
+                    "text": "Avec AtomWallet, je peux payer les fournisseurs et recevoir des fonds mondialement sans m'inquiéter des frais cachés. Transparent et fiable !"
+                },
+                {
+                    "name": "Chen Wei",
+                    "company": "BrightPath Logistics",
+                    "text": "L'interface est si intuitive. En quelques minutes, mon équipe effectuait des paiements internationaux sans aucune formation requise."
+                }
+            ]
+        }
+    },
+    "work": {
+        "title": "Travaux en vedette",
+        "description": "Page des travaux",
+        "specialTitle": "ce qui nous rend spéciaux",
+        "specialDescription": "Nous adoptons une approche similaire pour concevoir commercial que nous faisons de manière impactante, via le flux de travail de maquette conviviale.",
+        "viewWork": "Voir le travail",
+        "noWorks": "Aucun travail trouvé."
+    },
+    "about": {
+        "title": "À propos",
+        "description": "Page à propos",
+        "hero": {
+            "title": "Nous sommes Tikit — une agence marketing à service complet",
+            "sectionTitle": "À propos de nous",
+            "description": "Guidés par l'intuition et la créativité : l'histoire derrière \"Tikit\" — une agence régionale qui dynamise les marques, construit la confiance et livre des résultats."
+        },
+        "images": {
+            "clients": "Nous avons +300 clients satisfaits",
+            "funding": "Nous avons aidé nos clients à obtenir +100M de financement"
+        },
+        "strategy": {
+            "title": "Pas de blabla.",
+            "subtitle": "Juste",
+            "rotatingTexts": [
+                "stratégie experte",
+                "puissance créative",
+                "exécution parfaite"
+            ],
+            "cards": [
+                {
+                    "title": "Marketing d'influence",
+                    "description": "Du concept au montage final, nous donnons vie aux idées audacieuses. Qu'il s'agisse de contenu social, de visuels de marque ou de tournages commerciaux à grande échelle, notre équipe de production livre une narration de qualité qui capte l'attention et suscite l'action."
+                },
+                {
+                    "title": "Production",
+                    "description": "Du concept au montage final, nous donnons vie aux idées audacieuses. Qu'il s'agisse de contenu social, de visuels de marque ou de tournages commerciaux à grande échelle, notre équipe de production livre une narration de qualité qui capte l'attention et suscite l'action."
+                },
+                {
+                    "title": "Gestion des réseaux sociaux",
+                    "description": "Du concept au montage final, nous donnons vie aux idées audacieuses. Qu'il s'agisse de contenu social, de visuels de marque ou de tournages commerciaux à grande échelle, notre équipe de production livre une narration de qualité qui capte l'attention et suscite l'action."
+                },
+                {
+                    "title": "Identité de marque",
+                    "description": "Du concept au montage final, nous donnons vie aux idées audacieuses. Qu'il s'agisse de contenu social, de visuels de marque ou de tournages commerciaux à grande échelle, notre équipe de production livre une narration de qualité qui capte l'attention et suscite l'action."
+                }
+            ]
+        },
+        "growth": {
+            "title": "Nous créons des stratégies intelligentes et évolutives qui déclenchent une croissance réelle",
+            "description": "De la stratégie à l'exécution, nos équipes d'experts donnent vie à votre vision. La vraie mesure du succès ? Quand les clients nous choisissent à nouveau.",
+            "stats": [
+                {
+                    "amount": 12,
+                    "title": "prix pour l'innovation numérique"
+                },
+                {
+                    "amount": 99,
+                    "title": "taux de succès des projets 99%"
+                }
+            ]
+        },
+        "contactUs": {
+            "subtitle": "Commencez avec Tikit !",
+            "title": "Contactez-nous maintenant",
+            "description": "Nous voulons vous entendre. Faites-nous savoir",
+            "description2": "comment nous pouvons vous aider !",
+            "helpText": "Faites-nous savoir comment nous pouvons vous aider !",
+            "client": "Client",
+            "influencer": "Influenceur",
+            "name": "Nom",
+            "email": "Email",
+            "button": "Contactez-nous",
+            "brandsTrust": "20+ Marques nous font confiance"
+        },
+        "animatedText": {
+            "line1": {
+                "text1": "Créativité",
+                "text2": "Portée Élevée",
+                "text3": "Agence SEO"
+            },
+            "line2": {
+                "text1": "Agence SEO",
+                "text2": "Portée Élevée",
+                "text3": "et",
+                "text4": "Agence SEO"
+            }
+        }
+    },
+    "contact": {
+        "title": "Contact",
+        "description": "Page de contact",
+        "hero": {
+            "title": "Des questions ? Demandez-nous simplement.",
+            "subtitle": "C'est vous, à la maison !"
+        },
+        "action": {
+            "subtitle": "Commencez avec Tikit !",
+            "title": "Contactez-nous maintenant",
+            "description": "Nous voulons vous entendre. Faites-nous savoir comment nous pouvons vous aider !",
+            "client": "Client",
+            "influencer": "Influenceur",
+            "form": {
+                "name": "Nom",
+                "email": "Email",
+                "phone": "Téléphone",
+                "subject": "Sujet",
+                "message": "Message",
+                "submit": "Contactez-nous"
+            }
+        }
+    },
+    "services": {
+        "title": "Services",
+        "description": "Page des services",
+        "hero": {
+            "title": "Nous créons un design qui",
+            "subtitle": "mène et inspire",
+            "description": "Nos services exclusifs",
+            "subdescription": "Nous nous associons avec des marques qui veulent mener — celles prêtes à briser le bruit et apporter une vraie valeur à la vie des gens."
+        }
+    }
+}

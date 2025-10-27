@@ -1,0 +1,42 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://tikit.ae/sitemap.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
+
+# Disallow admin or private areas (if any)
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/
+Disallow: /_internal/
+
+# Allow all main pages
+Allow: /home
+Allow: /about
+Allow: /services
+Allow: /work
+Allow: /contact
+Allow: /service-details/
+Allow: /details/
+
+# Allow language-specific pages
+Allow: /en
+Allow: /fr
+Allow: /ar
+
+# Allow static assets
+Allow: /assets/
+Allow: /images/
+Allow: /css/
+Allow: /js/
+Allow: /*.css
+Allow: /*.js
+Allow: /*.png
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.gif
+Allow: /*.svg
+Allow: /*.webp
