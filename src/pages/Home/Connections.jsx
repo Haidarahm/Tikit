@@ -77,13 +77,17 @@ const Connections = () => {
   }, []);
 
   useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      once: false,
-      offset: 100,
-      easing: "ease-out-cubic",
-      mirror: true,
-    });
+    // Only initialize AOS once globally
+    if (!window.aosInitialized) {
+      AOS.init({
+        duration: 1000,
+        once: false,
+        offset: 100,
+        easing: "ease-out-cubic",
+        mirror: true,
+      });
+      window.aosInitialized = true;
+    }
   }, []);
 
   return (

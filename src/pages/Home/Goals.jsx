@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, memo } from "react";
 import ScrollStack, { ScrollStackItem } from "../../components/ScrollStackItem";
 import image1 from "../../assets/images/goal-image-1.png";
 import image2 from "../../assets/images/goal-image-2.png";
@@ -8,7 +8,7 @@ import { useTheme } from "../../store/ThemeContext.jsx";
 import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
 
-function Goals() {
+const Goals = memo(() => {
   const { theme } = useTheme();
   const { t } = useTranslation();
   const { isRtl } = useI18nLanguage();
@@ -73,7 +73,7 @@ function Goals() {
     <div
       className={`section ${
         isRtl ? "font-cairo" : "font-hero-light"
-      } flex flex-col md:flex-row mx-auto goals-section  z-10 w-full md:w-6/7`}
+      } flex flex-col md:flex-row mx-auto goals-section   z-10 w-full md:w-6/7`}
       dir={isRtl ? "rtl" : "ltr"}
     >
       <ScrollStack
@@ -151,6 +151,8 @@ function Goals() {
       </div>
     </div>
   );
-}
+});
+
+Goals.displayName = "Goals";
 
 export default Goals;

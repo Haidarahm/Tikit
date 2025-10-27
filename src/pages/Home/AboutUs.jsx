@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, memo } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useTranslation } from "react-i18next";
@@ -16,7 +16,7 @@ import img9 from "../../assets/who-we-are/9.webp";
 
 const whoWeAreImages = [img1, img2, img3, img4, img5, img6, img7, img8, img9];
 
-const AboutUs = () => {
+const AboutUs = memo(() => {
   const sectionRef = useRef(null);
   const titleRef = useRef(null);
   const descriptionRef = useRef(null);
@@ -28,13 +28,17 @@ const AboutUs = () => {
 
   // Initialize AOS
   useEffect(() => {
-    AOS.init({
-      duration: 500,
-      once: false, // Allow animations to repeat when scrolling back
-      offset: 100,
-      easing: "ease-out-cubic",
-      mirror: true, // Animate elements when scrolling past them
-    });
+    // Only initialize AOS once globally
+    if (!window.aosInitialized) {
+      AOS.init({
+        duration: 500,
+        once: false,
+        offset: 100,
+        easing: "ease-out-cubic",
+        mirror: true,
+      });
+      window.aosInitialized = true;
+    }
   }, []);
 
   useEffect(() => {
@@ -165,6 +169,8 @@ const AboutUs = () => {
       </div>
     </div>
   );
-};
+});
+
+AboutUs.displayName = "AboutUs";
 
 export default AboutUs;

@@ -315,70 +315,41 @@ footer .bottom-section .right-section .items li{
   cursor: pointer;
 }
 
-/* Goals Section Height Media Queries */
-/* .goals-section {
-  min-height: 100vh;
-}
-
-@media (max-width: 767px) {
-  .goals-section {
-    min-height: 100vh;
-  }
-  
-  .goals-section .container-goals > div {
-    min-height: 80vh;
-  }
-}
-
-@media (min-width: 768px) {
-  .goals-section {
-    min-height: 100vh;
-  }
-  
-  .goals-section .scroll-stack-card {
-    height: 100vh;
-  }
-}
-
-@media (min-width: 1024px) {
-  .goals-section {
-    min-height: 100vh;
-  }
-  
-  .goals-section .scroll-stack-card {
-    height: 100vh;
-  }
-} */
 
 /* Extra large screens (1280px and up) */
-@media (min-width: 1280px) {
+@media (min-width: 876px) {
   .goals-section {
-    min-height: 345vh;
-  }
-  
-  .goals-section .scroll-stack-card {
-    height: 65vh;
+   height:  455vh;
   }
 }
+@media (min-width: 1025px) {
+  .goals-section {
+   height: 375vh;
+  }
+}
+@media (min-width: 1395px) {
+  .goals-section {
+   height: 320vh;
+  }
+}
+@media (min-width: 1535px) {
+  .goals-section {
+   height: 290vh;
+  }
+}
+@media (min-width: 1700px) {
+  .goals-section {
+   height: 220vh;
+  }
+}
+/* @media (min-width: 1024px) {
+  .goals-section {
+   height: 380vh;
+  }
+  
 
-@media (min-width: 1380px) {
-  .goals-section {
-    min-height: 335vh;
-  }
-  
-  .goals-section .scroll-stack-card {
-    height: 65vh;
-  }
-}
-@media (min-width: 1480px) {
-  .goals-section {
-    min-height: 340vh;
-  }
-  
-  .goals-section .scroll-stack-card {
-    height: 65vh;
-  }
-}
+} */
+
 @media (min-width: 1080px) {
 .work-section-container{
   height: 345vh;

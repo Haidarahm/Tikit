@@ -1,11 +1,11 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState, memo } from "react";
 import StickyPinnedSection from "../../components/ui/StickyPinnedSection";
 import { useWorkStore } from "../../store/workStore";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
-export default function WorkSection() {
+const WorkSection = memo(() => {
   const {
     works,
     loadWorks,
@@ -154,4 +154,8 @@ export default function WorkSection() {
       </div>
     </>
   );
-}
+});
+
+WorkSection.displayName = "WorkSection";
+
+export default WorkSection;

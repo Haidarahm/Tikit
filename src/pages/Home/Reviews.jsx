@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import {
   ThreeDScrollTriggerContainer,
   ThreeDScrollTriggerRow,
@@ -13,13 +13,18 @@ const Reviews = () => {
   const { t } = useTranslation();
   const { isRtl } = useI18nLanguage();
   const lightBgs = ["#D4E6F4", "#E0DFFA", "#E8DCFD", "#F5D8ED"]; // light mode palette
-  const testimonials = t("home.reviews.testimonials", {
-    returnObjects: true,
-  }).map((testimonial) => ({
-    ...testimonial,
-    avatar:
-      "https://i.pinimg.com/736x/84/8f/3b/848f3b92a3e2a6040faccad5888f851e.jpg",
-  }));
+
+  const testimonials = useMemo(
+    () =>
+      t("home.reviews.testimonials", {
+        returnObjects: true,
+      }).map((testimonial) => ({
+        ...testimonial,
+        avatar:
+          "https://i.pinimg.com/736x/84/8f/3b/848f3b92a3e2a6040faccad5888f851e.jpg",
+      })),
+    [t]
+  );
   return (
     <div
       className={`reviews relative w-full md:min-h-screen py-10 md:py-20 ${

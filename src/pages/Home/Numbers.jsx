@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, memo } from "react";
 import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
 import LiquidEther from "../../components/aurora/LiquidEther";
@@ -6,7 +6,7 @@ import CountUp from "../../components/CountUp";
 import Aos from "aos";
 import "aos/dist/aos.css";
 
-function Numbers() {
+const Numbers = memo(() => {
   const { t } = useTranslation();
   const { isRtl } = useI18nLanguage();
   useEffect(() => {
@@ -14,14 +14,18 @@ function Numbers() {
 
     const scroller = document.querySelector(".sections");
     if (scroller) {
-      scroller.addEventListener("scroll", () => {
-        Aos.refresh(); // force update positions
-      });
-    }
+      let timeoutId;
+      const debouncedRefresh = () => {
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(() => Aos.refresh(), 100);
+      };
+      scroller.addEventListener("scroll", debouncedRefresh);
 
-    return () => {
-      if (scroller) scroller.removeEventListener("scroll", Aos.refresh);
-    };
+      return () => {
+        clearTimeout(timeoutId);
+        if (scroller) scroller.removeEventListener("scroll", debouncedRefresh);
+      };
+    }
   }, []);
 
   const data = [
@@ -173,6 +177,8 @@ function Numbers() {
       </div>
     </div>
   );
-}
+});
+
+Numbers.displayName = "Numbers";
 
 export default Numbers;

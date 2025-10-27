@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo, memo } from "react";
 import FlowingMenu from "../../components/FlowingMenu";
 import { useServicesStore } from "../../store/servicesStore";
 import { useNavigate } from "react-router-dom";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
 import { useTranslation } from "react-i18next";
 
-const Services = () => {
+const Services = memo(() => {
   const navigate = useNavigate();
   const { services, loadServices, loading, error } = useServicesStore();
   const { language, isRtl } = useI18nLanguage();
@@ -23,11 +23,15 @@ const Services = () => {
     }
   }, [language, loadServices, isClient]);
 
-  const items = (services || []).map((s) => ({
-    link: `service-details/${s?.id}`,
-    text: s?.title,
-    image: s?.media,
-  }));
+  const items = useMemo(
+    () =>
+      (services || []).map((s) => ({
+        link: `service-details/${s?.id}`,
+        text: s?.title,
+        image: s?.media,
+      })),
+    [services]
+  );
 
   // Show loading state during initial load
   if (!isClient || loading) {
@@ -134,6 +138,8 @@ const Services = () => {
       </div>
     </div>
   );
-};
+});
+
+Services.displayName = "Services";
 
 export default Services;

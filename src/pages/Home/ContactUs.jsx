@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo, memo } from "react";
 import FloatingInput from "../../components/ui/FloatingInput";
 import LogoLoop from "../../components/LogoLoop";
 import AOS from "aos";
@@ -18,7 +18,7 @@ import b5Light from "../../assets/brands/5-light.svg";
 import GradientText from "../../components/GradientText";
 import { useTheme } from "../../store/ThemeContext";
 
-const ContactUs = ({ className = "" }) => {
+const ContactUs = memo(({ className = "" }) => {
   const [isSecondSlide, setIsSecondSlide] = useState(false);
 
   const handleSlideClick = (slideNumber) => {
@@ -34,7 +34,11 @@ const ContactUs = ({ className = "" }) => {
       : ["#07D9F5", "#06AEC4", "#4E7CC6", "#CE88C6", "#FB8DEF"]; // Dark theme colors (original)
 
   useEffect(() => {
-    AOS.init({ duration: 750, once: true });
+    // Only initialize AOS once globally
+    if (!window.aosInitialized) {
+      AOS.init({ duration: 750, once: true });
+      window.aosInitialized = true;
+    }
   }, []);
   // const techLogos = [
   //   { node: <SiReact />, title: "React", href: "https://react.dev" },
@@ -51,23 +55,26 @@ const ContactUs = ({ className = "" }) => {
   //   },
   // ];
 
-  // Alternative with image sources
-  const imageLogos =
-    theme === "light"
-      ? [
-          { src: b1Light, alt: "Brand 1" },
-          { src: b2Light, alt: "Brand 2" },
-          { src: b3Light, alt: "Brand 3" },
-          { src: b4Light, alt: "Brand 4" },
-          { src: b5Light, alt: "Brand 5" },
-        ]
-      : [
-          { src: b1, alt: "Brand 1" },
-          { src: b2, alt: "Brand 2" },
-          { src: b3, alt: "Brand 3" },
-          { src: b4, alt: "Brand 4" },
-          { src: b5, alt: "Brand 5" },
-        ];
+  // Alternative with image sources - memoized
+  const imageLogos = useMemo(
+    () =>
+      theme === "light"
+        ? [
+            { src: b1Light, alt: "Brand 1" },
+            { src: b2Light, alt: "Brand 2" },
+            { src: b3Light, alt: "Brand 3" },
+            { src: b4Light, alt: "Brand 4" },
+            { src: b5Light, alt: "Brand 5" },
+          ]
+        : [
+            { src: b1, alt: "Brand 1" },
+            { src: b2, alt: "Brand 2" },
+            { src: b3, alt: "Brand 3" },
+            { src: b4, alt: "Brand 4" },
+            { src: b5, alt: "Brand 5" },
+          ],
+    [theme]
+  );
   // "bg-[#F5F7FB] text-[var(--foreground)] border border-black/5"
   return (
     <div
@@ -206,6 +213,8 @@ const ContactUs = ({ className = "" }) => {
       </div>
     </div>
   );
-};
+});
+
+ContactUs.displayName = "ContactUs";
 
 export default ContactUs;
