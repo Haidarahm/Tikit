@@ -1,0 +1,54 @@
+@keyframes slideVertical {
+    from {
+      transform: translateY(0%);
+    }
+    to {
+      transform: translateY(-100%);
+    }
+  }
+  
+  .v-looper {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .v-looper__innerList {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+  }
+  
+  .v-looper__innerList[data-animate="true"] .v-looper__listInstance {
+    animation: slideVertical linear infinite;
+  }
+  
+  .v-looper__listInstance {
+    display: flex;
+    flex-direction: column;
+    animation: none;
+  }
+  
+  .v-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 8px 0;
+  }
+  
+  .v-video {
+    width: 200px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 16px;
+  }
+  
+  .v-name {
+    color: white;
+    font-size: 14px;
+    margin-top: 4px;
+    text-align: center;
+  }
+  

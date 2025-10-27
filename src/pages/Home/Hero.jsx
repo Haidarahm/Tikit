@@ -1,45 +1,81 @@
-import React, {
-  useEffect,
-  useRef,
-  useState,
-  Suspense,
-  useCallback,
-} from "react";
+import React, { useEffect, useRef, useState, Suspense } from "react";
 import gsap from "gsap";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "../../store/ThemeContext.jsx";
-import Video from "../../components/Video";
-import test1 from "../../assets/videos/test1.mp4";
-import test2 from "../../assets/videos/test2.mp4";
 
 const LiquidEther = React.lazy(() =>
   import("../../components/aurora/LiquidEther")
 );
 import AvatarGroupDemo from "../../components/ui/AvatarGroupDemo";
+import VerticalVideoLooper from "../../components/videoLoop/VerticalVideoLooper.jsx";
 
 function Hero() {
+  const sampleVideos = [
+    {
+      id: 1,
+      name: "Video 1",
+      videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+    },
+    {
+      id: 2,
+      name: "Video 2",
+      videoUrl: "https://www.w3schools.com/html/movie.mp4",
+    },
+    {
+      id: 3,
+      name: "Video 3",
+      videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+    },
+    {
+      id: 4,
+      name: "Video 4",
+      videoUrl: "https://www.w3schools.com/html/movie.mp4",
+    },
+    {
+      id: 5,
+      name: "Video 5",
+      videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+    },
+    {
+      id: 6,
+      name: "Video 6",
+      videoUrl: "https://www.w3schools.com/html/movie.mp4",
+    },
+    {
+      id: 7,
+      name: "Video 7",
+      videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+    },
+    {
+      id: 8,
+      name: "Video 8",
+      videoUrl: "https://www.w3schools.com/html/movie.mp4",
+    },
+    {
+      id: 9,
+      name: "Video 9",
+      videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+    },
+    {
+      id: 10,
+      name: "Video 10",
+      videoUrl: "https://www.w3schools.com/html/movie.mp4",
+    },
+  ];
+
   const sectionRef = useRef(null);
   const [showLiquid, setShowLiquid] = useState(false);
-  const [showVideo, setShowVideo] = useState(false);
+  const [showVideoLooper, setShowVideoLooper] = useState(false);
   const { t } = useTranslation();
   const { theme } = useTheme();
 
-  // Memoize callbacks to prevent Video component re-initialization
-  const handleLoadStart = useCallback(() => {
-    console.log("Video upload started");
-  }, []);
-
-  const handleUploadComplete = useCallback(() => {
-    console.log("Video upload completed");
-  }, []);
-
-  // Delay rendering of Video component by 2 seconds
+  // Delay rendering of VideoLooper by 2 seconds
   useEffect(() => {
     const timerId = setTimeout(() => {
-      setShowVideo(true);
-    }, 2000);
+      setShowVideoLooper(true);
+    }, 3000);
 
     return () => clearTimeout(timerId);
   }, []);
@@ -105,41 +141,24 @@ function Hero() {
             />
           </Suspense>
         )}
-        <div className="videos  absolute overflow-hidden z-20 left-0 top-0 w-full h-full">
-          <div className="rectangle absolute z-20 w-40 left-12 top-12  h-[300px]">
-            {showVideo && (
-              <div className="video mt-8 md:mt-[50px] h-full w-full">
-                <Video
-                  src={test2}
-                  controls={true}
-                  autoplay={true}
-                  loop={true}
-                  muted={true}
-                  className="w-full rounded-lg shadow-lg"
-                  onLoadStart={handleLoadStart}
-                  onUploadComplete={handleUploadComplete}
-                />
-              </div>
-            )}
+        {showVideoLooper && (
+          <div className="videos  absolute overflow-hidden z-20 left-0 top-0 w-full h-full">
+            <div className="h-full absolute left-8 ">
+              <VerticalVideoLooper
+                videos={sampleVideos}
+                speed={35}
+                direction="up"
+              />
+            </div>
+            <div className="h-full absolute right-8 ">
+              <VerticalVideoLooper
+                videos={sampleVideos}
+                speed={35}
+                direction="down"
+              />
+            </div>
           </div>
-          <div className="rectangle absolute z-20 w-40 right-12 bottom-20  h-[300px]">
-            {showVideo && (
-              <div className="video mt-8 md:mt-[50px] h-full w-full">
-                <Video
-                  src={test1}
-                  controls={true}
-                  autoplay={true}
-                  loop={true}
-                  muted={true}
-                  className="w-full rounded-lg shadow-lg"
-                  onLoadStart={handleLoadStart}
-                  onUploadComplete={handleUploadComplete}
-                />
-              </div>
-            )}
-          </div>
-          {/*  */}
-        </div>
+        )}
       </div>
 
       {/* Foreground content */}
@@ -176,8 +195,6 @@ function Hero() {
             {t("home.hero.subtitle")}
           </h3>
         </div>
-
-        {/* Video */}
 
         {/* Avatars */}
         <div
