@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import FloatingInput from "../../components/ui/FloatingInput";
-import Hyperspeed from "../../components/Hyperspeed";
 import LogoLoop from "../../components/LogoLoop";
 import b1 from "../../assets/brands/1.svg";
 import b2 from "../../assets/brands/2.svg";

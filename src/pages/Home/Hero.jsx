@@ -10,61 +10,36 @@ const LiquidEther = React.lazy(() =>
 );
 import AvatarGroupDemo from "../../components/ui/AvatarGroupDemo";
 import VerticalVideoLooper from "../../components/videoLoop/VerticalVideoLooper.jsx";
+import test1 from "../../assets/videos/test1.mp4";
+import test3 from "../../assets/videos/test2.mp4";
+import test2 from "../../assets/videos/test3.mp4";
+import test4 from "../../assets/videos/test4.mp4";
+
+// Move outside component to prevent recreation on every render
+const sampleVideos = [
+  {
+    id: 1,
+    name: "Video 1",
+    videoUrl: test1,
+  },
+  {
+    id: 2,
+    name: "Video 2",
+    videoUrl: test2,
+  },
+  {
+    id: 3,
+    name: "Video 3",
+    videoUrl: test3,
+  },
+  {
+    id: 4,
+    name: "Video 4",
+    videoUrl: test4,
+  },
+];
 
 function Hero() {
-  const sampleVideos = [
-    {
-      id: 1,
-      name: "Video 1",
-      videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
-    },
-    {
-      id: 2,
-      name: "Video 2",
-      videoUrl: "https://www.w3schools.com/html/movie.mp4",
-    },
-    {
-      id: 3,
-      name: "Video 3",
-      videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
-    },
-    {
-      id: 4,
-      name: "Video 4",
-      videoUrl: "https://www.w3schools.com/html/movie.mp4",
-    },
-    {
-      id: 5,
-      name: "Video 5",
-      videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
-    },
-    {
-      id: 6,
-      name: "Video 6",
-      videoUrl: "https://www.w3schools.com/html/movie.mp4",
-    },
-    {
-      id: 7,
-      name: "Video 7",
-      videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
-    },
-    {
-      id: 8,
-      name: "Video 8",
-      videoUrl: "https://www.w3schools.com/html/movie.mp4",
-    },
-    {
-      id: 9,
-      name: "Video 9",
-      videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
-    },
-    {
-      id: 10,
-      name: "Video 10",
-      videoUrl: "https://www.w3schools.com/html/movie.mp4",
-    },
-  ];
-
   const sectionRef = useRef(null);
   const [showLiquid, setShowLiquid] = useState(false);
   const [showVideoLooper, setShowVideoLooper] = useState(false);
@@ -75,7 +50,7 @@ function Hero() {
   useEffect(() => {
     const timerId = setTimeout(() => {
       setShowVideoLooper(true);
-    }, 3000);
+    }, 3500);
 
     return () => clearTimeout(timerId);
   }, []);
@@ -146,14 +121,14 @@ function Hero() {
             <div className="h-full absolute left-8 ">
               <VerticalVideoLooper
                 videos={sampleVideos}
-                speed={35}
+                speed={60}
                 direction="up"
               />
             </div>
             <div className="h-full absolute right-8 ">
               <VerticalVideoLooper
                 videos={sampleVideos}
-                speed={35}
+                speed={60}
                 direction="down"
               />
             </div>

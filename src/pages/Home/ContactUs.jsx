@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import FloatingInput from "../../components/ui/FloatingInput";
-import Hyperspeed from "../../components/Hyperspeed";
 import LogoLoop from "../../components/LogoLoop";
 import AOS from "aos";
 import "aos/dist/aos.css";

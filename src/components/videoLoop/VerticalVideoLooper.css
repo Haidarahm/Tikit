@@ -13,22 +13,31 @@
     overflow: hidden;
     display: flex;
     justify-content: center;
+    will-change: transform;
+    transform: translateZ(0);
   }
   
   .v-looper__innerList {
     display: flex;
     flex-direction: column;
     width: fit-content;
+    will-change: transform;
+    backface-visibility: hidden;
+    perspective: 1000px;
   }
   
   .v-looper__innerList[data-animate="true"] .v-looper__listInstance {
     animation: slideVertical linear infinite;
+    will-change: transform;
+    backface-visibility: hidden;
   }
   
   .v-looper__listInstance {
     display: flex;
     flex-direction: column;
     animation: none;
+    will-change: transform;
+    backface-visibility: hidden;
   }
   
   .v-item {
@@ -43,6 +52,10 @@
     height: 350px;
     object-fit: cover;
     border-radius: 16px;
+    will-change: transform;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    pointer-events: none;
   }
   
   .v-name {
