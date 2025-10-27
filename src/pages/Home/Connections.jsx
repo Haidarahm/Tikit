@@ -10,6 +10,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import GradientText from "../../components/GradientText";
 import { useTheme } from "../../store/ThemeContext.jsx";
+import { useClient } from "../../store/ClientContext.jsx";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
@@ -24,6 +25,7 @@ const Connections = () => {
   const navigate = useNavigate();
   const sectionContainerRef = useRef(null);
   const { theme } = useTheme();
+  const { setClientType } = useClient();
   const { t } = useTranslation();
   const { isRtl } = useI18nLanguage();
 
@@ -155,6 +157,9 @@ const Connections = () => {
         </p>
         <button
           onClick={() => {
+            setClientType("influencer");
+            // Set flag to scroll to action section
+            sessionStorage.setItem("shouldScrollToAction", "true");
             navigate("/contact");
           }}
           className="uppercase mt-[40px]
@@ -166,7 +171,7 @@ const Connections = () => {
              dark:hover:bg-transparent
               dark:text-black w-fit"
         >
-          {t("home.connections.cta")}
+          {t("home.connections.joinNow")}
         </button>
       </div>
     </div>

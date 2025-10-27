@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import GradientText from "../../components/GradientText";
 import { useTheme } from "../../store/ThemeContext";
+import { useClient } from "../../store/ClientContext";
 import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../store/I18nLanguageContext";
 import {
@@ -214,8 +215,10 @@ const SocialLinkInput = ({
 
 const Action = () => {
   const { theme } = useTheme();
+  const { clientType } = useClient();
   const { t } = useTranslation();
   const { isRtl } = useI18nLanguage();
+  const actionRef = useRef(null);
 
   const gradientColors =
     theme === "light"
@@ -227,6 +230,31 @@ const Action = () => {
     { platform: "instagram", link: "" },
   ]);
   const [removingIndex, setRemovingIndex] = useState(null);
+
+  // Check session storage on mount and set the swiper to influencer if needed
+  useEffect(() => {
+    const storedClientType = sessionStorage.getItem("client");
+    if (storedClientType === "influencer") {
+      setIsSecondSlide(true);
+    }
+  }, []);
+
+  // Scroll to action section on mount if flagged
+  useEffect(() => {
+    const shouldScroll = sessionStorage.getItem("shouldScrollToAction");
+    if (shouldScroll === "true" && actionRef.current) {
+      // Clear the flag
+      sessionStorage.removeItem("shouldScrollToAction");
+
+      // Scroll to the action section
+      setTimeout(() => {
+        actionRef.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }, 300);
+    }
+  }, []);
 
   const handleSlideClick = (slideNumber) => {
     setIsSecondSlide(slideNumber === 2);
@@ -260,6 +288,8 @@ const Action = () => {
 
   return (
     <div
+      ref={actionRef}
+      id="contact-action-section"
       data-scroll-section
       className={`snap-start snap-always min-h-screen justify-center flex flex-col lg:flex-row gap-8 md:gap-16 lg:gap-24 xl:gap-32 py-8 md:py-12  px-4 md:px-8 lg:px-14 ${
         isRtl ? "font-cairo" : "font-hero-light"

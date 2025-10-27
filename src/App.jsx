@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import { ThemeProvider } from "./store/ThemeContext.jsx";
+import { ClientProvider } from "./store/ClientContext.jsx";
 import Navbar from "./components/Navbar";
 import DarkBackground from "./components/DarkBackground";
 import { Outlet } from "react-router-dom";
@@ -47,21 +48,23 @@ function App() {
   }, []);
   return (
     <ThemeProvider>
-      <Suspense fallback={<LoadingSpinner />}>
-        <Routes>
-          <Route path="/" element={<LogoIntro />} />
-          <Route element={<Layout />}>
-            <Route path="/home" element={<Home />} />
-            <Route path="/work" element={<Work />} />
-            <Route path="/about" element={<AboutUs />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/influencer" element={<Influencer />} />
-            <Route path="/details/:id" element={<Details />} />
-            <Route path="/service-details/:id" element={<ServiceDetails />} />
-          </Route>
-        </Routes>
-      </Suspense>
+      <ClientProvider>
+        <Suspense fallback={<LoadingSpinner />}>
+          <Routes>
+            <Route path="/" element={<LogoIntro />} />
+            <Route element={<Layout />}>
+              <Route path="/home" element={<Home />} />
+              <Route path="/work" element={<Work />} />
+              <Route path="/about" element={<AboutUs />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/influencer" element={<Influencer />} />
+              <Route path="/details/:id" element={<Details />} />
+              <Route path="/service-details/:id" element={<ServiceDetails />} />
+            </Route>
+          </Routes>
+        </Suspense>
+      </ClientProvider>
     </ThemeProvider>
   );
 }
