@@ -14,17 +14,32 @@ const VerticalVideoLooper = React.lazy(() =>
 );
 
 import AvatarGroupDemo from "../../components/ui/AvatarGroupDemo";
-import test1 from "../../assets/videos/test1.mp4";
-import test2 from "../../assets/videos/test2.mp4";
-import test3 from "../../assets/videos/test3.mp4";
-import test4 from "../../assets/videos/test4.mp4";
 
 // Create video objects once outside component to prevent recreation
+// Using remote video URLs for better caching via CDN/backends
 const createVideoObjects = () => [
-  { id: 1, name: "Video 1", videoUrl: test1 },
-  { id: 2, name: "Video 2", videoUrl: test2 },
-  { id: 3, name: "Video 3", videoUrl: test3 },
-  { id: 4, name: "Video 4", videoUrl: test4 },
+  {
+    id: 1,
+    name: "Video 1",
+    videoUrl:
+      "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+  },
+  {
+    id: 2,
+    name: "Video 2",
+    videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+  },
+  {
+    id: 3,
+    name: "Video 3",
+    videoUrl: "https://media.w3.org/2010/05/sintel/trailer_hd.mp4",
+  },
+  {
+    id: 4,
+    name: "Video 4",
+    videoUrl:
+      "https://archive.org/download/BigBuckBunny_328/BigBuckBunny_512kb.mp4",
+  },
 ];
 
 // Pre-create once to avoid recreation

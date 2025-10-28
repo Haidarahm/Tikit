@@ -344,33 +344,10 @@ footer .bottom-section .right-section .items li{
    height: 220vh;
   }
 }
-/* @media (min-width: 1024px) {
-  .goals-section {
-   height: 380vh;
-  }
-  
 
-} */
-
-@media (min-width: 1080px) {
-.work-section-container{
-  height: 345vh;
-}
-}
-
-@media (min-width: 1280px) {
-  .work-section-container{
-    height: 365vh;
-  }
-  }
-  @media (min-width: 1450px) {
-    .work-section-container{
-      height: 370vh;
-    }
-    }
-    @media (min-width: 1650px) {
+    @media (min-width: 1080px) {
       .work-section-container{
-        height: 375vh;
+        height: 405vh;
       }
 }
 
