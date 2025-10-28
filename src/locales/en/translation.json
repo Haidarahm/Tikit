@@ -275,5 +275,24 @@
             "description": "Our exclusive services",
             "subdescription": "We partner with brands that want to lead — those ready to break through the noise and bring real value to people's lives."
         }
+    },
+    "news": {
+        "hero": {
+            "kicker": "Latest Insights",
+            "title": "Stories That Shape Success",
+            "description": "Discover strategies, insights, and breakthroughs from our team of marketing experts."
+        },
+        "content": {
+            "category1": "Strategy",
+            "title1": "How to Scale Your Influencer Campaigns",
+            "excerpt1": "A deep dive into proven strategies for scaling influencer partnerships across platforms.",
+            "category2": "Creative",
+            "title2": "7 Creative Patterns That Drive Results",
+            "excerpt2": "Discover the visual and messaging patterns that consistently outperform in social campaigns.",
+            "category3": "Data",
+            "title3": "Attribution in 2025: What Actually Matters",
+            "excerpt3": "How modern marketers measure success in an era of signal loss and privacy changes.",
+            "readMore": "Read more"
+        }
     }
 }
