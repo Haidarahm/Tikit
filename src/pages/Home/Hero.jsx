@@ -8,36 +8,27 @@ import { useTheme } from "../../store/ThemeContext.jsx";
 const LiquidEther = React.lazy(() =>
   import("../../components/aurora/LiquidEther")
 );
+
+const VerticalVideoLooper = React.lazy(() =>
+  import("../../components/videoLoop/VerticalVideoLooper.jsx")
+);
+
 import AvatarGroupDemo from "../../components/ui/AvatarGroupDemo";
-import VerticalVideoLooper from "../../components/videoLoop/VerticalVideoLooper.jsx";
 import test1 from "../../assets/videos/test1.mp4";
-import test3 from "../../assets/videos/test2.mp4";
-import test2 from "../../assets/videos/test3.mp4";
+import test2 from "../../assets/videos/test2.mp4";
+import test3 from "../../assets/videos/test3.mp4";
 import test4 from "../../assets/videos/test4.mp4";
 
-// Move outside component to prevent recreation on every render
-const sampleVideos = [
-  {
-    id: 1,
-    name: "Video 1",
-    videoUrl: test1,
-  },
-  {
-    id: 2,
-    name: "Video 2",
-    videoUrl: test2,
-  },
-  {
-    id: 3,
-    name: "Video 3",
-    videoUrl: test3,
-  },
-  {
-    id: 4,
-    name: "Video 4",
-    videoUrl: test4,
-  },
+// Create video objects once outside component to prevent recreation
+const createVideoObjects = () => [
+  { id: 1, name: "Video 1", videoUrl: test1 },
+  { id: 2, name: "Video 2", videoUrl: test2 },
+  { id: 3, name: "Video 3", videoUrl: test3 },
+  { id: 4, name: "Video 4", videoUrl: test4 },
 ];
+
+// Pre-create once to avoid recreation
+const sampleVideosStatic = createVideoObjects();
 
 function Hero() {
   const sectionRef = useRef(null);
@@ -47,16 +38,30 @@ function Hero() {
   const { t } = useTranslation();
   const { theme } = useTheme();
 
-  // Check if device is mobile
+  // Use static video objects (already memoized outside component)
+  const sampleVideos = sampleVideosStatic;
+
+  // Check if device is mobile - memoized
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768); // md breakpoint in Tailwind
     };
 
     checkMobile();
-    window.addEventListener("resize", checkMobile);
 
-    return () => window.removeEventListener("resize", checkMobile);
+    // Throttle resize listener
+    let resizeTimer;
+    const throttledCheckMobile = () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(checkMobile, 150);
+    };
+
+    window.addEventListener("resize", throttledCheckMobile);
+
+    return () => {
+      window.removeEventListener("resize", throttledCheckMobile);
+      clearTimeout(resizeTimer);
+    };
   }, []);
 
   // Delay rendering of VideoLooper by 2 seconds, only on desktop
@@ -133,20 +138,22 @@ function Hero() {
         )}
         {showVideoLooper && !isMobile && (
           <div className="videos absolute overflow-hidden z-20 left-0 top-0 w-full h-full">
-            <div className="h-full absolute left-8 ">
-              <VerticalVideoLooper
-                videos={sampleVideos}
-                speed={60}
-                direction="up"
-              />
-            </div>
-            <div className="h-full absolute right-8 ">
-              <VerticalVideoLooper
-                videos={sampleVideos}
-                speed={60}
-                direction="down"
-              />
-            </div>
+            <Suspense fallback={null}>
+              <div className="h-full absolute left-8 ">
+                <VerticalVideoLooper
+                  videos={sampleVideos}
+                  speed={60}
+                  direction="up"
+                />
+              </div>
+              <div className="h-full absolute right-8 ">
+                <VerticalVideoLooper
+                  videos={sampleVideos}
+                  speed={60}
+                  direction="down"
+                />
+              </div>
+            </Suspense>
           </div>
         )}
       </div>

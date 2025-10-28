@@ -83,7 +83,9 @@ const VerticalVideoLooper = memo(
                     loop
                     autoPlay
                     playsInline
-                    preload="auto"
+                    webkit-playsinline="true"
+                    preload="metadata"
+                    decoding="async"
                     className="v-video border-4 border-white"
                   />
                 </div>
