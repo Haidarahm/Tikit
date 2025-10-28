@@ -332,7 +332,7 @@ const Action = () => {
             className={`swiper-slide w-1/2 flex justify-center items-center relative z-10 cursor-pointer text-sm md:text-base font-medium transition-colors duration-300 ${
               !isSecondSlide
                 ? "text-[var(--background)]"
-                : "text-[var(--foreground)]"
+                : "text-[var(--secondary)]"
             }`}
             onClick={() => handleSlideClick(1)}
           >
@@ -342,7 +342,7 @@ const Action = () => {
             className={`swiper-slide w-1/2 flex justify-center items-center relative z-10 cursor-pointer text-sm md:text-base font-medium transition-colors duration-300 ${
               isSecondSlide
                 ? "text-[var(--background)]"
-                : "text-[var(--foreground)]"
+                : "text-[var(--secondary)]"
             }`}
             onClick={() => handleSlideClick(2)}
           >

@@ -4,6 +4,7 @@
         "work": "Work",
         "about": "About Us",
         "services": "Services",
+        "influencers": "Influencers",
         "contact": "Contact Us"
     },
     "seo": {
@@ -66,7 +67,7 @@
         },
         "work": {
             "title": "Featured Work",
-            "explore": "Explore Projects",
+            "explore": "Explore Works",
             "viewWork": "View Work",
             "noWorks": "No works found.",
             "prev": "Prev",

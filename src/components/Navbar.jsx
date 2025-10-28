@@ -8,6 +8,7 @@ import TikitButton from "./TikitButton";
 import { useI18nLanguage } from "../store/I18nLanguageContext.jsx";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "../store/ThemeContext.jsx";
+import { useClient } from "../store/ClientContext.jsx";
 
 function Navbar() {
   const navigate = useNavigate();
@@ -24,12 +25,16 @@ function Navbar() {
   const [isLangOpen, setIsLangOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
   const langMenuRef = useRef(null);
+  const contactDropdownRef = useRef(null);
+  const [isContactDropdownOpen, setIsContactDropdownOpen] = useState(false);
+  const { setClientType } = useClient();
 
   const links = [
     { to: "/home", key: "nav.home" },
     { to: "/work", key: "nav.work" },
     { to: "/about", key: "nav.about" },
     { to: "/services", key: "nav.services" },
+    { to: "/influencer", key: "nav.influencers" },
   ];
 
   // Toggle mobile menu
@@ -129,16 +134,22 @@ function Navbar() {
       if (langMenuRef.current && !langMenuRef.current.contains(event.target)) {
         setIsLangOpen(false);
       }
+      if (
+        contactDropdownRef.current &&
+        !contactDropdownRef.current.contains(event.target)
+      ) {
+        setIsContactDropdownOpen(false);
+      }
     };
 
-    if (isLangOpen) {
+    if (isLangOpen || isContactDropdownOpen) {
       document.addEventListener("mousedown", handleClickOutside);
     }
 
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [isLangOpen]);
+  }, [isLangOpen, isContactDropdownOpen]);
 
   useEffect(() => {
     AOS.init({ duration: 750, once: true });
@@ -333,10 +344,7 @@ function Navbar() {
               language === "ar" ? "order-4" : ""
             }`}
           >
-            <div
-              ref={logoRef}
-              className="h-10  md:h-12 transform-gpu"
-            >
+            <div ref={logoRef} className="h-10  md:h-12 transform-gpu">
               <SVGComponent
                 color={theme === "dark" ? "#FFFFFF" : "#363737"}
                 logoJumpColor={theme === "dark" ? "#FFFFFF" : "#52C3C5"}
@@ -496,10 +504,58 @@ function Navbar() {
                 </svg>
               )}
             </button>
-            <TikitButton
-              text={t("nav.contact") || "Contact Us"}
-              onClick={() => navigate("/contact")}
-            />
+            <div
+              ref={contactDropdownRef}
+              className={`relative ${
+                isContactDropdownOpen ? "contact-dropdown-open" : ""
+              }`}
+            >
+              <TikitButton
+                text={t("nav.contact") || "Contact Us"}
+                onClick={() => setIsContactDropdownOpen(!isContactDropdownOpen)}
+              />
+              {isContactDropdownOpen && (
+                <div
+                  className={`absolute ${
+                    isRtl ? "left-0" : "right-0"
+                  } mt-2 min-w-[140px] rounded-lg shadow-lg border z-50 ${
+                    theme === "dark"
+                      ? "bg-gray-900/95 backdrop-blur-md border-gray-700/50"
+                      : "bg-white/95 backdrop-blur-md border-gray-200/50"
+                  }`}
+                >
+                  <button
+                    onClick={() => {
+                      setClientType("client");
+                      navigate("/contact");
+                      setIsContactDropdownOpen(false);
+                    }}
+                    className={`block w-full text-left px-4 py-3 text-sm transition-colors duration-200 first:rounded-t-lg ${
+                      theme === "dark"
+                        ? "text-gray-300 hover:text-white hover:bg-gray-800/50"
+                        : "text-gray-700 hover:text-gray-900 hover:bg-gray-100/50"
+                    }`}
+                  >
+                    {t("contact.action.client")}
+                  </button>
+                  <button
+                    onClick={() => {
+                      setClientType("influencer");
+                      sessionStorage.setItem("shouldScrollToAction", "true");
+                      navigate("/contact");
+                      setIsContactDropdownOpen(false);
+                    }}
+                    className={`block w-full text-left px-4 py-3 text-sm transition-colors duration-200 last:rounded-b-lg ${
+                      theme === "dark"
+                        ? "text-gray-300 hover:text-white hover:bg-gray-800/50"
+                        : "text-gray-700 hover:text-gray-900 hover:bg-gray-100/50"
+                    }`}
+                  >
+                    {t("contact.action.influencer")}
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
 
           {/* Mobile Hamburger */}
@@ -572,6 +628,7 @@ function Navbar() {
             <TikitButton
               text={t("nav.contact") || "Contact Us"}
               onClick={() => {
+                setClientType("client");
                 navigate("/contact");
                 setIsMobileMenuOpen(false);
               }}

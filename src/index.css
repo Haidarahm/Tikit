@@ -371,3 +371,18 @@ footer .bottom-section .right-section .items li{
         height: 375vh;
       }
 }
+
+/* Contact dropdown open state - keep button hover effect */
+.contact-dropdown-open button {
+  transform: scale(1.03);
+}
+
+.contact-dropdown-open button span:first-child {
+  transform: translateX(4px);
+}
+
+.contact-dropdown-open button span:last-child {
+  width: 1rem;
+  opacity: 1;
+  transform: translateX(0);
+}
