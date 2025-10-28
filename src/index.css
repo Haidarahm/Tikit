@@ -230,6 +230,7 @@ body {
   --secondary:#52C3C5;
   --base:#52C3C5;
   --radius: 0.625rem;
+  --contact: #F5F7FB;
   --tooltip: #363737;
   --container-bg: #ECFBFB;
 }
@@ -239,6 +240,7 @@ body {
   --background: #000000;
   --container-bg: #101b22;
   --foreground: #ffffff;
+  --contact: #000;
   --base:#000;
   --secondary:#ffffff;
   --tooltip: #fff;
@@ -385,4 +387,163 @@ footer .bottom-section .right-section .items li{
   width: 1rem;
   opacity: 1;
   transform: translateX(0);
+}
+
+/* Social Links Animations and Design */
+.social-link-container {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.social-link-container.removing {
+  animation: slideOut 0.3s ease-out forwards;
+}
+
+@keyframes slideOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+/* Custom Dropdown Menu */
+.custom-dropdown-menu {
+  position: absolute;
+  bottom: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background-color: var(--contact);
+  border: 1px solid #363737;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  animation: dropdownSlideIn 0.2s ease-out;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.dark .custom-dropdown-menu {
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes dropdownSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Dropdown Items */
+.custom-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 12px 16px;
+  text-align: left;
+  background-color: transparent;
+  border: none;
+  color: var(--foreground);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.dark .custom-dropdown-item {
+  border-bottom-color: rgba(255, 255, 255, 0.05);
+}
+
+.custom-dropdown-item:hover {
+  background-color: rgba(82, 195, 197, 0.1);
+  transform: translateX(4px);
+}
+
+.dark .custom-dropdown-item:hover {
+  background-color: rgba(82, 195, 197, 0.15);
+}
+
+.custom-dropdown-item.selected {
+  background-color: rgba(82, 195, 197, 0.2);
+  font-weight: 600;
+}
+
+.dark .custom-dropdown-item.selected {
+  background-color: rgba(82, 195, 197, 0.25);
+}
+
+/* Social Select Button */
+.social-select {
+  transition: all 0.2s ease;
+}
+
+.social-select:focus-visible {
+  outline: 2px solid var(--secondary);
+  outline-offset: 2px;
+}
+
+/* Social Link Input */
+.social-link-input {
+  transition: all 0.2s ease;
+}
+
+.social-link-input:focus {
+  outline: none;
+}
+
+/* Social Remove Button */
+.social-remove-btn {
+  transition: all 0.2s ease;
+}
+
+.social-remove-btn:hover {
+  border-color: rgba(239, 68, 68, 0.8);
+  background-color: rgba(239, 68, 68, 0.05);
+}
+
+/* Social Add Button */
+.social-add-btn {
+  transition: all 0.2s ease;
+}
+
+.social-add-btn:hover {
+  background-color: var(--secondary);
+  color: var(--background);
+}
+
+/* Smooth scrollbar for dropdown */
+.custom-dropdown-menu::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-dropdown-menu::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-dropdown-menu::-webkit-scrollbar-thumb {
+  background: rgba(82, 195, 197, 0.3);
+  border-radius: 3px;
+}
+
+.custom-dropdown-menu::-webkit-scrollbar-thumb:hover {
+  background: rgba(82, 195, 197, 0.5);
 }
