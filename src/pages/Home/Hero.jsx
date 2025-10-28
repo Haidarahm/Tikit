@@ -43,17 +43,32 @@ function Hero() {
   const sectionRef = useRef(null);
   const [showLiquid, setShowLiquid] = useState(false);
   const [showVideoLooper, setShowVideoLooper] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const { t } = useTranslation();
   const { theme } = useTheme();
 
-  // Delay rendering of VideoLooper by 2 seconds
+  // Check if device is mobile
   useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768); // md breakpoint in Tailwind
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  // Delay rendering of VideoLooper by 2 seconds, only on desktop
+  useEffect(() => {
+    if (isMobile) return;
+
     const timerId = setTimeout(() => {
       setShowVideoLooper(true);
     }, 3500);
 
     return () => clearTimeout(timerId);
-  }, []);
+  }, [isMobile]);
 
   // GSAP background intro animation
   useEffect(() => {
@@ -116,8 +131,8 @@ function Hero() {
             />
           </Suspense>
         )}
-        {showVideoLooper && (
-          <div className="videos  absolute overflow-hidden z-20 left-0 top-0 w-full h-full">
+        {showVideoLooper && !isMobile && (
+          <div className="videos absolute overflow-hidden z-20 left-0 top-0 w-full h-full">
             <div className="h-full absolute left-8 ">
               <VerticalVideoLooper
                 videos={sampleVideos}

@@ -684,6 +684,11 @@ function Navbar() {
                     onClick={() => {
                       setLanguage(opt.value);
                       setIsLangOpen(false);
+                      // Close mobile menu
+                      if (isMobileMenuOpen) {
+                        setIsMobileMenuOpen(false);
+                        animateHamburger(false);
+                      }
                     }}
                   >
                     {opt.label}

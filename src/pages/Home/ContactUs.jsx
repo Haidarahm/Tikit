@@ -174,7 +174,7 @@ const SocialLinkInput = ({
           htmlFor={`${id}-link`}
           className={`absolute ${
             isRtl ? "right-3" : "left-3"
-          } -top-2.5 bg-[var(--background)] px-1 text-[var(--foreground)] text-xs transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-2 peer-focus:-top-2.5 peer-focus:text-xs`}
+          } -top-2.5 bg-[#F5F7FB] dark:bg-[#000] px-1 text-[var(--foreground)] text-xs transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-2 peer-focus:-top-2.5 peer-focus:text-xs`}
         >
           {t("contact.action.form.link")}
         </label>
@@ -245,22 +245,7 @@ const ContactUs = memo(({ className = "" }) => {
       window.aosInitialized = true;
     }
   }, []);
-  // const techLogos = [
-  //   { node: <SiReact />, title: "React", href: "https://react.dev" },
-  //   { node: <SiNextdotjs />, title: "Next.js", href: "https://nextjs.org" },
-  //   {
-  //     node: <SiTypescript />,
-  //     title: "TypeScript",
-  //     href: "https://www.typescriptlang.org",
-  //   },
-  //   {
-  //     node: <SiTailwindcss />,
-  //     title: "Tailwind CSS",
-  //     href: "https://tailwindcss.com",
-  //   },
-  // ];
 
-  // Alternative with image sources - memoized
   const imageLogos = useMemo(
     () =>
       theme === "light"
