@@ -3,7 +3,6 @@ import { lazy, Suspense } from "react";
 import { ThemeProvider } from "./store/ThemeContext.jsx";
 import { ClientProvider } from "./store/ClientContext.jsx";
 import Navbar from "./components/Navbar";
-import DarkBackground from "./components/DarkBackground";
 import { Outlet } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 import AOSRefresher from "./components/AOSRefresher";
@@ -11,7 +10,6 @@ import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import LogoIntro from "./components/LogoIntro";
-import TickLoader from "./components/TickLoader";
 import Loader from "./components/Loader.jsx";
 import { Influencer } from "./pages/influencer/Influencer.jsx";
 

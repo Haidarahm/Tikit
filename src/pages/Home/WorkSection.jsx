@@ -99,7 +99,7 @@ const WorkSection = memo(() => {
         </div>
       )}
       <div
-        className={`mobile-view gap-[30px] md:hidden relative text-[var(--foreground)] flex flex-col w-full px-[20px] ${
+        className={`mobile-view gap-[30px] h-full md:hidden relative text-[var(--foreground)] flex flex-col w-full px-[20px] ${
           isRtl ? "font-cairo" : "font-hero-light"
         }`}
         dir={isRtl ? "rtl" : "ltr"}

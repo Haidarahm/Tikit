@@ -92,6 +92,24 @@
   line-height: 1.6;
 }
 
+/* GSAP Horizontal Scroll Container */
+.news-container-vertical-scroll {
+  height: 100%;
+  overflow: hidden;
+}
+
+.news-scroll-container {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 500%; /* 5 items * 100% */
+}
+
+.news-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* Responsive */
 @media (max-width: 640px) {
   .news-hero-title {
