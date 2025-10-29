@@ -18,6 +18,8 @@ Allow: /home
 Allow: /about
 Allow: /services
 Allow: /work
+Allow: /news
+Allow: /influencer
 Allow: /contact
 Allow: /service-details/
 Allow: /details/

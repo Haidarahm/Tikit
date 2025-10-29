@@ -12,6 +12,7 @@ import Connections from "./Connections";
 import Reviews from "./Reviews";
 import ContactUs from "./ContactUs";
 import Footer from "../../components/Footer";
+import SEOHead from "../../components/SEOHead";
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
@@ -82,6 +83,12 @@ function Home() {
       id="home"
       className="sections overflow-hidden relative w-full home-scroll-trigger"
     >
+      <SEOHead
+        title="Home"
+        description="Tikit Agency crafts impactful brand strategy, design systems, websites, and immersive digital experiences. Explore our featured work, services, and case studies."
+        keywords="marketing agency, digital marketing, brand strategy, design systems, web development, creative agency, UAE marketing"
+        canonicalUrl="/home"
+      />
       <Hero />
       <Numbers />
       <Goals />

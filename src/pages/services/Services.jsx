@@ -9,6 +9,7 @@ import { useTheme } from "../../store/ThemeContext"; // Import the theme context
 import { useServicesStore } from "../../store/servicesStore";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
 import { useTranslation } from "react-i18next";
+import SEOHead from "../../components/SEOHead";
 
 const splitTextToSpans = (element, isArabic = false) => {
   if (!element || element.dataset.splitDone === "true") return;
@@ -209,6 +210,12 @@ const Services = () => {
         isRtl ? "font-cairo" : "font-hero-light"
       }`}
     >
+      <SEOHead
+        title="Services"
+        description="Discover Tikit Agency's comprehensive services including influencer marketing, social media management, branding, production, and more. Partner with us for exceptional digital marketing solutions."
+        keywords="influencer marketing, social media management, branding services, video production, digital marketing services, marketing agency services, UAE"
+        canonicalUrl="/services"
+      />
       <Hero />
       <div>
         {sections.map((section, index) => (

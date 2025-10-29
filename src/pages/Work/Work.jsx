@@ -10,6 +10,7 @@ import GradientText from "../../components/GradientText";
 import { useWorkStore } from "../../store/workStore";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
 import { useTranslation } from "react-i18next";
+import SEOHead from "../../components/SEOHead";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -108,6 +109,12 @@ const Work = () => {
         isRtl ? "font-cairo" : "font-hero-light"
       }`}
     >
+      <SEOHead
+        title="Our Work"
+        description="Explore Tikit Agency's portfolio of successful projects and case studies. See how we've helped brands achieve their marketing goals through creative strategy and exceptional execution."
+        keywords="portfolio, case studies, marketing projects, creative work, brand campaigns, digital marketing examples, UAE agency work"
+        canonicalUrl="/work"
+      />
       <div className="h-[50vh] md:h-[70vh] flex flex-col justify-around items-center w-full description  mt-[104px]">
         <div className="w-full"></div>
         <div ref={titleContainerRef} className="overflow-hidden">
@@ -183,7 +190,9 @@ const Work = () => {
             {/* Overlay: only title & subtitle */}
             <div className=" content-work absolute  inset-0 flex flex-col items-center overflow-hidden justify-center bg-black/30 md:bg-black/60 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
               {w.title ? (
-                <h3 className="text-white text-[30px] font-bold text-center ">{w.title}</h3>
+                <h3 className="text-white text-[30px] font-bold text-center ">
+                  {w.title}
+                </h3>
               ) : null}
               {w.subtitle ? (
                 <p className="text-gray-200 text-[20px] mb-4">{w.subtitle}</p>

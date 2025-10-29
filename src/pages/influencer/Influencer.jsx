@@ -3,6 +3,7 @@ import Hero from "./Hero";
 import { InfluencerDetails } from "./InfluencerDetails";
 import influencer1 from "../../assets/influncer/1.png";
 import influencer2 from "../../assets/influncer/2.png";
+import SEOHead from "../../components/SEOHead";
 
 export const Influencer = () => {
   // Fake data array for influencers
@@ -61,6 +62,12 @@ export const Influencer = () => {
 
   return (
     <div className="influencers-section w-full">
+      <SEOHead
+        title="Influencer Network"
+        description="Discover Tikit Agency's network of talented influencers and content creators. Connect with top influencers across various niches including lifestyle, beauty, tech, and travel."
+        keywords="influencer network, content creators, social media influencers, influencer marketing, brand partnerships, influencer collaboration, UAE influencers"
+        canonicalUrl="/influencer"
+      />
       <Hero />
       {influencersData.map((influencer, index) => (
         <InfluencerDetails
