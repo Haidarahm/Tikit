@@ -1,6 +1,5 @@
 import React from "react";
 import NewsHero from "./NewsHero";
-import Content from "./Content";
 import "./news.css";
 import SEOHead from "../../components/SEOHead";
 
@@ -14,7 +13,6 @@ export const News = () => {
         canonicalUrl="/news"
       />
       <NewsHero />
-      <Content />
     </main>
   );
 };
