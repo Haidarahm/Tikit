@@ -275,7 +275,7 @@ const ContactUs = memo(({ className = "" }) => {
       dir={isRtl ? "rtl" : "ltr"}
     >
       <div className="email  w-full flex flex-col md:flex-row h-2/3 justify-between items-center md:items-stretch relative z-10 ">
-        <div className="texts flex justify-between flex-col relative   ">
+        <div className="texts flex  flex-col relative   ">
           <h3
             className="subtitle text-center md:text-start text-[16px] md:text-[50px]"
             data-aos="fade-up"

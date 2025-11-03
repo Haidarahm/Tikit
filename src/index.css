@@ -92,11 +92,7 @@ body,
 
 }
 
-/* Enable global vertical scroll snapping (works with elements using snap-start/snap-always) */
-html,
-body {
-  scroll-snap-type: y mandatory;
-}
+
 
 /* Global scrollbar styling */
 html,
