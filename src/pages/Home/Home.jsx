@@ -13,7 +13,7 @@ import Reviews from "./Reviews";
 import ContactUs from "./ContactUs";
 import Footer from "../../components/Footer";
 import SEOHead from "../../components/SEOHead";
-import Influencers from "./Influencers";
+import Influencers from "./influencers/Influencers";
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
