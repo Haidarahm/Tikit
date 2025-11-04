@@ -8,11 +8,12 @@ import goalImage4 from "../../assets/images/goal-image-4.png";
 import cardImage1 from "../../assets/images/card-1.jpg";
 import cardImage2 from "../../assets/images/card-2.jpg";
 import cardImage3 from "../../assets/images/card-3.jpg";
+
 const Team = () => {
   const { theme } = useTheme();
 
-  const imageUrls = useMemo(() => {
-    return [
+  const imageUrls = useMemo(
+    () => [
       goalImage1,
       goalImage2,
       goalImage3,
@@ -20,8 +21,9 @@ const Team = () => {
       cardImage1,
       cardImage2,
       cardImage3,
-    ];
-  }, []);
+    ],
+    []
+  );
 
   const containerRef = useRef(null);
   const rightRef = useRef(null);
@@ -36,12 +38,9 @@ const Team = () => {
     if (!container || !right || !track) return;
 
     const isMobile = window.innerWidth < 768;
-
-    // On mobile, we stack items vertically and make the left section sticky via CSS only
     if (isMobile) {
-      // Ensure minimal heights are not forced on mobile
       container.style.minHeight = "";
-      return () => {};
+      return;
     }
 
     const compute = () => {
@@ -53,13 +52,16 @@ const Team = () => {
       const effectiveViewport = Math.max(1, rightWidth - paddingLeftPx);
       const horizontalDistance = Math.max(0, trackWidth - effectiveViewport);
       horizontalDistanceRef.current = horizontalDistance;
+
       const viewportH = window.innerHeight;
       sectionHeightRef.current = Math.ceil(viewportH + horizontalDistance + 16);
       container.style.minHeight = `${sectionHeightRef.current}px`;
+
+      // helps reflow sticky behavior on resize
       window.dispatchEvent(new Event("resize"));
     };
 
-    let rafId = 0;
+    let rafId = null;
     let lastTranslate = 0;
 
     const loop = () => {
@@ -68,13 +70,14 @@ const Team = () => {
         1,
         sectionHeightRef.current - window.innerHeight
       );
-      const raw = (0 - rect.top) / totalScroll;
+      const raw = -rect.top / totalScroll;
       const progress = Math.min(1, Math.max(0, raw));
+
       let clamped;
       if (progress <= 0) {
         clamped = 0;
         lastTranslate = 0;
-      } else if (progress >= 0.999) {
+      } else if (progress >= 1) {
         clamped = -horizontalDistanceRef.current;
         lastTranslate = clamped;
       } else {
@@ -83,13 +86,15 @@ const Team = () => {
         lastTranslate = eased;
         clamped = Math.max(-horizontalDistanceRef.current, Math.min(0, eased));
       }
+
       track.style.transform = `translate3d(${clamped}px, 0, 0)`;
       rafId = requestAnimationFrame(loop);
     };
 
-    const preloadImages = () =>
-      Promise.all(
-        Array.from(track.querySelectorAll("img")).map(
+    const preloadImages = async () => {
+      const imgs = Array.from(track.querySelectorAll("img"));
+      await Promise.all(
+        imgs.map(
           (img) =>
             new Promise((resolve) => {
               if (img.complete) return resolve();
@@ -98,16 +103,15 @@ const Team = () => {
             })
         )
       );
+    };
 
-    preloadImages()
-      .then(() => {
-        compute();
-      })
-      .finally(() => {
-        if (!rafId) rafId = requestAnimationFrame(loop);
-      });
+    preloadImages().then(() => {
+      compute();
+      if (!rafId) rafId = requestAnimationFrame(loop);
+    });
 
     window.addEventListener("resize", compute, { passive: true });
+
     return () => {
       if (rafId) cancelAnimationFrame(rafId);
       window.removeEventListener("resize", compute);
@@ -121,6 +125,7 @@ const Team = () => {
       id="team-section"
       className="relative overflow-visible md:overflow-hidden mt-[50px] text-white font-hero-light"
     >
+      {/* Desktop Horizontal Scroll */}
       <div
         className="hidden md:flex flex-col md:flex-row relative md:h-[100vh]"
         data-scroll
@@ -130,10 +135,10 @@ const Team = () => {
         <div
           className={`${
             theme === "light" ? "light" : "dark"
-          } left-section  rounded-[10px] z-20 md:z-50 md:absolute md:left-0 md:top-0 w-full md:w-[30%] md:h-full sticky top-0 flex items-center px-6 md:px-[50px] py-6 md:py-0 text-[28px] sm:text-[40px] md:text-[64px] bg-cover bg-center bg-no-repeat"`}
+          } left-section rounded-[10px] z-20 md:z-50 md:absolute md:left-0 md:top-0 w-full md:w-[30%] md:h-full sticky top-0 flex items-center px-6 md:px-[50px] py-6 md:py-0 text-[28px] sm:text-[40px] md:text-[64px] bg-cover bg-center bg-no-repeat`}
           style={{
-            backgroundImage: ` url(${theme === "light" ? "" : background})`,
-            backgroundColor: "#fff",
+            backgroundImage: theme === "light" ? "none" : `url(${background})`,
+            backgroundColor: theme === "light" ? "#fff" : "transparent",
           }}
         >
           <h1 className="text-[var(--foreground)] leading-[1.1]">
@@ -143,15 +148,15 @@ const Team = () => {
 
         <div
           ref={rightRef}
-          className="relative z-0 flex flex-col md:flex-row flex-1 overflow-visible md:overflow-hidden h-auto md:h-screen md:pl-[30%] gap-4 md:gap-0"
+          className="relative z-0 flex flex-col md:flex-row flex-1 overflow-visible md:overflow-hidden h-auto md:h-screen md:pl-[30%] gap-4 md:gap-0 w-full"
         >
           <div
             ref={trackRef}
-            className="flex flex-col md:flex-row items-center inset-shadow-amber-100 shadow-amber-100 gap-4 md:gap-8 will-change-transform py-0 w-full"
+            className="flex flex-col md:flex-row items-center gap-4 md:gap-6 will-change-transform py-0 w-full pr-4"
           >
             {imageUrls.map((src, index) => (
               <div
-                key={String(index)}
+                key={index}
                 className="relative w-full md:w-[450px] h-[220px] sm:h-[320px] md:h-[650px] rounded-[10px] shrink-0 overflow-hidden bg-[#111]"
               >
                 <img
@@ -160,9 +165,9 @@ const Team = () => {
                   className="h-full w-full object-cover select-none"
                   draggable={false}
                 />
-                <div className="details flex flex-col justify-center items-center absolute bottom-12 left-1/2 -translate-1/2 bg-black/40 rounded-[10px] w-3/4 h-[120px]">
+                <div className="details flex flex-col justify-center items-center absolute bottom-12 left-1/2 -translate-x-1/2 bg-black/40 rounded-[10px] w-3/4 h-[120px]">
                   <div className="name text-[24px]">Haidar Ahmad</div>
-                  <div className="jop text-[16px]"> Gamer</div>
+                  <div className="job text-[16px]">Gamer</div>
                 </div>
               </div>
             ))}
@@ -172,7 +177,6 @@ const Team = () => {
 
       {/* Mobile View Cards */}
       <div className="block md:hidden mt-8">
-        {/* Mobile Headline */}
         <div className="text-center mb-8 px-4">
           <h2 className="text-[var(--foreground)] text-[28px] font-bold leading-[1.2]">
             Our Creative Team
