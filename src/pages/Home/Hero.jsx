@@ -109,12 +109,12 @@ function Hero() {
                   : ["#3EB6B7", "#52C3C5", "#A0E7E8"]
               }
               mouseForce={20}
-              cursorSize={100}
+              cursorSize={80}
               isViscous={false}
               viscous={30}
               iterationsViscous={32}
               iterationsPoisson={32}
-              resolution={0.5}
+              resolution={0.4}
               isBounce={false}
               autoDemo={true}
               autoSpeed={0.5}

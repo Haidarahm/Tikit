@@ -239,12 +239,19 @@ const ContactUs = memo(({ className = "" }) => {
       : ["#07D9F5", "#06AEC4", "#4E7CC6", "#CE88C6", "#FB8DEF"]; // Dark theme colors (original)
 
   useEffect(() => {
-    // Only initialize AOS once globally
+    // Initialize AOS and ensure initial refresh
     if (!window.aosInitialized) {
       AOS.init({ duration: 750, once: true });
       window.aosInitialized = true;
     }
+    // In case elements render after init
+    AOS.refresh();
   }, []);
+
+  // Refresh AOS when dynamic content or UI context changes
+  useEffect(() => {
+    AOS.refresh();
+  }, [isSecondSlide, socialLinks.length, theme, isRtl]);
 
   const imageLogos = useMemo(
     () =>
