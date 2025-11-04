@@ -1,4 +1,4 @@
-import React, { useRef, useLayoutEffect } from "react";
+import React, { useRef, useLayoutEffect, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useI18nLanguage } from "../../store/I18nLanguageContext";
@@ -11,16 +11,142 @@ import overlayDark from "../../assets/tick-overlay-dark.png";
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
-// Social Media Icons Component
+// Social Media Icons Component with Simple Magnetic Cursor Effect
 const SocialIcon = ({ icon: Icon, href }) => {
+  const buttonRef = useRef(null);
+  const magneticArea = 120;
+  const magneticStrength = 0.6;
+  const scaleOnHover = 1.15;
+  const lerpSpeed = 0.25;
+
+  useEffect(() => {
+    const button = buttonRef.current;
+    if (!button) return;
+
+    // Set initial transform
+    button.style.transformOrigin = "center center";
+    button.style.transform = "translate3d(0, 0, 0) scale(1)";
+    button.style.willChange = "transform";
+
+    // Current and target values
+    let currentX = 0;
+    let currentY = 0;
+    let currentScale = 1;
+    let targetX = 0;
+    let targetY = 0;
+    let targetScale = 1;
+
+    // Animation loop
+    let rafId = null;
+    let isAnimating = true;
+
+    const animate = () => {
+      if (!isAnimating) return;
+
+      // Smooth linear interpolation - no easing, just smooth following
+      currentX += (targetX - currentX) * lerpSpeed;
+      currentY += (targetY - currentY) * lerpSpeed;
+      currentScale += (targetScale - currentScale) * lerpSpeed;
+
+      // Direct transform update - smooth linear movement
+      button.style.transform = `translate3d(${currentX}px, ${currentY}px, 0) scale(${currentScale})`;
+      button.style.transformOrigin = "center center";
+
+      rafId = requestAnimationFrame(animate);
+    };
+    rafId = requestAnimationFrame(animate);
+
+    const handleMouseMove = (e) => {
+      const rect = button.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+
+      const deltaX = e.clientX - centerX;
+      const deltaY = e.clientY - centerY;
+      const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+
+      if (distance < magneticArea) {
+        // Simple linear calculation
+        const normalizedDistance = distance / magneticArea;
+        const strength = (1 - normalizedDistance) * magneticStrength;
+
+        // Direct calculation - smooth linear following
+        targetX = deltaX * strength;
+        targetY = deltaY * strength;
+        targetScale = 1 + (1 - normalizedDistance) * (scaleOnHover - 1);
+      } else {
+        targetX = 0;
+        targetY = 0;
+        targetScale = 1;
+      }
+    };
+
+    const handleMouseLeave = () => {
+      targetX = 0;
+      targetY = 0;
+      targetScale = 1;
+    };
+
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
+    button.addEventListener("mouseleave", handleMouseLeave);
+
+    return () => {
+      isAnimating = false;
+      if (rafId) cancelAnimationFrame(rafId);
+      window.removeEventListener("mousemove", handleMouseMove);
+      button.removeEventListener("mouseleave", handleMouseLeave);
+
+      // Smooth linear return to original position
+      const returnToOrigin = () => {
+        const targetX = 0;
+        const targetY = 0;
+        const targetScale = 1;
+        let currentX = parseFloat(
+          button.style.transform.match(/translate3d\(([^,]+)/)?.[1] || 0
+        );
+        let currentY = parseFloat(
+          button.style.transform.match(/translate3d\([^,]+,([^,]+)/)?.[1] || 0
+        );
+        let currentScale = parseFloat(
+          button.style.transform.match(/scale\(([^)]+)/)?.[1] || 1
+        );
+
+        const returnAnimate = () => {
+          currentX += (targetX - currentX) * 0.2;
+          currentY += (targetY - currentY) * 0.2;
+          currentScale += (targetScale - currentScale) * 0.2;
+
+          button.style.transform = `translate3d(${currentX}px, ${currentY}px, 0) scale(${currentScale})`;
+
+          if (
+            Math.abs(currentX) > 0.1 ||
+            Math.abs(currentY) > 0.1 ||
+            Math.abs(currentScale - 1) > 0.01
+          ) {
+            requestAnimationFrame(returnAnimate);
+          } else {
+            button.style.transform = "";
+          }
+        };
+        requestAnimationFrame(returnAnimate);
+      };
+      returnToOrigin();
+    };
+  }, []);
+
   return (
     <a
+      ref={buttonRef}
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="group flex items-center justify-center w-14 h-14 rounded-full bg-[var(--secondary)]/10 hover:bg-[var(--secondary)] text-[var(--foreground)] hover:text-[var(--background)] transition-all duration-300 hover:scale-110"
+      className="group flex items-center justify-center w-14 h-14 rounded-full bg-[var(--secondary)]/10 hover:bg-[var(--secondary)] text-[var(--foreground)] hover:text-[var(--background)] transition-all duration-300 relative overflow-hidden"
+      style={{
+        willChange: "transform",
+      }}
     >
-      <Icon className="w-6 h-6" />
+      <Icon className="w-6 h-6 relative z-10 transition-transform duration-300 group-hover:rotate-12" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[var(--secondary)]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full z-10" />
     </a>
   );
 };
