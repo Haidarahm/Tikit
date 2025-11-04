@@ -4,6 +4,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "../../store/ThemeContext.jsx";
+import { useBannersStore } from "../../store/bannersStore";
 
 const LiquidEther = React.lazy(() =>
   import("../../components/aurora/LiquidEther")
@@ -15,36 +16,6 @@ const VerticalVideoLooper = React.lazy(() =>
 
 import AvatarGroupDemo from "../../components/ui/AvatarGroupDemo";
 
-// Create video objects once outside component to prevent recreation
-// Using remote video URLs for better caching via CDN/backends
-const createVideoObjects = () => [
-  {
-    id: 1,
-    name: "Video 1",
-    videoUrl:
-      "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
-  },
-  {
-    id: 2,
-    name: "Video 2",
-    videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
-  },
-  {
-    id: 3,
-    name: "Video 3",
-    videoUrl: "https://media.w3.org/2010/05/sintel/trailer_hd.mp4",
-  },
-  {
-    id: 4,
-    name: "Video 4",
-    videoUrl:
-      "https://archive.org/download/BigBuckBunny_328/BigBuckBunny_512kb.mp4",
-  },
-];
-
-// Pre-create once to avoid recreation
-const sampleVideosStatic = createVideoObjects();
-
 function Hero() {
   const sectionRef = useRef(null);
   const [showLiquid, setShowLiquid] = useState(false);
@@ -52,9 +23,12 @@ function Hero() {
   const [isMobile, setIsMobile] = useState(false);
   const { t } = useTranslation();
   const { theme } = useTheme();
+  const { videos, loadVideos, loading } = useBannersStore();
 
-  // Use static video objects (already memoized outside component)
-  const sampleVideos = sampleVideosStatic;
+  // Load videos from API once
+  useEffect(() => {
+    loadVideos({ page: 1, per_page: 10 });
+  }, [loadVideos]);
 
   // Check if device is mobile - memoized
   useEffect(() => {
@@ -151,19 +125,19 @@ function Hero() {
             />
           </Suspense>
         )}
-        {showVideoLooper && !isMobile && (
+        {showVideoLooper && !isMobile && videos?.length > 0 && !loading && (
           <div className="videos absolute overflow-hidden z-20 left-0 top-0 w-full h-full">
             <Suspense fallback={null}>
               <div className="h-full absolute left-8 ">
                 <VerticalVideoLooper
-                  videos={sampleVideos}
+                  videos={videos}
                   speed={60}
                   direction="up"
                 />
               </div>
               <div className="h-full absolute right-8 ">
                 <VerticalVideoLooper
-                  videos={sampleVideos}
+                  videos={videos}
                   speed={60}
                   direction="down"
                 />
