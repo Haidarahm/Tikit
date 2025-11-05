@@ -6,19 +6,22 @@ import Threads from "../../components/Threads";
 
 const NewsHero = () => {
   const { t } = useTranslation();
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(null); // null = not checked yet
+  const [isThemeReady, setIsThemeReady] = useState(false);
   const kickerRef = useRef(null);
   const titleRef = useRef(null);
   const descriptionRef = useRef(null);
   const contentRef = useRef(null);
 
   useEffect(() => {
-    // Check if dark mode is enabled
+    // Check if dark mode is enabled immediately on mount
     const checkDarkMode = () => {
       const isDarkMode = document.documentElement.classList.contains("dark");
       setIsDark(isDarkMode);
+      setIsThemeReady(true);
     };
 
+    // Check immediately
     checkDarkMode();
 
     // Watch for theme changes
@@ -28,17 +31,20 @@ const NewsHero = () => {
     return () => observer.disconnect();
   }, []);
 
-  // GSAP 3D Text Animations
+  // GSAP 3D Text Animations - only run when theme is ready
   useEffect(() => {
+    if (!isThemeReady) return;
+
     const tl = gsap.timeline();
 
-    // Set initial state
+    // Set initial state - ensure all elements start from opacity 0
     gsap.set([kickerRef.current, titleRef.current, descriptionRef.current], {
       opacity: 0,
       y: 100,
       rotateX: -90,
       rotateY: 0,
       perspective: 1000,
+      visibility: "visible",
     });
 
     // Animate kicker
@@ -98,9 +104,18 @@ const NewsHero = () => {
       },
       0.3
     );
-  }, []);
+  }, [isThemeReady]);
 
   const textColor = isDark ? "text-white" : "text-gray-900";
+
+  // Don't render until theme is checked
+  if (!isThemeReady || isDark === null) {
+    return (
+      <section className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-[var(--background)]">
+        <div className="text-[var(--foreground)] opacity-0">Loading...</div>
+      </section>
+    );
+  }
 
   return (
     <section
@@ -108,7 +123,7 @@ const NewsHero = () => {
       className={`relative w-full h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br`}
       data-scroll
     >
-      {/* Conditional Background */}
+      {/* Conditional Background - Only renders after theme is determined */}
       <div className="absolute w-full h-full -translate-x-1/2 left-1/2 top-0">
         {isDark ? (
           <LightRays
@@ -135,7 +150,7 @@ const NewsHero = () => {
         <span
           ref={kickerRef}
           className="inline-block px-4 py-2 mb-8 rounded-full bg-cyan-500/15 text-cyan-400 text-sm font-bold tracking-wider uppercase border border-cyan-400/40"
-          style={{ transformStyle: "preserve-3d" }}
+          style={{ transformStyle: "preserve-3d", opacity: 0 }}
         >
           {t("news.hero.kicker", "Latest Insights")}
         </span>
@@ -144,7 +159,7 @@ const NewsHero = () => {
         <h1
           ref={titleRef}
           className={`text-5xl md:text-6xl lg:text-7xl font-black leading-tight tracking-tight mb-6 ${textColor}`}
-          style={{ transformStyle: "preserve-3d" }}
+          style={{ transformStyle: "preserve-3d", opacity: 0 }}
         >
           {t("news.hero.title", "News and Blogs")}
         </h1>
@@ -153,7 +168,7 @@ const NewsHero = () => {
         <p
           ref={descriptionRef}
           className={`text-xl md:text-2xl leading-relaxed opacity-85 max-w-3xl mx-auto ${textColor}`}
-          style={{ transformStyle: "preserve-3d" }}
+          style={{ transformStyle: "preserve-3d", opacity: 0 }}
         >
           {t(
             "news.hero.description",

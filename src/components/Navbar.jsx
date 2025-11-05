@@ -345,8 +345,9 @@ function Navbar() {
               language === "ar" ? "order-4" : ""
             }`}
           >
-            <div ref={logoRef} className="h-10  md:h-12 transform-gpu">
+            <div onClick={() => navigate("/home")} ref={logoRef} className="h-10  md:h-12 transform-gpu">
               <SVGComponent
+              
                 color={theme === "dark" ? "#FFFFFF" : "#363737"}
                 logoJumpColor="#52C3C5"
                 className="p-1 md:p-2 h-full overflow-visible"

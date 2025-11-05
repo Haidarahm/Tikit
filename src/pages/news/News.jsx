@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
@@ -6,14 +6,26 @@ import NewsHero from "./NewsHero";
 import "./news.css";
 import SEOHead from "../../components/SEOHead";
 import Content from "./Content";
+import { useTheme } from "../../store/ThemeContext.jsx";
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
 export const News = () => {
+  const { theme } = useTheme();
   const lenisRef = useRef(null);
+  const [isReady, setIsReady] = useState(false);
+
+  // Check if theme is ready before rendering
+  useEffect(() => {
+    if (theme) {
+      setIsReady(true);
+    }
+  }, [theme]);
 
   useEffect(() => {
+    if (!isReady) return;
+
     // Safety: ensure no leftover locomotive-scroll styles block scrolling
     const htmlEl = document.documentElement;
     htmlEl.classList.remove("has-scroll-smooth", "has-scroll-init");
@@ -69,10 +81,21 @@ export const News = () => {
       window.removeEventListener("resize", handleResize);
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
-  }, []);
+  }, [isReady]);
+
+  // Don't render until theme is loaded
+  if (!isReady) {
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-[var(--background)]">
+        <div className="text-[var(--foreground)] text-lg">Loading...</div>
+      </div>
+    );
+  }
 
   return (
-    <main className="news-page">
+    <main
+      className={`news-page ${theme === "dark" ? "dark-mode" : "light-mode"}`}
+    >
       <SEOHead
         title="News & Insights"
         description="Stay updated with the latest news, insights, and updates from Tikit Agency. Discover industry trends, marketing tips, and our latest achievements."
