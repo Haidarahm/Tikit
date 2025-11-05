@@ -275,5 +275,24 @@
             "description": "Nos services exclusifs",
             "subdescription": "Nous nous associons avec des marques qui veulent mener — celles prêtes à briser le bruit et apporter une vraie valeur à la vie des gens."
         }
+    },
+    "news": {
+        "hero": {
+            "kicker": "Dernières Perspectives",
+            "title": "Histoires Qui Façonnent le Succès",
+            "description": "Découvrez les stratégies, les perspectives et les percées de notre équipe d'experts en marketing."
+        },
+        "content": {
+            "category1": "Stratégie",
+            "title1": "Comment Faire Évoluer Vos Campagnes d'Influence",
+            "excerpt1": "Une plongée approfondie dans les stratégies éprouvées pour faire évoluer les partenariats d'influenceurs sur les plateformes.",
+            "category2": "Créatif",
+            "title2": "7 Modèles Créatifs Qui Génèrent des Résultats",
+            "excerpt2": "Découvrez les modèles visuels et de messagerie qui surpassent systématiquement les campagnes sociales.",
+            "category3": "Données",
+            "title3": "Attribution en 2025 : Ce Qui Compte Vraiment",
+            "excerpt3": "Comment les spécialistes du marketing modernes mesurent le succès dans une ère de perte de signal et de changements de confidentialité.",
+            "readMore": "Lire la suite"
+        }
     }
 }
