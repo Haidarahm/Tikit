@@ -4,6 +4,7 @@ import { useTheme } from "../../store/ThemeContext.jsx";
 import "./work.css";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Lenis from "lenis";
 import Footer from "../../components/Footer";
 import ContactUs from "../Home/ContactUs";
 import GradientText from "../../components/GradientText";
@@ -20,6 +21,7 @@ const Work = () => {
   const { works, loadWorks, loading } = useWorkStore();
   const { language, isRtl } = useI18nLanguage();
   const { t } = useTranslation();
+  const lenisRef = useRef(null);
   const imagesRef = useRef([]);
   const paragraphContainerRef = useRef(null);
   const paragraphRef = useRef(null);
@@ -34,6 +36,60 @@ const Work = () => {
     theme === "light"
       ? ["#52C3C5", "#5269C5", "#52C3C5", "#52A0C5", "#52C3C5"] // Light theme colors
       : ["#07D9F5", "#06AEC4", "#4E7CC6", "#CE88C6", "#FB8DEF"]; // Dark theme colors (original)
+
+  // Initialize Lenis smooth scrolling
+  useEffect(() => {
+    // Safety: ensure no leftover locomotive-scroll styles block scrolling
+    const htmlEl = document.documentElement;
+    htmlEl.classList.remove("has-scroll-smooth", "has-scroll-init");
+    document.body.style.removeProperty("overflow");
+
+    // Initialize Lenis smooth scrolling
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+      touchMultiplier: 2,
+      infinite: false,
+      wheelMultiplier: 1,
+      lerp: 0.1,
+      syncTouch: true,
+      syncTouchLerp: 0.075,
+      wrapper: window,
+      content: document.documentElement,
+    });
+
+    // Connect Lenis with ScrollTrigger
+    lenis.on("scroll", ScrollTrigger.update);
+
+    // Add a small delay to ensure all components are mounted before ScrollTrigger refresh
+    setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 100);
+
+    // RAF loop for Lenis
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    lenisRef.current = lenis;
+
+    // Handle window resize for responsive animations
+    const handleResize = () => {
+      ScrollTrigger.refresh();
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup on unmount
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      lenis.destroy();
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, []);
 
   useEffect(() => {
     loadWorks({ lang: language, page: 1, per_page: 10 });
