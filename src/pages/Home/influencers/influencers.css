@@ -34,9 +34,21 @@
   transform: scale(1.02);
 }
 
-/* Smooth global transitions for all hover effects */
-* {
+/* Smooth transitions (scoped to influencers section) */
+.influencers-scope * {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Smoother hover for category chips */
+.influencers-scope .chip {
+  transition-property: transform, box-shadow, background-color, border-color, filter;
+  transition-duration: 450ms;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+.influencers-scope .chip:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 16px 32px rgba(82, 195, 197, 0.20), 0 4px 12px rgba(0,0,0,0.06);
+  filter: saturate(1.05);
 }
 
 /* Enhanced hover smoothness */
@@ -50,34 +62,34 @@ img {
 
 /* Optimize animations for performance */
 @media (prefers-reduced-motion: no-preference) {
-  * {
+  .influencers-scope * {
     scroll-behavior: smooth;
   }
 }
 
 /* For users who prefer reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
+  .influencers-scope *,
+  .influencers-scope *::before,
+  .influencers-scope *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
 }
 
-/* GPU acceleration for smoother animations */
-.group {
+/* GPU acceleration for smoother animations (scoped) */
+.influencers-scope .group {
   transform: translate3d(0, 0, 0);
   will-change: transform;
 }
 
-/* Smooth text transitions */
-h1, h2, h3, h4, h5, h6, p, span {
+/* Smooth text transitions (scoped) */
+.influencers-scope h1, .influencers-scope h2, .influencers-scope h3, .influencers-scope h4, .influencers-scope h5, .influencers-scope h6, .influencers-scope p, .influencers-scope span {
   transition: all 0.3s ease-out;
 }
 
-/* Icon smooth rotation */
-svg {
+/* Icon smooth rotation (scoped) */
+.influencers-scope svg {
   transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }

@@ -330,7 +330,7 @@ footer .bottom-section .right-section .items li{
    height: 320vh;
   }
 }
-@media (min-width: 1535px) {
+@media (min-width: 1500px) {
   .goals-section {
    height: 350vh;
   }
@@ -338,18 +338,20 @@ footer .bottom-section .right-section .items li{
     height: 500px;
   }
 }
-@media (min-width: 1700px) {
-  .goals-section {
-   height: 220vh;
-  }
-}
+
 
     @media (min-width: 1080px) {
       .work-section-container{
-        height: 405vh;
+        height: 350vh;
       }
+      
 }
-
+@media (min-width: 1300px) {
+  .work-section-container{
+    height: 395vh;
+  }
+  
+}
 /* Contact dropdown open state - keep button hover effect */
 .contact-dropdown-open button {
   transform: scale(1.03);

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./influencers.css";
 import influencer1 from "../../../assets/influncer/1.png";
 import influencer2 from "../../../assets/influncer/2.png";
+import AOS from "aos";
 import {
   FaInstagram,
   FaYoutube,
@@ -14,7 +15,6 @@ import {
   FaMicrochip,
   FaPlane,
 } from "react-icons/fa";
-import AOS from "aos";
 
 // Category data with background images
 const categories = [
@@ -53,7 +53,6 @@ const categories = [
     bgImage:
       "https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=300&fit=crop",
   },
-
 ];
 
 // Influencers data
@@ -257,23 +256,25 @@ const Influencers = () => {
   const [activeCategory, setActiveCategory] = useState("Entertainment");
 
   useEffect(() => {
+    // Ensure elements are registered with global AOS init (from App)
     AOS.refresh();
   }, []);
+
+  useEffect(() => {
+    // Re-register new cards on category change
+    AOS.refresh();
+  }, [activeCategory]);
 
   const influencers = categoryToInfluencers[activeCategory] || [];
 
   return (
-    <section className="min-h-screen py-16 px-4 relative overflow-hidden bg-[var(--background)]">
+    <section className="influencers-scope min-h-screen py-16 px-4 relative overflow-hidden bg-[var(--background)]">
       {/* Background decoration */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#52C3C5]/5 to-transparent pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
-        <div
-          className="text-center mb-12"
-          data-aos="fade-down"
-          data-aos-duration="800"
-        >
+        <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#52C3C5]/10 dark:bg-[#52C3C5]/20 mb-4">
             <span className="w-2 h-2 rounded-full bg-[#52C3C5] animate-pulse"></span>
             <span className="text-sm font-medium text-[#52C3C5]">
@@ -293,7 +294,6 @@ const Influencers = () => {
           className="flex justify-center mb-16"
           data-aos="fade-up"
           data-aos-duration="800"
-          data-aos-delay="100"
         >
           <div className="flex flex-wrap gap-4 justify-center max-w-5xl">
             {categories.map((cat, idx) => {
@@ -307,8 +307,8 @@ const Influencers = () => {
                   data-aos-duration="500"
                   data-aos-delay={idx * 80}
                   className={`
-                    group relative overflow-hidden rounded-2xl w-40 h-28 
-                    transition-all duration-500 ease-out
+                    chip group relative overflow-hidden rounded-2xl w-40 h-28 
+                    transition-all duration-500 ease-out will-change-transform
                     ${
                       isActive
                         ? "ring-4 ring-[#52C3C5] shadow-2xl shadow-[#52C3C5]/30 scale-105"

@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import ScrollFloat from "../../components/ScrollFloat";
 import AOS from "aos";
-import "aos/dist/aos.css";
 import element1Dark from "../../assets/elements/6.png";
 import element2Dark from "../../assets/elements/5.png";
 import element2 from "../../assets/elements/2-light.png";
@@ -79,17 +78,7 @@ const Connections = () => {
   }, []);
 
   useEffect(() => {
-    // Only initialize AOS once globally
-    if (!window.aosInitialized) {
-      AOS.init({
-        duration: 1000,
-        once: false,
-        offset: 100,
-        easing: "ease-out-cubic",
-        mirror: true,
-      });
-      window.aosInitialized = true;
-    }
+    AOS.refresh();
   }, []);
 
   return (

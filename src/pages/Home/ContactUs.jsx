@@ -1,8 +1,6 @@
 import React, { useEffect, useState, useMemo, useRef, memo } from "react";
 import FloatingInput from "../../components/ui/FloatingInput";
 import LogoLoop from "../../components/LogoLoop";
-import AOS from "aos";
-import "aos/dist/aos.css";
 import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
 import b1 from "../../assets/brands/1.svg";
@@ -238,21 +236,6 @@ const ContactUs = memo(({ className = "" }) => {
       ? ["#52C3C5", "#5269C5", "#52C3C5", "#52A0C5", "#52C3C5"] // Light theme colors
       : ["#07D9F5", "#06AEC4", "#4E7CC6", "#CE88C6", "#FB8DEF"]; // Dark theme colors (original)
 
-  useEffect(() => {
-    // Initialize AOS and ensure initial refresh
-    if (!window.aosInitialized) {
-      AOS.init({ duration: 750, once: true });
-      window.aosInitialized = true;
-    }
-    // In case elements render after init
-    AOS.refresh();
-  }, []);
-
-  // Refresh AOS when dynamic content or UI context changes
-  useEffect(() => {
-    AOS.refresh();
-  }, [isSecondSlide, socialLinks.length, theme, isRtl]);
-
   const imageLogos = useMemo(
     () =>
       theme === "light"
@@ -283,11 +266,7 @@ const ContactUs = memo(({ className = "" }) => {
     >
       <div className="email  w-full flex flex-col md:flex-row h-2/3 justify-between items-center md:items-stretch relative z-10 ">
         <div className="texts flex  flex-col relative   ">
-          <h3
-            className="subtitle text-center md:text-start text-[16px] md:text-[50px]"
-            data-aos="fade-up"
-            data-aos-delay="0"
-          >
+          <h3 className="subtitle text-center md:text-start text-[16px] md:text-[50px]">
             {t("home.contactUs.subtitle")}
           </h3>
           <GradientText
@@ -300,20 +279,12 @@ const ContactUs = memo(({ className = "" }) => {
             {t("home.contactUs.title")}{" "}
           </GradientText>
 
-          <p
-            className="description  hidden md:block text-[16px] md:text-[24px] font-light w-full"
-            data-aos="fade-up"
-            data-aos-delay="300"
-          >
+          <p className="description  hidden md:block text-[16px] md:text-[24px] font-light w-full">
             {t("home.contactUs.description")} <br className="hidden md:block" />{" "}
             {t("home.contactUs.description2")}
           </p>
         </div>
-        <div
-          className="action w-full md:w-[45%] gap-[20px] md:gap-0 flex-col flex justify-between"
-          data-aos="fade-left"
-          data-aos-delay="0"
-        >
+        <div className="action w-full md:w-[45%] gap-[20px] md:gap-0 flex-col flex justify-between">
           <div className="title text-center font-light md:font-medium md:text-start text-[20px] md:text-[24px]">
             {t("home.contactUs.helpText")}
           </div>

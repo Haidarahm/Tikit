@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState, memo } from "react";
 import AOS from "aos";
-import "aos/dist/aos.css";
 import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
 
@@ -26,20 +25,19 @@ const AboutUs = memo(() => {
   const { t } = useTranslation();
   const { isRtl } = useI18nLanguage();
 
-  // Initialize AOS
+  // Refresh AOS on mount (global init happens in App)
   useEffect(() => {
-    // Only initialize AOS once globally
-    if (!window.aosInitialized) {
-      AOS.init({
-        duration: 500,
-        once: false,
-        offset: 100,
-        easing: "ease-out-cubic",
-        mirror: true,
-      });
-      window.aosInitialized = true;
+    if (typeof AOS?.refreshHard === "function") {
+      AOS.refreshHard();
+    } else {
+      AOS.refresh();
     }
   }, []);
+
+  // Recalculate AOS when section visibility state changes
+  useEffect(() => {
+    AOS.refresh();
+  }, [inView, isRtl]);
 
   useEffect(() => {
     const node = sectionRef.current;

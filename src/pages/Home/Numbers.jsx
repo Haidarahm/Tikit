@@ -4,7 +4,6 @@ import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
 import LiquidEther from "../../components/aurora/LiquidEther";
 import CountUp from "../../components/CountUp";
 import Aos from "aos";
-import "aos/dist/aos.css";
 
 const Numbers = memo(() => {
   const { t } = useTranslation();

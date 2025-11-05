@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState, Suspense } from "react";
 import gsap from "gsap";
 import AOS from "aos";
-import "aos/dist/aos.css";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "../../store/ThemeContext.jsx";
 import { useBannersStore } from "../../store/bannersStore";
@@ -77,16 +76,10 @@ function Hero() {
     });
   }, []);
 
-  // Delay for LiquidEther + initialize AOS after animation ends
+  // Delay for LiquidEther + refresh AOS after animation ends
   useEffect(() => {
     const timerId = setTimeout(() => {
       setShowLiquid(true);
-      // Initialize AOS after intro finishes
-      AOS.init({
-        duration: 900, // smoother motion
-        once: true, // run once only
-        easing: "ease-out-quart",
-      });
       AOS.refresh();
     }, 1000);
 
