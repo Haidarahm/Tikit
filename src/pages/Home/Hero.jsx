@@ -1,6 +1,5 @@
-import React, { useEffect, useRef, useState, Suspense } from "react";
+import React, { useEffect, useRef, useState, Suspense, memo } from "react";
 import gsap from "gsap";
-import AOS from "aos";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "../../store/ThemeContext.jsx";
 import { useBannersStore } from "../../store/bannersStore";
@@ -15,7 +14,7 @@ const VerticalVideoLooper = React.lazy(() =>
 
 import AvatarGroupDemo from "../../components/ui/AvatarGroupDemo";
 
-function Hero() {
+const Hero = memo(() => {
   const sectionRef = useRef(null);
   const [showLiquid, setShowLiquid] = useState(false);
   const [showVideoLooper, setShowVideoLooper] = useState(false);
@@ -76,11 +75,10 @@ function Hero() {
     });
   }, []);
 
-  // Delay for LiquidEther + refresh AOS after animation ends
+  // Delay for LiquidEther after animation ends
   useEffect(() => {
     const timerId = setTimeout(() => {
       setShowLiquid(true);
-      AOS.refresh();
     }, 1000);
 
     return () => clearTimeout(timerId);
@@ -191,6 +189,8 @@ function Hero() {
       </div>
     </div>
   );
-}
+});
+
+Hero.displayName = "Hero";
 
 export default Hero;

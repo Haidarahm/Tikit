@@ -1,6 +1,5 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, memo } from "react";
 import ScrollFloat from "../../components/ScrollFloat";
-import AOS from "aos";
 import element1Dark from "../../assets/elements/6.png";
 import element2Dark from "../../assets/elements/5.png";
 import element2 from "../../assets/elements/2-light.png";
@@ -13,14 +12,10 @@ import { useClient } from "../../store/ClientContext.jsx";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
+
 gsap.registerPlugin(ScrollTrigger);
 
-// Helper function to split text into words
-const splitText = (text) => {
-  return text.split(" ");
-};
-
-const Connections = () => {
+const Connections = memo(() => {
   const navigate = useNavigate();
   const sectionContainerRef = useRef(null);
   const { theme } = useTheme();
@@ -75,10 +70,6 @@ const Connections = () => {
       element1Tween?.scrollTrigger?.kill();
       element2Tween?.scrollTrigger?.kill();
     };
-  }, []);
-
-  useEffect(() => {
-    AOS.refresh();
   }, []);
 
   return (
@@ -165,6 +156,8 @@ const Connections = () => {
       </div>
     </div>
   );
-};
+});
+
+Connections.displayName = "Connections";
 
 export default Connections;

@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState, memo } from "react";
-import AOS from "aos";
 import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
 
@@ -17,27 +16,11 @@ const whoWeAreImages = [img1, img2, img3, img4, img5, img6, img7, img8, img9];
 
 const AboutUs = memo(() => {
   const sectionRef = useRef(null);
-  const titleRef = useRef(null);
-  const descriptionRef = useRef(null);
   const gridRef = useRef(null);
   const [inView, setInView] = useState(false);
   const [imagesInView, setImagesInView] = useState(new Set());
   const { t } = useTranslation();
   const { isRtl } = useI18nLanguage();
-
-  // Refresh AOS on mount (global init happens in App)
-  useEffect(() => {
-    if (typeof AOS?.refreshHard === "function") {
-      AOS.refreshHard();
-    } else {
-      AOS.refresh();
-    }
-  }, []);
-
-  // Recalculate AOS when section visibility state changes
-  useEffect(() => {
-    AOS.refresh();
-  }, [inView, isRtl]);
 
   useEffect(() => {
     const node = sectionRef.current;
@@ -120,7 +103,6 @@ const AboutUs = memo(() => {
     >
       <div className="w-full text-[var(--foreground)] ">
         <h2
-          ref={titleRef}
           data-aos={isRtl ? "fade-left" : "fade-right"}
           data-aos-duration="500"
           data-aos-delay="100"
@@ -129,7 +111,6 @@ const AboutUs = memo(() => {
           {t("home.aboutUs.title")}
         </h2>
         <p
-          ref={descriptionRef}
           data-aos={isRtl ? "fade-right" : "fade-left"}
           data-aos-duration="500"
           data-aos-delay="200"

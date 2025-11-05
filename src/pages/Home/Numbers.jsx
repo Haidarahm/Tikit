@@ -1,31 +1,11 @@
-import React, { useEffect, memo } from "react";
+import React, { memo } from "react";
 import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
-import LiquidEther from "../../components/aurora/LiquidEther";
 import CountUp from "../../components/CountUp";
-import Aos from "aos";
 
 const Numbers = memo(() => {
   const { t } = useTranslation();
   const { isRtl } = useI18nLanguage();
-  useEffect(() => {
-    Aos.init({ duration: 800, once: true });
-
-    const scroller = document.querySelector(".sections");
-    if (scroller) {
-      let timeoutId;
-      const debouncedRefresh = () => {
-        clearTimeout(timeoutId);
-        timeoutId = setTimeout(() => Aos.refresh(), 100);
-      };
-      scroller.addEventListener("scroll", debouncedRefresh);
-
-      return () => {
-        clearTimeout(timeoutId);
-        if (scroller) scroller.removeEventListener("scroll", debouncedRefresh);
-      };
-    }
-  }, []);
 
   const data = [
     {
