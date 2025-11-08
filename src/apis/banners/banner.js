@@ -1,4 +1,4 @@
-import { api } from "../config/backend";
+import { api } from "../../config/backend";
 
 // GET /api/banners/get
 // Optional params: { page, per_page }
