@@ -295,7 +295,7 @@ const Influencers = () => {
           data-aos="fade-up"
           data-aos-duration="800"
         >
-          <div className="flex flex-wrap gap-4 justify-center max-w-5xl">
+          <div className="flex flex-wrap gap-3 sm:gap-4 justify-center max-w-5xl px-2">
             {categories.map((cat, idx) => {
               const Icon = cat.icon;
               const isActive = activeCategory === cat.key;
@@ -307,46 +307,54 @@ const Influencers = () => {
                   data-aos-duration="500"
                   data-aos-delay={idx * 80}
                   className={`
-                    chip group relative overflow-hidden rounded-2xl w-40 h-28 
-                    transition-all duration-500 ease-out will-change-transform
+                    chip group relative overflow-hidden rounded-2xl w-28 sm:w-36 md:w-40 h-20 sm:h-24 md:h-24
+                    transition-all duration-400 ease-out will-change-transform backdrop-blur border border-white/5
                     ${
                       isActive
-                        ? "ring-4 ring-[#52C3C5] shadow-2xl shadow-[#52C3C5]/30 scale-105"
-                        : "ring-2 ring-[var(--foreground)]/20 hover:ring-4 hover:ring-[#52C3C5]/60 hover:scale-[1.05] shadow-lg hover:shadow-2xl"
+                        ? "ring-2 ring-[#52C3C5] shadow-xl shadow-[#52C3C5]/30 scale-[1.03]"
+                        : "ring-1 ring-[var(--foreground)]/10 hover:ring-2 hover:ring-[#52C3C5]/40 hover:scale-[1.02] shadow-md hover:shadow-lg"
                     }
                   `}
                 >
                   {/* Background Image */}
                   <div
-                    className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-110"
+                    className="absolute inset-0 bg-cover bg-center transition-transform duration-500 ease-out group-hover:scale-110"
                     style={{ backgroundImage: `url(${cat.bgImage})` }}
                   >
                     <div
-                      className={`absolute inset-0 transition-all duration-500 ease-out ${
+                      className={`absolute inset-0 transition-all duration-400 ease-out ${
                         isActive
-                          ? "bg-gradient-to-br from-[#52C3C5]/80 to-[#5269C5]/80"
-                          : "bg-black/40 group-hover:bg-[#52C3C5]/70"
+                          ? "bg-gradient-to-br from-[#52C3C5]/75 via-[#5269C5]/70 to-[#2b2e45]/85"
+                          : "bg-black/55 group-hover:bg-black/40"
                       }`}
                     ></div>
                   </div>
 
                   {/* Content */}
-                  <div className="relative z-10 h-full flex flex-col items-center justify-center text-white p-3">
-                    <Icon
-                      className={`text-2xl mb-2 transition-all duration-500 ease-out ${
+                  <div className="relative z-10 h-full flex flex-col items-center justify-center text-white px-2 sm:px-3 py-3 sm:py-4 gap-1.5 sm:gap-2">
+                    <div
+                      className={`flex items-center justify-center rounded-xl w-9 h-9 sm:w-10 sm:h-10 text-base sm:text-lg transition-all duration-400 ease-out shadow-md ${
                         isActive
-                          ? "scale-110"
-                          : "group-hover:scale-125 group-hover:rotate-6"
+                          ? "bg-white/90 text-[#1a2e3a]"
+                          : "bg-white/20 text-white group-hover:bg-white/40"
                       }`}
-                    />
-                    <span className="font-semibold text-sm transition-all duration-300 group-hover:tracking-wider">
+                    >
+                      <Icon
+                        className={`${
+                          isActive
+                            ? "scale-105"
+                            : "group-hover:scale-110 group-hover:-rotate-3"
+                        } transition-transform duration-400 ease-out`}
+                      />
+                    </div>
+                    <span className="font-semibold text-[0.7rem] sm:text-xs md:text-sm tracking-wide transition-all duration-300 group-hover:tracking-wider">
                       {cat.label}
                     </span>
                   </div>
 
                   {/* Active Indicator */}
                   {isActive && (
-                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1/2 h-1 bg-white rounded-full"></div>
+                    <div className="absolute inset-x-4 bottom-2 h-1 rounded-full bg-white/80 shadow-[0_0_12px_rgba(255,255,255,0.6)]"></div>
                   )}
                 </button>
               );
