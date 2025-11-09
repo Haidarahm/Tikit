@@ -291,7 +291,7 @@ const Action = () => {
       ref={actionRef}
       id="contact-action-section"
       data-scroll-section
-      className={`snap-start snap-always min-h-screen justify-center flex flex-col lg:flex-row gap-8 md:gap-16 lg:gap-24 xl:gap-32 py-8 md:py-12  px-4 md:px-8 lg:px-14 ${
+      className={`snap-start snap-always min-h- justify-center flex flex-col lg:flex-row gap-8 md:gap-16 lg:gap-24 xl:gap-32 py-16 md:py-12  px-4 md:px-8 lg:px-14 ${
         isRtl ? "font-cairo" : "font-hero-light"
       }`}
       dir={isRtl ? "rtl" : "ltr"}

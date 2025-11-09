@@ -6,6 +6,8 @@ import "./news.css";
 import SEOHead from "../../components/SEOHead";
 import Content from "./Content";
 import { useTheme } from "../../store/ThemeContext.jsx";
+import Footer from "../../components/Footer.jsx";
+import ContactUs from "../Home/ContactUs.jsx";
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
@@ -111,6 +113,8 @@ export const News = () => {
       />
       <NewsHero />
       <Content />
+      <ContactUs/>
+      <Footer />
     </main>
   );
 };

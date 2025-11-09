@@ -5,7 +5,7 @@ export const fetchAllServices = async (
   params = { lang: "en", page: 1, per_page: 10 }
 ) => {
   const { lang = "en", page, per_page } = params || {};
-  const response = await api.get("/api/services", {
+  const response = await api.get("/api/services/get", {
     params: { lang, page, per_page },
   });
   return response.data;
