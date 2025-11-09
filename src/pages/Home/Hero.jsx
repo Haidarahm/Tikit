@@ -16,6 +16,7 @@ import AvatarGroupDemo from "../../components/ui/AvatarGroupDemo";
 
 const Hero = memo(() => {
   const sectionRef = useRef(null);
+  const contentRef = useRef(null);
   const [showLiquid, setShowLiquid] = useState(false);
   const [showVideoLooper, setShowVideoLooper] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -73,6 +74,27 @@ const Hero = memo(() => {
       duration: 2,
       ease: "power3.out",
     });
+  }, []);
+
+  useEffect(() => {
+    if (!contentRef.current) return;
+
+    const ctx = gsap.context(() => {
+      const items = gsap.utils.toArray("[data-hero-animate]");
+      if (!items.length) return;
+
+      gsap.set(items, { autoAlpha: 0, y: 32 });
+      gsap.to(items, {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.9,
+        ease: "power2.out",
+        stagger: 0.15,
+        delay: 0.6,
+      });
+    }, contentRef);
+
+    return () => ctx.revert();
   }, []);
 
   // Delay for LiquidEther after animation ends
@@ -139,46 +161,35 @@ const Hero = memo(() => {
       </div>
 
       {/* Foreground content */}
-      <div className="relative mx-auto h-[calc(100%-104px)] mt-[60px] md:mt-[104px] z-10 w-full px-4 sm:px-6 md:w-6/7 flex items-center flex-col justify-center">
+      <div
+        ref={contentRef}
+        className="relative mx-auto h-[calc(100%-104px)] mt-[60px] md:mt-[104px] z-10 w-full px-4 sm:px-6 md:w-6/7 flex items-center flex-col justify-center"
+      >
         {/* Title */}
-        <div
-          className="title flex flex-col text-[var(--foreground)]   items-center text-center"
-          data-aos="fade-down"
-          data-aos-delay="1000"
-        >
+        <div className="title flex flex-col text-[var(--foreground)]   items-center text-center">
           <h2
             className=" font-light text-lg sm:text-xl md:text-2xl lg:text-[27px]"
-            data-aos="fade-down"
-            data-aos-delay="1000"
+            data-hero-animate
           >
             {t("home.hero.tagline")}
           </h2>
           <h1
             className=" font-bold text-3xl font-hero-light sm:text-4xl md:text-5xl lg:text-6xl xl:text-[64px] leading-tight"
-            data-aos="fade-down"
-            data-aos-delay="1300"
+            data-hero-animate
           >
             ROI REBELS
           </h1>
         </div>
 
         {/* Subtitle */}
-        <div
-          className="subtitle mt-4 md:mt-6"
-          data-aos="fade-down"
-          data-aos-delay="1600"
-        >
+        <div className="subtitle mt-4 md:mt-6" data-hero-animate>
           <h3 className=" font-light text-[var(--foreground)]  text-xl sm:text-2xl md:text-3xl lg:text-[36px] text-center px-4">
             {t("home.hero.subtitle")}
           </h3>
         </div>
 
         {/* Avatars */}
-        <div
-          className="avatar mt-8 md:mt-[50px]"
-          data-aos="fade-down"
-          data-aos-delay="1800"
-        >
+        <div className="avatar mt-8 md:mt-[50px]" data-hero-animate>
           <AvatarGroupDemo />
           <div className="text text-center mt-2 md:mt-[10px]">
             <span className="font-bold  text-sm sm:text-base text-[var(--foreground)] ">
