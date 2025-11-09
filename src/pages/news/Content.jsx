@@ -1,67 +1,11 @@
-import React, { useLayoutEffect, useRef } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { getAllNewsItems } from "../../apis/news";
+import { useI18nLanguage } from "../../store/I18nLanguageContext";
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
-
-// Mock news items - replace with API data later
-const newsItems = [
-  {
-    id: 1,
-    title: "The Future of Digital Marketing",
-    subtitle: "Industry Insights",
-    description:
-      "Discover how artificial intelligence and machine learning are revolutionizing the way brands connect with their audiences.",
-    image:
-      "https://images.pexels.com/photos/15943830/pexels-photo-15943830.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-  },
-  {
-    id: 2,
-    title: "Social Media Trends 2024",
-    subtitle: "Trend Analysis",
-    description:
-      "Explore the latest trends shaping social media marketing. From short-form video content to community-driven campaigns.",
-    image:
-      "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-  },
-  {
-    id: 3,
-    title: "Building Brand Identity",
-    subtitle: "Brand Strategy",
-    description:
-      "Learn how compelling narratives can transform your brand's presence and create emotional connections with your audience.",
-    image:
-      "https://images.pexels.com/photos/3184436/pexels-photo-3184436.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-  },
-  {
-    id: 4,
-    title: "Data-Driven Marketing",
-    subtitle: "Analytics & Insights",
-    description:
-      "Unlock the power of data analytics to make informed marketing decisions and optimize campaigns for maximum ROI.",
-    image:
-      "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-  },
-  {
-    id: 4,
-    title: "Data-Driven Marketing",
-    subtitle: "Analytics & Insights",
-    description:
-      "Unlock the power of data analytics to make informed marketing decisions and optimize campaigns for maximum ROI.",
-    image:
-      "https://i.pinimg.com/736x/08/df/75/08df750ca3fee1053c9997e2b00b140f.jpg",
-  },
-  {
-    id: 4,
-    title: "Data-Driven Marketing",
-    subtitle: "Analytics & Insights",
-    description:
-      "Unlock the power of data analytics to make informed marketing decisions and optimize campaigns for maximum ROI.",
-    image:
-      "https://i.pinimg.com/736x/08/df/75/08df750ca3fee1053c9997e2b00b140f.jpg",
-  },
-];
 
 // Card component
 const Card = ({ item }) => {
@@ -99,8 +43,8 @@ const Card = ({ item }) => {
         {/* Cover image */}
         <img
           ref={coverRef}
-          src={item.image}
-          alt={item.title}
+          src={item.images || item.image || ""}
+          alt={item.title || "News item"}
           className="card-cover"
         />
       </figure>
@@ -117,6 +61,10 @@ const Card = ({ item }) => {
 // React app
 const Content = () => {
   const cardsRef = useRef(null);
+  const { language } = useI18nLanguage();
+  const [newsItems, setNewsItems] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -139,12 +87,71 @@ const Content = () => {
     return () => ctx.revert();
   }, []);
 
+  useEffect(() => {
+    let isMounted = true;
+
+    const fetchNews = async () => {
+      setLoading(true);
+      setError(null);
+
+      try {
+        const response = await getAllNewsItems({
+          page: 1,
+          per_page: 10,
+          lang: language,
+        });
+
+        if (!isMounted) return;
+
+        const items = Array.isArray(response?.data) ? response.data : [];
+        setNewsItems(items);
+      } catch (err) {
+        if (!isMounted) return;
+        setError(err);
+        setNewsItems([]);
+      } finally {
+        if (isMounted) {
+          setLoading(false);
+        }
+      }
+    };
+
+    fetchNews();
+
+    return () => {
+      isMounted = false;
+    };
+  }, [language]);
+
+  useEffect(() => {
+    if (loading) return;
+    const id = requestAnimationFrame(() => {
+      ScrollTrigger.refresh();
+    });
+
+    return () => cancelAnimationFrame(id);
+  }, [newsItems, loading]);
+
   return (
     <div ref={cardsRef} className="news-cards-container">
       <section className="cards">
-        {newsItems.map((item) => (
-          <Card key={item.id} item={item} />
-        ))}
+        {loading && <div className="cards-status">Loading news…</div>}
+        {!loading && error && (
+          <div className="cards-status">
+            Unable to load news right now. Please try again later.
+          </div>
+        )}
+        {!loading && !error && newsItems.length === 0 && (
+          <div className="cards-status">No news available.</div>
+        )}
+        {!loading &&
+          !error &&
+          newsItems.map((item) => (
+            <Card
+              key={item.id ?? `${item.title}-${item.created_at}`}
+              item={item}
+            />
+          ))}
       </section>
     </div>
   );
