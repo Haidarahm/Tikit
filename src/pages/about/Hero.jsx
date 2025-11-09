@@ -4,10 +4,15 @@ import "aos/dist/aos.css";
 import InfiniteScroll from "../../components/InfiniteScroll";
 import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../store/I18nLanguageContext";
+import { useAboutBannersStore } from "../../store/aboutBannersStore";
 
 const Hero = () => {
   const { t } = useTranslation();
   const { isRtl } = useI18nLanguage();
+  const videos = useAboutBannersStore((state) => state.videos);
+  const loadVideos = useAboutBannersStore((state) => state.loadVideos);
+  const loading = useAboutBannersStore((state) => state.loading);
+  const error = useAboutBannersStore((state) => state.error);
 
   useEffect(() => {
     AOS.init({
@@ -17,22 +22,39 @@ const Hero = () => {
     });
   }, []);
 
-  const items = [
-    { content: "Text Item 1" },
-    { content: <p>Paragraph Item 2</p> },
-    { content: "Text Item 3" },
-    { content: <p>Paragraph Item 4</p> },
-    { content: "Text Item 5" },
-    { content: <p>Paragraph Item 6</p> },
-    { content: "Text Item 7" },
-    { content: <p>Paragraph Item 8</p> },
-    { content: "Text Item 9" },
-    { content: <p>Paragraph Item 10</p> },
-    { content: "Text Item 11" },
-    { content: <p>Paragraph Item 12</p> },
-    { content: "Text Item 13" },
-    { content: <p>Paragraph Item 14</p> },
-  ];
+  useEffect(() => {
+    loadVideos();
+  }, [loadVideos]);
+
+  const items =
+    videos && videos.length > 0
+      ? videos.map((banner) => ({
+          content: (
+            <div className="flex flex-col gap-2 w-full h-full">
+              <video
+                src={banner.media}
+                muted
+                loop
+                autoPlay
+                playsInline
+                className="w-full h-full rounded-[12px] object-cover"
+              />
+            </div>
+          ),
+        }))
+      : [
+          {
+            content: (
+              <div className="text-sm opacity-80 text-center">
+                {loading
+                  ? "Loading banners..."
+                  : error
+                  ? "Failed to load banners."
+                  : "No banners available."}
+              </div>
+            ),
+          },
+        ];
   return (
     <div
       data-scroll-section
