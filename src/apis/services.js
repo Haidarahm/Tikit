@@ -13,7 +13,7 @@ export const fetchAllServices = async (
 
 // GET /api/services/{id}?lang={lang}
 export const getServiceDetails = async (id, lang = "en") => {
-  const response = await api.get(`/api/services/${id}`, {
+  const response = await api.get(`/api/services/show/${id}`, {
     params: { lang },
   });
   return response.data;
@@ -21,7 +21,7 @@ export const getServiceDetails = async (id, lang = "en") => {
 
 // GET /api/sub/{id}/services?lang={lang}
 export const getServiceCases = async (subId, lang = "en") => {
-  const response = await api.get(`/api/sub/${subId}/services`, {
+  const response = await api.get(`/api/services/${subId}/cases/get`, {
     params: { lang },
   });
   return response.data;

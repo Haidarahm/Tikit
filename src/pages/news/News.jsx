@@ -29,6 +29,7 @@ export const News = () => {
     const htmlEl = document.documentElement;
     htmlEl.classList.remove("has-scroll-smooth", "has-scroll-init");
     document.body.style.removeProperty("overflow");
+    window.scrollTo(0, 0);
 
     let lenisInstance = null;
     let rafId = null;
@@ -63,6 +64,7 @@ export const News = () => {
         rafId = requestAnimationFrame(raf);
 
         setTimeout(() => {
+          lenisInstance?.scrollTo(0, { immediate: true });
           lenisInstance?.resize();
           ScrollTrigger.refresh();
         }, 100);
@@ -113,7 +115,7 @@ export const News = () => {
       />
       <NewsHero />
       <Content />
-      <ContactUs/>
+      <ContactUs />
       <Footer />
     </main>
   );
