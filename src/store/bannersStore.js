@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { fetchVideos } from "../apis/banner";
+import { fetchVideos } from "../apis/banners/banner";
 
 export const useBannersStore = create((set, get) => ({
   videos: [], // normalized as [{ id, videoUrl }]
