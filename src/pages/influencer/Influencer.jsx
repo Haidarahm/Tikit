@@ -144,6 +144,15 @@ export const Influencer = () => {
   }, [activeSectionKey, influencersBySection, loadInfluencers]);
 
   useEffect(() => {
+    const nextIndex = activeIndex + 1;
+    const nextSection = normalizedSections[nextIndex];
+    if (!nextSection) return;
+    const nextKey = nextSection.key;
+    if (!nextKey || influencersBySection[nextKey]) return;
+    loadInfluencers(nextKey);
+  }, [activeIndex, normalizedSections, influencersBySection, loadInfluencers]);
+
+  useEffect(() => {
     const sectionElements = detailRefs.current.filter(Boolean);
     if (!sectionElements.length) return undefined;
 
