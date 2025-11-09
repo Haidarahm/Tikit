@@ -1,7 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Lenis from "lenis";
 import NewsHero from "./NewsHero";
 import "./news.css";
 import SEOHead from "../../components/SEOHead";
@@ -13,7 +12,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 export const News = () => {
   const { theme } = useTheme();
-  const lenisRef = useRef(null);
   const [isReady, setIsReady] = useState(false);
 
   // Check if theme is ready before rendering
@@ -26,59 +24,68 @@ export const News = () => {
   useEffect(() => {
     if (!isReady) return;
 
-    // Safety: ensure no leftover locomotive-scroll styles block scrolling
     const htmlEl = document.documentElement;
     htmlEl.classList.remove("has-scroll-smooth", "has-scroll-init");
     document.body.style.removeProperty("overflow");
 
-    // Initialize Lenis smooth scrolling
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smoothWheel: true,
-      touchMultiplier: 2,
-      infinite: false,
-      wheelMultiplier: 1,
-      lerp: 0.1,
-      syncTouch: true,
-      syncTouchLerp: 0.075,
-      wrapper: window,
-      content: document.documentElement,
-    });
+    let lenisInstance = null;
+    let rafId = null;
+    let refreshHandler = null;
 
-    // Connect Lenis with ScrollTrigger
-    lenis.on("scroll", ScrollTrigger.update);
+    const setupLenis = async () => {
+      try {
+        const { default: Lenis } = await import("lenis");
+        lenisInstance = new Lenis({
+          duration: 1.2,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          smoothWheel: true,
+          touchMultiplier: 2,
+          infinite: false,
+          wheelMultiplier: 1,
+          lerp: 0.1,
+          syncTouch: true,
+          syncTouchLerp: 0.075,
+        });
 
-    // Add a small delay to ensure all components are mounted before ScrollTrigger refresh
-    setTimeout(() => {
-      ScrollTrigger.refresh();
-    }, 100);
+        lenisInstance.on("scroll", ScrollTrigger.update);
 
-    // RAF loop for Lenis
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
+        refreshHandler = () => {
+          lenisInstance?.resize();
+        };
+        ScrollTrigger.addEventListener("refresh", refreshHandler);
 
-    lenisRef.current = lenis;
+        const raf = (time) => {
+          lenisInstance?.raf(time);
+          rafId = requestAnimationFrame(raf);
+        };
+        rafId = requestAnimationFrame(raf);
 
-    // Handle window resize for responsive animations
+        setTimeout(() => {
+          lenisInstance?.resize();
+          ScrollTrigger.refresh();
+        }, 100);
+      } catch (error) {
+        console.error("Failed to load Lenis", error);
+      }
+    };
+
+    setupLenis();
+
     const handleResize = () => {
       ScrollTrigger.refresh();
     };
 
     window.addEventListener("resize", handleResize);
 
-    // Refresh ScrollTrigger after Lenis is initialized
-    ScrollTrigger.refresh();
-
-    // Cleanup on unmount
     return () => {
-      if (lenisRef.current) {
-        lenisRef.current.destroy();
-      }
       window.removeEventListener("resize", handleResize);
+      if (rafId) cancelAnimationFrame(rafId);
+      if (lenisInstance) {
+        lenisInstance.destroy();
+      }
+      if (refreshHandler) {
+        ScrollTrigger.removeEventListener("refresh", refreshHandler);
+      }
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, [isReady]);
