@@ -20,6 +20,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 function Home() {
   const lenisRef = useRef(null);
+  const rafIdRef = useRef(null);
 
   useEffect(() => {
     // Safety: ensure no leftover locomotive-scroll styles block scrolling
@@ -27,55 +28,54 @@ function Home() {
     htmlEl.classList.remove("has-scroll-smooth", "has-scroll-init");
     document.body.style.removeProperty("overflow");
 
-    // Initialize Lenis smooth scrolling
     const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      duration: 1.05,
       smoothWheel: true,
-      touchMultiplier: 2,
-      infinite: false,
+      smoothTouch: false,
       wheelMultiplier: 1,
-      lerp: 0.1,
-      syncTouch: true,
-      syncTouchLerp: 0.075,
-      wrapper: window,
-      content: document.documentElement,
+      touchMultiplier: 1.1,
+      lerp: 0.075,
     });
 
-    // Connect Lenis with ScrollTrigger
-    lenis.on("scroll", ScrollTrigger.update);
+    const handleScroll = () => {
+      ScrollTrigger.update();
+    };
 
-    // Add a small delay to ensure all components are mounted before ScrollTrigger refresh
-    setTimeout(() => {
-      ScrollTrigger.refresh();
-    }, 100);
+    lenis.on("scroll", handleScroll);
 
-    // RAF loop for Lenis
-    function raf(time) {
+    const raf = (time) => {
       lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-
+      rafIdRef.current = requestAnimationFrame(raf);
+    };
+    rafIdRef.current = requestAnimationFrame(raf);
     lenisRef.current = lenis;
+
+    // Force a refresh after Lenis initialises so ScrollTrigger reads full height
+    const refreshTimeout = setTimeout(() => {
+      ScrollTrigger.refresh(true);
+    }, 100);
 
     // Handle window resize for responsive animations
     const handleResize = () => {
-      ScrollTrigger.refresh();
+      ScrollTrigger.refresh(true);
     };
 
     window.addEventListener("resize", handleResize);
 
-    // Refresh ScrollTrigger after Lenis is initialized
-    ScrollTrigger.refresh();
-
     // Cleanup on unmount
     return () => {
+      clearTimeout(refreshTimeout);
+      if (rafIdRef.current) {
+        cancelAnimationFrame(rafIdRef.current);
+        rafIdRef.current = null;
+      }
+      if (lenisRef.current) {
+        lenisRef.current.off("scroll", handleScroll);
+        lenisRef.current.destroy();
+        lenisRef.current = null;
+      }
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
       window.removeEventListener("resize", handleResize);
-      if (lenisRef.current) {
-        lenisRef.current.destroy();
-      }
     };
   }, []);
 

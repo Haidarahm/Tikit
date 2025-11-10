@@ -80,7 +80,8 @@ const Goals = memo(() => {
         useWindowScroll={true}
         itemDistance={0}
         itemStackDistance={50}
-        stackPosition="100"
+        stackPosition="0%"
+        scaleEndPosition="40%"
         className="hidden md:block"
       >
         {goalsData.map((goal) => (

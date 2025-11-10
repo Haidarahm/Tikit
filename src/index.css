@@ -64,8 +64,6 @@
   font-family: "HeroLight", "Source Sans 3", sans-serif;
 }
 
-
-
 * {
   box-sizing: border-box;
 }
@@ -75,13 +73,7 @@
   --font-hero-regular: "HeroRegular", sans-serif;
   --font-hero-bold: "HeroBold", sans-serif;
   --font-cairo: "Cairo", sans-serif;
-
 }
-
-
-
-
-
 
 html,
 body,
@@ -89,10 +81,7 @@ body,
   height: 100%;
   /* background-color: oklch(16.5% 0.012 236.6); */
   background: var(--background);
-
 }
-
-
 
 /* Global scrollbar styling */
 html,
@@ -148,7 +137,7 @@ body {
   /* background: rgba(255, 255, 255, 0.05); */
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
- 
+
   /* margin-top: 0; */
 }
 
@@ -177,7 +166,6 @@ body {
 /* Performance optimization for scroll-triggered elements */
 
 /* Full-page snapping container */
-
 
 /* Dark theme overrides */
 
@@ -223,12 +211,12 @@ body {
   --background: white;
   --foreground: #363737;
   --primary: #fff;
-  --secondary:#52C3C5;
-  --base:#52C3C5;
+  --secondary: #52c3c5;
+  --base: #52c3c5;
   --radius: 0.625rem;
-  --contact: #F5F7FB;
+  --contact: #f5f7fb;
   --tooltip: #363737;
-  --container-bg: #ECFBFB;
+  --container-bg: #ecfbfb;
 }
 
 .dark {
@@ -237,14 +225,15 @@ body {
   --container-bg: #101b22;
   --foreground: #ffffff;
   --contact: #000;
-  --base:#000;
-  --secondary:#ffffff;
+  --base: #000;
+  --secondary: #ffffff;
   --tooltip: #fff;
   --radius: 0.625rem;
 }
 @layer utilities {
   @keyframes fadeInOut {
-    0%, 100% {
+    0%,
+    100% {
       opacity: 1;
     }
     50% {
@@ -285,9 +274,15 @@ body {
 
 /* Gradient text animation for Tailwind v4 usage: class `animate-gradient` */
 @keyframes gradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .animate-gradient {
@@ -305,52 +300,48 @@ body {
   will-change: transform;
   transform: translateZ(0);
 }
-#lights canvas{
+#lights canvas {
   width: 100% !important;
   height: 100% !important;
 }
-footer .bottom-section .right-section .items li{
+footer .bottom-section .right-section .items li {
   cursor: pointer;
 }
-
 
 /* Extra large screens (1280px and up) */
 @media (min-width: 876px) {
   .goals-section {
-   height:  455vh;
+    height: 455vh;
   }
 }
 @media (min-width: 1025px) {
   .goals-section {
-   height: 375vh;
+    height: 375vh;
   }
 }
 @media (min-width: 1395px) {
   .goals-section {
-   height: 320vh;
+    height: 320vh;
   }
 }
 @media (min-width: 1500px) {
   .goals-section {
-   height: 350vh;
+    height: 350vh;
   }
-  .scroll-stack-card{
+  .scroll-stack-card {
     height: 500px;
   }
 }
 
-
-    @media (min-width: 1080px) {
-      .work-section-container{
-        height: 390vh;
-      }
-      
+@media (min-width: 1080px) {
+  .work-section-container {
+    height: 430vh;
+  }
 }
 @media (min-width: 1300px) {
-  .work-section-container{
-    height: 395vh;
+  .work-section-container {
+    height: 430vh;
   }
-  
 }
 /* Contact dropdown open state - keep button hover effect */
 .contact-dropdown-open button {
@@ -408,7 +399,8 @@ footer .bottom-section .right-section .items li{
   background-color: var(--contact);
   border: 1px solid #363737;
   border-radius: 0.5rem;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1),
+    0 8px 10px -6px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   animation: dropdownSlideIn 0.2s ease-out;
   max-height: 300px;
@@ -417,7 +409,8 @@ footer .bottom-section .right-section .items li{
 
 .dark .custom-dropdown-menu {
   border-color: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3),
+    0 8px 10px -6px rgba(0, 0, 0, 0.2);
 }
 
 @keyframes dropdownSlideIn {
@@ -562,11 +555,11 @@ footer .bottom-section .right-section .items li{
     -webkit-transform: translateY(0);
     -ms-transform: translateY(0);
     transform: translateY(0);
-	}
+  }
   100% {
     opacity: 0;
     -webkit-transform: translateY(20px);
     -ms-transform: translateY(20px);
     transform: translateY(20px);
-	}
+  }
 }

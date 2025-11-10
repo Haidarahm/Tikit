@@ -259,7 +259,7 @@ const ContactUs = memo(({ className = "" }) => {
   return (
     <div
       data-scroll-section
-      className={`relative my-5 h-[80vh] md:h-screen md:my-10 gap-3.5  overflow-hidden text-[var(--foreground)] ${
+      className={`relative my-5  md:my-10 gap-3.5  overflow-hidden text-[var(--foreground)] ${
         isRtl ? "font-cairo" : "font-hero-light"
       } rounded-[25px] flex flex-col mx-auto py-[40px] md:py-[60px] px-[40px] md:px-[50px]  w-[95vw] bg-[#F5F7FB]  dark:bg-black ${className}`}
       dir={isRtl ? "rtl" : "ltr"}
