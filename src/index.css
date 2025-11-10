@@ -80,6 +80,7 @@ body,
 #root {
   height: 100%;
   /* background-color: oklch(16.5% 0.012 236.6); */
+  scroll-behavior: smooth;
   background: var(--background);
 }
 
@@ -562,4 +563,12 @@ footer .bottom-section .right-section .items li {
     -ms-transform: translateY(20px);
     transform: translateY(20px);
   }
+}
+ .ant-skeleton{
+  width: 100% !important;
+  height: 100% !important;
+}
+ .ant-skeleton-image{
+  width: 100% !important;
+  height: 100% !important;
 }

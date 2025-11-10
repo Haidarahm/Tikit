@@ -11,7 +11,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
 
-const InfluenceDetails = () => {
+const InfluenceDetails = ({ theme }) => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { language, isRtl } = useI18nLanguage();
@@ -22,9 +22,7 @@ const InfluenceDetails = () => {
   const resetCategory = useWorkItemDetailsStore((state) => state.resetCategory);
 
   useEffect(() => {
-    if (!id) {
-      return;
-    }
+    if (!id) return;
 
     loadInfluenceDetail(id, { lang: language }).catch((error) => {
       console.error("Failed to load influence details", error);
@@ -81,49 +79,52 @@ const InfluenceDetails = () => {
     <div
       className={`influence-details min-h-screen ${
         isRtl ? "font-cairo" : "font-hero-light"
-      }`}
+      } ${theme === "dark" ? "dark" : ""}`}
     >
       <SEOHead
         title={title ? `${title} | Influence Detail` : "Influence Detail"}
         description={objective ?? ""}
         canonicalUrl={`/work/influence/${id}`}
       />
+
       {influence.loading ? (
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8 px-4 md:px-6 pt-28 pb-10">
-          {[0, 1, 2].map((index) => (
+          {[0, 1, 2,3].map((index) => (
             <div
               key={`influence-skeleton-${index}`}
-              className="rounded-3xl border border-[var(--border)] bg-[var(--card-background)] p-6 shadow-inner"
+              className=" h-[300px] rounded-4xl bg-[var(--card-background)] p-6 "
             >
-              <Skeleton
+              <Skeleton.Node
                 active
-                avatar={{ shape: "circle", size: 64 }}
-                paragraph={{ rows: 4 }}
+               className="w-full"
               />
             </div>
           ))}
         </div>
       ) : itemData ? (
-        <div className="px-4 md:px-10 pb-20 pt-28">
+        <div className="px-4 md:px-10 pb-20 pt-30">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
+            {/* Left Column */}
             <div className="space-y-10">
               <div className="relative overflow-hidden rounded-3xl bg-[var(--card-background)] p-8 md:p-10 shadow-2xl">
                 <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent)]/5 via-transparent to-[var(--accent)]/10" />
                 <div className="relative z-10 flex flex-col gap-6">
                   <div className="flex items-start gap-6">
-                    {itemData.logo ? (
-                      <div className="flex h-20 w-20 items-center justify-center overflow-hidden rounded-full border border-[var(--border)] bg-[var(--surface)]/70 p-2 shadow-lg">
+                    {itemData.logo && (
+                      <div className="flex h-20 w-20 items-center justify-center overflow-hidden rounded-full border border-[var(--border)] bg-[var(--card-background)]/70 p-2 shadow-lg">
                         <img
                           src={itemData.logo}
                           alt={title}
                           className="h-full w-full object-contain"
                         />
                       </div>
-                    ) : null}
+                    )}
                     <div className="space-y-4">
                       <GradientText
                         colors={
-                          isRtl
+                          theme === "dark"
+                            ? ["#07D9F5", "#06AEC4", "#4E7CC6"]
+                            : isRtl
                             ? ["#FB8DEF", "#CE88C6", "#4E7CC6"]
                             : ["#52C3C5", "#5269C5", "#52A0C5"]
                         }
@@ -133,28 +134,30 @@ const InfluenceDetails = () => {
                       >
                         {title}
                       </GradientText>
-                      {objective ? (
+                      {objective && (
                         <p className="max-w-3xl text-base leading-relaxed md:text-lg text-[var(--foreground)]/70">
                           {objective}
                         </p>
-                      ) : null}
+                      )}
                     </div>
                   </div>
                   <button
                     onClick={() => navigate(-1)}
-                    className="self-start rounded-full bg-[var(--surface)]/60 px-6 py-3 text-sm uppercase tracking-wide text-[var(--foreground)] transition hover:bg-[var(--foreground)] hover:text-[var(--background)]"
+                    className="self-start rounded-full px-6 py-3 text-sm uppercase tracking-wide
+                      bg-[var(--card-background)]/60 text-[var(--foreground)]
+                      transition hover:bg-[var(--foreground)] hover:text-[var(--background)]"
                   >
                     Back
                   </button>
                 </div>
               </div>
 
-              {metrics.length ? (
+              {metrics.length > 0 && (
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   {metrics.map((metric) => (
                     <div
                       key={metric.label}
-                      className="rounded-3xl bg-gradient-to-br from-[var(--card-background)]/70 to-[var(--surface)]/40 p-5 text-left shadow-lg backdrop-blur"
+                      className="rounded-3xl bg-gradient-to-br from-[var(--card-background)]/70 to-[var(--card-background)]/40 p-5 text-left shadow-lg backdrop-blur"
                     >
                       <div className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--foreground)]/60">
                         {metric.label}
@@ -165,11 +168,12 @@ const InfluenceDetails = () => {
                     </div>
                   ))}
                 </div>
-              ) : null}
+              )}
             </div>
 
+            {/* Right Column - Media */}
             <div className="space-y-6">
-              {media.length ? (
+              {media.length > 0 ? (
                 <Swiper
                   modules={[Autoplay]}
                   autoplay={{ delay: 3000, disableOnInteraction: false }}
@@ -184,7 +188,13 @@ const InfluenceDetails = () => {
                           alt={`${title} media ${index + 1}`}
                           className="h-full w-full max-h-[380px] object-cover transition-transform duration-700 group-hover:scale-105"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                        <div
+                          className={`absolute inset-0 transition-opacity duration-300 group-hover:opacity-100 ${
+                            theme === "dark"
+                              ? "bg-gradient-to-t from-black/25 via-black/10 to-transparent"
+                              : "bg-gradient-to-t from-black/45 via-black/10 to-transparent"
+                          }`}
+                        />
                       </div>
                     </SwiperSlide>
                   ))}
@@ -204,6 +214,7 @@ const InfluenceDetails = () => {
           </div>
         </div>
       )}
+
       <ContactUs />
       <Footer />
     </div>
