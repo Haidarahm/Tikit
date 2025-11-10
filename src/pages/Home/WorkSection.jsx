@@ -1,23 +1,12 @@
 import React, { useEffect, useMemo, useState, memo } from "react";
 import StickyPinnedSection from "../../components/ui/StickyPinnedSection";
-import { useWorkStore } from "../../store/workStore";
+import { useWorksSectionsStore } from "../../store/work/worksSectionsStore";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
 const WorkSection = memo(() => {
-  const {
-    works,
-    loadWorks,
-    loading,
-    page,
-    pageSize,
-    setPage,
-    nextPage,
-    prevPage,
-    getPagedWorks,
-    error,
-  } = useWorkStore();
+  const { sections, loadSections, loading, error } = useWorksSectionsStore();
   const { language, isRtl } = useI18nLanguage();
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -30,29 +19,52 @@ const WorkSection = memo(() => {
 
   useEffect(() => {
     if (isClient) {
-      loadWorks({ lang: language, page, per_page: pageSize });
+      loadSections({ lang: language ,page: 1, per_page: 3});
     }
-  }, [loadWorks, page, pageSize, language, isClient]);
+  }, [loadSections, language, isClient]);
+
+  const getLocalizedField = (item, baseKey) => {
+    if (!item) return "";
+    const langCode = (language || "en").toLowerCase();
+    const primaryKey = `${baseKey}_${langCode}`;
+    const shortLang =
+      langCode.length > 2 ? `${baseKey}_${langCode.slice(0, 2)}` : null;
+
+    return (
+      item[primaryKey] ??
+      (shortLang && item[shortLang]) ??
+      item[`${baseKey}_en`] ??
+      item[baseKey] ??
+      ""
+    );
+  };
 
   const items = useMemo(() => {
     if (!isClient) return []; // Return empty array during SSR
 
-    const source = getPagedWorks ? getPagedWorks() : (works || []).slice(0, 3);
-    return (source || []).map((w) => ({
-      id: w.id,
-      title: w.title ?? "",
-      subtitle: w.subtitle ?? "",
-      description: w.description ?? "",
-      media: w.media ? (
-        <img
-          src={w.media}
-          alt={w.title ?? "work"}
-          className="h-full rounded-[20px] w-full object-cover"
-          loading="lazy"
-        />
-      ) : null,
-    }));
-  }, [works, getPagedWorks, isClient]);
+    const list = Array.isArray(sections) ? sections : [];
+    return list.map((section) => {
+      const title = getLocalizedField(section, "title");
+      const subtitle = getLocalizedField(section, "subtitle");
+      const description = getLocalizedField(section, "description");
+      const mediaUrl = section?.media;
+
+      return {
+        id: section?.id ?? `${title}-${section?.type ?? "work"}`,
+        title,
+        subtitle,
+        description,
+        media: mediaUrl ? (
+          <img
+            src={mediaUrl}
+            alt={title || "work"}
+            className="h-full rounded-[20px] w-full object-cover"
+            loading="lazy"
+          />
+        ) : null,
+      };
+    });
+  }, [sections, isClient, language]);
 
   // Show loading state during initial load
   if (!isClient || loading) {

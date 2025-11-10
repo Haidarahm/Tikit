@@ -3,7 +3,15 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useI18nLanguage } from "../../store/I18nLanguageContext";
 import { useTheme } from "../../store/ThemeContext";
-import { FaInstagram, FaYoutube, FaTiktok, FaTwitter } from "react-icons/fa";
+import {
+  FaInstagram,
+  FaYoutube,
+  FaTiktok,
+  FaTwitter,
+  FaFacebookF,
+  FaLinkedinIn,
+  FaSnapchatGhost,
+} from "react-icons/fa";
 import influencer from "../../assets/influncer/1.png";
 import overlay from "../../assets/tick-overlay.png";
 import overlayDark from "../../assets/tick-overlay-dark.png";
@@ -12,11 +20,28 @@ import overlayDark from "../../assets/tick-overlay-dark.png";
 gsap.registerPlugin(ScrollTrigger);
 
 // Social Media Icons Component with Simple Magnetic Cursor Effect
-const SocialIcon = ({ icon: Icon, href }) => (
+const SOCIAL_ICON_MAP = {
+  instagram: FaInstagram,
+  ig: FaInstagram,
+  youtube: FaYoutube,
+  yt: FaYoutube,
+  tiktok: FaTiktok,
+  tik_tok: FaTiktok,
+  twitter: FaTwitter,
+  x: FaTwitter,
+  facebook: FaFacebookF,
+  fb: FaFacebookF,
+  linkedin: FaLinkedinIn,
+  snapchat: FaSnapchatGhost,
+  snap: FaSnapchatGhost,
+};
+
+const SocialIcon = ({ icon: Icon, href, label }) => (
   <a
     href={href}
     target="_blank"
     rel="noopener noreferrer"
+    aria-label={label}
     className="group flex items-center justify-center w-14 h-14 rounded-full bg-[var(--secondary)]/10 hover:bg-[var(--secondary)] text-[var(--foreground)] hover:text-[var(--background)] transition-all duration-300 relative overflow-hidden"
   >
     <Icon className="w-6 h-6 relative z-10 transition-transform duration-300 group-hover:rotate-12" />
@@ -153,27 +178,18 @@ export const InfluencerDetails = ({
 
         {/* Social Media Links */}
         <div ref={socialRef} className="flex flex-wrap gap-4 md:gap-6">
-          {socialLinks.map((social, index) => {
-            const getIcon = (platform) => {
-              switch (platform) {
-                case "instagram":
-                  return FaInstagram;
-                case "youtube":
-                  return FaYoutube;
-                case "tiktok":
-                  return FaTiktok;
-                case "twitter":
-                  return FaTwitter;
-                default:
-                  return FaInstagram;
-              }
-            };
-
+          {socialLinks.map((social) => {
+            const platform = social?.platform || social?.link_type || "";
+            const resolvedPlatform = String(platform).toLowerCase();
+            const Icon = SOCIAL_ICON_MAP[resolvedPlatform] || FaInstagram;
+            if (!social?.href && !social?.link) return null;
+            const href = social.href || social.link;
             return (
               <SocialIcon
                 key={social.platform}
-                icon={getIcon(social.platform)}
-                href={social.href}
+                icon={Icon}
+                href={href}
+                label={resolvedPlatform}
               />
             );
           })}
