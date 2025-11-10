@@ -7,6 +7,9 @@ import SEOHead from "../../components/SEOHead";
 import Footer from "../../components/Footer";
 import ContactUs from "../Home/ContactUs";
 import GradientText from "../../components/GradientText";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+import "swiper/css";
 
 const InfluenceDetails = () => {
   const { id } = useParams();
@@ -167,19 +170,25 @@ const InfluenceDetails = () => {
 
             <div className="space-y-6">
               {media.length ? (
-                media.map((src, index) => (
-                  <div
-                    key={`${src}-${index}`}
-                    className="group relative overflow-hidden rounded-3xl bg-[var(--card-background)] shadow-lg transition-transform duration-500 hover:-translate-y-3"
-                  >
-                    <img
-                      src={src}
-                      alt={`${title} media ${index + 1}`}
-                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                  </div>
-                ))
+                <Swiper
+                  modules={[Autoplay]}
+                  autoplay={{ delay: 3000, disableOnInteraction: false }}
+                  loop
+                  className="w-full rounded-3xl shadow-xl"
+                >
+                  {media.map((src, index) => (
+                    <SwiperSlide key={`${src}-${index}`}>
+                      <div className="group relative overflow-hidden rounded-3xl bg-[var(--card-background)]">
+                        <img
+                          src={src}
+                          alt={`${title} media ${index + 1}`}
+                          className="h-full w-full max-h-[380px] object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                      </div>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
               ) : (
                 <div className="rounded-3xl bg-[var(--card-background)]/70 p-10 text-center text-sm text-[var(--foreground)]/60 shadow-inner">
                   No media available for this work item.

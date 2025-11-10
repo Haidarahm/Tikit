@@ -4,7 +4,6 @@ import { useTheme } from "../../store/ThemeContext.jsx";
 import "./work.css";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Lenis from "lenis";
 import Footer from "../../components/Footer";
 import ContactUs from "../Home/ContactUs";
 import { useWorksSectionsStore } from "../../store/work/worksSectionsStore";
@@ -55,63 +54,30 @@ const Work = () => {
   const { t } = useTranslation();
   const [activeSectionId, setActiveSectionId] = useState(null);
   const [activeType, setActiveType] = useState(null);
-  const lenisRef = useRef(null);
+  const lenisCleanupTimeout = useRef(null);
 
   const gradientColors =
     theme === "light"
       ? ["#52C3C5", "#5269C5", "#52C3C5", "#52A0C5", "#52C3C5"] // Light theme colors
       : ["#07D9F5", "#06AEC4", "#4E7CC6", "#CE88C6", "#FB8DEF"]; // Dark theme colors (original)
 
-  // Initialize Lenis smooth scrolling
   useEffect(() => {
-    // Safety: ensure no leftover locomotive-scroll styles block scrolling
     const htmlEl = document.documentElement;
     htmlEl.classList.remove("has-scroll-smooth", "has-scroll-init");
     document.body.style.removeProperty("overflow");
 
-    // Initialize Lenis smooth scrolling
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smoothWheel: true,
-      touchMultiplier: 2,
-      infinite: false,
-      wheelMultiplier: 1,
-      lerp: 0.1,
-      syncTouch: true,
-      syncTouchLerp: 0.075,
-      wrapper: window,
-      content: document.documentElement,
-    });
-
-    // Connect Lenis with ScrollTrigger
-    lenis.on("scroll", ScrollTrigger.update);
-
-    // Add a small delay to ensure all components are mounted before ScrollTrigger refresh
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       ScrollTrigger.refresh();
     }, 100);
 
-    // RAF loop for Lenis
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-
-    lenisRef.current = lenis;
-
-    // Handle window resize for responsive animations
     const handleResize = () => {
       ScrollTrigger.refresh();
     };
-
     window.addEventListener("resize", handleResize);
 
-    // Cleanup on unmount
     return () => {
+      clearTimeout(timer);
       window.removeEventListener("resize", handleResize);
-      lenis.destroy();
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);
