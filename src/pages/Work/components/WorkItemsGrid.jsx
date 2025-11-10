@@ -32,7 +32,7 @@ const normalizeItem = (item, type, fallbackImage) => {
           extractMediaUrl(data?.logo) ??
           fallbackImage ??
           "",
-        detailId: data?.work_id ?? data?.id ?? null,
+        detailId: item?.id ?? data?.id ?? data?.work_id ?? null,
       };
     }
     case "social": {
