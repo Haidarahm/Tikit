@@ -1,3 +1,29 @@
 .work-section img{
     @apply  col-span-1 w-full row-span-1 ;
 }
+/* Hide scrollbar for horizontal swiper */
+.section-swiper::-webkit-scrollbar {
+    display: none;
+  }
+  .section-swiper {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  /* Smooth hover transition */
+  .section-swiper button {
+    transition: transform 0.4s ease, opacity 0.3s ease, box-shadow 0.4s ease;
+  }
+  .section-swiper button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.15);
+  }
+  
+  /* Responsive tuning */
+  @media (max-width: 768px) {
+    .section-swiper button {
+      height: 120px;
+      min-width: 180px;
+    }
+  }
+  

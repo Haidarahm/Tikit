@@ -36,6 +36,8 @@ const createCategoryState = () => ({
   message: null,
   loading: false,
   error: null,
+  requestId: null,
+  activeWorkId: null,
 });
 
 const createInitialState = () => ({
@@ -46,19 +48,24 @@ const createInitialState = () => ({
   events: createCategoryState(),
 });
 
-export const useWorkItemsStore = create((set) => {
+export const useWorkItemsStore = create((set, get) => {
   const loadCategory = async (category, params = {}) => {
     const config = CATEGORY_CONFIG[category];
-    if (!config) {
-      throw new Error(`Unknown work category "${category}"`);
-    }
+    if (!config) throw new Error(`Unknown work category "${category}"`);
 
+    // unique request ID to prevent overwrites
+    const requestId = `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+    const incomingWorkId = params?.work_id ?? null;
+
+    // start loading
     set((state) => ({
       ...state,
       [category]: {
-        ...state[category],
+        ...createCategoryState(),
         loading: true,
         error: null,
+        requestId,
+        activeWorkId: incomingWorkId,
       },
     }));
 
@@ -71,27 +78,34 @@ export const useWorkItemsStore = create((set) => {
         ? [payload]
         : [];
 
-      set((state) => ({
-        ...state,
-        [category]: {
-          ...state[category],
-          items: normalized,
-          pagination: response?.pagination ?? null,
-          message: response?.message ?? null,
-          loading: false,
-        },
-      }));
+      // only update if requestId still matches
+      set((state) => {
+        if (state[category].requestId !== requestId) return state;
+        return {
+          ...state,
+          [category]: {
+            ...state[category],
+            items: normalized,
+            pagination: response?.pagination ?? null,
+            message: response?.message ?? null,
+            loading: false,
+          },
+        };
+      });
 
       return normalized;
     } catch (error) {
-      set((state) => ({
-        ...state,
-        [category]: {
-          ...state[category],
-          error: error?.message || config.errorMessage,
-          loading: false,
-        },
-      }));
+      set((state) => {
+        if (state[category].requestId !== requestId) return state;
+        return {
+          ...state,
+          [category]: {
+            ...state[category],
+            error: error?.message || config.errorMessage,
+            loading: false,
+          },
+        };
+      });
       throw error;
     }
   };
@@ -99,19 +113,21 @@ export const useWorkItemsStore = create((set) => {
   return {
     ...createInitialState(),
 
-    resetCategory: (category) =>
-      set((state) => {
-        if (!CATEGORY_CONFIG[category]) {
-          return state;
-        }
-        return {
-          ...state,
-          [category]: createCategoryState(),
-        };
-      }),
+    // ✅ Clears category immediately & cancels old requestId
+    resetCategory: (category) => {
+      if (!CATEGORY_CONFIG[category]) return;
+      set((state) => ({
+        ...state,
+        [category]: {
+          ...createCategoryState(),
+          requestId: `reset-${Date.now()}`,
+        },
+      }));
+    },
 
     resetAll: () => set(() => createInitialState()),
 
+    // loaders
     loadInfluenceItems: (params) => loadCategory("influence", params),
     loadSocialItems: (params) => loadCategory("social", params),
     loadCreativeItems: (params) => loadCategory("creative", params),
