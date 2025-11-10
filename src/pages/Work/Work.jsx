@@ -15,6 +15,7 @@ import SEOHead from "../../components/SEOHead";
 import WorkHero from "./components/WorkHero";
 import WorkSectionSelector from "./components/WorkSectionSelector";
 import WorkItemsGrid from "./components/WorkItemsGrid";
+import { Skeleton } from "antd";
 
 const TYPE_KEY_MAP = {
   influence: "influence",
@@ -231,19 +232,36 @@ const Work = () => {
         isRtl={isRtl}
       />
 
-      <WorkItemsGrid
-        key={containerKey}
-        containerKey={containerKey}
-        items={currentItems}
-        isDigital={isDigitalActive}
-        activeKey={activeKey}
-        selectedSection={selectedSection}
-        loading={itemsLoading}
-        error={itemsError}
-        showEmptyState={showEmptyState}
-        onViewDetails={handleViewDetails}
-        t={t}
-      />
+      {itemsLoading ? (
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8 px-4 md:px-6">
+          {[0, 1].map((index) => (
+            <div
+              key={`work-skeleton-${index}`}
+              className="rounded-3xl bg-[var(--card-background)] p-6 md:p-8 shadow-inner"
+            >
+              <Skeleton
+                active
+                style={{width: "100%"}}
+              
+              />
+            </div>
+          ))}
+        </div>
+      ) : (
+        <WorkItemsGrid
+          key={containerKey}
+          containerKey={containerKey}
+          items={currentItems}
+          isDigital={isDigitalActive}
+          activeKey={activeKey}
+          selectedSection={selectedSection}
+          loading={itemsLoading}
+          error={itemsError}
+          showEmptyState={showEmptyState}
+          onViewDetails={handleViewDetails}
+          t={t}
+        />
+      )}
       <ContactUs />
       <Footer />
     </div>

@@ -19,6 +19,18 @@ const fetchWorkItems = async (endpoint, params = {}) => {
   return response.data;
 };
 
+const fetchWorkItemById = async (endpoint, id, params = {}) => {
+  if (id == null) {
+    throw new Error("id is required to fetch work item details");
+  }
+
+  const response = await api.get(`${endpoint}/${id}/show`, {
+    params: buildParams(params),
+  });
+
+  return response.data;
+};
+
 export const getInfluenceItems = (params = {}) =>
   fetchWorkItems("/work-influences/get", params);
 
@@ -33,3 +45,18 @@ export const getDigitalItems = (params = {}) =>
 
 export const getEventItems = (params = {}) =>
   fetchWorkItems("/work-events/get", params);
+
+export const fetchWorkInfluence = (id, params = {}) =>
+  fetchWorkItemById("/work-influences", id, params);
+
+export const fetchWorkSocial = (id, params = {}) =>
+  fetchWorkItemById("/work-socials", id, params);
+
+export const fetchWorkCreative = (id, params = {}) =>
+  fetchWorkItemById("/work-creatives", id, params);
+
+export const fetchWorkDigital = (id, params = {}) =>
+  fetchWorkItemById("/work-digitals", id, params);
+
+export const fetchWorkEvent = (id, params = {}) =>
+  fetchWorkItemById("/work-events", id, params);

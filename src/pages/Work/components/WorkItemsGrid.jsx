@@ -1,5 +1,4 @@
 import React, { useEffect, useLayoutEffect, useMemo, useRef } from "react";
-import { Skeleton } from "antd";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -171,27 +170,6 @@ const WorkItemsGrid = ({
 
   return (
     <div ref={containerRef} className={`${containerClass} relative`}>
-      {loading ? (
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
-          {[...Array(isDigital ? 1 : 2)].map((_, index) => (
-            <div
-              key={`skeleton-${index}`}
-              className="rounded-3xl 0 bg-[var(--card-background)] p-6 md:p-8 shadow-inner"
-            >
-              <Skeleton
-                active
-                avatar={{ shape: "circle", size: 64 }}
-                title={{ style: { width: "60%" } }}
-                paragraph={{
-                  rows: isDigital ? 6 : 4,
-                  width: ["100%", "80%", "90%", "70%", "85%", "55%"],
-                }}
-              />
-            </div>
-          ))}
-        </div>
-      ) : null}
-
       {error ? (
         <div className="col-span-full text-center text-sm text-red-400">
           {error}
