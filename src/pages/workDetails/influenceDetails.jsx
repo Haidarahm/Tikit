@@ -8,6 +8,7 @@ import SEOHead from "../../components/SEOHead";
 import Footer from "../../components/Footer";
 import ContactUs from "../Home/ContactUs";
 import GradientText from "../../components/GradientText";
+import { FiUsers, FiEye, FiActivity, FiArrowLeft } from "react-icons/fi";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Thumbs } from "swiper/modules";
 import "swiper/css";
@@ -63,10 +64,12 @@ const InfluenceDetails = () => {
       {
         label: "Reach",
         value: itemData.reach ? itemData.reach.toLocaleString() : null,
+        Icon: FiUsers,
       },
       {
         label: "Views",
         value: itemData.views ? itemData.views.toLocaleString() : null,
+        Icon: FiEye,
       },
       {
         label: "Engagement Rate",
@@ -74,6 +77,7 @@ const InfluenceDetails = () => {
           itemData.engagement_rate != null
             ? `${parseFloat(itemData.engagement_rate).toFixed(2)}%`
             : null,
+        Icon: FiActivity,
       },
     ].filter((metric) => metric.value != null);
   }, [itemData]);
@@ -107,7 +111,7 @@ const InfluenceDetails = () => {
         <div className="px-4 md:px-10 pb-20 pt-28">
           <div className="space-y-12">
             {/* Header Card with Title, Logo, and Metrics */}
-            <div className="relative overflow-hidden dark:border dark:border-white rounded-3xl bg-[var(--card-background)] p-8 md:p-10 shadow-2xl">
+            <div className="relative overflow-hidden dark:border dark:border-white/40 rounded-3xl bg-[var(--card-background)] p-8 md:p-10 shadow-2xl backdrop-blur">
               <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent)]/5 via-transparent to-[var(--accent)]/10" />
               <div className="relative z-10 flex flex-col gap-6">
                 <div className="flex items-start gap-6">
@@ -138,14 +142,26 @@ const InfluenceDetails = () => {
                   </div>
                 </div>
                 {metrics.length > 0 && (
-                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 rounded-2xl bg-[var(--card-background)]/70 p-4 ">
-                    {metrics.map((metric) => (
-                      <div key={metric.label} className="text-center">
-                        <div className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--foreground)]/50">
-                          {metric.label}
+                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 rounded-2xl bg-[var(--card-background)]/50 p-4 shadow-inner">
+                    {metrics.map(({ label, value, Icon }) => (
+                      <div
+                        key={label}
+                        className="flex flex-col items-center gap-3 rounded-2xl border border-[var(--border)]/30 bg-[var(--card-background)]/70 p-4 transition-transform duration-300 hover:-translate-y-1"
+                      >
+                        <div
+                          className={`flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br ${
+                            theme === "dark"
+                              ? "from-slate-800/80 to-slate-700/40 text-sky-300"
+                              : "from-[var(--accent)]/20 to-[var(--accent)]/10 text-[var(--foreground)]"
+                          }`}
+                        >
+                          <Icon className="h-5 w-5" />
                         </div>
-                        <div className="mt-2 text-xl font-bold text-[var(--foreground)]">
-                          {metric.value}
+                        <div className="text-xl font-semibold text-[var(--foreground)]">
+                          {value}
+                        </div>
+                        <div className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--foreground)]/60">
+                          {label}
                         </div>
                       </div>
                     ))}
@@ -155,8 +171,9 @@ const InfluenceDetails = () => {
                   onClick={() => navigate(-1)}
                   className="self-start rounded-full px-6 py-3 text-sm uppercase tracking-wide
                     bg-[var(--card-background)]/60 text-[var(--foreground)]
-                    transition border hover:bg-[var(--foreground)] hover:text-[var(--background)]"
+                    transition border flex items-center gap-2 hover:bg-[var(--foreground)] hover:text-[var(--background)]"
                 >
+                  <FiArrowLeft className="h-4 w-4" />
                   Back
                 </button>
               </div>
