@@ -25,6 +25,11 @@ const Services = lazy(() => import("./pages/services/Services"));
 const Contact = lazy(() => import("./pages/contact/Contact"));
 const News = lazy(() => import("./pages/news/News"));
 
+const InfluenceDetails = lazy(() =>
+  import("./pages/workDetails/influenceDetails.jsx").then((module) => ({
+    default: module.default,
+  }))
+);
 // Loading component
 const LoadingSpinner = () => <Loader />;
 
@@ -61,6 +66,10 @@ function App() {
               <Route path="/influencer" element={<Influencer />} />
               <Route path="/details/:id" element={<Details />} />
               <Route path="/service-details/:id" element={<ServiceDetails />} />
+              <Route
+                path="/work/influence/:id"
+                element={<InfluenceDetails />}
+              />
             </Route>
           </Routes>
         </Suspense>

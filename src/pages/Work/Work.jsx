@@ -239,11 +239,7 @@ const Work = () => {
               key={`work-skeleton-${index}`}
               className="rounded-3xl bg-[var(--card-background)] p-6 md:p-8 shadow-inner"
             >
-              <Skeleton
-                active
-                style={{width: "100%"}}
-              
-              />
+              <Skeleton active style={{ width: "100%" }} />
             </div>
           ))}
         </div>
@@ -258,7 +254,14 @@ const Work = () => {
           loading={itemsLoading}
           error={itemsError}
           showEmptyState={showEmptyState}
-          onViewDetails={handleViewDetails}
+          onViewDetails={(detailId) => {
+            if (detailId == null) return;
+            if (activeKey === "influence") {
+              navigate(`/work/influence/${encodeURIComponent(detailId)}`);
+            } else {
+              handleViewDetails(detailId);
+            }
+          }}
           t={t}
         />
       )}
