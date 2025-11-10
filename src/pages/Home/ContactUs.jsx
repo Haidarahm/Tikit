@@ -258,8 +258,7 @@ const ContactUs = memo(({ className = "" }) => {
   // "bg-[#F5F7FB] text-[var(--foreground)] border border-black/5"
   return (
     <div
-      data-scroll-section
-      className={`relative my-5  md:my-10 gap-3.5  overflow-hidden text-[var(--foreground)] ${
+      className={`relative my-5 md:my-10 gap-3.5  overflow-hidden text-[var(--foreground)] ${
         isRtl ? "font-cairo" : "font-hero-light"
       } rounded-[25px] flex flex-col mx-auto py-[40px] md:py-[60px] px-[40px] md:px-[50px]  w-[95vw] bg-[#F5F7FB]  dark:bg-black ${className}`}
       dir={isRtl ? "rtl" : "ltr"}
@@ -289,7 +288,7 @@ const ContactUs = memo(({ className = "" }) => {
             {t("home.contactUs.helpText")}
           </div>
           <div
-            className={`swiper-wrapper w-full border flex ${
+            className={`swiper-wrapper-contact w-full border flex ${
               isRtl ? "flex-row-reverse" : ""
             } relative border-[var(--secondary)]  h-[50px] rounded-full`}
           >
@@ -305,7 +304,7 @@ const ContactUs = memo(({ className = "" }) => {
               }`}
             />
             <div
-              className={`swiper-slide w-1/2 flex justify-center items-center relative z-10 cursor-pointer ${
+              className={`swiper-slide-contact w-1/2 flex justify-center items-center relative z-10 cursor-pointer ${
                 !isSecondSlide
                   ? "text-[var(--background)]"
                   : "text-[var(--foreground)] "
@@ -315,7 +314,7 @@ const ContactUs = memo(({ className = "" }) => {
               {t("home.contactUs.client")}
             </div>
             <div
-              className={`swiper-slide w-1/2 flex justify-center items-center relative z-10 cursor-pointer ${
+              className={`swiper-slide-contact w-1/2 flex justify-center items-center relative z-10 cursor-pointer ${
                 isSecondSlide
                   ? "text-[var(--background)]"
                   : "text-[var(--foreground)] "
