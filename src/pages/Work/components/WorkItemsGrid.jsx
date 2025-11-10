@@ -151,9 +151,20 @@ const WorkItemsGrid = ({
     return () => ctx.revert();
   }, [items, isDigital]);
 
+  const nonDigitalCount = Array.isArray(items) ? items.length : 0;
+  const computedRows = Math.max(1, Math.ceil(nonDigitalCount / 2));
+  const rowClassMap = {
+    1: "md:grid-rows-1",
+    2: "md:grid-rows-2",
+    3: "md:grid-rows-3",
+    4: "md:grid-rows-4",
+  };
+  const rowClass = rowClassMap[computedRows] ?? "md:grid-rows-4";
+  const dynamicHeight = computedRows * 75;
+
   const containerClass = isDigital
     ? "images grid grid-cols-1 gap-6 md:gap-8 p-4 md:px-6"
-    : "images grid grid-cols-1 md:grid-cols-2 grid-rows-4 gap-4 md:h-[300vh] p-4";
+    : `images grid grid-cols-1 md:grid-cols-2 ${rowClass} gap-4 p-4`;
 
   const digitalMetrics = useMemo(
     () =>
@@ -169,7 +180,15 @@ const WorkItemsGrid = ({
   );
 
   return (
-    <div ref={containerRef} className={`${containerClass} relative`}>
+    <div
+      ref={containerRef}
+      className={`${containerClass} relative`}
+      style={
+        !isDigital && nonDigitalCount
+          ? { height: `${dynamicHeight}vh` }
+          : undefined
+      }
+    >
       {error ? (
         <div className="col-span-full text-center text-sm text-red-400">
           {error}
