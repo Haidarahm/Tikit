@@ -1,34 +1,21 @@
-import React, { useEffect, useMemo, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import background from "../../assets/backgrounds/Team.png";
 import { useTheme } from "../../store/ThemeContext";
-import goalImage1 from "../../assets/images/goal-image-1.png";
-import goalImage2 from "../../assets/images/goal-image-2.png";
-import goalImage3 from "../../assets/images/goal-image-3.png";
-import goalImage4 from "../../assets/images/goal-image-4.png";
-import cardImage1 from "../../assets/images/card-1.jpg";
-import cardImage2 from "../../assets/images/card-2.jpg";
-import cardImage3 from "../../assets/images/card-3.jpg";
+import { useTeamStore } from "../../store/teamStore";
 
 const Team = () => {
   const { theme } = useTheme();
-
-  const imageUrls = useMemo(
-    () => [
-      goalImage1,
-      goalImage2,
-      goalImage3,
-      goalImage4,
-      cardImage1,
-     
-    ],
-    []
-  );
+  const { teamMembers, loading, error, loadTeamMembers } = useTeamStore();
 
   const containerRef = useRef(null);
   const rightRef = useRef(null);
   const trackRef = useRef(null);
   const sectionHeightRef = useRef(0);
   const horizontalDistanceRef = useRef(0);
+
+  useEffect(() => {
+    loadTeamMembers();
+  }, [loadTeamMembers]);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -115,7 +102,31 @@ const Team = () => {
       if (rafId) cancelAnimationFrame(rafId);
       window.removeEventListener("resize", compute);
     };
-  }, []);
+  }, [teamMembers]);
+
+  if (loading) {
+    return (
+      <div className="relative overflow-visible md:overflow-hidden mt-[50px] text-white font-hero-light flex items-center justify-center min-h-[50vh]">
+        <p className="text-[var(--foreground)]">Loading team members...</p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="relative overflow-visible md:overflow-hidden mt-[50px] text-white font-hero-light flex items-center justify-center min-h-[50vh]">
+        <p className="text-red-500">Error loading team members: {error}</p>
+      </div>
+    );
+  }
+
+  if (!teamMembers || teamMembers.length === 0) {
+    return (
+      <div className="relative overflow-visible md:overflow-hidden mt-[50px] text-white font-hero-light flex items-center justify-center min-h-[50vh]">
+        <p className="text-[var(--foreground)]">No team members available</p>
+      </div>
+    );
+  }
 
   return (
     <div
@@ -153,20 +164,20 @@ const Team = () => {
             ref={trackRef}
             className="flex flex-col md:flex-row items-center gap-4 md:gap-6 will-change-transform py-0 w-full pr-4"
           >
-            {imageUrls.map((src, index) => (
+            {teamMembers.map((member, index) => (
               <div
-                key={index}
+                key={member.id || index}
                 className="relative w-full md:w-[450px] h-[220px] sm:h-[320px] md:h-[650px] rounded-[10px] shrink-0 overflow-hidden bg-[#111]"
               >
                 <img
-                  src={src}
-                  alt={`team-${index + 1}`}
+                  src={member.image}
+                  alt={member.name || `team-${index + 1}`}
                   className="h-full w-full object-cover select-none"
                   draggable={false}
                 />
                 <div className="details flex flex-col justify-center items-center absolute bottom-12 left-1/2 -translate-x-1/2 bg-black/40 rounded-[10px] w-3/4 h-[120px]">
-                  <div className="name text-[24px]">Haidar Ahmad</div>
-                  <div className="job text-[16px]">Gamer</div>
+                  <div className="name text-[24px]">{member.name || "Team Member"}</div>
+                  <div className="job text-[16px]">{member.role || member.job || "Position"}</div>
                 </div>
               </div>
             ))}
@@ -183,9 +194,9 @@ const Team = () => {
         </div>
 
         <div className="grid grid-cols-1 gap-6 px-4">
-          {imageUrls.map((src, index) => (
+          {teamMembers.map((member, index) => (
             <div
-              key={`mobile-${index}`}
+              key={member.id ? `mobile-${member.id}` : `mobile-${index}`}
               className="relative w-full h-[280px] rounded-[15px] overflow-hidden bg-[#111] shadow-lg loco-reveal-card"
               data-scroll
               data-scroll-class="is-inview"
@@ -195,8 +206,8 @@ const Team = () => {
               }}
             >
               <img
-                src={src}
-                alt={`team-${index + 1}`}
+                src={member.image}
+                alt={member.name || `team-${index + 1}`}
                 className="h-full w-full object-cover select-none"
                 draggable={false}
               />
@@ -204,10 +215,10 @@ const Team = () => {
               <div className="details flex flex-col justify-end items-center absolute bottom-0 left-0 right-0 p-6">
                 <div className="bg-white/10 backdrop-blur-md rounded-[12px] w-full p-4 text-center">
                   <div className="name text-white text-[20px] font-semibold mb-1">
-                    Haidar Ahmad
+                    {member.name || "Team Member"}
                   </div>
                   <div className="job text-white/80 text-[14px] font-light">
-                    Gamer
+                    {member.role || member.job || "Position"}
                   </div>
                 </div>
               </div>
