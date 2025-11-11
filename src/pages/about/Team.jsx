@@ -13,7 +13,6 @@ import {
   FaGlobe,
 } from "react-icons/fa";
 
-
 const Team = () => {
   const { theme } = useTheme();
   const { teamMembers, loading, error, loadTeamMembers } = useTeamStore();
@@ -28,17 +27,14 @@ const Team = () => {
     loadTeamMembers();
   }, [loadTeamMembers]);
 
-  const getSocialIcon = (linkType) => {
-    const icons = {
-      twitter: <FaTwitter />,
-      youtube: <FaYoutube />,
-      snapchat: <FaSnapchat />,
-      pinterest: <FaPinterest />,
-      linkedin: <FaLinkedin />,
-      instagram: <FaInstagram />,
-      website: <FaGlobe />,
-    };
-    return icons[linkType.toLowerCase()] || <FaGlobe />;
+  const iconMap = {
+    linkedin: <FaLinkedin />,
+    twitter: <FaTwitter />,
+    instagram: <FaInstagram />,
+    youtube: <FaYoutube />,
+    snapchat: <FaSnapchat />,
+    pinterest: <FaPinterest />,
+    website: <FaGlobe />,
   };
   useEffect(() => {
     const container = containerRef.current;
@@ -190,18 +186,46 @@ const Team = () => {
             {teamMembers.map((member, index) => (
               <div
                 key={member.id || index}
-                className="relative w-full md:w-[450px] h-[220px] sm:h-[320px] md:h-[650px] rounded-[10px] shrink-0 overflow-hidden bg-[#111]"
+                className="card-container-member relative hover:scale-105 transition-all duration-500 w-full md:w-[450px] h-[220px] sm:h-[320px] md:h-[650px] rounded-[10px] shrink-0 overflow-hidden "
               >
-                
+                <div className="role absolute top-12 left-0">
+                  <h1>{member.type_id}</h1>
+                   </div>
                 <img
                   src={member.image}
                   alt={member.name || `team-${index + 1}`}
-                  className="h-full w-full object-cover select-none"
+                  className="absolute inset-0 w-full h-full object-cover  group-hover:opacity-100 transition-all duration-500"
                   draggable={false}
                 />
-                <div className="details flex flex-col justify-center items-center absolute bottom-12 left-1/2 -translate-x-1/2 bg-black/40 rounded-[10px] w-3/4 h-[120px]">
-                  <div className="name text-[24px]">{member.name || "Team Member"}</div>
-                  <div className="job text-[16px]">{member.specialist}</div>
+
+                <div className="absolute bottom-0 left-0 right-0 flex flex-col items-center justify-end text-center p-5 md:p-8 z-10">
+                  <h3 className="text-white text-2xl md:text-3xl font-semibold tracking-wide">
+                    {member.name}
+                  </h3>
+                  <p className="text-gray-300 text-sm md:text-base mb-4 capitalize">
+                    {member.specialist}
+                  </p>
+
+                  {/* Social Icons */}
+                  <div className="flex items-center justify-center gap-4">
+                    {member.social_links?.length > 0 ? (
+                      member.social_links.map((link, i) => (
+                        <a
+                          key={i}
+                          href={link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-white/80 hover:text-[#00bcd4] text-[22px] transition-all transform hover:scale-125"
+                        >
+                          {iconMap[link.link_type] || <FaGlobe />}
+                        </a>
+                      ))
+                    ) : (
+                      <span className="text-gray-400 text-sm">
+                        No social links
+                      </span>
+                    )}
+                  </div>
                 </div>
               </div>
             ))}
@@ -239,7 +263,7 @@ const Team = () => {
               <div className="details flex flex-col justify-end items-center absolute bottom-0 left-0 right-0 p-6">
                 <div className="bg-white/10 backdrop-blur-md rounded-[12px] w-full p-4 text-center">
                   <div className="name text-white text-[20px] font-semibold mb-1">
-                    {member.name }
+                    {member.name}
                   </div>
                   <div className="job text-white/80 text-[14px] font-light">
                     {member.specialist}
