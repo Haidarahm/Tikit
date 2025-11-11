@@ -19,8 +19,7 @@ const Team = () => {
       goalImage3,
       goalImage4,
       cardImage1,
-      cardImage2,
-      cardImage3,
+     
     ],
     []
   );
