@@ -216,27 +216,29 @@ const InfluenceDetails = () => {
                         </SwiperSlide>
                       ))}
                     </Swiper>
-                    <Swiper
-                      modules={[Thumbs]}
-                      onSwiper={setThumbsSwiper}
-                      watchSlidesProgress
-                      spaceBetween={12}
-                      slidesPerView={Math.min(media.length, 4)}
-                      className="w-full rounded-2xl"
-                    >
-                      {media.map((src, index) => (
-                        <SwiperSlide
-                          key={`thumb-${index}`}
-                          className="cursor-pointer"
-                        >
-                          <img
-                            src={src}
-                            alt={`Thumb ${index + 1}`}
-                            className="h-[70px] w-full rounded-2xl object-cover opacity-80 transition hover:opacity-100"
-                          />
-                        </SwiperSlide>
-                      ))}
-                    </Swiper>
+                    {media.length > 1 && (
+                      <Swiper
+                        modules={[Thumbs]}
+                        onSwiper={setThumbsSwiper}
+                        watchSlidesProgress
+                        spaceBetween={12}
+                        slidesPerView={Math.min(media.length, 4)}
+                        className="w-full rounded-2xl"
+                      >
+                        {media.map((src, index) => (
+                          <SwiperSlide
+                            key={`thumb-${index}`}
+                            className="cursor-pointer"
+                          >
+                            <img
+                              src={src}
+                              alt={`Thumb ${index + 1}`}
+                              className="h-[70px] w-full rounded-2xl object-cover opacity-80 transition hover:opacity-100"
+                            />
+                          </SwiperSlide>
+                        ))}
+                      </Swiper>
+                    )}
                   </>
                 ) : (
                   <div className="rounded-3xl bg-[var(--card-background)]/70 p-10 text-center text-sm text-[var(--foreground)]/60 shadow-inner">

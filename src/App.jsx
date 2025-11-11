@@ -30,6 +30,11 @@ const InfluenceDetails = lazy(() =>
     default: module.default,
   }))
 );
+const SocialDetails = lazy(() =>
+  import("./pages/workDetails/socialDetails.jsx").then((module) => ({
+    default: module.default,
+  }))
+);
 // Loading component
 const LoadingSpinner = () => <Loader />;
 
@@ -70,6 +75,7 @@ function App() {
                 path="/work/influence/:id"
                 element={<InfluenceDetails />}
               />
+              <Route path="/work/social/:id" element={<SocialDetails />} />
             </Route>
           </Routes>
         </Suspense>

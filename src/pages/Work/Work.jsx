@@ -224,6 +224,8 @@ const Work = () => {
             if (detailId == null) return;
             if (activeKey === "influence") {
               navigate(`/work/influence/${encodeURIComponent(detailId)}`);
+            } else if (activeKey === "social") {
+              navigate(`/work/social/${encodeURIComponent(detailId)}`);
             } else {
               handleViewDetails(detailId);
             }
