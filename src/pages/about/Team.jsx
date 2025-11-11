@@ -2,6 +2,17 @@ import React, { useEffect, useRef } from "react";
 import background from "../../assets/backgrounds/Team.png";
 import { useTheme } from "../../store/ThemeContext";
 import { useTeamStore } from "../../store/teamStore";
+import {
+  FaTwitter,
+  FaYoutube,
+  FaSnapchat,
+  FaFacebookF,
+  FaPinterest,
+  FaLinkedin,
+  FaInstagram,
+  FaGlobe,
+} from "react-icons/fa";
+
 
 const Team = () => {
   const { theme } = useTheme();
@@ -17,6 +28,18 @@ const Team = () => {
     loadTeamMembers();
   }, [loadTeamMembers]);
 
+  const getSocialIcon = (linkType) => {
+    const icons = {
+      twitter: <FaTwitter />,
+      youtube: <FaYoutube />,
+      snapchat: <FaSnapchat />,
+      pinterest: <FaPinterest />,
+      linkedin: <FaLinkedin />,
+      instagram: <FaInstagram />,
+      website: <FaGlobe />,
+    };
+    return icons[linkType.toLowerCase()] || <FaGlobe />;
+  };
   useEffect(() => {
     const container = containerRef.current;
     const right = rightRef.current;
@@ -169,6 +192,7 @@ const Team = () => {
                 key={member.id || index}
                 className="relative w-full md:w-[450px] h-[220px] sm:h-[320px] md:h-[650px] rounded-[10px] shrink-0 overflow-hidden bg-[#111]"
               >
+                
                 <img
                   src={member.image}
                   alt={member.name || `team-${index + 1}`}
@@ -177,7 +201,7 @@ const Team = () => {
                 />
                 <div className="details flex flex-col justify-center items-center absolute bottom-12 left-1/2 -translate-x-1/2 bg-black/40 rounded-[10px] w-3/4 h-[120px]">
                   <div className="name text-[24px]">{member.name || "Team Member"}</div>
-                  <div className="job text-[16px]">{member.role || member.job || "Position"}</div>
+                  <div className="job text-[16px]">{member.specialist}</div>
                 </div>
               </div>
             ))}
@@ -215,10 +239,10 @@ const Team = () => {
               <div className="details flex flex-col justify-end items-center absolute bottom-0 left-0 right-0 p-6">
                 <div className="bg-white/10 backdrop-blur-md rounded-[12px] w-full p-4 text-center">
                   <div className="name text-white text-[20px] font-semibold mb-1">
-                    {member.name || "Team Member"}
+                    {member.name }
                   </div>
                   <div className="job text-white/80 text-[14px] font-light">
-                    {member.role || member.job || "Position"}
+                    {member.specialist}
                   </div>
                 </div>
               </div>
