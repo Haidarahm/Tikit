@@ -189,7 +189,7 @@ const Team = () => {
                 className="card-container-member relative hover:scale-105 transition-all duration-500 w-full md:w-[450px] h-[220px] sm:h-[320px] md:h-[650px] rounded-[10px] shrink-0 overflow-hidden "
               >
                 <div className="role absolute top-12 left-0">
-                  <h1>{member.type_id}</h1>
+                  <h1>{member.type}</h1>
                    </div>
                 <img
                   src={member.image}
