@@ -42,10 +42,20 @@ const SocialDetails = () => {
   }, [id, language, loadSocialDetail, resetCategory]);
 
   const itemData = social.item;
-  const media = social.media || [];
+  const media = useMemo(() => {
+    if (Array.isArray(social.media) && social.media.length > 0) {
+      return social.media;
+    }
+    if (Array.isArray(itemData?.media)) {
+      return itemData.media;
+    }
+    return [];
+  }, [social.media, itemData]);
 
   const title = useMemo(() => {
     if (!itemData) return "";
+    if (itemData.title) return itemData.title;
+
     if (language === "ar")
       return itemData.title_ar ?? itemData.title_en ?? itemData.title_fr;
     if (language === "fr")
@@ -55,35 +65,16 @@ const SocialDetails = () => {
 
   const objective = useMemo(() => {
     if (!itemData) return "";
-    if (language === "ar")
-      return (
-        itemData.objective_ar ?? itemData.objective_en ?? itemData.objective_fr
-      );
-    if (language === "fr")
-      return (
-        itemData.objective_fr ?? itemData.objective_en ?? itemData.objective_ar
-      );
-    return (
-      itemData.objective_en ??
-      itemData.objective_ar ??
-      itemData.objective_fr ??
-      ""
-    );
+    if (itemData.objective) return itemData.objective;
+     
+    
   }, [itemData, language]);
 
   const approach = useMemo(() => {
     if (!itemData) return "";
-    if (language === "ar")
-      return (
-        itemData.approach_ar ?? itemData.approach_en ?? itemData.approach_fr
-      );
-    if (language === "fr")
-      return (
-        itemData.approach_fr ?? itemData.approach_en ?? itemData.approach_ar
-      );
-    return (
-      itemData.approach_en ?? itemData.approach_ar ?? itemData.approach_fr ?? ""
-    );
+
+    if (itemData.approach) return itemData.approach;
+   
   }, [itemData, language]);
 
   const metrics = useMemo(() => {

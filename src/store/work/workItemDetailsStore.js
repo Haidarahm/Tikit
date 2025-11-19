@@ -20,10 +20,10 @@ const CATEGORY_CONFIG = {
   influence: {
     fetcher: fetchWorkInfluence,
     transform: (response) => {
-      const payload = response?.data ?? {};
+      const payload = response ?? {};
       return {
         item: payload?.data ?? null,
-        media: Array.isArray(payload?.media) ? payload.media : [],
+        media: Array.isArray(payload?.data.media) ? payload.data.media : [],
         raw: response,
         message: response?.message ?? null,
       };
@@ -33,12 +33,12 @@ const CATEGORY_CONFIG = {
   social: {
     fetcher: fetchWorkSocial,
     transform: (response) => {
-      console.log(response);
-      const payload = response ?? {};
-      
+      const payload = response?.data ?? {};
+      const media = Array.isArray(payload?.media) ? payload.media : [];
+
       return {
-        item: payload?.data ?? null,
-        media: Array.isArray(payload?.data.media) ? payload.data.media : [],
+        item: payload ?? null,
+        media,
         raw: response,
         message: response?.message ?? null,
       };
