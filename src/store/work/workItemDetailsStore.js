@@ -22,7 +22,7 @@ const CATEGORY_CONFIG = {
     transform: (response) => {
       const payload = response?.data ?? {};
       return {
-        item: payload?.influence ?? null,
+        item: payload?.data ?? null,
         media: Array.isArray(payload?.media) ? payload.media : [],
         raw: response,
         message: response?.message ?? null,
@@ -33,10 +33,12 @@ const CATEGORY_CONFIG = {
   social: {
     fetcher: fetchWorkSocial,
     transform: (response) => {
-      const payload = response?.data ?? {};
+      console.log(response);
+      const payload = response ?? {};
+      
       return {
-        item: payload?.social ?? null,
-        media: Array.isArray(payload?.media) ? payload.media : [],
+        item: payload?.data ?? null,
+        media: Array.isArray(payload?.data.media) ? payload.data.media : [],
         raw: response,
         message: response?.message ?? null,
       };
