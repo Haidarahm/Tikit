@@ -148,7 +148,20 @@
         "specialTitle": "what makes us special",
         "specialDescription": "We take a similar approach to design commercial we do impactfully approache, over the flowchart of user friendly wireframe.",
         "viewWork": "View Work",
-        "noWorks": "No works found."
+        "noWorks": "No works found.",
+        "details": {
+            "influence": {
+                "title": "Influence Detail",
+                "campaign": "Influence campaign",
+                "back": "Back",
+                "reach": "Reach",
+                "views": "Views",
+                "engagementRate": "Engagement Rate",
+                "objective": "Objective",
+                "noMedia": "No media available for this work item.",
+                "notAvailable": "Influence details not available."
+            }
+        }
     },
     "about": {
         "title": "About",

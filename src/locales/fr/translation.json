@@ -148,7 +148,20 @@
         "specialTitle": "ce qui nous rend spéciaux",
         "specialDescription": "Nous adoptons une approche similaire pour concevoir commercial que nous faisons de manière impactante, via le flux de travail de maquette conviviale.",
         "viewWork": "Voir le travail",
-        "noWorks": "Aucun travail trouvé."
+        "noWorks": "Aucun travail trouvé.",
+        "details": {
+            "influence": {
+                "title": "Détail d'Influence",
+                "campaign": "Campagne d'influence",
+                "back": "Retour",
+                "reach": "Portée",
+                "views": "Vues",
+                "engagementRate": "Taux d'Engagement",
+                "objective": "Objectif",
+                "noMedia": "Aucun média disponible pour ce travail.",
+                "notAvailable": "Détails d'influence non disponibles."
+            }
+        }
     },
     "about": {
         "title": "À propos",

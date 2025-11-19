@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Skeleton } from "antd";
+import { useTranslation } from "react-i18next";
 import { useWorkItemDetailsStore } from "../../store/work/workItemDetailsStore";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
 import { useTheme } from "../../store/ThemeContext.jsx";
@@ -19,6 +20,7 @@ const InfluenceDetails = () => {
   const navigate = useNavigate();
   const { language, isRtl } = useI18nLanguage();
   const { theme } = useTheme();
+  const { t } = useTranslation();
   const influence = useWorkItemDetailsStore((state) => state.influence);
   const loadInfluenceDetail = useWorkItemDetailsStore(
     (state) => state.loadInfluenceDetail
@@ -42,37 +44,29 @@ const InfluenceDetails = () => {
 
   const title = useMemo(() => {
     if (!itemData) return "";
-    if (language === "ar") return itemData.title_ar ?? itemData.title_en;
-    if (language === "fr") return itemData.title_fr ?? itemData.title_en;
-    return itemData.title_en ?? itemData.title_ar ?? itemData.title_fr;
+    if (itemData?.title) return itemData.title;
   }, [itemData, language]);
 
   const objective = useMemo(() => {
-    if (!itemData) return "";
-    if (language === "ar")
-      return itemData.objective_ar ?? itemData.objective_en;
-    if (language === "fr")
-      return itemData.objective_fr ?? itemData.objective_en;
-    return (
-      itemData.objective_en ?? itemData.objective_ar ?? itemData.objective_fr
-    );
+    console.log(itemData);
+    if (itemData?.objective) return itemData.objective;
   }, [itemData, language]);
 
   const metrics = useMemo(() => {
     if (!itemData) return [];
     return [
       {
-        label: "Reach",
+        label: t("work.details.influence.reach"),
         value: itemData.reach ? itemData.reach.toLocaleString() : null,
         Icon: FiUsers,
       },
       {
-        label: "Views",
+        label: t("work.details.influence.views"),
         value: itemData.views ? itemData.views.toLocaleString() : null,
         Icon: FiEye,
       },
       {
-        label: "Engagement Rate",
+        label: t("work.details.influence.engagementRate"),
         value:
           itemData.engagement_rate != null
             ? `${parseFloat(itemData.engagement_rate).toFixed(2)}%`
@@ -80,7 +74,7 @@ const InfluenceDetails = () => {
         Icon: FiActivity,
       },
     ].filter((metric) => metric.value != null);
-  }, [itemData]);
+  }, [itemData, t]);
 
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
@@ -91,7 +85,11 @@ const InfluenceDetails = () => {
       }`}
     >
       <SEOHead
-        title={title ? `${title} | Influence Detail` : "Influence Detail"}
+        title={
+          title
+            ? `${title} | ${t("work.details.influence.title")}`
+            : t("work.details.influence.title")
+        }
         description={objective ?? ""}
         canonicalUrl={`/work/influence/${id}`}
       />
@@ -101,7 +99,7 @@ const InfluenceDetails = () => {
           {[0, 1, 2, 3].map((index) => (
             <div
               key={`influence-skeleton-${index}`}
-              className="h-[260px] rounded-3xl bg-[var(--card-background)]/80 p-6"
+              className="h-[260px] rounded-3xl bg-[var(--container-bg)]/80 p-6"
             >
               <Skeleton.Node active className="w-full h-full" />
             </div>
@@ -111,71 +109,77 @@ const InfluenceDetails = () => {
         <div className="px-4 md:px-10 pb-20 pt-28">
           <div className="space-y-12">
             {/* Header Card with Title, Logo, and Metrics */}
-            <div className="relative overflow-hidden dark:border dark:border-white/40 rounded-3xl bg-[var(--card-background)] p-8 md:p-10 shadow-2xl backdrop-blur">
-              <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent)]/5 via-transparent to-[var(--accent)]/10" />
-              <div className="relative z-10 flex flex-col gap-6">
-                <div className="flex items-start gap-6">
-                  {itemData.logo && (
-                    <div className="flex h-20 w-20 items-center justify-center overflow-hidden rounded-full border border-[var(--border)] bg-[var(--card-background)]/70 p-2 shadow-lg">
-                      <img
-                        src={itemData.logo}
-                        alt={title}
-                        className="h-full w-full object-contain"
-                      />
+            <div className="relative overflow-hidden rounded-[32px] border border-[var(--foreground)]/10 bg-[var(--background)] p-8 md:p-10 shadow-xl">
+              <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute -top-32 right-0 h-64 w-64 rounded-full bg-[var(--secondary)]/20 blur-3xl" />
+                <div className="absolute -bottom-24 left-10 h-48 w-48 rounded-full bg-[var(--secondary)]/15 blur-3xl" />
+              </div>
+              <div className="relative z-10 flex flex-col gap-8">
+                <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+                  <div className="flex flex-1 items-start gap-5">
+                    {itemData.logo && (
+                      <div className="flex h-20 w-20 items-center justify-center rounded-2xl border border-[var(--foreground)]/10 bg-[var(--background)]/50 p-2 shadow-lg">
+                        <img
+                          src={itemData.logo}
+                          alt={title}
+                          className="h-full w-full object-contain"
+                        />
+                      </div>
+                    )}
+                    <div className="space-y-3">
+                      <p className="text-xs uppercase tracking-[0.5em] text-[var(--foreground)]/60">
+                        {t("work.details.influence.campaign")}
+                      </p>
+                      <GradientText
+                        colors={
+                          theme === "dark"
+                            ? ["#07D9F5", "#06AEC4", "#4E7CC6"]
+                            : isRtl
+                            ? ["#FB8DEF", "#CE88C6", "#4E7CC6"]
+                            : ["#52C3C5", "#5269C5", "#52A0C5"]
+                        }
+                        animationSpeed={6}
+                        showBorder={false}
+                        className="text-[32px] md:text-[48px] font-bold leading-tight"
+                      >
+                        {title}
+                      </GradientText>
                     </div>
-                  )}
-                  <div className="space-y-4 flex-1">
-                    <GradientText
-                      colors={
-                        theme === "dark"
-                          ? ["#07D9F5", "#06AEC4", "#4E7CC6"]
-                          : isRtl
-                          ? ["#FB8DEF", "#CE88C6", "#4E7CC6"]
-                          : ["#52C3C5", "#5269C5", "#52A0C5"]
-                      }
-                      animationSpeed={6}
-                      showBorder={false}
-                      className="text-[30px] md:text-[44px] font-bold leading-tight"
-                    >
-                      {title}
-                    </GradientText>
                   </div>
+
+                  <button
+                    onClick={() => navigate(-1)}
+                    className="inline-flex items-center gap-2 rounded-full border border-[var(--foreground)]/10 bg-[var(--container-bg)] px-6 py-3 text-xs font-semibold uppercase tracking-[0.3em] text-[var(--foreground)] transition hover:bg-[var(--foreground)] hover:text-[var(--background)]"
+                  >
+                    <FiArrowLeft className="h-4 w-4" />
+                    {t("work.details.influence.back")}
+                  </button>
                 </div>
+
                 {metrics.length > 0 && (
-                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 rounded-2xl bg-[var(--card-background)]/50 p-4 shadow-inner">
+                  <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                     {metrics.map(({ label, value, Icon }) => (
                       <div
                         key={label}
-                        className="flex flex-col items-center gap-3 rounded-2xl border border-[var(--border)]/30 bg-[var(--card-background)]/70 p-4 transition-transform duration-300 hover:-translate-y-1"
+                        className="relative overflow-hidden rounded-2xl border border-[var(--foreground)]/10 bg-[var(--container-bg)]/50 p-4 backdrop-blur-sm shadow-inner"
                       >
-                        <div
-                          className={`flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br ${
-                            theme === "dark"
-                              ? "from-slate-800/80 to-slate-700/40 text-sky-300"
-                              : "from-[var(--accent)]/20 to-[var(--accent)]/10 text-[var(--foreground)]"
-                          }`}
-                        >
-                          <Icon className="h-5 w-5" />
-                        </div>
-                        <div className="text-xl font-semibold text-[var(--foreground)]">
-                          {value}
-                        </div>
-                        <div className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--foreground)]/60">
-                          {label}
+                        <div className="relative flex items-center gap-3">
+                          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[var(--secondary)]/40 text-[var(--background)]">
+                            <Icon className="h-5 w-5" />
+                          </div>
+                          <div>
+                            <p className="text-xs uppercase tracking-[0.4em] text-[var(--foreground)]/60">
+                              {label}
+                            </p>
+                            <p className="text-xl font-semibold text-[var(--foreground)]">
+                              {value}
+                            </p>
+                          </div>
                         </div>
                       </div>
                     ))}
                   </div>
                 )}
-                <button
-                  onClick={() => navigate(-1)}
-                  className="self-start rounded-full px-6 py-3 text-sm uppercase tracking-wide
-                    bg-[var(--card-background)]/60 text-[var(--foreground)]
-                    transition border flex items-center gap-2 hover:bg-[var(--foreground)] hover:text-[var(--background)]"
-                >
-                  <FiArrowLeft className="h-4 w-4" />
-                  Back
-                </button>
               </div>
             </div>
 
@@ -199,19 +203,13 @@ const InfluenceDetails = () => {
                     >
                       {media.map((src, index) => (
                         <SwiperSlide key={`${src}-${index}`}>
-                          <div className="group relative overflow-hidden rounded-3xl bg-[var(--card-background)]">
+                          <div className="group relative overflow-hidden rounded-[28px] border border-[var(--foreground)]/10 bg-[var(--container-bg)]/60 shadow-2xl">
                             <img
                               src={src}
                               alt={`${title} media ${index + 1}`}
                               className="h-full w-full max-h-[380px] object-cover transition-transform duration-700 group-hover:scale-105"
                             />
-                            <div
-                              className={`absolute inset-0 transition-opacity duration-300 group-hover:opacity-100 ${
-                                theme === "dark"
-                                  ? "bg-gradient-to-t from-black/25 via-black/10 to-transparent"
-                                  : "bg-gradient-to-t from-black/45 via-black/10 to-transparent"
-                              }`}
-                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)]/60 via-[var(--background)]/10 to-transparent transition-opacity duration-300 group-hover:opacity-100" />
                           </div>
                         </SwiperSlide>
                       ))}
@@ -233,7 +231,7 @@ const InfluenceDetails = () => {
                             <img
                               src={src}
                               alt={`Thumb ${index + 1}`}
-                              className="h-[70px] w-full rounded-2xl object-cover opacity-80 transition hover:opacity-100"
+                              className="h-[70px] w-full rounded-2xl object-cover opacity-80 transition border border-[var(--foreground)]/10 bg-[var(--container-bg)]/70 hover:opacity-100"
                             />
                           </SwiperSlide>
                         ))}
@@ -241,21 +239,23 @@ const InfluenceDetails = () => {
                     )}
                   </>
                 ) : (
-                  <div className="rounded-3xl bg-[var(--card-background)]/70 p-10 text-center text-sm text-[var(--foreground)]/60 shadow-inner">
-                    No media available for this work item.
+                  <div className="rounded-3xl bg-[var(--container-bg)]/70 p-10 text-center text-sm text-[var(--foreground)]/60 shadow-inner">
+                    {t("work.details.influence.noMedia")}
                   </div>
                 )}
               </div>
 
               {/* Objective Column */}
               {objective && (
-                <div className="rounded-3xl dark:border dark:border-white bg-[var(--card-background)]/85 p-8 md:p-10 shadow-xl">
-                  <h2 className="text-sm font-semibold uppercase tracking-[0.4em] text-[var(--foreground)]/50">
-                    Objective
-                  </h2>
-                  <p className="mt-4 text-base leading-relaxed md:text-lg text-[var(--foreground)]/75">
-                    {objective}
-                  </p>
+                <div className="relative overflow-hidden rounded-[28px] border border-[var(--foreground)]/10 bg-[var(--container-bg)] p-8 md:p-10 shadow-xl">
+                  <div className="relative space-y-4">
+                    <h2 className="text-xs font-semibold uppercase tracking-[0.6em] text-[var(--foreground)]/60">
+                      {t("work.details.influence.objective")}
+                    </h2>
+                    <p className="text-base leading-relaxed md:text-lg text-[var(--foreground)]">
+                      {objective}
+                    </p>
+                  </div>
                 </div>
               )}
             </div>
@@ -264,7 +264,7 @@ const InfluenceDetails = () => {
       ) : (
         <div className="flex flex-1 items-center justify-center py-24">
           <div className="text-center text-sm text-red-400">
-            {influence.error ?? "Influence details not available."}
+            {influence.error ?? t("work.details.influence.notAvailable")}
           </div>
         </div>
       )}

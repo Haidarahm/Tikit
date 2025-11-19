@@ -23,10 +23,9 @@ const getFirstMediaUrl = (media) => {
 const normalizeItem = (item, type, fallbackImage) => {
   switch (type) {
     case "influence": {
-      const data = item?.influence ?? {};
+      const data = item ?? {};
       return {
         title: data?.title ?? "",
-        subtitle: data?.objective ?? "",
         image:
           getFirstMediaUrl(item?.media) ??
           extractMediaUrl(data?.logo) ??
@@ -36,10 +35,10 @@ const normalizeItem = (item, type, fallbackImage) => {
       };
     }
     case "social": {
-      const data = item?.social ?? {};
+      const data = item ?? {};
       return {
         title: data?.title ?? "",
-        subtitle: data?.objective ?? "",
+        
         image:
           getFirstMediaUrl(item?.media) ??
           extractMediaUrl(data?.logo) ??
@@ -215,14 +214,10 @@ const WorkItemsGrid = ({
                       </div>
                     ) : null}
                     <div>
-                      <h3 className="text-[22px] md:text-[26px] font-semibold text-[var(--foreground)]">
+                      <h3 className="text-[22px]  md:text-[26px] font-semibold text-[var(--foreground)]">
                         {data?.title ?? t("work.viewWork")}
                       </h3>
-                      {data?.objective ? (
-                        <p className="mt-1 text-sm text-[var(--foreground)]/70">
-                          {data.objective}
-                        </p>
-                      ) : null}
+                     
                     </div>
                   </div>
                   <button
@@ -293,7 +288,7 @@ const WorkItemsGrid = ({
                       </p>
                     ) : null}
                     <button
-                      className="rounded-full border border-white bg-transparent px-4 py-2 text-white transition hover:bg-white hover:text-black"
+                      className="rounded-full border mt-4 border-white bg-transparent px-4 py-2 text-white transition hover:bg-white hover:text-black"
                       onClick={() => onViewDetails(normalized.detailId)}
                     >
                       {t("work.viewWork")}
