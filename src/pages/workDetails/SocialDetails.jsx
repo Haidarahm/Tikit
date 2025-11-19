@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Skeleton } from "antd";
+import { useTranslation } from "react-i18next";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Thumbs } from "swiper/modules";
 import "swiper/css";
@@ -20,6 +21,7 @@ const SocialDetails = () => {
   const navigate = useNavigate();
   const { language, isRtl } = useI18nLanguage();
   const { theme } = useTheme();
+  const { t } = useTranslation();
 
   const social = useWorkItemDetailsStore((state) => state.social);
   const loadSocialDetail = useWorkItemDetailsStore(
@@ -66,22 +68,19 @@ const SocialDetails = () => {
   const objective = useMemo(() => {
     if (!itemData) return "";
     if (itemData.objective) return itemData.objective;
-     
-    
   }, [itemData, language]);
 
   const approach = useMemo(() => {
     if (!itemData) return "";
 
     if (itemData.approach) return itemData.approach;
-   
   }, [itemData, language]);
 
   const metrics = useMemo(() => {
     if (!itemData) return [];
     return [
       {
-        label: "Follower Growth",
+        label: t("work.details.social.followerGrowth"),
         value:
           itemData.follower_growth != null
             ? `${itemData.follower_growth}%`
@@ -89,7 +88,7 @@ const SocialDetails = () => {
         Icon: FiTrendingUp,
       },
       {
-        label: "Engagement Rate",
+        label: t("work.details.social.engagementRate"),
         value:
           itemData.engagement_rate != null
             ? `${parseFloat(itemData.engagement_rate).toFixed(2)}%`
@@ -97,14 +96,14 @@ const SocialDetails = () => {
         Icon: FiActivity,
       },
       {
-        label: "Total Audience",
+        label: t("work.details.social.totalAudience"),
         value: itemData.audience_size
           ? itemData.audience_size.toLocaleString()
           : null,
         Icon: FiUsers,
       },
     ].filter((metric) => metric.value != null);
-  }, [itemData]);
+  }, [itemData, t]);
 
   return (
     <div
@@ -113,7 +112,11 @@ const SocialDetails = () => {
       }`}
     >
       <SEOHead
-        title={title ? `${title} | Social Detail` : "Social Detail"}
+        title={
+          title
+            ? `${title} | ${t("work.details.social.title")}`
+            : t("work.details.social.title")
+        }
         description={objective ?? ""}
         canonicalUrl={`/work/social/${id}`}
       />
@@ -123,7 +126,7 @@ const SocialDetails = () => {
           {[0, 1, 2, 3].map((index) => (
             <div
               key={`social-skeleton-${index}`}
-              className="h-[260px] rounded-3xl bg-[var(--card-background)]/80 p-6"
+              className="h-[260px] rounded-3xl bg-[var(--container-bg)]/80 p-6"
             >
               <Skeleton.Node active className="w-full h-full" />
             </div>
@@ -132,15 +135,17 @@ const SocialDetails = () => {
       ) : itemData ? (
         <div className="px-4 md:px-10 pb-20 pt-28">
           <div className="space-y-12">
-            {/* Header Card with Title, Logo, Metrics, and Back Button */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
-              {/* Title and Logo Card */}
-              <div className="lg:col-span-2 relative overflow-hidden dark:border dark:border-white/40 rounded-3xl bg-[var(--card-background)] p-8 md:p-10 shadow-2xl backdrop-blur">
-                <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent)]/5 via-transparent to-[var(--accent)]/10" />
-                <div className="relative z-10 flex flex-col gap-6">
-                  <div className="flex items-start gap-6">
+            {/* Header Card with Title, Logo, and Metrics */}
+            <div className="relative overflow-hidden rounded-[32px] border border-[var(--foreground)]/10 bg-[var(--background)] p-8 md:p-10 shadow-xl">
+              <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute -top-32 right-0 h-64 w-64 rounded-full bg-[var(--secondary)]/20 blur-3xl" />
+                <div className="absolute -bottom-24 left-10 h-48 w-48 rounded-full bg-[var(--secondary)]/15 blur-3xl" />
+              </div>
+              <div className="relative z-10 flex flex-col gap-8">
+                <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+                  <div className="flex flex-1 items-start gap-5">
                     {itemData.logo && (
-                      <div className="flex h-20 w-20 items-center justify-center overflow-hidden rounded-full border border-[var(--border)] bg-[var(--card-background)]/70 p-2 shadow-lg">
+                      <div className="flex h-20 w-20 items-center justify-center rounded-2xl border border-[var(--foreground)]/10 bg-[var(--background)]/50 p-2 shadow-lg">
                         <img
                           src={itemData.logo}
                           alt={title}
@@ -148,7 +153,10 @@ const SocialDetails = () => {
                         />
                       </div>
                     )}
-                    <div className="space-y-4 flex-1">
+                    <div className="space-y-3">
+                      <p className="text-xs uppercase tracking-[0.5em] text-[var(--foreground)]/60">
+                        {t("work.details.social.campaign")}
+                      </p>
                       <GradientText
                         colors={
                           theme === "dark"
@@ -159,7 +167,7 @@ const SocialDetails = () => {
                         }
                         animationSpeed={6}
                         showBorder={false}
-                        className="text-[30px] md:text-[44px] font-bold leading-tight"
+                        className="text-[32px] md:text-[48px] font-bold leading-tight"
                       >
                         {title}
                       </GradientText>
@@ -168,54 +176,44 @@ const SocialDetails = () => {
 
                   <button
                     onClick={() => navigate(-1)}
-                    className="self-start rounded-full px-6 py-3 text-sm uppercase tracking-wide
-                      bg-[var(--card-background)]/60 text-[var(--foreground)]
-                      transition border flex items-center gap-2 hover:bg-[var(--foreground)] hover:text-[var(--background)]"
+                    className="inline-flex items-center gap-2 rounded-full border border-[var(--foreground)]/10 bg-[var(--container-bg)] px-6 py-3 text-xs font-semibold uppercase tracking-[0.3em] text-[var(--foreground)] transition hover:bg-[var(--foreground)] hover:text-[var(--background)]"
                   >
                     <FiArrowLeft className="h-4 w-4" />
-                    Back
+                    {t("work.details.social.back")}
                   </button>
                 </div>
-              </div>
 
-              {/* Metrics Card */}
-              {metrics.length > 0 && (
-                <div className="relative overflow-hidden dark:border dark:border-white/40 rounded-3xl bg-[var(--card-background)] p-6 md:p-8 shadow-2xl backdrop-blur">
-                  <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent)]/5 via-transparent to-[var(--accent)]/10" />
-                  <div className="relative z-10 flex flex-col gap-4 h-full justify-center">
+                {metrics.length > 0 && (
+                  <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                     {metrics.map(({ label, value, Icon }) => (
                       <div
                         key={label}
-                        className="flex items-center gap-4 rounded-2xl border border-[var(--border)]/30 bg-[var(--card-background)]/70 p-4 transition-transform duration-300 hover:translate-x-1"
+                        className="relative overflow-hidden rounded-2xl border border-[var(--foreground)]/10 bg-[var(--container-bg)]/50 p-4 backdrop-blur-sm shadow-inner"
                       >
-                        <div
-                          className={`flex h-12 w-12 items-center justify-center flex-shrink-0 rounded-full bg-gradient-to-br ${
-                            theme === "dark"
-                              ? "from-slate-800/80 to-slate-700/40 text-sky-300"
-                              : "from-[var(--accent)]/20 to-[var(--accent)]/10 text-[var(--foreground)]"
-                          }`}
-                        >
-                          <Icon className="h-5 w-5" />
-                        </div>
-                        <div className="flex flex-col">
-                          <div className="text-xl font-semibold text-[var(--foreground)]">
-                            {value}
+                        <div className="relative flex items-center gap-3">
+                          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[var(--secondary)]/40 text-[var(--background)]">
+                            <Icon className="h-5 w-5" />
                           </div>
-                          <div className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--foreground)]/60">
-                            {label}
+                          <div>
+                            <p className="text-xs uppercase tracking-[0.4em] text-[var(--foreground)]/60">
+                              {label}
+                            </p>
+                            <p className="text-xl font-semibold text-[var(--foreground)]">
+                              {value}
+                            </p>
                           </div>
                         </div>
                       </div>
                     ))}
                   </div>
-                </div>
-              )}
+                )}
+              </div>
             </div>
 
             {/* Two Column Layout - Media and Text Content */}
-            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-16">
+            <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
               {/* Media Column */}
-              <div className="space-y-4 order-2 lg:order-1">
+              <div className="space-y-4">
                 {media.length > 0 ? (
                   <>
                     <Swiper
@@ -232,19 +230,13 @@ const SocialDetails = () => {
                     >
                       {media.map((src, index) => (
                         <SwiperSlide key={`${src}-${index}`}>
-                          <div className="group relative overflow-hidden rounded-3xl bg-[var(--card-background)]">
+                          <div className="group relative overflow-hidden rounded-[28px] border border-[var(--foreground)]/10 bg-[var(--container-bg)]/60 shadow-2xl">
                             <img
                               src={src}
                               alt={`${title} media ${index + 1}`}
-                              className="h-full w-full max-h-[280px] md:max-h-[380px] object-cover transition-transform duration-700 group-hover:scale-105"
+                              className="h-full w-full max-h-[380px] object-cover transition-transform duration-700 group-hover:scale-105"
                             />
-                            <div
-                              className={`absolute inset-0 transition-opacity duration-300 group-hover:opacity-100 ${
-                                theme === "dark"
-                                  ? "bg-gradient-to-t from-black/25 via-black/10 to-transparent"
-                                  : "bg-gradient-to-t from-black/45 via-black/10 to-transparent"
-                              }`}
-                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)]/60 via-[var(--background)]/10 to-transparent transition-opacity duration-300 group-hover:opacity-100" />
                           </div>
                         </SwiperSlide>
                       ))}
@@ -254,14 +246,8 @@ const SocialDetails = () => {
                         modules={[Thumbs]}
                         onSwiper={setThumbsSwiper}
                         watchSlidesProgress
-                        spaceBetween={8}
-                        slidesPerView={Math.min(media.length, 3)}
-                        breakpoints={{
-                          640: {
-                            slidesPerView: Math.min(media.length, 4),
-                            spaceBetween: 12,
-                          },
-                        }}
+                        spaceBetween={12}
+                        slidesPerView={Math.min(media.length, 4)}
                         className="w-full rounded-2xl"
                       >
                         {media.map((src, index) => (
@@ -272,7 +258,7 @@ const SocialDetails = () => {
                             <img
                               src={src}
                               alt={`Thumb ${index + 1}`}
-                              className="h-[60px] sm:h-[70px] w-full rounded-2xl object-cover opacity-80 transition hover:opacity-100"
+                              className="h-[70px] w-full rounded-2xl object-cover opacity-80 transition border border-[var(--foreground)]/10 bg-[var(--container-bg)]/70 hover:opacity-100"
                             />
                           </SwiperSlide>
                         ))}
@@ -280,33 +266,37 @@ const SocialDetails = () => {
                     )}
                   </>
                 ) : (
-                  <div className="rounded-3xl bg-[var(--card-background)]/70 p-10 text-center text-sm text-[var(--foreground)]/60 shadow-inner">
-                    No media available for this work item.
+                  <div className="rounded-3xl bg-[var(--container-bg)]/70 p-10 text-center text-sm text-[var(--foreground)]/60 shadow-inner">
+                    {t("work.details.social.noMedia")}
                   </div>
                 )}
               </div>
 
               {/* Text Content Column */}
-              <div className="space-y-8 order-1 lg:order-2">
+              <div className="space-y-8">
                 {objective && (
-                  <div className="rounded-3xl dark:border dark:border-white/40 bg-[var(--card-background)]/85 p-6 md:p-8 lg:p-10 shadow-xl">
-                    <h2 className="flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.4em] text-[var(--foreground)]/50">
-                      Objective
-                    </h2>
-                    <p className="mt-4 text-base leading-relaxed md:text-lg text-[var(--foreground)]/75">
-                      {objective}
-                    </p>
+                  <div className="relative overflow-hidden rounded-[28px] border border-[var(--foreground)]/10 bg-[var(--container-bg)] p-8 md:p-10 shadow-xl">
+                    <div className="relative space-y-4">
+                      <h2 className="text-xs font-semibold uppercase tracking-[0.6em] text-[var(--foreground)]/60">
+                        {t("work.details.social.objective")}
+                      </h2>
+                      <p className="text-base leading-relaxed md:text-lg text-[var(--foreground)]">
+                        {objective}
+                      </p>
+                    </div>
                   </div>
                 )}
 
                 {approach && (
-                  <div className="rounded-3xl dark:border dark:border-white/40 bg-[var(--card-background)]/85 p-6 md:p-8 lg:p-10 shadow-xl">
-                    <h2 className="flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.4em] text-[var(--foreground)]/50">
-                      Approach
-                    </h2>
-                    <p className="mt-4 text-base leading-relaxed md:text-lg text-[var(--foreground)]/75">
-                      {approach}
-                    </p>
+                  <div className="relative overflow-hidden rounded-[28px] border border-[var(--foreground)]/10 bg-[var(--container-bg)] p-8 md:p-10 shadow-xl">
+                    <div className="relative space-y-4">
+                      <h2 className="text-xs font-semibold uppercase tracking-[0.6em] text-[var(--foreground)]/60">
+                        {t("work.details.social.approach")}
+                      </h2>
+                      <p className="text-base leading-relaxed md:text-lg text-[var(--foreground)]">
+                        {approach}
+                      </p>
+                    </div>
                   </div>
                 )}
               </div>
@@ -316,7 +306,7 @@ const SocialDetails = () => {
       ) : (
         <div className="flex flex-1 items-center justify-center py-24">
           <div className="text-center text-sm text-red-400">
-            {social.error ?? "Social details not available."}
+            {social.error ?? t("work.details.social.notAvailable")}
           </div>
         </div>
       )}

@@ -48,11 +48,11 @@ const normalizeItem = (item, type, fallbackImage) => {
       };
     }
     case "creative": {
-      const data = item?.creative ?? {};
+      const data = item;
       return {
         title: data?.title ?? "",
         subtitle: "",
-        image:
+        image :
           extractMediaUrl(data?.main_image) ??
           getFirstMediaUrl(data?.images) ??
           extractMediaUrl(data?.logo) ??

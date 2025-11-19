@@ -160,6 +160,18 @@
                 "objective": "Objectif",
                 "noMedia": "Aucun média disponible pour ce travail.",
                 "notAvailable": "Détails d'influence non disponibles."
+            },
+            "social": {
+                "title": "Détail Social",
+                "campaign": "Campagne Médias Sociaux",
+                "back": "Retour",
+                "followerGrowth": "Croissance des Abonnés",
+                "engagementRate": "Taux d'Engagement",
+                "totalAudience": "Audience Totale",
+                "objective": "Objectif",
+                "approach": "Approche",
+                "noMedia": "Aucun média disponible pour ce travail.",
+                "notAvailable": "Détails sociaux non disponibles."
             }
         }
     },
