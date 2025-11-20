@@ -55,7 +55,10 @@ const Work = () => {
   const [activeSectionId, setActiveSectionId] = useState(null);
   const [activeType, setActiveType] = useState(null);
   const lenisCleanupTimeout = useRef(null);
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    gsap.ticker.add(() => ScrollTrigger.update());
+  }, []);
   const gradientColors =
     theme === "light"
       ? ["#52C3C5", "#5269C5", "#52C3C5", "#52A0C5", "#52C3C5"] // Light theme colors
@@ -174,7 +177,7 @@ const Work = () => {
 
   return (
     <div
-      className={`work-section flex flex-col h-[calc(100%+10vh)] ${
+      className={`work-section min-h-[100vh] flex flex-col  ${
         isRtl ? "font-cairo" : "font-hero-light"
       }`}
     >
