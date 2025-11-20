@@ -38,7 +38,7 @@ const normalizeItem = (item, type, fallbackImage) => {
       const data = item ?? {};
       return {
         title: data?.title ?? "",
-        
+
         image:
           getFirstMediaUrl(item?.media) ??
           extractMediaUrl(data?.logo) ??
@@ -52,7 +52,7 @@ const normalizeItem = (item, type, fallbackImage) => {
       return {
         title: data?.title ?? "",
         subtitle: "",
-        image :
+        image:
           extractMediaUrl(data?.main_image) ??
           getFirstMediaUrl(data?.images) ??
           extractMediaUrl(data?.logo) ??
@@ -168,7 +168,7 @@ const WorkItemsGrid = ({
   const digitalMetrics = useMemo(
     () =>
       items.map((item) => {
-        const data = item ||{};
+        const data = item || {};
         const available = metricsConfig.filter((metric) => {
           const value = data?.[metric.key];
           return value !== undefined && value !== null && value !== "";
@@ -217,7 +217,6 @@ const WorkItemsGrid = ({
                       <h3 className="text-[22px]  md:text-[26px] font-semibold text-[var(--foreground)]">
                         {data?.title ?? t("work.viewWork")}
                       </h3>
-                     
                     </div>
                   </div>
                   <button
@@ -232,19 +231,30 @@ const WorkItemsGrid = ({
 
                 {available.length ? (
                   <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                    {available.map((metric) => (
-                      <div
-                        key={metric.key}
-                        className="rounded-2xl border border-[var(--border)]/60 bg-[var(--surface)] px-4 py-3 text-[var(--foreground)] shadow-inner"
-                      >
-                        <div className="text-xs font-semibold uppercase tracking-wide text-[var(--foreground)]/60">
-                          {metric.label}
+                    {available.map((metric) => {
+                      const isObjective = metric.key === "objective";
+                      return (
+                        <div
+                          key={metric.key}
+                          className={`rounded-2xl border border-[var(--border)]/60 bg-[var(--surface)] px-4 py-3 text-[var(--foreground)] shadow-inner ${
+                            isObjective ? "sm:col-span-2 lg:col-span-3" : ""
+                          }`}
+                        >
+                          <div className="text-xs font-semibold uppercase tracking-wide text-[var(--foreground)]/60">
+                            {metric.label}
+                          </div>
+                          <div
+                            className={`mt-1 font-semibold text-[var(--foreground)] ${
+                              isObjective
+                                ? "text-base leading-relaxed whitespace-pre-wrap break-words max-h-40 overflow-y-auto pr-1"
+                                : "text-lg"
+                            }`}
+                          >
+                            {data[metric.key]}
+                          </div>
                         </div>
-                        <div className="mt-1 text-lg font-semibold text-[var(--foreground)]">
-                          {data[metric.key]}
-                        </div>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
                 ) : null}
               </div>
