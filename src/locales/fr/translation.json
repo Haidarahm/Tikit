@@ -172,6 +172,14 @@
                 "approach": "Approche",
                 "noMedia": "Aucun média disponible pour ce travail.",
                 "notAvailable": "Détails sociaux non disponibles."
+            },
+            "creative": {
+                "title": "Détail Créatif",
+                "campaign": "Campagne Créative",
+                "back": "Retour",
+                "brandImages": "Images de Marque",
+                "noMedia": "Aucun média disponible pour ce travail.",
+                "notAvailable": "Détails créatifs non disponibles."
             }
         }
     },

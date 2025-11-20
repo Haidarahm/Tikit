@@ -226,6 +226,8 @@ const Work = () => {
               navigate(`/work/influence/${encodeURIComponent(detailId)}`);
             } else if (activeKey === "social") {
               navigate(`/work/social/${encodeURIComponent(detailId)}`);
+            } else if (activeKey === "creative") {
+              navigate(`/work/creative/${encodeURIComponent(detailId)}`);
             } else {
               handleViewDetails(detailId);
             }

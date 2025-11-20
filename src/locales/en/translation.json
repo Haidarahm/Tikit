@@ -172,6 +172,14 @@
                 "approach": "Approach",
                 "noMedia": "No media available for this work item.",
                 "notAvailable": "Social details not available."
+            },
+            "creative": {
+                "title": "Creative Detail",
+                "campaign": "Creative Campaign",
+                "back": "Back",
+                "brandImages": "Brand Images",
+                "noMedia": "No media available for this work item.",
+                "notAvailable": "Creative details not available."
             }
         }
     },
