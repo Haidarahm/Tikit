@@ -80,10 +80,10 @@ const normalizeItem = (item, type, fallbackImage) => {
     }
     case "event":
     case "events": {
-      const data = item?.event ?? {};
+      const data = item || {};
       return {
         title: data?.title ?? "",
-        subtitle: data?.objective ?? "",
+        subtitle:  "",
         image:
           getFirstMediaUrl(item?.media) ??
           extractMediaUrl(data?.logo) ??

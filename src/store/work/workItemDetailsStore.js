@@ -84,7 +84,7 @@ const CATEGORY_CONFIG = {
     transform: (response) => {
       const payload = response?.data ?? {};
       return {
-        item: payload?.event ?? null,
+        item: payload ?? null,
         media: Array.isArray(payload?.media) ? payload.media : [],
         raw: response,
         message: response?.message ?? null,

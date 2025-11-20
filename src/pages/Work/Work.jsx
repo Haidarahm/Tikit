@@ -232,6 +232,8 @@ const Work = () => {
               navigate(`/work/social/${encodeURIComponent(detailId)}`);
             } else if (activeKey === "creative") {
               navigate(`/work/creative/${encodeURIComponent(detailId)}`);
+            } else if (activeKey === "events") {
+              navigate(`/work/event/${encodeURIComponent(detailId)}`);
             } else {
               handleViewDetails(detailId);
             }

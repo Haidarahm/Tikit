@@ -40,6 +40,11 @@ const CreativeDetails = lazy(() =>
     default: module.default,
   }))
 );
+const EventDetails = lazy(() =>
+  import("./pages/workDetails/EventDetails.jsx").then((module) => ({
+    default: module.default,
+  }))
+);
 // Loading component
 const LoadingSpinner = () => <Loader />;
 
@@ -82,6 +87,7 @@ function App() {
               />
               <Route path="/work/social/:id" element={<SocialDetails />} />
               <Route path="/work/creative/:id" element={<CreativeDetails />} />
+              <Route path="/work/event/:id" element={<EventDetails />} />
             </Route>
           </Routes>
         </Suspense>
