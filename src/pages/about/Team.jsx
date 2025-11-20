@@ -234,6 +234,9 @@ const Team = () => {
             ref={trackRef}
             className="flex flex-col md:flex-row items-center gap-4 md:gap-6 will-change-transform py-0 w-full pr-4"
           >
+            <div
+              className={`relative   w-full md:w-[100px] h-[220px] sm:h-[320px] md:h-[650px]  shrink-0 overflow-hidden `}
+            ></div>
             {teamMembers.map((member, index) => {
               const typeKey = member.type?.toLowerCase?.();
               const styles = TYPE_STYLES[typeKey] || TYPE_STYLES.default;
@@ -241,41 +244,50 @@ const Team = () => {
               return (
                 <div
                   key={member.id || index}
-                  className={`relative hover:scale-105  flex flex-col justify-end transition-all duration-500 w-full md:w-[450px] h-[220px] sm:h-[320px] md:h-[650px] rounded-[16px] shrink-0 overflow-hidden border border-white/10 bg-gradient-to-br ${styles.gradient} backdrop-blur`}
+                  className={`relative group flex flex-col justify-end transition-all duration-500 w-full md:w-[450px] h-[220px] sm:h-[320px] md:h-[650px] rounded-[22px] shrink-0 overflow-hidden border border-white/20 bg-gradient-to-br ${styles.gradient} backdrop-blur-xl shadow-[0_0_25px_rgba(255,255,255,0.12)] hover:shadow-[0_0_55px_rgba(255,255,255,0.25)]`}
                 >
+                  {/* Image */}
                   <div className="absolute inset-0">
                     <img
                       src={member.image}
                       alt={member.name || `team-${index + 1}`}
-                      className="absolute hover:scale-150  w-full h-full object-cover  mix-blend-luminosity transition-opacity duration-500 "
+                      className="absolute w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-110 "
                       draggable={false}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/40 to-black/80" />
+
+                    {/* Enhanced Soft Gradient */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/40 to-black/85" />
+
+                    {/* Glow edges */}
                   </div>
 
+                  {/* Content */}
                   <div className="relative z-10 flex flex-col gap-6 p-6 md:p-8">
+                    {/* Type badge */}
                     <div className="flex justify-start">
                       <span
-                        className={`inline-flex items-center rounded-full px-4 py-2 text-xs tracking-[0.25em] uppercase font-semibold backdrop-blur ${styles.badge}`}
+                        className={`inline-flex items-center rounded-full px-4 py-2 text-xs tracking-[0.22em] uppercase font-semibold backdrop-blur-xl ${styles.badge}`}
                       >
                         {member.type}
                       </span>
                     </div>
 
-                    <div className="text-center md:text-left space-y-3">
+                    {/* Name + Specialist */}
+                    <div className="text-center md:text-left space-y-3 bg-black/20 rounded-xl p-4 backdrop-blur-md border border-white/10 shadow-inner">
                       <h3
-                        className={`text-2xl md:text-3xl font-semibold tracking-[0.35em] uppercase ${styles.name}`}
+                        className={`text-2xl md:text-3xl font-bold tracking-[0.28em] uppercase drop-shadow ${styles.name}`}
                       >
                         {member.name}
                       </h3>
                       <p
-                        className={`text-sm md:text-base capitalize tracking-[0.3em] ${styles.specialist}`}
+                        className={`text-sm md:text-base capitalize tracking-[0.25em] ${styles.specialist}`}
                       >
                         {member.specialist}
                       </p>
                     </div>
 
-                    <div className="flex items-center justify-center md:justify-start gap-4 text-white/80">
+                    {/* Social Icons */}
+                    <div className="flex items-center justify-center md:justify-start gap-3">
                       {member.social_links?.length > 0 ? (
                         member.social_links.map((link, i) => (
                           <a
@@ -283,7 +295,7 @@ const Team = () => {
                             href={link.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-[22px] transition-transform duration-300 hover:scale-110 hover:text-white"
+                            className="text-[22px]  p-2 rounded-xl transition-all duration-300 hover:scale-110 hover:bg-white/20"
                           >
                             {iconMap[link.link_type] || <FaGlobe />}
                           </a>
@@ -298,6 +310,9 @@ const Team = () => {
                 </div>
               );
             })}
+            <div
+              className={`relative   w-full md:w-[450px] h-[220px] sm:h-[320px] md:h-[650px]  shrink-0 overflow-hidden `}
+            ></div>
           </div>
         </div>
       </div>
