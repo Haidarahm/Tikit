@@ -15,10 +15,11 @@ const CreativeMediaShowcase = ({ mediaImages, brandImages, title, t }) => {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-        
       {mediaImages.length > 0 && (
         <div className="space-y-4">
-           
+          <h2 className="text-xs font-semibold uppercase tracking-[0.6em] text-[var(--foreground)]/60">
+            Work Showcase
+          </h2>
           <Swiper
             modules={[Autoplay, Thumbs]}
             autoplay={{ delay: 3000, disableOnInteraction: false }}
@@ -66,7 +67,7 @@ const CreativeMediaShowcase = ({ mediaImages, brandImages, title, t }) => {
       )}
 
       {brandImages.length > 0 && (
-        <div className="space-y-4">
+        <div className="space-y-4 flex flex-col justify-between">
           <h2 className="text-xs font-semibold uppercase tracking-[0.6em] text-[var(--foreground)]/60">
             {t("work.details.creative.brandImages")}
           </h2>

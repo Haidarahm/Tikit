@@ -98,7 +98,7 @@ const ContactUs = ({ className = "" }) => {
               }`}
             />
             <div
-              className={`swiper-slide w-1/2 flex justify-center items-center relative z-10 cursor-pointer ${
+              className={`swiper-slide-contact w-1/2 flex justify-center items-center relative z-10 cursor-pointer ${
                 !isSecondSlide
                   ? "text-[var(--background)]"
                   : "text-[var(--foreground)] "
@@ -108,7 +108,7 @@ const ContactUs = ({ className = "" }) => {
               {t("about.contactUs.client")}
             </div>
             <div
-              className={`swiper-slide w-1/2 flex justify-center items-center relative z-10 cursor-pointer ${
+              className={`swiper-slide-contact w-1/2 flex justify-center items-center relative z-10 cursor-pointer ${
                 isSecondSlide
                   ? "text-[var(--background)]"
                   : "text-[var(--foreground)] "

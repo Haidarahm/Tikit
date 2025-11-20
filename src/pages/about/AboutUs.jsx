@@ -9,8 +9,9 @@ import Strategy from "./Strategy";
 import Team from "./Team";
 import Growth from "./Growth";
 import Footer from "../../components/Footer";
-import ContactUs from "./ContactUs";
+// import ContactUs from "./ContactUs";
 import SEOHead from "../../components/SEOHead";
+import ContactUs from "../Home/ContactUs";
 const AboutUs = () => {
   const containerRef = useRef(null);
 
