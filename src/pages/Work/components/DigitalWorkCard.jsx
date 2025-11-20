@@ -136,7 +136,7 @@ const DigitalWorkCard = ({ data, availableMetrics, t, formatMetricValue }) => {
             isExpanded ? "max-h-[1600px] opacity-100" : "max-h-0 opacity-0"
           }`}
         >
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 pb-4 px-4">
             {filteredMetrics.map((metric) => (
               <MetricTile
                 key={metric.key}

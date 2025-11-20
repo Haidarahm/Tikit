@@ -144,7 +144,7 @@ const EventDetails = () => {
           {[0, 1].map((idx) => (
             <div
               key={`event-skeleton-${idx}`}
-              className="rounded-[32px] border border-[var(--foreground)]/50 bg-[var(--card-background)]/70 p-6 md:p-10"
+              className="rounded-[32px]  bg-[var(--card-background)]/70 p-6 md:p-10"
             >
               <Skeleton active avatar paragraph={{ rows: 4 }} />
             </div>
@@ -154,7 +154,7 @@ const EventDetails = () => {
         <div className="px-4 md:px-10 pb-20 pt-28 space-y-14">
           <section
             ref={heroRef}
-            className="grid gap-8 md:grid-cols-[1.1fr_0.9fr] items-center rounded-[36px] border border-[var(--foreground)] bg-[var(--card-background)]/90 p-6 md:p-12 shadow-xl backdrop-blur"
+            className="grid gap-8 md:grid-cols-[1.1fr_0.9fr] items-center rounded-[36px]  bg-[var(--card-background)]/90 p-6 md:p-12 shadow-xl backdrop-blur"
           >
             <div className="space-y-6">
               <button
@@ -186,7 +186,7 @@ const EventDetails = () => {
                 </p>
               ) : null}
             </div>
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[32px] border border-[var(--foreground)] bg-[var(--surface)] shadow-inner">
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[32px] shadow-2xl bg-[var(--surface)]">
               {heroMedia ? (
                 <img
                   src={heroMedia}
@@ -231,7 +231,7 @@ const EventDetails = () => {
                   <div
                     data-gallery-card
                     key={`${image}-${index}`}
-                    className="group relative overflow-hidden rounded-3xl border border-[var(--foreground)] bg-[var(--surface)] shadow-md"
+                    className="group relative overflow-hidden rounded-3xl  bg-[var(--surface)] shadow-md"
                   >
                     <img
                       src={image}

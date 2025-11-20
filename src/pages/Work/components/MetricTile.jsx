@@ -4,7 +4,7 @@ const MetricTile = ({ Icon, label, value, isObjective }) => {
   return (
     <div
       data-metric-tile
-      className={`rounded-2xl px-4 py-3 text-[var(--foreground)] ${
+      className={`rounded-2xl px-4 py-3 text-[var(--foreground)] shadow-[0_12px_24px_-14px_rgba(0,0,0,0.45)] ${
         isObjective ? "sm:col-span-2 lg:col-span-3" : ""
       }`}
       style={{
