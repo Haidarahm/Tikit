@@ -16,6 +16,8 @@ import {
   FiTrendingUp,
   FiUsers,
 } from "react-icons/fi";
+import DigitalWorkCard from "./DigitalWorkCard";
+import NonDigitalWorkCard from "./NonDigitalWorkCard";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -322,75 +324,14 @@ const WorkItemsGrid = ({
       {!loading && !error
         ? isDigital
           ? digitalMetrics.map(({ data, available }, index) => (
-              <div
+              <DigitalWorkCard
                 key={`digital-${data?.id ?? index}`}
-                className="group relative rounded-3xl border border-[var(--border)] bg-[var(--card-background)] p-6 md:p-8 shadow-lg transition-shadow hover:shadow-[0_20px_45px_-12px_rgba(0,0,0,0.35)]"
-              >
-                <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-                  <div className="flex flex-col gap-4 md:flex-row md:items-center md:gap-6">
-                    {data?.logo ? (
-                      <div className="flex h-16 w-16 items-center justify-center overflow-hidden rounded-full border border-[var(--border)]/70 bg-[var(--surface)] p-2">
-                        <img
-                          src={data.logo}
-                          alt={data.title ?? "logo"}
-                          className="h-full w-full object-contain"
-                          loading="lazy"
-                        />
-                      </div>
-                    ) : null}
-                    <div>
-                      <h3 className="text-[22px]  md:text-[26px] font-semibold text-[var(--foreground)]">
-                        {data?.title ?? t("work.viewWork")}
-                      </h3>
-                    </div>
-                  </div>
-                  <button
-                    className="whitespace-nowrap rounded-full border border-[var(--border)] bg-transparent px-4 py-2 text-[var(--foreground)] transition hover:bg-[var(--foreground)] hover:text-[var(--background)]"
-                    onClick={() =>
-                      onViewDetails(data?.work_id ?? data?.id ?? null)
-                    }
-                  >
-                    {t("work.viewWork")}
-                  </button>
-                </div>
-
-                {available.length ? (
-                  <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                    {available.map((metric) => {
-                      const Icon = metric.icon;
-                      const isObjective = metric.key === "objective";
-                      const value = formatMetricValue(
-                        metric.key,
-                        data[metric.key]
-                      );
-                      return (
-                        <div
-                          key={metric.key}
-                          className={`rounded-2xl border border-[var(--border)]/60 bg-[var(--surface)] px-4 py-3 text-[var(--foreground)] shadow-inner ${
-                            isObjective ? "sm:col-span-2 lg:col-span-3" : ""
-                          }`}
-                        >
-                          <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-[var(--foreground)]/60">
-                            {Icon ? (
-                              <Icon className="text-[var(--accent)] text-sm" />
-                            ) : null}
-                            <span>{metric.label}</span>
-                          </div>
-                          <div
-                            className={`mt-1 font-semibold text-[var(--foreground)] ${
-                              isObjective
-                                ? "text-base leading-relaxed whitespace-pre-wrap break-words max-h-40 overflow-y-auto pr-1"
-                                : "text-lg"
-                            }`}
-                          >
-                            {value}
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                ) : null}
-              </div>
+                data={data}
+                availableMetrics={available}
+                t={t}
+                onViewDetails={onViewDetails}
+                formatMetricValue={formatMetricValue}
+              />
             ))
           : items.map((item, index) => {
               const normalized = normalizeItem(
@@ -400,44 +341,15 @@ const WorkItemsGrid = ({
               );
 
               return (
-                <div
+                <NonDigitalWorkCard
                   key={normalized.detailId ?? `${activeKey}-${index}`}
-                  ref={(el) => {
+                  innerRef={(el) => {
                     imagesRef.current[index] = el;
                   }}
-                  className="group relative overflow-hidden rounded-lg shadow-lg"
-                  style={{ height: "10%" }}
-                >
-                  {normalized.image ? (
-                    <img
-                      src={normalized.image}
-                      alt={normalized.title || "work"}
-                      className="h-full w-full rounded-lg object-cover"
-                      loading="lazy"
-                    />
-                  ) : (
-                    <div className="h-full w-full bg-[var(--muted)]" />
-                  )}
-
-                  <div className="content-work absolute inset-0 flex flex-col items-center justify-center overflow-hidden bg-black/30 opacity-100 transition-opacity duration-300 md:bg-black/60 md:opacity-0 md:group-hover:opacity-100">
-                    {normalized.title ? (
-                      <h3 className="text-center text-[26px] font-bold text-white md:text-[30px]">
-                        {normalized.title}
-                      </h3>
-                    ) : null}
-                    {normalized.subtitle ? (
-                      <p className="mb-4 text-center text-[18px] text-gray-200 md:text-[20px]">
-                        {normalized.subtitle}
-                      </p>
-                    ) : null}
-                    <button
-                      className="rounded-full border mt-4 border-white bg-transparent px-4 py-2 text-white transition hover:bg-white hover:text-black"
-                      onClick={() => onViewDetails(normalized.detailId)}
-                    >
-                      {t("work.viewWork")}
-                    </button>
-                  </div>
-                </div>
+                  normalized={normalized}
+                  t={t}
+                  onViewDetails={onViewDetails}
+                />
               );
             })
         : null}

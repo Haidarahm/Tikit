@@ -220,6 +220,7 @@ const Work = () => {
           loading={itemsLoading}
           error={itemsError}
           showEmptyState={showEmptyState}
+          language={language}
           onViewDetails={(detailId) => {
             if (detailId == null) return;
             if (activeKey === "influence") {
