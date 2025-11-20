@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import MetricTile from "./MetricTile";
@@ -14,26 +14,70 @@ const DigitalWorkCard = ({
 }) => {
   const workId = data?.work_id ?? data?.id ?? null;
   const cardRef = useRef(null);
+  const glowRef = useRef(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!cardRef.current) return;
 
     const ctx = gsap.context(() => {
-      gsap.fromTo(
+      const metricTiles =
+        cardRef.current.querySelectorAll("[data-metric-tile]") ?? [];
+
+      const timeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: cardRef.current,
+          start: "top 85%",
+          toggleActions: "play none none reverse",
+        },
+      });
+
+      timeline.fromTo(
         cardRef.current,
-        { autoAlpha: 0, y: 40 },
+        { autoAlpha: 0, y: 80, rotateX: 8, scale: 0.94, filter: "blur(6px)" },
         {
           autoAlpha: 1,
           y: 0,
-          duration: 0.8,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: cardRef.current,
-            start: "top 85%",
-            toggleActions: "play none none reverse",
-          },
+          rotateX: 0,
+          scale: 1,
+          filter: "blur(0px)",
+          duration: 1,
+          ease: "power4.out",
         }
       );
+
+      if (glowRef.current) {
+        timeline.fromTo(
+          glowRef.current,
+          { opacity: 0, clipPath: "inset(0 100% 0 0)" },
+          {
+            opacity: 0.35,
+            clipPath: "inset(0 0% 0 0)",
+            duration: 0.9,
+            ease: "power2.out",
+          },
+          "-=0.7"
+        );
+        timeline.to(
+          glowRef.current,
+          { opacity: 0, duration: 0.6, ease: "power1.out" },
+          "-=0.3"
+        );
+      }
+
+      if (metricTiles.length) {
+        timeline.from(
+          metricTiles,
+          {
+            autoAlpha: 0,
+            y: 24,
+            filter: "blur(8px)",
+            stagger: 0.08,
+            duration: 0.5,
+            ease: "power3.out",
+          },
+          "-=0.4"
+        );
+      }
     }, cardRef);
 
     return () => ctx.revert();
@@ -42,8 +86,13 @@ const DigitalWorkCard = ({
   return (
     <div
       ref={cardRef}
-      className="group relative rounded-3xl border border-[var(--foreground)] bg-[var(--card-background)] p-6 md:p-8 shadow-lg transition-shadow hover:shadow-[0_20px_45px_-12px_rgba(0,0,0,0.35)]"
+      className="group relative overflow-hidden rounded-3xl border border-[var(--foreground)] bg-[var(--card-background)] p-6 md:p-8 shadow-lg transition-shadow hover:shadow-[0_20px_45px_-12px_rgba(0,0,0,0.35)]"
     >
+      <div
+        ref={glowRef}
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[var(--accent)]/30 via-transparent to-[var(--accent-foreground)]/30 blur-3xl opacity-0"
+      />
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div className="flex flex-col gap-4 md:flex-row md:items-center md:gap-6">
           {data?.logo ? (

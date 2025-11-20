@@ -3,6 +3,7 @@ import React from "react";
 const MetricTile = ({ Icon, label, value, isObjective }) => {
   return (
     <div
+      data-metric-tile
       className={`rounded-2xl border border-[var(--border)]/60 bg-[var(--surface)] px-4 py-3 text-[var(--foreground)] shadow-inner ${
         isObjective ? "sm:col-span-2 lg:col-span-3" : ""
       }`}
