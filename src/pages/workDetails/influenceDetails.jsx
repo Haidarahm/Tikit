@@ -1,4 +1,10 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, {
+  useEffect,
+  useMemo,
+  useState,
+  useLayoutEffect,
+  useRef,
+} from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Skeleton } from "antd";
 import { useTranslation } from "react-i18next";
@@ -14,6 +20,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Thumbs } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/thumbs";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const InfluenceDetails = () => {
   const { id } = useParams();
@@ -77,6 +87,72 @@ const InfluenceDetails = () => {
   }, [itemData, t]);
 
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
+  const headerRef = useRef(null);
+  const mediaRef = useRef(null);
+  const textRef = useRef(null);
+
+  useLayoutEffect(() => {
+    if (!itemData || !headerRef.current) return;
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        headerRef.current,
+        { autoAlpha: 0, y: 60, scale: 0.95 },
+        {
+          autoAlpha: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.9,
+          ease: "power4.out",
+        }
+      );
+
+      const headerChildren = headerRef.current.querySelectorAll(
+        "[data-header-child]"
+      );
+      if (headerChildren.length) {
+        gsap.from(headerChildren, {
+          autoAlpha: 0,
+          y: 25,
+          stagger: 0.08,
+          duration: 0.5,
+          ease: "power3.out",
+          delay: 0.15,
+        });
+      }
+
+      if (mediaRef.current) {
+        gsap.from(mediaRef.current, {
+          autoAlpha: 0,
+          y: 60,
+          rotateX: 8,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: mediaRef.current,
+            start: "top 80%",
+          },
+        });
+      }
+
+      if (textRef.current) {
+        const cards = textRef.current.querySelectorAll("[data-text-card]");
+        gsap.from(cards, {
+          autoAlpha: 0,
+          y: 40,
+          stagger: 0.1,
+          duration: 0.6,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: textRef.current,
+            start: "top 85%",
+          },
+        });
+      }
+    }, headerRef);
+
+    return () => ctx.revert();
+  }, [itemData?.id, media.length]);
 
   return (
     <div
@@ -109,14 +185,20 @@ const InfluenceDetails = () => {
         <div className="px-4 md:px-10 pb-20 pt-28">
           <div className="space-y-12">
             {/* Header Card with Title, Logo, and Metrics */}
-            <div className="relative overflow-hidden rounded-[32px] border border-[var(--foreground)]/10 bg-[var(--background)] p-8 md:p-10 shadow-xl">
+            <div
+              ref={headerRef}
+              className="relative overflow-hidden rounded-[32px] border border-[var(--foreground)]/10 bg-[var(--background)] p-8 md:p-10 shadow-xl"
+            >
               <div className="absolute inset-0 pointer-events-none">
                 <div className="absolute -top-32 right-0 h-64 w-64 rounded-full bg-[var(--secondary)]/20 blur-3xl" />
                 <div className="absolute -bottom-24 left-10 h-48 w-48 rounded-full bg-[var(--secondary)]/15 blur-3xl" />
               </div>
               <div className="relative z-10 flex flex-col gap-8">
                 <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-                  <div className="flex flex-1 items-start gap-5">
+                  <div
+                    className="flex flex-1 items-start gap-5"
+                    data-header-child
+                  >
                     {itemData.logo && (
                       <div className="flex h-20 w-20 items-center justify-center rounded-2xl border border-[var(--foreground)]/10 bg-[var(--background)]/50 p-2 shadow-lg">
                         <img
@@ -126,7 +208,7 @@ const InfluenceDetails = () => {
                         />
                       </div>
                     )}
-                    <div className="space-y-3">
+                    <div className="space-y-3" data-header-child>
                       <p className="text-xs uppercase tracking-[0.5em] text-[var(--foreground)]/60">
                         {t("work.details.influence.campaign")}
                       </p>
@@ -148,6 +230,7 @@ const InfluenceDetails = () => {
                   </div>
 
                   <button
+                    data-header-child
                     onClick={() => navigate(-1)}
                     className="inline-flex items-center gap-2 rounded-full border border-[var(--foreground)]/10 bg-[var(--container-bg)] px-6 py-3 text-xs font-semibold uppercase tracking-[0.3em] text-[var(--foreground)] transition hover:bg-[var(--foreground)] hover:text-[var(--background)]"
                   >
@@ -160,6 +243,7 @@ const InfluenceDetails = () => {
                   <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                     {metrics.map(({ label, value, Icon }) => (
                       <div
+                        data-header-child
                         key={label}
                         className="relative overflow-hidden rounded-2xl border border-[var(--foreground)]/10 bg-[var(--container-bg)]/50 p-4 backdrop-blur-sm shadow-inner"
                       >
@@ -184,9 +268,12 @@ const InfluenceDetails = () => {
             </div>
 
             {/* Two Column Layout - Media and Objective */}
-            <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
+            <div
+              className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16"
+              ref={textRef}
+            >
               {/* Media Column */}
-              <div className="space-y-4">
+              <div className="space-y-4" ref={mediaRef}>
                 {media.length > 0 ? (
                   <>
                     <Swiper
@@ -239,7 +326,10 @@ const InfluenceDetails = () => {
                     )}
                   </>
                 ) : (
-                  <div className="rounded-3xl bg-[var(--container-bg)]/70 p-10 text-center text-sm text-[var(--foreground)]/60 shadow-inner">
+                  <div
+                    className="rounded-3xl bg-[var(--container-bg)]/70 p-10 text-center text-sm text-[var(--foreground)]/60 shadow-inner"
+                    data-text-card
+                  >
                     {t("work.details.influence.noMedia")}
                   </div>
                 )}
@@ -247,7 +337,10 @@ const InfluenceDetails = () => {
 
               {/* Objective Column */}
               {objective && (
-                <div className="relative overflow-hidden rounded-[28px] border border-[var(--foreground)]/10 bg-[var(--container-bg)] p-8 md:p-10 shadow-xl">
+                <div
+                  data-text-card
+                  className="relative overflow-hidden rounded-[28px] border border-[var(--foreground)]/10 bg-[var(--container-bg)] p-8 md:p-10 shadow-xl"
+                >
                   <div className="relative space-y-4">
                     <h2 className="text-xs font-semibold uppercase tracking-[0.6em] text-[var(--foreground)]/60">
                       {t("work.details.influence.objective")}

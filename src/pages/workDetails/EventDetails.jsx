@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect, useMemo, useLayoutEffect, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Skeleton } from "antd";
@@ -8,6 +8,10 @@ import { useTheme } from "../../store/ThemeContext.jsx";
 import SEOHead from "../../components/SEOHead.jsx";
 import Footer from "../../components/Footer.jsx";
 import ContactUs from "../Home/ContactUs.jsx";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const EventDetails = () => {
   const { id } = useParams();
@@ -21,18 +25,6 @@ const EventDetails = () => {
     (state) => state.loadEventDetail
   );
   const resetCategory = useWorkItemDetailsStore((state) => state.resetCategory);
-
-  useEffect(() => {
-    if (!id) return;
-
-    loadEventDetail(id, { lang: language }).catch((error) => {
-      console.error("Failed to load event details", error);
-    });
-
-    return () => {
-      resetCategory("events");
-    };
-  }, [id, language, loadEventDetail, resetCategory]);
 
   const item = eventState.item;
   const media = Array.isArray(eventState.media) ? eventState.media : [];
@@ -56,6 +48,80 @@ const EventDetails = () => {
   }, [item, media]);
 
   const heroMedia = gallery[0] ?? null;
+
+  const heroRef = useRef(null);
+  const galleryRef = useRef(null);
+
+  useLayoutEffect(() => {
+    if (!item || !heroRef.current) return;
+
+    const ctx = gsap.context(() => {
+      const heroChildren =
+        heroRef.current.querySelectorAll("[data-hero-child]");
+
+      gsap.fromTo(
+        heroRef.current,
+        { autoAlpha: 0, y: 80, rotateX: 8, scale: 0.94 },
+        {
+          autoAlpha: 1,
+          y: 0,
+          rotateX: 0,
+          scale: 1,
+          duration: 1.1,
+          ease: "power4.out",
+        }
+      );
+
+      if (heroChildren.length) {
+        gsap.fromTo(
+          heroChildren,
+          { autoAlpha: 0, y: 30, filter: "blur(8px)" },
+          {
+            autoAlpha: 1,
+            y: 0,
+            filter: "blur(0px)",
+            stagger: 0.1,
+            delay: 0.15,
+            ease: "power3.out",
+          }
+        );
+      }
+
+      if (galleryRef.current) {
+        const cards = galleryRef.current.querySelectorAll(
+          "[data-gallery-card]"
+        );
+        if (cards.length) {
+          gsap.from(cards, {
+            autoAlpha: 0,
+            y: 40,
+            rotateY: 6,
+            stagger: 0.12,
+            duration: 0.65,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: galleryRef.current,
+              start: "top 80%",
+            },
+          });
+        }
+      }
+    }, heroRef);
+
+    return () => ctx.revert();
+  }, [item?.id, media.length]);
+
+  useEffect(() => {
+    if (!id) return;
+
+    loadEventDetail(id, { lang: language }).catch((error) => {
+      console.error("Failed to load event details", error);
+    });
+
+    return () => {
+      resetCategory("events");
+    };
+  }, [id, language, loadEventDetail, resetCategory]);
 
   return (
     <div
@@ -86,23 +152,36 @@ const EventDetails = () => {
         </div>
       ) : item ? (
         <div className="px-4 md:px-10 pb-20 pt-28 space-y-14">
-          <section className="grid gap-8 md:grid-cols-[1.1fr_0.9fr] items-center rounded-[36px] border border-[var(--foreground)] bg-[var(--card-background)]/90 p-6 md:p-12 shadow-xl backdrop-blur">
+          <section
+            ref={heroRef}
+            className="grid gap-8 md:grid-cols-[1.1fr_0.9fr] items-center rounded-[36px] border border-[var(--foreground)] bg-[var(--card-background)]/90 p-6 md:p-12 shadow-xl backdrop-blur"
+          >
             <div className="space-y-6">
               <button
+                data-hero-child
                 type="button"
                 className="inline-flex items-center gap-2 rounded-full border border-[var(--foreground)] px-4 py-2 text-sm text-[var(--foreground)] transition hover:bg-[var(--foreground)] hover:text-[var(--background)]"
                 onClick={() => navigate(-1)}
               >
                 {t("common.back", "Back")}
               </button>
-              <p className="text-xs uppercase tracking-[0.4em] text-[var(--foreground)]/60">
+              <p
+                data-hero-child
+                className="text-xs uppercase tracking-[0.4em] text-[var(--foreground)]/60"
+              >
                 {t("work.details.event.label", "Event")}
               </p>
-              <h1 className="text-3xl md:text-5xl font-semibold text-[var(--foreground)]">
+              <h1
+                data-hero-child
+                className="text-3xl md:text-5xl font-semibold text-[var(--foreground)]"
+              >
                 {title || t("work.details.event.titleFallback", "Event Title")}
               </h1>
               {objective ? (
-                <p className="text-base leading-relaxed text-[var(--foreground)]/80 whitespace-pre-line">
+                <p
+                  data-hero-child
+                  className="text-base leading-relaxed text-[var(--foreground)]/80 whitespace-pre-line"
+                >
                   {objective}
                 </p>
               ) : null}
@@ -136,7 +215,7 @@ const EventDetails = () => {
           </section>
 
           {gallery.length > 1 ? (
-            <section className="space-y-6">
+            <section ref={galleryRef} className="space-y-6">
               <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                 <div>
                   <p className="text-xs uppercase tracking-[0.4em] text-[var(--foreground)]/60">
@@ -150,6 +229,7 @@ const EventDetails = () => {
               <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
                 {gallery.slice(1).map((image, index) => (
                   <div
+                    data-gallery-card
                     key={`${image}-${index}`}
                     className="group relative overflow-hidden rounded-3xl border border-[var(--foreground)] bg-[var(--surface)] shadow-md"
                   >
