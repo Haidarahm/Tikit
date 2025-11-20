@@ -1,20 +1,24 @@
-import React, { useLayoutEffect, useRef } from "react";
+import React, { useLayoutEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import MetricTile from "./MetricTile";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const DigitalWorkCard = ({
-  data,
-  availableMetrics,
-  t,
-  onViewDetails,
-  formatMetricValue,
-}) => {
+const DigitalWorkCard = ({ data, availableMetrics, t, formatMetricValue }) => {
   const workId = data?.work_id ?? data?.id ?? null;
   const cardRef = useRef(null);
   const glowRef = useRef(null);
+  const [isExpanded, setIsExpanded] = useState(false);
+  const objective =
+    data?.objective ??
+    data?.objective_text ??
+    data?.objective_en ??
+    data?.objective_ar ??
+    "";
+  const filteredMetrics = availableMetrics.filter(
+    (metric) => metric.key !== "objective"
+  );
 
   useLayoutEffect(() => {
     if (!cardRef.current) return;
@@ -105,31 +109,44 @@ const DigitalWorkCard = ({
               />
             </div>
           ) : null}
-          <div>
+          <div className="space-y-2">
             <h3 className="text-[22px]  md:text-[26px] font-semibold text-[var(--foreground)]">
               {data?.title ?? t("work.viewWork")}
             </h3>
+            {objective ? (
+              <p className="text-sm leading-relaxed text-[var(--foreground)]/80 whitespace-pre-line">
+                {objective}
+              </p>
+            ) : null}
           </div>
         </div>
         <button
           className="whitespace-nowrap rounded-full border border-[var(--foreground)] bg-transparent px-4 py-2 text-[var(--foreground)] transition hover:bg-[var(--foreground)] hover:text-[var(--background)]"
-          onClick={() => onViewDetails(workId)}
+          onClick={() => setIsExpanded((prev) => !prev)}
         >
-          {t("work.viewWork")}
+          {isExpanded
+            ? t("work.hideDetails", "Hide details")
+            : t("work.viewDetails", "View details")}
         </button>
       </div>
 
-      {availableMetrics.length ? (
-        <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {availableMetrics.map((metric) => (
-            <MetricTile
-              key={metric.key}
-              Icon={metric.icon}
-              label={metric.label}
-              value={formatMetricValue(metric.key, data[metric.key])}
-              isObjective={metric.key === "objective"}
-            />
-          ))}
+      {filteredMetrics.length ? (
+        <div
+          className={`mt-6 overflow-hidden transition-all duration-500 ease-out ${
+            isExpanded ? "max-h-[1600px] opacity-100" : "max-h-0 opacity-0"
+          }`}
+        >
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {filteredMetrics.map((metric) => (
+              <MetricTile
+                key={metric.key}
+                Icon={metric.icon}
+                label={metric.label}
+                value={formatMetricValue(metric.key, data[metric.key])}
+                isObjective={metric.key === "objective"}
+              />
+            ))}
+          </div>
         </div>
       ) : null}
     </div>

@@ -4,11 +4,16 @@ const MetricTile = ({ Icon, label, value, isObjective }) => {
   return (
     <div
       data-metric-tile
-      className={`rounded-2xl border border-[var(--border)]/60 bg-[var(--surface)] px-4 py-3 text-[var(--foreground)] shadow-inner ${
+      className={`rounded-2xl px-4 py-3 text-[var(--foreground)] ${
         isObjective ? "sm:col-span-2 lg:col-span-3" : ""
       }`}
+      style={{
+        background:
+          "linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0))",
+        border: "1px solid rgba(255,255,255,0.08)",
+      }}
     >
-      <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-[var(--foreground)]/60">
+      <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-[var(--foreground)]/70">
         {Icon ? <Icon className="text-[var(--accent)] text-sm" /> : null}
         <span>{label}</span>
       </div>
