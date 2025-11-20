@@ -1,6 +1,21 @@
 import React, { useEffect, useLayoutEffect, useMemo, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import {
+  FiActivity,
+  FiDollarSign,
+  FiEye,
+  FiPercent,
+  FiPieChart,
+  FiRepeat,
+  FiSearch,
+  FiShoppingBag,
+  FiShoppingCart,
+  FiTag,
+  FiTarget,
+  FiTrendingUp,
+  FiUsers,
+} from "react-icons/fi";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -86,19 +101,129 @@ const normalizeItem = (item, type, fallbackImage) => {
 };
 
 const metricsConfig = [
-  { key: "objective", label: "Objective" },
-  { key: "cpo", label: "CPO" },
-  { key: "orders", label: "Orders" },
-  { key: "roas", label: "ROAS" },
-  { key: "top_search", label: "Top Search" },
-  { key: "conversions", label: "Conversions" },
-  { key: "traffic", label: "Traffic" },
-  { key: "ctr", label: "CTR" },
-  { key: "cpp", label: "CPP" },
-  { key: "avg_cart", label: "Avg Cart" },
-  { key: "cltv", label: "CLTV" },
-  { key: "ftus", label: "FTUs" },
+  { key: "objective", label: "Objective", icon: FiTarget },
+  { key: "cpo", label: "CPO", icon: FiTag },
+  { key: "orders", label: "Orders", icon: FiShoppingBag },
+  { key: "roas", label: "ROAS", icon: FiTrendingUp },
+  { key: "top_search", label: "Top Search", icon: FiSearch },
+  { key: "conversions", label: "Conversions", icon: FiRepeat },
+  { key: "reach", label: "Reach", icon: FiEye },
+  { key: "traffic", label: "Traffic", icon: FiActivity },
+  { key: "ctr", label: "CTR", icon: FiPercent },
+  { key: "cpp", label: "CPP", icon: FiDollarSign },
+  { key: "avg_cart", label: "Cart", icon: FiShoppingCart },
+  { key: "cltv", label: "CLTV", icon: FiPieChart },
+  { key: "ftus", label: "FTUs", icon: FiUsers },
 ];
+
+const plannedMetrics = new Set([
+  "cpo",
+  "orders",
+  "roas",
+  "conversions",
+  "reach",
+  "traffic",
+  "ftus",
+]);
+
+const percentMetrics = new Set(["ctr", "top_search"]);
+const dollarMetrics = new Set(["cpp"]);
+const kwdMetrics = new Set(["avg_cart", "cltv"]);
+
+const abbreviateNumber = (value) => {
+  const absValue = Math.abs(value);
+  const format = (num) => {
+    const str = num.toFixed(num % 1 === 0 ? 0 : 1);
+    return str.replace(/\.0$/, "");
+  };
+
+  if (absValue >= 1_000_000) {
+    return `${format(value / 1_000_000)}M`;
+  }
+
+  if (absValue >= 1_000) {
+    return `${format(value / 1_000)}K`;
+  }
+
+  return format(value);
+};
+
+const parseValueToNumber = (value) => {
+  if (typeof value === "number" && !Number.isNaN(value)) {
+    return value;
+  }
+
+  if (typeof value !== "string") {
+    return null;
+  }
+
+  const trimmed = value.trim();
+  if (!trimmed) {
+    return null;
+  }
+
+  let multiplier = 1;
+  let normalized = trimmed.toUpperCase();
+
+  if (normalized.endsWith("K")) {
+    multiplier = 1_000;
+    normalized = normalized.slice(0, -1);
+  } else if (normalized.endsWith("M")) {
+    multiplier = 1_000_000;
+    normalized = normalized.slice(0, -1);
+  }
+
+  normalized = normalized
+    .replace(/[%,$د.كKWD]/gi, "")
+    .replace(/Planned/gi, "")
+    .trim();
+
+  const parsed = Number.parseFloat(normalized);
+  if (Number.isNaN(parsed)) {
+    return null;
+  }
+
+  return parsed * multiplier;
+};
+
+const formatMetricValue = (key, rawValue) => {
+  if (rawValue === null || rawValue === undefined || rawValue === "") {
+    return "-";
+  }
+
+  if (key === "objective") {
+    return rawValue;
+  }
+
+  const numericValue = parseValueToNumber(rawValue);
+  if (numericValue === null) {
+    return rawValue;
+  }
+
+  let formatted = abbreviateNumber(numericValue);
+
+  if (percentMetrics.has(key)) {
+    formatted = `${formatted}%`;
+  }
+
+  if (dollarMetrics.has(key)) {
+    formatted = `${formatted}$`;
+  }
+
+  if (kwdMetrics.has(key)) {
+    return `${formatted} KWD د.ك`;
+  }
+
+  if (
+    plannedMetrics.has(key) ||
+    percentMetrics.has(key) ||
+    dollarMetrics.has(key)
+  ) {
+    return `${formatted} Planned`;
+  }
+
+  return formatted;
+};
 
 const WorkItemsGrid = ({
   items,
@@ -232,7 +357,12 @@ const WorkItemsGrid = ({
                 {available.length ? (
                   <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                     {available.map((metric) => {
+                      const Icon = metric.icon;
                       const isObjective = metric.key === "objective";
+                      const value = formatMetricValue(
+                        metric.key,
+                        data[metric.key]
+                      );
                       return (
                         <div
                           key={metric.key}
@@ -240,8 +370,11 @@ const WorkItemsGrid = ({
                             isObjective ? "sm:col-span-2 lg:col-span-3" : ""
                           }`}
                         >
-                          <div className="text-xs font-semibold uppercase tracking-wide text-[var(--foreground)]/60">
-                            {metric.label}
+                          <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-[var(--foreground)]/60">
+                            {Icon ? (
+                              <Icon className="text-[var(--accent)] text-sm" />
+                            ) : null}
+                            <span>{metric.label}</span>
                           </div>
                           <div
                             className={`mt-1 font-semibold text-[var(--foreground)] ${
@@ -250,7 +383,7 @@ const WorkItemsGrid = ({
                                 : "text-lg"
                             }`}
                           >
-                            {data[metric.key]}
+                            {value}
                           </div>
                         </div>
                       );
