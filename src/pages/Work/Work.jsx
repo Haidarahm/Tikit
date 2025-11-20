@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useTheme } from "../../store/ThemeContext.jsx";
 import "./work.css";
 import { gsap } from "gsap";
@@ -30,6 +30,7 @@ gsap.registerPlugin(ScrollTrigger);
 const Work = () => {
   const { theme } = useTheme();
   const navigate = useNavigate();
+  const { workId } = useParams();
   const {
     sections,
     loadSections,
@@ -98,17 +99,34 @@ const Work = () => {
 
   useEffect(() => {
     if (!sections || sections.length === 0) return;
-    const existing = sections.find((section) => section.id === activeSectionId);
-    if (existing) {
-      if (existing.type !== activeType) {
-        setActiveType(existing.type);
+
+    const matched =
+      sections.find((section) => String(section.id) === String(workId)) ?? null;
+
+    if (matched) {
+      if (activeSectionId !== matched.id) {
+        setActiveSectionId(matched.id);
+      }
+      if (activeType !== matched.type) {
+        setActiveType(matched.type);
       }
       return;
     }
-    const first = sections[0];
-    setActiveSectionId(first.id);
-    setActiveType(first.type);
-  }, [sections, activeSectionId, activeType]);
+
+    const fallback = sections[0];
+    if (!fallback) return;
+
+    if (workId == null || String(workId) !== String(fallback.id)) {
+      navigate(`/work/${fallback.id}`, { replace: true });
+    }
+
+    if (activeSectionId !== fallback.id) {
+      setActiveSectionId(fallback.id);
+    }
+    if (activeType !== fallback.type) {
+      setActiveType(fallback.type);
+    }
+  }, [sections, workId, activeSectionId, activeType, navigate]);
 
   useEffect(() => {
     if (!activeSectionId || !activeType) return;
@@ -195,8 +213,8 @@ const Work = () => {
         error={sectionsError}
         activeSectionId={activeSectionId}
         onSelect={(section) => {
-          setActiveSectionId(section.id);
-          setActiveType(section.type);
+          if (section.id === activeSectionId) return;
+          navigate(`/work/${section.id}`);
         }}
         isRtl={isRtl}
       />

@@ -73,7 +73,7 @@ function App() {
             <Route path="/" element={<LogoIntro />} />
             <Route element={<Layout />}>
               <Route path="/home" element={<Home />} />
-              <Route path="/work" element={<Work />} />
+              <Route path="/work/:workId?" element={<Work />} />
               <Route path="/about" element={<AboutUs />} />
               <Route path="/services" element={<Services />} />
               <Route path="/news" element={<News />} />

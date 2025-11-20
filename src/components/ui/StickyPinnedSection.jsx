@@ -375,7 +375,7 @@ export default function StickyPinnedSection({
             )}
           </div>
           <button
-          onClick={() => navigate('/work')}
+            onClick={() => navigate("/work/1")}
             className="rounded-full border font-light 
            bg-transparent
 
@@ -468,7 +468,7 @@ export default function StickyPinnedSection({
                     try {
                       const id = items?.[i]?.id;
                       if (id != null) {
-                        navigate(`/details/${encodeURIComponent(id)}`);
+                        navigate(`/work/${encodeURIComponent(id)}`);
                       }
                     } catch (_) {}
                   }}
@@ -526,8 +526,7 @@ export default function StickyPinnedSection({
                 onClick={() => {
                   try {
                     const id = items?.[i]?.id;
-                    if (id != null)
-                      navigate(`/details/${encodeURIComponent(id)}`);
+                    if (id != null) navigate(`/work/${encodeURIComponent(id)}`);
                   } catch {}
                 }}
               >
