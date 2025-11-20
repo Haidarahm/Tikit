@@ -68,6 +68,7 @@ const CATEGORY_CONFIG = {
   digital: {
     fetcher: fetchWorkDigital,
     transform: (response) => {
+      console.log(response);
       const payload = response?.data ?? {};
       return {
         item: payload ?? null,

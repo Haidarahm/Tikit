@@ -168,7 +168,7 @@ const WorkItemsGrid = ({
   const digitalMetrics = useMemo(
     () =>
       items.map((item) => {
-        const data = item?.digital ?? {};
+        const data = item ||{};
         const available = metricsConfig.filter((metric) => {
           const value = data?.[metric.key];
           return value !== undefined && value !== null && value !== "";
