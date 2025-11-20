@@ -199,13 +199,13 @@ const Work = () => {
       />
 
       {itemsLoading ? (
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8 px-4 md:px-6">
-          {[0, 1].map((index) => (
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8 px-4 md:px-6 pt-10 pb-8">
+          {[0, 1, 2, 3].map((index) => (
             <div
               key={`work-skeleton-${index}`}
-              className="rounded-3xl bg-[var(--card-background)] p-6 md:p-8 shadow-inner"
+              className="h-[260px] rounded-3xl bg-[var(--container-bg)]/80 p-6"
             >
-              <Skeleton active style={{ width: "100%" }} />
+              <Skeleton.Node active className="w-full h-full" />
             </div>
           ))}
         </div>
