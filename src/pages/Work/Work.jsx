@@ -56,6 +56,9 @@ const Work = () => {
   const [activeSectionId, setActiveSectionId] = useState(null);
   const [activeType, setActiveType] = useState(null);
   const lenisCleanupTimeout = useRef(null);
+
+  // Only scroll to top on initial mount (when coming from another page)
+  // ScrollToTop component now handles preventing scroll when navigating between sections
   useEffect(() => {
     window.scrollTo(0, 0);
     gsap.ticker.add(() => ScrollTrigger.update());
