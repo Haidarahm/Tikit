@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import { ThemeProvider } from "./store/ThemeContext.jsx";
 import { ClientProvider } from "./store/ClientContext.jsx";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/navbar/Navbar.jsx";
 import { Outlet } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 import AOSRefresher from "./components/AOSRefresher";
