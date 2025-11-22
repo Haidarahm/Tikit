@@ -52,7 +52,7 @@ export default function ContactDropdown({ isMobile = false, onClose }) {
 
   if (isMobile) {
     return (
-      <div className="mobile-nav-item mt-8">
+      <div className="mobile-nav-item mt-4">
         <TikitButton
           text={t("nav.contact") || "Contact Us"}
           onClick={handleClientClick}

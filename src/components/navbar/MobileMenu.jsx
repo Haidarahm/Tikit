@@ -18,7 +18,7 @@ export default function MobileMenu({
       className="fixed inset-0 z-40 hidden flex-col items-center justify-center lg:hidden bg-[var(--container-bg)]"
       style={{ display: "none" }}
     >
-      <div className="flex flex-col items-center space-y-8">
+      <div className="flex flex-col items-center space-y-4">
         {NAV_LINKS.map(({ to, key }) => (
           <Link
             key={to}

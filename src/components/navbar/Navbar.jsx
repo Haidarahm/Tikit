@@ -73,6 +73,7 @@ function Navbar() {
           <HamburgerButton
             onClick={toggleMobileMenu}
             language={language}
+            isOpen={isMobileMenuOpen}
             ref={hamburgerRef}
           />
         </div>
