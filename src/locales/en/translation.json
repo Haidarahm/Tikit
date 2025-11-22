@@ -327,5 +327,15 @@
             "excerpt3": "How modern marketers measure success in an era of signal loss and privacy changes.",
             "readMore": "Read more"
         }
+    },
+    "newsletter": {
+        "title": "Stay Updated",
+        "description": "Subscribe to our newsletter to receive the latest news and updates directly to your inbox.",
+        "name": "Name",
+        "email": "Email",
+        "subscribe": "Subscribe",
+        "subscribing": "Subscribing...",
+        "successTitle": "Thank You!",
+        "successMessage": "You've successfully subscribed to our newsletter. We'll keep you updated with the latest news!"
     }
 }

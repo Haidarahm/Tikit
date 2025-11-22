@@ -12,6 +12,7 @@ import "aos/dist/aos.css";
 import LogoIntro from "./components/LogoIntro";
 import Loader from "./components/Loader.jsx";
 import { Influencer } from "./pages/influencer/Influencer.jsx";
+import NewsletterPopup from "./components/NewsletterPopup";
 
 // Lazy load components
 const Home = lazy(() => import("./pages/Home/Home"));
@@ -91,6 +92,7 @@ function App() {
             </Route>
           </Routes>
         </Suspense>
+        <NewsletterPopup />
       </ClientProvider>
     </ThemeProvider>
   );

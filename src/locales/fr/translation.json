@@ -327,5 +327,15 @@
             "excerpt3": "Comment les spécialistes du marketing modernes mesurent le succès dans une ère de perte de signal et de changements de confidentialité.",
             "readMore": "Lire la suite"
         }
+    },
+    "newsletter": {
+        "title": "Restez Informé",
+        "description": "Abonnez-vous à notre newsletter pour recevoir les dernières actualités et mises à jour directement dans votre boîte de réception.",
+        "name": "Nom",
+        "email": "Email",
+        "subscribe": "S'abonner",
+        "subscribing": "Abonnement en cours...",
+        "successTitle": "Merci !",
+        "successMessage": "Vous vous êtes abonné avec succès à notre newsletter. Nous vous tiendrons informé des dernières actualités !"
     }
 }

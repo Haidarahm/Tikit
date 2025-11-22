@@ -215,7 +215,7 @@ const Team = () => {
         <div
           className={`${
             theme === "light" ? "light" : "dark"
-          } left-section rounded-[10px] z-20 md:z-50 md:absolute md:left-0 md:top-0 w-full md:w-[30%] md:h-full sticky top-0 flex items-center px-6 md:px-[50px] py-6 md:py-0 text-[28px] sm:text-[40px] md:text-[64px] bg-cover bg-center bg-no-repeat`}
+          } left-section  z-20 md:z-50 md:absolute md:left-0 md:top-0 w-full md:w-[30%] md:h-full sticky top-0 flex items-center px-6 md:px-[50px] py-6 md:py-0 text-[28px] sm:text-[40px] md:text-[64px] bg-cover bg-center bg-no-repeat`}
           style={{
             backgroundImage: theme === "light" ? "none" : `url(${background})`,
             backgroundColor: theme === "light" ? "#fff" : "transparent",
