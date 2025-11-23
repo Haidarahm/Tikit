@@ -1,9 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { NAV_LINKS } from "./constants";
+import { useHeroScrollColor } from "./hooks/useHeroScrollColor";
 
 export default function DesktopNavLinks({ language }) {
   const { t } = useTranslation();
+  const location = useLocation();
+  const isHomePage = location.pathname === "/home";
+  const scrollColor = useHeroScrollColor();
+  const textColor = isHomePage ? scrollColor : "text-[var(--foreground)]";
 
   return (
     <div
@@ -16,7 +21,7 @@ export default function DesktopNavLinks({ language }) {
           <Link
             key={to}
             to={to}
-            className="nav-item text-[var(--foreground)] uppercase text-sm opacity-0 relative inline-block"
+            className={`nav-item ${textColor} uppercase text-sm opacity-0 relative inline-block`}
           >
             <span className="relative inline-block">
               {t(key)}

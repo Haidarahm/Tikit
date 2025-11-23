@@ -4,9 +4,9 @@ import { useTranslation } from "react-i18next";
 import { useTheme } from "../../store/ThemeContext.jsx";
 import { useBannersStore } from "../../store/bannersStore";
 
-const LiquidEther = React.lazy(() =>
-  import("../../components/aurora/LiquidEther")
-);
+// const LiquidEther = React.lazy(() =>
+//   import("../../components/aurora/LiquidEther")
+// );
 
 const VerticalVideoLooper = React.lazy(() =>
   import("../../components/videoLoop/VerticalVideoLooper.jsx")
@@ -113,7 +113,20 @@ const Hero = memo(() => {
     >
       {/* Background layer */}
       <div className="pointer-events-none h-full mt-[8px] md:mt-[16px] w-full mx-auto overflow-hidden  bg-[var(--container-bg)]  rounded-[15px] md:rounded-[25px] absolute inset-0 z-0">
-        {showLiquid && (
+        {/* Video Background */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/showcase-video.mp4" type="video/mp4" />
+        </video>
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black/50 z-10" />
+
+        {/* {showLiquid && (
           <Suspense fallback={null}>
             <LiquidEther
               colors={
@@ -137,7 +150,7 @@ const Hero = memo(() => {
               autoRampDuration={0.6}
             />
           </Suspense>
-        )}
+        )} */}
         {showVideoLooper && !isMobile && videos?.length > 0 && !loading && (
           <div className="videos absolute overflow-hidden z-20 left-0 top-0 w-full h-full">
             <Suspense fallback={null}>
@@ -166,7 +179,7 @@ const Hero = memo(() => {
         className="relative mx-auto h-[calc(100%-104px)] mt-[60px] md:mt-[104px] z-10 w-full px-4 sm:px-6 md:w-6/7 flex items-center flex-col justify-center"
       >
         {/* Title */}
-        <div className="title flex flex-col text-[var(--foreground)]   items-center text-center">
+        <div className="title flex flex-col text-white   items-center text-center">
           <h2
             className=" font-light text-lg sm:text-xl md:text-2xl lg:text-[27px]"
             data-hero-animate
@@ -183,7 +196,7 @@ const Hero = memo(() => {
 
         {/* Subtitle */}
         <div className="subtitle mt-4 md:mt-6" data-hero-animate>
-          <h3 className=" font-light text-[var(--foreground)]  text-xl sm:text-2xl md:text-3xl lg:text-[36px] text-center px-4">
+          <h3 className=" font-light text-white  text-xl sm:text-2xl md:text-3xl lg:text-[36px] text-center px-4">
             {t("home.hero.subtitle")}
           </h3>
         </div>
@@ -192,7 +205,7 @@ const Hero = memo(() => {
         <div className="avatar mt-8 md:mt-[50px]" data-hero-animate>
           <AvatarGroupDemo />
           <div className="text text-center mt-2 md:mt-[10px]">
-            <span className="font-bold  text-sm sm:text-base text-[var(--foreground)] ">
+            <span className="font-bold  text-sm sm:text-base text-white ">
               {t("home.hero.clients")}
             </span>
           </div>

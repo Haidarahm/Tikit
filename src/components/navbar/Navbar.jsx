@@ -54,9 +54,11 @@ function Navbar() {
           <NavLogo logoRef={logoRef} language={language} />
 
           {/* Desktop Navigation */}
-          <DesktopNavLinks language={language} />
-          <div className="hidden lg:flex gap-6 items-center">
-            <LanguageSelector />
+          <div className="flex gap-4">
+            <DesktopNavLinks language={language} />
+            <div className="hidden lg:flex gap-6 items-center">
+              <LanguageSelector />
+            </div>
           </div>
 
           {/* Desktop Right Controls */}
