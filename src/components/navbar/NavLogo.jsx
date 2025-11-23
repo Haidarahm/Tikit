@@ -20,9 +20,7 @@ export default function NavLogo({ logoRef, language }) {
 
   return (
     <div
-      className={`h-10 md:h-12 flex items-center justify-center ${
-        language === "ar" ? "order-4" : ""
-      }`}
+      className={`h-10 md:h-12 flex items-center justify-center `}
     >
       <div
         onClick={() => navigate("/home")}

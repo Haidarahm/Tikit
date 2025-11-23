@@ -1,6 +1,5 @@
 import React from "react";
 import TickWhite from "../../assets/TickWhite";
-import RotatingText from "../../components/RotatingText";
 import TextChanger from "../../components/TextChanger";
 import { useTheme } from "../../store/ThemeContext";
 import { useTranslation } from "react-i18next";
