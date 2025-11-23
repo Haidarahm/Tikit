@@ -115,13 +115,17 @@ const Hero = memo(() => {
       <div className="pointer-events-none h-full mt-[8px] md:mt-[16px] w-full mx-auto overflow-hidden  bg-[var(--container-bg)]  rounded-[15px] md:rounded-[25px] absolute inset-0 z-0">
         {/* Video Background */}
         <video
+          key={isMobile ? "mobile" : "desktop"}
           autoPlay
           loop
           muted
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
         >
-          <source src="/showcase-video.mp4" type="video/mp4" />
+          <source
+            src={isMobile ? "/main-hero-mobile.mp4" : "/showcase-video.mp4"}
+            type="video/mp4"
+          />
         </video>
         {/* Overlay */}
         <div className="absolute inset-0 bg-black/50 z-10" />

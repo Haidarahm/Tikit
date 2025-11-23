@@ -33,9 +33,16 @@ const NewsletterPopup = () => {
       return;
     }
 
+    // Check if popup has already been shown in this session
+    const sessionShown = sessionStorage.getItem("newsletterShownSession");
+    if (sessionShown === "true") {
+      return;
+    }
+
     // Show popup after a short delay for better UX
     const timer = setTimeout(() => {
       setIsVisible(true);
+      sessionStorage.setItem("newsletterShownSession", "true");
     }, 1500);
 
     return () => clearTimeout(timer);
@@ -174,9 +181,7 @@ const NewsletterPopup = () => {
       <div
         ref={popupRef}
         className={`fixed ${
-          isRtl
-            ? "right-0 "
-            : "left-0  "
+          isRtl ? "right-0 " : "left-0  "
         } bottom-0 w-full max-w-md mx-auto z-[9999] bg-[var(--background)] border-t md:border border-[var(--foreground)]/20 shadow-2xl rounded-t-3xl md:rounded-3xl p-6 md:p-8`}
         style={{
           boxShadow: "0 -10px 40px rgba(0, 0, 0, 0.2)",
