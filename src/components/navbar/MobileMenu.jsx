@@ -15,7 +15,7 @@ export default function MobileMenu({
   return (
     <div
       ref={mobileMenuRef}
-      className="fixed inset-0 z-40 hidden flex-col items-center justify-center lg:hidden bg-[var(--container-bg)]"
+      className="fixed inset-0 z-40 top-20 m-4 rounded-2xl hidden flex-col items-center justify-center lg:hidden bg-[var(--container-bg)]"
       style={{ display: "none" }}
     >
       <div className="flex flex-col items-center space-y-4">
