@@ -1,7 +1,9 @@
 import { useRef, useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
 import { useTheme } from "../../store/ThemeContext.jsx";
 import { LANGUAGES } from "./constants";
+import { useHeroScrollColor } from "./hooks/useHeroScrollColor";
 
 export default function LanguageSelector({
   isMobile = false,
@@ -11,6 +13,11 @@ export default function LanguageSelector({
   const { theme } = useTheme();
   const [isLangOpen, setIsLangOpen] = useState(false);
   const langMenuRef = useRef(null);
+  const location = useLocation();
+  const scrollColor = useHeroScrollColor();
+
+  const isHomePage = location.pathname === "/home";
+  const textColor = isHomePage ? scrollColor : "text-[var(--foreground)]";
 
   // Handle click outside to close language menu
   useEffect(() => {
@@ -96,7 +103,7 @@ export default function LanguageSelector({
     <div className="relative" ref={langMenuRef}>
       <button
         onClick={() => setIsLangOpen((v) => !v)}
-        className="nav-item uppercase font-light text-sm opacity-0 text-[var(--foreground)] relative inline-flex items-center gap-2"
+        className={`nav-item uppercase font-light text-sm opacity-0 ${textColor} relative inline-flex items-center gap-2`}
         aria-haspopup="listbox"
         aria-expanded={isLangOpen}
       >
@@ -170,4 +177,3 @@ export default function LanguageSelector({
     </div>
   );
 }
-
