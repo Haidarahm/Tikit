@@ -38,7 +38,6 @@ const AnimatedText = () => {
         {t("about.animatedText.line2.text1")}
         <Tick className="text-[#] w-[100px] md:w-[200px] inline-block h-[50x] px-4 md:px-0 md:h-[100px]" />{" "}
         {t("about.animatedText.line2.text2")}{" "}
-        {t("about.animatedText.line2.text3")}
         <Tick className="text-[#] w-[100px] md:w-[200px] inline-block h-[50x] px-4 md:px-0 md:h-[100px]" />{" "}
         {t("about.animatedText.line2.text4")}
       </div>
