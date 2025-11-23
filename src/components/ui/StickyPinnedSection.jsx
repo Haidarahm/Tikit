@@ -360,7 +360,7 @@ export default function StickyPinnedSection({
         ref={stickyRef}
         className="sticky top-0 flex h-screen items-center justify-between gap-10 px-10"
       >
-        <div className=" text-[var(--foreground)] px-10 flex  w-full font-bold absolute top-22 left-1/2 -translate-x-1/2 uppercase  items-center justify-between gap-4 ">
+        <div className=" text-[var(--foreground)] px-10 flex  w-full font-bold absolute top-28 left-1/2 -translate-x-1/2 uppercase  items-center justify-between gap-4 ">
           <div>
             {isRtl ? (
               <span className="fw-letter text-[32px]">
@@ -400,7 +400,7 @@ export default function StickyPinnedSection({
           </button>
         </div>
         {/* Text column */}
-        <div className="relative h-[80vh] mt-30 w-full max-w-xl">
+        <div className="relative h-[80vh] mt-34 w-full max-w-xl">
           {items.map((it, i) => (
             <div
               key={i}
@@ -494,7 +494,7 @@ export default function StickyPinnedSection({
         </div>
 
         {/* Media column */}
-        <div className="sticky z-10 top-10 mt-30 h-[65vh] w-[25rem]  lg:w-[35rem] shrink-0 overflow-hidden rounded-xl">
+        <div className="sticky z-10 top-10 mt-34 h-[65vh] w-[25rem]  lg:w-[35rem] shrink-0 overflow-hidden rounded-xl">
           <div className="relative h-full w-full">
             {items.map((it, i) => (
               <div

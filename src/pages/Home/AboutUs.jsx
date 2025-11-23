@@ -1,6 +1,10 @@
 import React, { useEffect, useRef, useState, memo } from "react";
 import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 import img1 from "../../assets/who-we-are/1.webp";
 import img2 from "../../assets/who-we-are/2.webp";
@@ -17,10 +21,62 @@ const whoWeAreImages = [img1, img2, img3, img4, img5, img6, img7, img8, img9];
 const AboutUs = memo(() => {
   const sectionRef = useRef(null);
   const gridRef = useRef(null);
+  const titleRef = useRef(null);
+  const descriptionRef = useRef(null);
   const [inView, setInView] = useState(false);
   const [imagesInView, setImagesInView] = useState(new Set());
   const { t } = useTranslation();
   const { isRtl } = useI18nLanguage();
+
+  // GSAP animation for text elements on first render
+  useEffect(() => {
+    if (!sectionRef.current || !titleRef.current || !descriptionRef.current)
+      return;
+
+    const ctx = gsap.context(() => {
+      // Set initial states based on RTL
+      const xOffset = isRtl ? -30 : 30;
+      gsap.set([titleRef.current, descriptionRef.current], {
+        opacity: 0,
+        y: 30,
+        x: xOffset,
+      });
+
+      // Create timeline with ScrollTrigger
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+          end: "bottom 20%",
+          toggleActions: "play none none none",
+          once: true,
+        },
+      });
+
+      // Animate title
+      tl.to(titleRef.current, {
+        opacity: 1,
+        y: 0,
+        x: 0,
+        duration: 0.6,
+        ease: "power3.out",
+      })
+        // Animate description
+        .to(
+          descriptionRef.current,
+          {
+            opacity: 1,
+            y: 0,
+            x: 0,
+            duration: 0.6,
+            ease: "power3.out",
+          },
+          "-=0.3"
+        );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, [isRtl]);
 
   useEffect(() => {
     const node = sectionRef.current;
@@ -103,26 +159,19 @@ const AboutUs = memo(() => {
     >
       <div className="w-full text-[var(--foreground)] ">
         <h2
-          data-aos={isRtl ? "fade-left" : "fade-right"}
-          data-aos-duration="500"
-          data-aos-delay="100"
+          ref={titleRef}
           className="text-[18px] text-center md:text-4xl font-bold mb-2 md:mb-4"
         >
           {t("home.aboutUs.title")}
         </h2>
         <p
-          data-aos={isRtl ? "fade-right" : "fade-left"}
-          data-aos-duration="500"
-          data-aos-delay="200"
+          ref={descriptionRef}
           className="text-[16px] md:text-[32px] font-light text-center mb-[40px]"
         >
           {t("home.aboutUs.description")}
         </p>
         <div
           ref={gridRef}
-          data-aos="fade-up"
-          data-aos-duration="500"
-          data-aos-delay="300"
           className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
         >
           {whoWeAreImages.map((src, idx) => (

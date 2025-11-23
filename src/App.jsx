@@ -14,6 +14,8 @@ import Loader from "./components/Loader.jsx";
 import { Influencer } from "./pages/influencer/Influencer.jsx";
 import NewsletterPopup from "./components/NewsletterPopup";
 
+import { ToastContainer } from "./components/ui/Toast";
+
 // Lazy load components
 const Home = lazy(() => import("./pages/Home/Home"));
 const ServiceDetails = lazy(() =>
@@ -69,6 +71,7 @@ function App() {
   return (
     <ThemeProvider>
       <ClientProvider>
+        <ToastContainer />
         <Suspense fallback={<LoadingSpinner />}>
           <Routes>
             <Route path="/" element={<LogoIntro />} />

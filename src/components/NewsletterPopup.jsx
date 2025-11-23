@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
 import { useI18nLanguage } from "../store/I18nLanguageContext";
 import { useTheme } from "../store/ThemeContext";
+import { useSubscriptionStore } from "../store/subscriptionStore";
 import { gsap } from "gsap";
 import FloatingInput from "./ui/FloatingInput";
 import { X } from "lucide-react";
@@ -11,6 +12,7 @@ const NewsletterPopup = () => {
   const { t } = useTranslation();
   const { isRtl } = useI18nLanguage();
   const { theme } = useTheme();
+  const { subscribe } = useSubscriptionStore();
   const location = useLocation();
   const popupRef = useRef(null);
   const overlayRef = useRef(null);
@@ -147,18 +149,19 @@ const NewsletterPopup = () => {
 
     // Simulate API call (replace with your actual API endpoint)
     try {
-      // TODO: Replace with your actual subscription API
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      const success = await subscribe({ name, email }, true);
 
-      // Store in localStorage
-      localStorage.setItem("userSigned", "true");
+      if (success) {
+        // Store in localStorage
+        localStorage.setItem("userSigned", "true");
 
-      setIsSubmitted(true);
+        setIsSubmitted(true);
 
-      // Animate success message
-      setTimeout(() => {
-        handleClose();
-      }, 2000);
+        // Animate success message
+        setTimeout(() => {
+          handleClose();
+        }, 2000);
+      }
     } catch (error) {
       console.error("Subscription error:", error);
     } finally {
@@ -247,7 +250,16 @@ const NewsletterPopup = () => {
               <button
                 type="submit"
                 disabled={isSubmitting || !name.trim() || !email.trim()}
-                className="w-full px-6 py-3 rounded-full font-semibold text-white bg-[var(--secondary)] hover:bg-[var(--secondary)]/90 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98]"
+                className="w-full px-6 py-3 
+                 rounded-full font-semibold
+                  bg-[var(--secondary)] 
+                  text-[var(--background)]
+                  hover:bg-[var(--secondary)]/90 
+                  disabled:opacity-50
+                   disabled:cursor-not-allowed 
+                   transition-all duration-200 transform 
+                   hover:scale-[1.02] 
+                active:scale-[0.98]"
               >
                 {isSubmitting
                   ? t("newsletter.subscribing")

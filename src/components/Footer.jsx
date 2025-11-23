@@ -4,9 +4,20 @@ import { FaXTwitter } from "react-icons/fa6";
 import FloatingInput from "./ui/FloatingInput";
 import SVGComponent from "../assets/logo";
 import { useTheme } from "../store/ThemeContext.jsx";
+import { useSubscriptionStore } from "../store/subscriptionStore";
+import { useState } from "react";
 
 const Footer = ({ className }) => {
   const { theme } = useTheme();
+  const { subscribe, loading } = useSubscriptionStore();
+  const [formData, setFormData] = useState({ name: "", email: "" });
+
+  const handleSubscribe = async () => {
+    if (!formData.name || !formData.email) return;
+    await subscribe(formData);
+    setFormData({ name: "", email: "" });
+  };
+
   const social = [
     { href: "https://facebook.com", label: "Facebook", Icon: FaFacebookF },
     { href: "https://instagram.com", label: "Instagram", Icon: FaInstagram },
@@ -86,22 +97,41 @@ const Footer = ({ className }) => {
               <li>Production</li>
             </ul>
           </div>
-          <div className="subscription w-full flex items-end">
+          <div className="subscription w-full flex items-end gap-4">
             <FloatingInput
-              id="contact-standard"
+              id="contact-name"
+              label="Name"
+              containerClassName="mt-8 flex-1"
+              inputProps={{
+                value: formData.name,
+                onChange: (e) =>
+                  setFormData({ ...formData, name: e.target.value }),
+              }}
+            />
+            <FloatingInput
+              id="contact-email"
               label="Email"
               containerClassName="mt-8 flex-1"
+              inputProps={{
+                value: formData.email,
+                onChange: (e) =>
+                  setFormData({ ...formData, email: e.target.value }),
+              }}
             />
             <button
-              className="bg-[var(--secondary)] 
+              onClick={handleSubscribe}
+              disabled={loading}
+              className={`bg-[var(--secondary)] 
             hover:text-[var(--secondary)]
             hover:bg-transparent
             border-[var(--secondary)]
             text-[var(--background)]
-            ml-4 transition 
-              cursor-pointer border   px-2 text-[14px] h-[30px] rounded-full"
+            transition 
+              cursor-pointer border   px-2 text-[14px] h-[30px] rounded-full ${
+                loading ? "opacity-50 cursor-not-allowed" : ""
+              }`}
             >
-              Subscribe
+              {loading ? "..." : "Subscribe"}
             </button>
           </div>
         </div>
