@@ -380,7 +380,7 @@ export default function StickyPinnedSection({
            bg-transparent
 
             hover:text-[var(--background)]
-
+            text-[14px]
             hover:bg-[var(--secondary)]
             border-[var(--secondary)]
             text-[var(--secondary)] px-5 py-2  transition-colors 
