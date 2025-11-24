@@ -364,7 +364,7 @@ const ContactUs = memo(({ className = "" }) => {
                     htmlFor="message"
                     className={`absolute ${
                       isRtl ? "right-3" : "left-3"
-                    } -top-2.5 bg-[var(--background)] px-1 text-[var(--foreground)] text-xs transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-2 peer-focus:-top-2.5 peer-focus:text-xs`}
+                    } -top-2.5 bg-[#F5F7FB] dark:bg-[#000] px-1 text-[var(--foreground)] text-xs transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-2 peer-focus:-top-2.5 peer-focus:text-xs`}
                   >
                     {t("contact.action.form.message")}
                   </label>

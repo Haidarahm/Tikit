@@ -10,7 +10,7 @@ const Growth = () => {
   return (
     <div
       data-scroll-section
-      className={`px-4 md:px-[60px] flex flex-col md:flex-row my-[60px] md:my-[120px] gap-8 md:gap-0 ${
+      className={`px-4 md:px-[60px] flex flex-col min-h-[350px] md:flex-row my-[60px] md:my-[120px] gap-8 md:gap-0 ${
         isRtl ? "font-cairo" : "font-hero-light"
       }`}
       dir={isRtl ? "rtl" : "ltr"}

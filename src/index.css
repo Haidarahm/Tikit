@@ -185,7 +185,12 @@ body {
 /* Full-page snapping container */
 
 /* Dark theme overrides */
-
+@theme {
+  @keyframes marquee {
+    from { transform: translateX(0%); }
+    to   { transform: translateX(-50%); }
+  }
+}
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -262,20 +267,9 @@ body {
     animation: fadeInOut 2s ease-in-out infinite;
   }
 }
-@theme {
-  --translate-101: 101%;
 
-  @keyframes marquee {
-    from {
-      transform: translateX(0%);
-    }
-    to {
-      transform: translateX(-50%);
-    }
-  }
 
-  --animate-marquee: marquee 15s linear infinite;
-}
+
 
 /* Simple fade-in used for first-render appearance */
 @keyframes fadeInOnce {
