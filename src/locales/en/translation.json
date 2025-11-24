@@ -41,9 +41,9 @@
         "title": "Home",
         "description": "Home page",
         "hero": {
-            "tagline": "Marketing Agency",
+            "tagline": "Social Media Marketing Agency",
             "title": "ROI REBELS",
-            "subtitle": "Fueling brands with influence",
+            "subtitle": "Fueling brands with data-backed social media marketing and influencer firepower.",
             "clients": "+300 Happy Clients"
         },
         "numbers": {
@@ -57,7 +57,8 @@
             }
         },
         "services": {
-            "title": "What We Do Best",
+            "title": "Social Media Marketing Services",
+            "description": "Strategy, content, paid media, and influencer activations engineered to scale your social media marketing across every platform.",
             "explore": "Explore Services"
         },
         "influencers": {

@@ -85,9 +85,9 @@ function Home() {
       className="sections overflow-hidden relative w-full home-scroll-trigger"
     >
       <SEOHead
-        title="Home"
-        description="Tikit Agency crafts impactful brand strategy, design systems, websites, and immersive digital experiences. Explore our featured work, services, and case studies."
-        keywords="marketing agency, digital marketing, brand strategy, design systems, web development, creative agency, UAE marketing"
+        title="Social Media Marketing Agency | Tikit"
+        description="Partner with Tikit Agency for full-service social media marketing, influencer campaigns, celebrity management, and creative production tailored for growth."
+        keywords="social media marketing, influencer marketing agency, celebrity management, social media agency UAE, content marketing, paid social campaigns"
         canonicalUrl="/home"
       />
       <Hero />
