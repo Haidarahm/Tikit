@@ -272,7 +272,7 @@ export const Influencer = () => {
                   No sections available right now.
                 </div>
               ) : (
-                <div className="flex flex-col gap-3">
+                <div className="flex flex-col gap-3 influencer-nav-scroll">
                   {normalizedSections.map((section, index) => {
                     const isActive = index === activeIndex;
                     return (

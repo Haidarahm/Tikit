@@ -160,7 +160,7 @@ export const InfluencerDetails = ({
         <div className="space-y-2">
           <h1
             ref={nameRef}
-            className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-[var(--foreground)] leading-tight"
+            className="text-4xl md:text-6xl lg:text-7xl  font-bold text-[var(--foreground)] leading-tight"
           >
             {name}
           </h1>
@@ -206,7 +206,7 @@ export const InfluencerDetails = ({
         <img
           src={image}
           alt={`${name} - ${primarySubtitle}`}
-          className=" w-full h-full px-8"
+          className=" w-full h-full px-[1px] lg:px-[2px]"
           loading="lazy"
         />
         <img

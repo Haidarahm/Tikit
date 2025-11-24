@@ -142,6 +142,22 @@ body {
   /* margin-top: 0; */
 }
 
+/* Influencer nav list scroll container */
+.influencer-nav-scroll {
+  max-height: min(70vh, calc(100dvh - 8rem));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+  padding-right: 0.75rem;
+  padding-bottom: 4rem;
+  scroll-padding-bottom: 4rem;
+  scrollbar-gutter: stable both-edges;
+}
+
+.influencer-nav-scroll::-webkit-scrollbar {
+  display: none;
+}
+
 /* Floating animation for decorative elements */
 @keyframes floatUpDown {
   0% {
@@ -564,11 +580,11 @@ footer .bottom-section .right-section .items li {
     transform: translateY(20px);
   }
 }
- .ant-skeleton{
+.ant-skeleton {
   width: 100% !important;
   height: 100% !important;
 }
- .ant-skeleton-image{
+.ant-skeleton-image {
   width: 100% !important;
   height: 100% !important;
 }
