@@ -1,0 +1,17 @@
+RewriteEngine On
+
+# Allow direct access to existing files/directories
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Force HTTPS & non-www domain
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP_HOST} ^www\.tikit\.ae [NC]
+RewriteRule ^ https://tikit.ae%{REQUEST_URI} [L,R=301]
+
+RewriteBase /
+
+# React Router fallback
+RewriteRule ^ index.html [L]
+
