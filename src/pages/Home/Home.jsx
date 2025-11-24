@@ -91,9 +91,9 @@ function Home() {
         canonicalUrl="/home"
       />
       <Hero />
-      <Influencers />
       <Numbers />
       <Goals />
+      <Influencers />
       <Services />
       <Connections />
       <WorkSection />
