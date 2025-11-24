@@ -247,7 +247,7 @@ export const Influencer = () => {
       <Hero />
       <div className="w-full px-6 mx-auto ">
         <div className="flex flex-col lg:flex-row gap-10 lg:gap-16">
-          <aside className="lg:w-72 xl:w-80 flex-shrink-0">
+          <aside className="lg:w-72 hidden md:block xl:w-80 flex-shrink-0">
             <div className="sticky top-32">
               <div className="mb-6 space-y-3">
                 <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#52C3C5]/10 text-[#52C3C5] text-sm font-medium">
@@ -304,6 +304,7 @@ export const Influencer = () => {
               )}
             </div>
           </aside>
+          <div className="mobile-swiper-influencers-sections md:hidden"></div>
           <div className="flex-1 space-y-16">
             {normalizedSections.map((section, index) => {
               const influencers = getInfluencersForSection(section.key, [

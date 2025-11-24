@@ -6,6 +6,7 @@ import Navbar from "./components/navbar/Navbar.jsx";
 import { Outlet } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 import AOSRefresher from "./components/AOSRefresher";
+import ScrollToHash from "./components/ScrollToHash";
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -53,6 +54,7 @@ const LoadingSpinner = () => <Loader />;
 const Layout = () => (
   <>
     <ScrollToTop />
+    <ScrollToHash />
     <AOSRefresher />
     <div className="relative w-full min-h-full">
       <Navbar />
