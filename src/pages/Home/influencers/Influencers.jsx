@@ -12,6 +12,7 @@ import {
   FaSnapchatGhost,
 } from "react-icons/fa";
 import { useInfluencersStore } from "../../../store/influencersStore";
+import { useNavigate } from "react-router-dom";
 
 const SOCIAL_ICON_MAP = {
   instagram: FaInstagram,
@@ -62,6 +63,7 @@ const normalizeSocialLinks = (links) => {
 };
 
 const Influencers = () => {
+  const navigate = useNavigate();
   const [activeSectionId, setActiveSectionId] = useState(null);
   const sections = useInfluencersStore((state) => state.sections);
   const sectionsLoading = useInfluencersStore((state) => state.sectionsLoading);
@@ -130,14 +132,10 @@ const Influencers = () => {
         influencer?.subtitle ||
         influencer?.role ||
         "",
-      secondarySubtitle:
-        influencer?.secondary_subtitle ||
-        "",
-      image:
-        influencer?.image,
-        influencerPlaceholder,
-      followers:
-        influencer?.followers,
+      secondarySubtitle: influencer?.secondary_subtitle || "",
+      image: influencer?.image,
+      influencerPlaceholder,
+      followers: influencer?.followers,
       socialLinks: normalizeSocialLinks(influencer?.links),
     }));
   }, [activeSectionId, influencersBySection]);
@@ -169,7 +167,7 @@ const Influencers = () => {
   };
 
   return (
-    <section className="influencers-scope min-h-screen py-16 px-4 relative overflow-hidden bg-[var(--background)]">
+    <section className="influencers-scope min-h-[1074px] py-16 px-4 relative overflow-hidden bg-[var(--background)]">
       {/* Background decoration */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#52C3C5]/5 to-transparent pointer-events-none"></div>
 
@@ -234,7 +232,7 @@ const Influencers = () => {
         </div>
 
         {/* Cards Grid - 3 per row */}
-        <div className="flex flex-wrap justify-center gap-6">
+        <div className="flex flex-wrap justify-center gap-6 min-h-[500px]">
           {influencersLoading && !influencers.length ? (
             <div className="text-sm text-[var(--foreground)]/70">
               Loading influencers...
@@ -323,6 +321,17 @@ const Influencers = () => {
               );
             })
           )}
+        </div>
+
+        <div className="mt-12 flex justify-center">
+          <button
+            type="button"
+            onClick={() => navigate("/influencer")}
+            className="inline-flex items-center gap-2 px-8 py-3 rounded-full border border-[#52C3C5] text-[#52C3C5] font-semibold tracking-wide uppercase text-sm transition-all duration-300 hover:bg-[#52C3C5] hover:text-white shadow-lg shadow-[#52C3C5]/30"
+          >
+            Show All
+            <span aria-hidden="true">→</span>
+          </button>
         </div>
       </div>
     </section>
