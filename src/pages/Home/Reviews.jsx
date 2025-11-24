@@ -8,13 +8,43 @@ import { useTheme } from "../../store/ThemeContext.jsx";
 import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
 
+const FALLBACK_TESTIMONIALS = [
+  {
+    name: "Sophia Martinez",
+    company: "Global Enterprises Ltd.",
+    text: "AtomWallet has completely transformed how we manage international payments. Transactions are fast, secure, and effortless.",
+  },
+  {
+    name: "David Lee",
+    company: "TechBridge Solutions",
+    text: "Sending money to partners abroad has never been this smooth. AtomWallet's real-time tracking gives us complete peace of mind.",
+  },
+  {
+    name: "Amira Hassan",
+    company: "FinEdge Capital",
+    text: "The security features are outstanding. Multi-layer protection ensures our business transactions remain private and protected.",
+  },
+  {
+    name: "Liam Anderson",
+    company: "Anderson Trading Co.",
+    text: "With AtomWallet, I can pay vendors and receive funds globally without worrying about hidden fees. Transparent and reliable!",
+  },
+  {
+    name: "Chen Wei",
+    company: "BrightPath Logistics",
+    text: "The interface is so intuitive. Within minutes, my team was making international payments without any training required.",
+  },
+];
+
 // Extracted testimonial card component to avoid duplication
 const TestimonialCard = memo(
   ({ testimonial, index, theme, lightBgs, isRtl }) => (
     <div
-      className={`flex gap-[23px] h-[180px] md:h-[300px] w-[320px] md:w-[600px] ml-[20px] p-2 md:p-7 rounded-xl text-[var(--foreground)] border border-white/15 dark:bg-white/10 backdrop-blur-md shadow-xl ${
-        isRtl ? "flex-row-reverse" : ""
+      className={`flex gap-[23px] h-[180px] md:h-[300px] w-[320px] md:w-[600px] p-2 md:p-7 rounded-xl text-[var(--foreground)] border border-white/15 dark:bg-white/10 backdrop-blur-md shadow-xl ${
+        isRtl ? "flex-row-reverse mr-[20px]" : "ml-[20px]"
       }`}
+      dir={isRtl ? "rtl" : "ltr"}
+      lang={isRtl ? "ar" : undefined}
       style={
         theme === "dark"
           ? undefined
@@ -38,9 +68,7 @@ const TestimonialCard = memo(
           {testimonial.text}
         </p>
         <div
-          className={`user flex items-center ${
-            isRtl ? "flex-row-reverse" : ""
-          }`}
+          className={`user flex items-center `}
         >
           <img
             src={testimonial.avatar}
@@ -67,29 +95,34 @@ TestimonialCard.displayName = "TestimonialCard";
 
 const Reviews = memo(() => {
   const { theme } = useTheme();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { isRtl } = useI18nLanguage();
   const lightBgs = ["#D4E6F4", "#E0DFFA", "#E8DCFD", "#F5D8ED"];
 
-  const testimonials = useMemo(
-    () =>
+  const testimonials = useMemo(() => {
+    const data =
       t("home.reviews.testimonials", {
         returnObjects: true,
-      }).map((testimonial) => ({
-        ...testimonial,
-        avatar:
-          "https://i.pinimg.com/736x/84/8f/3b/848f3b92a3e2a6040faccad5888f851e.jpg",
-      })),
-    [t]
-  );
+      }) || [];
+
+    const normalized = Array.isArray(data) ? data : [];
+    const source = normalized.length > 0 ? normalized : FALLBACK_TESTIMONIALS;
+
+    return source.map((testimonial) => ({
+      ...testimonial,
+      avatar:
+        "https://i.pinimg.com/736x/84/8f/3b/848f3b92a3e2a6040faccad5888f851e.jpg",
+    }));
+  }, [t, i18n.language]);
 
   return (
     <div
       className={`reviews relative w-full md:min-h-screen py-10 md:py-20 ${
         isRtl ? "font-cairo" : "font-hero-light"
       }`}
+      dir={isRtl ? "rtl" : "ltr"}
     >
-      <ThreeDScrollTriggerContainer>
+      <ThreeDScrollTriggerContainer dir="ltr">
         <ThreeDScrollTriggerRow baseVelocity={3} direction={1}>
           {testimonials.map((testimonial, index) => (
             <TestimonialCard
@@ -103,7 +136,7 @@ const Reviews = memo(() => {
           ))}
         </ThreeDScrollTriggerRow>
       </ThreeDScrollTriggerContainer>
-      <ThreeDScrollTriggerContainer>
+      <ThreeDScrollTriggerContainer dir="ltr">
         <ThreeDScrollTriggerRow baseVelocity={3} direction={-1}>
           {testimonials.map((testimonial, index) => (
             <TestimonialCard

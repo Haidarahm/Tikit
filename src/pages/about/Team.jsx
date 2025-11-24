@@ -256,7 +256,7 @@ const Team = () => {
                     />
 
                     {/* Enhanced Soft Gradient */}
-                    <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/40 to-black/85" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/20 to-black/65" />
 
                     {/* Glow edges */}
                   </div>

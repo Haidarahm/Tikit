@@ -9,6 +9,12 @@ const initialState = {
   message: null,
 };
 
+const normalizePayload = (payload) => {
+  if (Array.isArray(payload)) return payload;
+  if (payload) return [payload];
+  return [];
+};
+
 export const useWorksSectionsStore = create((set) => ({
   ...initialState,
 
@@ -16,14 +22,26 @@ export const useWorksSectionsStore = create((set) => ({
 
   loadSections: async (params = {}) => {
     set({ loading: true, error: null });
+    const safeParams = params || {};
+
     try {
-      const response = await getWorksSections(params);
-      const payload = response?.data ?? [];
-      const normalizedData = Array.isArray(payload)
-        ? payload
-        : payload
-        ? [payload]
-        : [];
+      let response = await getWorksSections(safeParams);
+      let normalizedData = normalizePayload(response?.data);
+
+      const shouldFallbackToEn =
+        normalizedData.length === 0 &&
+        safeParams?.lang &&
+        safeParams.lang !== "en";
+
+      if (shouldFallbackToEn) {
+        const fallbackParams = { ...safeParams, lang: "en" };
+        const fallbackResponse = await getWorksSections(fallbackParams);
+        const fallbackData = normalizePayload(fallbackResponse?.data);
+        if (fallbackData.length > 0) {
+          response = fallbackResponse;
+          normalizedData = fallbackData;
+        }
+      }
 
       set({
         sections: normalizedData,
