@@ -3,7 +3,7 @@
   <head>
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
     <meta charset="UTF-8" />
-    <link id="favicon" rel="icon" type="image/svg+xml" href="/mainLogo.png" />
+    <link id="favicon" rel="icon" type="image/svg+xml" href="/logo-light.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tikit Agency | Elevating Brands, Celebrity Management, Influencer Marketing</title>
     <meta name="description" content="Tikit Agency specializes in elevating brands through creative strategy, celebrity management, and impactful influencer marketing — helping you connect, grow, and stand out." />
@@ -18,13 +18,13 @@
     <meta property="og:url" content="https://tikit.ae/" />
     <meta property="og:title" content="Tikit Agency | Tikit Agency | Elevating Brands, Celebrity Management, Influencer Marketing" />
     <meta property="og:description" content="Tikit Agency specializes in elevating brands through creative strategy, celebrity management, and impactful influencer marketing — helping you connect, grow, and stand out." />
-    <meta property="og:image" content="https://tikit.ae/mainlogo.svg" />
+    <meta property="og:image" content="https://tikit.ae/logo-light.svg" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Tikit Agency | Elevating brands, Celebrity management, influencer marketing" />
     <meta name="twitter:description" content="Tikit Agency crafts impactful brand strategy, design systems, websites, and immersive digital experiences." />
-    <meta name="twitter:image" content="https://tikit.ae/mainlogo.svg" />
+    <meta name="twitter:image" content="https://tikit.ae/logo-light.svg" />
 
     <!-- JSON-LD Organization Schema -->
    
@@ -34,7 +34,7 @@
         "@type": "Organization",
         "name": "Tikit Agency",
         "url": "https://tikit.ae/",
-        "logo": "https://tikit.ae/mainlogo.png",
+        "logo": "https://tikit.ae/logo-light.svg",
         "sameAs": [],
         "description": "Tikit Agency crafts impactful brand strategy, design systems, websites, and immersive digital experiences."
       }
@@ -49,17 +49,9 @@
         if (window.AOS) {
           window.AOS.init({ duration: 800, easing: 'ease-out-quart', once: true });
         }
-        // Update favicon based on theme class set on <html>
         try {
           var link = document.querySelector('link#favicon');
-          var applyFavicon = function() {
-            if (!link) return;
-            var isDark = document.documentElement.classList.contains('dark');
-            link.href = isDark ? '/logo-dark.svg' : '/logo-light.svg';
-          };
-          applyFavicon();
-          var mo = new MutationObserver(function(){ applyFavicon(); });
-          mo.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+          if (link) link.href = '/logo-light.svg';
         } catch(e) {}
       });
     </script>
