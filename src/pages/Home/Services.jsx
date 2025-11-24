@@ -33,6 +33,8 @@ const Services = memo(() => {
     [services]
   );
 
+  const arrowIcon = isRtl ? "←" : "→";
+
   const renderContent = () => {
     // Show loading state during initial load
     if (!isClient || loading) {
@@ -101,9 +103,10 @@ const Services = memo(() => {
         {!loading && !error && (
           <button
             onClick={() => navigate("/services")}
-            className="bg-transparent hover:text-[var(--background)] hover:bg-[var(--secondary)] border-[var(--secondary)] text-[var(--secondary)] transition duration-75 ease-in border px-2 h-8 md:h-10 text-[11px] rounded-full uppercase"
+            className="inline-flex items-center gap-2 px-8 py-3 rounded-full border border-[#52C3C5] text-[#52C3C5] font-semibold tracking-wide uppercase text-sm transition-all duration-300 hover:bg-[#52C3C5] hover:text-white shadow-lg shadow-[#52C3C5]/30"
           >
             {t("home.services.explore")}
+            <span aria-hidden="true">{arrowIcon}</span>
           </button>
         )}
       </div>

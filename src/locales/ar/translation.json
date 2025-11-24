@@ -80,6 +80,19 @@
             "title": "ما الذي نتقنه",
             "explore": "استكشف الخدمات"
         },
+        "influencers": {
+            "badge": "مؤثرونا",
+            "title": "تعرّف على المبدعين",
+            "subtitle": "تواصل مع أصوات مؤثرة عبر فئات متنوعة",
+            "loadingCategories": "جاري تحميل الفئات...",
+            "categoriesError": "فشل تحميل الفئات.",
+            "noCategories": "لا توجد فئات متاحة الآن.",
+            "loadingInfluencers": "جاري تحميل المؤثرين...",
+            "influencersError": "فشل تحميل المؤثرين.",
+            "noInfluencers": "لم نعثر بعد على مؤثرين لهذه الفئة. الرجاء التحقق لاحقاً.",
+            "showAll": "عرض الكل",
+            "followersLabel": "{{count}} متابع"
+        },
         "connections": {
             "question": "هل أنت مؤثر؟",
             "headline": "انضم إلى قائمتنا اليوم!",

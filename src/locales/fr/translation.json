@@ -80,6 +80,19 @@
             "title": "Ce que nous faisons le mieux",
             "explore": "Explorer les services"
         },
+        "influencers": {
+            "badge": "Nos influenceurs",
+            "title": "Rencontrez les créateurs",
+            "subtitle": "Connectez-vous à des voix influentes dans diverses catégories",
+            "loadingCategories": "Chargement des catégories...",
+            "categoriesError": "Impossible de charger les catégories.",
+            "noCategories": "Aucune catégorie disponible pour le moment.",
+            "loadingInfluencers": "Chargement des influenceurs...",
+            "influencersError": "Impossible de charger les influenceurs.",
+            "noInfluencers": "Nous n'avons pas encore trouvé d'influenceurs pour cette catégorie. Revenez bientôt.",
+            "showAll": "Tout afficher",
+            "followersLabel": "{{count}} abonnés"
+        },
         "connections": {
             "question": "Êtes-vous un influenceur ?",
             "headline": "Rejoignez notre liste dès aujourd'hui !",

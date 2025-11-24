@@ -60,6 +60,19 @@
             "title": "What We Do Best",
             "explore": "Explore Services"
         },
+        "influencers": {
+            "badge": "Our Influencers",
+            "title": "Meet The Creators",
+            "subtitle": "Connect with influential voices across diverse categories",
+            "loadingCategories": "Loading categories...",
+            "categoriesError": "Failed to load categories.",
+            "noCategories": "No categories available right now.",
+            "loadingInfluencers": "Loading influencers...",
+            "influencersError": "Failed to load influencers.",
+            "noInfluencers": "We couldn't find influencers for this category yet. Please check back soon.",
+            "showAll": "Show All",
+            "followersLabel": "{{count}} Followers"
+        },
         "connections": {
             "question": "Are you an influencer?",
             "headline": "Join our list today!",

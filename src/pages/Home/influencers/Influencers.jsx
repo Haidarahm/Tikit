@@ -13,6 +13,8 @@ import {
 } from "react-icons/fa";
 import { useInfluencersStore } from "../../../store/influencersStore";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import { useI18nLanguage } from "../../../store/I18nLanguageContext.jsx";
 
 const SOCIAL_ICON_MAP = {
   instagram: FaInstagram,
@@ -79,10 +81,18 @@ const Influencers = () => {
     (state) => state.influencersError
   );
   const loadInfluencers = useInfluencersStore((state) => state.loadInfluencers);
+  const clearSection = useInfluencersStore((state) => state.clearSection);
+  const { t } = useTranslation();
+  const { language, isRtl } = useI18nLanguage();
 
   useEffect(() => {
-    loadSections();
-  }, [loadSections]);
+    loadSections({ lang: language });
+  }, [loadSections, language]);
+
+  useEffect(() => {
+    clearSection();
+    setActiveSectionId(null);
+  }, [language, clearSection]);
 
   useEffect(() => {
     if (!sections || sections.length === 0) {
@@ -104,8 +114,8 @@ const Influencers = () => {
       AOS.refresh();
       return;
     }
-    loadInfluencers(activeSectionId);
-  }, [activeSectionId, influencersBySection, loadInfluencers]);
+    loadInfluencers(activeSectionId, { lang: language });
+  }, [activeSectionId, influencersBySection, loadInfluencers, language]);
 
   useEffect(() => {
     AOS.refresh();
@@ -133,8 +143,7 @@ const Influencers = () => {
         influencer?.role ||
         "",
       secondarySubtitle: influencer?.secondary_subtitle || "",
-      image: influencer?.image,
-      influencerPlaceholder,
+      image: influencer?.image || influencerPlaceholder,
       followers: influencer?.followers,
       socialLinks: normalizeSocialLinks(influencer?.links),
     }));
@@ -166,8 +175,13 @@ const Influencers = () => {
     return followers;
   };
 
+  const arrowIcon = isRtl ? "←" : "→";
+
   return (
-    <section className="influencers-scope min-h-[1074px] py-16 px-4 relative overflow-hidden bg-[var(--background)]">
+    <section
+      className="influencers-scope min-h-[1074px] py-16 px-4 relative overflow-hidden bg-[var(--background)]"
+      dir={isRtl ? "rtl" : "ltr"}
+    >
       {/* Background decoration */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#52C3C5]/5 to-transparent pointer-events-none"></div>
 
@@ -177,14 +191,14 @@ const Influencers = () => {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#52C3C5]/10 dark:bg-[#52C3C5]/20 mb-4">
             <span className="w-2 h-2 rounded-full bg-[#52C3C5] animate-pulse"></span>
             <span className="text-sm font-medium text-[#52C3C5]">
-              Our Influencers
+              {t("home.influencers.badge")}
             </span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-[#52C3C5] via-[#5269C5] to-[#52A0C5] bg-clip-text text-transparent">
-            Meet The Creators
+          <h2 className="text-4xl md:text-5xl h-14 font-bold mb-4 bg-gradient-to-r from-[#52C3C5] via-[#5269C5] to-[#52A0C5] bg-clip-text  text-transparent">
+            {t("home.influencers.title")}
           </h2>
           <p className="text-[var(--foreground)]/70 max-w-2xl mx-auto">
-            Connect with influential voices across diverse categories
+            {t("home.influencers.subtitle")}
           </p>
         </div>
 
@@ -197,15 +211,15 @@ const Influencers = () => {
           <div className="flex flex-wrap gap-3 sm:gap-4 justify-center max-w-5xl px-2">
             {sectionsLoading && sections.length === 0 ? (
               <div className="text-sm text-[var(--foreground)]/70">
-                Loading categories...
+                {t("home.influencers.loadingCategories")}
               </div>
             ) : sectionsError ? (
               <div className="text-sm text-red-500">
-                {sectionsError || "Failed to load categories."}
+                {sectionsError || t("home.influencers.categoriesError")}
               </div>
             ) : sections.length === 0 ? (
               <div className="text-sm text-[var(--foreground)]/70">
-                No categories available right now.
+                {t("home.influencers.noCategories")}
               </div>
             ) : (
               sections.map((section, idx) => {
@@ -235,16 +249,15 @@ const Influencers = () => {
         <div className="flex flex-wrap justify-center gap-6 min-h-[500px]">
           {influencersLoading && !influencers.length ? (
             <div className="text-sm text-[var(--foreground)]/70">
-              Loading influencers...
+              {t("home.influencers.loadingInfluencers")}
             </div>
           ) : influencersError && !influencers.length ? (
             <div className="text-sm text-red-500">
-              {influencersError || "Failed to load influencers."}
+              {influencersError || t("home.influencers.influencersError")}
             </div>
           ) : influencers.length === 0 ? (
             <div className="text-center text-sm text-[var(--foreground)]/70 max-w-md">
-              We couldn't find influencers for this category yet. Please check
-              back soon.
+              {t("home.influencers.noInfluencers")}
             </div>
           ) : (
             influencers.map((inf, idx) => {
@@ -273,7 +286,9 @@ const Influencers = () => {
                       {followersLabel && (
                         <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-[var(--background)]/90 backdrop-blur-sm border border-[#52C3C5]/30 transition-all duration-500 ease-out group-hover:scale-110 group-hover:border-[#52C3C5] group-hover:shadow-lg group-hover:shadow-[#52C3C5]/30">
                           <span className="text-xs font-semibold text-[#52C3C5]">
-                            {followersLabel} Followers
+                            {t("home.influencers.followersLabel", {
+                              count: followersLabel,
+                            })}
                           </span>
                         </div>
                       )}
@@ -293,7 +308,6 @@ const Influencers = () => {
 
                       {/* Social Links */}
                       <div className="flex gap-2">
-                        {console.log(inf)}
                         {inf.socialLinks?.map((social, socialIdx) => {
                           const Icon =
                             SOCIAL_ICON_MAP[social.platform] || FaInstagram;
@@ -329,8 +343,8 @@ const Influencers = () => {
             onClick={() => navigate("/influencer")}
             className="inline-flex items-center gap-2 px-8 py-3 rounded-full border border-[#52C3C5] text-[#52C3C5] font-semibold tracking-wide uppercase text-sm transition-all duration-300 hover:bg-[#52C3C5] hover:text-white shadow-lg shadow-[#52C3C5]/30"
           >
-            Show All
-            <span aria-hidden="true">→</span>
+            {t("home.influencers.showAll")}
+            <span aria-hidden="true">{arrowIcon}</span>
           </button>
         </div>
       </div>
