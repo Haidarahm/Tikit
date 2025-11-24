@@ -111,18 +111,24 @@ const Influencers = () => {
   useEffect(() => {
     if (!activeSectionId) return;
     if (influencersBySection[activeSectionId]) {
-      AOS.refresh();
+      if (window.AOS && window.aosInitialized) {
+        AOS.refresh();
+      }
       return;
     }
     loadInfluencers(activeSectionId, { lang: language });
   }, [activeSectionId, influencersBySection, loadInfluencers, language]);
 
   useEffect(() => {
-    AOS.refresh();
+    if (window.AOS && window.aosInitialized) {
+      AOS.refresh();
+    }
   }, []);
 
   useEffect(() => {
-    AOS.refresh();
+    if (window.AOS && window.aosInitialized) {
+      AOS.refresh();
+    }
   }, [activeSectionId, influencersBySection]);
 
   const influencers = useMemo(() => {

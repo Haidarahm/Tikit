@@ -25,9 +25,11 @@ function Navbar() {
   useNavbarAnimations(logoRef, navRef);
   const mobileMenuRef = useMobileMenu(isMobileMenuOpen, hamburgerRef);
 
-  // Initialize AOS
+  // Refresh AOS when navbar mounts (AOS already initialized in App.jsx)
   React.useEffect(() => {
-    AOS.init({ duration: 750, once: true });
+    if (window.AOS && window.aosInitialized) {
+      AOS.refresh();
+    }
   }, []);
 
   // Toggle mobile menu

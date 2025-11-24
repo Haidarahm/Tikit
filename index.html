@@ -43,12 +43,10 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
-    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
     <script>
       window.addEventListener('DOMContentLoaded', function(){
-        if (window.AOS) {
-          window.AOS.init({ duration: 800, easing: 'ease-out-quart', once: true });
-        }
+        // AOS initialization moved to App.jsx to prevent multiple initializations
         try {
           var link = document.querySelector('link#favicon');
           if (link) link.href = '/logo-light.svg';

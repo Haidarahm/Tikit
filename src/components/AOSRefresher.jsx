@@ -6,9 +6,12 @@ import AOS from "aos";
 export default function AOSRefresher() {
   const location = useLocation();
   useEffect(() => {
-    setTimeout(() => {
-      AOS.refresh();
-    }, 0);
+    // Only refresh if AOS is initialized
+    if (window.AOS && window.aosInitialized) {
+      setTimeout(() => {
+        AOS.refresh();
+      }, 100); // Small delay to ensure DOM is ready
+    }
   }, [location.pathname]);
   return null;
 }

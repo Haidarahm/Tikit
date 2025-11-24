@@ -67,7 +67,17 @@ const Layout = () => (
 
 function App() {
   useEffect(() => {
-    AOS.init({ once: false, duration: 700 });
+    // Initialize AOS only once globally
+    if (!window.aosInitialized && window.AOS) {
+      AOS.init({
+        duration: 800,
+        easing: "ease-out-quart",
+        once: false, // Allow animations to replay on scroll
+        offset: 100,
+        delay: 0,
+      });
+      window.aosInitialized = true;
+    }
   }, []);
   return (
     <ThemeProvider>
