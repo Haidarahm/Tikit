@@ -131,7 +131,7 @@ export const Influencer = () => {
 
   useEffect(() => {
     loadSections();
-  }, [loadSections]);
+  }, []);
 
   useEffect(() => {
     if (!normalizedSections.length) {
@@ -183,6 +183,9 @@ export const Influencer = () => {
   }, [activeIndex, normalizedSections, influencersBySection, loadInfluencers]);
 
   useEffect(() => {
+    const isDesktop = window.matchMedia("(min-width: 768px)").matches;
+    if (!isDesktop) return undefined;
+
     const sectionElements = detailRefs.current.filter(Boolean);
     if (!sectionElements.length) return undefined;
 
