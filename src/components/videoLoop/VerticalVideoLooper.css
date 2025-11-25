@@ -1,67 +1,67 @@
 @keyframes slideVertical {
-    from {
-      transform: translateY(0%);
-    }
-    to {
-      transform: translateY(-100%);
-    }
+  from {
+    transform: translateY(0%);
   }
-  
-  .v-looper {
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    will-change: transform;
-    transform: translateZ(0);
+  to {
+    transform: translateY(-100%);
   }
-  
-  .v-looper__innerList {
-    display: flex;
-    flex-direction: column;
-    width: fit-content;
-    will-change: transform;
-    backface-visibility: hidden;
-    perspective: 1000px;
-  }
-  
-  .v-looper__innerList[data-animate="true"] .v-looper__listInstance {
-    animation: slideVertical linear infinite;
-    will-change: transform;
-    backface-visibility: hidden;
-  }
-  
-  .v-looper__listInstance {
-    display: flex;
-    flex-direction: column;
-    animation: none;
-    will-change: transform;
-    backface-visibility: hidden;
-  }
-  
-  .v-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 8px 0;
-  }
-  
-  .v-video {
-    width: 200px;
-    height: 350px;
-    object-fit: cover;
-    border-radius: 16px;
-    will-change: transform;
-    backface-visibility: hidden;
-    transform: translateZ(0);
-    pointer-events: none;
-  }
-  
-  .v-name {
-    color: white;
-    font-size: 14px;
-    margin-top: 4px;
-    text-align: center;
-  }
-  
+}
+
+.v-looper {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+.v-looper__innerList {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  will-change: transform;
+  backface-visibility: hidden;
+  perspective: 1000px;
+  contain: layout style;
+}
+
+.v-looper__innerList[data-animate="true"] .v-looper__listInstance {
+  animation: slideVertical linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.v-looper__listInstance {
+  display: flex;
+  flex-direction: column;
+  animation: none;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.v-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 8px 0;
+}
+
+.v-video {
+  width: 200px;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 16px;
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  pointer-events: none;
+}
+
+.v-name {
+  color: white;
+  font-size: 14px;
+  margin-top: 4px;
+  text-align: center;
+}

@@ -1,6 +1,8 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import AOS from "aos";
+import { debounce } from "../../utils/debounce";
 import Hero from "./Hero";
 import { InfluencerDetails } from "./InfluencerDetails";
 import influencer1 from "../../assets/influncer/1.png";
@@ -89,18 +91,21 @@ export const Influencer = () => {
   }, []);
 
   useEffect(() => {
-    const handleResize = () => {
+    const debouncedRefresh = debounce(() => {
       ScrollTrigger.refresh();
-    };
+      if (window.AOS && window.aosInitialized) {
+        AOS.refresh();
+      }
+    }, 150);
 
-    window.addEventListener("resize", handleResize);
+    window.addEventListener("resize", debouncedRefresh, { passive: true });
 
     const refreshTimeout = setTimeout(() => {
       ScrollTrigger.refresh();
     }, 100);
 
     return () => {
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("resize", debouncedRefresh);
       clearTimeout(refreshTimeout);
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };

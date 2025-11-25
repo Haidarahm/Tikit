@@ -24,10 +24,41 @@ Several components already use `React.memo`:
 - Images already use `loading="lazy"` in WorkSection
 - Route-level lazy loading is implemented
 - Videos don't load on mobile devices
+- **NEW**: Created `useLazyImage` hook with Intersection Observer
+- **NEW**: Created `OptimizedImage` component with responsive srcSet
 
 ### 3. ✅ Debounced Event Handlers
 
 - Resize handlers in VerticalVideoLooper use debouncing
+- **NEW**: Created `src/utils/debounce.js` with debounce and throttle utilities
+- **NEW**: Applied debouncing to resize handlers in Home.jsx and Influencer.jsx
+
+### 4. ✅ Bundle Code Splitting
+
+- **NEW**: Implemented comprehensive manual chunks in vite.config.js
+- Vendor libraries split into separate chunks for better caching
+- Terser minification with console.log removal in production
+
+### 5. ✅ Resource Hints
+
+- **NEW**: Added preconnect/dns-prefetch for external resources
+- **NEW**: Added preload for critical fonts
+- **NEW**: Added prefetch for likely next pages
+
+### 6. ✅ CSS Containment
+
+- **NEW**: Added CSS containment to `.section` class
+- **NEW**: Added containment to video looper components
+
+### 7. ✅ AOS Initialization
+
+- **NEW**: Consolidated to single initialization in App.jsx
+- **NEW**: Added safety checks to all AOS.refresh() calls
+
+### 8. ✅ Missing Dependencies
+
+- **NEW**: Installed framer-motion and prop-types
+- **NEW**: Removed prop-types dependency from CreativeNoMedia component
 
 ---
 
@@ -58,116 +89,69 @@ Several components already use `React.memo`:
 
 ### 2. AOS Initialization
 
-**Priority: Medium**
+**Priority: Medium** ✅ **COMPLETED**
 
 **Issue**: AOS is being initialized multiple times in different components.
 
-**Solution**: Consolidate to a single global initialization in App.jsx:
-
-```jsx
-// In App.jsx - add once
-useEffect(() => {
-  if (!window.aosInitialized) {
-    AOS.init({
-      duration: 900,
-      once: true,
-      offset: 100,
-      easing: "ease-out-quart",
-    });
-    window.aosInitialized = true;
-  }
-}, []);
-```
+**Solution**: ✅ Consolidated to a single global initialization in App.jsx with guard to prevent multiple initializations. All components now use `AOS.refresh()` with safety checks.
 
 ### 3. Intersection Observer for Images
 
-**Priority: High**
+**Priority: High** ✅ **COMPLETED**
 
-Replace lazy loading with Intersection Observer:
+✅ Created `src/hooks/useLazyImage.js` hook with Intersection Observer.
+✅ Created `src/components/OptimizedImage.jsx` component with:
+
+- Responsive srcSet support
+- Lazy loading with Intersection Observer
+- Error handling
+- Smooth fade-in animation
+- Async decoding
+
+**Usage:**
 
 ```jsx
-const useLazyImage = (src) => {
-  const [imageSrc, setImageSrc] = useState(null);
-  const imgRef = useRef();
+import OptimizedImage from "../../components/OptimizedImage";
 
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setImageSrc(src);
-          observer.disconnect();
-        }
-      });
-    });
-
-    if (imgRef.current) observer.observe(imgRef.current);
-
-    return () => observer.disconnect();
-  }, [src]);
-
-  return [imageSrc, imgRef];
-};
+<OptimizedImage
+  src={imageUrl}
+  alt="Description"
+  className="w-full h-full object-cover"
+  sizes="(max-width: 768px) 100vw, 50vw"
+  loading="lazy"
+/>;
 ```
 
 ### 4. Debounce/Throttle Scroll Events
 
-**Priority: Medium**
+**Priority: Medium** ✅ **COMPLETED**
 
-Add to resize handlers:
-
-```jsx
-// In components with scroll/resize handlers
-const debouncedRefresh = useMemo(
-  () =>
-    debounce(() => {
-      AOS.refresh();
-      ScrollTrigger.refresh();
-    }, 150),
-  []
-);
-```
+✅ Created `src/utils/debounce.js` with debounce and throttle utilities.
+✅ Applied debouncing to resize handlers in `Home.jsx` and `Influencer.jsx`.
+✅ Added passive event listeners for better performance.
 
 ### 5. CSS Optimization
 
-**Priority: Low**
+**Priority: Low** ✅ **COMPLETED**
 
-Add CSS containment to sections:
-
-```css
-.section-container {
-  contain: layout style paint;
-  will-change: transform;
-}
-
-.v-looper__innerList {
-  contain: layout style;
-}
-```
+✅ Added CSS containment to `.section` class in `index.css`.
+✅ Added containment to `.v-looper__innerList` in `VerticalVideoLooper.css`.
+✅ Optimized with `will-change: transform` for better performance.
 
 ### 6. Bundle Optimization
 
-**Priority: High**
+**Priority: High** ✅ **COMPLETED**
 
-Update vite.config.js:
+✅ Updated `vite.config.js` with comprehensive code splitting:
 
-```js
-export default defineConfig({
-  // ... existing config
-  build: {
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          "vendor-react": ["react", "react-dom", "react-router-dom"],
-          "vendor-gsap": ["gsap"],
-          "vendor-aos": ["aos"],
-          "vendor-lenise": ["lenise"],
-        },
-      },
-    },
-    chunkSizeWarningLimit: 1000,
-  },
-});
-```
+- vendor-react: React core libraries
+- vendor-gsap: GSAP animation library
+- vendor-animations: AOS and Lenis
+- vendor-3d: Three.js and related 3D libraries
+- vendor-ui: Radix UI and Lucide icons
+- vendor-utils: State management and i18n
+  ✅ Added terser minification with console.log removal in production.
+  ✅ Set chunkSizeWarningLimit to 1000KB.
 
 ### 7. Virtual Scrolling
 
@@ -182,14 +166,11 @@ import { FixedSizeGrid } from "react-window";
 
 ### 8. Preconnect to External Resources
 
-**Priority: Medium**
+**Priority: Medium** ✅ **COMPLETED**
 
-Add to index.html:
-
-```html
-<link rel="preconnect" href="https://your-api-domain.com" />
-<link rel="dns-prefetch" href="https://your-api-domain.com" />
-```
+✅ Added preconnect and dns-prefetch for Google Fonts and unpkg.com in `index.html`.
+✅ Added preload for critical fonts (HeroLight and Cairo).
+✅ Added prefetch for likely next pages (/work, /services, /about).
 
 ### 9. Service Worker for Caching
 
@@ -271,9 +252,9 @@ Already handled by Vite ✅
 ### High Priority (Do First)
 
 1. ✅ Fix mobile language menu (DONE)
-2. Add image lazy loading with Intersection Observer
-3. Consolidate AOS initialization
-4. Implement bundle code splitting
+2. ✅ Add image lazy loading with Intersection Observer (DONE)
+3. ✅ Consolidate AOS initialization (DONE)
+4. ✅ Implement bundle code splitting (DONE)
 
 ### Medium Priority
 
@@ -323,11 +304,12 @@ if (process.env.NODE_ENV === "production") {
 
 ## 🔍 Current Issues Found
 
-1. **AOS initializing multiple times** - Can cause conflicts
-2. **No Intersection Observer** - Using browser lazy loading only
-3. **No code splitting** - Large bundle size
-4. **Scroll events not throttled** - Could cause jank
-5. **Heavy re-renders** - Some components missing memoization
+1. ✅ **AOS initializing multiple times** - FIXED: Single initialization with guard
+2. ✅ **No Intersection Observer** - FIXED: Created useLazyImage hook and OptimizedImage component
+3. ✅ **No code splitting** - FIXED: Implemented comprehensive bundle splitting
+4. ✅ **Scroll events not throttled** - FIXED: Added debounce utilities and applied to resize handlers
+5. **Heavy re-renders** - Some components missing memoization (Partially addressed)
+6. ✅ **Missing dependencies** - FIXED: Installed framer-motion and prop-types
 
 ---
 

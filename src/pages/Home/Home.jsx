@@ -4,6 +4,7 @@ import Numbers from "./Numbers";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
+import { debounce } from "../../utils/debounce";
 import Goals from "./Goals";
 import Services from "./Services";
 import AboutUs from "./AboutUs";
@@ -55,12 +56,12 @@ function Home() {
       ScrollTrigger.refresh(true);
     }, 100);
 
-    // Handle window resize for responsive animations
-    const handleResize = () => {
+    // Handle window resize for responsive animations (debounced)
+    const debouncedResize = debounce(() => {
       ScrollTrigger.refresh(true);
-    };
+    }, 150);
 
-    window.addEventListener("resize", handleResize);
+    window.addEventListener("resize", debouncedResize, { passive: true });
 
     // Cleanup on unmount
     return () => {
@@ -75,7 +76,7 @@ function Home() {
         lenisRef.current = null;
       }
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("resize", debouncedResize);
     };
   }, []);
 
