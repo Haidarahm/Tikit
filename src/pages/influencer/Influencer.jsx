@@ -2,6 +2,10 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import AOS from "aos";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
 import { debounce } from "../../utils/debounce";
 import Hero from "./Hero";
 import { InfluencerDetails } from "./InfluencerDetails";
@@ -9,6 +13,7 @@ import influencer1 from "../../assets/influncer/1.png";
 import influencer2 from "../../assets/influncer/2.png";
 import SEOHead from "../../components/SEOHead";
 import { useInfluencersStore } from "../../store/influencersStore";
+import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
@@ -52,6 +57,8 @@ export const Influencer = () => {
   const detailRefs = useRef([]);
   const [activeIndex, setActiveIndex] = useState(0);
   const [activeSectionKey, setActiveSectionKey] = useState(null);
+  const [swiperInstance, setSwiperInstance] = useState(null);
+  const { isRtl } = useI18nLanguage();
   const sections = useInfluencersStore((state) => state.sections);
   const sectionsLoading = useInfluencersStore((state) => state.sectionsLoading);
   const sectionsError = useInfluencersStore((state) => state.sectionsError);
@@ -137,8 +144,15 @@ export const Influencer = () => {
     );
     if (nextIndex !== -1 && nextIndex !== activeIndex) {
       setActiveIndex(nextIndex);
+      if (
+        swiperInstance &&
+        swiperInstance.activeIndex !== nextIndex &&
+        swiperInstance.slideTo
+      ) {
+        swiperInstance.slideTo(nextIndex);
+      }
     }
-  }, [activeSectionKey, normalizedSections, activeIndex]);
+  }, [activeSectionKey, normalizedSections, activeIndex, swiperInstance]);
 
   useEffect(() => {
     if (!activeSectionKey) return;
@@ -309,8 +323,64 @@ export const Influencer = () => {
               )}
             </div>
           </aside>
-          <div className="mobile-swiper-influencers-sections md:hidden"></div>
-          <div className="flex-1 space-y-16">
+          <div className="mobile-swiper-influencers-sections md:hidden w-full mb-8">
+            {normalizedSections.length === 0 ? (
+              sectionsLoading ? (
+                <div className="text-sm text-center text-[var(--foreground)]/70 py-6">
+                  Loading sections...
+                </div>
+              ) : (
+                <div className="text-sm text-center text-[var(--foreground)]/70 py-6">
+                  No sections available right now.
+                </div>
+              )
+            ) : (
+              <Swiper
+                modules={[Pagination]}
+                spaceBetween={12}
+                slidesPerView={1.15}
+                pagination={{ clickable: true }}
+                onSwiper={setSwiperInstance}
+                onSlideChange={(swiper) => {
+                  const index = swiper.activeIndex;
+                  const section = normalizedSections[index];
+                  if (section) {
+                    setActiveIndex(index);
+                    setActiveSectionKey(section.key);
+                  }
+                }}
+                dir={isRtl ? "rtl" : "ltr"}
+                className="mobile-swiper"
+              >
+                {normalizedSections.map((section, index) => (
+                  <SwiperSlide key={section.key}>
+                    <button
+                      type="button"
+                      onClick={() => handleNavClick(index)}
+                      className={`w-full text-left px-4 py-3 rounded-2xl border transition-all duration-300 ${
+                        index === activeIndex
+                          ? "bg-[#52C3C5]/15 border-[#52C3C5]/60 text-[#52C3C5]"
+                          : "bg-[var(--background)]/80 border-[var(--foreground)]/15 text-[var(--foreground)]"
+                      }`}
+                    >
+                      <div className="text-xs uppercase tracking-wide opacity-60 mb-1">
+                        {String(index + 1).padStart(2, "0")}
+                      </div>
+                      <div className="text-base font-semibold mb-1">
+                        {section.label}
+                      </div>
+                      {section.description ? (
+                        <p className="text-xs opacity-70 line-clamp-2">
+                          {section.description}
+                        </p>
+                      ) : null}
+                    </button>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            )}
+          </div>
+          <div className="flex-1 space-y-16 hidden md:block">
             {normalizedSections.map((section, index) => {
               const influencers = getInfluencersForSection(section.key, [
                 influencer1,
@@ -377,6 +447,95 @@ export const Influencer = () => {
                 Loading sections...
               </div>
             ) : null}
+          </div>
+          <div className="mobile-view-data md:hidden mt-6 space-y-6">
+            {(() => {
+              const activeSection = normalizedSections[activeIndex];
+              if (!activeSection) return null;
+              const influencers = getInfluencersForSection(activeSection.key, [
+                influencer1,
+                influencer2,
+              ]);
+              const hasLoaded = Array.isArray(
+                influencersBySection[activeSection.key]
+              );
+              const isLoadingSection = influencersLoading && !hasLoaded;
+
+              return (
+                <div className="space-y-6">
+                  <div className="bg-[var(--background)]/80 border border-[var(--foreground)]/10 rounded-2xl p-4 shadow-sm">
+                    <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#52C3C5]">
+                      {String(activeIndex + 1).padStart(2, "0")} •{" "}
+                      {activeSection.label}
+                    </span>
+                    {activeSection.description ? (
+                      <p className="mt-2 text-sm text-[var(--foreground)]/80">
+                        {activeSection.description}
+                      </p>
+                    ) : null}
+                  </div>
+
+                  {isLoadingSection ? (
+                    <div className="text-sm text-[var(--foreground)]/70 text-center py-8">
+                      Loading influencers...
+                    </div>
+                  ) : influencersError && !hasLoaded ? (
+                    <div className="text-sm text-red-500 text-center py-8">
+                      {influencersError || "Failed to load influencers."}
+                    </div>
+                  ) : influencers.length === 0 ? (
+                    <div className="text-sm text-[var(--foreground)]/70 text-center py-8">
+                      We couldn't find influencers for this section yet. Please
+                      check back soon.
+                    </div>
+                  ) : (
+                    <div className="space-y-5">
+                      {influencers.map((influencer) => (
+                        <div
+                          key={influencer.id}
+                          className="rounded-3xl bg-[var(--background)]/90 border border-white/10 p-4 shadow-md space-y-4"
+                        >
+                          <div className="flex items-center gap-4">
+                            <img
+                              src={influencer.image}
+                              alt={influencer.name}
+                              className="w-20 h-20 rounded-2xl object-cover"
+                              loading="lazy"
+                            />
+                            <div>
+                              <h3 className="text-xl font-semibold text-[var(--foreground)]">
+                                {influencer.name}
+                              </h3>
+                              <p className="text-sm text-[var(--secondary)] font-medium">
+                                {influencer.primarySubtitle}
+                              </p>
+                              <p className="text-xs text-[var(--foreground)]/70">
+                                {influencer.secondarySubtitle}
+                              </p>
+                            </div>
+                          </div>
+                          {influencer.socialLinks?.length ? (
+                            <div className="flex flex-wrap gap-2">
+                              {influencer.socialLinks.map((link, idx) => (
+                                <a
+                                  key={`${influencer.id}-${idx}`}
+                                  href={link.href}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="text-xs px-3 py-1.5 rounded-full border border-[var(--secondary)]/40 text-[var(--secondary)]"
+                                >
+                                  {link.platform}
+                                </a>
+                              ))}
+                            </div>
+                          ) : null}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            })()}
           </div>
         </div>
       </div>
