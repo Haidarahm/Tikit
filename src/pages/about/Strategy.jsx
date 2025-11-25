@@ -16,23 +16,23 @@ const Strategy = () => {
   const cards = [
     {
       ...translatedCards[0],
-      color: "#548099", // sky-500
-      lightColor: "#E0E4EB",
+      color: "548099", // sky-500
+      lightColor: "23D5D0",
     },
     {
       ...translatedCards[1],
-      color: "#7E5DB9", // violet-400
-      lightColor: "#D4D8E3",
+      color: "7E5DB9", // violet-400
+      lightColor: "8A6EFF",
     },
     {
       ...translatedCards[2],
-      color: "#483CB3", // orange-500
-      lightColor: "#E8EAF1",
+      color: "483CB3", // orange-500
+      lightColor: "FFBFA4",
     },
     {
       ...translatedCards[3],
-      color: "#B46CA7", // green-500
-      lightColor: "#E2E5EB",
+      color: "B46CA7", // green-500
+      lightColor: "68EBE7",
     },
   ];
   return (
@@ -81,40 +81,32 @@ const Strategy = () => {
         {cards.map((card, i) => (
           <div
             key={String(i)}
-            className="relative rounded-[14px] overflow-hidden bg-[#0b0b0b]/60 col-span-2 row-span-1 border border-white/10 hover:border-white/20 transition-colors loco-reveal-card"
+            className={`relative rounded-[14px] overflow-hidden col-span-2 row-span-1 border border-white/10 hover:border-white/20 transition-colors loco-reveal-card`}
+            style={{
+              background: `radial-gradient(circle at center, #D9D9D966, #${card.lightColor}66)`,
+            }}
             data-scroll
             data-scroll-class="is-inview"
             data-scroll-repeat
-            style={{
-              backgroundColor: `${
-                theme === "light" ? card.lightColor : card.color
-              }1A`,
-              transitionDelay: `${i * 120}ms`,
-            }}
           >
             {/* Radial gradient background with subtle blur from card color to white */}
-            <div
-              className="pointer-events-none absolute inset-0 z-0 blur-[24px] opacity-70"
-              style={{
-                backgroundImage: `radial-gradient(120% 100% at 30% 30%, ${card.color}, #ffffff)`,
-              }}
-            />
+            <div className="pointer-events-none absolute inset-0 z-0 blur-[24px] opacity-70" />
             <div className="p-4 md:px-4 md:py-8 relative z-10">
               <div
-                className="text-[22px] text-white sm:text-[28px] md:text-[36px] font-semibold mb-2 loco-text-up"
+                className="text-[22px] text-[var(--foreground)] sm:text-[28px] md:text-[36px] font-semibold mb-2 loco-text-up"
                 data-scroll
                 data-scroll-class="is-inview"
                 data-scroll-repeat
                 style={{ transitionDelay: `${300 + i * 120}ms` }}
               >
                 <TickWhite
-                  color={theme === "light" ? "#ffffff" : "#ffffff"}
+                  color={theme === "light" ? "#52C3C5" : "#ffffff"}
                   className=" w-[60px] md:w-[60px] inline-block h-[50x] px-4 md:px-2 md:h-[60px]"
                 />
                 {card.title}
               </div>
               <div
-                className="text-[var(--primary)]/80 text-[16px] sm:text-[18px] md:text-[24px]  loco-text-up leading-[30px]"
+                className=" text-[var(--foreground)] text-[16px] sm:text-[18px] md:text-[24px]  loco-text-up leading-[30px]"
                 data-scroll
                 data-scroll-class="is-inview"
                 data-scroll-repeat

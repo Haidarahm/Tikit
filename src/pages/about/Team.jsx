@@ -245,7 +245,7 @@ const Team = () => {
               return (
                 <div
                   key={member.id || index}
-                  className={`relative group flex flex-col justify-end transition-all duration-500 w-full md:w-[450px] h-[220px] sm:h-[320px] md:h-[650px]  shrink-0 overflow-hidden border border-white/20 bg-gradient-to-br ${styles.gradient} backdrop-blur-xl shadow-[0_0_25px_rgba(255,255,255,0.12)] hover:shadow-[0_0_55px_rgba(255,255,255,0.25)]`}
+                  className={`relative group flex flex-col justify-end rounded-[10px] transition-all duration-500 w-full md:w-[450px] h-[220px] sm:h-[320px] md:h-[650px]  shrink-0 overflow-hidden border border-white/20 bg-gradient-to-br ${styles.gradient} backdrop-blur-xl shadow-[0_0_25px_rgba(255,255,255,0.12)] hover:shadow-[0_0_55px_rgba(255,255,255,0.25)]`}
                 >
                   {/* Image */}
                   <div className="absolute inset-0">
