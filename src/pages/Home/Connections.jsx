@@ -142,14 +142,8 @@ const Connections = memo(() => {
             sessionStorage.setItem("shouldScrollToAction", "true");
             navigate("/contact");
           }}
-          className="uppercase mt-[40px]
-         text-[11px] md:text-[16px] hover:text-[var(--foreground)]
-          dark:hover:text-white hover:bg-transparent border
-           border-[var(--foreground)] dark:border-white transition
-            cursor-pointer py-1 bg-[var(--foreground)] dark:bg-white
-             rounded-full px-4 text-[var(--background)]
-             dark:hover:bg-transparent
-              dark:text-black w-fit"
+          className="bg-transparent mt-8 hover:text-[var(--background)] shadow-lg shadow-[#52C3C5]/30 font-bold dark:shadow-[#000]/30 hover:bg-[var(--secondary)] border-[var(--secondary)] text-[var(--secondary)] transition duration-75 ease-in border px-6 h-8 md:h-10 text-[14px] rounded-full uppercase"
+
         >
           {t("home.connections.joinNow")}
         </button>

@@ -145,7 +145,7 @@ const Hero = () => {
       </div>
       <div
         ref={descriptionRef}
-        className={`description relative z-30 text-center md:text-start flex-1 flex md:flex-row flex-col text-[var(--foreground)] gap-4 md:gap-14 justify-center items-center px-[20px] ${
+        className={`description relative z-30 text-center md:text-start flex-1 flex md:flex-row flex-col text-[var(--foreground)] gap-4 md:gap-14 justify-center  px-[20px] ${
           isRtl ? "md:pr-[60px]" : "md:pl-[60px]"
         }`}
       >

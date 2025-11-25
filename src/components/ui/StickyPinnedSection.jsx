@@ -376,15 +376,8 @@ export default function StickyPinnedSection({
           </div>
           <button
             onClick={() => navigate("/work/1")}
-            className="rounded-full border font-light 
-           bg-transparent
+            className="bg-transparent hover:text-[var(--background)] shadow-lg shadow-[#52C3C5]/30 font-bold dark:shadow-[#000]/30 hover:bg-[var(--secondary)] border-[var(--secondary)] text-[var(--secondary)] transition duration-75 ease-in border px-6 h-8 md:h-10 text-[14px] rounded-full uppercase"
 
-            hover:text-[var(--background)]
-            text-[14px]
-            hover:bg-[var(--secondary)]
-            border-[var(--secondary)]
-            text-[var(--secondary)] px-5 py-2  transition-colors 
-            "
           >
             {isRtl ? (
               <span className="fw-letter text-[14px]">
@@ -451,19 +444,8 @@ export default function StickyPinnedSection({
               </p>
               <div className="mt-8">
                 <button
-                  className="font-light bg-[var(--secondary)] 
+                            className="bg-transparent hover:text-[var(--background)] shadow-lg shadow-[#52C3C5]/30 font-bold dark:shadow-[#000]/30 hover:bg-[var(--secondary)] border-[var(--secondary)] text-[var(--secondary)] transition duration-75 ease-in border px-6 h-8 md:h-10 text-[14px] rounded-full uppercase"
 
-            hover:text-[var(--secondary)]
-
-            hover:bg-transparent
-            border-[var(--secondary)]
-            text-[var(--background)]
-                    rounded-full border
-                      dark:hover:text-white
-                      dark:hover:bg-transparent
-                      
-                         dark:border-white px-5 py-2  
-                         transition-colors  "
                   onClick={() => {
                     try {
                       const id = items?.[i]?.id;

@@ -58,7 +58,7 @@ const Images = () => {
 
       {/* Text 2 with slower speed */}
       <div
-        className="text relative reveal-text md:col-span-2 md:row-span-2 bg-[#52c3c522] dark:bg-[#00000019] capitalize rounded-[15px] font-light text-[22px] sm:text-[28px] md:text-[42px] flex justify-center items-center px-4 md:px-[60px]"
+        className="text relative reveal-text md:col-span-2 md:row-span-2 bg-[#B387FF]/15 dark:bg-[#00000019] capitalize rounded-[15px] font-light text-[22px] sm:text-[28px] md:text-[42px] flex justify-center items-center px-4 md:px-[60px]"
         data-scroll
         data-scroll-class="is-inview"
         data-scroll-repeat

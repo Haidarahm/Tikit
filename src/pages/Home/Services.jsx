@@ -101,7 +101,7 @@ const Services = memo(() => {
         {!loading && !error && (
           <button
             onClick={() => navigate("/services")}
-            className="bg-transparent hover:text-[var(--background)] hover:bg-[var(--secondary)] border-[var(--secondary)] text-[var(--secondary)] transition duration-75 ease-in border px-2 h-8 md:h-10 text-[14px] rounded-full uppercase"
+            className="bg-transparent hover:text-[var(--background)] shadow-lg shadow-[#52C3C5]/30 font-bold dark:shadow-[#000]/30 hover:bg-[var(--secondary)] border-[var(--secondary)] text-[var(--secondary)] transition duration-75 ease-in border px-2 h-8 md:h-10 text-[14px] rounded-full uppercase"
           >
             {t("home.services.explore")}
           </button>

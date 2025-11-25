@@ -289,10 +289,11 @@ const ContactUs = memo(({ className = "" }) => {
             {t("home.contactUs.helpText")}
           </div>
           <div
-            className={`swiper-wrapper-contact w-full border flex ${
+            className={`swiper-wrapper-contact shadow-xl shadow-[#000]/15  justify-center items-center  w-full border flex ${
               isRtl ? "flex-row-reverse" : ""
             } relative border-[var(--secondary)]  h-[50px] rounded-full`}
           >
+            <div className="contact-swiper-wrapper relative h-[calc(100%-3px)] w-[calc(100%-3px)] flex items-center justify-center ">
             <div
               className={`move-item absolute  w-1/2 h-full bg-[var(--secondary)] rounded-full transition-all duration-300 ease-in-out ${
                 isSecondSlide
@@ -324,6 +325,8 @@ const ContactUs = memo(({ className = "" }) => {
             >
               {t("home.contactUs.influencer")}
             </div>
+            </div>
+            
           </div>
           <div className="inputs-wrapper flex flex-col gap-3 mt-3">
             <div className="inputs flex justify-between gap-[20px]">
@@ -402,7 +405,7 @@ const ContactUs = memo(({ className = "" }) => {
               </>
             )}
           </div>
-          <button className="px-5 h-12 md:h-14 cursor-pointer relative mt-3 rounded-full group  font-medium bg-transparent text-[var(--secondary)] border border-[var(--secondary)] flex items-center justify-center transition-all hover:scale-105 overflow-hidden">
+          <button className="px-5 shadow-xl shadow-[#000]/15 h-12 md:h-14 cursor-pointer relative mt-3 rounded-full group  font-medium bg-transparent text-[var(--secondary)] border border-[var(--secondary)] flex items-center justify-center transition-all hover:scale-105 overflow-hidden">
             <span className="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out rounded-full transform translate-y-0 bg-[var(--secondary)]  group-hover:h-full opacity-90"></span>
             <span className="relative uppercase group-hover:text-[var(--background)]  text-sm md:text-base font-semibold">
               {t("home.contactUs.button")}

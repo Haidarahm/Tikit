@@ -236,7 +236,7 @@ body {
 }
 :root {
   /* Light theme: only required colors */
-  --background: white;
+  --background: #f7f9fa;
   --foreground: #363737;
   --primary: #fff;
   --secondary: #52c3c5;

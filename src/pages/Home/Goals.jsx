@@ -23,7 +23,7 @@ const Goals = memo(() => {
           "Reach real audiences with meaningful content. We grow traffic that actually converts.",
         image: image1,
         backgroundColor: "bg-[#76A3BE]",
-        backgroundColorLight: "bg-[#D4E6F4]",
+        backgroundColorLight: "bg-[#35D5D0]/28",
       },
       {
         title: "Boost campaign performance",
@@ -31,7 +31,7 @@ const Goals = memo(() => {
           "Track results in real time and optimize every move — all managed on one smart platform.",
         image: image2,
         backgroundColor: "bg-[#5653B7]",
-        backgroundColorLight: "bg-[#E0DFFA]",
+        backgroundColorLight: "bg-[#8A6EE1]/28",
       },
       {
         title: "Drive real engagement",
@@ -39,7 +39,7 @@ const Goals = memo(() => {
           "Reach real audiences with meaningful content. We grow traffic that actually converts.",
         image: image3,
         backgroundColor: "bg-[#9D74E5]",
-        backgroundColorLight: "bg-[#E8DCFD]",
+        backgroundColorLight: "bg-[#FFBFA4]/28",
       },
       {
         title: "Drive real engagement",
@@ -47,7 +47,7 @@ const Goals = memo(() => {
           "Reach real audiences with meaningful content. We grow traffic that actually converts.",
         image: image4,
         backgroundColor: "bg-[#B46CA7]",
-        backgroundColorLight: "bg-[#F5D8ED]",
+        backgroundColorLight: "bg-[#68EBE7]/28",
       },
     ];
     const withImages = (items && items.length ? items : fallback).map(
@@ -87,7 +87,7 @@ const Goals = memo(() => {
         {goalsData.map((goal) => (
           <ScrollStackItem
             key={goal.id}
-            itemClassName={`flex relative mx-[4px] items-center overflow-hidden ${getBackgroundClass(
+            itemClassName={`flex backdrop-blur-lg relative mx-[4px] items-center overflow-hidden ${getBackgroundClass(
               goal
             )}`}
           >

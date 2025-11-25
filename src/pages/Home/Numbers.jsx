@@ -14,8 +14,7 @@ const Numbers = memo(() => {
       text2: t("home.numbers.items.happyClients.text2"),
       plus: true,
       color: "bg-[#52C3C5]",
-      lightColor: "bg-[#52C3C5]/20",
-      borderColor: "border-[#52C3C5]/30",
+      lightColor: "bg-[#B387FF]/15",
     },
     {
       count: 8,
@@ -23,8 +22,7 @@ const Numbers = memo(() => {
       text2: t("home.numbers.items.years.text2"),
       bottom: true,
       color: "bg-[#9D74E5]",
-      lightColor: "bg-[#9D74E5]/20",
-      borderColor: "border-[#9D74E5]/30",
+      lightColor: "bg-[#252525]/3",
     },
     {
       count: 500,
@@ -32,8 +30,7 @@ const Numbers = memo(() => {
       text2: t("home.numbers.items.projects.text2"),
       plus: true,
       color: "bg-[#5653B7]",
-      lightColor: "bg-[#5653B7]/20",
-      borderColor: "border-[#5653B7]/30",
+      lightColor: "bg-[#35D5D0]/15",
     },
     {
       count: 98,
@@ -41,8 +38,7 @@ const Numbers = memo(() => {
       text2: t("home.numbers.items.awards.text2"),
       bottom: true,
       color: "bg-[#B46CA7]",
-      lightColor: "bg-[#B46CA7]/20",
-      borderColor: "border-[#B46CA7]/30",
+      lightColor: "bg-[#252525]/3",
     },
   ];
 
@@ -54,7 +50,7 @@ const Numbers = memo(() => {
     >
       <div className="texts text-center ">
         <h1
-          className="text-xl sm:text-2xl md:text-3xl lg:text-[32px] font-bold text-[var(--foreground)]"
+          className="text-xl sm:text-2xl md:text-3xl lg:text-[32px] font-bold bg-gradient-to-r from-[#B387FF] to-[#35D5D0] bg-clip-text text-transparent"
           data-aos="fade-up"
           data-aos-delay="0"
         >
@@ -73,25 +69,16 @@ const Numbers = memo(() => {
           <div className="grid grid-cols-2 gap-4 sm:gap-6 md:hidden">
             {data.map(
               (
-                {
-                  count,
-                  text1,
-                  text2,
-                  bottom,
-                  plus,
-                  color,
-                  lightColor,
-                  borderColor,
-                },
+                { count, text1, text2, bottom, plus, color, lightColor },
                 idx
               ) => (
                 <div
                   key={idx}
-                  className={`circle w-full aspect-square max-w-[140px] sm:max-w-[160px] mx-auto rounded-full text-center flex flex-col items-center justify-center backdrop-blur-lg border ${lightColor} ${borderColor} dark:bg-[#e9e7e518] dark:border-[#ffffff10]`}
+                  className={`circle w-full  aspect-square max-w-[140px]  sm:max-w-[160px] mx-auto rounded-full text-center flex flex-col items-center justify-center backdrop-blur-lg  ${lightColor}  dark:bg-[#e9e7e518] dark:border-[#ffffff10] `}
                   data-aos="fade-up"
                   data-aos-delay={idx * 100}
                 >
-                  <span className="font-light text-center flex items-center text-2xl sm:text-3xl text-[var(--foreground)]">
+                  <span className="font-light  text-center flex items-center text-2xl sm:text-3xl text-[var(--foreground)] ">
                     <CountUp
                       from={0}
                       to={count}
@@ -128,7 +115,7 @@ const Numbers = memo(() => {
               ) => (
                 <div
                   key={idx}
-                  className={`circle w-[160px] h-[160px] lg:w-[180px] lg:h-[180px] xl:w-[200px] xl:h-[200px] rounded-full text-center flex flex-col items-center justify-center backdrop-blur-lg border ${lightColor} ${borderColor} dark:bg-[#e9e7e518] dark:border-[#ffffff10] ${
+                  className={`circle shadow-2xl w-[160px] h-[160px] lg:w-[180px] lg:h-[180px] xl:w-[200px] xl:h-[200px] rounded-full text-center flex flex-col items-center justify-center backdrop-blur-lg  ${lightColor} ${borderColor} dark:bg-[#e9e7e518] dark:border-[#ffffff10] ${
                     bottom ? "self-end" : "self-start"
                   }`}
                   data-aos="fade-up"
