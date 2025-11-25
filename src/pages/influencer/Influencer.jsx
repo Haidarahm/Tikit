@@ -14,6 +14,15 @@ import influencer2 from "../../assets/influncer/2.png";
 import SEOHead from "../../components/SEOHead";
 import { useInfluencersStore } from "../../store/influencersStore";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
+import {
+  FaInstagram,
+  FaYoutube,
+  FaTiktok,
+  FaTwitter,
+  FaLinkedinIn,
+  FaFacebookF,
+  FaSnapchatGhost,
+} from "react-icons/fa";
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
@@ -55,9 +64,11 @@ const normalizeSocialLinks = (links) => {
 
 export const Influencer = () => {
   const detailRefs = useRef([]);
+  const mobileCardsRef = useRef(null);
+  const swiperRef = useRef(null);
+  const phoneCardTriggerRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [activeSectionKey, setActiveSectionKey] = useState(null);
-  const [swiperInstance, setSwiperInstance] = useState(null);
   const { isRtl } = useI18nLanguage();
   const sections = useInfluencersStore((state) => state.sections);
   const sectionsLoading = useInfluencersStore((state) => state.sectionsLoading);
@@ -145,14 +156,14 @@ export const Influencer = () => {
     if (nextIndex !== -1 && nextIndex !== activeIndex) {
       setActiveIndex(nextIndex);
       if (
-        swiperInstance &&
-        swiperInstance.activeIndex !== nextIndex &&
-        swiperInstance.slideTo
+        swiperRef.current &&
+        swiperRef.current.activeIndex !== nextIndex &&
+        swiperRef.current.slideTo
       ) {
-        swiperInstance.slideTo(nextIndex);
+        swiperRef.current.slideTo(nextIndex);
       }
     }
-  }, [activeSectionKey, normalizedSections, activeIndex, swiperInstance]);
+  }, [activeSectionKey, normalizedSections, activeIndex]);
 
   useEffect(() => {
     if (!activeSectionKey) return;
@@ -201,6 +212,38 @@ export const Influencer = () => {
       triggers.forEach((trigger) => trigger.kill());
     };
   }, [normalizedSections, influencersBySection]);
+
+  // GSAP animation for mobile influencer cards
+  useEffect(() => {
+    const cardsContainer = mobileCardsRef.current;
+    if (!cardsContainer) return;
+
+    const cardElements = cardsContainer.querySelectorAll(
+      ".mobile-influencer-card"
+    );
+
+    if (!cardElements.length) return;
+
+    const ctx = gsap.context(() => {
+      gsap.set(cardElements, { autoAlpha: 0, y: 30, scale: 0.95 });
+
+      gsap.to(cardElements, {
+        autoAlpha: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.6,
+        ease: "power2.out",
+        stagger: 0.1,
+        scrollTrigger: {
+          trigger: cardsContainer,
+          start: "top 90%",
+          end: "bottom 60%",
+        },
+      });
+    }, cardsContainer);
+
+    return () => ctx.revert();
+  }, [activeIndex, influencersBySection]);
 
   const handleNavClick = (index) => {
     const section = normalizedSections[index];
@@ -339,8 +382,9 @@ export const Influencer = () => {
                 modules={[Pagination]}
                 spaceBetween={12}
                 slidesPerView={1.15}
-                pagination={{ clickable: true }}
-                onSwiper={setSwiperInstance}
+                onSwiper={(instance) => {
+                  swiperRef.current = instance;
+                }}
                 onSlideChange={(swiper) => {
                   const index = swiper.activeIndex;
                   const section = normalizedSections[index];
@@ -448,7 +492,10 @@ export const Influencer = () => {
               </div>
             ) : null}
           </div>
-          <div className="mobile-view-data md:hidden mt-6 space-y-6">
+          <div
+            className="mobile-view-data md:hidden mt-6 space-y-6"
+            ref={mobileCardsRef}
+          >
             {(() => {
               const activeSection = normalizedSections[activeIndex];
               if (!activeSection) return null;
@@ -489,19 +536,23 @@ export const Influencer = () => {
                       check back soon.
                     </div>
                   ) : (
-                    <div className="space-y-5">
-                      {influencers.map((influencer) => (
+                    <div className="space-y-5" ref={phoneCardTriggerRef}>
+                      {influencers.map((influencer, cardIndex) => (
                         <div
                           key={influencer.id}
-                          className="rounded-3xl bg-[var(--background)]/90 border border-white/10 p-4 shadow-md space-y-4"
+                          className="rounded-3xl bg-[var(--background)]/90 border border-white/10 p-4 shadow-md space-y-4 will-change-transform mobile-influencer-card"
+                          data-phone-card-index={cardIndex}
                         >
                           <div className="flex items-center gap-4">
-                            <img
-                              src={influencer.image}
-                              alt={influencer.name}
-                              className="w-20 h-20 rounded-2xl object-cover"
-                              loading="lazy"
-                            />
+                            <div className="relative w-20 h-20 rounded-2xl overflow-hidden">
+                              <img
+                                src={influencer.image}
+                                alt={influencer.name}
+                                className="w-full h-full object-cover object-center"
+                                loading="lazy"
+                              />
+                              <div className="absolute inset-0 rounded-2xl border border-white/10 pointer-events-none"></div>
+                            </div>
                             <div>
                               <h3 className="text-xl font-semibold text-[var(--foreground)]">
                                 {influencer.name}
@@ -516,17 +567,42 @@ export const Influencer = () => {
                           </div>
                           {influencer.socialLinks?.length ? (
                             <div className="flex flex-wrap gap-2">
-                              {influencer.socialLinks.map((link, idx) => (
-                                <a
-                                  key={`${influencer.id}-${idx}`}
-                                  href={link.href}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="text-xs px-3 py-1.5 rounded-full border border-[var(--secondary)]/40 text-[var(--secondary)]"
-                                >
-                                  {link.platform}
-                                </a>
-                              ))}
+                              {influencer.socialLinks.map((link, idx) => {
+                                const platform = (
+                                  link.platform || ""
+                                ).toLowerCase();
+                                const iconMap = {
+                                  instagram: FaInstagram,
+                                  ig: FaInstagram,
+                                  youtube: FaYoutube,
+                                  yt: FaYoutube,
+                                  tiktok: FaTiktok,
+                                  tik_tok: FaTiktok,
+                                  twitter: FaTwitter,
+                                  x: FaTwitter,
+                                  linkedin: FaLinkedinIn,
+                                  facebook: FaFacebookF,
+                                  fb: FaFacebookF,
+                                  snapchat: FaSnapchatGhost,
+                                  snap: FaSnapchatGhost,
+                                };
+                                const IconComponent =
+                                  iconMap[platform] || FaInstagram;
+                                return (
+                                  <a
+                                    key={`${influencer.id}-${idx}`}
+                                    href={link.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-2 text-xs px-3 py-1.5 rounded-full border border-[var(--secondary)]/30 text-[var(--secondary)] hover:bg-[var(--secondary)]/10 transition"
+                                  >
+                                    <IconComponent className="w-3.5 h-3.5" />
+                                    <span className="capitalize">
+                                      {platform}
+                                    </span>
+                                  </a>
+                                );
+                              })}
                             </div>
                           ) : null}
                         </div>
