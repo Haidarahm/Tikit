@@ -74,12 +74,11 @@ const Hero = memo(() => {
     const element = sectionRef.current;
     if (!element) return;
 
-    gsap.set(element, { scaleX: 0.001, transformOrigin: "center center" });
-    gsap.to(element, {
-      scaleX: 1,
-      duration: 2,
-      ease: "power3.out",
-    });
+    gsap.fromTo(
+      element,
+      { scale: 0 },
+      { scale: 1, duration: 1.2, ease: "power3.out" }
+    );
   }, []);
 
   useEffect(() => {
