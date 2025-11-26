@@ -350,5 +350,36 @@
         "subscribing": "Subscribing...",
         "successTitle": "Thank You!",
         "successMessage": "You've successfully subscribed to our newsletter. We'll keep you updated with the latest news!"
+    },
+    "footer": {
+        "contactText": "If you would like to work with us or just want to get in touch, we'd love to hear from you!",
+        "contactTitle": "Contact –",
+        "contactSubtitle": "for Client or Influencer throughout",
+        "locationDubai": "Dubai- UAE",
+        "locationLondon": "London - UK",
+        "copyright": "© Copyright 2025 | Alrights reserved by Tikit",
+        "links": {
+            "aboutUs": "About Us",
+            "services": "Services",
+            "work": "Work",
+            "contact": "Contact"
+        },
+        "services": {
+            "influencerMarketing": "Influencer Marketing",
+            "socialMedia": "Social Media",
+            "branding": "Branding",
+            "production": "Production"
+        },
+        "terms": {
+            "privacyPolicy": "Privacy Policy",
+            "aboutUs": "About Us",
+            "cookieSettings": "Cookie Settings"
+        },
+        "social": {
+            "facebook": "Facebook",
+            "instagram": "Instagram",
+            "linkedin": "LinkedIn",
+            "twitter": "X (Twitter)"
+        }
     }
 }

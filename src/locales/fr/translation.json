@@ -350,5 +350,36 @@
         "subscribing": "Abonnement en cours...",
         "successTitle": "Merci !",
         "successMessage": "Vous vous êtes abonné avec succès à notre newsletter. Nous vous tiendrons informé des dernières actualités !"
+    },
+    "footer": {
+        "contactText": "Si vous souhaitez travailler avec nous ou simplement prendre contact, nous serions ravis de vous entendre !",
+        "contactTitle": "Contact –",
+        "contactSubtitle": "pour Client ou Influenceur partout",
+        "locationDubai": "Dubaï - EAU",
+        "locationLondon": "Londres - Royaume-Uni",
+        "copyright": "© Copyright 2025 | Tous droits réservés par Tikit",
+        "links": {
+            "aboutUs": "À propos",
+            "services": "Services",
+            "work": "Travaux",
+            "contact": "Contactez-nous"
+        },
+        "services": {
+            "influencerMarketing": "Marketing d'Influence",
+            "socialMedia": "Médias Sociaux",
+            "branding": "Identité de marque",
+            "production": "Production"
+        },
+        "terms": {
+            "privacyPolicy": "Politique de Confidentialité",
+            "aboutUs": "À propos",
+            "cookieSettings": "Paramètres des Cookies"
+        },
+        "social": {
+            "facebook": "Facebook",
+            "instagram": "Instagram",
+            "linkedin": "LinkedIn",
+            "twitter": "X (Twitter)"
+        }
     }
 }

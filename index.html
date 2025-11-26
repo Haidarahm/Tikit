@@ -12,9 +12,10 @@
     <link rel="preconnect" href="https://unpkg.com" crossorigin />
     <link rel="dns-prefetch" href="https://unpkg.com" />
     
-    <!-- Preload Critical Fonts -->
-    <link rel="preload" as="font" href="/fonts/HeroLight-Regular.otf" type="font/otf" crossorigin />
-    <link rel="preload" as="font" href="/fonts/Cairo-VariableFont_slnt,wght.ttf" type="font/ttf" crossorigin />
+    <!-- Fonts are handled by CSS @font-face with font-display: swap -->
+    <!-- Preload removed to avoid path mismatches (Vite hashes font filenames in production) -->
+    <!-- Cairo font is only used for RTL/Arabic, so it doesn't need to be preloaded on initial page load -->
+    <!-- If font preloading is needed, consider using a Vite plugin to inject preloads dynamically -->
     
     <!-- Prefetch Likely Next Pages -->
     <link rel="prefetch" href="/work" />

@@ -1,4 +1,5 @@
 import { useLayoutEffect, useRef, useCallback, useMemo } from "react";
+import { debounce } from "../utils/debounce";
 
 export const ScrollStackItem = ({ children, itemClassName = "" }) => (
   <div
@@ -34,6 +35,8 @@ const ScrollStack = ({
   const isUpdatingRef = useRef(false);
   const frameRef = useRef(0); // ← For RAF throttling
   const positionsRef = useRef([]); // ← Cache positions
+  const isResizingRef = useRef(false); // ← Track resize state
+  const resizeTimeoutRef = useRef(null); // ← For resize setTimeout cleanup
 
   // Memoize config to prevent unnecessary re-init
   const scrollConfig = useMemo(
@@ -107,6 +110,21 @@ const ScrollStack = ({
 
   // ✅ Precompute positions on mount/resize
   const updatePositions = useCallback(() => {
+    // Re-query cards in case DOM has changed during resize
+    const scroller = scrollerRef.current;
+    if (!scroller) return;
+
+    const cards = Array.from(
+      useWindowScroll
+        ? document.querySelectorAll(".scroll-stack-card")
+        : scroller.querySelectorAll(".scroll-stack-card")
+    );
+
+    // Update cards reference if needed
+    if (cards.length > 0) {
+      cardsRef.current = cards;
+    }
+
     const { containerHeight } = getScrollData();
     const stackPositionPx = parsePercentage(stackPosition, containerHeight);
     const scaleEndPositionPx = parsePercentage(
@@ -116,7 +134,7 @@ const ScrollStack = ({
 
     const endElement = useWindowScroll
       ? document.querySelector(".scroll-stack-end")
-      : scrollerRef.current?.querySelector(".scroll-stack-end");
+      : scroller?.querySelector(".scroll-stack-end");
 
     const endElementTop = endElement ? getElementOffset(endElement) : 0;
 
@@ -143,7 +161,12 @@ const ScrollStack = ({
 
   // ✅ Optimized — runs max once per frame
   const updateCardTransforms = useCallback(() => {
-    if (!cardsRef.current.length || isUpdatingRef.current) return;
+    if (
+      !cardsRef.current.length ||
+      isUpdatingRef.current ||
+      isResizingRef.current
+    )
+      return;
 
     isUpdatingRef.current = true;
 
@@ -259,6 +282,42 @@ const ScrollStack = ({
     });
   }, [updateCardTransforms]);
 
+  // ✅ Debounced resize handler (created once and reused)
+  const handleResize = useCallback(() => {
+    // Cancel any pending animation frames during resize
+    if (frameRef.current) {
+      cancelAnimationFrame(frameRef.current);
+      frameRef.current = 0;
+    }
+
+    // Mark as resizing to prevent conflicts
+    isResizingRef.current = true;
+
+    // Use requestAnimationFrame to wait for layout to settle
+    requestAnimationFrame(() => {
+      // Double RAF to ensure layout has fully updated
+      requestAnimationFrame(() => {
+        updatePositions();
+        // Small delay before updating transforms to ensure positions are fresh
+        // Clear any existing timeout
+        if (resizeTimeoutRef.current) {
+          clearTimeout(resizeTimeoutRef.current);
+        }
+        resizeTimeoutRef.current = setTimeout(() => {
+          updateCardTransforms();
+          isResizingRef.current = false;
+          resizeTimeoutRef.current = null;
+        }, 16); // ~1 frame delay
+      });
+    });
+  }, [updatePositions, updateCardTransforms]);
+
+  // Create debounced version of resize handler
+  const debouncedHandleResize = useMemo(
+    () => debounce(handleResize, 150),
+    [handleResize]
+  );
+
   useLayoutEffect(() => {
     const scroller = scrollerRef.current;
     if (!scroller) return;
@@ -296,24 +355,27 @@ const ScrollStack = ({
     const scrollElement = useWindowScroll ? window : scroller;
     scrollElement.addEventListener("scroll", handleScroll, { passive: true });
 
-    // ✅ Passive resize listener
-    const handleResize = () => {
-      updatePositions();
-      updateCardTransforms();
-    };
-    window.addEventListener("resize", handleResize, { passive: true });
+    // Add debounced resize listener
+    window.addEventListener("resize", debouncedHandleResize, { passive: true });
 
     return () => {
       scrollElement.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("resize", debouncedHandleResize);
+      // Clear any pending animation frames
       if (frameRef.current) {
         cancelAnimationFrame(frameRef.current);
+        frameRef.current = 0;
+      }
+      // Clear any pending resize timeouts
+      if (resizeTimeoutRef.current) {
+        clearTimeout(resizeTimeoutRef.current);
+        resizeTimeoutRef.current = null;
       }
       stackCompletedRef.current = false;
       cardsRef.current = [];
       transformsCache.clear();
       isUpdatingRef.current = false;
-      frameRef.current = 0;
+      isResizingRef.current = false;
     };
   }, [
     itemDistance,
@@ -322,6 +384,7 @@ const ScrollStack = ({
     scrollConfig, // ← Stable dependency
     useWindowScroll,
     handleScroll,
+    debouncedHandleResize,
   ]);
 
   const containerStyles = useWindowScroll

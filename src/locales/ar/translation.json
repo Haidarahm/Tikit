@@ -351,5 +351,36 @@
         "subscribing": "جاري الاشتراك...",
         "successTitle": "شكراً لك!",
         "successMessage": "لقد اشتركت بنجاح في نشرتنا الإخبارية. سنبقيك على اطلاع بآخر الأخبار!"
+    },
+    "footer": {
+        "contactText": "إذا كنت ترغب في العمل معنا أو فقط تريد التواصل، نحن نحب أن نسمع منك!",
+        "contactTitle": "تواصل –",
+        "contactSubtitle": "للعملاء أو المؤثرين في كل مكان",
+        "locationDubai": "دبي - الإمارات العربية المتحدة",
+        "locationLondon": "لندن - المملكة المتحدة",
+        "copyright": "© حقوق النشر 2025 | جميع الحقوق محفوظة لشركة تيكيت",
+        "links": {
+            "aboutUs": "من نحن",
+            "services": "الخدمات",
+            "work": "الأعمال",
+            "contact": "تواصل معنا"
+        },
+        "services": {
+            "influencerMarketing": "تسويق المؤثرين",
+            "socialMedia": "وسائل التواصل الاجتماعي",
+            "branding": "العلامة التجارية",
+            "production": "الإنتاج"
+        },
+        "terms": {
+            "privacyPolicy": "سياسة الخصوصية",
+            "aboutUs": "من نحن",
+            "cookieSettings": "إعدادات ملفات تعريف الارتباط"
+        },
+        "social": {
+            "facebook": "فيسبوك",
+            "instagram": "إنستجرام",
+            "linkedin": "لينكد إن",
+            "twitter": "اكس (تويتر)"
+        }
     }
 }
