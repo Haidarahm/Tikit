@@ -322,17 +322,24 @@ footer .bottom-section .right-section .items li {
   cursor: pointer;
 }
 
-/* Extra large screens (1280px and up) */
-@media (min-width: 876px) {
+ @media (min-width: 876px) {
   .goals-section {
-    height: 455vh;
+    height: 2000px;
+  }
+  .scroll-stack-card {
+    height: 410px;
   }
 }
 @media (min-width: 1025px) {
   .goals-section {
-    height: 320vh;
+    height: 2200px;
+  }
+  .scroll-stack-card {
+    height: 450px;
   }
 }
+/*
+
 @media (min-width: 1395px) {
   .goals-section {
     height: 310vh;
@@ -353,7 +360,7 @@ footer .bottom-section .right-section .items li {
   .scroll-stack-card {
     height: 500px;
   }
-}
+} */
 
 @media (min-width: 1080px) {
   .work-section-container {

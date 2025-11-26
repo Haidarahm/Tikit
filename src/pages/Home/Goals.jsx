@@ -73,7 +73,7 @@ const Goals = memo(() => {
     <div
       className={`section ${
         isRtl ? "font-cairo" : "font-hero-light"
-      } flex flex-col md:flex-row mx-auto goals-section   z-10 w-full md:w-6/7`}
+      } flex flex-col md:flex-row mx-auto goals-section h-[2000px]  z-10 w-full md:w-6/7`}
       dir={isRtl ? "rtl" : "ltr"}
     >
       <ScrollStack
@@ -102,7 +102,7 @@ const Goals = memo(() => {
             <img
               src={goal.image}
               alt={goal.title}
-              className="rounded-[15px] md:rounded-[39px] w-[120px] md:w-[500px] object-cover"
+              className="rounded-[15px] md:rounded-[39px]  object-cover"
               loading="lazy"
             />
           </ScrollStackItem>
