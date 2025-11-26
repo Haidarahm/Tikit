@@ -258,10 +258,10 @@ const ContactUs = memo(({ className = "" }) => {
   // "bg-[#F5F7FB] text-[var(--foreground)] border border-black/5"
   return (
     <div
-    data-scroll-section
-      className={`relative my-5 md:my-10 gap-3.5  overflow-hidden text-[var(--foreground)] ${
+      data-scroll-section
+      className={`relative  my-5 md:my-10 gap-3.5  overflow-hidden text-[var(--foreground)] ${
         isRtl ? "font-cairo" : "font-hero-light"
-      } rounded-[25px] flex flex-col mx-auto py-[40px] md:py-[60px] px-[40px] md:px-[50px]  w-[95vw] bg-[#F5F7FB]  dark:bg-black ${className}`}
+      } rounded-[25px] flex flex-col mx-auto py-[40px] md:py-[60px] px-[40px] md:px-[50px]  w-[95vw]   dark:bg-black ${className}`}
       dir={isRtl ? "rtl" : "ltr"}
     >
       <div className="email  w-full flex flex-col md:flex-row h-2/3 justify-between items-center md:items-stretch relative z-10 ">
@@ -289,44 +289,45 @@ const ContactUs = memo(({ className = "" }) => {
             {t("home.contactUs.helpText")}
           </div>
           <div
-            className={`swiper-wrapper-contact shadow-xl shadow-[#000]/15  justify-center items-center  w-full border flex ${
-              isRtl ? "flex-row-reverse" : ""
-            } relative border-[var(--secondary)]  h-[50px] rounded-full`}
+            className={`swiper-wrapper-contact shadow-xl shadow-[#000]/15  justify-center items-center  w-full border flex relative border-[var(--secondary)]  h-[50px] rounded-full`}
           >
-            <div className="contact-swiper-wrapper relative h-[calc(100%-3px)] w-[calc(100%-3px)] flex items-center justify-center ">
             <div
-              className={`move-item absolute  w-1/2 h-full bg-[var(--secondary)] rounded-full transition-all duration-300 ease-in-out ${
-                isSecondSlide
-                  ? isRtl
-                    ? "right-0"
-                    : "left-1/2"
-                  : isRtl
-                  ? "right-1/2"
-                  : "left-0"
+              className={`contact-swiper-wrapper relative h-[calc(100%-3px)] w-[calc(100%-3px)] flex items-center justify-center  ${
+                isRtl ? "flex-row-reverse" : ""
               }`}
-            />
-            <div
-              className={`swiper-slide-contact w-1/2 flex justify-center items-center relative z-10 cursor-pointer ${
-                !isSecondSlide
-                  ? "text-[var(--background)]"
-                  : "text-[var(--foreground)] "
-              }`}
-              onClick={() => handleSlideClick(1)}
             >
-              {t("home.contactUs.client")}
+              <div
+                className={`move-item absolute  w-1/2 h-full bg-[var(--secondary)] rounded-full transition-all duration-300 ease-in-out ${
+                  isSecondSlide
+                    ? isRtl
+                      ? "right-0"
+                      : "left-1/2"
+                    : isRtl
+                    ? "right-1/2"
+                    : "left-0"
+                }`}
+              />
+              <div
+                className={`swiper-slide-contact w-1/2 flex justify-center items-center relative z-10 cursor-pointer ${
+                  !isSecondSlide
+                    ? "text-[var(--background)]"
+                    : "text-[var(--foreground)] "
+                }`}
+                onClick={() => handleSlideClick(1)}
+              >
+                {t("home.contactUs.client")}
+              </div>
+              <div
+                className={`swiper-slide-contact w-1/2 flex justify-center items-center relative z-10 cursor-pointer ${
+                  isSecondSlide
+                    ? "text-[var(--background)]"
+                    : "text-[var(--foreground)] "
+                }`}
+                onClick={() => handleSlideClick(2)}
+              >
+                {t("home.contactUs.influencer")}
+              </div>
             </div>
-            <div
-              className={`swiper-slide-contact w-1/2 flex justify-center items-center relative z-10 cursor-pointer ${
-                isSecondSlide
-                  ? "text-[var(--background)]"
-                  : "text-[var(--foreground)] "
-              }`}
-              onClick={() => handleSlideClick(2)}
-            >
-              {t("home.contactUs.influencer")}
-            </div>
-            </div>
-            
           </div>
           <div className="inputs-wrapper flex flex-col gap-3 mt-3">
             <div className="inputs flex justify-between gap-[20px]">
@@ -360,7 +361,7 @@ const ContactUs = memo(({ className = "" }) => {
                   <textarea
                     id="message"
                     rows={3}
-                    className="w-full px-3 py-2 bg-transparent border border-[#363737] dark:border-white/30 rounded-lg text-[var(--foreground)] placeholder-transparent focus:border-[var(--foreground)] focus:outline-none peer resize-y min-h-[80px] text-sm"
+                    className="w-full px-3 py-2 bg-transparent border border-[var(--foreground)]/40 rounded-lg text-[var(--foreground)] placeholder-transparent focus:border-[var(--foreground)] focus:outline-none peer resize-y min-h-[80px] text-sm"
                     placeholder={t("contact.action.form.message")}
                   />
                   <label
