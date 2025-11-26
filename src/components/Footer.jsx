@@ -39,7 +39,7 @@ const Footer = ({ className }) => {
         <div className="logo w-[70px] md:w-[220px] h-[30px] md:h-[80px]">
           <SVGComponent
             color={theme === "dark" ? "#FFFFFF" : "#363737"}
-            logoJumpColor={theme === "dark" ? "#FFFFFF" : "#52C3C5"}
+            logoJumpColor={theme === "dark" ? "#52C3C5" : "#52C3C5"}
             className="p-1 md:p-2 h-full overflow-visible"
           />
         </div>
