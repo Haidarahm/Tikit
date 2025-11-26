@@ -83,6 +83,7 @@ const VerticalVideoLooper = memo(
                     loop
                     autoPlay
                     playsInline
+                    poster={'/cover-image.png'}
                     webkit-playsinline="true"
                     preload="metadata"
                     decoding="async"
