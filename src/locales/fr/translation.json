@@ -381,5 +381,21 @@
             "linkedin": "LinkedIn",
             "twitter": "X (Twitter)"
         }
+    },
+    "influencer": {
+        "hero": {
+            "title": "Vitrine des Partenaires",
+            "subtitle": "Influenceurs"
+        },
+        "sections": {
+            "title": "Sections d'influenceurs",
+            "description": "Parcourez les catégories à gauche et explorez chaque créateur dans la section sélectionnée à droite.",
+            "loading": "Chargement des sections...",
+            "loadError": "Échec du chargement des sections.",
+            "noSections": "Aucune section disponible pour le moment."
+        },
+        "loading": "Chargement des influenceurs...",
+        "loadError": "Échec du chargement des influenceurs.",
+        "noInfluencers": "Nous n'avons pas encore trouvé d'influenceurs pour cette section. Veuillez revenir bientôt."
     }
 }

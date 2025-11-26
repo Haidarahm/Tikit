@@ -231,7 +231,7 @@ const Services = () => {
                 theme === "dark" ? "text-white" : "text-[var(--foreground)]"
               }`}
             >
-              <h2 className="section-title text-[40px] md:text-8xl font-extrabold mb-8 leading-[5.9rem]">
+              <h2 className={`section-title text-[40px] md:text-8xl font-extrabold mb-8 ${isRtl ? "ar" : "en"}`}>
                 {section.title}
               </h2>
               <p className="section-desc max-w-4xl mx-auto text-xl md:text-2xl leading-relaxed opacity-0 will-change-transform">
@@ -255,7 +255,7 @@ const Services = () => {
         ) : null}
       </div>
       <ContactUs className="snap-section snap-start  flex items-center justify-center" />
-      <Footer className="snap-section snap-start h-screen flex items-center" />
+      <Footer className="snap-section overflow-hidden snap-start h-screen flex items-center" />
     </div>
   );
 };

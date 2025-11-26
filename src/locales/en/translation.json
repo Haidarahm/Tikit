@@ -381,5 +381,21 @@
             "linkedin": "LinkedIn",
             "twitter": "X (Twitter)"
         }
+    },
+    "influencer": {
+        "hero": {
+            "title": "Showcase of Partner",
+            "subtitle": "Influencers"
+        },
+        "sections": {
+            "title": "Influencer Sections",
+            "description": "Browse categories on the left and explore each creator within the selected section on the right.",
+            "loading": "Loading sections...",
+            "loadError": "Failed to load sections.",
+            "noSections": "No sections available right now."
+        },
+        "loading": "Loading influencers...",
+        "loadError": "Failed to load influencers.",
+        "noInfluencers": "We couldn't find influencers for this section yet. Please check back soon."
     }
 }

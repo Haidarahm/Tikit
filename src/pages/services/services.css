@@ -1,5 +1,5 @@
 /* Title effect styles (SplitType-like) */
-.section-title {
+.section-title.en {
   text-transform: uppercase;
   /* approximate Bebas Neue look if not installed; using existing fonts */
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);

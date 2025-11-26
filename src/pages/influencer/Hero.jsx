@@ -47,9 +47,9 @@ const Hero = () => {
         <div ref={h1WrapRef} className="overflow-hidden">
           <h1
             ref={h1Ref}
-            className="text-[32px] md:text-[70px] leading-[40px] capitalize py-2 will-change-transform translate-y-full"
+            className="text-[32px] md:text-[70px]  h-[100px] capitalize py-2  will-change-transform translate-y-full"
           >
-            Showcase of Partner
+            {t("influencer.hero.title")}
           </h1>
         </div>
         <div ref={h2WrapRef} className="overflow-hidden">
@@ -58,9 +58,9 @@ const Hero = () => {
               colors={gradientColors}
               animationSpeed={5}
               showBorder={false}
-              className="text-[32px] mx-auto md:text-[96px] leading-[40px] md:leading-[170px] mb-8 capitalize font-bold"
+              className="text-[32px] mx-auto md:text-[96px]  mb-8 capitalize font-bold"
             >
-              Influencers
+              {t("influencer.hero.subtitle")}
             </GradientText>
           </div>
         </div>

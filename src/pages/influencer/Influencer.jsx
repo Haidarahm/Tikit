@@ -14,6 +14,7 @@ import influencer2 from "../../assets/influncer/2.png";
 import SEOHead from "../../components/SEOHead";
 import { useInfluencersStore } from "../../store/influencersStore";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
+import { useTranslation } from "react-i18next";
 import {
   FaInstagram,
   FaYoutube,
@@ -28,11 +29,7 @@ import {
 gsap.registerPlugin(ScrollTrigger);
 
 const getSectionLabel = (section) =>
-  section?.title ||
-  section?.name ||
-  section?.label ||
-  section?.slug ||
-  "Untitled";
+  section?.title || section?.name || section?.label || section?.slug || "";
 
 const getSectionKey = (section, fallback) =>
   section?.id ?? section?.slug ?? section?.key ?? `section-${fallback}`;
@@ -69,7 +66,8 @@ export const Influencer = () => {
   const phoneCardTriggerRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [activeSectionKey, setActiveSectionKey] = useState(null);
-  const { isRtl } = useI18nLanguage();
+  const { isRtl, language } = useI18nLanguage();
+  const { t } = useTranslation();
   const sections = useInfluencersStore((state) => state.sections);
   const sectionsLoading = useInfluencersStore((state) => state.sectionsLoading);
   const sectionsError = useInfluencersStore((state) => state.sectionsError);
@@ -84,6 +82,7 @@ export const Influencer = () => {
     (state) => state.influencersError
   );
   const loadInfluencers = useInfluencersStore((state) => state.loadInfluencers);
+  const clearSection = useInfluencersStore((state) => state.clearSection);
 
   const normalizedSections = useMemo(() => {
     const list = Array.isArray(sections) ? sections : [];
@@ -130,8 +129,12 @@ export const Influencer = () => {
   }, []);
 
   useEffect(() => {
-    loadSections();
-  }, []);
+    loadSections({ lang: language });
+    // Clear influencers cache when language changes to force reload with new language
+    clearSection();
+    setActiveIndex(0);
+    setActiveSectionKey(null);
+  }, [loadSections, language, clearSection]);
 
   useEffect(() => {
     if (!normalizedSections.length) {
@@ -170,8 +173,8 @@ export const Influencer = () => {
     if (influencersBySection[activeSectionKey]) {
       return;
     }
-    loadInfluencers(activeSectionKey);
-  }, [activeSectionKey, influencersBySection, loadInfluencers]);
+    loadInfluencers(activeSectionKey, { lang: language });
+  }, [activeSectionKey, influencersBySection, loadInfluencers, language]);
 
   useEffect(() => {
     const nextIndex = activeIndex + 1;
@@ -179,8 +182,14 @@ export const Influencer = () => {
     if (!nextSection) return;
     const nextKey = nextSection.key;
     if (!nextKey || influencersBySection[nextKey]) return;
-    loadInfluencers(nextKey);
-  }, [activeIndex, normalizedSections, influencersBySection, loadInfluencers]);
+    loadInfluencers(nextKey, { lang: language });
+  }, [
+    activeIndex,
+    normalizedSections,
+    influencersBySection,
+    loadInfluencers,
+    language,
+  ]);
 
   useEffect(() => {
     const isDesktop = window.matchMedia("(min-width: 768px)").matches;
@@ -268,10 +277,7 @@ export const Influencer = () => {
     return rawList.map((influencer, idx) => ({
       id: influencer?.id ?? `${sectionKey}-inf-${idx}`,
       name:
-        influencer?.name ||
-        influencer?.full_name ||
-        influencer?.title ||
-        "Unnamed Influencer",
+        influencer?.name || influencer?.full_name || influencer?.title || "",
       primarySubtitle:
         influencer?.primarySubtitle ||
         influencer?.primary_subtitle ||
@@ -316,25 +322,24 @@ export const Influencer = () => {
             <div className="sticky top-32">
               <div className="mb-6 space-y-3">
                 <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#52C3C5]/10 text-[#52C3C5] text-sm font-medium">
-                  Influencer Sections
+                  {t("influencer.sections.title")}
                   <span className="w-2 h-2 rounded-full bg-[#52C3C5] animate-pulse" />
                 </span>
                 <p className="text-xs text-[var(--foreground)]/60 leading-relaxed">
-                  Browse categories on the left and explore each creator within
-                  the selected section on the right.
+                  {t("influencer.sections.description")}
                 </p>
               </div>
               {sectionsLoading && normalizedSections.length === 0 ? (
                 <div className="text-sm text-[var(--foreground)]/70">
-                  Loading sections...
+                  {t("influencer.sections.loading")}
                 </div>
               ) : sectionsError ? (
                 <div className="text-sm text-red-500">
-                  {sectionsError || "Failed to load sections."}
+                  {sectionsError || t("influencer.sections.loadError")}
                 </div>
               ) : normalizedSections.length === 0 ? (
                 <div className="text-sm text-[var(--foreground)]/70">
-                  No sections available right now.
+                  {t("influencer.sections.noSections")}
                 </div>
               ) : (
                 <div className="flex flex-col gap-3 influencer-nav-scroll">
@@ -354,7 +359,7 @@ export const Influencer = () => {
                         <div className="text-sm uppercase tracking-wide opacity-70">
                           {String(index + 1).padStart(2, "0")}
                         </div>
-                        <div className="text-lg font-semibold">
+                        <div className="text-lg font-semibold text-start">
                           {section.label}
                         </div>
                         {section.description ? (
@@ -373,11 +378,11 @@ export const Influencer = () => {
             {normalizedSections.length === 0 ? (
               sectionsLoading ? (
                 <div className="text-sm text-center text-[var(--foreground)]/70 py-6">
-                  Loading sections...
+                  {t("influencer.sections.loading")}
                 </div>
               ) : (
                 <div className="text-sm text-center text-[var(--foreground)]/70 py-6">
-                  No sections available right now.
+                  {t("influencer.sections.noSections")}
                 </div>
               )
             ) : (
@@ -460,16 +465,15 @@ export const Influencer = () => {
 
                   {isLoadingSection ? (
                     <div className="text-sm text-[var(--foreground)]/70">
-                      Loading influencers...
+                      {t("influencer.loading")}
                     </div>
                   ) : influencersError && !hasLoaded ? (
                     <div className="text-sm text-red-500">
-                      {influencersError || "Failed to load influencers."}
+                      {influencersError || t("influencer.loadError")}
                     </div>
                   ) : influencers.length === 0 ? (
                     <div className="text-sm text-[var(--foreground)]/70">
-                      We couldn't find influencers for this section yet. Please
-                      check back soon.
+                      {t("influencer.noInfluencers")}
                     </div>
                   ) : (
                     <div data-section-content className="space-y-16">
@@ -491,7 +495,7 @@ export const Influencer = () => {
             })}
             {sectionsLoading && normalizedSections.length === 0 ? (
               <div className="text-sm text-[var(--foreground)]/70">
-                Loading sections...
+                {t("influencer.sections.loading")}
               </div>
             ) : null}
           </div>
@@ -527,16 +531,15 @@ export const Influencer = () => {
 
                   {isLoadingSection ? (
                     <div className="text-sm text-[var(--foreground)]/70 text-center py-8">
-                      Loading influencers...
+                      {t("influencer.loading")}
                     </div>
                   ) : influencersError && !hasLoaded ? (
                     <div className="text-sm text-red-500 text-center py-8">
-                      {influencersError || "Failed to load influencers."}
+                      {influencersError || t("influencer.loadError")}
                     </div>
                   ) : influencers.length === 0 ? (
                     <div className="text-sm text-[var(--foreground)]/70 text-center py-8">
-                      We couldn't find influencers for this section yet. Please
-                      check back soon.
+                      {t("influencer.noInfluencers")}
                     </div>
                   ) : (
                     <div className="space-y-5" ref={phoneCardTriggerRef}>
