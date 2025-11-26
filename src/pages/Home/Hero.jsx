@@ -17,6 +17,7 @@ import AvatarGroupDemo from "../../components/ui/AvatarGroupDemo";
 const Hero = memo(() => {
   const sectionRef = useRef(null);
   const contentRef = useRef(null);
+  const hasLoadedVideosRef = useRef(false);
   const [showLiquid, setShowLiquid] = useState(false);
   const [showVideoLooper, setShowVideoLooper] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -24,10 +25,15 @@ const Hero = memo(() => {
   const { theme } = useTheme();
   const { videos, loadVideos, loading } = useBannersStore();
 
-  // Load videos from API once
+  // Load videos from API once on mount
   useEffect(() => {
-    loadVideos({ page: 1, per_page: 10 });
-  }, [loadVideos]);
+    // Only load once, even if component remounts
+    if (!hasLoadedVideosRef.current) {
+      hasLoadedVideosRef.current = true;
+      loadVideos({ page: 1, per_page: 10 });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // Empty dependency array ensures this only runs once on mount
 
   // Check if device is mobile - memoized
   useEffect(() => {

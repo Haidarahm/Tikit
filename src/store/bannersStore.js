@@ -7,9 +7,15 @@ export const useBannersStore = create((set, get) => ({
   loading: false,
   error: null,
 
-  loadVideos: async ({ page = 1, per_page = 10 } = {}) => {
+  loadVideos: async ({ page = 1, per_page = 10, force = false } = {}) => {
+    const state = get();
+    // Prevent duplicate calls: skip if already loading or videos already loaded (unless force=true)
+    if (!force && (state.loading || (state.videos.length > 0 && page === 1))) {
+      return;
+    }
     set({ loading: true, error: null });
     try {
+      console.log("loading videos");
       const res = await fetchVideos({ page, per_page });
       const list = Array.isArray(res?.data) ? res.data : [];
       const normalized = list.map((it) => ({
