@@ -88,14 +88,14 @@ const Hero = memo(() => {
       const items = gsap.utils.toArray("[data-hero-animate]");
       if (!items.length) return;
 
-      gsap.set(items, { autoAlpha: 0, y: 32 });
+      gsap.set(items, { autoAlpha: 0, y: 40 });
       gsap.to(items, {
         autoAlpha: 1,
         y: 0,
-        duration: 0.9,
-        ease: "power2.out",
-        stagger: 0.15,
-        delay: 0.6,
+        duration: 1.4, // longer animation
+        ease: "power3.out", // smoother ease
+        stagger: 0.26, // more spaced-out stagger
+        delay: 1.3, // larger initial delay
       });
     }, contentRef);
 
