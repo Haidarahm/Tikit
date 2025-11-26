@@ -330,17 +330,25 @@ footer .bottom-section .right-section .items li {
 }
 @media (min-width: 1025px) {
   .goals-section {
-    height: 375vh;
+    height: 320vh;
   }
 }
 @media (min-width: 1395px) {
   .goals-section {
-    height: 320vh;
+    height: 310vh;
   }
 }
 @media (min-width: 1500px) {
   .goals-section {
-    height: 350vh;
+    height: 340vh;
+  }
+  .scroll-stack-card {
+    height: 500px;
+  }
+}
+@media (min-width: 1540px) {
+  .goals-section {
+    height: 300vh;
   }
   .scroll-stack-card {
     height: 500px;

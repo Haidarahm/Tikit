@@ -329,7 +329,7 @@ const Action = () => {
             }`}
           />
           <div
-            className={`swiper-slide w-1/2 flex justify-center items-center relative z-10 cursor-pointer text-sm md:text-base font-medium transition-colors duration-300 ${
+            className={`swiper-slide-contact w-1/2 flex justify-center items-center relative z-10 cursor-pointer text-sm md:text-base font-medium transition-colors duration-300 ${
               !isSecondSlide
                 ? "text-[var(--background)]"
                 : "text-[var(--secondary)]"
@@ -339,7 +339,7 @@ const Action = () => {
             {t("contact.action.client")}
           </div>
           <div
-            className={`swiper-slide w-1/2 flex justify-center items-center relative z-10 cursor-pointer text-sm md:text-base font-medium transition-colors duration-300 ${
+            className={`swiper-slide-contact w-1/2 flex justify-center items-center relative z-10 cursor-pointer text-sm md:text-base font-medium transition-colors duration-300 ${
               isSecondSlide
                 ? "text-[var(--background)]"
                 : "text-[var(--secondary)]"

@@ -254,7 +254,7 @@ const Services = () => {
           </div>
         ) : null}
       </div>
-      <ContactUs className="snap-section snap-start h-screen flex items-center justify-center" />
+      <ContactUs className="snap-section snap-start  flex items-center justify-center" />
       <Footer className="snap-section snap-start h-screen flex items-center" />
     </div>
   );
