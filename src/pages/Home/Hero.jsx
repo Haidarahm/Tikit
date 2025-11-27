@@ -114,7 +114,7 @@ const Hero = memo(() => {
   return (
     <div
       ref={sectionRef}
-      className="section relative h-[80vh] md:h-[97vh]  rounded-[15px] md:rounded-[25px]  overflow-hidden mx-auto gpu-transform w-[98vw] sm:w-[96vw] md:w-[95vw]"
+      className="section relative h-[80vh] mb-[10vh] md:h-[97vh] md:mb-[3vh]  rounded-[15px] md:rounded-[25px]  overflow-hidden mx-auto gpu-transform w-[98vw] sm:w-[96vw] md:w-[95vw]"
     >
       {/* Background layer */}
       <div className="pointer-events-none h-full mt-[8px] md:mt-[16px] w-full mx-auto overflow-hidden  bg-[var(--container-bg)]  rounded-[15px] md:rounded-[25px] absolute inset-0 z-0">
@@ -191,13 +191,13 @@ const Hero = memo(() => {
         {/* Title */}
         <div className="title flex flex-col text-white   items-center text-center">
           <h2
-            className=" font-light text-lg sm:text-xl md:text-2xl lg:text-[27px]"
+            className=" font-[100] text-lg sm:text-xl md:text-2xl lg:text-[27px]"
             data-hero-animate
           >
             {t("home.hero.tagline")}
           </h2>
           <h1
-            className=" font-bold text-3xl font-hero-light sm:text-4xl md:text-5xl lg:text-6xl xl:text-[64px] leading-tight"
+            className=" font-[700] font-antonio text-3xl  sm:text-4xl md:text-5xl lg:text-6xl xl:text-[96px] leading-tight"
             data-hero-animate
           >
             ROI REBELS
@@ -206,7 +206,7 @@ const Hero = memo(() => {
 
         {/* Subtitle */}
         <div className="subtitle mt-4 md:mt-6" data-hero-animate>
-          <h3 className=" font-light text-white  text-xl sm:text-2xl md:text-3xl lg:text-[36px] text-center px-4">
+          <h3 className=" font-[400] tracking-widest text-white  text-xl sm:text-2xl md:text-3xl lg:text-[36px] text-center px-4">
             {t("home.hero.subtitle")}
           </h3>
         </div>

@@ -29,6 +29,14 @@
 }
 
 @font-face {
+  font-family: "Antonio";
+  src: url("./assets/fonts/Antonio-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
   font-family: "PlusJakartaSans";
   src: url("./assets/fonts/PlusJakartaSans-VariableFont_wght.ttf")
     format("truetype");
@@ -62,6 +70,11 @@
 /* Utility to apply HeroLight font globally */
 .font-hero-light {
   font-family: "HeroLight", "Source Sans 3", sans-serif;
+}
+
+.font-antonio {
+  font-family: "Antonio", "Source Sans 3", sans-serif;
+  
 }
 
 * {
@@ -322,7 +335,7 @@ footer .bottom-section .right-section .items li {
   cursor: pointer;
 }
 
- @media (min-width: 876px) {
+@media (min-width: 876px) {
   .goals-section {
     height: 2000px;
   }

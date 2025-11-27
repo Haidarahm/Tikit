@@ -15,6 +15,7 @@ import ContactUs from "./ContactUs";
 import Footer from "../../components/Footer";
 import SEOHead from "../../components/SEOHead";
 import Influencers from "./influencers/Influencers";
+import ShowCase from "./ShowCase";
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
@@ -92,6 +93,7 @@ function Home() {
         canonicalUrl="/home"
       />
       <Hero />
+      <ShowCase/>
       <Numbers />
       <Goals />
       <Influencers />

@@ -15,7 +15,7 @@ const AnimatedText = () => {
     >
       <div
         className={`title  relative whitespace-nowrap text-[var(--foreground)] text-[40px] md:text-[150px] font-medium md:font-bold ${
-          isRtl ? "font-cairo" : "font-[PlusJakartaSans]"
+          isRtl ? "font-cairo" : ""
         }`}
         data-scroll
         data-scroll-speed="20"
@@ -29,7 +29,7 @@ const AnimatedText = () => {
       </div>
       <div
         className={`title  relative whitespace-nowrap text-[var(--foreground)] text-[40px] md:text-[150px] font-medium md:font-bold ${
-          isRtl ? "font-cairo" : "font-[PlusJakartaSans]"
+          isRtl ? "font-cairo" : ""
         }`}
         data-scroll
         data-scroll-speed="-20"
