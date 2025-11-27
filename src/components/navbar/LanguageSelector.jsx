@@ -16,8 +16,11 @@ export default function LanguageSelector({
   const location = useLocation();
   const scrollColor = useHeroScrollColor();
 
-  const isHomePage = location.pathname === "/home";
-  const textColor = isHomePage ? scrollColor : "text-[var(--foreground)]";
+  const shouldUseScrollColor =
+    location.pathname === "/home" || location.pathname.startsWith("/services");
+  const textColor = shouldUseScrollColor
+    ? scrollColor
+    : "text-[var(--foreground)]";
 
   // Handle click outside to close language menu
   useEffect(() => {

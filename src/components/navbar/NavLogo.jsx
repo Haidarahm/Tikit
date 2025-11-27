@@ -9,8 +9,9 @@ export default function NavLogo({ logoRef, language }) {
   const { theme } = useTheme();
   const scrollColor = useHeroScrollColor();
 
-  const isHomePage = location.pathname === "/home";
-  const isHeroSection = isHomePage && scrollColor === "text-white";
+  const shouldUseScrollColor =
+    location.pathname === "/home" || location.pathname.startsWith("/services");
+  const isHeroSection = shouldUseScrollColor && scrollColor === "text-white";
 
   const logoColor = isHeroSection
     ? "#FFFFFF"
@@ -19,9 +20,7 @@ export default function NavLogo({ logoRef, language }) {
     : "#363737";
 
   return (
-    <div
-      className={`h-10 md:h-12 flex items-center justify-center `}
-    >
+    <div className={`h-10 md:h-12 flex items-center justify-center `}>
       <div
         onClick={() => navigate("/home")}
         ref={logoRef}

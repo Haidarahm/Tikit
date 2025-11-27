@@ -6,9 +6,12 @@ import { useHeroScrollColor } from "./hooks/useHeroScrollColor";
 export default function DesktopNavLinks({ language }) {
   const { t } = useTranslation();
   const location = useLocation();
-  const isHomePage = location.pathname === "/home";
   const scrollColor = useHeroScrollColor();
-  const textColor = isHomePage ? scrollColor : "text-[var(--foreground)]";
+  const shouldUseScrollColor =
+    location.pathname === "/home" || location.pathname.startsWith("/services");
+  const textColor = shouldUseScrollColor
+    ? scrollColor
+    : "text-[var(--foreground)]";
 
   return (
     <div
@@ -46,4 +49,3 @@ export default function DesktopNavLinks({ language }) {
     </div>
   );
 }
-

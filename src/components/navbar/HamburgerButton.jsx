@@ -9,9 +9,10 @@ const HamburgerButton = forwardRef(function HamburgerButton(
   const location = useLocation();
   const scrollColor = useHeroScrollColor();
 
-  const isHome = location.pathname === "/home";
+  const shouldUseScrollColor =
+    location.pathname === "/home" || location.pathname.startsWith("/services");
   const lineColor =
-    isHome && scrollColor === "text-white"
+    shouldUseScrollColor && scrollColor === "text-white"
       ? "bg-white"
       : "bg-[var(--foreground)]";
 
