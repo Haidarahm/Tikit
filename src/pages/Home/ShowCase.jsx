@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import img1 from "../../assets/test/hidden.webp";
 import img2 from "../../assets/test/porsche.webp";
 import img3 from "../../assets/test/the-reve.webp";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const showcaseData = [
   {
@@ -28,9 +32,104 @@ const showcaseData = [
 ];
 
 const ShowCase = () => {
-  return (
-    <div className="relative flex flex-col w-[98vw] mt-[30px] sm:w-[96vw] md:w-[95vw] gap-8 h-[1400px] mx-auto">
+  const sectionRef = useRef(null);
 
+  useEffect(() => {
+    if (!sectionRef.current) return;
+
+    const ctx = gsap.context(() => {
+      const cards = gsap.utils.toArray(".showcase-card");
+      if (!cards.length) return;
+
+      const clipSeeds = [
+        "inset(70% 30% 20% 30% round 80px)",
+        "inset(25% 35% 55% 35% round 120px)",
+        "inset(50% 10% 10% 10% round 60px)",
+      ];
+
+      cards.forEach((card, index) => {
+        const media = card.querySelector(".showcase-card_media");
+        const content = card.querySelector(".action-content");
+        const seed = clipSeeds[index % clipSeeds.length];
+
+        gsap.set(card, {
+          clipPath: seed,
+          opacity: 0.45,
+        });
+        if (media) {
+          gsap.set(media, {
+            scale: 1.18,
+            rotate: index % 2 === 0 ? -2 : 2,
+          });
+        }
+        if (content) {
+          gsap.set(content, { autoAlpha: 0, y: 35 });
+        }
+
+        gsap
+          .timeline({
+            scrollTrigger: {
+              trigger: card,
+              start: "top 80%",
+              end: "top 30%",
+              scrub: 1.2,
+              onRefresh: () => ScrollTrigger.update(),
+            },
+          })
+          .to(
+            card,
+            {
+              clipPath: "inset(0% 0% 0% 0% round 15px)",
+              opacity: 1,
+              duration: 1.2,
+              ease: "power3.out",
+            },
+            0
+          )
+          .to(
+            media,
+            {
+              scale: 1,
+              rotate: 0,
+              duration: 1.2,
+              ease: "power2.out",
+            },
+            0
+          )
+          .to(
+            content,
+            {
+              autoAlpha: 1,
+              y: 0,
+              duration: 0.9,
+              ease: "power2.out",
+            },
+            "-=0.4"
+          );
+      });
+
+      gsap.to(".showcase-card_media", {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+        },
+        yPercent: 18,
+        ease: "none",
+      });
+
+      ScrollTrigger.refresh(true);
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <div
+      ref={sectionRef}
+      className="relative flex flex-col w-[98vw] mt-[30px] sm:w-[96vw] md:w-[95vw] gap-8 h-[1400px] mx-auto"
+    >
       {/* TITLE */}
       <div className="title text-[var(--foreground)] flex flex-col w-full justify-center items-center h-[200px]">
         <h1 className="font-antonio font-[600] text-[64px]">
@@ -45,7 +144,6 @@ const ShowCase = () => {
 
       {/* GRID */}
       <div className="h-[1200px] w-full grid grid-cols-2 gap-4 grid-rows-2">
-
         {showcaseData.map((item) => (
           <div
             key={item.id}
@@ -54,10 +152,11 @@ const ShowCase = () => {
               ${item.size === "large" ? "col-span-2" : "col-span-1"}
             `}
           >
-            <img
-              className="h-full w-full absolute inset-0 object-cover"
-              src={item.img}
-              alt={item.title}
+            <div
+              className="showcase-card_media h-full w-full absolute inset-0 bg-center bg-cover"
+              style={{ backgroundImage: `url(${item.img})` }}
+              role="img"
+              aria-label={item.title}
             />
 
             {/* CONTENT */}
@@ -67,9 +166,7 @@ const ShowCase = () => {
                   <h2 className="text-[40px] font-[700] font-antonio">
                     {item.title}
                   </h2>
-                  <h3 className="text-[20px] font-[200]">
-                    {item.subtitle}
-                  </h3>
+                  <h3 className="text-[20px] font-[200]">{item.subtitle}</h3>
                 </div>
 
                 <button className="bg-transparent px-[10px] py-[5px] border border-white rounded-[10px]">
@@ -79,7 +176,6 @@ const ShowCase = () => {
             </div>
           </div>
         ))}
-
       </div>
     </div>
   );
