@@ -36,19 +36,43 @@ const ShowCase = () => {
             </div>
           </div>
         </div>
-        <div className="col-span-1 rounded-[10px] overflow-hidden md:rounded-[15px] row-span-1 bg-green-500">
+        <div className="col-span-1 relative rounded-[10px] overflow-hidden md:rounded-[15px] row-span-1 bg-green-500">
           <img
             className="h-full w-full object-cover"
             src={img2}
             alt="porsche"
           />
+          <div className="absolute py-[13px] bg-white/10 rounded-[10px] backdrop-blur-md flex justify-center w-[60%] bottom-[35px] z-10 left-1/2 translate-x-[-50%] action">
+            <div className="action-content items-center justify-center text-white flex gap-[25px] flex-col">
+              <div className="title-subtitle flex flex-col items-center ">
+                <h2 className="text-[40px] font-[700] font-antonio">Hidden</h2>
+                <h3 className="text-[20px] font-[200]">Marketing</h3>
+              </div>
+
+              <button className="bg-transparent px-[10px] py-[5px] border border-white rounded-[10px]">
+                View Project
+              </button>
+            </div>
+          </div>
         </div>
-        <div className="col-span-2 rounded-[10px] overflow-hidden md:rounded-[15px] row-span-1 bg-blue-500">
+        <div className="col-span-2 relative rounded-[10px] overflow-hidden md:rounded-[15px] row-span-1 bg-blue-500">
           <img
             className="h-full w-full object-cover"
             src={img3}
             alt="the-reve"
           />
+          <div className="absolute py-[13px] bg-white/10 rounded-[10px] backdrop-blur-md flex justify-center w-[60%] bottom-[35px] z-10 left-1/2 translate-x-[-50%] action">
+            <div className="action-content items-center justify-center text-white flex gap-[25px] flex-col">
+              <div className="title-subtitle flex flex-col items-center ">
+                <h2 className="text-[40px] font-[700] font-antonio">Hidden</h2>
+                <h3 className="text-[20px] font-[200]">Marketing</h3>
+              </div>
+
+              <button className="bg-transparent px-[10px] py-[5px] border border-white rounded-[10px]">
+                View Project
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
