@@ -41,48 +41,49 @@ const ShowCase = () => {
       const cards = gsap.utils.toArray(".showcase-card");
       if (!cards.length) return;
 
-      const clipSeeds = [
-        "inset(70% 30% 20% 30% round 80px)",
-        "inset(25% 35% 55% 35% round 120px)",
-        "inset(50% 10% 10% 10% round 60px)",
+      const clipVariants = [
+        "inset(0% 100% 0% 0% round 160px)", // first: left -> right
+        "inset(0% 0% 0% 100% round 160px)", // second: right -> left
+        "inset(100% 0% 0% 0% round 140px)", // third: bottom -> top
       ];
 
       cards.forEach((card, index) => {
         const media = card.querySelector(".showcase-card_media");
         const content = card.querySelector(".action-content");
-        const seed = clipSeeds[index % clipSeeds.length];
+        const seed =
+          clipVariants[index] || clipVariants[clipVariants.length - 1];
 
         gsap.set(card, {
           clipPath: seed,
-          opacity: 0.45,
+          opacity: 0.35,
         });
         if (media) {
           gsap.set(media, {
-            scale: 1.18,
-            rotate: index % 2 === 0 ? -2 : 2,
+            scale: 1.22,
+            rotate: index % 2 === 0 ? -3 : 3,
           });
         }
         if (content) {
-          gsap.set(content, { autoAlpha: 0, y: 35 });
+          gsap.set(content, { autoAlpha: 0, y: 45 });
         }
 
         gsap
           .timeline({
             scrollTrigger: {
               trigger: card,
-              start: "top 80%",
-              end: "top 30%",
-              scrub: 1.2,
+              start: "top 85%",
+              end: "top 5%",
+              scrub: 2.6,
               onRefresh: () => ScrollTrigger.update(),
             },
           })
           .to(
             card,
             {
-              clipPath: "inset(0% 0% 0% 0% round 15px)",
+              clipPath: "inset(0% 0% 0% 0% round 18px)",
               opacity: 1,
-              duration: 1.2,
-              ease: "power3.out",
+              duration: 6,
+              ease: "power4.out",
             },
             0
           )
@@ -91,8 +92,8 @@ const ShowCase = () => {
             {
               scale: 1,
               rotate: 0,
-              duration: 1.2,
-              ease: "power2.out",
+              duration: 6,
+              ease: "power3.out",
             },
             0
           )
@@ -101,10 +102,10 @@ const ShowCase = () => {
             {
               autoAlpha: 1,
               y: 0,
-              duration: 0.9,
+              duration: 4.2,
               ease: "power2.out",
             },
-            "-=0.4"
+            "-=1.2"
           );
       });
 
@@ -113,9 +114,9 @@ const ShowCase = () => {
           trigger: sectionRef.current,
           start: "top bottom",
           end: "bottom top",
-          scrub: true,
+          scrub: 0.8,
         },
-        yPercent: 18,
+        yPercent: 12,
         ease: "none",
       });
 
@@ -153,7 +154,7 @@ const ShowCase = () => {
             `}
           >
             <div
-              className="showcase-card_media h-full w-full absolute inset-0 bg-center bg-cover"
+              className="showcase-card_media h-full w-full absolute rounded-[10px] inset-0 bg-center bg-cover"
               style={{ backgroundImage: `url(${item.img})` }}
               role="img"
               aria-label={item.title}
@@ -169,7 +170,7 @@ const ShowCase = () => {
                   <h3 className="text-[20px] font-[200]">{item.subtitle}</h3>
                 </div>
 
-                <button className="bg-transparent px-[10px] py-[5px] border border-white rounded-[10px]">
+                <button className="bg-transparent px-[10px] py-[5px] border border-white rounded-[10px] transition-all duration-300 ease-out hover:bg-white hover:text-black hover:-translate-y-[3px] hover:shadow-[0_15px_35px_rgba(0,0,0,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80">
                   View Project
                 </button>
               </div>
