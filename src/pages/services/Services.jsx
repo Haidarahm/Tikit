@@ -5,7 +5,7 @@ import { SplitText } from "gsap/SplitText";
 
 gsap.registerPlugin(Observer, SplitText);
 
-const Services2 = () => {
+const Services = () => {
   const sectionsRef = useRef([]);
   const imagesRef = useRef([]);
   const headingsRef = useRef([]);
@@ -342,4 +342,4 @@ const styles = {
   },
 };
 
-export default Services2;
+export default Services;
