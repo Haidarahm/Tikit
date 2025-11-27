@@ -108,7 +108,7 @@ const Connections = memo(() => {
             {t("home.connections.question")}
           </ScrollFloat>
         )}
-        <h1 className="font-antonio text-[var(--foreground)] text-[34px] md:text-[64px] h-14 font-bold mb-8"
+        <h1 className="font-antonio text-[var(--foreground)] text-[34px] md:text-[64px] h-14 font-bold md:mb-8"
           data-aos={isRtl ? "fade-right" : "fade-left"}
           data-aos-duration="900"
           data-aos-easing="ease-out-cubic"

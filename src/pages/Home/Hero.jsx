@@ -197,7 +197,7 @@ const Hero = memo(() => {
             {t("home.hero.tagline")}
           </h2>
           <h1
-            className=" font-[700] font-antonio text-3xl  sm:text-4xl md:text-5xl lg:text-6xl xl:text-[96px] leading-tight"
+            className=" font-[700] font-antonio text-[50px]  lg:text-6xl xl:text-[96px] leading-tight"
             data-hero-animate
           >
             ROI REBELS

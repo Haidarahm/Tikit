@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useTranslation } from "react-i18next";
 import img1 from "../../assets/test/hidden.webp";
 import img2 from "../../assets/test/porsche.webp";
 import img3 from "../../assets/test/the-reve.webp";
@@ -33,6 +34,7 @@ const showcaseData = [
 
 const ShowCase = () => {
   const sectionRef = useRef(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (!sectionRef.current) return;
@@ -129,22 +131,20 @@ const ShowCase = () => {
   return (
     <div
       ref={sectionRef}
-      className="relative flex flex-col w-[98vw] mt-[30px] sm:w-[96vw] md:w-[95vw] gap-8 h-[1400px] mx-auto"
+      className="relative flex flex-col w-[98vw] mt-[30px] sm:w-[96vw] md:w-[95vw] gap-4 md:gap-8 md:h-[1400px] h-[1000px] mx-auto"
     >
       {/* TITLE */}
-      <div className="title text-[var(--foreground)] flex flex-col w-full justify-center items-center h-[200px]">
-        <h1 className="font-antonio font-[600] text-[64px]">
-          Fueling brands with influence
+      <div className="title text-[var(--foreground)] flex flex-col w-full justify-center items-center min-h-[200px] px-4 text-center gap-4">
+        <h1 className="tikit-title">
+          {t("home.showcase.title")}
         </h1>
-        <p className="text-center text-[24px]">
-          Tikit is an award-winning global influencer marketing agency. Whether
-          you want to shift perceptions or create scroll-stopping content, we do
-          it better than anyone.
+        <p className="text-base sm:text-lg md:text-xl lg:text-[24px] max-w-4xl">
+          {t("home.showcase.description")}
         </p>
       </div>
 
       {/* GRID */}
-      <div className="h-[1200px] w-full grid grid-cols-2 gap-4 grid-rows-2">
+      <div className="md:h-[1200px] h-[800px] w-full grid grid-cols-2 gap-4 grid-rows-2">
         {showcaseData.map((item) => (
           <div
             key={item.id}
@@ -161,16 +161,16 @@ const ShowCase = () => {
             />
 
             {/* CONTENT */}
-            <div className="absolute py-[13px] bg-white/10 rounded-[10px] backdrop-blur-md flex justify-center w-[60%] bottom-[35px] z-10 left-1/2 translate-x-[-50%]">
+            <div className="absolute py-[13px] bg-white/10 rounded-[10px] backdrop-blur-md flex justify-center w-[80%] md:w-[60%] bottom-[35px] z-10 left-1/2 translate-x-[-50%]">
               <div className="action-content items-center justify-center text-white flex gap-[25px] flex-col">
                 <div className="title-subtitle flex flex-col items-center">
-                  <h2 className="text-[40px] font-[700] font-antonio">
+                  <h2 className="text-[30px] md:text-[40px] font-[700] font-antonio">
                     {item.title}
                   </h2>
-                  <h3 className="text-[20px] font-[200]">{item.subtitle}</h3>
+                  <h3 className="text-[15px] md:text-[20px] font-[200]">{item.subtitle}</h3>
                 </div>
 
-                <button className="bg-transparent px-[10px] py-[5px] border border-white rounded-[10px] transition-all duration-300 ease-out hover:bg-white hover:text-black hover:-translate-y-[3px] hover:shadow-[0_15px_35px_rgba(0,0,0,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80">
+                <button className="text-[15px] md:text-[20px] bg-transparent px-[10px] py-[5px] border border-white rounded-[10px] transition-all duration-300 ease-out hover:bg-white hover:text-black hover:-translate-y-[3px] hover:shadow-[0_15px_35px_rgba(0,0,0,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80">
                   View Project
                 </button>
               </div>

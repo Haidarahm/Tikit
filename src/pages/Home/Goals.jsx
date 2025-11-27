@@ -73,7 +73,7 @@ const Goals = memo(() => {
     <div
       className={`section ${
         isRtl ? "font-cairo" : "font-hero-light"
-      } flex flex-col md:flex-row mx-auto goals-section h-[2000px]  z-10 w-full md:w-6/7`}
+      } flex flex-col md:flex-row mx-auto goals-section md:h-[2000px]  z-10 w-full md:w-6/7`}
       dir={isRtl ? "rtl" : "ltr"}
     >
       <ScrollStack
@@ -92,7 +92,7 @@ const Goals = memo(() => {
             )}`}
           >
             <div className="text">
-              <h2 className=" w-full font-[700] text-[var(--foreground)] font-antonio  md:max-w-[500px] text-[34px] md:text-[64px] leading-[24px] md:leading-[70px] mb-[10px] md:mb-[22px]">
+              <h2 className=" tikit-title   md:max-w-[500px] text-[34px] md:text-[64px] leading-[24px] md:leading-[70px] mb-[10px] md:mb-[22px]">
                 {goal.title}
               </h2>
               <p className=" font-light text-[var(--foreground)]  text:[14px] md:text-[32px] leading-[20px] md:leading-[45px]">
@@ -133,10 +133,10 @@ const Goals = memo(() => {
               data-aos-mirror="true"
             >
               <div className="text">
-                <h2 className=" w-] text-[20px] md:text-[52px] leading-[24px] md:leading-[50px] mb-[10px] md:mb-[22px]">
+                <h2 className=" tikit-title w-full">
                   {goal.title}
                 </h2>
-                <p className=" text:[14px] font-light leading-[20px]">
+                <p className=" text-[var(--foreground)] text:[14px] font-light leading-[20px]">
                   {goal.description}
                 </p>
               </div>

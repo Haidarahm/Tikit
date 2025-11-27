@@ -50,7 +50,7 @@ const Numbers = memo(() => {
     >
       <div className="texts text-center ">
         <h1
-          className="text-xl text-[var(--foreground)] sm:text-2xl font-antonio text-[34px] md:text-[52px] lg:text-[64px] font-bold bg-gradient-to-r "
+          className="tikit-title "
           data-aos="fade-up"
           data-aos-delay="0"
         >
