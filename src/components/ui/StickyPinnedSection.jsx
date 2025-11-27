@@ -368,7 +368,7 @@ export default function StickyPinnedSection({
               </span>
             ) : (
               Array.from(t("home.work.title")).map((ch, i) => (
-                <span key={i} className="fw-letter text-[32px]  inline-block">
+                <span key={i} className="fw-letter text-[var(--foreground)] font-antonio md:text-center font-bold text-[18px] md:text-[40px]">
                   {ch === " " ? "\u00A0" : ch}
                 </span>
               ))

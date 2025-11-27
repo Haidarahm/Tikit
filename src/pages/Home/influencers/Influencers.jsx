@@ -200,7 +200,7 @@ const Influencers = () => {
               {t("home.influencers.badge")}
             </span>
           </div>
-          <h2 className="text-4xl md:text-5xl h-14 font-bold mb-4 bg-gradient-to-r from-[#52C3C5] via-[#5269C5] to-[#52A0C5] bg-clip-text  text-transparent">
+          <h2 className="font-antonio text-[var(--foreground)] text-[34px] md:text-[64px] h-14 font-bold mb-8">
             {t("home.influencers.title")}
           </h2>
           <p className="text-[var(--foreground)]/70 max-w-2xl mx-auto">

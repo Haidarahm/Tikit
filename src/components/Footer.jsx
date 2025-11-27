@@ -77,8 +77,8 @@ const Footer = ({ className }) => {
           <p className="text-[15px] md:text-start text-center md:text-[24px] text-gray-500 leading-[30px]">
             {t("footer.contactText")}
           </p>
-          <h1 className="text-[24px] md:text-[48px] text-center  md:text-start">
-            <span className="font-bold">{t("footer.contactTitle")}</span>{" "}
+          <h1 className="text-[24px] font-antonio md:text-[62px] text-center  md:text-start">
+            <span className="font-bold ">{t("footer.contactTitle")}</span>{" "}
             {t("footer.contactSubtitle")}
           </h1>
           <div className="location  flex font-light justify-around text-gray-500 md:gap-[40px] text-[20px]">

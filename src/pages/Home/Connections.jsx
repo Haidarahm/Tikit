@@ -108,22 +108,16 @@ const Connections = memo(() => {
             {t("home.connections.question")}
           </ScrollFloat>
         )}
-        <div
+        <h1 className="font-antonio text-[var(--foreground)] text-[34px] md:text-[64px] h-14 font-bold mb-8"
           data-aos={isRtl ? "fade-right" : "fade-left"}
           data-aos-duration="900"
           data-aos-easing="ease-out-cubic"
           data-aos-once="false"
           data-aos-offset="120"
         >
-          <GradientText
-            colors={gradientColors}
-            animationSpeed={5}
-            showBorder={false}
-            className="gradient-text pointer-events-none text-[32px] md:text-[64px] capitalize font-bold max-w-[600px]"
-          >
             {t("home.connections.headline")}
-          </GradientText>
-        </div>
+          
+        </h1>
 
         <p
           className="description pointer-events-none text-[16px] md:text-[32px] font-light leading-[35px] mt-[20px] text-[var(--foreground)] dark:text-white"

@@ -31,7 +31,7 @@ const Goals = memo(() => {
           "Track results in real time and optimize every move — all managed on one smart platform.",
         image: image2,
         backgroundColor: "bg-[#5653B7]",
-        backgroundColorLight: "bg-[#8A6EE1]/28",
+        backgroundColorLight: "bg-[#E84B43]/28",
       },
       {
         title: "Drive real engagement",
@@ -39,7 +39,7 @@ const Goals = memo(() => {
           "Reach real audiences with meaningful content. We grow traffic that actually converts.",
         image: image3,
         backgroundColor: "bg-[#9D74E5]",
-        backgroundColorLight: "bg-[#FFBFA4]/28",
+        backgroundColorLight: "bg-[#252525]/28",
       },
       {
         title: "Drive real engagement",
@@ -47,7 +47,7 @@ const Goals = memo(() => {
           "Reach real audiences with meaningful content. We grow traffic that actually converts.",
         image: image4,
         backgroundColor: "bg-[#B46CA7]",
-        backgroundColorLight: "bg-[#68EBE7]/28",
+        backgroundColorLight: "bg-[#F3A67A]/28",
       },
     ];
     const withImages = (items && items.length ? items : fallback).map(
@@ -92,7 +92,7 @@ const Goals = memo(() => {
             )}`}
           >
             <div className="text">
-              <h2 className=" w-full text-[var(--foreground)]  md:max-w-[500px] text-[20px] md:text-[52px] leading-[24px] md:leading-[50px] mb-[10px] md:mb-[22px]">
+              <h2 className=" w-full font-[700] text-[var(--foreground)] font-antonio  md:max-w-[500px] text-[34px] md:text-[64px] leading-[24px] md:leading-[70px] mb-[10px] md:mb-[22px]">
                 {goal.title}
               </h2>
               <p className=" font-light text-[var(--foreground)]  text:[14px] md:text-[32px] leading-[20px] md:leading-[45px]">

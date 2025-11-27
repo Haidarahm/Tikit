@@ -160,7 +160,7 @@ const AboutUs = memo(() => {
       <div className="w-full text-[var(--foreground)] ">
         <h2
           ref={titleRef}
-          className="text-[18px] text-center md:text-4xl font-bold mb-2 md:mb-4"
+          className="text-[18px] font-antonio text-[var(--foreground)] text-center md:text-4xl font-bold mb-2 md:mb-4"
         >
           {t("home.aboutUs.title")}
         </h2>

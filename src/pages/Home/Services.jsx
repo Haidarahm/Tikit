@@ -95,7 +95,7 @@ const Services = memo(() => {
       dir={isRtl ? "rtl" : "ltr"}
     >
       <div className="headline mb-4 px-6 md:px-10 flex w-full justify-between items-center">
-        <h1 className="text-[var(--foreground)] md:text-center font-bold text-[18px] md:text-[32px]">
+        <h1 className="text-[var(--foreground)] font-antonio md:text-center font-bold text-[18px] md:text-[40px]">
           {t("home.services.title")}
         </h1>
         {!loading && !error && (

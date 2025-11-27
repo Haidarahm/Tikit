@@ -269,15 +269,9 @@ const ContactUs = memo(({ className = "" }) => {
           <h3 className="subtitle text-center md:text-start text-[16px] md:text-[50px]">
             {t("home.contactUs.subtitle")}
           </h3>
-          <GradientText
-            // colors={["#07D9F5", "#06AEC4", "#4E7CC6", "#CE88C6", "#FB8DEF"]}
-            colors={gradientColors}
-            animationSpeed={5}
-            showBorder={false}
-            className="title text-[32px] text-center md:text-start md:text-[70px] font-bold "
-          >
+          <h1 className="font-antonio text-[var(--foreground)] text-[34px] md:text-[64px] h-14 font-bold mb-12">
             {t("home.contactUs.title")}{" "}
-          </GradientText>
+          </h1>
 
           <p className="description  hidden md:block text-[16px] md:text-[24px] font-light w-full">
             {t("home.contactUs.description")} <br className="hidden md:block" />{" "}

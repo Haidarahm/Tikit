@@ -14,7 +14,7 @@ const Numbers = memo(() => {
       text2: t("home.numbers.items.happyClients.text2"),
       plus: true,
       color: "bg-[#52C3C5]",
-      lightColor: "bg-[#B387FF]/15",
+      lightColor: "bg-[#E84B43]/15",
     },
     {
       count: 8,
@@ -50,7 +50,7 @@ const Numbers = memo(() => {
     >
       <div className="texts text-center ">
         <h1
-          className="text-xl sm:text-2xl md:text-3xl lg:text-[32px] font-bold bg-gradient-to-r from-[#B387FF] to-[#35D5D0] bg-clip-text text-transparent"
+          className="text-xl text-[var(--foreground)] sm:text-2xl font-antonio text-[34px] md:text-[52px] lg:text-[64px] font-bold bg-gradient-to-r "
           data-aos="fade-up"
           data-aos-delay="0"
         >

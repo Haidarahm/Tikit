@@ -122,6 +122,12 @@ const Reviews = memo(() => {
       }`}
       dir={isRtl ? "rtl" : "ltr"}
     >
+      <h2
+       
+          className="text-[18px] font-antonio text-[var(--foreground)] text-center md:text-4xl font-bold mb-2 md:mb-4"
+        >
+         Clients Review
+        </h2>
       <ThreeDScrollTriggerContainer dir="ltr">
         <ThreeDScrollTriggerRow baseVelocity={3} direction={1}>
           {testimonials.map((testimonial, index) => (
