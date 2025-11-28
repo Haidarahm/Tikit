@@ -78,7 +78,7 @@ const Footer = ({ className }) => {
             {t("footer.contactText")}
           </p>
           <h1 className="text-[24px] font-antonio md:text-[62px] text-center  md:text-start">
-            <span className="font-bold  bg-gradient-to-r from-[#6ACBCC] to-[#1C6F6C] bg-clip-text text-transparent">{t("footer.contactTitle")}</span>{" "}
+            <span className="font-bold  tikit-gradient">{t("footer.contactTitle")}</span>{" "}
             {t("footer.contactSubtitle")}
           </h1>
           <div className="location  flex font-light justify-around text-gray-500 md:gap-[40px] text-[20px]">

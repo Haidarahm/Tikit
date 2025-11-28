@@ -13,7 +13,6 @@ import b2Light from "../../assets/brands/2-light.svg";
 import b3Light from "../../assets/brands/3-light.svg";
 import b4Light from "../../assets/brands/4-light.svg";
 import b5Light from "../../assets/brands/5-light.svg";
-import GradientText from "../../components/GradientText";
 import { useTheme } from "../../store/ThemeContext";
 import {
   FaInstagram,
@@ -231,11 +230,6 @@ const ContactUs = memo(({ className = "" }) => {
   const { theme } = useTheme();
   const { t } = useTranslation();
   const { isRtl } = useI18nLanguage();
-
-  const gradientColors =
-    theme === "light"
-      ? ["#52C3C5", "#5269C5", "#52C3C5", "#52A0C5", "#52C3C5"] // Light theme colors
-      : ["#07D9F5", "#06AEC4", "#4E7CC6", "#CE88C6", "#FB8DEF"]; // Dark theme colors (original)
 
   const imageLogos = useMemo(
     () =>

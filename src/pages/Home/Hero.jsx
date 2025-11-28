@@ -193,12 +193,20 @@ const Hero = memo(() => {
           <h2
             className=" font-[100] text-lg sm:text-xl md:text-2xl lg:text-[27px]"
             data-hero-animate
+            style={{
+              textShadow:
+                "0 2px 8px rgba(0, 0, 0, 0.8), 0 4px 16px rgba(0, 0, 0, 0.6)",
+            }}
           >
             {t("home.hero.tagline")}
           </h2>
           <h1
             className=" font-[700] font-antonio text-[50px]  lg:text-6xl xl:text-[96px] leading-tight"
             data-hero-animate
+            style={{
+              textShadow:
+                "0 4px 12px rgba(0, 0, 0, 0.9), 0 8px 24px rgba(0, 0, 0, 0.7), 0 12px 32px rgba(0, 0, 0, 0.5)",
+            }}
           >
             ROI REBELS
           </h1>
@@ -206,7 +214,13 @@ const Hero = memo(() => {
 
         {/* Subtitle */}
         <div className="subtitle mt-4 md:mt-6" data-hero-animate>
-          <h3 className=" font-[400] tracking-widest text-white  text-xl sm:text-2xl md:text-3xl lg:text-[36px] text-center px-4">
+          <h3
+            className=" font-[400] tracking-widest text-white  text-xl sm:text-2xl md:text-3xl lg:text-[36px] text-center px-4"
+            style={{
+              textShadow:
+                "0 2px 8px rgba(0, 0, 0, 0.8), 0 4px 16px rgba(0, 0, 0, 0.6)",
+            }}
+          >
             {t("home.hero.subtitle")}
           </h3>
         </div>
@@ -215,7 +229,13 @@ const Hero = memo(() => {
         <div className="avatar mt-8 md:mt-[50px]" data-hero-animate>
           <AvatarGroupDemo />
           <div className="text text-center mt-2 md:mt-[10px]">
-            <span className="font-bold  text-sm sm:text-base text-white ">
+            <span
+              className="font-bold  text-sm sm:text-base text-white "
+              style={{
+                textShadow:
+                  "0 2px 6px rgba(0, 0, 0, 0.8), 0 4px 12px rgba(0, 0, 0, 0.6)",
+              }}
+            >
               {t("home.hero.clients")}
             </span>
           </div>

@@ -629,3 +629,6 @@ footer .bottom-section .right-section .items li {
   font-family: "Antonio", "Source Sans 3", sans-serif;
   @apply font-[700] text-3xl sm:text-4xl md:text-5xl lg:text-[64px] leading-tight text-[var(--foreground)];
 }
+.tikit-gradient{
+  @apply bg-gradient-to-r from-[#6ACBCC] to-[#1C6F6C] bg-clip-text text-transparent
+}

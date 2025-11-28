@@ -121,7 +121,7 @@ const Connections = memo(() => {
         </div>
 
         <p
-          className="description pointer-events-none text-[16px] md:text-[32px] font-light leading-[35px] mt-[20px] text-[var(--foreground)] dark:text-white"
+          className="description pointer-events-none text-[16px] md:text-[32px] font-light leading-[35px] md:mt-[20px] text-[var(--foreground)] dark:text-white"
           data-aos="fade-right"
           data-aos-duration="900"
           data-aos-easing="ease-out-cubic"

@@ -69,7 +69,7 @@ const WorkHero = ({ gradientColors, t, isRtl }) => {
         </div>
       </div>
       <div
-        className={`description w-full relative z-30 flex md:flex-row flex-col text-[var(--foreground)] px-[20px] md:px-[30px] gap-4 md:gap-12 justify-center items-center ${
+        className={`description  w-full relative z-30 flex md:flex-row flex-col text-[var(--foreground)] px-[20px] md:px-[30px] gap-4 md:gap-12 justify-center items-center ${
           isRtl
             ? "text-center md:text-end "
             : " text-center md:text-start"
@@ -86,7 +86,7 @@ const WorkHero = ({ gradientColors, t, isRtl }) => {
         <div ref={descParaWrapRef} className="overflow-hidden">
           <div
             ref={descParaRef}
-            className="paragraph text-[16px] md:text-[22px] will-change-transform text-start translate-y-full"
+            className="paragraph text-center md:text-start text-[16px] md:text-[22px] will-change-transform  translate-y-full"
           >
             {t("work.specialDescription")}
           </div>

@@ -69,7 +69,7 @@ const WorkSection = memo(() => {
   // Show loading state during initial load
   if (!isClient || loading) {
     return (
-      <div className=" my-6 md:my-16 work-section-container relative flex flex-col mx-auto z-10 w-full justify-center">
+      <div className=" min-h-[1400px] my-6 md:my-16 work-section-container relative flex flex-col mx-auto z-10 w-full justify-center">
         <div className="headline mb-4 px-6 md:px-10 flex w-full justify-between items-center">
           <h1 className="text-[var(--foreground)] md:text-center font-bold text-[18px] md:text-[32px]">
             {t("home.work.title")}
@@ -85,7 +85,7 @@ const WorkSection = memo(() => {
   // Show error state if API call failed
   if (error) {
     return (
-      <div className="section my-6 md:my-16 relative flex flex-col mx-auto z-10 w-full justify-center">
+      <div className="section min-h-[1400px] my-6 md:my-16 relative flex flex-col mx-auto z-10 w-full justify-center">
         <div className="headline mb-4 px-6 md:px-10 flex w-full justify-between items-center">
           <h1 className="text-[var(--foreground)] md:text-center font-bold text-[18px] md:text-[32px]">
             {t("home.work.title")}
@@ -111,18 +111,21 @@ const WorkSection = memo(() => {
         </div>
       )}
       <div
-        className={`mobile-view gap-[30px] h-full md:hidden relative text-[var(--foreground)] flex flex-col w-full px-[20px] ${
+        className={`mobile-view gap-[30px] min-h-[1400px] h-full md:hidden relative text-[var(--foreground)] flex flex-col w-full px-[20px] ${
           isRtl ? "font-cairo" : "font-hero-light"
         }`}
         dir={isRtl ? "rtl" : "ltr"}
       >
         <div className="main-content w-full flex flex-col gap-[20px] mt-16">
+          <h1 className="text-[24px] font-bold font-antonio text-center">
+            Our Works
+          </h1>
           {(items || []).map((item, index) => (
             <div
               key={(item.title || "") + String(index)}
-              className="element-wrapper flex flex-col w-full gap-[30px]"
+              className="element-wrapper mb-6 flex flex-col w-full gap-[30px]"
             >
-              <div className="text flex flex-col gap-[10px]">
+              <div className="text flex flex-col gap-[5px]">
                 <div className="flex items-center justify-between">
                   {item.title && (
                     <h2 className="text-[20px] font-bold">{item.title}</h2>
@@ -132,9 +135,13 @@ const WorkSection = memo(() => {
                     border-[var(--secondary)] text-[var(--secondary)] text-[11px] uppercase 
                     px-4 py-1 
                     transition-colors"
-                    onClick={() =>
-                      navigate(`/details/${encodeURIComponent(item.id)}`)
-                    }
+                    onClick={() => {
+                      try {
+                        if (item.id != null) {
+                          navigate(`/work/${encodeURIComponent(item.id)}`);
+                        }
+                      } catch (_) {}
+                    }}
                   >
                     {t("home.work.viewWork")}
                   </button>

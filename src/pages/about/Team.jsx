@@ -93,12 +93,7 @@ const Team = () => {
     const track = trackRef.current;
     if (!container || !right || !track) return;
 
-    const isMobile = window.innerWidth < 768;
-    if (isMobile) {
-      container.style.minHeight = "";
-      return;
-    }
-
+  
     const compute = () => {
       const rightWidth = right.clientWidth;
       const trackWidth = track.scrollWidth;
@@ -218,12 +213,11 @@ const Team = () => {
             theme === "light" ? "light" : "dark"
           } left-section  z-20 md:z-50 md:absolute md:left-0 md:top-0 w-full md:w-[30%] md:h-full sticky top-0 flex items-center px-6 md:px-[50px] py-6 md:py-0 text-[28px] sm:text-[40px] md:text-[64px] bg-cover bg-center bg-no-repeat`}
           style={{
-            backgroundImage: theme === "light" ? "none" : `url(${background})`,
-            backgroundColor: theme === "light" ? "#f7f9fa" : "transparent",
+            backgroundColor: theme === "light" ? "#f7f9fa" : "#000",
           }}
         >
-          <h1 className="text-[var(--foreground)] leading-[1.1]">
-            Our <br /> creative team
+          <h1 className="font-antonio text-[var(--foreground)] font-bold md:text-[95px] leading-[1.1]">
+            Our <span className=" tikit-gradient"> creative team</span>
           </h1>
         </div>
 
@@ -319,7 +313,7 @@ const Team = () => {
       </div>
 
       {/* Mobile View Cards */}
-      <div className="block md:hidden mt-8">
+      <div className="block md:hidden mt-8 min-h-[1400px]">
         <div className="text-center mb-8 px-4">
           <h2 className="text-[var(--foreground)] text-[28px] font-bold leading-[1.2]">
             Our Creative Team
@@ -345,7 +339,7 @@ const Team = () => {
                 <img
                   src={member.image}
                   alt={member.name || `team-${index + 1}`}
-                  className="h-full w-full object-cover select-none absolute inset-0 opacity-70 mix-blend-luminosity"
+                  className="h-full w-full object-cover select-none absolute inset-0  mix-blend-luminosity"
                   draggable={false}
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/40 to-black/90" />
