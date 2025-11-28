@@ -47,11 +47,13 @@
             "clients": "+300 clients satisfaits"
         },
         "showcase": {
-            "title": "Propulser les marques avec influence",
+            "title": "Propulser les marques avec",
+            "mainWord": "influence",
             "description": "Tikit est une agence mondiale de marketing d'influence maintes fois récompensée. Que vous souhaitiez changer les perceptions ou créer du contenu qui arrête le défilement, nous le faisons mieux que quiconque."
         },
         "numbers": {
-            "headline": "La meilleure mesure du succès ?",
+            "headline": "La meilleure mesure de",
+            "mainWord": "Succès",
             "subheadline": "Des clients fidèles. La plupart travaillent avec nous bien au-delà d'un seul projet",
             "items": {
                 "happyClients": { "text1": "Clients", "text2": "Heureux" },
@@ -86,7 +88,8 @@
         },
         "influencers": {
             "badge": "Nos influenceurs",
-            "title": "Rencontrez les créateurs",
+            "title": "Rencontrez les",
+            "mainWord": "Créateurs",
             "subtitle": "Connectez-vous à des voix influentes dans diverses catégories",
             "loadingCategories": "Chargement des catégories...",
             "categoriesError": "Impossible de charger les catégories.",
@@ -99,7 +102,8 @@
         },
         "connections": {
             "question": "Êtes-vous un influenceur ?",
-            "headline": "Rejoignez notre liste dès aujourd'hui !",
+            "headline": "Rejoignez notre liste",
+            "mainWord": "dès aujourd'hui !",
             "description": "Alliez données et créativité pour aider les marques à atteindre et à résonner avec la bonne audience",
             "joinNow": "Rejoindre maintenant"
         },

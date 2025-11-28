@@ -2,6 +2,7 @@ import React, { memo } from "react";
 import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
 import CountUp from "../../components/CountUp";
+import TikitTitle from "../../components/TikitTitle.jsx";
 
 const Numbers = memo(() => {
   const { t } = useTranslation();
@@ -22,7 +23,7 @@ const Numbers = memo(() => {
       text2: t("home.numbers.items.years.text2"),
       bottom: true,
       color: "bg-[#9D74E5]",
-      lightColor: "bg-[#252525]/3",
+      lightColor: "bg-[#252525]/13",
     },
     {
       count: 500,
@@ -38,7 +39,7 @@ const Numbers = memo(() => {
       text2: t("home.numbers.items.awards.text2"),
       bottom: true,
       color: "bg-[#B46CA7]",
-      lightColor: "bg-[#252525]/3",
+      lightColor: "bg-[#252525]/13",
     },
   ];
 
@@ -49,13 +50,12 @@ const Numbers = memo(() => {
       } my-10 md:my-0 flex flex-col mx-auto md:h-screen z-10 w-[98%] sm:w-[95%] md:w-6/7 justify-center px-4 md:px-0`}
     >
       <div className="texts text-center ">
-        <h1
-          className="tikit-title "
-          data-aos="fade-up"
-          data-aos-delay="0"
-        >
-          {t("home.numbers.headline")}
-        </h1>
+        <div data-aos="fade-up" data-aos-delay="50">
+          <TikitTitle
+            title={t("home.numbers.headline")}
+            mainWord={t("home.numbers.mainWord")}
+          />
+        </div>
         <h3
           className="text-sm sm:text-base md:text-lg lg:text-[25px] font-light px-4 md:px-0 max-w-4xl mx-auto text-[var(--foreground)]"
           data-aos="fade-up"
@@ -115,7 +115,7 @@ const Numbers = memo(() => {
               ) => (
                 <div
                   key={idx}
-                  className={`circle shadow-2xl w-[160px] h-[160px] lg:w-[180px] lg:h-[180px] xl:w-[200px] xl:h-[200px] rounded-full text-center flex flex-col items-center justify-center backdrop-blur-lg  ${lightColor} ${borderColor} dark:bg-[#e9e7e518] dark:border-[#ffffff10] ${
+                  className={`circle shadow-2xl w-[160px] h-[160px] lg:w-[180px] lg:h-[180px] xl:w-[200px] xl:h-[200px] rounded-full text-center flex flex-col items-center justify-center backdrop-blur-lg  ${lightColor} ${borderColor}  ${
                     bottom ? "self-end" : "self-start"
                   }`}
                   data-aos="fade-up"

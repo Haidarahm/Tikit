@@ -13,8 +13,8 @@ import {
   FaSnapchatGhost,
 } from "react-icons/fa";
 import influencer from "../../assets/influncer/1.png";
-import overlay from "../../assets/tick-overlay.png";
-import overlayDark from "../../assets/tick-overlay-dark.png";
+import overlay from "../../assets/tick-overlay.webp";
+import overlayDark from "../../assets/tick-overlay-dark.webp";
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);

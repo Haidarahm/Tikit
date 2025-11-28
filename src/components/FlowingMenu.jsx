@@ -15,16 +15,14 @@ function FlowingMenu({ items = [] }) {
 
 function MenuItem({ link, text, image }) {
   const itemRef = useRef(null);
-  const marqueeWrapperRef = useRef(null);   // GSAP controls Y here
-  const marqueeContentRef = useRef(null);   // CSS marquee controls X here
+  const marqueeWrapperRef = useRef(null); // GSAP controls Y here
+  const marqueeContentRef = useRef(null); // CSS marquee controls X here
 
   const animationDefaults = { duration: 0.6, ease: "expo" };
 
   const findClosestEdge = (mouseX, mouseY, width, height) => {
-    const topEdgeDist =
-      (mouseX - width / 2) ** 2 + mouseY ** 2;
-    const bottomEdgeDist =
-      (mouseX - width / 2) ** 2 + (mouseY - height) ** 2;
+    const topEdgeDist = (mouseX - width / 2) ** 2 + mouseY ** 2;
+    const bottomEdgeDist = (mouseX - width / 2) ** 2 + (mouseY - height) ** 2;
     return topEdgeDist < bottomEdgeDist ? "top" : "bottom";
   };
 
@@ -39,7 +37,8 @@ function MenuItem({ link, text, image }) {
       rect.height
     );
 
-    gsap.timeline({ defaults: animationDefaults })
+    gsap
+      .timeline({ defaults: animationDefaults })
       .set(marqueeWrapperRef.current, {
         y: edge === "top" ? "-101%" : "101%",
       })
@@ -57,7 +56,8 @@ function MenuItem({ link, text, image }) {
       rect.height
     );
 
-    gsap.timeline({ defaults: animationDefaults })
+    gsap
+      .timeline({ defaults: animationDefaults })
       .to(marqueeWrapperRef.current, {
         y: edge === "top" ? "-101%" : "101%",
       });

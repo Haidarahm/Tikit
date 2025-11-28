@@ -12,6 +12,7 @@ import { useClient } from "../../store/ClientContext.jsx";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
+import TikitTitle from "../../components/TikitTitle.jsx";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -108,16 +109,16 @@ const Connections = memo(() => {
             {t("home.connections.question")}
           </ScrollFloat>
         )}
-        <h1 className="font-antonio text-[var(--foreground)] text-[34px] md:text-[64px] h-14 font-bold md:mb-8"
+        <div 
           data-aos={isRtl ? "fade-right" : "fade-left"}
           data-aos-duration="900"
           data-aos-easing="ease-out-cubic"
           data-aos-once="false"
           data-aos-offset="120"
         >
-            {t("home.connections.headline")}
+          <TikitTitle title={t("home.connections.headline")} mainWord={t("home.connections.mainWord")} />
           
-        </h1>
+        </div>
 
         <p
           className="description pointer-events-none text-[16px] md:text-[32px] font-light leading-[35px] mt-[20px] text-[var(--foreground)] dark:text-white"

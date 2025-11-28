@@ -22,7 +22,7 @@ const Goals = memo(() => {
         description:
           "Reach real audiences with meaningful content. We grow traffic that actually converts.",
         image: image1,
-        backgroundColor: "bg-[#76A3BE]",
+        backgroundColor: "bg-[#35D5D0]/28",
         backgroundColorLight: "bg-[#35D5D0]/28",
       },
       {
@@ -30,7 +30,7 @@ const Goals = memo(() => {
         description:
           "Track results in real time and optimize every move — all managed on one smart platform.",
         image: image2,
-        backgroundColor: "bg-[#5653B7]",
+        backgroundColor: "bg-[#E84B43]/28",
         backgroundColorLight: "bg-[#E84B43]/28",
       },
       {
@@ -38,7 +38,7 @@ const Goals = memo(() => {
         description:
           "Reach real audiences with meaningful content. We grow traffic that actually converts.",
         image: image3,
-        backgroundColor: "bg-[#9D74E5]",
+        backgroundColor: "bg-[#252525]/28",
         backgroundColorLight: "bg-[#252525]/28",
       },
       {
@@ -46,7 +46,7 @@ const Goals = memo(() => {
         description:
           "Reach real audiences with meaningful content. We grow traffic that actually converts.",
         image: image4,
-        backgroundColor: "bg-[#B46CA7]",
+        backgroundColor: "bg-[#F3A67A]/28",
         backgroundColorLight: "bg-[#F3A67A]/28",
       },
     ];

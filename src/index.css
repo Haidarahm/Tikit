@@ -62,11 +62,21 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Caveat";
+  src: url("./assets/fonts/Caveat-VariableFont_wght.ttf") format("truetype");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Utility to apply Cairo font */
 .font-cairo {
   font-family: "Cairo", "Source Sans 3", sans-serif;
 }
-
+.font-caveat {
+  font-family: "Caveat", "Source Sans 3", sans-serif;
+}
 /* Utility to apply HeroLight font globally */
 .font-hero-light {
   font-family: "HeroLight", "Source Sans 3", sans-serif;
@@ -74,7 +84,6 @@
 
 .font-antonio {
   font-family: "Antonio", "Source Sans 3", sans-serif;
-  
 }
 
 * {
@@ -614,7 +623,7 @@ footer .bottom-section .right-section .items li {
   height: 100% !important;
 }
 
-.tikit-title{
+.tikit-title {
   font-family: "Antonio", "Source Sans 3", sans-serif;
-  @apply  font-[600] text-3xl sm:text-4xl md:text-5xl lg:text-[64px] leading-tight text-[var(--foreground)] 
+  @apply font-[600] text-3xl sm:text-4xl md:text-5xl lg:text-[64px] leading-tight text-[var(--foreground)];
 }

@@ -15,6 +15,7 @@ import { useInfluencersStore } from "../../../store/influencersStore";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../../store/I18nLanguageContext.jsx";
+import TikitTitle from "../../../components/TikitTitle.jsx";
 
 const SOCIAL_ICON_MAP = {
   instagram: FaInstagram,
@@ -200,9 +201,8 @@ const Influencers = () => {
               {t("home.influencers.badge")}
             </span>
           </div>
-          <h2 className="font-antonio text-[var(--foreground)] text-[34px] md:text-[64px] h-14 font-bold mb-8">
-            {t("home.influencers.title")}
-          </h2>
+          
+          <TikitTitle  title={t("home.influencers.title")} mainWord={t("home.influencers.mainWord")}/>
           <p className="text-[var(--foreground)]/70 max-w-2xl mx-auto">
             {t("home.influencers.subtitle")}
           </p>

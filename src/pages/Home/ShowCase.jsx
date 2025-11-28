@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import img1 from "../../assets/test/hidden.webp";
 import img2 from "../../assets/test/porsche.webp";
 import img3 from "../../assets/test/the-reve.webp";
+import TikitTitle from "../../components/TikitTitle";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -69,12 +70,16 @@ const ShowCase = () => {
           gsap.set(content, { autoAlpha: 0, y: 45 });
         }
 
+        const isMobile = window.matchMedia("(max-width: 767px)").matches;
+        const startValue = isMobile ? "top 95%" : "top 85%";
+        const endValue = isMobile ? "top 55%" : "top 5%";
+
         gsap
           .timeline({
             scrollTrigger: {
               trigger: card,
-              start: "top 85%",
-              end: "top 5%",
+              start: startValue,
+              end: endValue,
               scrub: 2.6,
               onRefresh: () => ScrollTrigger.update(),
             },
@@ -135,13 +140,11 @@ const ShowCase = () => {
     >
       {/* TITLE */}
       <div className="title text-[var(--foreground)] flex flex-col w-full justify-center items-center min-h-[200px] px-4 text-center gap-4">
-        <h1 className="tikit-title">
-          {t("home.showcase.title")}
-        </h1>
+        <TikitTitle title={t("home.showcase.title")} mainWord={t("home.showcase.mainWord")} />
         <p className="text-base sm:text-lg md:text-xl lg:text-[24px] max-w-4xl">
           {t("home.showcase.description")}
         </p>
-      </div>
+      </div> 
 
       {/* GRID */}
       <div className="md:h-[1200px] h-[800px] w-full grid grid-cols-2 gap-4 grid-rows-2">
@@ -167,7 +170,9 @@ const ShowCase = () => {
                   <h2 className="text-[30px] md:text-[40px] font-[700] font-antonio">
                     {item.title}
                   </h2>
-                  <h3 className="text-[15px] md:text-[20px] font-[200]">{item.subtitle}</h3>
+                  <h3 className="text-[15px] md:text-[20px] font-[200]">
+                    {item.subtitle}
+                  </h3>
                 </div>
 
                 <button className="text-[15px] md:text-[20px] bg-transparent px-[10px] py-[5px] border border-white rounded-[10px] transition-all duration-300 ease-out hover:bg-white hover:text-black hover:-translate-y-[3px] hover:shadow-[0_15px_35px_rgba(0,0,0,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80">
