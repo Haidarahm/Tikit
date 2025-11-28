@@ -122,7 +122,8 @@
         },
         "contactUs": {
             "subtitle": "Commencez avec Tikit !",
-            "title": "Contactez-nous maintenant",
+            "title": "contact us",
+            "mainWord": "Now",
             "description": "Nous voulons vous entendre. Faites-nous savoir",
             "description2": "comment nous pouvons vous aider !",
             "helpText": "Faites-nous savoir comment nous pouvons vous aider !",

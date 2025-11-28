@@ -123,7 +123,8 @@
         },
         "contactUs": {
             "subtitle": "ابدأ مع تيكيت!",
-            "title": "تواصل معنا الآن",
+            "title": "contact us",
+            "mainWord": "Now",
             "description": "نريد أن نسمع منك. دعنا نعرف",
             "description2": "كيف يمكننا المساعدة!",
             "helpText": "دعنا نعرف كيف يمكننا المساعدة!",

@@ -97,7 +97,7 @@ const Reviews = memo(() => {
   const { theme } = useTheme();
   const { t, i18n } = useTranslation();
   const { isRtl } = useI18nLanguage();
-  const lightBgs = ["#daf4f4", "#ede8fb", "#f0f2f3"];
+  const lightBgs = ["#DAF4F4", "#F5DFDF", "#f0f2f3"];
 
   const testimonials = useMemo(() => {
     const data =

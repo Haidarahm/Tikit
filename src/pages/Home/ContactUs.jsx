@@ -25,6 +25,7 @@ import {
   FaSnapchat,
   FaLink,
 } from "react-icons/fa";
+import TikitTitle2 from "../../components/TikitTitle2.jsx";
 
 // Social media platforms with icons
 const SOCIAL_PLATFORMS = [
@@ -269,9 +270,7 @@ const ContactUs = memo(({ className = "" }) => {
           <h3 className="subtitle text-center md:text-start text-[16px] md:text-[50px]">
             {t("home.contactUs.subtitle")}
           </h3>
-          <h1 className="font-antonio text-[var(--foreground)] text-[34px] md:text-[64px] h-14 font-bold mb-12">
-            {t("home.contactUs.title")}{" "}
-          </h1>
+          <TikitTitle2 title={t("home.contactUs.title")} mainWord={t("home.contactUs.mainWord")} />
 
           <p className="description  hidden md:block text-[16px] md:text-[24px] font-light w-full">
             {t("home.contactUs.description")} <br className="hidden md:block" />{" "}

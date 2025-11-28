@@ -127,7 +127,7 @@ const Hero = () => {
 
         <div
           ref={titleRef}
-          className={`title z-30 px-2 md:px-0 w-full md:w-3/4 text-[var(--foreground)] text-center md:text-start absolute text-[32px] md:text-[64px] capitalize flex items-center font-bold leading-[60px] h-full ${
+          className={`title font-antonio z-30 px-2 md:px-0 w-full md:w-3/4 text-[var(--foreground)] text-center md:text-start absolute text-[32px] md:text-[64px] capitalize flex items-center font-bold  h-full ${
             isRtl ? "md:pr-[60px]" : "md:pl-[60px]"
           }`}
         >
@@ -151,8 +151,8 @@ const Hero = () => {
       >
         <div
           ref={sectionTitleRef}
-          className="title uppercase font-bold mt-4 md:mt-0 text-[20px] md:text-[34px] w-2/7"
-        >
+          className="title flex  flex-nowrap text-nowrap font-antonio font-bold mt-4 md:mt-0 text-[20px] md:text-[40px] will-change-transform translate-y-full"
+          >
           {t("about.hero.sectionTitle")}
         </div>
         <div

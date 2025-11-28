@@ -83,7 +83,7 @@
         "connections": {
             "question": "Are you an influencer?",
             "headline": "Join our list",
-            "mainWord": "today!",
+            "mainWord": "Today!",
             "description": "Blend data with creativity to help brands reach and resonate with the right audience",
             "joinNow": "Join Now"
         },
@@ -122,7 +122,8 @@
         },
         "contactUs": {
             "subtitle": "Kick it off with Tikit!",
-            "title": "Contact Us Now",
+            "title": "contact us",
+            "mainWord": "Now",
             "description": "We want to hear from you. let's us know",
             "description2": "how we can help!",
             "helpText": "let's us know how we can help!",

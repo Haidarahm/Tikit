@@ -15,7 +15,6 @@ import WorkHero from "./components/WorkHero";
 import WorkSectionSelector from "./components/WorkSectionSelector";
 import WorkItemsGrid from "./components/WorkItemsGrid";
 import { Skeleton } from "antd";
-import Lenis from "lenis";
 
 const TYPE_KEY_MAP = {
   influence: "influence",
@@ -56,13 +55,13 @@ const Work = () => {
   const { t } = useTranslation();
   const [activeSectionId, setActiveSectionId] = useState(null);
   const [activeType, setActiveType] = useState(null);
-  const lenisRef = useRef(null);
-  const rafRef = useRef(null);
+  const lenisCleanupTimeout = useRef(null);
 
   // Only scroll to top on initial mount (when coming from another page)
   // ScrollToTop component now handles preventing scroll when navigating between sections
   useEffect(() => {
     window.scrollTo(0, 0);
+    gsap.ticker.add(() => ScrollTrigger.update());
   }, []);
   const gradientColors =
     theme === "light"
@@ -74,16 +73,19 @@ const Work = () => {
     htmlEl.classList.remove("has-scroll-smooth", "has-scroll-init");
     document.body.style.removeProperty("overflow");
 
+    const timer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 100);
+
     const handleResize = () => {
-      if (lenisRef.current) {
-        lenisRef.current.resize();
-      }
       ScrollTrigger.refresh();
     };
     window.addEventListener("resize", handleResize);
 
     return () => {
+      clearTimeout(timer);
       window.removeEventListener("resize", handleResize);
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);
 
@@ -188,102 +190,6 @@ const Work = () => {
   const showEmptyState =
     !itemsLoading && !itemsError && currentItems.length === 0;
   const containerKey = `${activeKey ?? "none"}-${activeSectionId ?? "none"}`;
-  const isPageReady =
-    !sectionsLoading && !itemsLoading && activeSectionId && activeType;
-
-  // Initialize Lenis only after page is fully loaded
-  useEffect(() => {
-    if (!isPageReady) return;
-
-    // Wait for window load event to ensure all resources are loaded
-    const initializeLenis = () => {
-      // Clean up any existing Lenis instance
-      if (lenisRef.current) {
-        lenisRef.current.destroy();
-        lenisRef.current = null;
-      }
-      if (rafRef.current) {
-        cancelAnimationFrame(rafRef.current);
-        rafRef.current = null;
-      }
-
-      const lenis = new Lenis({
-        duration: 1.1,
-        smoothWheel: true,
-        smoothTouch: false,
-        lerp: 0.08,
-      });
-      lenisRef.current = lenis;
-
-      // Attach to ScrollTrigger
-      ScrollTrigger.scrollerProxy(document.body, {
-        scrollTop(value) {
-          return arguments.length
-            ? lenis.scrollTo(value, { immediate: true })
-            : lenis.scroll;
-        },
-        getBoundingClientRect() {
-          return {
-            top: 0,
-            left: 0,
-            width: window.innerWidth,
-            height: window.innerHeight,
-          };
-        },
-        pinType: "transform",
-      });
-
-      // RAF loop
-      const raf = (time) => {
-        lenis.raf(time);
-        ScrollTrigger.update();
-        rafRef.current = requestAnimationFrame(raf);
-      };
-      rafRef.current = requestAnimationFrame(raf);
-
-      // Refresh once after Lenis activates
-      setTimeout(() => {
-        lenis.scrollTo(0, { immediate: true });
-        ScrollTrigger.refresh();
-      }, 200);
-    };
-
-    if (document.readyState === "complete") {
-      initializeLenis();
-    } else {
-      window.addEventListener("load", initializeLenis, { once: true });
-    }
-
-    return () => {
-      if (rafRef.current) {
-        cancelAnimationFrame(rafRef.current);
-        rafRef.current = null;
-      }
-      if (lenisRef.current) {
-        lenisRef.current.destroy();
-        lenisRef.current = null;
-      }
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-    };
-  }, [isPageReady]);
-
-  // Refresh Lenis when navigating between categories
-  useEffect(() => {
-    if (!lenisRef.current || !activeSectionId || !activeType) return;
-
-    // Small delay to ensure DOM updates are complete
-    const refreshTimer = setTimeout(() => {
-      if (lenisRef.current) {
-        lenisRef.current.resize();
-        lenisRef.current.scrollTo(0, { immediate: true });
-        ScrollTrigger.refresh();
-      }
-    }, 100);
-
-    return () => {
-      clearTimeout(refreshTimer);
-    };
-  }, [activeSectionId, activeType, containerKey]);
 
   const handleViewDetails = (detailId) => {
     if (detailId == null) return;

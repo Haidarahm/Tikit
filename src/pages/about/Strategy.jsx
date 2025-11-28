@@ -21,8 +21,8 @@ const Strategy = () => {
     },
     {
       ...translatedCards[1],
-      color: "7E5DB9", // violet-400
-      lightColor: "8A6EFF",
+      color: "E84B43", // violet-400
+      lightColor: "E84B43",
     },
     {
       ...translatedCards[2],
@@ -32,7 +32,7 @@ const Strategy = () => {
     {
       ...translatedCards[3],
       color: "B46CA7", // green-500
-      lightColor: "68EBE7",
+      lightColor: "252525",
     },
   ];
   return (
@@ -59,7 +59,7 @@ const Strategy = () => {
               }
               duration={3}
               diagonal={false}
-              textClassName="bg-gradient-to-r from-[#07D9F5] to-[#CE88C6] bg-clip-text text-transparent"
+              textClassName="bg-gradient-to-r font-antonio font-bold from-[#07D9F5] to-[#E84B43] bg-clip-text text-transparent"
             />
           </h1>
           {/* <RotatingText
@@ -93,7 +93,7 @@ const Strategy = () => {
             <div className="pointer-events-none absolute inset-0 z-0 blur-[24px] opacity-70" />
             <div className="p-4 md:px-4 md:py-8 relative z-10">
               <div
-                className="text-[22px] text-[var(--foreground)] sm:text-[28px] md:text-[36px] font-semibold mb-2 loco-text-up"
+                className="text-[22px] font-antonio text-[var(--foreground)] sm:text-[28px] md:text-[36px] font-semibold mb-2 loco-text-up"
                 data-scroll
                 data-scroll-class="is-inview"
                 data-scroll-repeat

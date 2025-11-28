@@ -17,7 +17,7 @@ const Growth = () => {
     >
       <div className="left-section md:w-2/3 ">
         <h1
-          className="dark:text-white bg-gradient-to-r from-[#B387FF] to-[#35D5D0] bg-clip-text text-transparent title text-[22px] sm:text-[28px] md:text-[36px] capitalize loco-growth-text"
+          className="dark:text-white font-[600] font-antonio text-[var(--foreground)] title text-[22px] sm:text-[28px] md:text-[36px] capitalize loco-growth-text"
           data-scroll
           data-scroll-class="is-inview"
           data-scroll-repeat

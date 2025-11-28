@@ -60,27 +60,25 @@ const WorkHero = ({ gradientColors, t, isRtl }) => {
           ref={titleRef}
           className="title will-change-transform translate-y-full"
         >
-          <GradientText
-            colors={gradientColors}
-            animationSpeed={5}
-            showBorder={false}
-            className="text-[42px] md:text-[96px] leading-[40px] md:leading-[150px] mb-8 capitalize font-bold"
+          <h1
+          
+            className="tikit-title font-[800]  h-22"
           >
             {t("work.title")}
-          </GradientText>
+          </h1>
         </div>
       </div>
       <div
         className={`description w-full relative z-30 flex md:flex-row flex-col text-[var(--foreground)] px-[20px] md:px-[30px] gap-4 md:gap-12 justify-center items-center ${
           isRtl
-            ? "text-center md:text-end md:flex-row-reverse"
+            ? "text-center md:text-end "
             : " text-center md:text-start"
         }`}
       >
         <div ref={descTitleWrapRef} className="overflow-hidden  md:w-[20%]">
           <div
             ref={descTitleRef}
-            className="title font-bold mt-4 md:mt-0 text-[20px] md:text-[24px] will-change-transform translate-y-full"
+            className="title font-antonio font-bold mt-4 md:mt-0 text-[20px] md:text-[34px] will-change-transform translate-y-full"
           >
             {t("work.specialTitle")}
           </div>
@@ -88,7 +86,7 @@ const WorkHero = ({ gradientColors, t, isRtl }) => {
         <div ref={descParaWrapRef} className="overflow-hidden">
           <div
             ref={descParaRef}
-            className="paragraph text-[16px] md:text-[22px] will-change-transform translate-y-full"
+            className="paragraph text-[16px] md:text-[22px] will-change-transform text-start translate-y-full"
           >
             {t("work.specialDescription")}
           </div>
