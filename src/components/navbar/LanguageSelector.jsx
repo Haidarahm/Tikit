@@ -52,7 +52,7 @@ export default function LanguageSelector({
       <div className="mobile-nav-item w-full px-6 mt-6">
         <button
           onClick={() => setIsLangOpen((v) => !v)}
-          className="w-full flex items-center justify-between text-[var(--foreground)] text-2xl md:text-3xl font-light uppercase tracking-wider"
+          className="w-full flex items-center justify-between text-[var(--foreground)] text-2xl md:text-3xl font-light uppercase tracking-wider transition-colors duration-200 hover:opacity-80"
         >
           <span>
             {language === "en" ? "En" : language === "fr" ? "Fr" : "Ar"}
@@ -63,10 +63,9 @@ export default function LanguageSelector({
             viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            style={{
-              transform: isLangOpen ? "rotate(90deg)" : "rotate(0deg)",
-              transition: "transform 0.2s ease",
-            }}
+            className={`transition-transform duration-300 ease-out ${
+              isLangOpen ? "rotate-90" : "rotate-0"
+            }`}
           >
             <path
               d="M8 5l8 7-8 7"
@@ -77,19 +76,19 @@ export default function LanguageSelector({
             />
           </svg>
         </button>
-        {isLangOpen && (
-          <div className="mt-4 flex flex-col gap-3">
+        <div
+          className={`overflow-hidden transition-all duration-300 ease-out ${
+            isLangOpen ? "max-h-96 opacity-100 mt-4" : "max-h-0 opacity-0 mt-0"
+          }`}
+        >
+          <div className="flex flex-col gap-3">
             {LANGUAGES.map((opt) => (
               <button
                 key={opt.value}
                 className={`text-xl md:text-2xl font-light uppercase tracking-wider transition-all duration-200 py-2 px-4 rounded-lg ${
                   language === opt.value
-                    ? theme === "dark"
-                      ? "bg-blue-600/20 text-blue-300 border-l-4 border-blue-400"
-                      : "bg-blue-100/50 text-blue-700 border-l-4 border-blue-500"
-                    : theme === "dark"
-                    ? "text-gray-300 hover:text-white hover:bg-gray-800/30"
-                    : "text-gray-700 hover:text-gray-900 hover:bg-gray-100/50"
+                    ? "bg-[var(--secondary)]/20 text-[var(--secondary)] dark:text-[var(--secondary)] border-l-4 border-[var(--secondary)]"
+                    : "text-[var(--foreground)] hover:bg-[var(--container-bg)] dark:hover:bg-[var(--container-bg)]"
                 }`}
                 onClick={() => handleLanguageSelect(opt.value)}
               >
@@ -97,7 +96,7 @@ export default function LanguageSelector({
               </button>
             ))}
           </div>
-        )}
+        </div>
       </div>
     );
   }
@@ -106,24 +105,16 @@ export default function LanguageSelector({
     <div className="relative" ref={langMenuRef}>
       <button
         onClick={() => setIsLangOpen((v) => !v)}
-        className={`nav-item uppercase font-light text-sm opacity-0 ${textColor} relative inline-flex items-center gap-2`}
+        className={`nav-item uppercase font-light text-sm opacity-0 ${textColor} relative inline-flex items-center gap-2 transition-colors duration-200 hover:opacity-80`}
         aria-haspopup="listbox"
         aria-expanded={isLangOpen}
       >
         <span className="relative inline-block">
           {language === "en" ? "En" : language === "fr" ? "Fr" : "Ar"}
           <span
-            className="nav-underline"
+            className="nav-underline absolute left-0 right-0 bottom-[-2px] h-[1px] bg-current origin-left block transition-transform duration-300 ease-out"
             style={{
-              position: "absolute",
-              left: 0,
-              right: 0,
-              bottom: -2,
-              height: 1,
-              backgroundColor: "currentColor",
-              transform: "scaleX(0)",
-              transformOrigin: "left",
-              display: "block",
+              transform: isLangOpen ? "scaleX(1)" : "scaleX(0)",
             }}
           />
         </span>
@@ -133,10 +124,9 @@ export default function LanguageSelector({
           viewBox="0 0 24 24"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          style={{
-            transform: isLangOpen ? "rotate(90deg)" : "rotate(0deg)",
-            transition: "transform 0.2s ease",
-          }}
+          className={`transition-transform duration-300 ease-out ${
+            isLangOpen ? "rotate-90" : "rotate-0"
+          }`}
         >
           <path
             d="M8 5l8 7-8 7"
@@ -147,36 +137,32 @@ export default function LanguageSelector({
           />
         </svg>
       </button>
-      {isLangOpen && (
-        <div
-          className={`absolute right-0 mt-3 min-w-[120px] rounded-lg shadow-lg border z-50 ${
-            theme === "dark"
-              ? "bg-gray-900/95 backdrop-blur-md border-gray-700/50"
-              : "bg-white/95 backdrop-blur-md border-gray-200/50"
-          }`}
-          role="listbox"
-        >
-          {LANGUAGES.map((opt) => (
-            <button
-              key={opt.value}
-              className={`block w-full text-left px-4 py-3 text-sm uppercase transition-colors duration-200 first:rounded-t-lg last:rounded-b-lg ${
-                language === opt.value
-                  ? theme === "dark"
-                    ? "bg-blue-600/20 text-blue-300 border-l-2 border-blue-400"
-                    : "bg-blue-100/50 text-[#52C3C5] border-l-2 border-[#52C3C5]/80"
-                  : theme === "dark"
-                  ? "text-gray-300 hover:text-white hover:bg-gray-800/50"
-                  : "text-gray-700 hover:text-gray-900 hover:bg-gray-100/50"
-              }`}
-              onClick={() => handleLanguageSelect(opt.value)}
-              role="option"
-              aria-selected={language === opt.value}
-            >
-              {opt.label}
-            </button>
-          ))}
-        </div>
-      )}
+      <div
+        className={`absolute right-0 mt-3 min-w-[120px] rounded-lg z-50 overflow-hidden transition-all duration-300 ease-out ${
+          isLangOpen
+            ? "opacity-100 translate-y-0 pointer-events-auto"
+            : "opacity-0 -translate-y-2 pointer-events-none"
+        } bg-[var(--background)] dark:bg-[var(--container-bg)] backdrop-blur-md border border-[var(--foreground)]/10 dark:border-white/10 shadow-lg`}
+        role="listbox"
+      >
+        {LANGUAGES.map((opt, index) => (
+          <button
+            key={opt.value}
+            className={`block w-full text-left px-4 py-3 text-sm uppercase transition-all duration-200 ${
+              index === 0 ? "rounded-t-lg" : ""
+            } ${index === LANGUAGES.length - 1 ? "rounded-b-lg" : ""} ${
+              language === opt.value
+                ? "bg-[var(--secondary)]/20 text-[var(--secondary)] dark:text-[var(--secondary)] border-l-2 border-[var(--secondary)] font-medium"
+                : "text-[var(--foreground)] hover:bg-[var(--container-bg)] dark:hover:bg-[var(--container-bg)]"
+            }`}
+            onClick={() => handleLanguageSelect(opt.value)}
+            role="option"
+            aria-selected={language === opt.value}
+          >
+            {opt.label}
+          </button>
+        ))}
+      </div>
     </div>
   );
 }

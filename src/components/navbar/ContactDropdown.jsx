@@ -64,7 +64,7 @@ export default function ContactDropdown({ isMobile = false, onClose }) {
   return (
     <div
       ref={contactDropdownRef}
-      className={`relative ${
+      className={`relative transition-all duration-300 ${
         isContactDropdownOpen ? "contact-dropdown-open" : ""
       }`}
     >
@@ -72,39 +72,28 @@ export default function ContactDropdown({ isMobile = false, onClose }) {
         text={t("nav.contact") || "Contact Us"}
         onClick={() => setIsContactDropdownOpen(!isContactDropdownOpen)}
       />
-      {isContactDropdownOpen && (
-        <div
-          className={`absolute ${
-            isRtl ? "left-0" : "right-0"
-          } mt-2 min-w-[140px] rounded-lg shadow-lg border z-50 ${
-            theme === "dark"
-              ? "bg-gray-900/95 backdrop-blur-md border-gray-700/50"
-              : "bg-white/95 backdrop-blur-md border-gray-200/50"
-          }`}
+      <div
+        className={`absolute ${
+          isRtl ? "left-0" : "right-0"
+        } mt-2 min-w-[140px] rounded-lg z-50 overflow-hidden transition-all duration-300 ease-out ${
+          isContactDropdownOpen
+            ? "opacity-100 translate-y-0 pointer-events-auto"
+            : "opacity-0 -translate-y-2 pointer-events-none"
+        } bg-[var(--background)] dark:bg-[var(--container-bg)] backdrop-blur-md border border-[var(--foreground)]/10 dark:border-white/10 shadow-lg`}
+      >
+        <button
+          onClick={handleClientClick}
+          className="block w-full text-left px-4 py-3 text-sm transition-all duration-200 rounded-t-lg text-[var(--foreground)] hover:bg-[var(--container-bg)] dark:hover:bg-[var(--container-bg)]"
         >
-          <button
-            onClick={handleClientClick}
-            className={`block w-full text-left px-4 py-3 text-sm transition-colors duration-200 first:rounded-t-lg ${
-              theme === "dark"
-                ? "text-gray-300 hover:text-white hover:bg-gray-800/50"
-                : "text-gray-700 hover:text-gray-900 hover:bg-gray-100/50"
-            }`}
-          >
-            {t("contact.action.client")}
-          </button>
-          <button
-            onClick={handleInfluencerClick}
-            className={`block w-full text-left px-4 py-3 text-sm transition-colors duration-200 last:rounded-b-lg ${
-              theme === "dark"
-                ? "text-gray-300 hover:text-white hover:bg-gray-800/50"
-                : "text-gray-700 hover:text-gray-900 hover:bg-gray-100/50"
-            }`}
-          >
-            {t("contact.action.influencer")}
-          </button>
-        </div>
-      )}
+          {t("contact.action.client")}
+        </button>
+        <button
+          onClick={handleInfluencerClick}
+          className="block w-full text-left px-4 py-3 text-sm transition-all duration-200 rounded-b-lg text-[var(--foreground)] hover:bg-[var(--container-bg)] dark:hover:bg-[var(--container-bg)]"
+        >
+          {t("contact.action.influencer")}
+        </button>
+      </div>
     </div>
   );
 }
-
