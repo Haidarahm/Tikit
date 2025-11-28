@@ -4,7 +4,7 @@ import Numbers from "./Numbers";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
-import { debounce } from "../../utils/debounce";
+
 import Goals from "./Goals";
 import Services from "./Services";
 import AboutUs from "./AboutUs";
@@ -17,75 +17,72 @@ import SEOHead from "../../components/SEOHead";
 import Influencers from "./influencers/Influencers";
 import ShowCase from "./ShowCase";
 
-// Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
 function Home() {
   const lenisRef = useRef(null);
-  const rafIdRef = useRef(null);
+  const rafRef = useRef(null);
 
   useEffect(() => {
-    // Safety: ensure no leftover locomotive-scroll styles block scrolling
-    const htmlEl = document.documentElement;
-    htmlEl.classList.remove("has-scroll-smooth", "has-scroll-init");
+    // Remove locomotive-scroll leftovers
+    document.documentElement.classList.remove("has-scroll-smooth", "has-scroll-init");
     document.body.style.removeProperty("overflow");
 
-    const lenis = new Lenis({
-      duration: 1.05,
-      smoothWheel: true,
-      smoothTouch: false,
-      wheelMultiplier: 1,
-      touchMultiplier: 1.1,
-      lerp: 0.075,
-    });
+    const startLenis = () => {
+      const lenis = new Lenis({
+        duration: 1.1,
+        smoothWheel: true,
+        smoothTouch: false,
+        lerp: 0.08,
+      });
+      lenisRef.current = lenis;
 
-    const handleScroll = () => {
-      ScrollTrigger.update();
+      // Attach to ScrollTrigger
+      ScrollTrigger.scrollerProxy(document.body, {
+        scrollTop(value) {
+          return arguments.length
+            ? lenis.scrollTo(value, { immediate: true })
+            : lenis.scroll;
+        },
+        getBoundingClientRect() {
+          return {
+            top: 0,
+            left: 0,
+            width: window.innerWidth,
+            height: window.innerHeight,
+          };
+        },
+        pinType: "transform",
+      });
+
+      // RAF loop
+      const raf = (time) => {
+        lenis.raf(time);
+        ScrollTrigger.update();
+        rafRef.current = requestAnimationFrame(raf);
+      };
+      rafRef.current = requestAnimationFrame(raf);
+
+      // Refresh once after Lenis activates
+      setTimeout(() => ScrollTrigger.refresh(), 200);
     };
 
-    lenis.on("scroll", handleScroll);
+    // Start only after full load (images, fonts, videos)
+    if (document.readyState === "complete") {
+      startLenis();
+    } else {
+      window.addEventListener("load", startLenis, { once: true });
+    }
 
-    const raf = (time) => {
-      lenis.raf(time);
-      rafIdRef.current = requestAnimationFrame(raf);
-    };
-    rafIdRef.current = requestAnimationFrame(raf);
-    lenisRef.current = lenis;
-
-    // Force a refresh after Lenis initialises so ScrollTrigger reads full height
-    const refreshTimeout = setTimeout(() => {
-      ScrollTrigger.refresh(true);
-    }, 100);
-
-    // Handle window resize for responsive animations (debounced)
-    const debouncedResize = debounce(() => {
-      ScrollTrigger.refresh(true);
-    }, 150);
-
-    window.addEventListener("resize", debouncedResize, { passive: true });
-
-    // Cleanup on unmount
     return () => {
-      clearTimeout(refreshTimeout);
-      if (rafIdRef.current) {
-        cancelAnimationFrame(rafIdRef.current);
-        rafIdRef.current = null;
-      }
-      if (lenisRef.current) {
-        lenisRef.current.off("scroll", handleScroll);
-        lenisRef.current.destroy();
-        lenisRef.current = null;
-      }
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-      window.removeEventListener("resize", debouncedResize);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      if (lenisRef.current) lenisRef.current.destroy();
+      ScrollTrigger.getAll().forEach((t) => t.kill());
     };
   }, []);
 
   return (
-    <div
-      id="home"
-      className="sections overflow-hidden relative w-full home-scroll-trigger"
-    >
+    <div id="home" className="sections overflow-hidden relative w-full home-scroll-trigger">
       <SEOHead
         title="Social Media Marketing Agency | Tikit"
         description="Partner with Tikit Agency for full-service social media marketing, influencer campaigns, celebrity management, and creative production tailored for growth."
@@ -93,7 +90,7 @@ function Home() {
         canonicalUrl="/home"
       />
       <Hero />
-      <ShowCase/>
+      <ShowCase />
       <Numbers />
       <Goals />
       <Influencers />

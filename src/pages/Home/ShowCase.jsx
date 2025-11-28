@@ -136,7 +136,7 @@ const ShowCase = () => {
   return (
     <div
       ref={sectionRef}
-      className="relative flex flex-col w-[98vw] mt-[30px] sm:w-[96vw] md:w-[95vw] gap-4 md:gap-8 md:h-[1400px] h-[1000px] mx-auto"
+      className="relative flex flex-col w-[98vw] mt-[30px] sm:w-[96vw] md:w-[95vw] gap-4 md:gap-8 overflow-hidden md:h-[1400px] h-[1000px] mx-auto"
     >
       {/* TITLE */}
       <div className="title text-[var(--foreground)] flex flex-col w-full justify-center items-center min-h-[200px] px-4 text-center gap-4">

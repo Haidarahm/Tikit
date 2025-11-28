@@ -186,7 +186,7 @@ const Influencers = () => {
 
   return (
     <section
-      className="influencers-scope min-h-[1074px] py-16 px-4 relative overflow-hidden bg-[var(--background)]"
+      className="influencers-scope  min-h-[980px] py-8 px-4 relative overflow-hidden bg-[var(--background)]"
       dir={isRtl ? "rtl" : "ltr"}
     >
       {/* Background decoration */}
@@ -252,7 +252,7 @@ const Influencers = () => {
         </div>
 
         {/* Cards Grid - 3 per row */}
-        <div className="flex flex-wrap justify-center gap-6 min-h-[500px]">
+        <div className="flex flex-wrap justify-center gap-6 min-h-[430px]">
           {influencersLoading && !influencers.length ? (
             <div className="text-sm text-[var(--foreground)]/70">
               {t("home.influencers.loadingInfluencers")}
@@ -278,7 +278,7 @@ const Influencers = () => {
                 >
                   <div className="group relative bg-[var(--background)] border border-[var(--foreground)]/10 dark:border-[var(--foreground)]/20 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl hover:shadow-[#52C3C5]/20 transition-all duration-500 ease-out hover:-translate-y-3 hover:border-[#52C3C5]/30">
                     {/* Card Image */}
-                    <div className="relative h-80 bg-gradient-to-br from-[#52C3C5]/10 to-[#5269C5]/10 dark:from-[#52C3C5]/20 dark:to-[#5269C5]/20 overflow-hidden transition-all duration-500 ease-out group-hover:from-[#52C3C5]/20 group-hover:to-[#5269C5]/20">
+                    <div className="relative h-60 bg-gradient-to-br from-[#52C3C5]/10 to-[#5269C5]/10 dark:from-[#52C3C5]/20 dark:to-[#5269C5]/20 overflow-hidden transition-all duration-500 ease-out group-hover:from-[#52C3C5]/20 group-hover:to-[#5269C5]/20">
                       <img
                         src={inf.image}
                         alt={inf.name}
@@ -301,7 +301,7 @@ const Influencers = () => {
                     </div>
 
                     {/* Card Body */}
-                    <div className="p-6 transition-all duration-300 ease-out group-hover:bg-[#52C3C5]/5">
+                    <div className="p-4 transition-all duration-300 ease-out group-hover:bg-[#52C3C5]/5">
                       <h3 className="text-xl font-bold mb-2 text-[var(--foreground)] transition-all duration-300 ease-out group-hover:text-[#52C3C5]">
                         {inf.name}
                       </h3>

@@ -31,7 +31,7 @@ const Footer = ({ className }) => {
   return (
     <footer
       data-scroll-section
-      className={`w-full  px-[15px]  md:px-[80px]  flex flex-col text-[var(--foreground)] ${
+      className={`w-full  px-[15px] min-h-[700px]  md:px-[80px]  flex flex-col text-[var(--foreground)] ${
         isRtl ? "font-cairo" : "font-hero-light"
       } ${className}`}
     >

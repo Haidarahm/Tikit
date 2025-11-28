@@ -89,7 +89,7 @@ const Services = memo(() => {
 
   return (
     <div
-      className={`section my-6 md:my-16 relative ${
+      className={`section my-4 md:my-8 relative  md:min-h-[450px] 2xl:min-h-[490px] ${
         isRtl ? "font-cairo" : "font-hero-light"
       } flex flex-col mx-auto z-10 w-full justify-center`}
       dir={isRtl ? "rtl" : "ltr"}
