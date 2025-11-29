@@ -109,7 +109,7 @@ const MediaKitUpload = ({
           <img
             src={UploadIcon}
             alt="Upload"
-            className="w-16 h-16 md:w-20 md:h-20 grayscale opacity-60"
+            className="w-16 h-16 md:w-20 md:h-20 "
           />
         </div>
 

@@ -3,43 +3,46 @@ import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
 import CountUp from "../../components/CountUp";
 import TikitTitle from "../../components/TikitTitle.jsx";
+import  {useTheme } from "../../store/ThemeContext.jsx";
 
 const Numbers = memo(() => {
+  const {theme} = useTheme();
   const { t } = useTranslation();
   const { isRtl } = useI18nLanguage();
-
   const data = [
     {
       count: 300,
       text1: t("home.numbers.items.happyClients.text1"),
       text2: t("home.numbers.items.happyClients.text2"),
       plus: true,
-      color: "bg-[#52C3C5]",
-      lightColor: "bg-[#E84B43]/15",
+      color: "#e84b4326",
+      // lightColor: "#E84B43/15",
+      lightColor: "#e84b4326",
     },
     {
       count: 8,
       text1: t("home.numbers.items.years.text1"),
       text2: t("home.numbers.items.years.text2"),
       bottom: true,
-      color: "bg-[#9D74E5]",
-      lightColor: "bg-[#252525]/13",
+      color: "#F3A67A26",
+      
+      lightColor: "#F3A67A26",
     },
     {
       count: 500,
       text1: t("home.numbers.items.projects.text1"),
       text2: t("home.numbers.items.projects.text2"),
       plus: true,
-      color: "bg-[#5653B7]",
-      lightColor: "bg-[#35D5D0]/15",
+      color: "#35D5D026",
+      lightColor: "#35D5D026",
     },
     {
       count: 98,
       text1: t("home.numbers.items.awards.text1"),
       text2: t("home.numbers.items.awards.text2"),
       bottom: true,
-      color: "bg-[#B46CA7]",
-      lightColor: "bg-[#252525]/13",
+      color: "#25252590",
+      lightColor: "#25252526",
     },
   ];
 
@@ -75,7 +78,8 @@ const Numbers = memo(() => {
               ) => (
                 <div
                   key={idx}
-                  className={`circle w-full  aspect-square max-w-[140px]  sm:max-w-[160px] mx-auto rounded-full text-center flex flex-col items-center justify-center backdrop-blur-lg  ${lightColor}  dark:bg-[#e9e7e518] dark:border-[#ffffff10] `}
+                  style={{backgroundColor: theme==="light"?lightColor:color}}
+                  className={`circle w-full  aspect-square max-w-[140px]  sm:max-w-[160px] mx-auto rounded-full text-center flex flex-col items-center justify-center backdrop-blur-lg   `}
                   data-aos="fade-up"
                   data-aos-delay={idx * 100}
                 >
@@ -116,7 +120,8 @@ const Numbers = memo(() => {
               ) => (
                 <div
                   key={idx}
-                  className={`circle shadow-2xl w-[160px] h-[160px] lg:w-[180px] lg:h-[180px] xl:w-[200px] xl:h-[200px] rounded-full text-center flex flex-col items-center justify-center backdrop-blur-lg  ${lightColor} ${borderColor}  ${
+                  style={{backgroundColor: theme==="light"?lightColor:color}}
+                  className={`circle shadow-2xl w-[160px] h-[160px] lg:w-[180px] lg:h-[180px] xl:w-[200px] xl:h-[200px] rounded-full text-center flex flex-col items-center justify-center backdrop-blur-lg    ${
                     bottom ? "self-end" : "self-start"
                   }`}
                   data-aos="fade-up"

@@ -114,7 +114,8 @@ const Hero = () => {
         <div ref={h2WrapRef} className="overflow-hidden">
           <h1
             ref={h2Ref}
-            className="text-[32px] leading-tight font-antonio font-[700] mx-auto md:text-[50px]  xl:text-[70px] 2xl:text-[80px] mb-8 capitalize tikit-gradient will-change-transform"
+            
+            className="text-[32px] leading-tight  font-[700] mx-auto md:text-[50px]  xl:text-[80px] 2xl:text-[90px] mb-8 capitalize font-caveat tikit-gradient will-change-transform"
           >
             {t("influencer.hero.subtitle")}
           </h1>

@@ -132,7 +132,7 @@ const InfluencersRegister = () => {
               dir={isRtl ? "rtl" : "ltr"}
               className={` py-2 rounded-full w-1/3 md:py-5 px-4  font-semibold text-base md:text-lg transition-all duration-300 ease-in-out relative overflow-hidden ${
                 isRtl ? "font-cairo" : "font-antonio"
-              } bg-[var(--secondary)] text-white hover:bg-white dark:hover:bg-[var(--container-bg)] hover:text-[var(--secondary)] border-2 border-[var(--secondary)] hover:border-[var(--secondary)] shadow-md hover:shadow-lg active:scale-[0.98]`}
+              } bg-[var(--secondary)] text-[var(--background)] hover:bg-white dark:hover:bg-[var(--container-bg)] hover:text-[var(--secondary)] border-2 border-[var(--secondary)] hover:border-[var(--secondary)] shadow-md hover:shadow-lg active:scale-[0.98]`}
             >
               <span className="relative z-10 block">
                 {t("influencerRegister.proceedButton")}

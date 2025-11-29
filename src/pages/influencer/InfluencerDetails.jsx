@@ -149,7 +149,7 @@ export const InfluencerDetails = ({
   return (
     <section
       ref={sectionRef}
-      className={`overflow-hidden w-full min-h-screen flex flex-col lg:flex-row items-center md:gap-4 lg:gap-8 xl:gap-12  ${
+      className={`overflow-hidden w-full min-h-[80vh] flex flex-col lg:flex-row items-center md:gap-4 lg:gap-8 xl:gap-12  ${
         isRtl ? "font-cairo" : "font-hero-light"
       } ${isReversed ? "lg:flex-row-reverse" : ""}`}
       dir={isRtl ? "rtl" : "ltr"}
@@ -199,7 +199,7 @@ export const InfluencerDetails = ({
       {/* Image Section */}
       <div
         ref={imageRef}
-        className={`relative flex  h-[200px] md:h-[300px] lg:h-[500px] w-1/2  rounded-2xl ${
+        className={`relative flex  h-[200px] md:h-[300px] lg:h-[400px]   rounded-2xl ${
           isReversed ? "justify-start" : "justify-end"
         }`}
       >

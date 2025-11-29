@@ -105,6 +105,7 @@ export const News = () => {
 
   return (
     <main
+      data-nav-color="black"
       className={`news-page ${theme === "dark" ? "dark-mode" : "light-mode"}`}
     >
       <SEOHead
