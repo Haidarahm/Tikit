@@ -100,11 +100,11 @@ const Hero = () => {
       }`}
       dir={isRtl ? "rtl" : "ltr"}
     >
-      <div className="top-section text-center">
+      <div className="top-section text-center md:mt-16 2xl:mt-12">
         <div ref={h1WrapRef} className="overflow-hidden">
           <h1
             ref={h1Ref}
-            className="text-[32px] font-antonio md:text-[97px] capitalize  will-change-transform"
+            className="text-[32px] font-antonio leading-tight md:text-[50px] xl:text-[70px] 2xl:text-[80px] capitalize  will-change-transform"
           >
             {t("influencer.hero.title")}
           </h1>
@@ -112,13 +112,13 @@ const Hero = () => {
         <div ref={h2WrapRef} className="overflow-hidden">
           <h1
             ref={h2Ref}
-            className="text-[32px] font-antonio font-[700] mx-auto md:text-[96px] mb-8 capitalize tikit-gradient will-change-transform"
+            className="text-[32px] leading-tight font-antonio font-[700] mx-auto md:text-[50px]  xl:text-[70px] 2xl:text-[80px] mb-8 capitalize tikit-gradient will-change-transform"
           >
             {t("influencer.hero.subtitle")}
           </h1>
         </div>
       </div>
-      <div className="bottom-section w-full">
+      <div className="bottom-section w-full flex flex-col gap-4 md:gap-6 2xl:gap-12">
         <div className="help-text text-center text-[var(--foreground)]/30 font-bold">
           meet our happy clients
         </div>
@@ -130,7 +130,17 @@ const Hero = () => {
           gap={35}
         />
         <div className="register-button text-[var(--foreground)] flex justify-center">
-          <button className="font-bold text-[24px]">Register Now</button>
+          <button
+            className="inline-flex items-center
+           gap-2 px-2 py-2 lg:px-6 lg:py-2 xl:py-3 xl:px-8 rounded-full 
+           border border-[#52C3C5] text-[#52C3C5] 
+           font-semibold tracking-wide uppercase text-[10px] md:text-[12px] xl:text-[14px]
+            transition-all duration-300
+             hover:bg-[#52C3C5] hover:text-white
+              shadow-lg shadow-[#52C3C5]/30"
+          >
+            Register Now
+          </button>
         </div>
       </div>
     </section>
