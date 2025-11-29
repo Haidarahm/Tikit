@@ -7,6 +7,7 @@ import ResidenceInput from "./ResidenceInput";
 import AdditionalInfoInput from "./AdditionalInfoInput";
 import ContentFieldInput from "./ContentFieldInput";
 import RegisterPlan from "./RegisterPlan";
+import MediaKitUpload from "./MediaKitUpload";
 import { useI18nLanguage } from "../../store/I18nLanguageContext";
 
 const InfluencersRegister = () => {
@@ -21,6 +22,7 @@ const InfluencersRegister = () => {
   const [message, setMessage] = useState("");
   const [contentFields, setContentFields] = useState([]);
   const [selectedPlan, setSelectedPlan] = useState(null);
+  const [mediaKitFiles, setMediaKitFiles] = useState([]);
 
   return (
     <section
@@ -115,13 +117,20 @@ const InfluencersRegister = () => {
               selectedPlan={selectedPlan}
               onPlanSelect={setSelectedPlan}
             />
+            <MediaKitUpload
+              name="mediaKit"
+              label={t("influencerRegister.fields.mediaKit")}
+              onFilesChange={setMediaKitFiles}
+              accept=".pdf,.doc,.docx,.zip,.rar,.jpg,.jpeg,.png"
+              multiple={true}
+            />
           </div>
           {/* Proceed Button */}
           <div className="w-full flex justify-center px-[20px] md:px-[80px] mt-6 md:mt-8">
             <button
               type="button"
               dir={isRtl ? "rtl" : "ltr"}
-              className={` py-4 rounded-full w-1/3 md:py-5 px-8  font-semibold text-base md:text-lg transition-all duration-300 ease-in-out relative overflow-hidden ${
+              className={` py-2 rounded-full w-1/3 md:py-5 px-4  font-semibold text-base md:text-lg transition-all duration-300 ease-in-out relative overflow-hidden ${
                 isRtl ? "font-cairo" : "font-antonio"
               } bg-[var(--secondary)] text-white hover:bg-white dark:hover:bg-[var(--container-bg)] hover:text-[var(--secondary)] border-2 border-[var(--secondary)] hover:border-[var(--secondary)] shadow-md hover:shadow-lg active:scale-[0.98]`}
             >

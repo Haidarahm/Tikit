@@ -428,7 +428,10 @@
             "followerPlaceholder": "ex. 50 000",
             "message": "Pourquoi voulez-vous nous rejoindre ?",
             "messagePlaceholder": "Parlez-nous de vous et pourquoi vous aimeriez être géré par Tikit...",
-            "selectPlan": "Sélectionnez votre plan"
+            "selectPlan": "Sélectionnez votre plan",
+            "mediaKit": "Kit Média",
+            "mediaKitPlaceholder": "Téléchargez votre kit média et glissez",
+            "mediaKitHelp": "Cliquez pour parcourir ou glissez-déposez les fichiers ici"
         },
         "plans": {
             "management": {

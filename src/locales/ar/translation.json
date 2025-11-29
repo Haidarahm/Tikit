@@ -429,7 +429,10 @@
             "followerPlaceholder": "مثال: 50,000",
             "message": "لماذا تريد الانضمام إلينا؟",
             "messagePlaceholder": "أخبرنا عن نفسك ولماذا تريد أن يتم إدارتك من قبل تيكيت...",
-            "selectPlan": "اختر خطتك"
+            "selectPlan": "اختر خطتك",
+            "mediaKit": "مجموعة الوسائط",
+            "mediaKitPlaceholder": "قم بتحميل مجموعة الوسائط الخاصة بك واسحب",
+            "mediaKitHelp": "انقر للتصفح أو اسحب وأفلت الملفات هنا"
         },
         "plans": {
             "management": {
