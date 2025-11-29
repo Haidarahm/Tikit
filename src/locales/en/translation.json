@@ -479,6 +479,7 @@
                 "selectPlan": "Select Plan",
                 "selected": "Selected"
             }
-        }
+        },
+        "proceedButton": "Proceed"
     }
 }

@@ -28,6 +28,7 @@ import thaerAlTurkmani from "../../assets/influencers/thaer al turkmani.webp";
 import yousifAlhammadi from "../../assets/influencers/Yousif Alhammadi.webp";
 import yousufSaleh from "../../assets/influencers/Yousuf Saleh.webp";
 import InfiniteScroller from "./InfiniteScroller";
+import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
   const h1WrapRef = useRef(null);
@@ -37,7 +38,7 @@ const Hero = () => {
   const { t } = useTranslation();
   const { isRtl } = useI18nLanguage();
   const { theme } = useTheme();
-
+  const navigate = useNavigate();
   // Create influencers images array
   const influencersImages = useMemo(
     () => [
@@ -139,6 +140,7 @@ const Hero = () => {
             transition-all duration-300
              hover:bg-[#52C3C5] hover:text-white
               shadow-lg shadow-[#52C3C5]/30"
+              onClick={() => navigate("/influencer-register")}
           >
             Register Now
           </button>
