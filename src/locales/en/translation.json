@@ -396,7 +396,9 @@
     "influencer": {
         "hero": {
             "title": "Showcase of Partner",
-            "subtitle": "Influencers"
+            "subtitle": "Influencers",
+            "meetClients": "meet our happy clients",
+            "registerNow": "Register Now"
         },
         "sections": {
             "title": "Influencer Sections",

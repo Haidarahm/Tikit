@@ -122,7 +122,7 @@ const Hero = () => {
       </div>
       <div className="bottom-section w-full flex flex-col gap-4 md:gap-6 2xl:gap-12">
         <div className="help-text text-center text-[var(--foreground)]/30 font-bold">
-          meet our happy clients
+          {t("influencer.hero.meetClients")}
         </div>
         <InfiniteScroller
           items={influencersImages}
@@ -140,9 +140,9 @@ const Hero = () => {
             transition-all duration-300
              hover:bg-[#52C3C5] hover:text-white
               shadow-lg shadow-[#52C3C5]/30"
-              onClick={() => navigate("/influencer-register")}
+            onClick={() => navigate("/influencer-register")}
           >
-            Register Now
+            {t("influencer.hero.registerNow")}
           </button>
         </div>
       </div>

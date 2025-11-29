@@ -396,7 +396,9 @@
     "influencer": {
         "hero": {
             "title": "Vitrine des Partenaires",
-            "subtitle": "Influenceurs"
+            "subtitle": "Influenceurs",
+            "meetClients": "rencontrez nos clients heureux",
+            "registerNow": "S'inscrire maintenant"
         },
         "sections": {
             "title": "Sections d'influenceurs",

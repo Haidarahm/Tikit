@@ -397,7 +397,9 @@
     "influencer": {
         "hero": {
             "title": "عرض الشركاء",
-            "subtitle": "المؤثرين"
+            "subtitle": "المؤثرين",
+            "meetClients": "تعرف على عملائنا السعداء",
+            "registerNow": "سجل الآن"
         },
         "sections": {
             "title": "أقسام المؤثرين",
