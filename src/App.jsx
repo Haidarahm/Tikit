@@ -27,6 +27,9 @@ const AboutUs = lazy(() => import("./pages/about/AboutUs"));
 const Services = lazy(() => import("./pages/services/Services.jsx"));
 const Contact = lazy(() => import("./pages/contact/Contact"));
 const News = lazy(() => import("./pages/news/News"));
+const InfluencersRegister = lazy(() =>
+  import("./pages/Home/influencers-register/InfluencersRegister")
+);
 
 const InfluenceDetails = lazy(() =>
   import("./pages/workDetails/influenceDetails.jsx").then((module) => ({
@@ -94,6 +97,10 @@ function App() {
               <Route path="/news" element={<News />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/influencer" element={<Influencer />} />
+              <Route
+                path="/influencer-register"
+                element={<InfluencersRegister />}
+              />
               <Route path="/service-details/:id" element={<ServiceDetails />} />
               <Route
                 path="/work/influence/:id"
