@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import TextInput from "./TextInput";
 import NumberInput from "./NumberInput";
+import NationalityInput from "./NationalityInput";
 
 const InfluencersRegister = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [selectedCountry, setSelectedCountry] = useState(null);
+  const [nationality, setNationality] = useState(null);
 
   return (
     <section
@@ -36,6 +38,13 @@ const InfluencersRegister = () => {
               onChange={(e) => setPhoneNumber(e.target.value)}
               selectedCountry={selectedCountry}
               onCountryChange={setSelectedCountry}
+            />
+            <NationalityInput
+              name="nationality"
+              label="Nationality"
+              placeholder="Select your nationality"
+              value={nationality}
+              onChange={setNationality}
             />
           </div>
         </div>
