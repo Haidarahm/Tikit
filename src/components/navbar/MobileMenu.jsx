@@ -4,6 +4,7 @@ import { NAV_LINKS } from "./constants";
 import ThemeToggle from "./ThemeToggle";
 import ContactDropdown from "./ContactDropdown";
 import LanguageSelector from "./LanguageSelector";
+import InfluencerDropdown from "./InfluencerDropdown";
 
 export default function MobileMenu({
   mobileMenuRef,
@@ -12,6 +13,9 @@ export default function MobileMenu({
 }) {
   const { t } = useTranslation();
 
+  // Filter out influencer link and render it separately as dropdown
+  const regularLinks = NAV_LINKS.filter((link) => link.to !== "/influencer");
+
   return (
     <div
       ref={mobileMenuRef}
@@ -19,7 +23,7 @@ export default function MobileMenu({
       style={{ display: "none" }}
     >
       <div className="flex flex-col items-center space-y-4">
-        {NAV_LINKS.map(({ to, key }) => (
+        {regularLinks.map(({ to, key }) => (
           <Link
             key={to}
             to={to}
@@ -29,6 +33,12 @@ export default function MobileMenu({
             {t(key)}
           </Link>
         ))}
+
+        {/* Influencer Dropdown */}
+        <InfluencerDropdown
+          isMobile={true}
+          onClose={() => setIsMobileMenuOpen(false)}
+        />
 
         {/* Mobile Theme Toggle */}
         <div className="mobile-nav-item">

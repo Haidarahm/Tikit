@@ -2,6 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { NAV_LINKS } from "./constants";
 import { useHeroScrollColor } from "./hooks/useHeroScrollColor";
+import InfluencerDropdown from "./InfluencerDropdown";
 
 export default function DesktopNavLinks({ language }) {
   const { t } = useTranslation();
@@ -13,6 +14,9 @@ export default function DesktopNavLinks({ language }) {
     ? scrollColor
     : "text-[var(--foreground)]";
 
+  // Filter out influencer link and render it separately as dropdown
+  const regularLinks = NAV_LINKS.filter((link) => link.to !== "/influencer");
+
   return (
     <div
       className={`hidden lg:flex justify-end ${
@@ -20,7 +24,7 @@ export default function DesktopNavLinks({ language }) {
       }`}
     >
       <div className="flex gap-6 items-center">
-        {NAV_LINKS.map(({ to, key }) => (
+        {regularLinks.map(({ to, key }) => (
           <Link
             key={to}
             to={to}
@@ -45,6 +49,7 @@ export default function DesktopNavLinks({ language }) {
             </span>
           </Link>
         ))}
+        <InfluencerDropdown />
       </div>
     </div>
   );

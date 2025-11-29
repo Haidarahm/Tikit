@@ -6,6 +6,8 @@
         "services": "Services",
         "news": "Actualités",
         "influencers": "Influenceurs",
+        "ourInfluencers": "Nos Influenceurs",
+        "registerAsInfluencer": "S'inscrire en tant qu'influenceur",
         "contact": "Contactez-nous"
     },
     "seo": {
