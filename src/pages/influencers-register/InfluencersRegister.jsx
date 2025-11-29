@@ -5,6 +5,7 @@ import NationalityInput from "./NationalityInput";
 import ResidenceInput from "./ResidenceInput";
 import AdditionalInfoInput from "./AdditionalInfoInput";
 import ContentFieldInput from "./ContentFieldInput";
+import RegisterPlan from "./RegisterPlan";
 
 const InfluencersRegister = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -15,6 +16,7 @@ const InfluencersRegister = () => {
   const [followerCount, setFollowerCount] = useState("");
   const [message, setMessage] = useState("");
   const [contentFields, setContentFields] = useState([]);
+  const [selectedPlan, setSelectedPlan] = useState(null);
 
   return (
     <section
@@ -78,8 +80,11 @@ const InfluencersRegister = () => {
               message={message}
               onMessageChange={setMessage}
             />
+            <RegisterPlan
+              selectedPlan={selectedPlan}
+              onPlanSelect={setSelectedPlan}
+            />
           </div>
-          
         </div>
       </div>
     </section>
