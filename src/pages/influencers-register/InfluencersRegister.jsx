@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import TextInput from "./TextInput";
 import NumberInput from "./NumberInput";
 import NationalityInput from "./NationalityInput";
@@ -8,6 +9,7 @@ import ContentFieldInput from "./ContentFieldInput";
 import RegisterPlan from "./RegisterPlan";
 
 const InfluencersRegister = () => {
+  const { t } = useTranslation();
   const [phoneNumber, setPhoneNumber] = useState("");
   const [selectedCountry, setSelectedCountry] = useState(null);
   const [nationality, setNationality] = useState(null);
@@ -21,29 +23,33 @@ const InfluencersRegister = () => {
   return (
     <section
       data-nav-color="black"
-      className="w-full min-h-screen flex flex-col items-center mt-[104px] "
+      className="w-full min-h-screen flex flex-col items-center mt-[104px]"
     >
       <div className="title py:[40px] md:py-[100px]">
         <h1 className="text-[30px] md:text-[40px] lg:text-[75px] 2xl:text-[80px] font-antonio font-[700] text-center text-[var(--foreground)] leading-tight capitalize will-change-transform">
-          Want to be managed by Tikit?
+          {t("influencerRegister.title")}
         </h1>
       </div>
       <div className="main-content px-[12px] md:px-[75px] w-full">
-        <div className="container  py-[15px] md:py-[45px] flex flex-col items-center w-full rounded-[25px] border border-[var(--foreground)]/10 bg-white">
-          <div className="title  text-center text-[var(--foreground)]  text-[20px] m:text-[24px] lg:text-[34px] xl:text-[42px] font-medium font-antonio leading-tight capitalize will-change-transform">
-            <h2>fill the registration form</h2>
+        <div className="container py-[15px] md:py-[45px] flex flex-col items-center w-full rounded-[25px] border border-gray-200 dark:border-gray-700 bg-white dark:bg-[var(--container-bg)] shadow-sm dark:shadow-none">
+          <div className="title text-center text-[var(--foreground)] text-[20px] m:text-[24px] lg:text-[34px] xl:text-[42px] font-medium font-antonio leading-tight capitalize will-change-transform">
+            <h2>{t("influencerRegister.formTitle")}</h2>
           </div>
           <div className="main-content mt-[10px] md:mt-[30px] w-full px-[20px] md:px-[80px] flex flex-col gap-4">
-            <TextInput name="fullName" placeholder="Name" label={"Full Name"} />
+            <TextInput
+              name="fullName"
+              placeholder={t("influencerRegister.fields.fullName")}
+              label={t("influencerRegister.fields.fullName")}
+            />
             <TextInput
               name="email"
               placeholder="example@gmail.com"
-              label={"Email Address"}
+              label={t("influencerRegister.fields.email")}
             />
             <NumberInput
               name="phoneNumber"
-              label="Phone Number"
-              placeholder="Enter your phone number"
+              label={t("influencerRegister.fields.phoneNumber")}
+              placeholder={t("influencerRegister.fields.phonePlaceholder")}
               value={phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
               selectedCountry={selectedCountry}
@@ -51,16 +57,18 @@ const InfluencersRegister = () => {
             />
             <NationalityInput
               name="nationality"
-              label="Nationality"
-              placeholder="Select your nationality"
+              label={t("influencerRegister.fields.nationality")}
+              placeholder={t(
+                "influencerRegister.fields.nationalityPlaceholder"
+              )}
               value={nationality}
               onChange={setNationality}
             />
             <ResidenceInput
               name="residence"
-              label="Place of Residence"
-              countryPlaceholder="Country"
-              cityPlaceholder="City"
+              label={t("influencerRegister.fields.residence")}
+              countryPlaceholder={t("influencerRegister.fields.country")}
+              cityPlaceholder={t("influencerRegister.fields.city")}
               country={residenceCountry}
               city={residenceCity}
               onCountryChange={setResidenceCountry}
@@ -68,7 +76,10 @@ const InfluencersRegister = () => {
             />
             <ContentFieldInput
               name="contentFields"
-              label="Content Fields"
+              label={t("influencerRegister.fields.contentFields")}
+              placeholder={t(
+                "influencerRegister.fields.contentFieldsPlaceholder"
+              )}
               selectedFields={contentFields}
               onChange={setContentFields}
               maxSelections={5}
@@ -79,6 +90,14 @@ const InfluencersRegister = () => {
               onFollowerCountChange={setFollowerCount}
               message={message}
               onMessageChange={setMessage}
+              followerLabel={t("influencerRegister.fields.followerCount")}
+              followerPlaceholder={t(
+                "influencerRegister.fields.followerPlaceholder"
+              )}
+              messageLabel={t("influencerRegister.fields.message")}
+              messagePlaceholder={t(
+                "influencerRegister.fields.messagePlaceholder"
+              )}
             />
             <RegisterPlan
               selectedPlan={selectedPlan}

@@ -408,5 +408,77 @@
         "loading": "Loading influencers...",
         "loadError": "Failed to load influencers.",
         "noInfluencers": "We couldn't find influencers for this section yet. Please check back soon."
+    },
+    "influencerRegister": {
+        "title": "Want to be managed by Tikit?",
+        "formTitle": "fill the registration form",
+        "fields": {
+            "fullName": "Full Name",
+            "email": "Email Address",
+            "phoneNumber": "Phone Number",
+            "phonePlaceholder": "Enter your phone number",
+            "nationality": "Nationality",
+            "nationalityPlaceholder": "Select your nationality",
+            "residence": "Place of Residence",
+            "country": "Country",
+            "city": "City",
+            "contentFields": "Content Fields",
+            "contentFieldsPlaceholder": "Search and select your content fields...",
+            "followerCount": "Follower Count",
+            "followerPlaceholder": "e.g. 50,000",
+            "message": "Why do you want to join us?",
+            "messagePlaceholder": "Tell us about yourself and why you'd like to be managed by Tikit...",
+            "selectPlan": "Select Your Plan"
+        },
+        "plans": {
+            "management": {
+                "name": "Management",
+                "description": "Perfect for creators starting their journey",
+                "features": [
+                    "Dedicated Account Manager",
+                    "Brand Deal Negotiations",
+                    "Contract Review & Support",
+                    "Monthly Performance Reports",
+                    "Social Media Strategy",
+                    "Content Calendar Planning"
+                ],
+                "mostPopular": "Most Popular",
+                "selectPlan": "Select Plan",
+                "selected": "Selected"
+            },
+            "affiliate": {
+                "name": "Affiliate",
+                "description": "Maximize your earning potential",
+                "features": [
+                    "All Management Features",
+                    "Affiliate Program Access",
+                    "Commission Tracking Dashboard",
+                    "Exclusive Brand Partnerships",
+                    "Revenue Optimization",
+                    "Payment Processing Support",
+                    "Promotional Materials Kit"
+                ],
+                "mostPopular": "Most Popular",
+                "selectPlan": "Select Plan",
+                "selected": "Selected"
+            },
+            "premium": {
+                "name": "Premium",
+                "description": "Full-service influencer management",
+                "features": [
+                    "All Affiliate Features",
+                    "Priority Brand Matching",
+                    "Personal PR & Media Training",
+                    "Event Invitations & VIP Access",
+                    "Legal & Tax Advisory",
+                    "24/7 Dedicated Support",
+                    "International Opportunities",
+                    "Custom Content Production"
+                ],
+                "mostPopular": "Most Popular",
+                "selectPlan": "Select Plan",
+                "selected": "Selected"
+            }
+        }
     }
 }

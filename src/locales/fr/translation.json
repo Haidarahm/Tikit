@@ -408,5 +408,77 @@
         "loading": "Chargement des influenceurs...",
         "loadError": "Échec du chargement des influenceurs.",
         "noInfluencers": "Nous n'avons pas encore trouvé d'influenceurs pour cette section. Veuillez revenir bientôt."
+    },
+    "influencerRegister": {
+        "title": "Voulez-vous être géré par Tikit ?",
+        "formTitle": "remplir le formulaire d'inscription",
+        "fields": {
+            "fullName": "Nom complet",
+            "email": "Adresse e-mail",
+            "phoneNumber": "Numéro de téléphone",
+            "phonePlaceholder": "Entrez votre numéro de téléphone",
+            "nationality": "Nationalité",
+            "nationalityPlaceholder": "Sélectionnez votre nationalité",
+            "residence": "Lieu de résidence",
+            "country": "Pays",
+            "city": "Ville",
+            "contentFields": "Domaines de contenu",
+            "contentFieldsPlaceholder": "Recherchez et sélectionnez vos domaines de contenu...",
+            "followerCount": "Nombre d'abonnés",
+            "followerPlaceholder": "ex. 50 000",
+            "message": "Pourquoi voulez-vous nous rejoindre ?",
+            "messagePlaceholder": "Parlez-nous de vous et pourquoi vous aimeriez être géré par Tikit...",
+            "selectPlan": "Sélectionnez votre plan"
+        },
+        "plans": {
+            "management": {
+                "name": "Gestion",
+                "description": "Parfait pour les créateurs qui commencent leur parcours",
+                "features": [
+                    "Gestionnaire de compte dédié",
+                    "Négociations de contrats de marque",
+                    "Révision et soutien des contrats",
+                    "Rapports de performance mensuels",
+                    "Stratégie de médias sociaux",
+                    "Planification du calendrier de contenu"
+                ],
+                "mostPopular": "Le plus populaire",
+                "selectPlan": "Sélectionner le plan",
+                "selected": "Sélectionné"
+            },
+            "affiliate": {
+                "name": "Affiliation",
+                "description": "Maximisez votre potentiel de revenus",
+                "features": [
+                    "Toutes les fonctionnalités de gestion",
+                    "Accès au programme d'affiliation",
+                    "Tableau de bord de suivi des commissions",
+                    "Partenariats de marque exclusifs",
+                    "Optimisation des revenus",
+                    "Support de traitement des paiements",
+                    "Kit de matériel promotionnel"
+                ],
+                "mostPopular": "Le plus populaire",
+                "selectPlan": "Sélectionner le plan",
+                "selected": "Sélectionné"
+            },
+            "premium": {
+                "name": "Premium",
+                "description": "Gestion complète des influenceurs",
+                "features": [
+                    "Toutes les fonctionnalités d'affiliation",
+                    "Correspondance de marque prioritaire",
+                    "Formation PR et médias personnelle",
+                    "Invitations à des événements et accès VIP",
+                    "Conseil juridique et fiscal",
+                    "Support dédié 24/7",
+                    "Opportunités internationales",
+                    "Production de contenu personnalisé"
+                ],
+                "mostPopular": "Le plus populaire",
+                "selectPlan": "Sélectionner le plan",
+                "selected": "Sélectionné"
+            }
+        }
     }
 }
