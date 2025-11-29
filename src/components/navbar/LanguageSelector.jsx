@@ -1,9 +1,8 @@
 import { useRef, useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
 import { useTheme } from "../../store/ThemeContext.jsx";
 import { LANGUAGES } from "./constants";
-import { useHeroScrollColor } from "./hooks/useHeroScrollColor";
+import { useNavColor } from "./hooks/useNavColor";
 
 export default function LanguageSelector({
   isMobile = false,
@@ -13,14 +12,9 @@ export default function LanguageSelector({
   const { theme } = useTheme();
   const [isLangOpen, setIsLangOpen] = useState(false);
   const langMenuRef = useRef(null);
-  const location = useLocation();
-  const scrollColor = useHeroScrollColor();
-
-  const shouldUseScrollColor =
-    location.pathname === "/home" || location.pathname.startsWith("/services");
-  const textColor = shouldUseScrollColor
-    ? scrollColor
-    : "text-[var(--foreground)]";
+  const navColor = useNavColor();
+  const textColor =
+    navColor === "white" ? "text-white" : "text-[var(--foreground)]";
 
   // Handle click outside to close language menu
   useEffect(() => {
@@ -105,7 +99,7 @@ export default function LanguageSelector({
     <div className="relative" ref={langMenuRef}>
       <button
         onClick={() => setIsLangOpen((v) => !v)}
-        className={`nav-item uppercase font-light text-sm opacity-0 ${textColor} relative inline-flex items-center gap-2 transition-colors duration-200 hover:opacity-80`}
+        className={`nav-item uppercase font-light text-sm opacity-0 ${textColor} relative inline-flex items-center gap-2 transition-colors duration-300 ease-in-out hover:opacity-80`}
         aria-haspopup="listbox"
         aria-expanded={isLangOpen}
       >

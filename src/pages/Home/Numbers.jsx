@@ -45,6 +45,7 @@ const Numbers = memo(() => {
 
   return (
     <div
+      data-nav-color="black"
       className={`section ${
         isRtl ? "font-cairo" : "font-hero-light"
       } my-10 md:my-0 flex flex-col mx-auto md:h-screen z-10 w-[98%] sm:w-[95%] md:w-6/7 justify-center px-4 md:px-0`}

@@ -95,6 +95,7 @@ const Hero = () => {
 
   return (
     <section
+      data-nav-color="black"
       className={`text-[var(--foreground)] mt-[104px] md:mt-2 relative overflow-hidden h-[50vh] md:h-screen w-full flex flex-col items-center justify-center ${
         isRtl ? "font-cairo" : "font-hero-light"
       }`}

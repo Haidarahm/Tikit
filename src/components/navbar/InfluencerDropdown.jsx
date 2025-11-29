@@ -2,23 +2,18 @@ import { useRef, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
-import { useHeroScrollColor } from "./hooks/useHeroScrollColor";
-import { useLocation } from "react-router-dom";
+import { useNavColor } from "./hooks/useNavColor";
 
 export default function InfluencerDropdown({ isMobile = false, onClose }) {
   const { t } = useTranslation();
   const { isRtl } = useI18nLanguage();
   const navigate = useNavigate();
-  const location = useLocation();
   const influencerDropdownRef = useRef(null);
   const [isInfluencerDropdownOpen, setIsInfluencerDropdownOpen] =
     useState(false);
-  const scrollColor = useHeroScrollColor();
-  const shouldUseScrollColor =
-    location.pathname === "/home" || location.pathname.startsWith("/services");
-  const textColor = shouldUseScrollColor
-    ? scrollColor
-    : "text-[var(--foreground)]";
+  const navColor = useNavColor();
+  const textColor =
+    navColor === "white" ? "text-white" : "text-[var(--foreground)]";
 
   // Handle click outside to close dropdown
   useEffect(() => {

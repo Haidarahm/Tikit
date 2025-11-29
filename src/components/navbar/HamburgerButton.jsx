@@ -1,20 +1,13 @@
 import { forwardRef } from "react";
-import { useLocation } from "react-router-dom";
-import { useHeroScrollColor } from "./hooks/useHeroScrollColor";
+import { useNavColor } from "./hooks/useNavColor";
 
 const HamburgerButton = forwardRef(function HamburgerButton(
   { onClick, language, isOpen },
   ref
 ) {
-  const location = useLocation();
-  const scrollColor = useHeroScrollColor();
-
-  const shouldUseScrollColor =
-    location.pathname === "/home" || location.pathname.startsWith("/services");
+  const navColor = useNavColor();
   const lineColor =
-    shouldUseScrollColor && scrollColor === "text-white"
-      ? "bg-white"
-      : "bg-[var(--foreground)]";
+    navColor === "white" ? "bg-white" : "bg-[var(--foreground)]";
 
   return (
     <button

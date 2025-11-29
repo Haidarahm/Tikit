@@ -114,6 +114,7 @@ const Hero = memo(() => {
   return (
     <div
       ref={sectionRef}
+      data-nav-color="white"
       className="section relative h-[80vh] mb-[10vh] md:h-[97vh] md:mb-[3vh]  rounded-[15px] md:rounded-[25px]  overflow-hidden mx-auto gpu-transform w-[98vw] sm:w-[96vw] md:w-[95vw]"
     >
       {/* Background layer */}

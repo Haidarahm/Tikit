@@ -71,6 +71,7 @@ const Goals = memo(() => {
 
   return (
     <div
+      data-nav-color="black"
       className={`section ${
         isRtl ? "font-cairo" : "font-hero-light"
       } flex flex-col md:flex-row mx-auto goals-section md:h-[2000px]  z-10 w-full md:w-6/7`}
@@ -133,9 +134,7 @@ const Goals = memo(() => {
               data-aos-mirror="true"
             >
               <div className="text">
-                <h2 className=" tikit-title w-full">
-                  {goal.title}
-                </h2>
+                <h2 className=" tikit-title w-full">{goal.title}</h2>
                 <p className=" text-[var(--foreground)] text:[14px] font-light leading-[20px]">
                   {goal.description}
                 </p>

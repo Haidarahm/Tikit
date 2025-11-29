@@ -28,7 +28,7 @@ const Services = lazy(() => import("./pages/services/Services.jsx"));
 const Contact = lazy(() => import("./pages/contact/Contact"));
 const News = lazy(() => import("./pages/news/News"));
 const InfluencersRegister = lazy(() =>
-  import("./pages/Home/influencers-register/InfluencersRegister")
+  import("./pages/influencers-register/InfluencersRegister")
 );
 
 const InfluenceDetails = lazy(() =>

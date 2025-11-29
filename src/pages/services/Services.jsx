@@ -208,7 +208,7 @@ const Services = () => {
   }, []);
 
   return (
-    <div style={styles.container} data-services2-page>
+    <div style={styles.container} data-services2-page data-nav-color="white">
       <header style={styles.header}>
         <div>Our Services</div>
         <div style={styles.subtext}>Scroll to explore</div>

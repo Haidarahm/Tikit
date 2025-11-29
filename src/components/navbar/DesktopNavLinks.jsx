@@ -1,18 +1,14 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { NAV_LINKS } from "./constants";
-import { useHeroScrollColor } from "./hooks/useHeroScrollColor";
+import { useNavColor } from "./hooks/useNavColor";
 import InfluencerDropdown from "./InfluencerDropdown";
 
 export default function DesktopNavLinks({ language }) {
   const { t } = useTranslation();
-  const location = useLocation();
-  const scrollColor = useHeroScrollColor();
-  const shouldUseScrollColor =
-    location.pathname === "/home" || location.pathname.startsWith("/services");
-  const textColor = shouldUseScrollColor
-    ? scrollColor
-    : "text-[var(--foreground)]";
+  const navColor = useNavColor();
+  const textColor =
+    navColor === "white" ? "text-white" : "text-[var(--foreground)]";
 
   // Filter out influencer link and render it separately as dropdown
   const regularLinks = NAV_LINKS.filter((link) => link.to !== "/influencer");
@@ -28,7 +24,7 @@ export default function DesktopNavLinks({ language }) {
           <Link
             key={to}
             to={to}
-            className={`nav-item ${textColor} uppercase text-sm opacity-0 relative inline-block`}
+            className={`nav-item ${textColor} uppercase text-sm opacity-0 relative inline-block transition-colors duration-300 ease-in-out`}
           >
             <span className="relative inline-block">
               {t(key)}
