@@ -1,6 +1,7 @@
 import React from "react";
 import TextInput from "./TextInput";
-import NumberInput from "./NumberInput";
+import NumberInput from "./CountryInput";
+import CountryInput from "./CountryInput";
 
 const InfluencersRegister = () => {
   return (
@@ -21,7 +22,11 @@ const InfluencersRegister = () => {
         <div className="main-content mt-[10px] md:mt-[30px] w-full px-[20px] md:px-[80px]">
           <TextInput name="fullName" placeholder="Name" label={"Full Name"} />
           <TextInput name="email" placeholder="example@gmail.com" label={"Email Address"} />
-          <NumberInput/>
+          <div className="country-number flex">
+          <CountryInput/>
+          <TextInput name="phoneNumber" placeholder="Phone Number" label={"Phone Number"} />
+          </div>
+         
         </div>
       </div>
       </div>
