@@ -4,11 +4,12 @@ import Tick from "../../assets/Tick";
 import ManagementIcon from "../../assets/planes/Management.svg";
 import AffiliateIcon from "../../assets/planes/Affiliate.svg";
 import PremiumIcon from "../../assets/planes/Premium.svg";
+import { useI18nLanguage } from "../../store/I18nLanguageContext";
 
 const RegisterPlan = ({ selectedPlan, onPlanSelect, className = "" }) => {
   const { t } = useTranslation();
   const [hoveredPlan, setHoveredPlan] = useState(null);
-
+  const { isRtl } = useI18nLanguage();
   const plans = useMemo(
     () => [
       {
@@ -54,7 +55,7 @@ const RegisterPlan = ({ selectedPlan, onPlanSelect, className = "" }) => {
 
   return (
     <div className={`flex flex-col gap-4 w-full ${className}`}>
-      <label className="text-[var(--foreground)] text-sm md:text-base font-medium">
+      <label dir={isRtl ? "rtl" : "ltr"} className="text-[var(--foreground)] text-sm md:text-base font-medium">
         {t("influencerRegister.fields.selectPlan")}
       </label>
 

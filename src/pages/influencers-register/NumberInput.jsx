@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { useI18nLanguage } from "../../store/I18nLanguageContext";
 
 // Complete list of countries with dial codes and flags
 const countries = [
@@ -222,6 +223,7 @@ const NumberInput = ({
   selectedCountry,
   onCountryChange,
 }) => {
+  const { isRtl } = useI18nLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [highlightedIndex, setHighlightedIndex] = useState(0);
@@ -324,6 +326,7 @@ const NumberInput = ({
     <div className={`flex flex-col gap-2 w-full ${className}`}>
       {label && (
         <label
+          dir={isRtl ? "rtl" : "ltr"}
           htmlFor={name}
           className="text-[var(--foreground)] text-sm md:text-base font-medium"
         >
@@ -338,7 +341,11 @@ const NumberInput = ({
             onClick={() => !disabled && setIsOpen(!isOpen)}
             onKeyDown={handleKeyDown}
             disabled={disabled}
-            className="flex items-center gap-2 px-3 md:px-4 py-3 md:py-4 rounded-[20px] bg-[#f5f5f5] dark:bg-[var(--container-bg)] text-[var(--foreground)] text-sm md:text-base outline-none border border-transparent focus:border-[var(--secondary)] transition-all duration-300 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed min-w-[100px] md:min-w-[120px]"
+            className={`flex items-center gap-2 px-3 md:px-4 py-3 md:py-4 rounded-[20px] bg-[#f5f5f5] dark:bg-[var(--container-bg)] text-[var(--foreground)] text-sm md:text-base outline-none border transition-all duration-300 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed min-w-[100px] md:min-w-[120px] ${
+              isOpen
+                ? "border-[var(--secondary)] dark:border-[var(--secondary)]"
+                : "border-gray-200 dark:border-gray-700"
+            }`}
           >
             <span className="text-xl">{currentCountry.flag}</span>
             <span className="font-medium">{currentCountry.dialCode}</span>
@@ -429,7 +436,7 @@ const NumberInput = ({
           placeholder={placeholder}
           required={required}
           disabled={disabled}
-          className="flex-1 px-4 py-3 md:py-4 rounded-[20px] bg-[#f5f5f5] dark:bg-[var(--container-bg)] text-[var(--foreground)] placeholder:text-gray-400 dark:placeholder:text-gray-500 text-sm md:text-base outline-none border border-transparent focus:border-[var(--secondary)] transition-all duration-300 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed"
+          className="flex-1 px-4 py-3 md:py-4 rounded-[20px] bg-[#f5f5f5] dark:bg-[var(--container-bg)] text-[var(--foreground)] placeholder:text-gray-400 dark:placeholder:text-gray-500 text-sm md:text-base outline-none border border-gray-200 dark:border-gray-700 focus:border-[var(--secondary)] dark:focus:border-[var(--secondary)] transition-all duration-300 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed"
         />
       </div>
     </div>

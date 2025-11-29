@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { useI18nLanguage } from "../../store/I18nLanguageContext";
 
 // Sample content fields/categories
 const contentFields = [
@@ -39,6 +40,7 @@ const ContentFieldInput = ({
   className = "",
   maxSelections = 5,
 }) => {
+  const { isRtl } = useI18nLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [highlightedIndex, setHighlightedIndex] = useState(0);
@@ -162,6 +164,7 @@ const ContentFieldInput = ({
         <div className="flex items-center justify-between">
           <label
             htmlFor={name}
+            dir={isRtl ? "rtl" : "ltr"}
             className="text-[var(--foreground)] text-sm md:text-base font-medium"
           >
             {label}
@@ -175,8 +178,10 @@ const ContentFieldInput = ({
       {/* Input Container */}
       <div className="relative w-full">
         <div
-          className={`flex flex-wrap items-center gap-2 w-full min-h-[48px] md:min-h-[56px] px-3 md:px-4 py-2 md:py-3 rounded-[20px] bg-[#f5f5f5] dark:bg-[var(--container-bg)] border border-transparent transition-all duration-300 ease-in-out ${
-            isOpen ? "border-[var(--secondary)]" : ""
+          className={`flex flex-wrap items-center gap-2 w-full min-h-[48px] md:min-h-[56px] px-3 md:px-4 py-2 md:py-3 rounded-[20px] bg-[#f5f5f5] dark:bg-[var(--container-bg)] border transition-all duration-300 ease-in-out ${
+            isOpen
+              ? "border-[var(--secondary)] dark:border-[var(--secondary)]"
+              : "border-gray-200 dark:border-gray-700"
           } ${disabled ? "opacity-50 cursor-not-allowed" : ""}`}
           onClick={() => !disabled && inputRef.current?.focus()}
         >

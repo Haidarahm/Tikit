@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { useI18nLanguage } from "../../store/I18nLanguageContext";
 
 // Complete list of countries with flags
 const countries = [
@@ -211,6 +212,7 @@ const NationalityInput = ({
   className = "",
 }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const { isRtl } = useI18nLanguage();
   const [searchQuery, setSearchQuery] = useState("");
   const [highlightedIndex, setHighlightedIndex] = useState(0);
   const containerRef = useRef(null);
@@ -349,6 +351,7 @@ const NationalityInput = ({
     >
       {label && (
         <label
+        dir={isRtl ? "rtl" : "ltr"}
           htmlFor={name}
           className="text-[var(--foreground)] text-sm md:text-base font-medium"
         >
@@ -359,8 +362,10 @@ const NationalityInput = ({
       {/* Input Container */}
       <div className="relative w-full">
         <div
-          className={`flex items-center w-full px-4 py-3 md:py-4 rounded-[20px] bg-[#f5f5f5] dark:bg-[var(--container-bg)] border border-transparent transition-all duration-300 ease-in-out ${
-            isOpen ? "border-[var(--secondary)]" : ""
+          className={`flex items-center w-full px-4 py-3 md:py-4 rounded-[20px] bg-[#f5f5f5] dark:bg-[var(--container-bg)] border transition-all duration-300 ease-in-out ${
+            isOpen
+              ? "border-[var(--secondary)] dark:border-[var(--secondary)]"
+              : "border-gray-200 dark:border-gray-700"
           } ${disabled ? "opacity-50 cursor-not-allowed" : "cursor-text"}`}
           onClick={() => !disabled && inputRef.current?.focus()}
         >

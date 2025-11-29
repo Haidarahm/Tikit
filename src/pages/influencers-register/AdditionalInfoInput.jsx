@@ -1,4 +1,5 @@
 import React from "react";
+import { useI18nLanguage } from "../../store/I18nLanguageContext";
 
 const AdditionalInfoInput = ({
   followerCount,
@@ -20,7 +21,7 @@ const AdditionalInfoInput = ({
     if (!numericValue) return "";
     return parseInt(numericValue, 10).toLocaleString();
   };
-
+  const { isRtl } = useI18nLanguage();
   const handleFollowerChange = (e) => {
     const formattedValue = formatNumber(e.target.value);
     if (onFollowerCountChange) {
@@ -34,6 +35,7 @@ const AdditionalInfoInput = ({
       <div className="flex flex-col gap-2 w-full">
         <label
           htmlFor={`${name}_followers`}
+          dir={isRtl ? "rtl" : "ltr"}
           className="text-[var(--foreground)] text-sm md:text-base font-medium"
         >
           {followerLabel}
@@ -64,7 +66,7 @@ const AdditionalInfoInput = ({
             placeholder={followerPlaceholder}
             required={required}
             disabled={disabled}
-            className="w-full pl-12 pr-4 py-3 md:py-4 rounded-[20px] bg-[#f5f5f5] dark:bg-[var(--container-bg)] text-[var(--foreground)] placeholder:text-gray-400 dark:placeholder:text-gray-500 text-sm md:text-base outline-none border border-transparent focus:border-[var(--secondary)] transition-all duration-300 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full pl-12 pr-4 py-3 md:py-4 rounded-[20px] bg-[#f5f5f5] dark:bg-[var(--container-bg)] text-[var(--foreground)] placeholder:text-gray-400 dark:placeholder:text-gray-500 text-sm md:text-base outline-none border border-gray-200 dark:border-gray-700 focus:border-[var(--secondary)] dark:focus:border-[var(--secondary)] transition-all duration-300 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed"
           />
         </div>
       </div>
@@ -87,10 +89,10 @@ const AdditionalInfoInput = ({
             required={required}
             disabled={disabled}
             rows={5}
-            className="w-full px-4 py-3 md:py-4 rounded-[20px] bg-[#f5f5f5] dark:bg-[var(--container-bg)] text-[var(--foreground)] placeholder:text-gray-400 dark:placeholder:text-gray-500 text-sm md:text-base outline-none border border-transparent focus:border-[var(--secondary)] transition-all duration-300 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed resize-none"
+            className="w-full px-4 py-3 md:py-4 rounded-[20px] bg-[#f5f5f5] dark:bg-[var(--container-bg)] text-[var(--foreground)] placeholder:text-gray-400 dark:placeholder:text-gray-500 text-sm md:text-base outline-none border border-gray-200 dark:border-gray-700 focus:border-[var(--secondary)] dark:focus:border-[var(--secondary)] transition-all duration-300 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed resize-none"
           />
           {/* Character count */}
-          <div className="absolute bottom-3 right-4 text-xs text-gray-400">
+          <div className="absolute bottom-3 right-4 text-xs text-gray-400 dark:text-gray-500">
             {(message || "").length} / 500
           </div>
         </div>
