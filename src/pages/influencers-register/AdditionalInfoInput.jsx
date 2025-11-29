@@ -41,7 +41,11 @@ const AdditionalInfoInput = ({
           {followerLabel}
         </label>
         <div className="relative">
-          <div className="absolute left-4 top-1/2 -translate-y-1/2 flex items-center gap-2 pointer-events-none">
+          <div
+            className={`absolute top-1/2 -translate-y-1/2 flex items-center gap-2 pointer-events-none ${
+              isRtl ? "right-4" : "left-4"
+            }`}
+          >
             <svg
               className="w-5 h-5 text-gray-400"
               fill="none"
@@ -66,7 +70,10 @@ const AdditionalInfoInput = ({
             placeholder={followerPlaceholder}
             required={required}
             disabled={disabled}
-            className="w-full pl-12 pr-4 py-3 md:py-4 rounded-[20px] bg-[#f5f5f5] dark:bg-[var(--container-bg)] text-[var(--foreground)] placeholder:text-gray-400 dark:placeholder:text-gray-500 text-sm md:text-base outline-none border border-gray-200 dark:border-gray-700 focus:border-[var(--secondary)] dark:focus:border-[var(--secondary)] transition-all duration-300 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed"
+            dir={isRtl ? "rtl" : "ltr"}
+            className={`w-full py-3 md:py-4 rounded-[20px] bg-[#f5f5f5] dark:bg-[var(--container-bg)] text-[var(--foreground)] placeholder:text-gray-400 dark:placeholder:text-gray-500 text-sm md:text-base outline-none border border-gray-200 dark:border-gray-700 focus:border-[var(--secondary)] dark:focus:border-[var(--secondary)] transition-all duration-300 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed ${
+              isRtl ? "pr-12 pl-4 text-right" : "pl-12 pr-4 text-left"
+            }`}
           />
         </div>
       </div>
@@ -75,6 +82,7 @@ const AdditionalInfoInput = ({
       <div className="flex flex-col gap-2 w-full">
         <label
           htmlFor={`${name}_message`}
+          dir={isRtl ? "rtl" : "ltr"}
           className="text-[var(--foreground)] text-sm md:text-base font-medium"
         >
           {messageLabel}
@@ -89,10 +97,17 @@ const AdditionalInfoInput = ({
             required={required}
             disabled={disabled}
             rows={5}
-            className="w-full px-4 py-3 md:py-4 rounded-[20px] bg-[#f5f5f5] dark:bg-[var(--container-bg)] text-[var(--foreground)] placeholder:text-gray-400 dark:placeholder:text-gray-500 text-sm md:text-base outline-none border border-gray-200 dark:border-gray-700 focus:border-[var(--secondary)] dark:focus:border-[var(--secondary)] transition-all duration-300 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed resize-none"
+            dir={isRtl ? "rtl" : "ltr"}
+            className={`w-full px-4 py-3 md:py-4 rounded-[20px] bg-[#f5f5f5] dark:bg-[var(--container-bg)] text-[var(--foreground)] placeholder:text-gray-400 dark:placeholder:text-gray-500 text-sm md:text-base outline-none border border-gray-200 dark:border-gray-700 focus:border-[var(--secondary)] dark:focus:border-[var(--secondary)] transition-all duration-300 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed resize-none ${
+              isRtl ? "text-right" : "text-left"
+            }`}
           />
           {/* Character count */}
-          <div className="absolute bottom-3 right-4 text-xs text-gray-400 dark:text-gray-500">
+          <div
+            className={`absolute bottom-3 text-xs text-gray-400 dark:text-gray-500 ${
+              isRtl ? "left-4" : "right-4"
+            }`}
+          >
             {(message || "").length} / 500
           </div>
         </div>

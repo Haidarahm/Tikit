@@ -351,7 +351,7 @@ const NationalityInput = ({
     >
       {label && (
         <label
-        dir={isRtl ? "rtl" : "ltr"}
+          dir={isRtl ? "rtl" : "ltr"}
           htmlFor={name}
           className="text-[var(--foreground)] text-sm md:text-base font-medium"
         >
@@ -371,12 +371,16 @@ const NationalityInput = ({
         >
           {/* Selected Flag or Search Icon */}
           {selectedCountry && !isOpen ? (
-            <span className="text-xl mr-3 flex-shrink-0">
+            <span
+              className={`text-xl flex-shrink-0 ${isRtl ? "ml-3" : "mr-3"}`}
+            >
               {selectedCountry.flag}
             </span>
           ) : (
             <svg
-              className="w-5 h-5 mr-3 text-gray-400 flex-shrink-0"
+              className={`w-5 h-5 text-gray-400 flex-shrink-0 ${
+                isRtl ? "ml-3" : "mr-3"
+              }`}
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -403,7 +407,10 @@ const NationalityInput = ({
             placeholder={selectedCountry ? selectedCountry.name : placeholder}
             disabled={disabled}
             autoComplete="off"
-            className="flex-1 bg-transparent text-[var(--foreground)] placeholder:text-gray-400 dark:placeholder:text-gray-500 text-sm md:text-base outline-none"
+            dir={isRtl ? "rtl" : "ltr"}
+            className={`flex-1 bg-transparent text-[var(--foreground)] placeholder:text-gray-400 dark:placeholder:text-gray-500 text-sm md:text-base outline-none ${
+              isRtl ? "text-right" : "text-left"
+            }`}
           />
 
           {/* Clear Button */}
@@ -411,7 +418,9 @@ const NationalityInput = ({
             <button
               type="button"
               onClick={handleClear}
-              className="p-1 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full transition-colors duration-200 mr-2"
+              className={`p-1 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full transition-colors duration-200 ${
+                isRtl ? "ml-2" : "mr-2"
+              }`}
             >
               <svg
                 className="w-4 h-4 text-gray-400"
@@ -449,7 +458,7 @@ const NationalityInput = ({
 
         {/* Dropdown Menu */}
         <div
-          className={`absolute bottom-full left-0 right-0 mb-2 w-full bg-white dark:bg-[var(--container-bg)] rounded-[16px] shadow-xl border border-gray-200 dark:border-gray-700 z-50 overflow-hidden transition-all duration-300 ease-out origin-bottom ${
+          className={`absolute bottom-full mb-2 w-full bg-white dark:bg-[var(--container-bg)] rounded-[16px] shadow-xl border border-gray-200 dark:border-gray-700 z-50 overflow-hidden transition-all duration-300 ease-out origin-bottom ${
             isOpen
               ? "opacity-100 scale-y-100 translate-y-0"
               : "opacity-0 scale-y-95 translate-y-2 pointer-events-none"

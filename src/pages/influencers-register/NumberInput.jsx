@@ -333,7 +333,7 @@ const NumberInput = ({
           {label}
         </label>
       )}
-      <div className="flex w-full gap-2">
+      <div className={`flex w-full gap-2 ${isRtl ? "flex-row-reverse" : ""}`}>
         {/* Country Dropdown */}
         <div className="relative" ref={dropdownRef}>
           <button
@@ -368,7 +368,11 @@ const NumberInput = ({
 
           {/* Dropdown Menu */}
           {isOpen && (
-            <div className="absolute top-full left-0 mt-2 w-[280px] md:w-[320px] bg-white dark:bg-[var(--container-bg)] rounded-[16px] shadow-xl border border-gray-200 dark:border-gray-700 z-50 overflow-hidden">
+            <div
+              className={`absolute top-full mt-2 w-[280px] md:w-[320px] bg-white dark:bg-[var(--container-bg)] rounded-[16px] shadow-xl border border-gray-200 dark:border-gray-700 z-50 overflow-hidden ${
+                isRtl ? "right-0" : "left-0"
+              }`}
+            >
               {/* Search Input */}
               <div className="p-3 border-b border-gray-200 dark:border-gray-700">
                 <input
@@ -378,7 +382,10 @@ const NumberInput = ({
                   onChange={(e) => setSearchQuery(e.target.value)}
                   onKeyDown={handleKeyDown}
                   placeholder="Search country..."
-                  className="w-full px-3 py-2 rounded-[12px] bg-[#f5f5f5] dark:bg-[#2a2a2a] text-[var(--foreground)] placeholder:text-gray-400 dark:placeholder:text-gray-500 text-sm outline-none border border-transparent focus:border-[var(--secondary)] transition-all duration-200"
+                  dir={isRtl ? "rtl" : "ltr"}
+                  className={`w-full px-3 py-2 rounded-[12px] bg-[#f5f5f5] dark:bg-[#2a2a2a] text-[var(--foreground)] placeholder:text-gray-400 dark:placeholder:text-gray-500 text-sm outline-none border border-transparent focus:border-[var(--secondary)] transition-all duration-200 ${
+                    isRtl ? "text-right" : "text-left"
+                  }`}
                 />
               </div>
 
@@ -436,7 +443,10 @@ const NumberInput = ({
           placeholder={placeholder}
           required={required}
           disabled={disabled}
-          className="flex-1 px-4 py-3 md:py-4 rounded-[20px] bg-[#f5f5f5] dark:bg-[var(--container-bg)] text-[var(--foreground)] placeholder:text-gray-400 dark:placeholder:text-gray-500 text-sm md:text-base outline-none border border-gray-200 dark:border-gray-700 focus:border-[var(--secondary)] dark:focus:border-[var(--secondary)] transition-all duration-300 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed"
+          dir={isRtl ? "rtl" : "ltr"}
+          className={`flex-1 px-4 py-3 md:py-4 rounded-[20px] bg-[#f5f5f5] dark:bg-[var(--container-bg)] text-[var(--foreground)] placeholder:text-gray-400 dark:placeholder:text-gray-500 text-sm md:text-base outline-none border border-gray-200 dark:border-gray-700 focus:border-[var(--secondary)] dark:focus:border-[var(--secondary)] transition-all duration-300 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed ${
+            isRtl ? "text-right" : "text-left"
+          }`}
         />
       </div>
     </div>

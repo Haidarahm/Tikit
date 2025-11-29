@@ -7,9 +7,11 @@ import ResidenceInput from "./ResidenceInput";
 import AdditionalInfoInput from "./AdditionalInfoInput";
 import ContentFieldInput from "./ContentFieldInput";
 import RegisterPlan from "./RegisterPlan";
+import { useI18nLanguage } from "../../store/I18nLanguageContext";
 
 const InfluencersRegister = () => {
   const { t } = useTranslation();
+  const { isRtl } = useI18nLanguage();
   const [phoneNumber, setPhoneNumber] = useState("");
   const [selectedCountry, setSelectedCountry] = useState(null);
   const [nationality, setNationality] = useState(null);
@@ -25,14 +27,14 @@ const InfluencersRegister = () => {
       data-nav-color="black"
       className="w-full min-h-screen flex flex-col items-center mt-[104px]"
     >
-      <div className="title py:[40px] md:py-[100px]">
-        <h1 className="text-[30px] md:text-[40px] lg:text-[75px] 2xl:text-[80px] font-antonio font-[700] text-center text-[var(--foreground)] leading-tight capitalize will-change-transform">
+      <div className="title py-[40px] md:py-[100px]">
+        <h1 style={{fontFamily: isRtl ? "var(--font-cairo)" : "var(--font-cairo)"}} className="text-[30px] md:text-[40px] lg:text-[65px] 2xl:text-[75px]  font-[700] text-center text-[var(--foreground)] leading-tight capitalize will-change-transform">
           {t("influencerRegister.title")}
         </h1>
       </div>
       <div className="main-content px-[12px] md:px-[75px] w-full">
         <div className="container py-[15px] md:py-[45px] flex flex-col items-center w-full rounded-[25px] border border-gray-200 dark:border-gray-700 bg-white dark:bg-[var(--container-bg)] shadow-sm dark:shadow-none">
-          <div className="title text-center text-[var(--foreground)] text-[20px] m:text-[24px] lg:text-[34px] xl:text-[42px] font-medium font-antonio leading-tight capitalize will-change-transform">
+          <div style={{fontFamily: isRtl ? "var(--font-cairo)" : "var(--font-antonio)"}} className="title text-center text-[var(--foreground)] text-[20px] m:text-[24px] lg:text-[34px] xl:text-[42px] font-medium  leading-tight capitalize will-change-transform">
             <h2>{t("influencerRegister.formTitle")}</h2>
           </div>
           <div className="main-content mt-[10px] md:mt-[30px] w-full px-[20px] md:px-[80px] flex flex-col gap-4">

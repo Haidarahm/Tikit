@@ -161,10 +161,12 @@ const ContentFieldInput = ({
       ref={containerRef}
     >
       {label && (
-        <div className="flex items-center justify-between">
+        <div
+          dir={isRtl ? "rtl" : "ltr"}
+          className="flex items-center justify-between"
+        >
           <label
             htmlFor={name}
-            dir={isRtl ? "rtl" : "ltr"}
             className="text-[var(--foreground)] text-sm md:text-base font-medium"
           >
             {label}
@@ -179,6 +181,8 @@ const ContentFieldInput = ({
       <div className="relative w-full">
         <div
           className={`flex flex-wrap items-center gap-2 w-full min-h-[48px] md:min-h-[56px] px-3 md:px-4 py-2 md:py-3 rounded-[20px] bg-[#f5f5f5] dark:bg-[var(--container-bg)] border transition-all duration-300 ease-in-out ${
+            isRtl ? "flex-row-reverse" : ""
+          } ${
             isOpen
               ? "border-[var(--secondary)] dark:border-[var(--secondary)]"
               : "border-gray-200 dark:border-gray-700"
@@ -200,7 +204,9 @@ const ContentFieldInput = ({
                     e.stopPropagation();
                     handleRemove(field);
                   }}
-                  className="ml-1 hover:text-red-500 transition-colors"
+                  className={`${
+                    isRtl ? "mr-1" : "ml-1"
+                  } hover:text-red-500 transition-colors`}
                 >
                   <svg
                     className="w-3.5 h-3.5"
@@ -236,14 +242,17 @@ const ContentFieldInput = ({
               }
               disabled={disabled}
               autoComplete="off"
-              className="flex-1 min-w-[120px] bg-transparent text-[var(--foreground)] placeholder:text-gray-400 dark:placeholder:text-gray-500 text-sm md:text-base outline-none"
+              dir={isRtl ? "rtl" : "ltr"}
+              className={`flex-1 min-w-[120px] bg-transparent text-[var(--foreground)] placeholder:text-gray-400 dark:placeholder:text-gray-500 text-sm md:text-base outline-none ${
+                isRtl ? "text-right" : "text-left"
+              }`}
             />
           )}
         </div>
 
         {/* Dropdown Menu */}
         <div
-          className={`absolute bottom-full left-0 right-0 mb-2 w-full bg-white dark:bg-[var(--container-bg)] rounded-[16px] shadow-xl border border-gray-200 dark:border-gray-700 z-50 overflow-hidden transition-all duration-300 ease-out origin-bottom ${
+          className={`absolute bottom-full mb-2 w-full bg-white dark:bg-[var(--container-bg)] rounded-[16px] shadow-xl border border-gray-200 dark:border-gray-700 z-50 overflow-hidden transition-all duration-300 ease-out origin-bottom ${
             isOpen && canAddMore
               ? "opacity-100 scale-y-100 translate-y-0"
               : "opacity-0 scale-y-95 translate-y-2 pointer-events-none"

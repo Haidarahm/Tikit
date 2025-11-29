@@ -55,7 +55,12 @@ const RegisterPlan = ({ selectedPlan, onPlanSelect, className = "" }) => {
 
   return (
     <div className={`flex flex-col gap-4 w-full ${className}`}>
-      <label dir={isRtl ? "rtl" : "ltr"} className="text-[var(--foreground)] text-sm md:text-base font-medium">
+      <label
+        dir={isRtl ? "rtl" : "ltr"}
+        className={`text-[var(--foreground)] text-sm md:text-base font-medium ${
+          isRtl ? "text-right" : "text-left"
+        }`}
+      >
         {t("influencerRegister.fields.selectPlan")}
       </label>
 
@@ -88,7 +93,9 @@ const RegisterPlan = ({ selectedPlan, onPlanSelect, className = "" }) => {
 
               {/* Selection Indicator */}
               <div
-                className={`absolute top-3 right-3 w-5 h-5 rounded-full border-2 transition-all duration-300 flex items-center justify-center ${
+                className={`absolute top-3 w-5 h-5 rounded-full border-2 transition-all duration-300 flex items-center justify-center ${
+                  isRtl ? "left-3" : "right-3"
+                } ${
                   isSelected
                     ? "border-[var(--secondary)] bg-[var(--secondary)]"
                     : "border-gray-300 dark:border-gray-600"
@@ -127,7 +134,7 @@ const RegisterPlan = ({ selectedPlan, onPlanSelect, className = "" }) => {
               </div>
 
               {/* Plan Name */}
-              <h3 className="text-lg md:text-xl font-bold text-[var(--foreground)] font-antonio mb-1">
+              <h3 style={{fontFamily: isRtl ? "var(--font-cairo)" : "var(--font-antonio)"}} className="text-lg md:text-xl font-bold text-[var(--foreground)]  mb-1">
                 {plan.name}
               </h3>
 
@@ -137,14 +144,23 @@ const RegisterPlan = ({ selectedPlan, onPlanSelect, className = "" }) => {
               </p>
 
               {/* Features */}
-              <ul className="flex flex-col gap-2 w-full">
+              <ul
+                className={`flex flex-col gap-2 w-full ${
+                  isRtl ? "items-end" : "items-start"
+                }`}
+              >
                 {plan.features.map((feature, idx) => (
                   <li
                     key={idx}
-                    className="flex items-center gap-2 text-xs md:text-sm text-[var(--foreground)]"
+                    className={`flex items-center gap-2 text-xs md:text-sm text-[var(--foreground)] ${
+                      isRtl ? "flex-row-reverse" : ""
+                    }`}
+                    dir={isRtl ? "rtl" : "ltr"}
                   >
                     <Tick className="w-3.5 h-3.5 flex-shrink-0" />
-                    <span>{feature}</span>
+                    <span className={isRtl ? "text-right" : "text-left"}>
+                      {feature}
+                    </span>
                   </li>
                 ))}
               </ul>
