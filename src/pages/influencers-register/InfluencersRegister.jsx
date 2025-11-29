@@ -2,19 +2,27 @@ import React, { useState } from "react";
 import TextInput from "./TextInput";
 import NumberInput from "./NumberInput";
 import NationalityInput from "./NationalityInput";
+import ResidenceInput from "./ResidenceInput";
+import AdditionalInfoInput from "./AdditionalInfoInput";
+import ContentFieldInput from "./ContentFieldInput";
 
 const InfluencersRegister = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [selectedCountry, setSelectedCountry] = useState(null);
   const [nationality, setNationality] = useState(null);
+  const [residenceCountry, setResidenceCountry] = useState(null);
+  const [residenceCity, setResidenceCity] = useState("");
+  const [followerCount, setFollowerCount] = useState("");
+  const [message, setMessage] = useState("");
+  const [contentFields, setContentFields] = useState([]);
 
   return (
     <section
       data-nav-color="black"
       className="w-full min-h-screen flex flex-col items-center mt-[104px] "
     >
-      <div className="title py-[100px]">
-        <h1 className="lg:text-[75px] 2xl:text-[80px] font-antonio font-[700] text-center text-[var(--foreground)] leading-tight capitalize will-change-transform">
+      <div className="title py:[40px] md:py-[100px]">
+        <h1 className="text-[30px] md:text-[40px] lg:text-[75px] 2xl:text-[80px] font-antonio font-[700] text-center text-[var(--foreground)] leading-tight capitalize will-change-transform">
           Want to be managed by Tikit?
         </h1>
       </div>
@@ -46,7 +54,32 @@ const InfluencersRegister = () => {
               value={nationality}
               onChange={setNationality}
             />
+            <ResidenceInput
+              name="residence"
+              label="Place of Residence"
+              countryPlaceholder="Country"
+              cityPlaceholder="City"
+              country={residenceCountry}
+              city={residenceCity}
+              onCountryChange={setResidenceCountry}
+              onCityChange={setResidenceCity}
+            />
+            <ContentFieldInput
+              name="contentFields"
+              label="Content Fields"
+              selectedFields={contentFields}
+              onChange={setContentFields}
+              maxSelections={5}
+            />
+            <AdditionalInfoInput
+              name="additionalInfo"
+              followerCount={followerCount}
+              onFollowerCountChange={setFollowerCount}
+              message={message}
+              onMessageChange={setMessage}
+            />
           </div>
+          
         </div>
       </div>
     </section>
