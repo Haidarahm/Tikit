@@ -95,7 +95,7 @@ const Hero = () => {
 
   return (
     <section
-      className={`text-[var(--foreground)] relative overflow-hidden h-[50vh] md:h-screen w-full flex flex-col items-center justify-center ${
+      className={`text-[var(--foreground)] mt-[104px] md:mt-2 relative overflow-hidden h-[50vh] md:h-screen w-full flex flex-col items-center justify-center ${
         isRtl ? "font-cairo" : "font-hero-light"
       }`}
       dir={isRtl ? "rtl" : "ltr"}
@@ -124,9 +124,9 @@ const Hero = () => {
         </div>
         <InfiniteScroller
           items={influencersImages}
-          speed={40}
+          speed={45}
           imageWidth={100}
-          imageHeight={100}
+          imageHeight={110}
           gap={35}
         />
         <div className="register-button text-[var(--foreground)] flex justify-center">

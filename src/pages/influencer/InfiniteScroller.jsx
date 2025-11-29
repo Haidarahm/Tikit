@@ -30,10 +30,8 @@ const InfiniteScroller = ({
     
     if (!firstSet) return;
 
-    // Calculate total width of one set
     const totalWidth = (imageWidth + gap) * items.length;
 
-    // Create GSAP animation
     animationRef.current = gsap.to(".scroller-set", {
       x: -totalWidth,
       duration: speed,
@@ -75,7 +73,6 @@ const InfiniteScroller = ({
           gap: `${gap}px`,
         }}
       >
-        {/* Render three sets for seamless looping */}
         {[0, 1, 2].map((setIndex) => (
           <div
             key={setIndex}
@@ -89,27 +86,20 @@ const InfiniteScroller = ({
             {items.map((item, index) => (
               <div
                 key={`${setIndex}-${index}`}
-                className="scroller-item bg-gradient-to-r from-[#6ACBCC] to-[#1C6F6C]"
+                className="scroller-item relative group w-20 md:w-24"
                 style={{
-                  width: `${imageWidth}px`,
-                  height: `${imageHeight}px`,
                   flexShrink: 0,
-                  borderRadius: "50%",
-                  overflow: "hidden",
-                  border: "3px solid var(--foreground, #000)",
-                //   backgroundColor: "var(--background, #fff)",
                 }}
               >
-                <img
-                  src={item.src}
-                  alt={item.alt}
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
-                  }}
-                  loading="lazy"
-                />
+                <div className="relative w-full h-full rounded-full overflow-hidden shadow-lg ring-2 ring-white/20 transition-all duration-300 group-hover:ring-4 group-hover:ring-[#6ACBCC]/50 group-hover:shadow-xl group-hover:shadow-[#6ACBCC]/30">
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#6ACBCC] via-[#4BA9AA] to-[#1C6F6C] opacity-20"></div>
+                  <img
+                    src={item.src}
+                    alt={item.alt}
+                    className="relative w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                    loading="lazy"
+                  />
+                </div>
               </div>
             ))}
           </div>

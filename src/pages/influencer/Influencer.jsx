@@ -317,7 +317,7 @@ export const Influencer = () => {
       />
       <Hero />
       <div className="w-full px-6 mx-auto ">
-        <div className="flex flex-col lg:flex-row gap-10 lg:gap-16">
+        <div className="flex flex-col lg:flex-row gap-4 lg:gap-16">
           <aside className="lg:w-72 hidden md:block xl:w-80 flex-shrink-0">
             <div className="sticky top-32">
               <div className="mb-6 space-y-3">
@@ -374,7 +374,7 @@ export const Influencer = () => {
               )}
             </div>
           </aside>
-          <div className="mobile-swiper-influencers-sections md:hidden w-full mb-8">
+          <div className="mobile-swiper-influencers-sections md:hidden w-full md:mb-8">
             {normalizedSections.length === 0 ? (
               sectionsLoading ? (
                 <div className="text-sm text-center text-[var(--foreground)]/70 py-6">
@@ -517,7 +517,7 @@ export const Influencer = () => {
 
               return (
                 <div className="space-y-6">
-                  <div className="bg-[var(--background)]/80 border border-[var(--foreground)]/10 rounded-2xl p-4 shadow-sm">
+                  <div className="bg-[var(--background)]/80 hidden md:block border border-[var(--foreground)]/10 rounded-2xl p-4 shadow-sm">
                     <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#52C3C5]">
                       {String(activeIndex + 1).padStart(2, "0")} •{" "}
                       {activeSection.label}
