@@ -46,7 +46,7 @@ export const useInfluencersStore = create((set) => ({
     set({ influencersLoading: true, influencersError: null });
     try {
       const response = await getInfluencers(sectionId, {
-        per_page: 3,
+        per_page: 10, // Default value, can be overridden by params
         ...params,
       });
       const items = Array.isArray(response?.data) ? response.data : [];

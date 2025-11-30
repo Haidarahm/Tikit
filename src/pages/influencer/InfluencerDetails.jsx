@@ -149,7 +149,7 @@ export const InfluencerDetails = ({
   return (
     <section
       ref={sectionRef}
-      className={`overflow-hidden w-full min-h-[80vh] flex flex-col lg:flex-row items-center md:gap-4 lg:gap-8 xl:gap-12  ${
+      className={`overflow-hidden justify-between w-full min-h-[80vh] flex flex-col lg:flex-row items-center md:gap-4 lg:gap-8 xl:gap-12  ${
         isRtl ? "font-cairo" : "font-hero-light"
       } ${isReversed ? "lg:flex-row-reverse" : ""}`}
       dir={isRtl ? "rtl" : "ltr"}
