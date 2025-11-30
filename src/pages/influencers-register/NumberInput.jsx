@@ -333,7 +333,7 @@ const NumberInput = ({
           {label}
         </label>
       )}
-      <div className={`flex w-full gap-2 ${isRtl ? "flex-row-reverse" : ""}`}>
+      <div className={`flex w-full gap-2 `}>
         {/* Country Dropdown */}
         <div className="relative" ref={dropdownRef}>
           <button
@@ -341,7 +341,14 @@ const NumberInput = ({
             onClick={() => !disabled && setIsOpen(!isOpen)}
             onKeyDown={handleKeyDown}
             disabled={disabled}
-            className={`flex items-center gap-2 px-3 md:px-4 py-3 md:py-4 rounded-[20px] bg-[#f5f5f5] dark:bg-[var(--container-bg)] text-[var(--foreground)] text-sm md:text-base outline-none border transition-all duration-300 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed min-w-[100px] md:min-w-[120px] ${
+            className={`flex items-center gap-2 px-3 
+              md:px-4 py-3 md:py-4 rounded-[20px]
+               bg-[#f5f5f5] dark:bg-[var(--container-bg)]
+                text-[var(--foreground)] text-sm md:text-base
+                 outline-none border transition-all duration-300
+                  ease-in-out disabled:opacity-50 
+                  disabled:cursor-not-allowed min-w-[100px] 
+                  md:min-w-[120px] ${
               isOpen
                 ? "border-[var(--secondary)] dark:border-[var(--secondary)]"
                 : "border-gray-200 dark:border-gray-700"
@@ -370,7 +377,7 @@ const NumberInput = ({
           {isOpen && (
             <div
               className={`absolute top-full mt-2 w-[280px] md:w-[320px] bg-white dark:bg-[var(--container-bg)] rounded-[16px] shadow-xl border border-gray-200 dark:border-gray-700 z-50 overflow-hidden ${
-                isRtl ? "right-0" : "left-0"
+                isRtl ? "-right-1/2" : "left-0"
               }`}
             >
               {/* Search Input */}

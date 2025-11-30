@@ -75,9 +75,12 @@ const SocialLinksInput = ({
 }) => {
   const { t } = useTranslation();
   const { isRtl } = useI18nLanguage();
-  
+
   // Get translated labels
-  const defaultLabel = t("influencerRegister.fields.socialLinks", "Social Links");
+  const defaultLabel = t(
+    "influencerRegister.fields.socialLinks",
+    "Social Links"
+  );
   const displayLabel = label || defaultLabel;
 
   const addSocialLink = () => {
@@ -197,12 +200,14 @@ const SocialLinkCard = ({
   const { t } = useTranslation();
   const platform = getPlatform(socialLink.platform);
   const PlatformIcon = platform?.icon || FaLink;
-  
+
   // Get translated platform label
   const getPlatformLabel = (platformValue) => {
     if (!platformValue) return `Social Link ${linkIndex + 1}`;
-    return t(`influencerRegister.fields.platforms.${platformValue}`, 
-      platform?.label || `Social Link ${linkIndex + 1}`);
+    return t(
+      `influencerRegister.fields.platforms.${platformValue}`,
+      platform?.label || `Social Link ${linkIndex + 1}`
+    );
   };
 
   return (
@@ -375,11 +380,14 @@ const PlatformDropdown = ({ value, onChange, isRtl }) => {
 
   const selectedPlatform = SOCIAL_PLATFORMS.find((p) => p.value === value);
   const SelectedIcon = selectedPlatform?.icon || FaLink;
-  
+
   // Get translated platform label
   const getPlatformLabel = (platformValue) => {
-    return t(`influencerRegister.fields.platforms.${platformValue}`, 
-      SOCIAL_PLATFORMS.find(p => p.value === platformValue)?.label || platformValue);
+    return t(
+      `influencerRegister.fields.platforms.${platformValue}`,
+      SOCIAL_PLATFORMS.find((p) => p.value === platformValue)?.label ||
+        platformValue
+    );
   };
 
   // Close dropdown when clicking outside
@@ -567,11 +575,13 @@ const PriceTypeDropdown = ({ value, onChange, isRtl }) => {
 
   const selectedType = PRICE_TYPES.find((p) => p.value === value);
   const SelectedIcon = selectedType?.icon || FaImage;
-  
+
   // Get translated price type label
   const getPriceTypeLabel = (typeValue) => {
-    return t(`influencerRegister.fields.priceTypes.${typeValue}`,
-      PRICE_TYPES.find(p => p.value === typeValue)?.label || typeValue);
+    return t(
+      `influencerRegister.fields.priceTypes.${typeValue}`,
+      PRICE_TYPES.find((p) => p.value === typeValue)?.label || typeValue
+    );
   };
 
   // Close dropdown when clicking outside
