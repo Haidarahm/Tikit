@@ -17,6 +17,12 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../../store/I18nLanguageContext.jsx";
 import TikitTitle from "../../../components/TikitTitle.jsx";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "./influencers.css";
 
 const SOCIAL_ICON_MAP = {
   instagram: FaInstagram,
@@ -69,16 +75,7 @@ const normalizeSocialLinks = (links) => {
 const Influencers = () => {
   const navigate = useNavigate();
   const [activeSectionId, setActiveSectionId] = useState(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [itemsPerView, setItemsPerView] = useState(4);
-  const [itemsPerPage, setItemsPerPage] = useState(4); // Pagination items per page
-  const [gapSize, setGapSize] = useState(1.5); // rem units
-  const carouselRef = useRef(null);
-  const [isDragging, setIsDragging] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [currentTranslate, setCurrentTranslate] = useState(0);
-  const [prevTranslate, setPrevTranslate] = useState(0);
-  const animationRef = useRef(null);
+  const [swiperInstance, setSwiperInstance] = useState(null);
 
   const sections = useInfluencersStore((state) => state.sections);
   const sectionsLoading = useInfluencersStore((state) => state.sectionsLoading);
@@ -98,44 +95,6 @@ const Influencers = () => {
   const { t } = useTranslation();
   const { language, isRtl } = useI18nLanguage();
 
-  // Responsive items per view, pagination, and gap size
-  useEffect(() => {
-    const handleResize = () => {
-      const width = window.innerWidth;
-      const newItemsPerView =
-        width >= 1024
-          ? 4 // Laptop
-          : width >= 768
-          ? 3 // iPad
-          : 2; // Mobile
-
-      // Pagination: 4 items per page on laptop, 2 items per page on mobile/tablet
-      const newItemsPerPage = width >= 1024 ? 4 : 2;
-
-      const newGapSize = width >= 768 ? 1.5 : 1; // gap-6 (1.5rem) on desktop, gap-4 (1rem) on mobile
-
-      setItemsPerView((prev) => {
-        if (prev !== newItemsPerView) {
-          return newItemsPerView;
-        }
-        return prev;
-      });
-
-      setItemsPerPage((prev) => {
-        if (prev !== newItemsPerPage) {
-          return newItemsPerPage;
-        }
-        return prev;
-      });
-
-      setGapSize(newGapSize);
-    };
-
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
   useEffect(() => {
     loadSections({ lang: language });
   }, [loadSections, language]);
@@ -143,7 +102,6 @@ const Influencers = () => {
   useEffect(() => {
     clearSection();
     setActiveSectionId(null);
-    setCurrentIndex(0);
   }, [language, clearSection]);
 
   useEffect(() => {
@@ -165,6 +123,10 @@ const Influencers = () => {
     if (influencersBySection[activeSectionId]) {
       if (window.AOS && window.aosInitialized) {
         AOS.refresh();
+      }
+      // Reset Swiper to first slide when section changes
+      if (swiperInstance) {
+        swiperInstance.slideTo(0);
       }
       return;
     }
@@ -211,137 +173,16 @@ const Influencers = () => {
     const nextId = section?.id || section?.slug || section?.key;
     if (!nextId || nextId === activeSectionId) return;
     setActiveSectionId(nextId);
-    setCurrentIndex(0);
-  };
-
-  // Calculate total pages (pagination) - responsive: 4 on laptop, 2 on mobile
-  const totalPages = Math.ceil(influencers.length / itemsPerPage);
-  const maxPageIndex = Math.max(0, totalPages - 1);
-
-  const handlePrev = () => {
-    setCurrentIndex((prev) => Math.max(0, prev - 1));
-  };
-
-  const handleNext = () => {
-    setCurrentIndex((prev) => Math.min(maxPageIndex, prev + 1));
-  };
-
-  // Drag handlers
-  const getPositionX = (e) => {
-    return e.type.includes("mouse") ? e.pageX : e.touches[0].clientX;
-  };
-
-  const handleDragStart = (e) => {
-    setIsDragging(true);
-    setStartX(getPositionX(e));
-    setPrevTranslate(currentTranslate);
-    if (animationRef.current) {
-      cancelAnimationFrame(animationRef.current);
+    if (swiperInstance) {
+      swiperInstance.slideTo(0);
     }
   };
-
-  const handleDragMove = (e) => {
-    if (!isDragging || !carouselRef.current) return;
-
-    const currentPosition = getPositionX(e);
-    const diff = currentPosition - startX;
-    const newTranslate = prevTranslate + diff;
-
-    // Calculate boundaries
-    const containerWidth = carouselRef.current.offsetWidth;
-    const itemWidth = containerWidth / itemsPerView;
-    const maxTranslate = 0;
-    const totalItemsWidth = influencers.length * itemWidth;
-    const visibleWidth = itemsPerView * itemWidth;
-    const minTranslate = -(totalItemsWidth - visibleWidth);
-
-    // Apply boundaries with elastic effect
-    let boundedTranslate = newTranslate;
-    if (newTranslate > maxTranslate) {
-      boundedTranslate = maxTranslate + (newTranslate - maxTranslate) * 0.3;
-    } else if (newTranslate < minTranslate) {
-      boundedTranslate = minTranslate + (newTranslate - minTranslate) * 0.3;
-    }
-
-    setCurrentTranslate(boundedTranslate);
-  };
-
-  const handleDragEnd = () => {
-    if (!isDragging) return;
-    setIsDragging(false);
-
-    if (!carouselRef.current) return;
-
-    const containerWidth = carouselRef.current.offsetWidth;
-    const itemWidth = containerWidth / itemsPerView;
-    const pageWidth = itemWidth * itemsPerPage; // Responsive: 4 on laptop, 2 on mobile
-    const movedBy = currentTranslate - prevTranslate;
-
-    // Determine if we should move to next/prev page
-    if (movedBy < -pageWidth / 3 && currentIndex < maxPageIndex) {
-      setCurrentIndex((prev) => prev + 1);
-    } else if (movedBy > pageWidth / 3 && currentIndex > 0) {
-      setCurrentIndex((prev) => prev - 1);
-    } else {
-      // Snap back to current position
-      const targetTranslate = -currentIndex * itemsPerPage * itemWidth;
-      setCurrentTranslate(targetTranslate);
-      setPrevTranslate(targetTranslate);
-    }
-  };
-
-  const handleMouseDown = (e) => {
-    e.preventDefault();
-    handleDragStart(e);
-  };
-
-  const handleTouchStart = (e) => {
-    handleDragStart(e);
-  };
-
-  const handleMouseMove = (e) => {
-    handleDragMove(e);
-  };
-
-  const handleTouchMove = (e) => {
-    handleDragMove(e);
-  };
-
-  const handleMouseUp = () => {
-    handleDragEnd();
-  };
-
-  const handleTouchEnd = () => {
-    handleDragEnd();
-  };
-
-  const handleMouseLeave = () => {
-    if (isDragging) {
-      handleDragEnd();
-    }
-  };
-
-  useEffect(() => {
-    if (!isDragging && carouselRef.current) {
-      const containerWidth = carouselRef.current.offsetWidth;
-      const itemWidth = containerWidth / itemsPerView;
-      // Move by itemsPerPage items per page (responsive: 4 on laptop, 2 on mobile)
-      const targetTranslate = -currentIndex * itemsPerPage * itemWidth;
-      setPrevTranslate(targetTranslate);
-      setCurrentTranslate(targetTranslate);
-    }
-  }, [currentIndex, itemsPerView, itemsPerPage, isDragging]);
-
-  // Reset index when itemsPerView or itemsPerPage changes
-  useEffect(() => {
-    setCurrentIndex(0);
-  }, [itemsPerView, itemsPerPage]);
 
   const arrowIcon = isRtl ? "←" : "→";
 
   return (
     <section
-      className="influencers-scope min-h-[980px] py-8 px-4 relative overflow-hidden bg-[var(--background)]"
+      className="influencers-scope influencers-home min-h-[880px] py-8 px-4 relative overflow-hidden bg-[var(--background)]"
       dir={isRtl ? "rtl" : "ltr"}
     >
       {/* Background decoration */}
@@ -424,159 +265,127 @@ const Influencers = () => {
               {t("home.influencers.noInfluencers")}
             </div>
           ) : (
-            <>
-              {/* Navigation Arrows */}
-              {influencers.length > itemsPerPage && (
+            <div className="relative">
+              <Swiper
+                onSwiper={setSwiperInstance}
+                modules={[Navigation, Pagination]}
+                spaceBetween={40}
+                slidesPerView={2}
+                slidesPerGroup={2}
+                // navigation={{
+                //   prevEl: ".influencers-swiper-prev",
+                //   nextEl: ".influencers-swiper-next",
+                // }}
+                pagination={{
+                  clickable: true,
+                  dynamicBullets: true,
+                  renderBullet: (index, className) => {
+                    return `<span class="${className} influencers-pagination-bullet"></span>`;
+                  },
+                }}
+                breakpoints={{
+                  0: {
+                    slidesPerView: 2,
+                    slidesPerGroup: 2,
+                    spaceBetween: 10,
+                  },
+                  768: {
+                    slidesPerView: 3,
+                    slidesPerGroup: 3,
+                    spaceBetween: 30,
+                  },
+                  1024: {
+                    slidesPerView: 4,
+                    slidesPerGroup: 4,
+                    spaceBetween: 40,
+                  },
+                }}
+                dir={isRtl ? "rtl" : "ltr"}
+                className="influencers-swiper"
+              >
+                {influencers.map((inf, idx) => (
+                  <SwiperSlide key={inf.id}>
+                    <div className="flex flex-col items-center justify-center text-center h-full">
+                      {/* Influencer Image */}
+                      <div className="relative w-28 h-28 sm:w-40 sm:h-40 md:w-48 md:h-48 mb-3 sm:mb-4 rounded-full overflow-hidden bg-gradient-to-br from-[#52C3C5]/20 to-[#5269C5]/20 shadow-xl transition-all duration-500 overflow- hover:shadow-2xl hover:shadow-[#52C3C5]/30 mx-auto">
+                        <img
+                          src={inf.image}
+                          alt={inf.name}
+                          className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                          loading="lazy"
+                          draggable="false"
+                        />
+                      </div>
+
+                      {/* Name */}
+                      <h3 className="text-sm sm:text-base md:text-xl font-bold mb-1 sm:mb-2 text-[var(--foreground)] transition-colors duration-300 hover:text-[#52C3C5] px-2">
+                        {inf.name}
+                      </h3>
+
+                      {/* Primary Subtitle */}
+                      {inf.primarySubtitle && (
+                        <p className="text-[10px] sm:text-xs md:text-sm text-[#52C3C5] font-medium mb-1 px-2">
+                          {inf.primarySubtitle}
+                        </p>
+                      )}
+
+                      {/* Secondary Subtitle */}
+                      {inf.secondarySubtitle && (
+                        <p className="text-[9px] sm:text-[10px] md:text-xs text-[var(--foreground)]/60 mb-2 sm:mb-4 px-2">
+                          {inf.secondarySubtitle}
+                        </p>
+                      )}
+
+                      {/* Social Links */}
+                      <div className="flex gap-1 sm:gap-1.5 md:gap-2 justify-center flex-wrap">
+                        {inf.socialLinks?.map((social, socialIdx) => {
+                          const Icon =
+                            SOCIAL_ICON_MAP[social.platform] || FaInstagram;
+                          return (
+                            <a
+                              key={`${inf.id}-${social.platform}`}
+                              href={social.href}
+                              target="_blank"
+                              rel="noreferrer noopener"
+                              aria-label={social.platform}
+                              className="flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 rounded-full bg-gradient-to-br from-[#52C3C5] to-[#5269C5] text-white transition-all duration-500 hover:scale-125 hover:-rotate-12 shadow-lg hover:shadow-2xl hover:shadow-[#52C3C5]/50"
+                              style={{
+                                transitionDelay: `${socialIdx * 50}ms`,
+                              }}
+                            >
+                              <Icon className="text-[10px] sm:text-xs md:text-base" />
+                            </a>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+
+              {/* Custom Navigation Arrows */}
+              {/* {influencers.length > 4 && (
                 <>
                   <button
-                    onClick={handlePrev}
-                    disabled={currentIndex === 0}
-                    className={`absolute left-0 md:left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white dark:bg-gray-800 shadow-lg flex items-center justify-center transition-all duration-300 ${
-                      currentIndex === 0
-                        ? "opacity-30 cursor-not-allowed"
-                        : "hover:bg-[#52C3C5] hover:text-white hover:scale-110"
-                    }`}
+                    className="influencers-swiper-prev absolute left-0 md:left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white dark:bg-gray-800 shadow-lg flex items-center justify-center transition-all duration-300 hover:bg-[#52C3C5] hover:text-white hover:scale-110"
                     aria-label="Previous"
                   >
                     <FaChevronLeft className="text-lg md:text-xl" />
                   </button>
 
                   <button
-                    onClick={handleNext}
-                    disabled={currentIndex >= maxPageIndex}
-                    className={`absolute right-0 md:right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white dark:bg-gray-800 shadow-lg flex items-center justify-center transition-all duration-300 ${
-                      currentIndex >= maxPageIndex
-                        ? "opacity-30 cursor-not-allowed"
-                        : "hover:bg-[#52C3C5] hover:text-white hover:scale-110"
-                    }`}
+                    className="influencers-swiper-next absolute right-0 md:right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white dark:bg-gray-800 shadow-lg flex items-center justify-center transition-all duration-300 hover:bg-[#52C3C5] hover:text-white hover:scale-110"
                     aria-label="Next"
                   >
                     <FaChevronRight className="text-lg md:text-xl" />
                   </button>
                 </>
-              )}
-
-              {/* Carousel */}
-              <div
-                ref={carouselRef}
-                onMouseDown={handleMouseDown}
-                onMouseMove={handleMouseMove}
-                onMouseUp={handleMouseUp}
-                onMouseLeave={handleMouseLeave}
-                onTouchStart={handleTouchStart}
-                onTouchMove={handleTouchMove}
-                onTouchEnd={handleTouchEnd}
-                className="overflow-hidden cursor-grab active:cursor-grabbing px-8 md:px-12"
-                style={{ userSelect: "none" }}
-              >
-                <div
-                  className={`flex gap-10  ${
-                    isDragging
-                      ? ""
-                      : "transition-transform duration-500 ease-out"
-                  }`}
-                  style={{
-                    transform: `translateX(${currentTranslate}px)`,
-                  }}
-                >
-                  {influencers.map((inf, idx) => {
-                    const itemWidth = `calc((100% - ${
-                      (itemsPerView - 1) * gapSize
-                    }rem) / ${itemsPerView})`;
-
-                    return (
-                      <div
-                        key={inf.id}
-                        data-aos="fade-up"
-                        data-aos-duration="600"
-                        data-aos-delay={idx * 100}
-                        className="flex flex-col items-center text-center flex-shrink-0"
-                        style={{
-                          width: itemWidth,
-                          minWidth: "0",
-                          flexBasis: itemWidth,
-                        }}
-                      >
-                        {/* Influencer Image */}
-                        <div className="relative w-28 h-28 sm:w-40 sm:h-40 md:w-48 md:h-48 mb-3 sm:mb-4 rounded-full overflow-hidden bg-gradient-to-br from-[#52C3C5]/20 to-[#5269C5]/20 shadow-xl transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-[#52C3C5]/30 mx-auto">
-                          <img
-                            src={inf.image}
-                            alt={inf.name}
-                            className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
-                            loading="lazy"
-                            draggable="false"
-                          />
-                        </div>
-
-                        {/* Name */}
-                        <h3 className="text-sm sm:text-base md:text-xl font-bold mb-1 sm:mb-2 text-[var(--foreground)] transition-colors duration-300 hover:text-[#52C3C5] px-2">
-                          {inf.name}
-                        </h3>
-
-                        {/* Primary Subtitle */}
-                        {inf.primarySubtitle && (
-                          <p className="text-[10px] sm:text-xs md:text-sm text-[#52C3C5] font-medium mb-1 px-2">
-                            {inf.primarySubtitle}
-                          </p>
-                        )}
-
-                        {/* Secondary Subtitle */}
-                        {inf.secondarySubtitle && (
-                          <p className="text-[9px] sm:text-[10px] md:text-xs text-[var(--foreground)]/60 mb-2 sm:mb-4 px-2">
-                            {inf.secondarySubtitle}
-                          </p>
-                        )}
-
-                        {/* Social Links */}
-                        <div className="flex gap-1 sm:gap-1.5 md:gap-2 justify-center flex-wrap">
-                          {inf.socialLinks?.map((social, socialIdx) => {
-                            const Icon =
-                              SOCIAL_ICON_MAP[social.platform] || FaInstagram;
-                            return (
-                              <a
-                                key={`${inf.id}-${social.platform}`}
-                                href={social.href}
-                                target="_blank"
-                                rel="noreferrer noopener"
-                                aria-label={social.platform}
-                                className="flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 rounded-full bg-gradient-to-br from-[#52C3C5] to-[#5269C5] text-white transition-all duration-500 hover:scale-125 hover:-rotate-12 shadow-lg hover:shadow-2xl hover:shadow-[#52C3C5]/50"
-                                style={{
-                                  transitionDelay: `${socialIdx * 50}ms`,
-                                }}
-                              >
-                                <Icon className="text-[10px] sm:text-xs md:text-base" />
-                              </a>
-                            );
-                          })}
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* Pagination Dots */}
-              {influencers.length > itemsPerPage && totalPages > 1 && (
-                <div className="flex justify-center gap-2 mt-8">
-                  {Array.from({ length: totalPages }).map((_, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => setCurrentIndex(idx)}
-                      className={`h-2 rounded-full transition-all duration-300 ${
-                        idx === currentIndex
-                          ? "bg-[#52C3C5] w-8"
-                          : "bg-[var(--foreground)]/20 hover:bg-[#52C3C5]/50 w-2"
-                      }`}
-                      aria-label={`Go to page ${idx + 1}`}
-                    />
-                  ))}
-                </div>
-              )}
-            </>
+              )} */}
+            </div>
           )}
         </div>
 
-        <div className="mt-12 flex justify-center">
+        <div className=" flex justify-center">
           <button
             type="button"
             onClick={() => navigate("/influencer")}
