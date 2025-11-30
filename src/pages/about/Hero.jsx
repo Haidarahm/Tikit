@@ -118,7 +118,6 @@ const Hero = () => {
   return (
     <div
       ref={containerRef}
-      data-scroll-section
       className={`flex flex-col ${isRtl ? "font-cairo" : "font-hero-light"}`}
       dir={isRtl ? "rtl" : "ltr"}
     >
@@ -152,7 +151,7 @@ const Hero = () => {
         <div
           ref={sectionTitleRef}
           className="title  text-center md:text-start flex-nowrap text-nowrap font-antonio font-bold mt-4 md:mt-0 text-[20px] md:text-[40px] will-change-transform translate-y-full"
-          >
+        >
           {t("about.hero.sectionTitle")}
         </div>
         <div

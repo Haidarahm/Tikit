@@ -1,6 +1,4 @@
-import React, { useEffect, useRef } from "react";
-import LocomotiveScroll from "locomotive-scroll";
-import "locomotive-scroll/dist/locomotive-scroll.css";
+import React from "react";
 import Hero from "./Hero";
 import "./about.css";
 import AnimatedText from "./AnimatedText";
@@ -13,45 +11,8 @@ import Footer from "../../components/Footer";
 import SEOHead from "../../components/SEOHead";
 import ContactUs from "../Home/ContactUs";
 const AboutUs = () => {
-  const containerRef = useRef(null);
-
-  useEffect(() => {
-    if (!containerRef.current) return;
-
-    // Temporarily disable global scroll-snap which breaks Locomotive
-    const htmlEl = document.documentElement;
-    const bodyEl = document.body;
-    const prevHtmlSnap = htmlEl.style.scrollSnapType;
-    const prevBodySnap = bodyEl.style.scrollSnapType;
-    htmlEl.style.scrollSnapType = "none";
-    bodyEl.style.scrollSnapType = "none";
-
-    const scroll = new LocomotiveScroll({
-      el: containerRef.current,
-      smooth: true,
-      smartphone: { smooth: true },
-      tablet: { smooth: true },
-    });
-
-    return () => {
-      try {
-        scroll.destroy();
-        // eslint-disable-next-line no-unused-vars, no-empty
-      } catch (_) {}
-      htmlEl.classList.remove("has-scroll-smooth", "has-scroll-init");
-      document.body.style.removeProperty("overflow");
-      // Restore scroll-snap
-      htmlEl.style.scrollSnapType = prevHtmlSnap;
-      bodyEl.style.scrollSnapType = prevBodySnap;
-    };
-  }, []);
-
   return (
-    <div
-      ref={containerRef}
-      data-scroll-container
-      className="about-us-section w-full min-h-screen font-hero-light"
-    >
+    <div className="about-us-section w-full min-h-screen font-hero-light">
       <SEOHead
         title="About Us"
         description="Learn about Tikit Agency - a full-service marketing agency driven by insight and creativity. Discover our team, values, and approach to delivering exceptional results."

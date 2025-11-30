@@ -1,17 +1,19 @@
 import React, { useEffect, useRef } from "react";
-import background from "../../assets/backgrounds/Team.png";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useTheme } from "../../store/ThemeContext";
 import { useTeamStore } from "../../store/teamStore";
 import {
   FaTwitter,
   FaYoutube,
   FaSnapchat,
-  FaFacebookF,
   FaPinterest,
   FaLinkedin,
   FaInstagram,
   FaGlobe,
 } from "react-icons/fa";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const TYPE_STYLES = {
   default: {
@@ -68,11 +70,9 @@ const Team = () => {
   const { theme } = useTheme();
   const { teamMembers, loading, error, loadTeamMembers } = useTeamStore();
 
-  const containerRef = useRef(null);
-  const rightRef = useRef(null);
+  const sectionRef = useRef(null);
+  const triggerRef = useRef(null);
   const trackRef = useRef(null);
-  const sectionHeightRef = useRef(0);
-  const horizontalDistanceRef = useRef(0);
 
   useEffect(() => {
     loadTeamMembers();
@@ -87,86 +87,98 @@ const Team = () => {
     pinterest: <FaPinterest />,
     website: <FaGlobe />,
   };
+
+  // GSAP horizontal scroll with pin
   useEffect(() => {
-    const container = containerRef.current;
-    const right = rightRef.current;
+    if (!teamMembers || teamMembers.length === 0) return;
+    if (!sectionRef.current || !triggerRef.current || !trackRef.current) return;
+
+    // Wait for images to load before calculating dimensions
     const track = trackRef.current;
-    if (!container || !right || !track) return;
+    const imgs = Array.from(track.querySelectorAll("img"));
 
-  
-    const compute = () => {
-      const rightWidth = right.clientWidth;
+    const initScrollTrigger = () => {
       const trackWidth = track.scrollWidth;
-      const paddingLeftPx = parseFloat(
-        window.getComputedStyle(right).paddingLeft || "0"
-      );
-      const effectiveViewport = Math.max(1, rightWidth - paddingLeftPx);
-      const horizontalDistance = Math.max(0, trackWidth - effectiveViewport);
-      horizontalDistanceRef.current = horizontalDistance;
+      const viewportWidth = window.innerWidth;
+      const scrollDistance = trackWidth - viewportWidth * 0.7; // Account for left section (30%)
 
-      const viewportH = window.innerHeight;
-      sectionHeightRef.current = Math.ceil(viewportH + horizontalDistance + 16);
-      container.style.minHeight = `${sectionHeightRef.current}px`;
+      const ctx = gsap.context(() => {
+        gsap.to(track, {
+          x: -scrollDistance,
+          ease: "none",
+          scrollTrigger: {
+            trigger: triggerRef.current,
+            start: "top top",
+            end: () => `+=${scrollDistance}`,
+            pin: true,
+            scrub: 1,
+            anticipatePin: 1,
+            invalidateOnRefresh: true,
+          },
+        });
+      }, sectionRef);
 
-      // helps reflow sticky behavior on resize
-      window.dispatchEvent(new Event("resize"));
+      return ctx;
     };
 
-    let rafId = null;
-    let lastTranslate = 0;
+    let ctx;
 
-    const loop = () => {
-      const rect = container.getBoundingClientRect();
-      const totalScroll = Math.max(
-        1,
-        sectionHeightRef.current - window.innerHeight
-      );
-      const raw = -rect.top / totalScroll;
-      const progress = Math.min(1, Math.max(0, raw));
-
-      let clamped;
-      if (progress <= 0) {
-        clamped = 0;
-        lastTranslate = 0;
-      } else if (progress >= 1) {
-        clamped = -horizontalDistanceRef.current;
-        lastTranslate = clamped;
-      } else {
-        const targetTranslate = -progress * horizontalDistanceRef.current;
-        const eased = lastTranslate + (targetTranslate - lastTranslate) * 0.2;
-        lastTranslate = eased;
-        clamped = Math.max(-horizontalDistanceRef.current, Math.min(0, eased));
-      }
-
-      track.style.transform = `translate3d(${clamped}px, 0, 0)`;
-      rafId = requestAnimationFrame(loop);
-    };
-
-    const preloadImages = async () => {
-      const imgs = Array.from(track.querySelectorAll("img"));
-      await Promise.all(
-        imgs.map(
-          (img) =>
-            new Promise((resolve) => {
-              if (img.complete) return resolve();
-              img.addEventListener("load", resolve, { once: true });
-              img.addEventListener("error", resolve, { once: true });
-            })
-        )
-      );
-    };
-
-    preloadImages().then(() => {
-      compute();
-      if (!rafId) rafId = requestAnimationFrame(loop);
+    // Preload images then init
+    Promise.all(
+      imgs.map(
+        (img) =>
+          new Promise((resolve) => {
+            if (img.complete) return resolve();
+            img.addEventListener("load", resolve, { once: true });
+            img.addEventListener("error", resolve, { once: true });
+          })
+      )
+    ).then(() => {
+      ctx = initScrollTrigger();
     });
 
-    window.addEventListener("resize", compute, { passive: true });
+    // Handle resize
+    const handleResize = () => {
+      ScrollTrigger.refresh();
+    };
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      if (rafId) cancelAnimationFrame(rafId);
-      window.removeEventListener("resize", compute);
+      if (ctx) ctx.revert();
+      window.removeEventListener("resize", handleResize);
     };
+  }, [teamMembers]);
+
+  // GSAP animations for mobile cards
+  useEffect(() => {
+    if (!teamMembers || teamMembers.length === 0) return;
+
+    const mobileCards = document.querySelectorAll(".mobile-team-card");
+    if (mobileCards.length === 0) return;
+
+    const ctx = gsap.context(() => {
+      mobileCards.forEach((card, index) => {
+        gsap.set(card, {
+          scaleX: 0,
+          transformOrigin: "left center",
+        });
+
+        ScrollTrigger.create({
+          trigger: card,
+          start: "top 80%",
+          onEnter: () => {
+            gsap.to(card, {
+              scaleX: 1,
+              duration: 0.8,
+              delay: index * 0.15,
+              ease: "power2.inOut",
+            });
+          },
+        });
+      });
+    });
+
+    return () => ctx.revert();
   }, [teamMembers]);
 
   if (loading) {
@@ -195,43 +207,37 @@ const Team = () => {
 
   return (
     <div
-      ref={containerRef}
+      ref={sectionRef}
       dir="ltr"
-      data-scroll-section
       id="team-section"
-      className="relative overflow-visible md:overflow-hidden mt-[50px] text-white font-hero-light"
+      className="relative overflow-hidden mt-[50px] text-white font-hero-light"
     >
       {/* Desktop Horizontal Scroll */}
       <div
-        className="hidden md:flex flex-col md:flex-row relative md:h-[100vh]"
-        data-scroll
-        data-scroll-sticky
-        data-scroll-target="#team-section"
+        ref={triggerRef}
+        className="hidden md:flex flex-row relative h-screen"
       >
+        {/* Fixed Left Title Section */}
         <div
           className={`${
             theme === "light" ? "light" : "dark"
-          } left-section  z-20 md:z-50 md:absolute md:left-0 md:top-0 w-full md:w-[30%] md:h-full sticky top-0 flex items-center px-6 md:px-[50px] py-6 md:py-0 text-[28px] sm:text-[40px] md:text-[64px] bg-cover bg-center bg-no-repeat`}
+          } left-section z-50 absolute left-0 top-0 w-[30%] h-full flex items-center px-6 md:px-[50px] py-6 md:py-0 text-[28px] sm:text-[40px] md:text-[64px] bg-cover bg-center bg-no-repeat`}
           style={{
             backgroundColor: theme === "light" ? "#f7f9fa" : "#000",
           }}
         >
           <h1 className="font-antonio text-[var(--foreground)] font-bold md:text-[95px] leading-[1.1]">
-            Our <span className=" tikit-gradient"> creative team</span>
+            Our <span className="tikit-gradient">creative team</span>
           </h1>
         </div>
 
-        <div
-          ref={rightRef}
-          className="relative z-0 flex flex-col md:flex-row flex-1 overflow-visible md:overflow-hidden h-auto md:h-screen md:pl-[30%] gap-4 md:gap-0 w-full"
-        >
+        {/* Horizontal Scrolling Track */}
+        <div className="relative z-0 flex flex-row flex-1 h-screen pl-[30%] w-full">
           <div
             ref={trackRef}
-            className="flex flex-col md:flex-row items-center gap-4 md:gap-6 will-change-transform py-0 w-full pr-4"
+            className="flex flex-row items-center gap-6 will-change-transform py-0 pr-[30vw]"
           >
-            <div
-              className={`relative  w-[20px]  md:w-[30px] h-[220px] sm:h-[320px] md:h-[650px]  shrink-0 overflow-hidden `}
-            ></div>
+            <div className="relative w-[30px] h-[650px] shrink-0 overflow-hidden"></div>
             {teamMembers.map((member, index) => {
               const typeKey = member.type?.toLowerCase?.();
               const styles = TYPE_STYLES[typeKey] || TYPE_STYLES.default;
@@ -239,7 +245,7 @@ const Team = () => {
               return (
                 <div
                   key={member.id || index}
-                  className={`relative group flex flex-col justify-end rounded-[10px] transition-all duration-500 w-full md:w-[450px] h-[220px] sm:h-[320px] md:h-[650px]  shrink-0 overflow-hidden border border-white/20 bg-gradient-to-br ${styles.gradient} backdrop-blur-xl shadow-[0_0_25px_rgba(255,255,255,0.12)] hover:shadow-[0_0_55px_rgba(255,255,255,0.25)]`}
+                  className={`relative group flex flex-col justify-end rounded-[10px] transition-all duration-500 w-[450px] h-[650px] shrink-0 overflow-hidden border border-white/20 bg-gradient-to-br ${styles.gradient} backdrop-blur-xl shadow-[0_0_25px_rgba(255,255,255,0.12)] hover:shadow-[0_0_55px_rgba(255,255,255,0.25)]`}
                 >
                   {/* Image */}
                   <div className="absolute inset-0">
@@ -305,9 +311,7 @@ const Team = () => {
                 </div>
               );
             })}
-            <div
-              className={`relative   w-full md:w-[450px] h-[220px] sm:h-[320px] md:h-[650px]  shrink-0 overflow-hidden `}
-            ></div>
+            <div className="relative w-[450px] h-[650px] shrink-0 overflow-hidden"></div>
           </div>
         </div>
       </div>
@@ -328,13 +332,7 @@ const Team = () => {
             return (
               <div
                 key={member.id ? `mobile-${member.id}` : `mobile-${index}`}
-                className={`relative w-full h-[320px] rounded-[20px] overflow-hidden shadow-lg loco-reveal-card border border-white/10 bg-gradient-to-br ${styles.gradient} backdrop-blur`}
-                data-scroll
-                data-scroll-class="is-inview"
-                data-scroll-repeat
-                style={{
-                  transitionDelay: `${index * 150}ms`,
-                }}
+                className={`mobile-team-card relative w-full h-[320px] rounded-[20px] overflow-hidden shadow-lg loco-reveal-card border border-white/10 bg-gradient-to-br ${styles.gradient} backdrop-blur`}
               >
                 <img
                   src={member.image}

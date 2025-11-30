@@ -253,7 +253,6 @@ const ContactUs = memo(({ className = "" }) => {
   // "bg-[#F5F7FB] text-[var(--foreground)] border border-black/5"
   return (
     <div
-      data-scroll-section
       className={`relative  my-5 md:my-10 gap-3.5  overflow-hidden text-[var(--foreground)] ${
         isRtl ? "font-cairo" : "font-hero-light"
       } rounded-[25px] flex flex-col mx-auto py-[40px] md:py-[60px] px-[40px] md:px-[50px]  w-[95vw]   dark:bg-black ${className}`}
@@ -264,7 +263,10 @@ const ContactUs = memo(({ className = "" }) => {
           <h3 className="subtitle text-center md:text-start text-[16px] md:text-[50px]">
             {t("home.contactUs.subtitle")}
           </h3>
-          <TikitTitle2 title={t("home.contactUs.title")} mainWord={t("home.contactUs.mainWord")} />
+          <TikitTitle2
+            title={t("home.contactUs.title")}
+            mainWord={t("home.contactUs.mainWord")}
+          />
 
           <p className="description  hidden md:block text-[16px] md:text-[24px] font-light w-full">
             {t("home.contactUs.description")} <br className="hidden md:block" />{" "}
