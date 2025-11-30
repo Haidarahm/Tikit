@@ -1,8 +1,10 @@
 import React from "react";
+import { useI18nLanguage } from "../store/I18nLanguageContext";
 
 const TikitTitle2 = ({ title, className, mainWord }) => {
+  const { isRtl } = useI18nLanguage();
   return (
-    <h1 className={`${className} capitalize tikit-title`}>
+    <h1 style={{fontFamily: isRtl ? "Cairo" : "Antonio"}} className={`${className} capitalize tikit-title`}>
       {title}
       {mainWord ? (
         <>

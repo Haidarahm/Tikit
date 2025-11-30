@@ -184,7 +184,7 @@ const Strategy = () => {
             <div className="p-4 md:px-4 md:py-8 relative z-10">
               <div className="card-title text-[22px] font-antonio text-[var(--foreground)] sm:text-[28px] md:text-[36px] font-semibold mb-2 loco-text-up">
                 <TickWhite
-                  color={theme === "light" ? "#52C3C5" : "#ffffff"}
+                  color={theme === "light" ? "#ffffff" : "#ffffff"}
                   className=" w-[60px] md:w-[60px] inline-block h-[50x] px-4 md:px-2 md:h-[60px]"
                 />
                 {card.title}

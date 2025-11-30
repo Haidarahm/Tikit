@@ -3,6 +3,8 @@ import FloatingInput from "../../components/ui/FloatingInput";
 import LogoLoop from "../../components/LogoLoop";
 import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
+import { useContactStore } from "../../store/contactStore";
+import { useToastStore } from "../../store/toastStore";
 import b1 from "../../assets/brands/1.svg";
 import b2 from "../../assets/brands/2.svg";
 import b3 from "../../assets/brands/3.svg";
@@ -196,6 +198,14 @@ const ContactUs = memo(({ className = "" }) => {
     { platform: "instagram", link: "" },
   ]);
   const [removingIndex, setRemovingIndex] = useState(null);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    subject: "",
+    message: "",
+  });
+  const { sendContactEmail, loading } = useContactStore();
 
   const handleSlideClick = (slideNumber) => {
     setIsSecondSlide(slideNumber === 2);
@@ -225,6 +235,58 @@ const ContactUs = memo(({ className = "" }) => {
     const updated = [...socialLinks];
     updated[index].link = link;
     setSocialLinks(updated);
+  };
+
+  const handleInputChange = (field, value) => {
+    setFormData((prev) => ({ ...prev, [field]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e?.preventDefault();
+
+    // Basic validation
+    if (!formData.email || !formData.email.trim()) {
+      useToastStore
+        .getState()
+        .addToast("Please enter your email address", "error");
+      return;
+    }
+
+    // For influencer form, include social links in message
+    let messageToSend = formData.message;
+    if (isSecondSlide && socialLinks.length > 0) {
+      const socialLinksText = socialLinks
+        .map((social) => `${social.platform}: ${social.link}`)
+        .join("\n");
+      messageToSend = messageToSend
+        ? `${messageToSend}\n\nSocial Links:\n${socialLinksText}`
+        : `Social Links:\n${socialLinksText}`;
+    }
+
+    const emailData = {
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      subject: isSecondSlide
+        ? "Influencer Registration"
+        : formData.subject || "Contact Form",
+      message:
+        messageToSend ||
+        (isSecondSlide ? "Influencer registration request" : ""),
+    };
+
+    const success = await sendContactEmail(emailData);
+    if (success) {
+      // Reset form on success
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        subject: "",
+        message: "",
+      });
+      setSocialLinks([{ platform: "instagram", link: "" }]);
+    }
   };
 
   const { theme } = useTheme();
@@ -273,7 +335,7 @@ const ContactUs = memo(({ className = "" }) => {
             {t("home.contactUs.description2")}
           </p>
         </div>
-        <div className="action w-full md:w-[45%] gap-[20px] md:gap-0 flex-col flex justify-between">
+        <div className="action w-full md:w-[45%] gap-[20px] md:gap-4 flex-col flex justify-between">
           <div className="title text-center font-light md:font-medium md:text-start text-[20px] md:text-[24px]">
             {t("home.contactUs.helpText")}
           </div>
@@ -318,17 +380,29 @@ const ContactUs = memo(({ className = "" }) => {
               </div>
             </div>
           </div>
-          <div className="inputs-wrapper flex flex-col gap-3 mt-3">
+          <form
+            onSubmit={handleSubmit}
+            className="inputs-wrapper flex flex-col gap-4 mt-3"
+          >
             <div className="inputs flex justify-between gap-[20px]">
               <FloatingInput
                 id="name"
                 label={t("home.contactUs.name")}
                 containerClassName="flex-1 hidden md:block"
+                inputProps={{
+                  value: formData.name,
+                  onChange: (e) => handleInputChange("name", e.target.value),
+                }}
               />
               <FloatingInput
                 id="email"
                 label={t("home.contactUs.email")}
                 containerClassName="flex-1"
+                inputProps={{
+                  value: formData.email,
+                  onChange: (e) => handleInputChange("email", e.target.value),
+                  type: "email",
+                }}
               />
             </div>
 
@@ -337,6 +411,10 @@ const ContactUs = memo(({ className = "" }) => {
               label={t("contact.action.form.phone")}
               type="tel"
               containerClassName="w-full"
+              inputProps={{
+                value: formData.phone,
+                onChange: (e) => handleInputChange("phone", e.target.value),
+              }}
             />
 
             {!isSecondSlide ? (
@@ -345,11 +423,20 @@ const ContactUs = memo(({ className = "" }) => {
                   id="subject"
                   label={t("contact.action.form.subject")}
                   containerClassName="w-full"
+                  inputProps={{
+                    value: formData.subject,
+                    onChange: (e) =>
+                      handleInputChange("subject", e.target.value),
+                  }}
                 />
                 <div className="relative">
                   <textarea
                     id="message"
                     rows={3}
+                    value={formData.message}
+                    onChange={(e) =>
+                      handleInputChange("message", e.target.value)
+                    }
                     className="w-full px-3 py-2 bg-transparent border border-[var(--foreground)]/40 rounded-lg text-[var(--foreground)] placeholder-transparent focus:border-[var(--foreground)] focus:outline-none peer resize-y min-h-[80px] text-sm"
                     placeholder={t("contact.action.form.message")}
                   />
@@ -394,10 +481,39 @@ const ContactUs = memo(({ className = "" }) => {
                 </button>
               </>
             )}
-          </div>
-          <button className="px-5 shadow-xl shadow-[#000]/15 h-12 md:h-14 cursor-pointer relative mt-3 rounded-full group  font-medium bg-transparent text-[var(--secondary)] border border-[var(--secondary)] flex items-center justify-center transition-all hover:scale-105 overflow-hidden">
+          </form>
+          <button
+            type="button"
+            onClick={handleSubmit}
+            disabled={loading}
+            className={`px-5 shadow-xl shadow-[#000]/15 h-12 md:h-14 cursor-pointer relative mt-3 rounded-full group font-medium bg-transparent text-[var(--secondary)] border border-[var(--secondary)] flex items-center justify-center transition-all hover:scale-105 overflow-hidden ${
+              loading ? "opacity-50 cursor-not-allowed" : ""
+            }`}
+          >
             <span className="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out rounded-full transform translate-y-0 bg-[var(--secondary)]  group-hover:h-full opacity-90"></span>
-            <span className="relative uppercase group-hover:text-[var(--background)]  text-sm md:text-base font-semibold">
+            <span className="relative uppercase group-hover:text-[var(--background)]  text-sm md:text-base font-semibold flex items-center gap-2">
+              {loading && (
+                <svg
+                  className="animate-spin h-4 w-4 md:h-5 md:w-5"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  ></circle>
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                  ></path>
+                </svg>
+              )}
               {t("home.contactUs.button")}
             </span>
           </button>

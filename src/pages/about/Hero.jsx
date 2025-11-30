@@ -20,8 +20,9 @@ const Hero = () => {
   const descriptionRef = useRef(null);
   const sectionTitleRef = useRef(null);
   const paragraphRef = useRef(null);
-
+ 
   useEffect(() => {
+    
     loadVideos();
   }, [loadVideos]);
 
@@ -126,7 +127,8 @@ const Hero = () => {
 
         <div
           ref={titleRef}
-          className={`title font-antonio z-30 px-2 md:px-0 w-full md:w-3/4 text-[var(--foreground)] text-center md:text-start absolute text-[32px] md:text-[64px] capitalize flex items-center font-bold  h-full ${
+          style={{fontFamily: isRtl ? "Cairo" : "Antonio"}}
+          className={`title  z-30 px-2 md:px-0 w-full md:w-3/4 text-[var(--foreground)] text-center md:text-start absolute text-[32px] md:text-[64px] capitalize flex items-center font-bold  h-full ${
             isRtl ? "md:pr-[60px]" : "md:pl-[60px]"
           }`}
         >

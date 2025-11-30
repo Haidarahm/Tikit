@@ -4,6 +4,8 @@ import { useTheme } from "../../store/ThemeContext";
 import { useClient } from "../../store/ClientContext";
 import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../store/I18nLanguageContext";
+import { useContactStore } from "../../store/contactStore";
+import { useToastStore } from "../../store/toastStore";
 import {
   FaInstagram,
   FaTiktok,
@@ -29,7 +31,7 @@ const SOCIAL_PLATFORMS = [
 ];
 
 // FloatingInput Component (placeholder - replace with your actual component)
-const FloatingInput = ({ id, label, containerClassName }) => {
+const FloatingInput = ({ id, label, containerClassName, inputProps = {} }) => {
   const { isRtl } = useI18nLanguage();
   return (
     <div className={containerClassName}>
@@ -39,6 +41,7 @@ const FloatingInput = ({ id, label, containerClassName }) => {
           id={id}
           className="w-full px-4 py-3 bg-transparent border dark:border-white/30 rounded-lg text-[var(--foreground)] placeholder-transparent focus:border-[var(--foreground)] focus:outline-none peer"
           placeholder={label}
+          {...inputProps}
         />
         <label
           htmlFor={id}
@@ -219,6 +222,14 @@ const Action = () => {
   const { t } = useTranslation();
   const { isRtl } = useI18nLanguage();
   const actionRef = useRef(null);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    subject: "",
+    message: "",
+  });
+  const { sendContactEmail, loading } = useContactStore();
 
   const gradientColors =
     theme === "light"
@@ -286,6 +297,58 @@ const Action = () => {
     setSocialLinks(updated);
   };
 
+  const handleInputChange = (field, value) => {
+    setFormData((prev) => ({ ...prev, [field]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e?.preventDefault();
+
+    // Basic validation
+    if (!formData.email || !formData.email.trim()) {
+      useToastStore
+        .getState()
+        .addToast("Please enter your email address", "error");
+      return;
+    }
+
+    // For influencer form, include social links in message
+    let messageToSend = formData.message;
+    if (isSecondSlide && socialLinks.length > 0) {
+      const socialLinksText = socialLinks
+        .map((social) => `${social.platform}: ${social.link}`)
+        .join("\n");
+      messageToSend = messageToSend
+        ? `${messageToSend}\n\nSocial Links:\n${socialLinksText}`
+        : `Social Links:\n${socialLinksText}`;
+    }
+
+    const emailData = {
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      subject: isSecondSlide
+        ? "Influencer Registration"
+        : formData.subject || "Contact Form",
+      message:
+        messageToSend ||
+        (isSecondSlide ? "Influencer registration request" : ""),
+    };
+
+    const success = await sendContactEmail(emailData);
+    if (success) {
+      // Reset form on success
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        subject: "",
+        message: "",
+      });
+      setSocialLinks([{ platform: "instagram", link: "" }]);
+    }
+  };
+
   return (
     <div
       ref={actionRef}
@@ -351,21 +414,37 @@ const Action = () => {
         </div>
 
         {/* Form Inputs */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 lg:gap-8 flex-1">
+        <form
+          onSubmit={handleSubmit}
+          className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 lg:gap-8 flex-1"
+        >
           <FloatingInput
             id="contact-name"
             label={t("contact.action.form.name")}
             containerClassName="col-span-1"
+            inputProps={{
+              value: formData.name,
+              onChange: (e) => handleInputChange("name", e.target.value),
+            }}
           />
           <FloatingInput
             id="contact-email"
             label={t("contact.action.form.email")}
             containerClassName="col-span-1"
+            inputProps={{
+              value: formData.email,
+              onChange: (e) => handleInputChange("email", e.target.value),
+              type: "email",
+            }}
           />
           <FloatingInput
             id="contact-phone"
             label={t("contact.action.form.phone")}
             containerClassName="col-span-1"
+            inputProps={{
+              value: formData.phone,
+              onChange: (e) => handleInputChange("phone", e.target.value),
+            }}
           />
           {!isSecondSlide ? (
             <>
@@ -373,6 +452,10 @@ const Action = () => {
                 id="contact-subject"
                 label={t("contact.action.form.subject")}
                 containerClassName="col-span-1"
+                inputProps={{
+                  value: formData.subject,
+                  onChange: (e) => handleInputChange("subject", e.target.value),
+                }}
               />
 
               {/* Responsive Message Textarea */}
@@ -381,6 +464,10 @@ const Action = () => {
                   <textarea
                     id="contact-message"
                     rows={4}
+                    value={formData.message}
+                    onChange={(e) =>
+                      handleInputChange("message", e.target.value)
+                    }
                     className="w-full px-4 py-3 bg-transparent border border-[#363737] dark:border-white/30 rounded-lg text-[var(--foreground)] placeholder-transparent focus:border-[var(--foreground)] focus:outline-none peer resize-y min-h-[120px] md:min-h-[160px]"
                     placeholder={t("contact.action.form.message")}
                   />
@@ -430,13 +517,41 @@ const Action = () => {
           )}
 
           {/* Submit Button */}
-          <button className="px-5 h-12 md:h-14 cursor-pointer relative col-span-1 sm:col-span-2 rounded-full group  font-medium bg-transparent text-[var(--secondary)] border border-[var(--secondary)] flex items-center justify-center transition-all hover:scale-105 overflow-hidden">
+          <button
+            type="submit"
+            disabled={loading}
+            className={`px-5 h-12 md:h-14 cursor-pointer relative col-span-1 sm:col-span-2 rounded-full group font-medium bg-transparent text-[var(--secondary)] border border-[var(--secondary)] flex items-center justify-center transition-all hover:scale-105 overflow-hidden ${
+              loading ? "opacity-50 cursor-not-allowed" : ""
+            }`}
+          >
             <span className="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out rounded-full transform translate-y-0 bg-[var(--secondary)]  group-hover:h-full opacity-90"></span>
-            <span className="relative uppercase group-hover:text-[var(--background)]  text-sm md:text-base font-semibold">
+            <span className="relative uppercase group-hover:text-[var(--background)]  text-sm md:text-base font-semibold flex items-center gap-2">
+              {loading && (
+                <svg
+                  className="animate-spin h-4 w-4 md:h-5 md:w-5"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  ></circle>
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                  ></path>
+                </svg>
+              )}
               {t("contact.action.form.submit")}
             </span>
           </button>
-        </div>
+        </form>
       </div>
     </div>
   );
