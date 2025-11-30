@@ -11,12 +11,6 @@ import Footer from "../../components/Footer";
 import SEOHead from "../../components/SEOHead";
 import ContactUs from "../Home/ContactUs";
 const AboutUs = () => {
-  useEffect(() => {
-    if (!sessionStorage.getItem("aboutUsRefreshed")) {
-      sessionStorage.setItem("aboutUsRefreshed", "true");
-      window.location.reload();
-    }
-  }, []);
 
   return (
     <div
