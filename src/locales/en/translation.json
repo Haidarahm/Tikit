@@ -331,6 +331,28 @@
             "subtitle": "lead and inspire",
             "description": "Our exclusive services",
             "subdescription": "We partner with brands that want to lead — those ready to break through the noise and bring real value to people's lives."
+        },
+        "page": {
+            "header": "Our Services",
+            "scrollHint": "Scroll to explore",
+            "items": [
+                {
+                    "title": "Web Development",
+                    "description": "Building responsive and modern web applications with cutting-edge technologies"
+                },
+                {
+                    "title": "Social Media Marketing",
+                    "description": "Dominate Instagram, TikTok, and beyond with scroll-stopping content, strategic campaigns, and community-driven growth that turns followers into loyal customers"
+                },
+                {
+                    "title": "UI/UX Design",
+                    "description": "Crafting intuitive and beautiful user interfaces that delight your customers"
+                },
+                {
+                    "title": "Digital Marketing",
+                    "description": "Driving growth through strategic campaigns and data-driven insights"
+                }
+            ]
         }
     },
     "news": {

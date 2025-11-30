@@ -2,10 +2,12 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { Observer } from "gsap/Observer";
 import { SplitText } from "gsap/SplitText";
+import { useTranslation } from "react-i18next";
 
 gsap.registerPlugin(Observer, SplitText);
 
 const Services = () => {
+  const { t } = useTranslation();
   const sectionsRef = useRef([]);
   const imagesRef = useRef([]);
   const headingsRef = useRef([]);
@@ -17,53 +19,39 @@ const Services = () => {
   const splitHeadingsRef = useRef([]);
   const splitDescriptionsRef = useRef([]);
 
-  const services = [
+  const serviceImages = [
     {
-      title: "Web Development",
-      description:
-        "Building responsive and modern web applications with cutting-edge technologies",
       image:
         "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1920&h=1080&fit=crop",
       gradient:
         "linear-gradient(180deg, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0.1) 100%)",
     },
     {
-      title: "Mobile Applications",
-      description:
-        "Creating seamless native and cross-platform mobile experiences",
       image:
-        "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1920&h=1080&fit=crop",
+        "https://images.unsplash.com/photo-1562577309-4932fdd64cd1?w=1920&h=1080&fit=crop",
       gradient:
         "linear-gradient(180deg, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0.1) 100%)",
     },
     {
-      title: "UI/UX Design",
-      description:
-        "Crafting intuitive and beautiful user interfaces that delight your customers",
       image:
         "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1920&h=1080&fit=crop",
       gradient:
         "linear-gradient(180deg, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0.1) 100%)",
     },
     {
-      title: "Digital Marketing",
-      description:
-        "Driving growth through strategic campaigns and data-driven insights",
       image:
         "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&h=1080&fit=crop",
       gradient:
         "linear-gradient(180deg, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0.1) 100%)",
     },
-    {
-      title: "Cloud Solutions",
-      description:
-        "Scalable infrastructure and cloud-native architectures for the future",
-      image:
-        "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&h=1080&fit=crop",
-      gradient:
-        "linear-gradient(180deg, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0.1) 100%)",
-    },
   ];
+
+  const translatedItems = t("services.page.items", { returnObjects: true });
+  const services = translatedItems.map((item, index) => ({
+    title: item.title,
+    description: item.description,
+    ...serviceImages[index],
+  }));
 
   useEffect(() => {
     // Set first section visible immediately
@@ -210,8 +198,8 @@ const Services = () => {
   return (
     <div style={styles.container} data-services2-page data-nav-color="white">
       <header style={styles.header}>
-        <div>Our Services</div>
-        <div style={styles.subtext}>Scroll to explore</div>
+        <div>{t("services.page.header")}</div>
+        <div style={styles.subtext}>{t("services.page.scrollHint")}</div>
       </header>
 
       {services.map((service, index) => (

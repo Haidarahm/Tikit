@@ -331,6 +331,28 @@
             "subtitle": "mène et inspire",
             "description": "Nos services exclusifs",
             "subdescription": "Nous nous associons avec des marques qui veulent mener — celles prêtes à briser le bruit et apporter une vraie valeur à la vie des gens."
+        },
+        "page": {
+            "header": "Nos Services",
+            "scrollHint": "Défilez pour explorer",
+            "items": [
+                {
+                    "title": "Développement Web",
+                    "description": "Création d'applications web modernes et réactives avec des technologies de pointe"
+                },
+                {
+                    "title": "Marketing des Réseaux Sociaux",
+                    "description": "Dominez Instagram, TikTok et au-delà avec du contenu captivant, des campagnes stratégiques et une croissance communautaire qui transforme les abonnés en clients fidèles"
+                },
+                {
+                    "title": "Design UI/UX",
+                    "description": "Conception d'interfaces utilisateur intuitives et élégantes qui ravissent vos clients"
+                },
+                {
+                    "title": "Marketing Digital",
+                    "description": "Stimuler la croissance grâce à des campagnes stratégiques et des analyses basées sur les données"
+                }
+            ]
         }
     },
     "news": {
