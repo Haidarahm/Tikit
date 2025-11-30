@@ -4,51 +4,24 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { getAllNewsItems } from "../../apis/news";
 import { useI18nLanguage } from "../../store/I18nLanguageContext";
 
-// Register ScrollTrigger plugin
+// Register GSAP plugin
 gsap.registerPlugin(ScrollTrigger);
 
-// Card component
+// ======================
+// Card Component
+// ======================
 const Card = ({ item }) => {
-  const cardRef = useRef(null);
-  const coverRef = useRef(null);
-
-  useLayoutEffect(() => {
-    const card = cardRef.current;
-    const cover = coverRef.current;
-    if (!card || !cover) return;
-
-    // Card parallax effect
-    const scrollTrigger = gsap.to(cover, {
-      yPercent: 50,
-      ease: "none",
-      scrollTrigger: {
-        trigger: card,
-        start: "top bottom",
-        end: "bottom top",
-        scrub: true,
-      },
-    });
-
-    return () => {
-      if (scrollTrigger && scrollTrigger.scrollTrigger) {
-        scrollTrigger.scrollTrigger.kill();
-      }
-    };
-  }, []);
-
   return (
-    <div ref={cardRef} className="card">
-      {/* Cover */}
+    <div className="card" data-parallax-card>
       <figure className="card-cover-container">
-        {/* Cover image */}
         <img
-          ref={coverRef}
+          data-parallax-image
           src={item.images || item.image || ""}
           alt={item.title || "News item"}
           className="card-cover"
+          loading="lazy"
         />
       </figure>
-      {/* Content overlay */}
       <div className="card-content">
         <span className="card-subtitle">{item.subtitle}</span>
         <h2 className="card-title">{item.title}</h2>
@@ -58,51 +31,30 @@ const Card = ({ item }) => {
   );
 };
 
-// React app
+// ======================
+// Main Content Component
+// ======================
 const Content = () => {
-  const cardsRef = useRef(null);
+  const containerRef = useRef(null);
   const { language } = useI18nLanguage();
   const [newsItems, setNewsItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useLayoutEffect(() => {
-    const ctx = gsap.context(() => {
-      // Refresh ScrollTrigger on resize
-      const refreshScrollTrigger = () => {
-        ScrollTrigger.refresh();
-      };
-
-      // Refresh on resize
-      window.addEventListener("resize", refreshScrollTrigger);
-
-      // Initial refresh after a small delay
-      setTimeout(refreshScrollTrigger, 100);
-
-      return () => {
-        window.removeEventListener("resize", refreshScrollTrigger);
-      };
-    }, cardsRef);
-
-    return () => ctx.revert();
-  }, []);
-
+  // Fetch news
   useEffect(() => {
     let isMounted = true;
 
     const fetchNews = async () => {
       setLoading(true);
       setError(null);
-
       try {
         const response = await getAllNewsItems({
           page: 1,
-          per_page: 10,
+          per_page: 100,
           lang: language,
         });
-
         if (!isMounted) return;
-
         const items = Array.isArray(response?.data) ? response.data : [];
         setNewsItems(items);
       } catch (err) {
@@ -110,49 +62,66 @@ const Content = () => {
         setError(err);
         setNewsItems([]);
       } finally {
-        if (isMounted) {
-          setLoading(false);
-        }
+        if (isMounted) setLoading(false);
       }
     };
 
     fetchNews();
-
     return () => {
       isMounted = false;
     };
   }, [language]);
 
-  useEffect(() => {
-    if (loading) return;
-    const id = requestAnimationFrame(() => {
-      ScrollTrigger.refresh();
-    });
+  // GSAP parallax for visible cards
+  useLayoutEffect(() => {
+    if (loading || !newsItems.length) return;
 
-    return () => cancelAnimationFrame(id);
+    const ctx = gsap.context(() => {
+      const cards = gsap.utils.toArray("[data-parallax-card]");
+      cards.forEach((card) => {
+        const img = card.querySelector("[data-parallax-image]");
+        gsap.to(img, {
+          yPercent: 40,
+          ease: "none",
+          scrollTrigger: {
+            trigger: card,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true,
+          },
+        });
+      });
+      ScrollTrigger.refresh();
+    }, containerRef);
+
+    return () => ctx.revert();
   }, [newsItems, loading]);
 
+  // Refresh ScrollTrigger on window resize
+  useEffect(() => {
+    const handleResize = () => ScrollTrigger.refresh();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
-    <div ref={cardsRef} className="news-cards-container">
-      <section className="cards">
-        {loading && <div className="cards-status">Loading news…</div>}
-        {!loading && error && (
-          <div className="cards-status">
-            Unable to load news right now. Please try again later.
-          </div>
-        )}
-        {!loading && !error && newsItems.length === 0 && (
-          <div className="cards-status">No news available.</div>
-        )}
-        {!loading &&
-          !error &&
-          newsItems.map((item) => (
-            <Card
-              key={item.id ?? `${item.title}-${item.created_at}`}
-              item={item}
-            />
+    <div ref={containerRef} className="news-cards-container">
+      {loading && <div className="cards-status">Loading news…</div>}
+      {!loading && error && (
+        <div className="cards-status">
+          Unable to load news right now. Please try again later.
+        </div>
+      )}
+      {!loading && !error && newsItems.length === 0 && (
+        <div className="cards-status">No news available.</div>
+      )}
+      {!loading && !error && newsItems.length > 0 && (
+        <div className="cards">
+          {newsItems.map((item, index) => (
+            <Card key={item.id || index} item={item} />
           ))}
-      </section>
+        </div>
+      )}
     </div>
   );
 };

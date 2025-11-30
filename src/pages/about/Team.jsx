@@ -95,22 +95,39 @@ const Team = () => {
 
     // Wait for images to load before calculating dimensions
     const track = trackRef.current;
+    const trigger = triggerRef.current;
     const imgs = Array.from(track.querySelectorAll("img"));
 
     const initScrollTrigger = () => {
+      // Kill any existing ScrollTriggers for this element to prevent conflicts
+      ScrollTrigger.getAll().forEach((st) => {
+        if (st.trigger === trigger || st.vars?.trigger === trigger) {
+          st.kill();
+        }
+      });
+
+      // Force layout recalculation
+      void track.offsetHeight;
+      void track.scrollWidth;
+
       const trackWidth = track.scrollWidth;
       const viewportWidth = window.innerWidth;
       const scrollDistance = trackWidth - viewportWidth * 0.7; // Account for left section (30%)
 
       const ctx = gsap.context(() => {
+        // Set initial position
+        gsap.set(track, { x: 0, force3D: true });
+
         gsap.to(track, {
           x: -scrollDistance,
           ease: "none",
+          
           scrollTrigger: {
-            trigger: triggerRef.current,
+            trigger: trigger,
             start: "top top",
-            end: () => `+=${scrollDistance}`,
+            end: `+=${scrollDistance}`,
             pin: true,
+            pinSpacing: true,
             scrub: 1,
             anticipatePin: 1,
             invalidateOnRefresh: true,
@@ -118,32 +135,68 @@ const Team = () => {
         });
       }, sectionRef);
 
+      // Multiple refreshes to ensure proper initialization after navigation
+      requestAnimationFrame(() => {
+        ScrollTrigger.refresh();
+        requestAnimationFrame(() => {
+          ScrollTrigger.refresh();
+        });
+      });
+
       return ctx;
     };
 
     let ctx;
+    let initTimeout;
+
+    // Wait for page to be ready after navigation
+    const waitForPageReady = () => {
+      return new Promise((resolve) => {
+        // Wait for next frame to ensure DOM is stable
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            // Additional delay to ensure page is ready after navigation
+            setTimeout(resolve, 100);
+          });
+        });
+      });
+    };
 
     // Preload images then init
-    Promise.all(
-      imgs.map(
-        (img) =>
-          new Promise((resolve) => {
-            if (img.complete) return resolve();
-            img.addEventListener("load", resolve, { once: true });
-            img.addEventListener("error", resolve, { once: true });
-          })
-      )
-    ).then(() => {
-      ctx = initScrollTrigger();
+    Promise.all([
+      Promise.all(
+        imgs.map(
+          (img) =>
+            new Promise((resolve) => {
+              if (img.complete) return resolve();
+              img.addEventListener("load", resolve, { once: true });
+              img.addEventListener("error", resolve, { once: true });
+            })
+        )
+      ),
+      waitForPageReady(),
+    ]).then(() => {
+      initTimeout = setTimeout(() => {
+        ctx = initScrollTrigger();
+      }, 50);
     });
 
     // Handle resize
+    let resizeTimer;
     const handleResize = () => {
-      ScrollTrigger.refresh();
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        if (ctx) {
+          ctx.revert();
+          ctx = initScrollTrigger();
+        }
+      }, 200);
     };
     window.addEventListener("resize", handleResize);
 
     return () => {
+      clearTimeout(initTimeout);
+      clearTimeout(resizeTimer);
       if (ctx) ctx.revert();
       window.removeEventListener("resize", handleResize);
     };

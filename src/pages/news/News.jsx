@@ -90,7 +90,11 @@ export const News = () => {
       if (refreshHandler) {
         ScrollTrigger.removeEventListener("refresh", refreshHandler);
       }
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      // Refresh ScrollTrigger instead of killing all - let individual components clean up their own triggers
+      // This prevents killing ScrollTriggers from other pages that are mounting
+      requestAnimationFrame(() => {
+        ScrollTrigger.refresh();
+      });
     };
   }, [isReady]);
 
