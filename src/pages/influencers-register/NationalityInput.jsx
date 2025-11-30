@@ -219,9 +219,12 @@ const NationalityInput = ({
   const inputRef = useRef(null);
   const listRef = useRef(null);
 
-  // Find selected country
+  // Find selected country - handle both object and string values
   const selectedCountry = value
-    ? countries.find((c) => c.code === value || c.name === value)
+    ? typeof value === "object"
+      ? countries.find((c) => c.code === value.code || c.name === value.name) ||
+        value
+      : countries.find((c) => c.code === value || c.name === value)
     : null;
 
   // Filter countries based on search query

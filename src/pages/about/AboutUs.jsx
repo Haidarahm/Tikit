@@ -12,7 +12,7 @@ import SEOHead from "../../components/SEOHead";
 import ContactUs from "../Home/ContactUs";
 const AboutUs = () => {
   return (
-    <div className="about-us-section w-full min-h-screen font-hero-light">
+    <div data-nav-color="black" className="about-us-section w-full min-h-screen font-hero-light">
       <SEOHead
         title="About Us"
         description="Learn about Tikit Agency - a full-service marketing agency driven by insight and creativity. Discover our team, values, and approach to delivering exceptional results."

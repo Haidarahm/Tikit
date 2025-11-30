@@ -1,33 +1,34 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useI18nLanguage } from "../../store/I18nLanguageContext";
+import { useNichesStore } from "../../store/nichesStore";
 
-// Sample content fields/categories
-const contentFields = [
-  { id: "fashion", name: "Fashion & Style", icon: "👗" },
-  { id: "beauty", name: "Beauty & Makeup", icon: "💄" },
-  { id: "fitness", name: "Fitness & Health", icon: "💪" },
-  { id: "travel", name: "Travel & Adventure", icon: "✈️" },
-  { id: "food", name: "Food & Cooking", icon: "🍳" },
-  { id: "tech", name: "Technology & Gadgets", icon: "📱" },
-  { id: "gaming", name: "Gaming", icon: "🎮" },
-  { id: "music", name: "Music & Entertainment", icon: "🎵" },
-  { id: "lifestyle", name: "Lifestyle", icon: "🌟" },
-  { id: "photography", name: "Photography", icon: "📸" },
-  { id: "art", name: "Art & Design", icon: "🎨" },
-  { id: "education", name: "Education & Learning", icon: "📚" },
-  { id: "business", name: "Business & Finance", icon: "💼" },
-  { id: "sports", name: "Sports", icon: "⚽" },
-  { id: "automotive", name: "Automotive & Cars", icon: "🚗" },
-  { id: "parenting", name: "Parenting & Family", icon: "👨‍👩‍👧" },
-  { id: "pets", name: "Pets & Animals", icon: "🐾" },
-  { id: "comedy", name: "Comedy & Humor", icon: "😂" },
-  { id: "motivation", name: "Motivation & Inspiration", icon: "🔥" },
-  { id: "diy", name: "DIY & Crafts", icon: "🔨" },
-  { id: "real-estate", name: "Real Estate", icon: "🏠" },
-  { id: "wellness", name: "Wellness & Mental Health", icon: "🧘" },
-  { id: "luxury", name: "Luxury & Premium", icon: "💎" },
-  { id: "sustainability", name: "Sustainability & Eco", icon: "🌱" },
-];
+// Icon mapping for niches (fallback if API doesn't provide icons)
+const nicheIcons = {
+  Beauty: "💄",
+  Fashion: "👗",
+  Lifestyle: "🌟",
+  Fitness: "💪",
+  Travel: "✈️",
+  Food: "🍳",
+  Cooking: "🍳",
+  Tech: "📱",
+  Gaming: "🎮",
+  Education: "📚",
+  Motivation: "🔥",
+  Business: "💼",
+  Finance: "💰",
+  Parenting: "👨‍👩‍👧",
+  "Health & Wellness": "🧘",
+  Photography: "📸",
+  Art: "🎨",
+  "DIY & Crafts": "🔨",
+  Comedy: "😂",
+  Music: "🎵",
+  Sports: "⚽",
+  Cars: "🚗",
+  Pets: "🐾",
+  Reviews: "⭐",
+};
 
 const ContentFieldInput = ({
   label = "Content Fields",
@@ -40,7 +41,8 @@ const ContentFieldInput = ({
   className = "",
   maxSelections = 5,
 }) => {
-  const { isRtl } = useI18nLanguage();
+  const { isRtl, language } = useI18nLanguage();
+  const { niches, fetchNiches } = useNichesStore();
   const [isOpen, setIsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [highlightedIndex, setHighlightedIndex] = useState(0);
@@ -48,12 +50,25 @@ const ContentFieldInput = ({
   const inputRef = useRef(null);
   const listRef = useRef(null);
 
+  // Fetch niches on mount or language change
+  useEffect(() => {
+    fetchNiches({ lang: language });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [language]);
+
+  // Transform niches to contentFields format
+  const contentFields = niches.map((niche) => ({
+    id: niche.id,
+    name: niche.name,
+    icon: nicheIcons[niche.name] || "📌",
+  }));
+
   // Filter fields based on search query and exclude already selected
   const filteredFields = contentFields.filter(
     (field) =>
       !selectedFields.some((s) => s.id === field.id) &&
       (field.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        field.id.toLowerCase().includes(searchQuery.toLowerCase()))
+        field.id.toString().includes(searchQuery.toLowerCase()))
   );
 
   // Close dropdown when clicking outside

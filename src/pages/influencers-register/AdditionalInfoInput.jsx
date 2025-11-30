@@ -15,19 +15,31 @@ const AdditionalInfoInput = ({
   disabled = false,
   className = "",
 }) => {
-  // Format number with commas
+  const { isRtl } = useI18nLanguage();
+
+  // Extract numeric value (remove all non-digits)
+  const getNumericValue = (value) => {
+    return value.replace(/[^0-9]/g, "");
+  };
+
+  // Format number with commas for display
   const formatNumber = (value) => {
-    const numericValue = value.replace(/[^0-9]/g, "");
+    const numericValue = getNumericValue(value);
     if (!numericValue) return "";
     return parseInt(numericValue, 10).toLocaleString();
   };
-  const { isRtl } = useI18nLanguage();
+
   const handleFollowerChange = (e) => {
-    const formattedValue = formatNumber(e.target.value);
+    const inputValue = e.target.value;
+    // Store the raw numeric value (without commas) in state
+    const numericValue = getNumericValue(inputValue);
     if (onFollowerCountChange) {
-      onFollowerCountChange(formattedValue);
+      onFollowerCountChange(numericValue);
     }
   };
+
+  // Display formatted value with commas
+  const displayValue = followerCount ? formatNumber(followerCount) : "";
 
   return (
     <div className={`flex flex-col gap-4 w-full ${className}`}>
@@ -65,7 +77,7 @@ const AdditionalInfoInput = ({
             name={`${name}_followers`}
             type="text"
             inputMode="numeric"
-            value={followerCount || ""}
+            value={displayValue}
             onChange={handleFollowerChange}
             placeholder={followerPlaceholder}
             required={required}

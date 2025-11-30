@@ -455,7 +455,30 @@
             "selectPlan": "Sélectionnez votre plan",
             "mediaKit": "Kit Média",
             "mediaKitPlaceholder": "Téléchargez votre kit média et glissez",
-            "mediaKitHelp": "Cliquez pour parcourir ou glissez-déposez les fichiers ici"
+            "mediaKitHelp": "Cliquez pour parcourir ou glissez-déposez les fichiers ici",
+            "socialLinks": "Liens Sociaux",
+            "addSocialLink": "Ajouter un Lien Social",
+            "selectPlatform": "Sélectionner la Plateforme",
+            "pricingOptions": "Options de Tarification",
+            "addPrice": "Ajouter un Prix",
+            "contentType": "Type de Contenu",
+            "platforms": {
+                "instagram": "Instagram",
+                "tiktok": "TikTok",
+                "youtube": "YouTube",
+                "facebook": "Facebook",
+                "twitter": "Twitter / X",
+                "snapchat": "Snapchat",
+                "linkedin": "LinkedIn",
+                "pinterest": "Pinterest"
+            },
+            "priceTypes": {
+                "post": "Publication",
+                "story": "Histoire",
+                "reel": "Reel",
+                "video": "Vidéo",
+                "sponsored": "Sponsorisé"
+            }
         },
         "plans": {
             "management": {

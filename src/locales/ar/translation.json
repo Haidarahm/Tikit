@@ -456,7 +456,30 @@
             "selectPlan": "اختر خطتك",
             "mediaKit": "مجموعة الوسائط",
             "mediaKitPlaceholder": "قم بتحميل مجموعة الوسائط الخاصة بك واسحب",
-            "mediaKitHelp": "انقر للتصفح أو اسحب وأفلت الملفات هنا"
+            "mediaKitHelp": "انقر للتصفح أو اسحب وأفلت الملفات هنا",
+            "socialLinks": "روابط التواصل الاجتماعي",
+            "addSocialLink": "إضافة رابط اجتماعي",
+            "selectPlatform": "اختر المنصة",
+            "pricingOptions": "خيارات التسعير",
+            "addPrice": "إضافة سعر",
+            "contentType": "نوع المحتوى",
+            "platforms": {
+                "instagram": "إنستغرام",
+                "tiktok": "تيك توك",
+                "youtube": "يوتيوب",
+                "facebook": "فيسبوك",
+                "twitter": "تويتر / إكس",
+                "snapchat": "سناب شات",
+                "linkedin": "لينكد إن",
+                "pinterest": "بينتريست"
+            },
+            "priceTypes": {
+                "post": "منشور",
+                "story": "قصة",
+                "reel": "ريل",
+                "video": "فيديو",
+                "sponsored": "ممول"
+            }
         },
         "plans": {
             "management": {
