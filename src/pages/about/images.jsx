@@ -36,11 +36,11 @@ const Images = () => {
 
         ScrollTrigger.create({
           trigger: img,
-          start: "top 100%",
+          start: "top 80%",
           onEnter: () => {
             gsap.to(imgElement, {
               clipPath: "inset(0 0 0 0)",
-              duration: 1.0,
+              duration: 0.6,
               ease: "power2.inOut",
             });
           },
@@ -53,17 +53,17 @@ const Images = () => {
         if (!text) return;
         gsap.set(text, {
           opacity: 0,
-          y: 40,
+          y: 30,
         });
 
         ScrollTrigger.create({
           trigger: text,
-          start: "top 100%",
+          start: "top 80%",
           onEnter: () => {
             gsap.to(text, {
               opacity: 1,
               y: 0,
-              duration: 0.5,
+              duration: 0.3,
               ease: "power2.out",
             });
           },
