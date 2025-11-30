@@ -19,28 +19,37 @@ const AnimatedText = () => {
 
     const ctx = gsap.context(() => {
       // Horizontal scroll parallax effect for line 1
-      gsap.to(line1Ref.current, {
-        x: isRtl ? -2000 : 2000,
-        ease: "none",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
+      // Start with text shifted so first word is visible, end with last word visible
+      gsap.fromTo(
+        line1Ref.current,
+        { x: isRtl ? 1000 : -1000 },
+        {
+          x: isRtl ? -1000 : 1000,
+          ease: "none",
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true,
+          },
+        }
+      );
 
       // Horizontal scroll parallax effect for line 2 (opposite direction)
-      gsap.to(line2Ref.current, {
-        x: isRtl ? 2000 : -2000,
-        ease: "none",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
+      gsap.fromTo(
+        line2Ref.current,
+        { x: isRtl ? -1000 : 1000 },
+        {
+          x: isRtl ? 1000 : -1000,
+          ease: "none",
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true,
+          },
+        }
+      );
     }, containerRef);
 
     return () => ctx.revert();
