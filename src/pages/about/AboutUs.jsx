@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Hero from "./Hero";
 import "./about.css";
 import AnimatedText from "./AnimatedText";
@@ -11,8 +11,18 @@ import Footer from "../../components/Footer";
 import SEOHead from "../../components/SEOHead";
 import ContactUs from "../Home/ContactUs";
 const AboutUs = () => {
+  useEffect(() => {
+    if (!sessionStorage.getItem("aboutUsRefreshed")) {
+      sessionStorage.setItem("aboutUsRefreshed", "true");
+      window.location.reload();
+    }
+  }, []);
+
   return (
-    <div data-nav-color="black" className="about-us-section w-full min-h-screen font-hero-light">
+    <div
+      data-nav-color="black"
+      className="about-us-section w-full min-h-screen font-hero-light"
+    >
       <SEOHead
         title="About Us"
         description="Learn about Tikit Agency - a full-service marketing agency driven by insight and creativity. Discover our team, values, and approach to delivering exceptional results."

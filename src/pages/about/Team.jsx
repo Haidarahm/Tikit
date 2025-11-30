@@ -121,7 +121,7 @@ const Team = () => {
         gsap.to(track, {
           x: -scrollDistance,
           ease: "none",
-          
+
           scrollTrigger: {
             trigger: trigger,
             start: "top top",
@@ -135,13 +135,10 @@ const Team = () => {
         });
       }, sectionRef);
 
-      // Multiple refreshes to ensure proper initialization after navigation
-      requestAnimationFrame(() => {
+      // Refresh after ScrollTrigger is created to fix glitches
+      setTimeout(() => {
         ScrollTrigger.refresh();
-        requestAnimationFrame(() => {
-          ScrollTrigger.refresh();
-        });
-      });
+      }, 100);
 
       return ctx;
     };
@@ -155,8 +152,8 @@ const Team = () => {
         // Wait for next frame to ensure DOM is stable
         requestAnimationFrame(() => {
           requestAnimationFrame(() => {
-            // Additional delay to ensure page is ready after navigation
-            setTimeout(resolve, 100);
+            // Additional delay to ensure page is ready after navigation/refresh
+            setTimeout(resolve, 200);
           });
         });
       });
@@ -178,7 +175,7 @@ const Team = () => {
     ]).then(() => {
       initTimeout = setTimeout(() => {
         ctx = initScrollTrigger();
-      }, 50);
+      }, 100);
     });
 
     // Handle resize

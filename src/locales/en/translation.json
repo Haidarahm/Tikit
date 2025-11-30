@@ -90,7 +90,7 @@
             "joinNow": "Join Now"
         },
         "work": {
-            "title": "Featured Work",
+            "title": "Case Studies",
             "explore": "Explore Works",
             "viewWork": "View Work",
             "noWorks": "No works found.",
@@ -390,6 +390,7 @@
         "contactSubtitle": "for Client or Influencer throughout",
         "locationDubai": "Dubai- UAE",
         "locationLondon": "London - UK",
+        "locationSyria": "Syria - Damascus",
         "copyright": "© Copyright 2025 | Alrights reserved by Tikit",
         "links": {
             "aboutUs": "About Us",
