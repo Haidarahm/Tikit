@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState, useCallback } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useTheme } from "../../store/ThemeContext";
@@ -71,8 +71,10 @@ const Team = () => {
   const { teamMembers, loading, error, loadTeamMembers } = useTeamStore();
 
   const sectionRef = useRef(null);
-  const triggerRef = useRef(null);
+  const stickyContainerRef = useRef(null);
   const trackRef = useRef(null);
+  const [translateX, setTranslateX] = useState(0);
+  const [scrollHeight, setScrollHeight] = useState(0);
 
   useEffect(() => {
     loadTeamMembers();
@@ -88,116 +90,130 @@ const Team = () => {
     website: <FaGlobe />,
   };
 
-  // GSAP horizontal scroll with pin
+  // Calculate scroll height based on track width
+  const calculateDimensions = useCallback(() => {
+    if (!trackRef.current) return;
+
+    // Only apply on desktop
+    if (window.innerWidth < 768) {
+      setScrollHeight(0);
+      return;
+    }
+
+    const track = trackRef.current;
+    const trackWidth = track.scrollWidth;
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+
+    // The scrollable distance is the track width minus the visible area (70% of viewport)
+    const scrollDistance = trackWidth - viewportWidth * 0.7;
+
+    // Set the section height: viewport height + scroll distance
+    // This creates a "scrollable runway" that keeps sticky active until last element
+    setScrollHeight(viewportHeight + scrollDistance);
+  }, []);
+
+  // Horizontal scroll using scroll events with sticky positioning
   useEffect(() => {
     if (!teamMembers || teamMembers.length === 0) return;
-    if (!sectionRef.current || !triggerRef.current || !trackRef.current) return;
+    if (!sectionRef.current || !trackRef.current) return;
 
-    // Wait for images to load before calculating dimensions
     const track = trackRef.current;
-    const trigger = triggerRef.current;
+    const section = sectionRef.current;
     const imgs = Array.from(track.querySelectorAll("img"));
 
-    const initScrollTrigger = () => {
-      // Kill any existing ScrollTriggers for this element to prevent conflicts
-      ScrollTrigger.getAll().forEach((st) => {
-        if (st.trigger === trigger || st.vars?.trigger === trigger) {
-          st.kill();
-        }
-      });
-
-      // Force layout recalculation
-      void track.offsetHeight;
-      void track.scrollWidth;
-
-      const trackWidth = track.scrollWidth;
-      const viewportWidth = window.innerWidth;
-      const scrollDistance = trackWidth - viewportWidth * 0.7; // Account for left section (30%)
-
-      const ctx = gsap.context(() => {
-        // Set initial position
-        gsap.set(track, { x: 0, force3D: true });
-
-        gsap.to(track, {
-          x: -scrollDistance,
-          ease: "none",
-
-          scrollTrigger: {
-            trigger: trigger,
-            start: "top top",
-            end: `+=${scrollDistance}`,
-            pin: true,
-            pinSpacing: true,
-            scrub: 1,
-            anticipatePin: 1,
-            invalidateOnRefresh: true,
-          },
-        });
-      }, sectionRef);
-
-      // Refresh after ScrollTrigger is created to fix glitches
-      setTimeout(() => {
-        ScrollTrigger.refresh();
-      }, 100);
-
-      return ctx;
-    };
-
-    let ctx;
-    let initTimeout;
-
-    // Wait for page to be ready after navigation
-    const waitForPageReady = () => {
-      return new Promise((resolve) => {
-        // Wait for next frame to ensure DOM is stable
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            // Additional delay to ensure page is ready after navigation/refresh
-            setTimeout(resolve, 200);
-          });
-        });
-      });
+    // Wait for images to load before calculating dimensions
+    const initHorizontalScroll = () => {
+      calculateDimensions();
     };
 
     // Preload images then init
-    Promise.all([
-      Promise.all(
-        imgs.map(
-          (img) =>
-            new Promise((resolve) => {
-              if (img.complete) return resolve();
-              img.addEventListener("load", resolve, { once: true });
-              img.addEventListener("error", resolve, { once: true });
-            })
-        )
-      ),
-      waitForPageReady(),
-    ]).then(() => {
-      initTimeout = setTimeout(() => {
-        ctx = initScrollTrigger();
-      }, 100);
+    Promise.all(
+      imgs.map(
+        (img) =>
+          new Promise((resolve) => {
+            if (img.complete) return resolve();
+            img.addEventListener("load", resolve, { once: true });
+            img.addEventListener("error", resolve, { once: true });
+          })
+      )
+    ).then(() => {
+      // Wait for DOM to be ready
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setTimeout(initHorizontalScroll, 100);
+        });
+      });
     });
+
+    // Scroll handler using requestAnimationFrame for performance
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          if (!sectionRef.current || !trackRef.current) return;
+
+          // Skip on mobile
+          if (window.innerWidth < 768) {
+            ticking = false;
+            return;
+          }
+
+          const sectionRect = section.getBoundingClientRect();
+          const trackWidth = track.scrollWidth;
+          const viewportWidth = window.innerWidth;
+          const viewportHeight = window.innerHeight;
+          const maxTranslate = trackWidth - viewportWidth * 0.7;
+
+          // Calculate progress based on how far the section top has moved above viewport
+          // When section top is at viewport top (sectionRect.top = 0), progress = 0
+          // When section bottom reaches viewport bottom, progress = 1
+          const scrollableDistance = scrollHeight - viewportHeight;
+
+          if (scrollableDistance <= 0) {
+            ticking = false;
+            return;
+          }
+
+          // How much the section has scrolled past the top of viewport
+          const scrolledPast = -sectionRect.top;
+          const scrollProgress = scrolledPast / scrollableDistance;
+
+          // Clamp progress between 0 and 1
+          const clampedProgress = Math.max(0, Math.min(1, scrollProgress));
+
+          // Apply transform
+          const newTranslateX = -clampedProgress * maxTranslate;
+          setTranslateX(newTranslateX);
+
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
     // Handle resize
     let resizeTimer;
     const handleResize = () => {
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(() => {
-        if (ctx) {
-          ctx.revert();
-          ctx = initScrollTrigger();
-        }
+        calculateDimensions();
+        handleScroll(); // Recalculate position after resize
       }, 200);
     };
     window.addEventListener("resize", handleResize);
 
+    // Initial scroll position check
+    handleScroll();
+
     return () => {
-      clearTimeout(initTimeout);
       clearTimeout(resizeTimer);
-      if (ctx) ctx.revert();
+      window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleResize);
     };
-  }, [teamMembers]);
+  }, [teamMembers, scrollHeight, calculateDimensions]);
 
   // GSAP animations for mobile cards
   useEffect(() => {
@@ -260,12 +276,13 @@ const Team = () => {
       ref={sectionRef}
       dir="ltr"
       id="team-section"
-      className="relative overflow-hidden mt-[50px] text-white font-hero-light"
+      className="relative mt-[50px] text-white font-hero-light"
+      style={{ height: scrollHeight > 0 ? `${scrollHeight}px` : "auto" }}
     >
       {/* Desktop Horizontal Scroll */}
       <div
-        ref={triggerRef}
-        className="hidden md:flex flex-row relative h-screen"
+        ref={stickyContainerRef}
+        className="hidden md:flex flex-row h-screen sticky top-0 overflow-hidden"
       >
         {/* Fixed Left Title Section */}
         <div
@@ -286,6 +303,9 @@ const Team = () => {
           <div
             ref={trackRef}
             className="flex flex-row items-center gap-6 will-change-transform py-0 pr-[30vw]"
+            style={{
+              transform: `translate3d(${translateX}px, 0, 0)`,
+            }}
           >
             <div className="relative w-[30px] h-[650px] shrink-0 overflow-hidden"></div>
             {teamMembers.map((member, index) => {
@@ -366,8 +386,8 @@ const Team = () => {
         </div>
       </div>
 
-      {/* Mobile View Cards */}
-      <div className="block md:hidden mt-8 min-h-[1400px]">
+      {/* Mobile View Cards - separate from sticky scroll */}
+      <div className="block md:hidden mt-8 min-h-[1400px] relative">
         <div className="text-center mb-8 px-4">
           <h2 className="text-[var(--foreground)] text-[28px] font-bold leading-[1.2]">
             Our Creative Team
