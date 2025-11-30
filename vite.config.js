@@ -29,11 +29,10 @@ export default defineConfig({
       },
     },
     chunkSizeWarningLimit: 1000,
-    minify: "terser",
-    terserOptions: {
-      compress: {
-        drop_console: true, // Remove console.logs in production
-      },
+    // Use esbuild instead of terser for better compatibility with Vite 7.x
+    minify: "esbuild",
+    esbuildOptions: {
+      drop: ["console"], // Remove console.logs in production
     },
   },
 });

@@ -8,7 +8,7 @@ import SEOHead from "../../components/SEOHead";
 
 const Contact = () => {
   return (
-    <div className="contact-section snap-mandatory snap-y w-full    font-hero-light">
+    <div data-nav-color="black" className="contact-section snap-mandatory snap-y w-full    font-hero-light">
       <SEOHead
         title="Contact Us"
         description="Get in touch with Tikit Agency. Contact us to discuss your marketing needs, request a quote, or learn more about how we can help your brand succeed."

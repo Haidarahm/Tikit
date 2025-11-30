@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useCallback } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useTheme } from "../../store/ThemeContext";
@@ -73,12 +73,18 @@ const Team = () => {
   const sectionRef = useRef(null);
   const stickyContainerRef = useRef(null);
   const trackRef = useRef(null);
-  const [translateX, setTranslateX] = useState(0);
   const [scrollHeight, setScrollHeight] = useState(0);
 
   useEffect(() => {
     loadTeamMembers();
   }, [loadTeamMembers]);
+
+  // Refresh ScrollTrigger when team data loads
+  useEffect(() => {
+    if (teamMembers && teamMembers.length > 0) {
+      setTimeout(() => ScrollTrigger.refresh(), 200);
+    }
+  }, [teamMembers]);
 
   const iconMap = {
     linkedin: <FaLinkedin />,
@@ -90,41 +96,59 @@ const Team = () => {
     website: <FaGlobe />,
   };
 
-  // Calculate scroll height based on track width
-  const calculateDimensions = useCallback(() => {
-    if (!trackRef.current) return;
+  // Horizontal scroll using GSAP ScrollTrigger (works with Lenis)
+  useEffect(() => {
+    if (!teamMembers || teamMembers.length === 0) return;
+    if (!sectionRef.current || !trackRef.current) return;
 
-    // Only apply on desktop
+    // Skip on mobile
     if (window.innerWidth < 768) {
       setScrollHeight(0);
       return;
     }
 
     const track = trackRef.current;
-    const trackWidth = track.scrollWidth;
-    const viewportWidth = window.innerWidth;
-    const viewportHeight = window.innerHeight;
-
-    // The scrollable distance is the track width minus the visible area (70% of viewport)
-    const scrollDistance = trackWidth - viewportWidth * 0.7;
-
-    // Set the section height: viewport height + scroll distance
-    // This creates a "scrollable runway" that keeps sticky active until last element
-    setScrollHeight(viewportHeight + scrollDistance);
-  }, []);
-
-  // Horizontal scroll using scroll events with sticky positioning
-  useEffect(() => {
-    if (!teamMembers || teamMembers.length === 0) return;
-    if (!sectionRef.current || !trackRef.current) return;
-
-    const track = trackRef.current;
     const section = sectionRef.current;
     const imgs = Array.from(track.querySelectorAll("img"));
 
-    // Wait for images to load before calculating dimensions
+    let ctx;
+    let resizeTimer;
+
     const initHorizontalScroll = () => {
-      calculateDimensions();
+      const trackWidth = track.scrollWidth;
+      const viewportWidth = window.innerWidth;
+      const viewportHeight = window.innerHeight;
+
+      // The scrollable distance is the track width minus the visible area (70% of viewport)
+      const scrollDistance = trackWidth - viewportWidth * 0.7;
+      const maxTranslate = scrollDistance;
+
+      // Set the section height: viewport height + scroll distance
+      setScrollHeight(viewportHeight + scrollDistance);
+
+      // Kill previous context if exists
+      if (ctx) ctx.revert();
+
+      // Create GSAP context for cleanup
+      ctx = gsap.context(() => {
+        // Use ScrollTrigger for horizontal scroll - works with Lenis
+        gsap.to(track, {
+          x: -maxTranslate,
+          ease: "none",
+          scrollTrigger: {
+            trigger: section,
+            start: "top top",
+            end: () => `+=${scrollDistance}`,
+            scrub: 1,
+            pin: stickyContainerRef.current,
+            pinSpacing: false,
+            invalidateOnRefresh: true,
+          },
+        });
+      }, section);
+
+      // Refresh ScrollTrigger after setup
+      setTimeout(() => ScrollTrigger.refresh(), 100);
     };
 
     // Preload images then init
@@ -141,79 +165,31 @@ const Team = () => {
       // Wait for DOM to be ready
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
-          setTimeout(initHorizontalScroll, 100);
+          setTimeout(initHorizontalScroll, 150);
         });
       });
     });
 
-    // Scroll handler using requestAnimationFrame for performance
-    let ticking = false;
-    const handleScroll = () => {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          if (!sectionRef.current || !trackRef.current) return;
-
-          // Skip on mobile
-          if (window.innerWidth < 768) {
-            ticking = false;
-            return;
-          }
-
-          const sectionRect = section.getBoundingClientRect();
-          const trackWidth = track.scrollWidth;
-          const viewportWidth = window.innerWidth;
-          const viewportHeight = window.innerHeight;
-          const maxTranslate = trackWidth - viewportWidth * 0.7;
-
-          // Calculate progress based on how far the section top has moved above viewport
-          // When section top is at viewport top (sectionRect.top = 0), progress = 0
-          // When section bottom reaches viewport bottom, progress = 1
-          const scrollableDistance = scrollHeight - viewportHeight;
-
-          if (scrollableDistance <= 0) {
-            ticking = false;
-            return;
-          }
-
-          // How much the section has scrolled past the top of viewport
-          const scrolledPast = -sectionRect.top;
-          const scrollProgress = scrolledPast / scrollableDistance;
-
-          // Clamp progress between 0 and 1
-          const clampedProgress = Math.max(0, Math.min(1, scrollProgress));
-
-          // Apply transform
-          const newTranslateX = -clampedProgress * maxTranslate;
-          setTranslateX(newTranslateX);
-
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-
     // Handle resize
-    let resizeTimer;
     const handleResize = () => {
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(() => {
-        calculateDimensions();
-        handleScroll(); // Recalculate position after resize
+        if (window.innerWidth < 768) {
+          if (ctx) ctx.revert();
+          setScrollHeight(0);
+          return;
+        }
+        initHorizontalScroll();
       }, 200);
     };
     window.addEventListener("resize", handleResize);
 
-    // Initial scroll position check
-    handleScroll();
-
     return () => {
       clearTimeout(resizeTimer);
-      window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleResize);
+      if (ctx) ctx.revert();
     };
-  }, [teamMembers, scrollHeight, calculateDimensions]);
+  }, [teamMembers]);
 
   // GSAP animations for mobile cards
   useEffect(() => {
@@ -282,7 +258,7 @@ const Team = () => {
       {/* Desktop Horizontal Scroll */}
       <div
         ref={stickyContainerRef}
-        className="hidden md:flex flex-row h-screen sticky top-0 overflow-hidden"
+        className="hidden md:flex flex-row h-screen overflow-hidden"
       >
         {/* Fixed Left Title Section */}
         <div
@@ -303,9 +279,6 @@ const Team = () => {
           <div
             ref={trackRef}
             className="flex flex-row items-center gap-6 will-change-transform py-0 pr-[30vw]"
-            style={{
-              transform: `translate3d(${translateX}px, 0, 0)`,
-            }}
           >
             <div className="relative w-[30px] h-[650px] shrink-0 overflow-hidden"></div>
             {teamMembers.map((member, index) => {

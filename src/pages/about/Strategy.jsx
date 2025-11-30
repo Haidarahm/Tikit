@@ -164,7 +164,7 @@ const Strategy = () => {
               }
               duration={3}
               diagonal={false}
-              textClassName="bg-gradient-to-r font-antonio font-bold from-[#07D9F5] to-[#E84B43] bg-clip-text text-transparent"
+              textClassName={`bg-gradient-to-r ${isRtl ? "font-cairo" : "font-antonio"} font-bold from-[#07D9F5] to-[#E84B43] bg-clip-text text-transparent`}
             />
           </h1>
         </div>
