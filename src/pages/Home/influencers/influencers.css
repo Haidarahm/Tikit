@@ -11,7 +11,8 @@
 }
 
 @keyframes pulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
   }
   50% {
@@ -41,13 +42,15 @@
 
 /* Smoother hover for category chips */
 .influencers-scope .chip {
-  transition-property: transform, box-shadow, background-color, border-color, filter;
+  transition-property: transform, box-shadow, background-color, border-color,
+    filter;
   transition-duration: 450ms;
   transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
 }
 .influencers-scope .chip:hover {
   transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 16px 32px rgba(82, 195, 197, 0.20), 0 4px 12px rgba(0,0,0,0.06);
+  box-shadow: 0 16px 32px rgba(82, 195, 197, 0.2),
+    0 4px 12px rgba(0, 0, 0, 0.06);
   filter: saturate(1.05);
 }
 
@@ -85,11 +88,76 @@ img {
 }
 
 /* Smooth text transitions (scoped) */
-.influencers-scope h1, .influencers-scope h2, .influencers-scope h3, .influencers-scope h4, .influencers-scope h5, .influencers-scope h6, .influencers-scope p, .influencers-scope span {
+.influencers-scope h1,
+.influencers-scope h2,
+.influencers-scope h3,
+.influencers-scope h4,
+.influencers-scope h5,
+.influencers-scope h6,
+.influencers-scope p,
+.influencers-scope span {
   transition: all 0.3s ease-out;
 }
 
 /* Icon smooth rotation (scoped) */
 .influencers-scope svg {
   transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Swiper Navigation Styles */
+.influencers-swiper {
+  padding-bottom: 50px;
+}
+
+.influencers-swiper .swiper-button-next,
+.influencers-swiper .swiper-button-prev {
+  color: #52c3c5;
+  background: rgba(82, 195, 197, 0.1);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.influencers-swiper .swiper-button-next:hover,
+.influencers-swiper .swiper-button-prev:hover {
+  background: rgba(82, 195, 197, 0.2);
+  transform: scale(1.1);
+}
+
+.influencers-swiper .swiper-button-next::after,
+.influencers-swiper .swiper-button-prev::after {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Swiper Pagination Styles */
+.influencers-swiper .swiper-pagination {
+  bottom: 0;
+}
+
+.influencers-swiper .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background: rgba(82, 195, 197, 0.3);
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+
+.influencers-swiper .swiper-pagination-bullet-active {
+  background: #52c3c5;
+  width: 24px;
+  border-radius: 6px;
+}
+
+/* Swiper Slide Styles */
+.influencers-swiper .swiper-slide {
+  height: auto;
+  display: flex;
+  align-items: stretch;
+}
+
+/* Touch and drag improvements */
+.influencers-swiper .swiper-wrapper {
+  align-items: stretch;
 }
