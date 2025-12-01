@@ -106,7 +106,8 @@ const Hero = () => {
         <div ref={h1WrapRef} className="overflow-hidden">
           <h1
             ref={h1Ref}
-            className="text-[32px] font-antonio leading-tight md:text-[50px] xl:text-[70px] 2xl:text-[80px] capitalize  will-change-transform"
+            style={{fontFamily: isRtl ? "" : "Antonio"}}
+            className="text-[32px] leading-tight md:text-[50px] xl:text-[70px] 2xl:text-[80px] capitalize  will-change-transform"
           >
             {t("influencer.hero.title")}
           </h1>
@@ -114,8 +115,8 @@ const Hero = () => {
         <div ref={h2WrapRef} className="overflow-hidden">
           <h1
             ref={h2Ref}
-            
-            className="text-[32px] leading-tight  font-[700] mx-auto md:text-[50px]  xl:text-[80px] 2xl:text-[90px] mb-8 capitalize font-caveat tikit-gradient will-change-transform"
+            style={{fontFamily: isRtl ? "" : "Caveat"}}
+            className="text-[32px] leading-tight  font-[700] mx-auto md:text-[50px]  xl:text-[80px] 2xl:text-[90px] mb-8 capitalize  tikit-gradient will-change-transform"
           >
             {t("influencer.hero.subtitle")}
           </h1>

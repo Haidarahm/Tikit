@@ -13,6 +13,12 @@
   .swiper-slide{
     justify-content: center;
   }
+  .swiper-pagination-bullet-active-prev{
+    background: #52c3c586 !important;
+  }
+  .swiper-pagination-bullet-active-next{
+    background: #52c3c586 !important;
+  }
 }
 @keyframes pulse {
   0%,
