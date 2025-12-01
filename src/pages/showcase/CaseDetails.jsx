@@ -1,12 +1,49 @@
-import React from 'react'
-import Hero from './Hero'
+import React, { useEffect, useRef } from "react";
+import LocomotiveScroll from "locomotive-scroll";
+import "locomotive-scroll/dist/locomotive-scroll.css";
+import Hero from "./Hero";
+import CaseNumbers from "./CaseNumbers";
+import Images from "./Images";
 
 const CaseDetails = () => {
-  return (
-    <section data-nav-color="black" className='min-h-screen'>
-        <Hero />
-    </section>
-  )
-}
+  const scrollRef = useRef(null);
 
-export default CaseDetails
+  useEffect(() => {
+    if (!scrollRef.current) return;
+
+    const scroll = new LocomotiveScroll({
+      el: scrollRef.current,
+      smooth: true,
+      lerp: 0.08,
+    });
+
+    // Make accessible if other components need it
+    window.locomotiveScrollInstance = scroll;
+
+    return () => {
+      if (scroll) {
+        scroll.destroy();
+      }
+      if (window.locomotiveScrollInstance === scroll) {
+        window.locomotiveScrollInstance = null;
+      }
+    };
+  }, []);
+
+  return (
+    <section
+      ref={scrollRef}
+      data-scroll-container
+      data-nav-color="black"
+      className="min-h-screen"
+    >
+      <div data-scroll-section>
+        <Hero />
+        <CaseNumbers />
+        <Images />
+      </div>
+    </section>
+  );
+};
+
+export default CaseDetails;
