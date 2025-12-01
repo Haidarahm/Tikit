@@ -1,6 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import React, { useEffect, useRef } from "react";
 import { useTheme } from "../../store/ThemeContext";
 import { useTeamStore } from "../../store/teamStore";
 import {
@@ -12,8 +10,6 @@ import {
   FaInstagram,
   FaGlobe,
 } from "react-icons/fa";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const TYPE_STYLES = {
   default: {
@@ -73,18 +69,10 @@ const Team = () => {
   const sectionRef = useRef(null);
   const stickyContainerRef = useRef(null);
   const trackRef = useRef(null);
-  const [scrollHeight, setScrollHeight] = useState(0);
 
   useEffect(() => {
     loadTeamMembers();
   }, [loadTeamMembers]);
-
-  // Refresh ScrollTrigger when team data loads
-  useEffect(() => {
-    if (teamMembers && teamMembers.length > 0) {
-      setTimeout(() => ScrollTrigger.refresh(), 200);
-    }
-  }, [teamMembers]);
 
   const iconMap = {
     linkedin: <FaLinkedin />,
@@ -96,131 +84,190 @@ const Team = () => {
     website: <FaGlobe />,
   };
 
-  // Horizontal scroll using GSAP ScrollTrigger (works with Lenis)
+  // Vanilla JS Horizontal Scroll Effect
   useEffect(() => {
     if (!teamMembers || teamMembers.length === 0) return;
-    if (!sectionRef.current || !trackRef.current) return;
-
-    // Skip on mobile
-    if (window.innerWidth < 768) {
-      setScrollHeight(0);
+    if (!sectionRef.current || !trackRef.current || !stickyContainerRef.current)
       return;
-    }
 
-    const track = trackRef.current;
+    // Skip horizontal behavior on mobile
+    if (window.innerWidth < 768) return;
+
     const section = sectionRef.current;
+    const track = trackRef.current;
+    const stickyContainer = stickyContainerRef.current;
     const imgs = Array.from(track.querySelectorAll("img"));
 
-    let ctx;
+    // Scroll geometry
+    let scrollDistance = 0; // horizontal distance the track moves
+    let maxTranslate = 0;
+    let sectionTop = 0;
+    let sectionHeight = 0; // vertical space allocated for the horizontal scroll
     let resizeTimer;
 
-    const initHorizontalScroll = () => {
+    const calculate = () => {
       const trackWidth = track.scrollWidth;
       const viewportWidth = window.innerWidth;
       const viewportHeight = window.innerHeight;
 
-      // The scrollable distance is the track width minus the visible area (70% of viewport)
-      const scrollDistance = trackWidth - viewportWidth * 0.7;
-      const maxTranslate = scrollDistance;
+      // Horizontal distance: full track width minus full viewport
+      scrollDistance = Math.max(0, trackWidth - viewportWidth);
+      maxTranslate = scrollDistance;
 
-      // Set the section height: viewport height + scroll distance
-      setScrollHeight(viewportHeight + scrollDistance);
+      // Vertical scroll area: viewport height + horizontal distance
+      sectionHeight = viewportHeight + scrollDistance;
 
-      // Kill previous context if exists
-      if (ctx) ctx.revert();
+      // Compute section top relative to page each time we recalc
+      const rect = section.getBoundingClientRect();
+      sectionTop = rect.top + window.scrollY;
 
-      // Create GSAP context for cleanup
-      ctx = gsap.context(() => {
-        // Use ScrollTrigger for horizontal scroll - works with Lenis
-        gsap.to(track, {
-          x: -maxTranslate,
-          ease: "none",
-          scrollTrigger: {
-            trigger: section,
-            start: "top top",
-            end: () => `+=${scrollDistance}`,
-            scrub: 1,
-            pin: stickyContainerRef.current,
-            pinSpacing: false,
-            invalidateOnRefresh: true,
-          },
-        });
-      }, section);
-
-      // Refresh ScrollTrigger after setup
-      setTimeout(() => ScrollTrigger.refresh(), 100);
+      // Set section height to create scroll space
+      section.style.height = `${sectionHeight}px`;
     };
 
-    // Preload images then init
-    Promise.all(
-      imgs.map(
-        (img) =>
-          new Promise((resolve) => {
-            if (img.complete) return resolve();
-            img.addEventListener("load", resolve, { once: true });
-            img.addEventListener("error", resolve, { once: true });
-          })
-      )
-    ).then(() => {
-      // Wait for DOM to be ready
-      requestAnimationFrame(() => {
+    const onScroll = () => {
+      const scrollY = window.scrollY;
+      const viewportHeight = window.innerHeight;
+
+      const sectionStart = sectionTop;
+      // End when bottom of viewport reaches end of section
+      const sectionEnd = sectionTop + sectionHeight - viewportHeight;
+
+      if (scrollDistance <= 0) {
+        // Nothing to scroll horizontally; just ensure default layout
+        stickyContainer.style.position = "relative";
+        stickyContainer.style.top = "";
+        stickyContainer.style.left = "";
+        stickyContainer.style.width = "";
+        track.style.transform = "translateX(0px)";
+        return;
+      }
+
+      // Before section
+      if (scrollY < sectionStart) {
+        stickyContainer.style.position = "relative";
+        stickyContainer.style.top = "";
+        stickyContainer.style.left = "";
+        stickyContainer.style.width = "";
+        track.style.transform = "translateX(0px)";
+        return;
+      }
+
+      // After section - lock at final position
+      if (scrollY > sectionEnd) {
+        stickyContainer.style.position = "absolute";
+        stickyContainer.style.top = `${sectionHeight - viewportHeight}px`;
+        stickyContainer.style.left = "0";
+        stickyContainer.style.width = "100%";
+        track.style.transform = `translateX(-${maxTranslate}px)`;
+        return;
+      }
+
+      // Within the horizontal scroll range → pin & translate
+      stickyContainer.style.position = "fixed";
+      stickyContainer.style.top = "0";
+      stickyContainer.style.left = "0";
+      stickyContainer.style.width = "100%";
+
+      const progress =
+        sectionEnd === sectionStart
+          ? 0
+          : (scrollY - sectionStart) / (sectionEnd - sectionStart);
+
+      const translateX = -(progress * maxTranslate);
+      track.style.transform = `translateX(${translateX}px)`;
+    };
+
+    const init = () => {
+      // Wait for images to load so widths are correct
+      Promise.all(
+        imgs.map(
+          (img) =>
+            new Promise((resolve) => {
+              if (img.complete) return resolve();
+              img.addEventListener("load", resolve, { once: true });
+              img.addEventListener("error", resolve, { once: true });
+            })
+        )
+      ).then(() => {
         requestAnimationFrame(() => {
-          setTimeout(initHorizontalScroll, 150);
+          requestAnimationFrame(() => {
+            calculate();
+            onScroll();
+            window.addEventListener("scroll", onScroll, { passive: true });
+          });
         });
       });
-    });
+    };
 
-    // Handle resize
     const handleResize = () => {
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(() => {
         if (window.innerWidth < 768) {
-          if (ctx) ctx.revert();
-          setScrollHeight(0);
+          // Cleanup on mobile
+          section.style.height = "";
+          stickyContainer.style.position = "";
+          stickyContainer.style.top = "";
+          stickyContainer.style.left = "";
+          stickyContainer.style.width = "";
+          track.style.transform = "";
+          window.removeEventListener("scroll", onScroll);
           return;
         }
-        initHorizontalScroll();
+
+        // Recalculate geometry for desktop and update transform
+        calculate();
+        onScroll();
       }, 200);
     };
+
+    init();
     window.addEventListener("resize", handleResize);
 
     return () => {
       clearTimeout(resizeTimer);
+      window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", handleResize);
-      if (ctx) ctx.revert();
+      // Cleanup styles
+      if (section) section.style.height = "";
+      if (stickyContainer) {
+        stickyContainer.style.position = "";
+        stickyContainer.style.top = "";
+      }
+      if (track) track.style.transform = "";
     };
   }, [teamMembers]);
 
-  // GSAP animations for mobile cards
+  // Mobile reveal effect
   useEffect(() => {
     if (!teamMembers || teamMembers.length === 0) return;
 
-    const mobileCards = document.querySelectorAll(".mobile-team-card");
-    if (mobileCards.length === 0) return;
+    const cards = document.querySelectorAll(
+      "[data-scroll].loco-reveal-card.mobile-team-card"
+    );
+    if (!cards.length) return;
 
-    const ctx = gsap.context(() => {
-      mobileCards.forEach((card, index) => {
-        gsap.set(card, {
-          scaleX: 0,
-          transformOrigin: "left center",
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-inview");
+          } else {
+            entry.target.classList.remove("is-inview");
+          }
         });
+      },
+      {
+        root: null,
+        threshold: 0.2,
+      }
+    );
 
-        ScrollTrigger.create({
-          trigger: card,
-          start: "top 80%",
-          onEnter: () => {
-            gsap.to(card, {
-              scaleX: 1,
-              duration: 0.8,
-              delay: index * 0.15,
-              ease: "power2.inOut",
-            });
-          },
-        });
-      });
-    });
+    cards.forEach((el) => observer.observe(el));
 
-    return () => ctx.revert();
+    return () => {
+      observer.disconnect();
+    };
   }, [teamMembers]);
 
   if (loading) {
@@ -253,7 +300,6 @@ const Team = () => {
       dir="ltr"
       id="team-section"
       className="relative mt-[50px] text-white font-hero-light"
-      style={{ height: scrollHeight > 0 ? `${scrollHeight}px` : "auto" }}
     >
       {/* Desktop Horizontal Scroll */}
       <div
@@ -295,14 +341,12 @@ const Team = () => {
                     <img
                       src={member.image}
                       alt={member.name || `team-${index + 1}`}
-                      className="absolute w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-110 "
+                      className="absolute w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-110"
                       draggable={false}
                     />
 
                     {/* Enhanced Soft Gradient */}
                     <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/20 to-black/65" />
-
-                    {/* Glow edges */}
                   </div>
 
                   {/* Content */}
@@ -339,7 +383,7 @@ const Team = () => {
                             href={link.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-[22px]  p-2 rounded-xl transition-all duration-300 hover:scale-110 hover:bg-white/20"
+                            className="text-[22px] p-2 rounded-xl transition-all duration-300 hover:scale-110 hover:bg-white/20"
                           >
                             {iconMap[link.link_type] || <FaGlobe />}
                           </a>
@@ -359,7 +403,7 @@ const Team = () => {
         </div>
       </div>
 
-      {/* Mobile View Cards - separate from sticky scroll */}
+      {/* Mobile View Cards */}
       <div className="block md:hidden mt-8 min-h-[1400px] relative">
         <div className="text-center mb-8 px-4">
           <h2 className="text-[var(--foreground)] text-[28px] font-bold leading-[1.2]">
@@ -375,12 +419,13 @@ const Team = () => {
             return (
               <div
                 key={member.id ? `mobile-${member.id}` : `mobile-${index}`}
-                className={`mobile-team-card relative w-full h-[320px] rounded-[20px] overflow-hidden shadow-lg loco-reveal-card border border-white/10 bg-gradient-to-br ${styles.gradient} backdrop-blur`}
+                data-scroll
+                className={`mobile-team-card loco-reveal-card relative w-full h-[320px] rounded-[20px] overflow-hidden shadow-lg border border-white/10 bg-gradient-to-br ${styles.gradient} backdrop-blur`}
               >
                 <img
                   src={member.image}
                   alt={member.name || `team-${index + 1}`}
-                  className="h-full w-full object-cover select-none absolute inset-0  mix-blend-luminosity"
+                  className="h-full w-full object-cover select-none absolute inset-0 mix-blend-luminosity"
                   draggable={false}
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/40 to-black/90" />
