@@ -25,7 +25,10 @@ function Home() {
 
   useEffect(() => {
     // Remove locomotive-scroll leftovers
-    document.documentElement.classList.remove("has-scroll-smooth", "has-scroll-init");
+    document.documentElement.classList.remove(
+      "has-scroll-smooth",
+      "has-scroll-init"
+    );
     document.body.style.removeProperty("overflow");
 
     const startLenis = () => {
@@ -82,7 +85,10 @@ function Home() {
   }, []);
 
   return (
-    <div id="home" className="sections overflow-hidden relative w-full home-scroll-trigger">
+    <div
+      id="home"
+      className="sections overflow-hidden relative w-full home-scroll-trigger"
+    >
       <SEOHead
         title="Social Media Marketing Agency | Tikit"
         description="Partner with Tikit Agency for full-service social media marketing, influencer campaigns, celebrity management, and creative production tailored for growth."

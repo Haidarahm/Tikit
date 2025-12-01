@@ -62,7 +62,7 @@ const WorkHero = ({ gradientColors, t, isRtl }) => {
         >
           <h1
           
-            className="tikit-title font-[800]  h-22"
+            className="tikit-title font-[800]  md:h-22"
           >
             {t("work.title")}
           </h1>

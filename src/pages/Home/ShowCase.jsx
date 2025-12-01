@@ -136,11 +136,13 @@ const ShowCase = () => {
   return (
     <div
       ref={sectionRef}
-   
       className="relative flex flex-col w-[98vw] mt-[30px] sm:w-[96vw] md:w-[95vw] gap-4 md:gap-8 overflow-hidden md:h-[1400px] h-[1000px] mx-auto"
     >
       {/* TITLE */}
-      <div    data-nav-color="black" className="title text-[var(--foreground)] flex flex-col w-full justify-center items-center min-h-[200px] px-4 text-center gap-4">
+      <div
+        data-nav-color="black"
+        className="title text-[var(--foreground)] flex flex-col w-full justify-center items-center min-h-[200px] px-4 text-center gap-4"
+      >
         <TikitTitle
           title={t("home.showcase.title")}
           mainWord={t("home.showcase.mainWord")}
@@ -151,7 +153,10 @@ const ShowCase = () => {
       </div>
 
       {/* GRID */}
-      <div    data-nav-color="white" className="md:h-[1200px] h-[800px] w-full grid grid-cols-2 gap-4 grid-rows-2">
+      <div
+        data-nav-color="white"
+        className="md:h-[1200px] h-[800px] w-full grid grid-cols-2 gap-4 grid-rows-2"
+      >
         {showcaseData.map((item) => (
           <div
             key={item.id}

@@ -16,6 +16,7 @@ import { Influencer } from "./pages/influencer/Influencer.jsx";
 import NewsletterPopup from "./components/NewsletterPopup";
 
 import { ToastContainer } from "./components/ui/Toast";
+import CaseDetails from "./pages/showcase/CaseDetails.jsx";
 
 // Lazy load components
 const Home = lazy(() => import("./pages/Home/Home"));
@@ -101,6 +102,7 @@ function App() {
                 path="/influencer-register"
                 element={<InfluencersRegister />}
               />
+              <Route path="/showcase/:id" element={<CaseDetails />} />
               <Route path="/service-details/:id" element={<ServiceDetails />} />
               <Route
                 path="/work/influence/:id"
