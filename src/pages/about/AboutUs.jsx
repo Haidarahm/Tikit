@@ -99,7 +99,7 @@ const AboutUs = () => {
   return (
     <div
       data-nav-color="black"
-      className="about-us-section w-full min-h-screen font-hero-light"
+      className="about-us-section overflow-hidden w-full min-h-screen font-hero-light"
     >
       <SEOHead
         title="About Us"

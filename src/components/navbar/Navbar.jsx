@@ -56,7 +56,7 @@ function Navbar() {
           <NavLogo logoRef={logoRef} language={language} />
 
           {/* Desktop Navigation */}
-          <div className="flex gap-4">
+          <div className={`flex gap-4 ${isRtl ? "flex-row-reverse" : ""}`}>
             <DesktopNavLinks language={language} />
             <div className="hidden lg:flex gap-6 items-center">
               <LanguageSelector />

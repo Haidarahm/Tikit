@@ -150,13 +150,13 @@ export default function InfluencerDropdown({ isMobile = false, onClose }) {
       >
         <button
           onClick={handleOurInfluencersClick}
-          className="block w-full text-left px-4 py-3 text-sm transition-all duration-200 rounded-t-lg text-[var(--foreground)] hover:bg-[var(--container-bg)] dark:hover:bg-[var(--container-bg)]"
+          className="text-start block w-full px-4 py-3 text-sm transition-all duration-200 rounded-t-lg text-[var(--foreground)] hover:bg-[var(--container-bg)] dark:hover:bg-[var(--container-bg)]"
         >
           {t("nav.ourInfluencers") || "Our Influencers"}
         </button>
         <button
           onClick={handleRegisterClick}
-          className="block w-full text-left px-4 py-3 text-sm transition-all duration-200 rounded-b-lg text-[var(--foreground)] hover:bg-[var(--container-bg)] dark:hover:bg-[var(--container-bg)]"
+          className="block text-start w-full text-left px-4 py-3 text-sm transition-all duration-200 rounded-b-lg text-[var(--foreground)] hover:bg-[var(--container-bg)] dark:hover:bg-[var(--container-bg)]"
         >
           {t("nav.registerAsInfluencer") || "Register as Influencer"}
         </button>

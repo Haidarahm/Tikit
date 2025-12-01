@@ -48,21 +48,22 @@ const Hero = () => {
         <div ref={h1WrapRef} className="overflow-hidden">
           <h1
             ref={h1Ref}
-            className="text-[32px] md:text-[70px] leading-[40px] md:leading-[110px] capitalize py-2 will-change-transform translate-y-full"
+            style={{fontFamily: isRtl ? "" : "Antonio"}}
+
+            className="text-[32px] leading-tight md:text-[50px] xl:text-[70px] 2xl:text-[80px] capitalize  will-change-transform"
           >
             {t("contact.hero.title")}
           </h1>
         </div>
         <div ref={h2WrapRef} className="overflow-hidden">
           <div ref={h2Ref} className="will-change-transform translate-y-full">
-            <GradientText
-              colors={gradientColors}
-              animationSpeed={5}
-              showBorder={false}
-              className="text-[32px] mx-auto md:text-[96px] leading-[40px] md:leading-[170px]  mb-8 capitalize font-bold"
+            <h1
+                        style={{fontFamily: isRtl ? "" : "Caveat"}}
+
+            className="text-[32px] leading-tight  font-[700] mx-auto md:text-[50px]  xl:text-[80px] 2xl:text-[90px] mb-8 capitalize  tikit-gradient will-change-transform"
             >
               {t("contact.hero.subtitle")}
-            </GradientText>
+            </h1>
           </div>
         </div>
       </div>

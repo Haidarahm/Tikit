@@ -3,11 +3,14 @@ import gsap from "gsap";
 import { Observer } from "gsap/Observer";
 import { SplitText } from "gsap/SplitText";
 import { useTranslation } from "react-i18next";
+import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
 
 gsap.registerPlugin(Observer, SplitText);
 
 const Services = () => {
   const { t } = useTranslation();
+  const { language, isRtl } = useI18nLanguage();
+  const isArabic = language === "ar";
   const sectionsRef = useRef([]);
   const imagesRef = useRef([]);
   const headingsRef = useRef([]);
@@ -57,11 +60,14 @@ const Services = () => {
     // Set first section visible immediately
     gsap.set(sectionsRef.current[0], { autoAlpha: 1, zIndex: 1 });
 
+    // For Arabic: use words, for other languages: use chars
+    const splitType = isArabic ? "words,lines" : "chars,words,lines";
+
     // Initialize SplitText for all headings and descriptions
     splitHeadingsRef.current = headingsRef.current.map(
       (heading) =>
         new SplitText(heading, {
-          type: "chars,words,lines",
+          type: splitType,
           linesClass: "clip-text",
         })
     );
@@ -69,7 +75,7 @@ const Services = () => {
     splitDescriptionsRef.current = descriptionsRef.current.map(
       (desc) =>
         new SplitText(desc, {
-          type: "chars,words,lines",
+          type: splitType,
           linesClass: "clip-text",
         })
     );
@@ -84,6 +90,20 @@ const Services = () => {
     });
 
     const wrap = gsap.utils.wrap(0, services.length);
+
+    // Get animation targets based on language
+    const getHeadingTargets = (index) =>
+      isArabic
+        ? splitHeadingsRef.current[index].words
+        : splitHeadingsRef.current[index].chars;
+    const getDescriptionTargets = (index) =>
+      isArabic
+        ? splitDescriptionsRef.current[index].words
+        : splitDescriptionsRef.current[index].chars;
+
+    // Stagger settings based on language
+    const headingStagger = isArabic ? 0.08 : 0.02;
+    const descriptionStagger = isArabic ? 0.05 : 0.01;
 
     const gotoSection = (index, direction) => {
       index = wrap(index);
@@ -119,26 +139,26 @@ const Services = () => {
           0
         )
         .fromTo(
-          splitHeadingsRef.current[index].chars,
+          getHeadingTargets(index),
           { autoAlpha: 0, yPercent: 150 * dFactor },
           {
             autoAlpha: 1,
             yPercent: 0,
             duration: 1,
             ease: "power2",
-            stagger: { each: 0.02, from: "random" },
+            stagger: { each: headingStagger, from: "random" },
           },
           0.2
         )
         .fromTo(
-          splitDescriptionsRef.current[index].chars,
+          getDescriptionTargets(index),
           { autoAlpha: 0, yPercent: 100 * dFactor },
           {
             autoAlpha: 1,
             yPercent: 0,
             duration: 0.8,
             ease: "power2",
-            stagger: { each: 0.01, from: "random" },
+            stagger: { each: descriptionStagger, from: "random" },
           },
           0.4
         );
@@ -160,27 +180,27 @@ const Services = () => {
 
     // Animate in the first section's text
     gsap.fromTo(
-      splitHeadingsRef.current[0].chars,
+      getHeadingTargets(0),
       { autoAlpha: 0, yPercent: 150 },
       {
         autoAlpha: 1,
         yPercent: 0,
         duration: 1,
         ease: "power2",
-        stagger: { each: 0.02, from: "random" },
+        stagger: { each: headingStagger, from: "random" },
         delay: 0.3,
       }
     );
 
     gsap.fromTo(
-      splitDescriptionsRef.current[0].chars,
+      getDescriptionTargets(0),
       { autoAlpha: 0, yPercent: 100 },
       {
         autoAlpha: 1,
         yPercent: 0,
         duration: 0.8,
         ease: "power2",
-        stagger: { each: 0.01, from: "random" },
+        stagger: { each: descriptionStagger, from: "random" },
         delay: 0.5,
       }
     );
@@ -193,10 +213,15 @@ const Services = () => {
       splitHeadingsRef.current.forEach((split) => split.revert());
       splitDescriptionsRef.current.forEach((split) => split.revert());
     };
-  }, []);
+  }, [isArabic, services.length]);
 
   return (
-    <div style={styles.container} data-services2-page data-nav-color="white">
+    <div
+      style={styles.container}
+      data-services2-page
+      data-nav-color="white"
+      dir={isRtl ? "rtl" : "ltr"}
+    >
       <header style={styles.header}>
         <div>{t("services.page.header")}</div>
         <div style={styles.subtext}>{t("services.page.scrollHint")}</div>
