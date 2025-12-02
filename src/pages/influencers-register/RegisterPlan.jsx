@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import Tick from "../../assets/Tick";
 import ManagementIcon from "../../assets/planes/Management.svg";
@@ -6,10 +6,26 @@ import AffiliateIcon from "../../assets/planes/Affiliate.svg";
 import PremiumIcon from "../../assets/planes/Premium.svg";
 import { useI18nLanguage } from "../../store/I18nLanguageContext";
 
-const RegisterPlan = ({ selectedPlan, onPlanSelect, className = "" }) => {
+const RegisterPlan = ({ selectedPlan, onPlanSelect, className = "", followerCount = "" }) => {
   const { t } = useTranslation();
   const [hoveredPlan, setHoveredPlan] = useState(null);
+  const [tooltipPlan, setTooltipPlan] = useState(null);
   const { isRtl } = useI18nLanguage();
+  
+  // Parse follower count to number (remove any non-numeric characters)
+  const followerCountNum = followerCount 
+    ? parseInt(followerCount.toString().replace(/[^0-9]/g, ""), 10) 
+    : 0;
+  
+  // Premium plan requires at least 35,000 followers
+  const isPremiumDisabled = followerCountNum < 35000;
+  
+  // Auto-deselect Premium if it's selected and follower count drops below threshold
+  useEffect(() => {
+    if (selectedPlan === "premium" && isPremiumDisabled && onPlanSelect) {
+      onPlanSelect(null);
+    }
+  }, [selectedPlan, isPremiumDisabled, onPlanSelect]);
   const plans = useMemo(
     () => [
       {
@@ -69,21 +85,59 @@ const RegisterPlan = ({ selectedPlan, onPlanSelect, className = "" }) => {
           const isSelected = selectedPlan === plan.id;
           const isHovered = hoveredPlan === plan.id;
           const isCenter = index === 1;
+          const isDisabled = plan.id === "premium" && isPremiumDisabled;
 
           return (
             <div
               key={plan.id}
-              onClick={() => onPlanSelect && onPlanSelect(plan.id)}
-              onMouseEnter={() => setHoveredPlan(plan.id)}
-              onMouseLeave={() => setHoveredPlan(null)}
-              className={`relative flex flex-col items-center p-5 md:p-6 rounded-[20px] border-2 cursor-pointer transition-all duration-300 ease-out ${
-                isSelected
+              onClick={() => {
+                if (!isDisabled && onPlanSelect) {
+                  onPlanSelect(plan.id);
+                }
+              }}
+              onMouseEnter={() => {
+                setHoveredPlan(plan.id);
+                if (isDisabled) {
+                  setTooltipPlan(plan.id);
+                }
+              }}
+              onMouseLeave={() => {
+                setHoveredPlan(null);
+                setTooltipPlan(null);
+              }}
+              className={`relative flex flex-col items-center p-5 md:p-6 rounded-[20px] border-2 transition-all duration-300 ease-out ${
+                isDisabled
+                  ? "cursor-not-allowed opacity-60 border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900/50"
+                  : "cursor-pointer"
+              } ${
+                isSelected && !isDisabled
                   ? `${plan.borderColor} ${plan.bgGlow} scale-[1.02] shadow-lg dark:shadow-xl`
-                  : "border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 hover:shadow-md dark:hover:shadow-lg"
-              } ${isHovered && !isSelected ? "scale-[1.01]" : ""} ${
+                  : !isDisabled
+                  ? "border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 hover:shadow-md dark:hover:shadow-lg"
+                  : ""
+              } ${isHovered && !isSelected && !isDisabled ? "scale-[1.01]" : ""} ${
                 isCenter ? "md:-mt-8" : ""
-              } bg-white dark:bg-[var(--container-bg)]`}
+              } ${!isDisabled ? "bg-white dark:bg-[var(--container-bg)]" : ""}`}
             >
+              {/* Tooltip for disabled Premium plan */}
+              {isDisabled && tooltipPlan === plan.id && (
+                <div
+                  className={`absolute z-50 px-3 py-2 text-xs text-white bg-gray-900 dark:bg-gray-800 rounded-lg shadow-lg whitespace-nowrap ${
+                    isRtl ? "left-0" : "right-0"
+                  } top-full mt-2 pointer-events-none`}
+                  style={{
+                    maxWidth: "250px",
+                    whiteSpace: "normal",
+                  }}
+                >
+                  {t("influencerRegister.plans.premium.disabledMessage")}
+                  <div
+                    className={`absolute w-2 h-2 bg-gray-900 dark:bg-gray-800 transform rotate-45 ${
+                      isRtl ? "left-4" : "right-4"
+                    } -top-1`}
+                  />
+                </div>
+              )}
               {/* Popular Badge */}
               {plan.popular && (
                 <div className="absolute -top-2.5 left-1/2 -translate-x-1/2 px-3 py-0.5 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-[10px] font-semibold rounded-full shadow-md">
@@ -121,15 +175,17 @@ const RegisterPlan = ({ selectedPlan, onPlanSelect, className = "" }) => {
               {/* Icon */}
               <div
                 className={`w-14 h-14 md:w-16 md:h-16 mb-3 p-3 rounded-xl bg-gradient-to-br ${
-                  plan.color
+                  isDisabled ? "from-gray-400 to-gray-500" : plan.color
                 } flex items-center justify-center transition-transform duration-300 ${
-                  isHovered || isSelected ? "scale-110" : ""
+                  (isHovered || isSelected) && !isDisabled ? "scale-110" : ""
                 }`}
               >
                 <img
                   src={plan.icon}
                   alt={plan.name}
-                  className="w-full h-full object-contain filter brightness-0 invert"
+                  className={`w-full h-full object-contain filter brightness-0 invert ${
+                    isDisabled ? "opacity-50" : ""
+                  }`}
                 />
               </div>
 
@@ -168,13 +224,18 @@ const RegisterPlan = ({ selectedPlan, onPlanSelect, className = "" }) => {
               {/* Select Button */}
               <button
                 type="button"
+                disabled={isDisabled}
                 className={`mt-4 w-full py-2.5 px-5 rounded-full text-sm font-medium transition-all duration-300 ${
-                  isSelected
+                  isDisabled
+                    ? "bg-gray-200 dark:bg-gray-700 text-gray-400 dark:text-gray-500 cursor-not-allowed"
+                    : isSelected
                     ? `bg-gradient-to-r ${plan.color} text-white shadow-md`
                     : "bg-gray-100 dark:bg-gray-800 text-[var(--foreground)] hover:bg-gray-200 dark:hover:bg-gray-700"
                 }`}
               >
-                {isSelected
+                {isDisabled
+                  ? t("influencerRegister.plans.premium.disabled")
+                  : isSelected
                   ? t(`influencerRegister.plans.${plan.id}.selected`)
                   : t(`influencerRegister.plans.${plan.id}.selectPlan`)}
               </button>

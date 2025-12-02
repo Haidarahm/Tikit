@@ -203,6 +203,7 @@ const InfluencersRegister = () => {
             <RegisterPlan
               selectedPlan={selectedPlan}
               onPlanSelect={setSelectedPlan}
+              followerCount={followerCount}
             />
             <MediaKitUpload
               name="mediaKit"

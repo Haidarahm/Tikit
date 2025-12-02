@@ -541,7 +541,9 @@
                 ],
                 "mostPopular": "Le plus populaire",
                 "selectPlan": "Sélectionner le plan",
-                "selected": "Sélectionné"
+                "selected": "Sélectionné",
+                "disabled": "Indisponible",
+                "disabledMessage": "Le plan Premium nécessite un minimum de 35 000 abonnés"
             }
         },
         "proceedButton": "Continuer"

@@ -568,7 +568,9 @@
                 ],
                 "mostPopular": "Most Popular",
                 "selectPlan": "Select Plan",
-                "selected": "Selected"
+                "selected": "Selected",
+                "disabled": "Unavailable",
+                "disabledMessage": "Premium plan requires a minimum of 35,000 followers"
             }
         },
         "proceedButton": "Proceed"

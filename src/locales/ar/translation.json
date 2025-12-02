@@ -542,7 +542,9 @@
                 ],
                 "mostPopular": "الأكثر شعبية",
                 "selectPlan": "اختر الخطة",
-                "selected": "محدد"
+                "selected": "محدد",
+                "disabled": "غير متاح",
+                "disabledMessage": "تتطلب الخطة المميزة حد أدنى 35,000 متابع"
             }
         },
         "proceedButton": "متابعة"
