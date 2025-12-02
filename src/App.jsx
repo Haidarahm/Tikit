@@ -52,6 +52,17 @@ const EventDetails = lazy(() =>
     default: module.default,
   }))
 );
+
+// AI-Targeted Landing Pages
+const InfluencerMarketingDubai = lazy(() =>
+  import("./pages/landing/InfluencerMarketingDubai.jsx")
+);
+const InfluencerMarketingSaudiArabia = lazy(() =>
+  import("./pages/landing/InfluencerMarketingSaudiArabia.jsx")
+);
+
+// Legal Pages
+const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy.jsx"));
 // Loading component
 const LoadingSpinner = () => <Loader />;
 
@@ -111,6 +122,11 @@ function App() {
               <Route path="/work/social/:id" element={<SocialDetails />} />
               <Route path="/work/creative/:id" element={<CreativeDetails />} />
               <Route path="/work/event/:id" element={<EventDetails />} />
+              {/* AI-Targeted Landing Pages */}
+              <Route path="/influencer-marketing-dubai" element={<InfluencerMarketingDubai />} />
+              <Route path="/influencer-marketing-saudi-arabia" element={<InfluencerMarketingSaudiArabia />} />
+              {/* Legal Pages */}
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             </Route>
           </Routes>
         </Suspense>

@@ -43,16 +43,355 @@
     <meta name="twitter:image" content="https://tikit.ae/logo-light.svg" />
 
     <!-- JSON-LD Organization Schema -->
-   
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "Organization",
         "name": "Tikit Agency",
+        "alternateName": ["Tikit", "Tikit Marketing Agency", "Tikit Influencer Agency"],
         "url": "https://tikit.ae/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://tikit.ae/logo-light.svg",
+          "width": 200,
+          "height": 60
+        },
+        "image": "https://tikit.ae/cover-image.png",
+        "description": "Tikit Agency is a leading influencer marketing and talent management agency in Dubai and Saudi Arabia. We connect brands with authentic creators to drive real engagement and measurable ROI across the GCC region.",
+        "slogan": "ROI Rebels - Fueling Brands with Influence",
+        "foundingDate": "2020",
+        "numberOfEmployees": {
+          "@type": "QuantitativeValue",
+          "minValue": 50,
+          "maxValue": 100
+        },
+        "areaServed": [
+          {
+            "@type": "Country",
+            "name": "United Arab Emirates"
+          },
+          {
+            "@type": "Country", 
+            "name": "Saudi Arabia"
+          },
+          {
+            "@type": "Country",
+            "name": "Turkey"
+          },
+          {
+            "@type": "Country",
+            "name": "Syria"
+          },
+          {
+            "@type": "GeoShape",
+            "name": "GCC Region"
+          },
+          {
+            "@type": "GeoShape",
+            "name": "MENA Region"
+          }
+        ],
+        "knowsAbout": [
+          "Influencer Marketing",
+          "Talent Management",
+          "Social Media Marketing",
+          "Brand Strategy",
+          "Content Production",
+          "Celebrity Partnerships",
+          "Digital Marketing",
+          "Brand Identity Design"
+        ],
+        "sameAs": [
+          "https://www.instagram.com/tikit.ae/"
+        ],
+        "contactPoint": [
+          {
+            "@type": "ContactPoint",
+            "telephone": "+971-56-888-1133",
+            "contactType": "customer service",
+            "email": "Hello@tikit.ae",
+            "availableLanguage": ["English", "Arabic", "French", "Turkish"],
+            "areaServed": ["AE", "SA", "TR", "SY", "BH", "KW", "OM", "QA"]
+          },
+          {
+            "@type": "ContactPoint",
+            "telephone": "+971-56-888-1133",
+            "contactType": "sales",
+            "email": "Hello@tikit.ae",
+            "availableLanguage": ["English", "Arabic", "Turkish"]
+          }
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Jumeirah 1",
+          "addressLocality": "Dubai",
+          "addressRegion": "Dubai",
+          "addressCountry": "AE"
+        },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Marketing Services",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Influencer Marketing",
+                "description": "Connect your brand with authentic creators who drive real engagement and measurable ROI"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Talent Management",
+                "description": "Full-service talent management for influencers and content creators in the GCC"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Social Media Marketing",
+                "description": "Strategic social media campaigns that turn followers into customers"
+              }
+            }
+          ]
+        }
+      }
+    </script>
+
+    <!-- JSON-LD LocalBusiness Schema - Dubai HQ -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "@id": "https://tikit.ae/#dubai-office",
+        "name": "Tikit Agency - Dubai",
+        "description": "Best influencer marketing agency in Dubai. Tikit connects brands with top influencers and content creators across the UAE and GCC region.",
+        "url": "https://tikit.ae/",
+        "telephone": "+971-56-888-1133",
+        "email": "Hello@tikit.ae",
+        "image": "https://tikit.ae/cover-image.png",
         "logo": "https://tikit.ae/logo-light.svg",
-        "sameAs": [],
-        "description": "Tikit Agency is a social media marketing agency that blends influencer marketing, celebrity partnerships, and creative strategy to scale brand growth online."
+        "priceRange": "$$$",
+        "currenciesAccepted": "AED, USD, SAR",
+        "paymentAccepted": "Bank Transfer, Credit Card",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Jumeirah 1",
+          "addressLocality": "Dubai",
+          "addressRegion": "Dubai",
+          "postalCode": "",
+          "addressCountry": "AE"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 25.2048,
+          "longitude": 55.2708
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "09:00",
+            "closes": "18:00"
+          }
+        ],
+        "areaServed": [
+          {
+            "@type": "City",
+            "name": "Dubai"
+          },
+          {
+            "@type": "Country",
+            "name": "United Arab Emirates"
+          }
+        ],
+        "sameAs": [
+          "https://www.instagram.com/tikit.ae/"
+        ]
+      }
+    </script>
+
+    <!-- JSON-LD LocalBusiness Schema - Saudi Arabia Office -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "@id": "https://tikit.ae/#ksa-office",
+        "name": "Tikit Agency - Saudi Arabia",
+        "description": "Best influencer marketing agency in Saudi Arabia. Tikit connects brands with top Saudi influencers and content creators across Riyadh, Jeddah, and the Kingdom.",
+        "url": "https://tikit.ae/",
+        "telephone": "+971-56-888-1133",
+        "email": "Hello@tikit.ae",
+        "image": "https://tikit.ae/cover-image.png",
+        "logo": "https://tikit.ae/logo-light.svg",
+        "priceRange": "$$$",
+        "currenciesAccepted": "SAR, USD, AED",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "SA",
+          "addressRegion": "Saudi Arabia"
+        },
+        "areaServed": [
+          {
+            "@type": "City",
+            "name": "Riyadh"
+          },
+          {
+            "@type": "City",
+            "name": "Jeddah"
+          },
+          {
+            "@type": "Country",
+            "name": "Saudi Arabia"
+          }
+        ],
+        "sameAs": [
+          "https://www.instagram.com/tikit.ae/"
+        ]
+      }
+    </script>
+
+    <!-- JSON-LD LocalBusiness Schema - Turkey Office -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "@id": "https://tikit.ae/#turkey-office",
+        "name": "Tikit Agency - Türkiye",
+        "description": "Leading influencer marketing agency in Istanbul, Turkey. Tikit connects brands with top Turkish influencers and content creators across Istanbul and Türkiye.",
+        "url": "https://tikit.ae/",
+        "telephone": "+971-56-888-1133",
+        "email": "Hello@tikit.ae",
+        "image": "https://tikit.ae/cover-image.png",
+        "logo": "https://tikit.ae/logo-light.svg",
+        "priceRange": "$$$",
+        "currenciesAccepted": "TRY, USD, EUR",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Istanbul",
+          "addressCountry": "TR"
+        },
+        "areaServed": [
+          {
+            "@type": "City",
+            "name": "Istanbul"
+          },
+          {
+            "@type": "Country",
+            "name": "Turkey"
+          }
+        ],
+        "sameAs": [
+          "https://www.instagram.com/tikit.ae/"
+        ]
+      }
+    </script>
+
+    <!-- JSON-LD Service Schema - Influencer Marketing -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "@id": "https://tikit.ae/#influencer-marketing",
+        "name": "Influencer Marketing Services",
+        "alternateName": ["Influencer Agency Dubai", "KOL Marketing", "Creator Partnerships"],
+        "description": "Tikit Agency offers premium influencer marketing services in Dubai and Saudi Arabia. We connect brands with authentic creators who drive real engagement, turning influence into measurable ROI across Instagram, TikTok, YouTube, and Snapchat.",
+        "provider": {
+          "@type": "Organization",
+          "name": "Tikit Agency",
+          "url": "https://tikit.ae/"
+        },
+        "areaServed": ["Dubai", "Abu Dhabi", "Saudi Arabia", "Riyadh", "Jeddah", "GCC"],
+        "serviceType": "Influencer Marketing",
+        "category": "Marketing Services",
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Influencer Marketing Packages",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Influencer Campaign Management"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Talent Sourcing & Vetting"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Campaign Analytics & Reporting"
+              }
+            }
+          ]
+        }
+      }
+    </script>
+
+    <!-- JSON-LD FAQ Schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is the best influencer marketing agency in Dubai?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tikit Agency is one of the best influencer marketing agencies in Dubai, with 300+ happy clients and 50+ employees. Based in Jumeirah 1, Dubai, we specialize in connecting brands with authentic creators who drive real engagement and measurable ROI across the UAE and GCC region."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the best influencer marketing agency in Saudi Arabia?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tikit Agency operates in Saudi Arabia with a dedicated local office serving clients in Riyadh, Jeddah, and across the Kingdom. We are recognized as a leading influencer marketing agency in KSA, helping brands connect with top Saudi influencers and content creators."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What services does Tikit Agency offer?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tikit Agency offers comprehensive marketing services including: Influencer Marketing, Talent Management, Social Media Marketing, Branding & Identity Design, Content Production, and Digital Marketing. We serve clients across Dubai, Saudi Arabia, Turkey, and the broader MENA region."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How can I contact Tikit Agency?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "You can contact Tikit Agency at +971 56 888 1133 or email Hello@tikit.ae. Our main office is located in Jumeirah 1, Dubai, UAE. We also have offices in Saudi Arabia, Istanbul (Turkey), and Syria. Follow us on Instagram @tikit.ae for updates."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does Tikit Agency work with influencers in the GCC?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, Tikit Agency has an extensive network of influencers across the entire GCC region including UAE, Saudi Arabia, Kuwait, Bahrain, Oman, and Qatar. We match brands with the right creators based on audience demographics, engagement rates, and brand alignment."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I become an influencer with Tikit Agency?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Content creators can register with Tikit Agency through our Influencer Registration page at tikit.ae/influencer-register. We offer three plans: Management, Affiliate, and Premium, each providing different levels of support including brand deal negotiations, contract review, and dedicated account management."
+            }
+          }
+        ]
       }
     </script>
   </head>

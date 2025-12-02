@@ -2,6 +2,14 @@ import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../store/I18nLanguageContext";
 
+/**
+ * SEOHead Component - AI Engine Optimization Ready
+ * 
+ * Provides comprehensive meta tags and structured data for:
+ * - Search engines (Google, Bing)
+ * - AI assistants (ChatGPT, Claude, Gemini, Perplexity)
+ * - Social media platforms
+ */
 const SEOHead = ({
   title,
   description,
@@ -10,31 +18,122 @@ const SEOHead = ({
   ogImage,
   ogType = "website",
   structuredData,
+  // New props for enhanced AEO
+  serviceType,
+  breadcrumbs,
+  faqItems,
+  articleData,
 }) => {
   const { t } = useTranslation();
-  const { isRtl } = useI18nLanguage();
+  const { isRtl, language } = useI18nLanguage();
 
   const siteName = "Tikit Agency";
   const baseUrl = "https://tikit.ae";
-  const defaultImage = `${baseUrl}/logo-light.svg`;
+  const defaultImage = `${baseUrl}/cover-image.png`;
+  
+  // Business constants for schema
+  const businessInfo = {
+    phone: "+971-56-888-1133",
+    email: "Hello@tikit.ae",
+    address: "Jumeirah 1, Dubai, United Arab Emirates",
+    instagram: "https://www.instagram.com/tikit.ae/",
+  };
 
   const fullTitle = title
     ? `${title} | ${siteName}`
-    : `${siteName} - Full-Service Marketing Agency`;
+    : `${siteName} - Best Influencer Marketing Agency in Dubai & Saudi Arabia`;
   const fullDescription =
     description ||
     t(
       "seo.defaultDescription",
-      "We are Tikit — a full-service marketing agency driven by insight and creativity. Partnering with brands to deliver results through expert strategy, creative firepower, and flawless execution."
+      "Tikit Agency is a leading influencer marketing agency in Dubai and Saudi Arabia. We connect brands with authentic creators to drive real engagement and measurable ROI across the GCC region. 300+ happy clients, 50+ team members."
     );
   const fullKeywords =
     keywords ||
     t(
       "seo.defaultKeywords",
-      "marketing agency, digital marketing, influencer marketing, social media management, branding, production, creative agency, marketing strategy"
+      "influencer marketing agency Dubai, influencer agency Saudi Arabia, best influencer marketing agency UAE, talent management Dubai, social media marketing GCC, influencer marketing KSA, content creators Dubai"
     );
   const fullCanonicalUrl = canonicalUrl ? `${baseUrl}${canonicalUrl}` : baseUrl;
   const fullOgImage = ogImage || defaultImage;
+
+  // Generate Service Schema if serviceType is provided
+  const generateServiceSchema = () => {
+    if (!serviceType) return null;
+    return {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": serviceType,
+      "description": fullDescription,
+      "provider": {
+        "@type": "Organization",
+        "name": siteName,
+        "url": baseUrl,
+        "telephone": businessInfo.phone,
+        "email": businessInfo.email
+      },
+      "areaServed": ["Dubai", "Abu Dhabi", "Saudi Arabia", "Riyadh", "Jeddah", "Istanbul", "Turkey", "GCC"],
+      "serviceType": serviceType
+    };
+  };
+
+  // Generate Breadcrumb Schema
+  const generateBreadcrumbSchema = () => {
+    if (!breadcrumbs || breadcrumbs.length === 0) return null;
+    return {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": breadcrumbs.map((crumb, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "name": crumb.name,
+        "item": `${baseUrl}${crumb.url}`
+      }))
+    };
+  };
+
+  // Generate FAQ Schema
+  const generateFAQSchema = () => {
+    if (!faqItems || faqItems.length === 0) return null;
+    return {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqItems.map(item => ({
+        "@type": "Question",
+        "name": item.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": item.answer
+        }
+      }))
+    };
+  };
+
+  // Generate Article Schema (for blog/news pages)
+  const generateArticleSchema = () => {
+    if (!articleData) return null;
+    return {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": articleData.title || title,
+      "description": articleData.description || fullDescription,
+      "image": articleData.image || fullOgImage,
+      "author": {
+        "@type": "Organization",
+        "name": siteName
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": siteName,
+        "logo": {
+          "@type": "ImageObject",
+          "url": `${baseUrl}/logo-light.svg`
+        }
+      },
+      "datePublished": articleData.publishDate,
+      "dateModified": articleData.modifiedDate || articleData.publishDate
+    };
+  };
 
   useEffect(() => {
     if (typeof document === "undefined") return;
@@ -135,51 +234,101 @@ const SEOHead = ({
     htmlEl.lang = isRtl ? "ar" : "en";
     htmlEl.dir = isRtl ? "rtl" : "ltr";
 
+    // Handle structured data - support multiple schemas
     const scriptId = "seo-structured-data";
     let scriptTag = document.getElementById(scriptId);
+    
+    // Collect all schemas
+    const schemas = [];
+    
     if (structuredData) {
-      if (!scriptTag) {
-        scriptTag = document.createElement("script");
-        scriptTag.id = scriptId;
-        scriptTag.type = "application/ld+json";
-        document.head.appendChild(scriptTag);
-      }
-      scriptTag.textContent = JSON.stringify(structuredData);
+      schemas.push(structuredData);
     } else {
+      // Default Organization schema optimized for AI engines
       const defaultSchema = {
         "@context": "https://schema.org",
         "@type": "Organization",
-        name: siteName,
-        description: fullDescription,
-        url: baseUrl,
-        logo: `${baseUrl}/logo-light.svg`,
-        sameAs: [
-          "https://www.linkedin.com/company/tikit-agency",
-          "https://www.instagram.com/tikitagency",
-          "https://twitter.com/tikitagency",
+        "name": siteName,
+        "description": fullDescription,
+        "url": baseUrl,
+        "logo": {
+          "@type": "ImageObject",
+          "url": `${baseUrl}/logo-light.svg`,
+          "width": 200,
+          "height": 60
+        },
+        "image": `${baseUrl}/cover-image.png`,
+        "telephone": businessInfo.phone,
+        "email": businessInfo.email,
+        "sameAs": [
+          businessInfo.instagram
         ],
-        contactPoint: {
+        "contactPoint": {
           "@type": "ContactPoint",
-          telephone: "+1-555-TIKIT-01",
-          contactType: "customer service",
-          availableLanguage: ["English", "French", "Arabic"],
+          "telephone": businessInfo.phone,
+          "contactType": "customer service",
+          "email": businessInfo.email,
+          "availableLanguage": ["English", "Arabic", "French"],
+          "areaServed": ["AE", "SA", "TR", "SY"]
         },
-        address: {
+        "address": {
           "@type": "PostalAddress",
-          addressCountry: "US",
+          "streetAddress": "Jumeirah 1",
+          "addressLocality": "Dubai",
+          "addressCountry": "AE"
         },
-        foundingDate: "2020",
-        numberOfEmployees: "50-100",
-        industry: "Marketing and Advertising",
+        "foundingDate": "2020",
+        "numberOfEmployees": {
+          "@type": "QuantitativeValue",
+          "minValue": 50
+        },
+        "areaServed": ["United Arab Emirates", "Saudi Arabia", "Turkey", "GCC Region", "MENA Region"],
+        "knowsAbout": [
+          "Influencer Marketing",
+          "Talent Management", 
+          "Social Media Marketing",
+          "Branding",
+          "Content Production"
+        ]
       };
+      schemas.push(defaultSchema);
+    }
 
-      if (!scriptTag) {
-        scriptTag = document.createElement("script");
-        scriptTag.id = scriptId;
-        scriptTag.type = "application/ld+json";
-        document.head.appendChild(scriptTag);
-      }
-      scriptTag.textContent = JSON.stringify(defaultSchema);
+    // Add service schema if applicable
+    const serviceSchema = generateServiceSchema();
+    if (serviceSchema) schemas.push(serviceSchema);
+
+    // Add breadcrumb schema if applicable
+    const breadcrumbSchema = generateBreadcrumbSchema();
+    if (breadcrumbSchema) schemas.push(breadcrumbSchema);
+
+    // Add FAQ schema if applicable
+    const faqSchema = generateFAQSchema();
+    if (faqSchema) schemas.push(faqSchema);
+
+    // Add article schema if applicable
+    const articleSchema = generateArticleSchema();
+    if (articleSchema) schemas.push(articleSchema);
+
+    // Inject all schemas
+    if (!scriptTag) {
+      scriptTag = document.createElement("script");
+      scriptTag.id = scriptId;
+      scriptTag.type = "application/ld+json";
+      document.head.appendChild(scriptTag);
+    }
+    
+    // If multiple schemas, wrap in @graph; otherwise use single schema
+    if (schemas.length > 1) {
+      scriptTag.textContent = JSON.stringify({
+        "@context": "https://schema.org",
+        "@graph": schemas.map(s => {
+          const { "@context": _, ...rest } = s;
+          return rest;
+        })
+      });
+    } else {
+      scriptTag.textContent = JSON.stringify(schemas[0]);
     }
 
     return () => {

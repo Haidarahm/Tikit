@@ -1,3 +1,6 @@
+# Tikit Agency - robots.txt
+# Optimized for Search Engines and AI Crawlers
+
 User-agent: *
 Allow: /
 
@@ -7,22 +10,91 @@ Sitemap: https://tikit.ae/sitemap.xml
 # Crawl-delay for respectful crawling
 Crawl-delay: 1
 
-# Disallow admin or private areas (if any)
+# ===========================================
+# AI CRAWLER RULES (AEO Optimization)
+# ===========================================
+
+# OpenAI GPTBot (ChatGPT)
+User-agent: GPTBot
+Allow: /
+Allow: /home
+Allow: /about
+Allow: /services
+Allow: /work
+Allow: /influencer
+Allow: /contact
+Allow: /news
+
+# Google Bard / Gemini
+User-agent: Google-Extended
+Allow: /
+
+# Anthropic Claude
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+# Perplexity AI
+User-agent: PerplexityBot
+Allow: /
+
+# Cohere AI
+User-agent: cohere-ai
+Allow: /
+
+# Meta AI
+User-agent: Meta-ExternalAgent
+Allow: /
+
+# Common Crawl (used by many AI models)
+User-agent: CCBot
+Allow: /
+
+# ===========================================
+# SEARCH ENGINE RULES
+# ===========================================
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Yandex
+Allow: /
+
+# ===========================================
+# DISALLOW RULES
+# ===========================================
+
+# Disallow admin or private areas
 Disallow: /admin/
 Disallow: /private/
 Disallow: /api/
 Disallow: /_internal/
 
-# Allow all main pages
+# ===========================================
+# ALLOW MAIN PAGES
+# ===========================================
+
 Allow: /home
 Allow: /about
 Allow: /services
 Allow: /work
 Allow: /news
 Allow: /influencer
+Allow: /influencer-register
 Allow: /contact
 Allow: /service-details/
-Allow: /details/
+Allow: /showcase/
 
 # Allow language-specific pages
 Allow: /en
@@ -32,8 +104,6 @@ Allow: /ar
 # Allow static assets
 Allow: /assets/
 Allow: /images/
-Allow: /css/
-Allow: /js/
 Allow: /*.css
 Allow: /*.js
 Allow: /*.png
@@ -42,3 +112,15 @@ Allow: /*.jpeg
 Allow: /*.gif
 Allow: /*.svg
 Allow: /*.webp
+
+# ===========================================
+# BUSINESS INFORMATION (for AI context)
+# ===========================================
+# Company: Tikit Agency
+# Website: https://tikit.ae
+# Industry: Influencer Marketing & Talent Management
+# Locations: Dubai UAE (HQ), Saudi Arabia, Istanbul Turkey, Syria
+# Phone: +971 56 888 1133
+# Email: Hello@tikit.ae
+# Services: Influencer Marketing, Talent Management, Social Media, Branding, Production
+# Markets: UAE, KSA, Turkey, GCC, MENA Region

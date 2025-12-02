@@ -337,20 +337,28 @@
             "scrollHint": "Défilez pour explorer",
             "items": [
                 {
-                    "title": "Développement Web",
-                    "description": "Création d'applications web modernes et réactives avec des technologies de pointe"
+                    "title": "Marketing d'Influence",
+                    "description": "Connectez votre marque à des voix qui comptent. Nous vous mettons en relation avec des créateurs authentiques qui génèrent un engagement réel, transformant l'influence en impact mesurable à Dubaï, en Arabie Saoudite et dans la région du Golfe."
                 },
                 {
                     "title": "Marketing des Réseaux Sociaux",
-                    "description": "Dominez Instagram, TikTok et au-delà avec du contenu captivant, des campagnes stratégiques et une croissance communautaire qui transforme les abonnés en clients fidèles"
+                    "description": "Dominez Instagram, TikTok et au-delà avec du contenu captivant, des campagnes stratégiques et une croissance communautaire qui transforme les abonnés en clients fidèles."
                 },
                 {
-                    "title": "Design UI/UX",
-                    "description": "Conception d'interfaces utilisateur intuitives et élégantes qui ravissent vos clients"
+                    "title": "Image de Marque",
+                    "description": "Construisez une marque qui se démarque et défend une cause. De l'identité visuelle à la voix de marque, nous façonnons la façon dont les audiences vous voient, ressentent et se souviennent de vous — créant clarté, cohérence et connexion à chaque point de contact."
+                },
+                {
+                    "title": "Production",
+                    "description": "Du concept au rendu final, nous donnons vie aux idées audacieuses. Qu'il s'agisse de contenu social, de visuels de marque ou de tournages commerciaux, notre équipe de production livre une narration de qualité qui capte l'attention."
+                },
+                {
+                    "title": "Développement Web",
+                    "description": "Création d'applications web modernes et réactives avec des technologies de pointe qui élèvent votre présence numérique et convertissent les visiteurs en clients."
                 },
                 {
                     "title": "Marketing Digital",
-                    "description": "Stimuler la croissance grâce à des campagnes stratégiques et des analyses basées sur les données"
+                    "description": "Stimuler la croissance grâce à des campagnes stratégiques, des analyses basées sur les données et une exécution axée sur le ROI qui livre des résultats mesurables pour votre marque."
                 }
             ]
         }
@@ -388,10 +396,13 @@
         "contactText": "Si vous souhaitez travailler avec nous ou simplement prendre contact, nous serions ravis de vous entendre !",
         "contactTitle": "Contact –",
         "contactSubtitle": "pour Client ou Influenceur partout",
-        "locationDubai": "Dubaï - EAU",
-        "locationLondon": "Londres - Royaume-Uni",
+        "locationDubai": "Dubaï, Jumeirah 1 - EAU",
+        "locationKSA": "Arabie Saoudite - KSA",
+        "locationTurkey": "Istanbul - Türkiye",
         "locationSyria": "Syrie - Damas",
-        "copyright": "© Copyright 2025 | Tous droits réservés par Tikit",
+        "phone": "+971 56 888 1133",
+        "email": "Hello@tikit.ae",
+        "copyright": "© Copyright 2025 | Tous droits réservés par Tikit Agency",
         "links": {
             "aboutUs": "À propos",
             "services": "Services",

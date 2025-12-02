@@ -11,32 +11,59 @@
         "contact": "Contact Us"
     },
     "seo": {
-        "defaultDescription": "We are Tikit — a full-service marketing agency driven by insight and creativity. Partnering with brands to deliver results through expert strategy, creative firepower, and flawless execution.",
-        "defaultKeywords": "marketing agency, digital marketing, influencer marketing, social media management, branding, production, creative agency, marketing strategy",
+        "defaultDescription": "Tikit Agency is a leading influencer marketing agency in Dubai and Saudi Arabia. We connect brands with authentic creators to drive real engagement and measurable ROI across the GCC region. 300+ happy clients, 50+ team members.",
+        "defaultKeywords": "influencer marketing agency Dubai, influencer agency Saudi Arabia, best influencer marketing agency UAE, talent management Dubai, social media marketing GCC, influencer marketing KSA, content creators Dubai, influencer agency Riyadh",
         "home": {
-            "title": "Tikit Agency - Full-Service Marketing Agency",
-            "description": "ROI-focused marketing agency delivering expert strategy, creative firepower, and flawless execution. Partner with Tikit for influencer marketing, social media management, branding, and production services.",
-            "keywords": "marketing agency, ROI marketing, influencer marketing, social media management, branding, production, creative agency, digital marketing strategy"
+            "title": "Best Influencer Marketing Agency in Dubai & Saudi Arabia",
+            "description": "Tikit Agency is the leading influencer marketing and talent management agency in Dubai and Saudi Arabia. 300+ happy clients, 50+ experts. We connect brands with authentic creators for measurable ROI across the GCC.",
+            "keywords": "best influencer marketing agency Dubai, influencer agency UAE, influencer marketing Saudi Arabia, talent management Dubai, top influencer agency GCC, social media agency Dubai, content creator agency"
         },
         "about": {
-            "title": "About Tikit Agency - Our Story & Team",
-            "description": "Learn about Tikit Agency's journey as a full-service marketing agency. Discover our creative team, company values, and commitment to delivering exceptional results for our clients.",
-            "keywords": "about tikit agency, marketing agency team, creative team, company story, marketing agency values"
+            "title": "About Tikit Agency - Leading Influencer Marketing Agency UAE",
+            "description": "Tikit Agency is a Dubai-based influencer marketing agency with 50+ team members and offices in UAE, Saudi Arabia, and Syria. Learn about our journey helping 300+ brands achieve measurable results.",
+            "keywords": "about Tikit Agency, influencer agency Dubai team, marketing agency UAE, influencer marketing company Saudi Arabia, Dubai marketing agency"
         },
         "services": {
-            "title": "Our Marketing Services - Tikit Agency",
-            "description": "Explore Tikit Agency's comprehensive marketing services including influencer marketing, social media management, branding, and production. Expert strategy and creative execution.",
-            "keywords": "marketing services, influencer marketing services, social media management, branding services, production services, marketing strategy"
+            "title": "Influencer Marketing Services Dubai & Saudi Arabia",
+            "description": "Explore Tikit Agency's marketing services: Influencer Marketing, Talent Management, Social Media Marketing, Branding, and Production. Serving Dubai, Abu Dhabi, Riyadh, Jeddah, and the GCC.",
+            "keywords": "influencer marketing services Dubai, talent management UAE, social media agency Saudi Arabia, branding agency Dubai, production company GCC, digital marketing Riyadh"
         },
         "work": {
-            "title": "Our Work & Case Studies - Tikit Agency",
-            "description": "View Tikit Agency's portfolio of successful marketing campaigns and case studies. See how we've helped brands achieve their marketing goals through creative strategy.",
-            "keywords": "marketing portfolio, case studies, marketing campaigns, brand success stories, marketing results"
+            "title": "Influencer Marketing Case Studies - Tikit Agency Dubai",
+            "description": "View Tikit Agency's portfolio of successful influencer marketing campaigns in Dubai and Saudi Arabia. See how we've helped 300+ brands achieve measurable ROI through creator partnerships.",
+            "keywords": "influencer marketing case studies, Dubai marketing campaigns, Saudi Arabia brand campaigns, influencer campaign results, GCC marketing portfolio"
         },
         "contact": {
-            "title": "Contact Tikit Agency - Get Started Today",
-            "description": "Ready to elevate your brand? Contact Tikit Agency for expert marketing services. Get in touch with our team of marketing professionals and start your journey to success.",
-            "keywords": "contact marketing agency, get marketing quote, marketing consultation, brand consultation, marketing services inquiry"
+            "title": "Contact Tikit Agency Dubai - Influencer Marketing Experts",
+            "description": "Contact Tikit Agency at +971 56 888 1133 or Hello@tikit.ae. Our main office is in Jumeirah 1, Dubai with offices in Saudi Arabia. Get a free consultation for influencer marketing.",
+            "keywords": "contact Tikit Agency, influencer agency Dubai contact, marketing agency phone UAE, Dubai marketing consultation, Saudi Arabia influencer agency"
+        },
+        "influencer": {
+            "title": "Join Tikit Agency - Influencer & Creator Management",
+            "description": "Join Tikit Agency's roster of influencers and content creators. We offer talent management, brand deal negotiations, and career growth opportunities across Dubai, Saudi Arabia, and the GCC.",
+            "keywords": "join influencer agency Dubai, influencer management UAE, content creator agency, talent management Saudi Arabia, become managed influencer"
+        }
+    },
+    "faq": {
+        "home": {
+            "q1": "What is Tikit Agency?",
+            "a1": "Tikit Agency is a leading influencer marketing and talent management agency based in Dubai, UAE, with offices in Saudi Arabia, Istanbul (Turkey), and Syria. We connect brands with authentic creators to drive real engagement and measurable ROI across the GCC and MENA region. With 300+ happy clients and 50+ team members, we're one of the top influencer marketing agencies in the Middle East.",
+            "q2": "What services does Tikit Agency offer?",
+            "a2": "Tikit Agency offers comprehensive marketing services including: Influencer Marketing, Talent Management, Social Media Marketing, Branding & Identity Design, Content Production, Web Development, and Digital Marketing. We serve clients across Dubai, Abu Dhabi, Saudi Arabia (Riyadh, Jeddah), Istanbul (Turkey), and the broader MENA region.",
+            "q3": "How can I contact Tikit Agency?",
+            "a3": "You can contact Tikit Agency at +971 56 888 1133 or email Hello@tikit.ae. Our main office is located in Jumeirah 1, Dubai, UAE. We also have offices in Saudi Arabia, Istanbul (Turkey), and Syria. Follow us on Instagram @tikit.ae for updates.",
+            "q4": "Does Tikit work with influencers in Saudi Arabia?",
+            "a4": "Yes! Tikit Agency has a dedicated office in Saudi Arabia and works with top influencers across Riyadh, Jeddah, and the entire Kingdom. We're recognized as one of the best influencer marketing agencies in KSA, helping brands connect with authentic Saudi content creators.",
+            "q5": "How do I become an influencer with Tikit?",
+            "a5": "Content creators can register with Tikit Agency through our Influencer Registration page. We offer three plans: Management, Affiliate, and Premium, each providing different levels of support including brand deal negotiations, contract review, dedicated account management, and international opportunities."
+        },
+        "services": {
+            "q1": "What makes Tikit different from other influencer agencies?",
+            "a1": "Tikit Agency combines data-driven matchmaking with authentic creator relationships. Unlike traditional agencies, we focus on ROI and measurable results. Our team of 50+ experts, presence in Dubai and Saudi Arabia, and track record of 300+ happy clients make us a trusted partner for brands seeking real impact in the GCC market.",
+            "q2": "How does influencer marketing work with Tikit?",
+            "a2": "Our influencer marketing process includes: 1) Understanding your brand goals, 2) Data-backed influencer matching, 3) Campaign strategy development, 4) Content creation and approval, 5) Campaign execution across platforms, 6) Real-time analytics and reporting. We handle everything from nano-influencers to celebrity partnerships.",
+            "q3": "What platforms does Tikit cover?",
+            "a3": "Tikit Agency manages influencer campaigns across all major platforms including Instagram, TikTok, YouTube, Snapchat, Twitter/X, LinkedIn, and Facebook. We specialize in platforms popular in the MENA region and can customize campaigns for specific audience segments."
         }
     },
     "home": {
@@ -337,20 +364,28 @@
             "scrollHint": "Scroll to explore",
             "items": [
                 {
-                    "title": "Web Development",
-                    "description": "Building responsive and modern web applications with cutting-edge technologies"
+                    "title": "Influencer Marketing",
+                    "description": "Connect your brand with voices that matter. We match you with authentic creators who drive real engagement, turning influence into measurable impact across Dubai, Saudi Arabia, and the GCC region."
                 },
                 {
                     "title": "Social Media Marketing",
-                    "description": "Dominate Instagram, TikTok, and beyond with scroll-stopping content, strategic campaigns, and community-driven growth that turns followers into loyal customers"
+                    "description": "Dominate Instagram, TikTok, and beyond with scroll-stopping content, strategic campaigns, and community-driven growth that turns followers into loyal customers."
                 },
                 {
-                    "title": "UI/UX Design",
-                    "description": "Crafting intuitive and beautiful user interfaces that delight your customers"
+                    "title": "Branding",
+                    "description": "Build a brand that stands out and stands for something. From visual identity to brand voice, we shape how audiences see, feel, and remember you — creating clarity, consistency, and connection at every touchpoint."
+                },
+                {
+                    "title": "Production",
+                    "description": "From concept to final cut, we bring bold ideas to life. Whether it's social content, branded visuals, or full-scale commercial shoots, our production team delivers quality storytelling that captures attention."
+                },
+                {
+                    "title": "Web Development",
+                    "description": "Building responsive and modern web applications with cutting-edge technologies that elevate your digital presence and convert visitors into customers."
                 },
                 {
                     "title": "Digital Marketing",
-                    "description": "Driving growth through strategic campaigns and data-driven insights"
+                    "description": "Driving growth through strategic campaigns, data-driven insights, and ROI-focused execution that delivers measurable results for your brand."
                 }
             ]
         }
@@ -388,10 +423,13 @@
         "contactText": "If you would like to work with us or just want to get in touch, we'd love to hear from you!",
         "contactTitle": "Contact –",
         "contactSubtitle": "for Client or Influencer throughout",
-        "locationDubai": "Dubai- UAE",
-        "locationLondon": "London - UK",
+        "locationDubai": "Dubai, Jumeirah 1 - UAE",
+        "locationKSA": "Saudi Arabia - KSA",
+        "locationTurkey": "Istanbul - Türkiye",
         "locationSyria": "Syria - Damascus",
-        "copyright": "© Copyright 2025 | Alrights reserved by Tikit",
+        "phone": "+971 56 888 1133",
+        "email": "Hello@tikit.ae",
+        "copyright": "© Copyright 2025 | All rights reserved by Tikit Agency",
         "links": {
             "aboutUs": "About Us",
             "services": "Services",

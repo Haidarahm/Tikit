@@ -24,24 +24,42 @@ const Services = () => {
 
   const serviceImages = [
     {
+      // Influencer Marketing - Content creator with ring light
       image:
-        "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1920&h=1080&fit=crop",
+        "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=1920&h=1080&fit=crop",
       gradient:
         "linear-gradient(180deg, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0.1) 100%)",
     },
     {
+      // Social Media Marketing
       image:
         "https://images.unsplash.com/photo-1562577309-4932fdd64cd1?w=1920&h=1080&fit=crop",
       gradient:
         "linear-gradient(180deg, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0.1) 100%)",
     },
     {
+      // Branding - Creative brand identity design
       image:
-        "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1920&h=1080&fit=crop",
+        "https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=1920&h=1080&fit=crop",
       gradient:
         "linear-gradient(180deg, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0.1) 100%)",
     },
     {
+      // Production - Video production setup
+      image:
+        "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=1920&h=1080&fit=crop",
+      gradient:
+        "linear-gradient(180deg, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0.1) 100%)",
+    },
+    {
+      // Web Development
+      image:
+        "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1920&h=1080&fit=crop",
+      gradient:
+        "linear-gradient(180deg, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0.1) 100%)",
+    },
+    {
+      // Digital Marketing
       image:
         "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&h=1080&fit=crop",
       gradient:
