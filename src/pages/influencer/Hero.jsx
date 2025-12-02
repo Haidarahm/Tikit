@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../store/I18nLanguageContext";
 import { useTheme } from "../../store/ThemeContext";
 import LogoLoop from "../../components/LogoLoop";
+import LightRays from "../../components/LightRays";
 
 // Import all influencer images
 import abdullahBinDfna from "../../assets/influencers/Abdullah Bin Dfna.webp";
@@ -97,11 +98,25 @@ const Hero = () => {
   return (
     <section
       data-nav-color="black"
-      className={`text-[var(--foreground)] mt-[104px] md:mt-2 relative overflow-hidden h-[50vh] md:h-screen w-full flex flex-col items-center justify-center ${
+      className={` text-[var(--foreground)] mt-[104px] md:mt-2 relative overflow-hidden h-[50vh] md:h-screen w-full flex flex-col items-center justify-center ${
         isRtl ? "font-cairo" : "font-hero-light"
       }`}
       dir={isRtl ? "rtl" : "ltr"}
     >
+       <div className="absolute w-full h-full -translate-x-1/2 left-1/2 top-0">
+        {theme === "dark" && (
+          <LightRays
+            raysOrigin="top-center"
+            raysColor="#52C3C5"
+            raysSpeed={1.5}
+            lightSpread={0.8}
+            rayLength={1.2}
+            followMouse={true}
+            mouseInfluence={0.1}
+            className="custom-rays"
+          />
+        )}
+      </div>
       <div className="top-section text-center md:mt-16 2xl:mt-12">
         <div ref={h1WrapRef} className="overflow-hidden">
           <h1

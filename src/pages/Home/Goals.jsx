@@ -7,6 +7,7 @@ import image4 from "../../assets/images/goal-image-4.png";
 import { useTheme } from "../../store/ThemeContext.jsx";
 import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
+import TikitTitle from "../../components/TikitTitle.jsx";
 
 const Goals = memo(() => {
   const { theme } = useTheme();
@@ -93,9 +94,7 @@ const Goals = memo(() => {
             )}`}
           >
             <div className="text">
-              <h2 className=" tikit-title   md:max-w-[500px] text-[34px] md:text-[64px] leading-[24px] md:leading-[70px] mb-[10px] md:mb-[22px]">
-                {goal.title}
-              </h2>
+             <TikitTitle title={goal.title}/>
               <p className=" font-light text-[var(--foreground)]  text:[14px] md:text-[32px] leading-[20px] md:leading-[45px]">
                 {goal.description}
               </p>

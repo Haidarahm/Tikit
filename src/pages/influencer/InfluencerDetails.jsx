@@ -199,7 +199,7 @@ export const InfluencerDetails = ({
       {/* Image Section */}
       <div
         ref={imageRef}
-        className={`relative flex  h-[200px] md:h-[300px] lg:h-[400px]   rounded-2xl ${
+        className={`relative flex  h-[200px] md:h-[300px] lg:h-[400px] w-[200px] md:w-[300px] lg:w-[400px]  rounded-2xl ${
           isReversed ? "justify-start" : "justify-end"
         }`}
       >

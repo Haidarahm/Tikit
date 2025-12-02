@@ -5,7 +5,7 @@ const TikitTitle = ({ title, className, mainWord }) => {
   const { isRtl } = useI18nLanguage();
   return (
     <h1 dir={isRtl ? "rtl" : "ltr"} className={`${className} ${
-      isRtl ? " font-cairo " : ""
+      isRtl ? " font-cairo " : "font-antonio"
     } tikit-title`}>
       {title}
       {mainWord ? (

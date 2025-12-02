@@ -393,7 +393,7 @@ export default function StickyPinnedSection({
           </button>
         </div>
         {/* Text column */}
-        <div className="relative h-[80vh] mt-34 w-full max-w-xl">
+        <div className="relative h-[80vh] mt-30- xl:mt-34 w-full max-w-xl">
           {items.map((it, i) => (
             <div
               key={i}
@@ -476,7 +476,7 @@ export default function StickyPinnedSection({
         </div>
 
         {/* Media column */}
-        <div className="sticky z-10 top-10 mt-34 h-[65vh] w-[25rem]  lg:w-[35rem] shrink-0 overflow-hidden rounded-xl">
+        <div className="sticky z-10 top-10 mt-25 xl:mt-30 h-[65vh] w-[25rem]  lg:w-[35rem] shrink-0 overflow-hidden rounded-xl">
           <div className="relative h-full w-full">
             {items.map((it, i) => (
               <div
