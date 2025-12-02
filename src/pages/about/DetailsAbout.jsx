@@ -86,7 +86,7 @@ const DetailsAbout = () => {
   }, [isRtl]);
 
   return (
-    <section ref={sectionRef} dir={isRtl ? "rtl" : "ltr"} className="details-about py-16 md:py-24 lg:py-32">
+    <section ref={sectionRef} dir={isRtl ? "rtl" : "ltr"} className="details-about py-16 md:py-18">
       <div className="flex flex-col lg:flex-row justify-between gap-8 md:gap-10 lg:gap-16 px-4 md:px-[60px] lg:px-[70px]">
         {/* Image */}
         <div

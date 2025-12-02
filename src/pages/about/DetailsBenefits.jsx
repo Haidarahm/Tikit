@@ -78,6 +78,18 @@ const DetailsBenefits = () => {
         }
       );
 
+      // Image parallax on scroll
+      gsap.to(imgRef.current?.querySelector("img"), {
+        yPercent: -15,
+        ease: "none",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 1,
+        },
+      });
+
       // Benefits list stagger
       const items = listRef.current?.querySelectorAll(".benefit-item");
       if (items?.length) {
@@ -105,7 +117,7 @@ const DetailsBenefits = () => {
   }, [isRtl]);
 
   return (
-    <section ref={sectionRef} dir={isRtl ? "rtl" : "ltr"} className="details-benefits py-16 md:py-24 lg:py-32">
+    <section ref={sectionRef} dir={isRtl ? "rtl" : "ltr"} className="details-benefits py-16 md:py-18">
       <div className="flex flex-col lg:flex-row-reverse justify-between gap-8 md:gap-10 lg:gap-16 px-4 md:px-[60px] lg:px-[70px]">
         {/* Image */}
         <div
@@ -115,7 +127,7 @@ const DetailsBenefits = () => {
           <img
             src={image3}
             alt="Our Mission"
-            className="block w-full h-full object-cover"
+            className="block w-full h-[120%] object-cover"
           />
         </div>
 

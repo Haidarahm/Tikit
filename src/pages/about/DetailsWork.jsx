@@ -107,7 +107,7 @@ const DetailsWork = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} dir={isRtl ? "rtl" : "ltr"} className="details-work py-16 md:py-24 lg:py-32 px-4 md:px-[60px] lg:px-[70px]">
+    <section ref={sectionRef} dir={isRtl ? "rtl" : "ltr"} className="details-work py-16 md:py-18 px-4 md:px-[60px] lg:px-[70px]">
       {/* Section Title */}
       <div ref={titleRef} className="text-center mb-10 md:mb-16">
         <h2 className={`relative inline-block text-3xl md:text-4xl lg:text-6xl text-[var(--foreground)] uppercase font-bold ${isRtl ? "font-cairo" : "font-antonio"}`}>
