@@ -50,12 +50,6 @@ const SOCIAL_PLATFORMS = [
     icon: FaLinkedinIn,
     color: "#0A66C2",
   },
-  {
-    value: "pinterest",
-    label: "Pinterest",
-    icon: FaPinterestP,
-    color: "#BD081C",
-  },
 ];
 
 const PRICE_TYPES = [
