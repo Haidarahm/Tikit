@@ -1,5 +1,5 @@
 import React from "react";
-import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaPhone, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import FloatingInput from "./ui/FloatingInput";
@@ -25,207 +25,245 @@ const Footer = ({ className }) => {
 
   const social = [
     { href: "https://facebook.com", labelKey: "facebook", Icon: FaFacebookF },
-    {
-      href: "https://www.instagram.com/tikit.ae/",
-      labelKey: "instagram",
-      Icon: FaInstagram,
-    },
+    { href: "https://www.instagram.com/tikit.ae/", labelKey: "instagram", Icon: FaInstagram },
     { href: "https://linkedin.com", labelKey: "linkedin", Icon: FaLinkedinIn },
     { href: "https://x.com", labelKey: "twitter", Icon: FaXTwitter },
   ];
+
+  const quickLinks = [
+    { to: "/about", label: t("footer.links.aboutUs") },
+    { to: "/services", label: t("footer.links.services") },
+    { to: "/work", label: t("footer.links.work") },
+    { to: "/contact", label: t("footer.links.contact") },
+    { to: "/influencer", label: t("nav.influencers", "Influencers") },
+  ];
+
+  const serviceLinks = [
+    { to: "/influencer-marketing-dubai", label: t("footer.services.influencerMarketing") },
+    { to: "/services", label: t("footer.services.socialMedia") },
+    { to: "/services", label: t("footer.services.branding") },
+    { to: "/services", label: t("footer.services.production") },
+  ];
+
+  const locations = [
+    { name: t("footer.locationDubai"), flag: "🇦🇪" },
+    { name: t("footer.locationKSA", "Saudi Arabia"), flag: "🇸🇦" },
+    { name: t("footer.locationTurkey", "Istanbul, Türkiye"), flag: "🇹🇷" },
+    { name: t("footer.locationSyria"), flag: "🇸🇾" },
+  ];
+
   return (
     <footer
       data-scroll-section
-      className={`w-full  px-[15px] min-h-[700px]  md:px-[80px]  flex flex-col text-[var(--foreground)] ${
+      className={`w-full bg-gradient-to-b from-transparent to-[var(--secondary)]/5 text-[var(--foreground)] ${
         isRtl ? "font-cairo" : "font-hero-light"
       } ${className}`}
+      dir={isRtl ? "rtl" : "ltr"}
     >
-      <div className="top-section  w-full mx-auto border-b-[1px] border-[#5D5D5D] py-8 flex items-center justify-between  md:gap-6">
-        <Link to="/home" className="logo w-[70px] md:w-[220px] h-[30px] md:h-[80px] block">
-          <SVGComponent
-            color={theme === "dark" ? "#FFFFFF" : "#363737"}
-            logoJumpColor={theme === "dark" ? "#52C3C5" : "#52C3C5"}
-            className="p-1 md:p-2 h-full overflow-visible"
-          />
-        </Link>
-        <nav aria-label="social" className="flex items-center gap-3">
-          {social.map(({ href, labelKey, Icon }) => {
-            const label = t(`footer.social.${labelKey}`);
-            return (
-              <a
-                key={labelKey}
-                href={href}
-                target="_blank"
-                rel="noreferrer noopener"
-                aria-label={label}
-                className="group inline-flex
-               items-center
-                justify-center
-                 w-10 h-10 rounded-full
-                  border border-[var(--base)]
-                 bg-white text-[var(--base)]
-                 hover:bg-[var(--base)]
-                 hover:text-white 
-                 transition-colors duration-200"
-              >
-                <Icon
-                  size={18}
-                  className="transition-transform duration-200 group-hover:scale-110"
-                />
-              </a>
-            );
-          })}
-        </nav>
-      </div>
-      <div className="bottom-section justify-between w-full pt-[30px] md:pt-[80px] pb-[20px] md:pb-[60px]  flex flex-1 flex-col md:flex-row gap-8 md:gap-0">
-        <div className="left-section gap-[20px] flex flex-col justify-around md:w-[60%]">
-          <p className="text-[15px] md:text-start text-center md:text-[24px] text-gray-500 leading-[30px]">
-            {t("footer.contactText")}
-          </p>
-          <h1
-            style={{ fontFamily: isRtl ? "Cairo" : "Antonio" }}
-            className="text-[24px]  md:text-[62px] text-center  md:text-start"
-          >
-            <span className="font-bold   tikit-gradient">
-              {t("footer.contactTitle")}
-            </span>{" "}
-            {t("footer.contactSubtitle")}
-          </h1>
-          
-          {/* Contact Info */}
-          <div className="contact-info flex flex-col md:flex-row md:items-center gap-4 md:gap-8 text-center md:text-start">
-            <a 
-              href="tel:+971568881133" 
-              className="text-[var(--secondary)] hover:underline text-lg md:text-xl font-medium"
-            >
-              +971 56 888 1133
-            </a>
-            <a 
-              href="mailto:Hello@tikit.ae" 
-              className="text-[var(--secondary)] hover:underline text-lg md:text-xl font-medium"
-            >
-              Hello@tikit.ae
-            </a>
-          </div>
-          
-          {/* Locations */}
-          <div className="location flex flex-wrap font-light justify-center md:justify-start text-gray-500 gap-3 md:gap-6 text-[14px] md:text-[18px]">
-            <p>{t("footer.locationDubai")}</p>
-            <span className="hidden md:inline text-gray-400">•</span>
-            <p>{t("footer.locationKSA", "Saudi Arabia - KSA")}</p>
-            <span className="hidden md:inline text-gray-400">•</span>
-            <p>{t("footer.locationTurkey", "Istanbul - Türkiye")}</p>
-            <span className="hidden md:inline text-gray-400">•</span>
-            <p>{t("footer.locationSyria")}</p>
-          </div>
-          
-          <div className="copyright hidden md:block text-[16px] text-gray-500">
-            {t("footer.copyright")}
-          </div>
-        </div>
-        <div className="right-section md:mt-[30px] md:w-[35%] flex flex-col">
-          <div className="items w-full justify-between flex font-light">
-            {/* Navigation Links */}
-            <nav aria-label="Footer navigation" className="items-1 md:text-start text-center flex flex-col gap-4">
-              <h4 className="font-semibold text-[var(--foreground)] mb-2">{t("nav.home", "Quick Links")}</h4>
-              <Link to="/about" className="text-gray-500 hover:text-[var(--secondary)] transition-colors">
-                {t("footer.links.aboutUs")}
-              </Link>
-              <Link to="/services" className="text-gray-500 hover:text-[var(--secondary)] transition-colors">
-                {t("footer.links.services")}
-              </Link>
-              <Link to="/work" className="text-gray-500 hover:text-[var(--secondary)] transition-colors">
-                {t("footer.links.work")}
-              </Link>
-              <Link to="/contact" className="text-gray-500 hover:text-[var(--secondary)] transition-colors">
-                {t("footer.links.contact")}
-              </Link>
-            </nav>
-            
-            {/* Services Links */}
-            <nav aria-label="Services" className="items-2 md:text-start text-center flex flex-col gap-4">
-              <h4 className="font-semibold text-[var(--foreground)] mb-2">{t("nav.services", "Services")}</h4>
-              <Link to="/influencer-marketing-dubai" className="text-gray-500 hover:text-[var(--secondary)] transition-colors">
-                {t("footer.services.influencerMarketing")}
-              </Link>
-              <Link to="/services" className="text-gray-500 hover:text-[var(--secondary)] transition-colors">
-                {t("footer.services.socialMedia")}
-              </Link>
-              <Link to="/services" className="text-gray-500 hover:text-[var(--secondary)] transition-colors">
-                {t("footer.services.branding")}
-              </Link>
-              <Link to="/services" className="text-gray-500 hover:text-[var(--secondary)] transition-colors">
-                {t("footer.services.production")}
-              </Link>
-            </nav>
-          </div>
-          
-          {/* Newsletter Subscription */}
-          <div className="subscription w-full flex flex-col md:flex-row items-stretch md:items-end gap-4 mt-8">
-            <FloatingInput
-              id="contact-name"
-              label={t("newsletter.name")}
-              containerClassName="flex-1"
-              inputProps={{
-                value: formData.name,
-                onChange: (e) =>
-                  setFormData({ ...formData, name: e.target.value }),
-              }}
-            />
-            <FloatingInput
-              id="contact-email"
-              label={t("newsletter.email")}
-              containerClassName="flex-1"
-              inputProps={{
-                value: formData.email,
-                onChange: (e) =>
-                  setFormData({ ...formData, email: e.target.value }),
-              }}
-            />
-            <button
-              onClick={handleSubscribe}
-              disabled={loading}
-              className={`bg-[var(--secondary)] 
-                hover:text-[var(--secondary)]
-                hover:bg-transparent
-                border-[var(--secondary)]
-                text-[var(--background)]
-                transition 
-                cursor-pointer border px-4 text-[14px] h-[40px] md:h-[30px] rounded-full whitespace-nowrap ${
+      {/* Newsletter Section */}
+      <div className="w-full bg-[var(--secondary)] py-12 px-6 md:px-20">
+        <div className="max-w-6xl mx-auto">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="text-center md:text-start">
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
+                {t("newsletter.title", "Stay Updated")}
+              </h3>
+              <p className="text-white/80 text-sm md:text-base">
+                {t("newsletter.description", "Subscribe to our newsletter for the latest updates")}
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+              <input
+                type="text"
+                placeholder={t("newsletter.name")}
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                className="px-4 py-3 rounded-full bg-white/10 border border-white/20 text-white placeholder:text-white/60 focus:outline-none focus:border-white/50 min-w-[150px]"
+              />
+              <input
+                type="email"
+                placeholder={t("newsletter.email")}
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                className="px-4 py-3 rounded-full bg-white/10 border border-white/20 text-white placeholder:text-white/60 focus:outline-none focus:border-white/50 min-w-[200px]"
+              />
+              <button
+                onClick={handleSubscribe}
+                disabled={loading}
+                className={`px-6 py-3 bg-white text-[var(--secondary)] font-semibold rounded-full hover:bg-white/90 transition-all duration-300 whitespace-nowrap ${
                   loading ? "opacity-50 cursor-not-allowed" : ""
                 }`}
-            >
-              {loading ? "..." : t("newsletter.subscribe")}
-            </button>
+              >
+                {loading ? "..." : t("newsletter.subscribe")}
+              </button>
+            </div>
           </div>
         </div>
       </div>
-      {/* Mobile Copyright */}
-      <div className="copyright md:hidden text-center text-[14px] text-gray-500 pb-4">
-        {t("footer.copyright")}
+
+      {/* Main Footer Content */}
+      <div className="w-full px-6 md:px-20 py-16">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-8">
+            
+            {/* Brand Column */}
+            <div className="lg:col-span-1">
+              <Link to="/home" className="inline-block mb-6">
+                <SVGComponent
+                  color={theme === "dark" ? "#FFFFFF" : "#363737"}
+                  logoJumpColor="#52C3C5"
+                  className="h-12 md:h-14 w-auto"
+                />
+              </Link>
+              <p className="text-gray-500 text-sm leading-relaxed mb-6">
+                {t("footer.contactText")}
+              </p>
+              
+              {/* Social Icons */}
+              <div className="flex items-center gap-3">
+                {social.map(({ href, labelKey, Icon }) => (
+                  <a
+                    key={labelKey}
+                    href={href}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    aria-label={t(`footer.social.${labelKey}`)}
+                    className="group w-10 h-10 rounded-full bg-[var(--secondary)]/10 flex items-center justify-center text-[var(--secondary)] hover:bg-[var(--secondary)] hover:text-white transition-all duration-300"
+                  >
+                    <Icon size={16} className="group-hover:scale-110 transition-transform" />
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            {/* Quick Links */}
+            <div>
+              <h4 className="text-lg font-semibold text-[var(--foreground)] mb-6 relative">
+                {t("nav.home", "Quick Links")}
+                <span className="absolute bottom-[-8px] left-0 w-8 h-0.5 bg-[var(--secondary)]"></span>
+              </h4>
+              <nav className="flex flex-col gap-3">
+                {quickLinks.map((link) => (
+                  <Link
+                    key={link.to}
+                    to={link.to}
+                    className="text-gray-500 hover:text-[var(--secondary)] hover:translate-x-1 transition-all duration-300 text-sm"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </nav>
+            </div>
+
+            {/* Services */}
+            <div>
+              <h4 className="text-lg font-semibold text-[var(--foreground)] mb-6 relative">
+                {t("nav.services", "Services")}
+                <span className="absolute bottom-[-8px] left-0 w-8 h-0.5 bg-[var(--secondary)]"></span>
+              </h4>
+              <nav className="flex flex-col gap-3">
+                {serviceLinks.map((link, index) => (
+                  <Link
+                    key={index}
+                    to={link.to}
+                    className="text-gray-500 hover:text-[var(--secondary)] hover:translate-x-1 transition-all duration-300 text-sm"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </nav>
+            </div>
+
+            {/* Contact Info */}
+            <div>
+              <h4 className="text-lg font-semibold text-[var(--foreground)] mb-6 relative">
+                {t("nav.contact", "Contact Us")}
+                <span className="absolute bottom-[-8px] left-0 w-8 h-0.5 bg-[var(--secondary)]"></span>
+              </h4>
+              
+              <div className="space-y-4">
+                {/* Phone */}
+                <a 
+                  href="tel:+971568881133" 
+                  className="flex items-center gap-3 text-gray-500 hover:text-[var(--secondary)] transition-colors group"
+                >
+                  <span className="w-8 h-8 rounded-full bg-[var(--secondary)]/10 flex items-center justify-center text-[var(--secondary)] group-hover:bg-[var(--secondary)] group-hover:text-white transition-all">
+                    <FaPhone size={12} />
+                  </span>
+                  <span className="text-sm">+971 56 888 1133</span>
+                </a>
+                
+                {/* Email */}
+                <a 
+                  href="mailto:Hello@tikit.ae" 
+                  className="flex items-center gap-3 text-gray-500 hover:text-[var(--secondary)] transition-colors group"
+                >
+                  <span className="w-8 h-8 rounded-full bg-[var(--secondary)]/10 flex items-center justify-center text-[var(--secondary)] group-hover:bg-[var(--secondary)] group-hover:text-white transition-all">
+                    <FaEnvelope size={12} />
+                  </span>
+                  <span className="text-sm">Hello@tikit.ae</span>
+                </a>
+                
+                {/* Address */}
+                <div className="flex items-start gap-3 text-gray-500">
+                  <span className="w-8 h-8 rounded-full bg-[var(--secondary)]/10 flex items-center justify-center text-[var(--secondary)] flex-shrink-0">
+                    <FaMapMarkerAlt size={12} />
+                  </span>
+                  <span className="text-sm">Jumeirah 1, Dubai, UAE</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Locations Bar */}
+          <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800">
+            <div className="flex flex-wrap justify-center gap-6 md:gap-10">
+              {locations.map((location, index) => (
+                <div key={index} className="flex items-center gap-2 text-gray-500 text-sm">
+                  <span className="text-lg">{location.flag}</span>
+                  <span>{location.name}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
-      
-      {/* Terms & Policies */}
-      <div className="terms pb-[30px] flex justify-center items-center border-t border-gray-800/20 pt-6">
-        <ul className="flex flex-wrap justify-center gap-2 md:gap-4 text-[12px] md:text-[16px] text-gray-500">
-          <li>
-            <Link to="/privacy-policy" className="hover:text-[var(--secondary)] transition-colors">
-              {t("footer.terms.privacyPolicy")}
-            </Link>
-          </li>
-          <span className="point">•</span>
-          <li>
-            <Link to="/about" className="hover:text-[var(--secondary)] transition-colors">
-              {t("footer.terms.aboutUs")}
-            </Link>
-          </li>
-          <span className="point">•</span>
-          <li>
-            <button className="hover:text-[var(--secondary)] transition-colors">
-              {t("footer.terms.cookieSettings")}
-            </button>
-          </li>
-        </ul>
+
+      {/* Bottom Bar */}
+      <div className="w-full border-t border-gray-200 dark:border-gray-800">
+        <div className="max-w-6xl mx-auto px-6 md:px-20 py-6">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            {/* Legal Links */}
+            <div className="flex flex-wrap justify-center gap-4 text-sm text-gray-500 order-2 md:order-1">
+              <Link to="/privacy-policy" className="hover:text-[var(--secondary)] transition-colors">
+                {t("footer.terms.privacyPolicy")}
+              </Link>
+              <span className="hidden md:inline">•</span>
+              <Link to="/about" className="hover:text-[var(--secondary)] transition-colors">
+                {t("footer.terms.aboutUs")}
+              </Link>
+              <span className="hidden md:inline">•</span>
+              <button className="hover:text-[var(--secondary)] transition-colors">
+                {t("footer.terms.cookieSettings")}
+              </button>
+            </div>
+            
+            {/* Copyright - Center */}
+            <div className="text-center text-gray-500 text-sm order-1 md:order-2">
+              {t("footer.copyright")}
+            </div>
+            
+            {/* Back to top (optional) */}
+            <div className="hidden md:block order-3">
+              <button 
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                className="text-sm text-gray-500 hover:text-[var(--secondary)] transition-colors flex items-center gap-2"
+              >
+                Back to top ↑
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </footer>
   );
