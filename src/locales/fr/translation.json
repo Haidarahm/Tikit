@@ -285,6 +285,83 @@
                 "text3": "et",
                 "text4": "Croître"
             }
+        },
+        "details": {
+            "header": {
+                "title": "Notre Vision",
+                "subtitle": "& Mission",
+                "marquee": {
+                    "strategy": "Stratégie",
+                    "creativity": "Créativité",
+                    "innovation": "Innovation",
+                    "growth": "Croissance"
+                }
+            },
+            "vision": {
+                "title": "Notre",
+                "titleHighlight": "Vision",
+                "paragraph1": "Redéfinir le paysage marketing mondial en alliant créativité, culture et technologie. Nous imaginons un avenir où les marques ne se contentent pas de communiquer — elles connectent, inspirent et façonnent les conversations dans le monde entier.",
+                "paragraph2": "Chez Tikit, notre vision ne se limite pas à livrer des campagnes marketing mais à construire une résonance émotionnelle entre les marques et leurs audiences, aidant les entreprises à croître tout en restant fidèles à leur identité."
+            },
+            "mission": {
+                "title": "Notre",
+                "titleHighlight": "Mission",
+                "paragraph1": "Notre mission est de doter les marques de stratégies non seulement efficaces mais culturellement pertinentes. Nous croyons que le marketing est un écosystème en constante évolution, et le succès réside dans l'adaptabilité, l'authenticité et l'innovation.",
+                "paragraph2": "Grâce à des insights basés sur les données, un savoir-faire créatif et une mentalité centrée sur l'humain, Tikit livre un engagement significatif qui génère une croissance commerciale mesurable.",
+                "benefits": {
+                    "dataDriven": "Basé sur les données",
+                    "creative": "Créatif",
+                    "authentic": "Authentique",
+                    "innovative": "Innovant"
+                }
+            },
+            "work": {
+                "title": "Ce que nous",
+                "titleHighlight": "Faisons",
+                "subtitle": "Chaque campagne est conçue avec un objectif — influencer les comportements, déclencher la conversation et créer une valeur de marque durable.",
+                "items": {
+                    "strategy": "Stratégie",
+                    "creation": "Création",
+                    "growth": "Croissance"
+                }
+            },
+            "services": {
+                "title": "Nos",
+                "titleHighlight": "Services",
+                "cta": "Prêt à transformer votre marque ? Créons ensemble quelque chose d'extraordinaire.",
+                "items": {
+                    "brandStrategy": {
+                        "name": "Stratégie de Marque",
+                        "desc": "Construire des fondations de marque solides"
+                    },
+                    "digitalMarketing": {
+                        "name": "Marketing Digital",
+                        "desc": "Campagnes digitales basées sur les données"
+                    },
+                    "socialMedia": {
+                        "name": "Réseaux Sociaux",
+                        "desc": "Présence sociale engageante"
+                    },
+                    "creativeDesign": {
+                        "name": "Design Créatif",
+                        "desc": "Excellence en narration visuelle"
+                    },
+                    "contentCreation": {
+                        "name": "Création de Contenu",
+                        "desc": "Contenu convaincant qui convertit"
+                    },
+                    "influencerMarketing": {
+                        "name": "Marketing d'Influence",
+                        "desc": "Partenariats d'influenceurs authentiques"
+                    }
+                },
+                "tags": {
+                    "dataDriven": "Basé sur les données",
+                    "creative": "Créatif",
+                    "authentic": "Authentique",
+                    "innovative": "Innovant"
+                }
+            }
         }
     },
     "contact": {

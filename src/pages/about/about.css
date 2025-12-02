@@ -98,3 +98,101 @@
   opacity: 1;
   transform: scale(1);
 }
+
+/* Details Section - Parallax Effect Styles */
+.details-wrapper {
+  position: relative;
+  z-index: 1;
+}
+
+/* Header Section */
+.details-header {
+  min-height: 100vh;
+}
+
+.details-title .char {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+/* Section Title with rotating square */
+.section-title__square {
+  will-change: transform;
+  pointer-events: none;
+}
+
+/* About Section */
+.details-about {
+  position: relative;
+}
+
+.details-about .about__img,
+.details-about .about__txt {
+  will-change: transform;
+}
+
+/* Benefits Section */
+.details-benefits .benefit-num {
+  will-change: transform;
+  transition: color 0.3s ease;
+}
+
+.details-benefits li:hover .benefit-num {
+  -webkit-text-stroke-color: #6ACBCC;
+}
+
+/* Work Section */
+.details-work .work-item {
+  will-change: transform;
+}
+
+.details-work .work-item-num {
+  will-change: transform;
+  top: -20px;
+  left: 10px;
+}
+
+.details-work .work-item-img {
+  will-change: transform;
+}
+
+.details-work .work-item-img img {
+  will-change: transform;
+}
+
+/* Services Section */
+.details-services .serv-item {
+  will-change: transform;
+}
+
+.details-services .serv-arrow {
+  will-change: transform;
+}
+
+/* Marquee animation */
+@keyframes marqueeScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.details-header .marq-wrap-animate {
+  animation: marqueeScroll 20s linear infinite;
+}
+
+/* Star pulse */
+@keyframes starPulse {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.1) rotate(180deg);
+  }
+}
+
+.marq-star svg {
+  animation: starPulse 3s ease-in-out infinite;
+}

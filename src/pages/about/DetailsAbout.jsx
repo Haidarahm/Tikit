@@ -1,0 +1,148 @@
+import React, { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useTranslation } from "react-i18next";
+import { useI18nLanguage } from "../../store/I18nLanguageContext";
+import image2 from "../../assets/aboutus/about-2.webp";
+
+gsap.registerPlugin(ScrollTrigger);
+
+const DetailsAbout = () => {
+  const { t } = useTranslation();
+  const { isRtl } = useI18nLanguage();
+  const sectionRef = useRef(null);
+  const imgRef = useRef(null);
+  const titleRef = useRef(null);
+  const textRef = useRef(null);
+
+  useEffect(() => {
+    if (!sectionRef.current) return;
+
+    const ctx = gsap.context(() => {
+      // Title animation
+      gsap.fromTo(
+        titleRef.current,
+        { opacity: 0, x: isRtl ? 50 : -50 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.8,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: titleRef.current,
+            start: "top 85%",
+            once: true,
+          },
+        }
+      );
+
+      // Text animation
+      gsap.fromTo(
+        textRef.current,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: textRef.current,
+            start: "top 85%",
+            once: true,
+          },
+        }
+      );
+
+      // Image reveal with parallax
+      gsap.fromTo(
+        imgRef.current,
+        { clipPath: isRtl ? "inset(100% 0 0 0)" : "inset(100% 0 0 0)" },
+        {
+          clipPath: "inset(0% 0 0 0)",
+          duration: 1,
+          ease: "power3.inOut",
+          scrollTrigger: {
+            trigger: imgRef.current,
+            start: "top 80%",
+            once: true,
+          },
+        }
+      );
+
+      // Image parallax on scroll
+      gsap.to(imgRef.current?.querySelector("img"), {
+        yPercent: -15,
+        ease: "none",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 1,
+        },
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, [isRtl]);
+
+  return (
+    <section ref={sectionRef} dir={isRtl ? "rtl" : "ltr"} className="details-about py-16 md:py-24 lg:py-32">
+      <div className="flex flex-col lg:flex-row justify-between gap-8 md:gap-10 lg:gap-16 px-4 md:px-[60px] lg:px-[70px]">
+        {/* Image */}
+        <div
+          ref={imgRef}
+          className="w-full lg:w-1/2 h-[300px] md:h-[400px] lg:h-[600px] overflow-hidden rounded-xl md:rounded-2xl"
+        >
+          <img
+            src={image2}
+            alt="About Tikit"
+            className="block w-full h-[120%] object-cover"
+          />
+        </div>
+
+        {/* Text Content */}
+        <div className="w-full lg:w-1/2 flex flex-col justify-center">
+          {/* Section Title */}
+          <h2
+            ref={titleRef}
+            className={`relative mb-6 md:mb-8 text-3xl md:text-4xl lg:text-6xl text-[var(--foreground)] uppercase font-bold ${
+              isRtl ? "font-cairo text-right" : "font-antonio text-left"
+            }`}
+          >
+            {t("about.details.vision.title")}{" "}
+            <span className="bg-gradient-to-r from-[#6ACBCC] to-[#1C6F6C] bg-clip-text text-transparent">
+              {t("about.details.vision.titleHighlight")}
+            </span>
+            <svg
+              className={`section-title__square absolute w-[100px] h-[60px] md:w-[120px] md:h-[70px] lg:w-[160px] lg:h-[90px] -top-2 md:-top-4 lg:-top-6 -z-[1] opacity-20 ${
+                isRtl ? "-right-2 md:-right-4 lg:-right-6" : "-left-2 md:-left-4 lg:-left-6"
+              }`}
+              viewBox="0 0 196 140"
+              fill="none"
+            >
+              <path
+                d="M196,3.48V52.73a10.43,10.43,0,0,1-2.55,6.85,10.06,10.06,0,0,1-2.23,1.93l-80.6,51.08L67.43,140a6.5,6.5,0,0,1-8.26-1.05L4.27,81A15.76,15.76,0,0,1,0,70.17V21.89a3.63,3.63,0,0,1,6.21-2.66L62.3,76.28a5.69,5.69,0,0,0,7.13.84L190.85.52A3.38,3.38,0,0,1,196,3.48Z"
+                stroke="#6ACBCC"
+                strokeWidth="1"
+                fill="none"
+              />
+            </svg>
+          </h2>
+
+          <div ref={textRef} className={`space-y-4 md:space-y-5 ${isRtl ? "font-cairo" : "font-hero-light"}`}>
+            <p className="text-sm md:text-base lg:text-lg leading-relaxed text-[var(--foreground)] dark:text-[var(--foreground)]/70">
+              {t("about.details.vision.paragraph1")}
+            </p>
+            <p className="text-sm md:text-base lg:text-lg leading-relaxed text-[var(--foreground)] dark:text-[var(--foreground)]/70">
+              {t("about.details.vision.paragraph2")}
+            </p>
+            {/* Decorative Line */}
+            <div className={`w-16 md:w-20 h-1 bg-gradient-to-r from-[#6ACBCC] to-[#1C6F6C] rounded-full mt-4 md:mt-6 ${isRtl ? "mr-auto" : "ml-0"}`} />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default DetailsAbout;
