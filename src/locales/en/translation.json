@@ -151,8 +151,8 @@
         },
         "contactUs": {
             "subtitle": "Kick it off with Tikit!",
-            "title": "Contact Us",
-            "mainWord": "Now",
+            "title": "Holla at us",
+            "mainWord": "Now!",
             "description": "We want to hear from you. let's us know",
             "description2": "how we can help!",
             "helpText": "let's us know how we can help!",
@@ -160,7 +160,7 @@
             "influencer": "Influencer",
             "name": "Name",
             "email": "Email",
-            "button": "Contact Us",
+            "button": "Holla at us",
             "brandsTrust": "20+ Brands Trust Us"
         },
         "reviews": {
@@ -289,7 +289,7 @@
         },
         "contactUs": {
             "subtitle": "Kick it off with Tikit!",
-            "title": "Contact Us Now",
+            "title": "Holla at us Now",
             "description": "We want to hear from you. let's us know",
             "description2": "how we can help!",
             "helpText": "let's us know how we can help!",
@@ -297,7 +297,7 @@
             "influencer": "Influencer",
             "name": "Name",
             "email": "Email",
-            "button": "Contact Us",
+            "button": "Holla at us",
             "brandsTrust": "20+ Brands Trust Us"
         },
         "animatedText": {
@@ -323,7 +323,8 @@
         },
         "action": {
             "subtitle": "Kick it off with Tikit!",
-            "title": "Contact Us Now",
+            "title": "Holla at us",
+            "mainWord": "Now",
             "description": "We want to hear from you. Let us know how we can help!",
             "client": "Client",
             "influencer": "Influencer",
@@ -346,7 +347,7 @@
                 "subject": "Subject",
                 "message": "Message",
                 "link": "Link",
-                "submit": "Contact Us"
+                "submit": "Holla at us"
             }
         }
     },
@@ -473,7 +474,8 @@
         "noInfluencers": "We couldn't find influencers for this section yet. Please check back soon."
     },
     "influencerRegister": {
-        "title": "Want to be managed by Tikit?",
+        "title": "Want to be managed by",
+        "mainWord": "Tikit?",
         "formTitle": "fill the registration form",
         "fields": {
             "fullName": "Full Name",

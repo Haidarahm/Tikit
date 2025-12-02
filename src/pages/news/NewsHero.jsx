@@ -160,7 +160,7 @@ const NewsHero = () => {
         {/* Title */}
         <h1
           ref={titleRef}
-          className={`text-5xl md:text-6xl lg:text-7xl font-black leading-tight tracking-tight mb-6 ${textColor} ${isRtl ? "font-cairo" : "font-hero-light"}`}
+          className={`text-5xl md:text-6xl lg:text-7xl font-black leading-tight tracking-tight mb-6 ${textColor} ${isRtl ? "font-cairo" : "font-antonio"}`}
           style={{ transformStyle: "preserve-3d", opacity: 0 }}
         >
           {t("news.hero.title")}

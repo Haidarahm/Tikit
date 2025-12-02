@@ -296,7 +296,8 @@
         },
         "action": {
             "subtitle": "Commencez avec Tikit !",
-            "title": "Contactez-nous maintenant",
+            "title": "Contactez-nous",
+            "mainWord": "Maintenant",
             "description": "Nous voulons vous entendre. Faites-nous savoir comment nous pouvons vous aider !",
             "client": "Client",
             "influencer": "Influenceur",
@@ -446,7 +447,8 @@
         "noInfluencers": "Nous n'avons pas encore trouvé d'influenceurs pour cette section. Veuillez revenir bientôt."
     },
     "influencerRegister": {
-        "title": "Voulez-vous être géré par Tikit ?",
+        "title": "Voulez-vous être géré par",
+        "mainWord": "Tikit ?",
         "formTitle": "remplir le formulaire d'inscription",
         "fields": {
             "fullName": "Nom complet",

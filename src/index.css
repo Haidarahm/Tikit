@@ -625,7 +625,6 @@ footer .bottom-section .right-section .items li {
 }
 
 .tikit-title {
-  font-family: "Antonio", "Source Sans 3", sans-serif;
   @apply font-[700] text-5xl sm:text-6xl md:text-7xl lg:text-[64px] leading-tight text-[var(--foreground)];
 }
 .tikit-gradient {

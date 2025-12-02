@@ -160,7 +160,7 @@ export const InfluencerDetails = ({
         <div className="space-y-2">
           <h1
             ref={nameRef}
-            className="text-4xl md:text-6xl lg:text-7xl  font-bold text-[var(--foreground)] leading-tight"
+            className={`text-4xl md:text-6xl lg:text-7xl  font-bold text-[var(--foreground)] leading-tight ${isRtl ? "font-cairo" : "font-antonio"}`}
           >
             {name}
           </h1>

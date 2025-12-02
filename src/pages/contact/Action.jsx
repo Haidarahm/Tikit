@@ -17,6 +17,7 @@ import {
   FaLink,
 } from "react-icons/fa";
 import "./contact.css";
+import TikitTitle from "../../components/TikitTitle";
 
 // Social media platforms with icons
 const SOCIAL_PLATFORMS = [
@@ -364,14 +365,7 @@ const Action = () => {
         <h2 className="text-base md:text-2xl mb-0 lg:text-3xl xl:text-4xl text-[var(--foreground)]/80">
           {t("contact.action.subtitle")}
         </h2>
-        <GradientText
-          colors={gradientColors}
-          animationSpeed={5}
-          showBorder={false}
-          className="text-4xl  md:text-5xl ml-0 lg:text-6xl text-center md:text-start font-bold leading-tight"
-        >
-          {t("contact.action.title")}{" "}
-        </GradientText>
+       <TikitTitle title={t("contact.action.title")} mainWord={t("contact.action.mainWord")} />
         {/* text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight */}
         <p className="text-base md:text-lg lg:text-xl xl:text-2xl font-light text-[var(--foreground)]/90 leading-snug">
           {t("contact.action.description")}

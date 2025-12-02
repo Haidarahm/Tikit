@@ -4,7 +4,9 @@ import { useI18nLanguage } from "../store/I18nLanguageContext";
 const TikitTitle = ({ title, className, mainWord }) => {
   const { isRtl } = useI18nLanguage();
   return (
-    <h1 className={`${className}  tikit-title`}>
+    <h1 dir={isRtl ? "rtl" : "ltr"} className={`${className} ${
+      isRtl ? " font-cairo " : ""
+    } tikit-title`}>
       {title}
       {mainWord ? (
         <>

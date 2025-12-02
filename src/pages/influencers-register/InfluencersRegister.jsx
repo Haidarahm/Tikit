@@ -11,6 +11,7 @@ import MediaKitUpload from "./MediaKitUpload";
 import SocialLinksInput from "./SocialLinksInput";
 import { useI18nLanguage } from "../../store/I18nLanguageContext";
 import { useInfluencerRegistrationStore } from "../../store/influencerRegistrationStore";
+import TikitTitle from "../../components/TikitTitle";
 
 const InfluencersRegister = () => {
   const { t } = useTranslation();
@@ -102,14 +103,11 @@ const InfluencersRegister = () => {
       className="w-full min-h-screen flex flex-col items-center mt-[104px]"
     >
       <div className="title py-[40px] md:py-[100px]">
-        <h1
-          style={{
-            fontFamily: isRtl ? "var(--font-cairo)" : "var(--font-cairo)",
-          }}
-          className="text-[30px] md:text-[40px] lg:text-[65px] 2xl:text-[75px]  font-[700] text-center text-[var(--foreground)] leading-tight capitalize will-change-transform"
-        >
-          {t("influencerRegister.title")}
-        </h1>
+        <TikitTitle
+          title={t("influencerRegister.title")}
+          mainWord={t("influencerRegister.mainWord","Tikit?")}
+        />
+          
       </div>
       <div className="main-content px-[12px] md:px-[75px] w-full">
         <div className="container py-[15px] md:py-[45px] flex flex-col items-center w-full rounded-[25px] border border-gray-200 dark:border-gray-700 bg-white dark:bg-[var(--container-bg)] shadow-sm dark:shadow-none">
