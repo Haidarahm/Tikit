@@ -33,9 +33,9 @@ const SEOHead = ({
   
   // Business constants for schema
   const businessInfo = {
-    phone: "+971-56-888-1133",
-    email: "Hello@tikit.ae",
-    address: "Jumeirah 1, Dubai, United Arab Emirates",
+    phone: "+971 4 577 4042",
+    email: "Holla@tikit.ae",
+    address: "The Burlington Tower, Marasi Drive, Dubai – Office 309",
     instagram: "https://www.instagram.com/tikit.ae/",
   };
 
@@ -273,7 +273,7 @@ const SEOHead = ({
         },
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "Jumeirah 1",
+          "streetAddress": "The Burlington Tower, Marasi Drive, Office 309",
           "addressLocality": "Dubai",
           "addressCountry": "AE"
         },

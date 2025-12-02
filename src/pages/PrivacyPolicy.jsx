@@ -81,7 +81,7 @@ However, no method of transmission over the Internet is 100% secure, and we cann
 • **Portability**: Request transfer of your data to another service provider
 • **Withdrawal**: Withdraw consent for data processing at any time
 
-To exercise these rights, please contact us at Hello@tikit.ae.`
+To exercise these rights, please contact us at Holla@tikit.ae.`
     },
     {
       title: "7. Cookies and Tracking Technologies",
@@ -124,13 +124,13 @@ You can control cookie settings through your browser preferences. Note that disa
       content: `If you have questions or concerns about this Privacy Policy or our data practices, please contact us:
 
 **Tikit Agency**
-Jumeirah 1, Dubai, United Arab Emirates
+The Burlington Tower, Marasi Drive, Dubai – Office 309
 
-**Email:** Hello@tikit.ae
-**Phone:** +971 56 888 1133
+**Email:** Holla@tikit.ae
+**Phone:** +971 4 577 4042
 **Instagram:** @tikit.ae
 
-For data protection inquiries, please email Hello@tikit.ae with "Privacy" in the subject line.`
+For data protection inquiries, please email Holla@tikit.ae with "Privacy" in the subject line.`
     }
   ];
 

@@ -1,5 +1,12 @@
 import React from "react";
-import { FaFacebookF, FaInstagram, FaLinkedinIn, FaPhone, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaLinkedinIn,
+  FaPhone,
+  FaEnvelope,
+  FaMapMarkerAlt,
+} from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import FloatingInput from "./ui/FloatingInput";
@@ -25,7 +32,11 @@ const Footer = ({ className }) => {
 
   const social = [
     { href: "https://facebook.com", labelKey: "facebook", Icon: FaFacebookF },
-    { href: "https://www.instagram.com/tikit.ae/", labelKey: "instagram", Icon: FaInstagram },
+    {
+      href: "https://www.instagram.com/tikit.ae/",
+      labelKey: "instagram",
+      Icon: FaInstagram,
+    },
     { href: "https://linkedin.com", labelKey: "linkedin", Icon: FaLinkedinIn },
     { href: "https://x.com", labelKey: "twitter", Icon: FaXTwitter },
   ];
@@ -55,13 +66,17 @@ const Footer = ({ className }) => {
   return (
     <footer
       data-scroll-section
-      className={`w-full bg-gradient-to-b from-transparent to-[var(--secondary)]/5 text-[var(--foreground)] ${
+      className={`w-full md:min-h-[670px] bg-gradient-to-b from-transparent to-[var(--secondary)]/5 text-[var(--foreground)] ${
         isRtl ? "font-cairo" : "font-hero-light"
       } ${className}`}
       dir={isRtl ? "rtl" : "ltr"}
     >
       {/* Newsletter Section */}
-      <div className="w-full bg-[var(--secondary)] py-12 px-6 md:px-20">
+      <div
+        className={`w-full py-12 px-6 md:px-20 ${
+          theme === "dark" ? "bg-[#101b22]" : "bg-[var(--secondary)]"
+        }`}
+      >
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="text-center md:text-start">
@@ -90,9 +105,11 @@ const Footer = ({ className }) => {
               <button
                 onClick={handleSubscribe}
                 disabled={loading}
-                className={`px-6 py-3 bg-white text-[var(--secondary)] font-semibold rounded-full hover:bg-white/90 transition-all duration-300 whitespace-nowrap ${
-                  loading ? "opacity-50 cursor-not-allowed" : ""
-                }`}
+                className={`px-6 py-3 font-semibold rounded-full transition-all duration-300 whitespace-nowrap ${
+                  theme === "dark"
+                    ? "bg-[var(--secondary)] text-[var(--background)] hover:bg-[var(--secondary)]/90"
+                    : "bg-white text-[var(--secondary)] hover:bg-white/90"
+                } ${loading ? "opacity-50 cursor-not-allowed" : ""}`}
               >
                 {loading ? "..." : t("newsletter.subscribe")}
               </button>
@@ -121,18 +138,29 @@ const Footer = ({ className }) => {
               
               {/* Social Icons */}
               <div className="flex items-center gap-3">
-                {social.map(({ href, labelKey, Icon }) => (
-                  <a
-                    key={labelKey}
-                    href={href}
-                    target="_blank"
-                    rel="noreferrer noopener"
-                    aria-label={t(`footer.social.${labelKey}`)}
-                    className="group w-10 h-10 rounded-full bg-[var(--secondary)]/10 flex items-center justify-center text-[var(--secondary)] hover:bg-[var(--secondary)] hover:text-white transition-all duration-300"
-                  >
-                    <Icon size={16} className="group-hover:scale-110 transition-transform" />
-                  </a>
-                ))}
+                {social.map(({ href, labelKey, Icon }) => {
+                  const base =
+                    "group w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300";
+                  const themeClasses =
+                    theme === "dark"
+                      ? "bg-white/5 text-white/70 hover:bg-[var(--secondary)] hover:text-white"
+                      : "bg-[var(--secondary)]/10 text-[var(--secondary)] hover:bg-[var(--secondary)] hover:text-white";
+                  return (
+                    <a
+                      key={labelKey}
+                      href={href}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      aria-label={t(`footer.social.${labelKey}`)}
+                      className={`${base} ${themeClasses}`}
+                    >
+                      <Icon
+                        size={16}
+                        className="group-hover:scale-110 transition-transform"
+                      />
+                    </a>
+                  );
+                })}
               </div>
             </div>
 
@@ -183,33 +211,65 @@ const Footer = ({ className }) => {
               
               <div className="space-y-4">
                 {/* Phone */}
-                <a 
-                  href="tel:+971568881133" 
-                  className="flex items-center gap-3 text-gray-500 hover:text-[var(--secondary)] transition-colors group"
+                <a
+                  href="tel:+97145774042"
+                  className={`flex items-center gap-3 transition-colors group ${
+                    theme === "dark"
+                      ? "text-gray-300 hover:text-[var(--secondary)]"
+                      : "text-gray-500 hover:text-[var(--secondary)]"
+                  }`}
                 >
-                  <span className="w-8 h-8 rounded-full bg-[var(--secondary)]/10 flex items-center justify-center text-[var(--secondary)] group-hover:bg-[var(--secondary)] group-hover:text-white transition-all">
+                  <span
+                    className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${
+                      theme === "dark"
+                        ? "bg-white/5 text-white/80 group-hover:bg-[var(--secondary)] group-hover:text-white"
+                        : "bg-[var(--secondary)]/10 text-[var(--secondary)] group-hover:bg-[var(--secondary)] group-hover:text-white"
+                    }`}
+                  >
                     <FaPhone size={12} />
                   </span>
-                  <span className="text-sm">+971 56 888 1133</span>
+                  <span className="text-sm">+971 4 577 4042</span>
                 </a>
                 
                 {/* Email */}
-                <a 
-                  href="mailto:Hello@tikit.ae" 
-                  className="flex items-center gap-3 text-gray-500 hover:text-[var(--secondary)] transition-colors group"
+                <a
+                  href="mailto:Holla@tikit.ae"
+                  className={`flex items-center gap-3 transition-colors group ${
+                    theme === "dark"
+                      ? "text-gray-300 hover:text-[var(--secondary)]"
+                      : "text-gray-500 hover:text-[var(--secondary)]"
+                  }`}
                 >
-                  <span className="w-8 h-8 rounded-full bg-[var(--secondary)]/10 flex items-center justify-center text-[var(--secondary)] group-hover:bg-[var(--secondary)] group-hover:text-white transition-all">
+                  <span
+                    className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${
+                      theme === "dark"
+                        ? "bg-white/5 text-white/80 group-hover:bg-[var(--secondary)] group-hover:text-white"
+                        : "bg-[var(--secondary)]/10 text-[var(--secondary)] group-hover:bg-[var(--secondary)] group-hover:text-white"
+                    }`}
+                  >
                     <FaEnvelope size={12} />
                   </span>
-                  <span className="text-sm">Hello@tikit.ae</span>
+                  <span className="text-sm">Holla@tikit.ae</span>
                 </a>
                 
                 {/* Address */}
-                <div className="flex items-start gap-3 text-gray-500">
-                  <span className="w-8 h-8 rounded-full bg-[var(--secondary)]/10 flex items-center justify-center text-[var(--secondary)] flex-shrink-0">
+                <div
+                  className={`flex items-start gap-3 flex-shrink-0 ${
+                    theme === "dark" ? "text-gray-300" : "text-gray-500"
+                  }`}
+                >
+                  <span
+                    className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
+                      theme === "dark"
+                        ? "bg-white/5 text-white/80"
+                        : "bg-[var(--secondary)]/10 text-[var(--secondary)]"
+                    }`}
+                  >
                     <FaMapMarkerAlt size={12} />
                   </span>
-                  <span className="text-sm">Jumeirah 1, Dubai, UAE</span>
+                  <span className="text-sm">
+                    The Burlington Tower, Marasi Drive, Dubai – Office 309
+                  </span>
                 </div>
               </div>
             </div>

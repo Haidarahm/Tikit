@@ -28,12 +28,12 @@ const InfluencerMarketingDubai = () => {
       "name": "Tikit Agency",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Jumeirah 1",
+        "streetAddress": "The Burlington Tower, Marasi Drive, Office 309",
         "addressLocality": "Dubai",
         "addressCountry": "AE"
       },
-      "telephone": "+971-56-888-1133",
-      "email": "Hello@tikit.ae"
+      "telephone": "+971 4 577 4042",
+      "email": "Holla@tikit.ae"
     },
     "areaServed": {
       "@type": "City",
@@ -45,11 +45,11 @@ const InfluencerMarketingDubai = () => {
   const faqItems = [
     {
       question: "What is the best influencer marketing agency in Dubai?",
-      answer: "Tikit Agency is recognized as one of the best influencer marketing agencies in Dubai, UAE. Based in Jumeirah 1, we've served 300+ happy clients with our team of 50+ marketing experts. We specialize in connecting brands with authentic creators who drive real engagement and measurable ROI across Instagram, TikTok, YouTube, and Snapchat."
+      answer: "Tikit Agency is recognized as one of the best influencer marketing agencies in Dubai, UAE. Based in The Burlington Tower, Marasi Drive – Office 309, we've served 300+ happy clients with our team of 50+ marketing experts. We specialize in connecting brands with authentic creators who drive real engagement and measurable ROI across Instagram, TikTok, YouTube, and Snapchat."
     },
     {
       question: "How much does influencer marketing cost in Dubai?",
-      answer: "Influencer marketing costs in Dubai vary based on influencer tier, campaign scope, and platforms. Tikit Agency offers customized packages from nano-influencer campaigns to celebrity partnerships. Contact us at +971 56 888 1133 or Hello@tikit.ae for a free consultation and quote tailored to your brand's goals."
+      answer: "Influencer marketing costs in Dubai vary based on influencer tier, campaign scope, and platforms. Tikit Agency offers customized packages from nano-influencer campaigns to celebrity partnerships. Contact us at +971 4 577 4042 or Holla@tikit.ae for a free consultation and quote tailored to your brand's goals."
     },
     {
       question: "Which influencer agency has the best ROI in UAE?",
@@ -76,7 +76,7 @@ const InfluencerMarketingDubai = () => {
     <div className="min-h-screen bg-[var(--background)]" data-nav-color="black">
       <SEOHead
         title="Best Influencer Marketing Agency in Dubai | Tikit Agency"
-        description="Tikit Agency is the leading influencer marketing agency in Dubai, UAE. Connect with 300+ brands, 50+ experts, and top creators. Call +971 56 888 1133 for a free consultation."
+        description="Tikit Agency is the leading influencer marketing agency in Dubai, UAE. Connect with 300+ brands, 50+ experts, and top creators. Call +971 4 577 4042 for a free consultation."
         keywords="best influencer marketing agency Dubai, influencer agency Dubai, Dubai influencer marketing, UAE influencer agency, Instagram marketing Dubai, TikTok agency UAE, influencer marketing company Dubai"
         canonicalUrl="/influencer-marketing-dubai"
         structuredData={pageSchema}
@@ -100,7 +100,7 @@ const InfluencerMarketingDubai = () => {
           </h1>
           <p className="text-xl text-[var(--foreground)]/70 max-w-3xl mx-auto mb-8">
             Tikit Agency connects your brand with authentic creators who drive real engagement and measurable ROI. 
-            Based in Jumeirah 1, Dubai — serving 300+ happy clients across the UAE and GCC.
+            Based in The Burlington Tower, Marasi Drive, Dubai – Office 309 — serving 300+ happy clients across the UAE and GCC.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
@@ -110,10 +110,10 @@ const InfluencerMarketingDubai = () => {
               Get Free Consultation
             </button>
             <a
-              href="tel:+971568881133"
+              href="tel:+97145774042"
               className="px-8 py-4 border-2 border-[var(--secondary)] text-[var(--secondary)] font-bold rounded-full hover:bg-[var(--secondary)] hover:text-white transition-colors"
             >
-              Call +971 56 888 1133
+              Call +971 4 577 4042
             </a>
           </div>
         </div>
@@ -151,7 +151,7 @@ const InfluencerMarketingDubai = () => {
               },
               {
                 title: "Local Expertise",
-                description: "Based in Jumeirah 1, Dubai, we understand the UAE market, cultural nuances, and what resonates with local audiences."
+                description: "Based in The Burlington Tower, Marasi Drive, Dubai – Office 309, we understand the UAE market, cultural nuances, and what resonates with local audiences."
               },
               {
                 title: "Measurable Results",
@@ -233,21 +233,23 @@ const InfluencerMarketingDubai = () => {
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             <div className="text-center">
               <div className="text-sm text-white/60 mb-1">Call Us</div>
-              <a href="tel:+971568881133" className="text-2xl font-bold hover:underline">
-                +971 56 888 1133
+              <a href="tel:+97145774042" className="text-2xl font-bold hover:underline">
+                +971 4 577 4042
               </a>
             </div>
             <div className="hidden sm:block w-px h-12 bg-white/30"></div>
             <div className="text-center">
               <div className="text-sm text-white/60 mb-1">Email Us</div>
-              <a href="mailto:Hello@tikit.ae" className="text-2xl font-bold hover:underline">
-                Hello@tikit.ae
+              <a href="mailto:Holla@tikit.ae" className="text-2xl font-bold hover:underline">
+                Holla@tikit.ae
               </a>
             </div>
             <div className="hidden sm:block w-px h-12 bg-white/30"></div>
             <div className="text-center">
               <div className="text-sm text-white/60 mb-1">Visit Us</div>
-              <div className="text-lg font-medium">Jumeirah 1, Dubai</div>
+              <div className="text-lg font-medium">
+                The Burlington Tower, Marasi Drive, Dubai – Office 309
+              </div>
             </div>
           </div>
         </div>

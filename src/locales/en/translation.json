@@ -8,7 +8,7 @@
         "influencers": "Influencers",
         "ourInfluencers": "Our Influencers",
         "registerAsInfluencer": "Register as Influencer",
-        "contact": "Contact Us"
+        "contact": "Holla at us"
     },
     "seo": {
         "defaultDescription": "Tikit Agency is a leading influencer marketing agency in Dubai and Saudi Arabia. We connect brands with authentic creators to drive real engagement and measurable ROI across the GCC region. 300+ happy clients, 50+ team members.",
@@ -35,7 +35,7 @@
         },
         "contact": {
             "title": "Contact Tikit Agency Dubai - Influencer Marketing Experts",
-            "description": "Contact Tikit Agency at +971 56 888 1133 or Hello@tikit.ae. Our main office is in Jumeirah 1, Dubai with offices in Saudi Arabia. Get a free consultation for influencer marketing.",
+            "description": "Contact Tikit Agency at +971 4 577 4042 or Holla@tikit.ae. Our main office is in The Burlington Tower, Marasi Drive, Dubai – Office 309 with offices in Saudi Arabia. Get a free consultation for influencer marketing.",
             "keywords": "contact Tikit Agency, influencer agency Dubai contact, marketing agency phone UAE, Dubai marketing consultation, Saudi Arabia influencer agency"
         },
         "influencer": {
@@ -51,7 +51,7 @@
             "q2": "What services does Tikit Agency offer?",
             "a2": "Tikit Agency offers comprehensive marketing services including: Influencer Marketing, Talent Management, Social Media Marketing, Branding & Identity Design, Content Production, Web Development, and Digital Marketing. We serve clients across Dubai, Abu Dhabi, Saudi Arabia (Riyadh, Jeddah), Istanbul (Turkey), and the broader MENA region.",
             "q3": "How can I contact Tikit Agency?",
-            "a3": "You can contact Tikit Agency at +971 56 888 1133 or email Hello@tikit.ae. Our main office is located in Jumeirah 1, Dubai, UAE. We also have offices in Saudi Arabia, Istanbul (Turkey), and Syria. Follow us on Instagram @tikit.ae for updates.",
+            "a3": "You can contact Tikit Agency at +971 4 577 4042 or email Holla@tikit.ae. Our main office is located in The Burlington Tower, Marasi Drive, Dubai – Office 309. We also have offices in Saudi Arabia, Istanbul (Turkey), and Syria. Follow us on Instagram @tikit.ae for updates.",
             "q4": "Does Tikit work with influencers in Saudi Arabia?",
             "a4": "Yes! Tikit Agency has a dedicated office in Saudi Arabia and works with top influencers across Riyadh, Jeddah, and the entire Kingdom. We're recognized as one of the best influencer marketing agencies in KSA, helping brands connect with authentic Saudi content creators.",
             "q5": "How do I become an influencer with Tikit?",
@@ -419,16 +419,16 @@
         "successTitle": "Thank You!",
         "successMessage": "You've successfully subscribed to our newsletter. We'll keep you updated with the latest news!"
     },
-    "footer": {
+        "footer": {
         "contactText": "If you would like to work with us or just want to get in touch, we'd love to hear from you!",
         "contactTitle": "Contact –",
         "contactSubtitle": "for Client or Influencer throughout",
-        "locationDubai": "Dubai, Jumeirah 1 - UAE",
+        "locationDubai": "The Burlington Tower, Marasi Drive, Dubai – Office 309",
         "locationKSA": "Saudi Arabia - KSA",
         "locationTurkey": "Istanbul - Türkiye",
         "locationSyria": "Syria - Damascus",
-        "phone": "+971 56 888 1133",
-        "email": "Hello@tikit.ae",
+        "phone": "+971 4 577 4042",
+        "email": "Holla@tikit.ae",
         "copyright": "© Copyright 2025 | All rights reserved by Tikit Agency",
         "links": {
             "aboutUs": "About Us",

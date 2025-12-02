@@ -120,7 +120,7 @@ Allow: /*.webp
 # Website: https://tikit.ae
 # Industry: Influencer Marketing & Talent Management
 # Locations: Dubai UAE (HQ), Saudi Arabia, Istanbul Turkey, Syria
-# Phone: +971 56 888 1133
-# Email: Hello@tikit.ae
+# Phone: +971 4 577 4042
+# Email: Holla@tikit.ae
 # Services: Influencer Marketing, Talent Management, Social Media, Branding, Production
 # Markets: UAE, KSA, Turkey, GCC, MENA Region

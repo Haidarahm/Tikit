@@ -29,8 +29,8 @@ const InfluencerMarketingSaudiArabia = () => {
         "addressCountry": "SA",
         "addressRegion": "Saudi Arabia"
       },
-      "telephone": "+971-56-888-1133",
-      "email": "Hello@tikit.ae"
+      "telephone": "+971 4 577 4042",
+      "email": "Holla@tikit.ae"
     },
     "areaServed": [
       { "@type": "City", "name": "Riyadh" },
@@ -52,7 +52,7 @@ const InfluencerMarketingSaudiArabia = () => {
     },
     {
       question: "How much does influencer marketing cost in Saudi Arabia?",
-      answer: "Influencer marketing costs in Saudi Arabia vary based on influencer tier, campaign scope, and platforms. Tikit Agency offers customized packages from micro-influencer campaigns to celebrity partnerships. Contact us at +971 56 888 1133 or Hello@tikit.ae for a free consultation tailored to the Saudi market."
+      answer: "Influencer marketing costs in Saudi Arabia vary based on influencer tier, campaign scope, and platforms. Tikit Agency offers customized packages from micro-influencer campaigns to celebrity partnerships. Contact us at +971 4 577 4042 or Holla@tikit.ae for a free consultation tailored to the Saudi market."
     },
     {
       question: "Which platforms are most effective for influencer marketing in KSA?",
@@ -75,7 +75,7 @@ const InfluencerMarketingSaudiArabia = () => {
     <div className="min-h-screen bg-[var(--background)]" data-nav-color="black">
       <SEOHead
         title="Best Influencer Marketing Agency in Saudi Arabia | Tikit Agency"
-        description="Tikit Agency is the leading influencer marketing agency in Saudi Arabia (KSA). Connect with top Saudi influencers in Riyadh, Jeddah, and across the Kingdom. Call +971 56 888 1133."
+        description="Tikit Agency is the leading influencer marketing agency in Saudi Arabia (KSA). Connect with top Saudi influencers in Riyadh, Jeddah, and across the Kingdom. Call +971 4 577 4042."
         keywords="best influencer marketing agency Saudi Arabia, influencer agency KSA, Riyadh influencer marketing, Jeddah influencer agency, Saudi Arabia influencer marketing, KSA social media agency, Saudi content creators"
         canonicalUrl="/influencer-marketing-saudi-arabia"
         structuredData={pageSchema}
@@ -109,10 +109,10 @@ const InfluencerMarketingSaudiArabia = () => {
               Get Free Consultation
             </button>
             <a
-              href="tel:+971568881133"
+              href="tel:+97145774042"
               className="px-8 py-4 border-2 border-[var(--secondary)] text-[var(--secondary)] font-bold rounded-full hover:bg-[var(--secondary)] hover:text-white transition-colors"
             >
-              Call +971 56 888 1133
+              Call +971 4 577 4042
             </a>
           </div>
         </div>
@@ -221,15 +221,15 @@ const InfluencerMarketingSaudiArabia = () => {
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             <div className="text-center">
               <div className="text-sm text-white/60 mb-1">Call Us</div>
-              <a href="tel:+971568881133" className="text-2xl font-bold hover:underline">
-                +971 56 888 1133
+              <a href="tel:+97145774042" className="text-2xl font-bold hover:underline">
+                +971 4 577 4042
               </a>
             </div>
             <div className="hidden sm:block w-px h-12 bg-white/30"></div>
             <div className="text-center">
               <div className="text-sm text-white/60 mb-1">Email Us</div>
-              <a href="mailto:Hello@tikit.ae" className="text-2xl font-bold hover:underline">
-                Hello@tikit.ae
+              <a href="mailto:Holla@tikit.ae" className="text-2xl font-bold hover:underline">
+                Holla@tikit.ae
               </a>
             </div>
           </div>

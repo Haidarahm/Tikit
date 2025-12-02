@@ -128,7 +128,10 @@ export const getHomeFAQItems = (t) => [
   },
   {
     question: t("faq.home.q3", "How can I contact Tikit Agency?"),
-    answer: t("faq.home.a3", "You can contact Tikit Agency at +971 56 888 1133 or email Hello@tikit.ae. Our main office is located in Jumeirah 1, Dubai, UAE. We also have offices in Saudi Arabia, Istanbul (Turkey), and Syria. Follow us on Instagram @tikit.ae for updates.")
+    answer: t(
+      "faq.home.a3",
+      "You can contact Tikit Agency at +971 4 577 4042 or email Holla@tikit.ae. Our main office is located in The Burlington Tower, Marasi Drive, Dubai – Office 309. We also have offices in Saudi Arabia, Istanbul (Turkey), and Syria. Follow us on Instagram @tikit.ae for updates."
+    )
   },
   {
     question: t("faq.home.q4", "Does Tikit work with influencers in Saudi Arabia?"),
