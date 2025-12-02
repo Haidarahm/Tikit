@@ -10,6 +10,7 @@ import Footer from "../../components/Footer";
 // import ContactUs from "./ContactUs";
 import SEOHead from "../../components/SEOHead";
 import ContactUs from "../Home/ContactUs";
+import Details from "./Details";
 
 const AboutUs = () => {
   return (
@@ -25,7 +26,8 @@ const AboutUs = () => {
       />
       <Hero />
       <AnimatedText />
-      <Images />
+      {/* <Images /> */}
+      <Details />
       <Strategy />
       <Growth />
       <Team />
