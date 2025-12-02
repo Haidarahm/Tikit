@@ -36,7 +36,7 @@ const Connections = memo(() => {
     if (!scrollerEl) return;
 
     const element1Tween = gsap.to(".element1-c", {
-      top: "900px",
+      top: "400px",
       left: "1000px",
       rotation: 100,
       duration: 1.5,
@@ -51,7 +51,7 @@ const Connections = memo(() => {
     });
 
     const element2Tween = gsap.to(".element2-c", {
-      top: "90vh",
+      top: "50vh",
       right: "70%",
       rotation: 100,
       duration: 1.5,
@@ -76,7 +76,7 @@ const Connections = memo(() => {
   return (
     <div
       ref={sectionContainerRef}
-      className={`relative text-[var(--foreground)] dark:text-white md:h-[100vh] flex flex-col w-full justify-center ${
+      className={`relative text-[var(--foreground)] dark:text-white md:h-[60vh] flex flex-col w-full justify-center ${
         isRtl ? "font-cairo" : "font-hero-light"
       } section-container-scroll md:mt-[20px]`}
       dir={isRtl ? "rtl" : "ltr"}
@@ -90,7 +90,7 @@ const Connections = memo(() => {
       <img
         src={theme === "light" ? element1 : element1Dark}
         alt="Decorative element 2"
-        className="element2-c absolute hidden md:block top-[55vh] right-12  dark:grayscale-75 rotate-90 z-0 w-auto h-auto max-w-[300px] max-h-[300px]"
+        className="element2-c absolute hidden md:block top-[40vh] right-12  dark:grayscale-75 rotate-90 z-0 w-auto h-auto max-w-[300px] max-h-[300px]"
       />
       <div className="flex items-center flex-col justify-center relative z-10 w-[90vw] md:w-[80vw] mx-auto text-center">
         {isRtl ? (
