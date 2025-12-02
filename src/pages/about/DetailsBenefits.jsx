@@ -28,14 +28,13 @@ const DetailsBenefits = () => {
     if (!sectionRef.current) return;
 
     const ctx = gsap.context(() => {
-      // Title animation
+      // Title animation - smooth fade in
       gsap.fromTo(
         titleRef.current,
-        { opacity: 0, x: isRtl ? -50 : 50 },
+        { opacity: 0 },
         {
           opacity: 1,
-          x: 0,
-          duration: 0.8,
+          duration: 1,
           ease: "power2.out",
           scrollTrigger: {
             trigger: titleRef.current,
