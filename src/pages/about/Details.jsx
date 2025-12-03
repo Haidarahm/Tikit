@@ -15,31 +15,26 @@ const Details = () => {
   useEffect(() => {
     if (!wrapperRef.current) return;
 
-    const ctx = gsap.context(() => {
-      // Logo shape rotation animation on scroll
-      const shapes = gsap.utils.toArray(".section-title__square");
-      shapes.forEach((shape) => {
-        gsap.to(shape, {
-          rotation: 360,
-          ease: "none",
-          scrollTrigger: {
-            trigger: shape,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: 2,
-          },
-        });
+    // Rotating squares animation
+    const squares = gsap.utils.toArray('.section-title__square');
+    squares.forEach((sq) => {
+      gsap.from(sq, {
+        rotation: 720,
+        scrollTrigger: {
+          trigger: sq,
+          start: 'top bottom',
+          scrub: 1.9,
+        },
       });
-    }, wrapperRef);
+    });
 
-    return () => ctx.revert();
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
   }, []);
 
   return (
-    <div
-      ref={wrapperRef}
-      className="details-wrapper w-full overflow-hidden bg-[var(--background)]"
-    >
+    <div ref={wrapperRef} className="details-wrapper w-full overflow-hidden">
       <DetailsHeader />
       <DetailsAbout />
       <DetailsBenefits />

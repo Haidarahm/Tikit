@@ -285,83 +285,6 @@
                 "text3": "et",
                 "text4": "Croître"
             }
-        },
-        "details": {
-            "header": {
-                "title": "Notre Vision",
-                "subtitle": "& Mission",
-                "marquee": {
-                    "strategy": "Stratégie",
-                    "creativity": "Créativité",
-                    "innovation": "Innovation",
-                    "growth": "Croissance"
-                }
-            },
-            "vision": {
-                "title": "Notre",
-                "titleHighlight": "Vision",
-                "paragraph1": "Redéfinir le paysage marketing mondial en alliant créativité, culture et technologie. Nous imaginons un avenir où les marques ne se contentent pas de communiquer — elles connectent, inspirent et façonnent les conversations dans le monde entier.",
-                "paragraph2": "Chez Tikit, notre vision ne se limite pas à livrer des campagnes marketing mais à construire une résonance émotionnelle entre les marques et leurs audiences, aidant les entreprises à croître tout en restant fidèles à leur identité."
-            },
-            "mission": {
-                "title": "Notre",
-                "titleHighlight": "Mission",
-                "paragraph1": "Notre mission est de doter les marques de stratégies non seulement efficaces mais culturellement pertinentes. Nous croyons que le marketing est un écosystème en constante évolution, et le succès réside dans l'adaptabilité, l'authenticité et l'innovation.",
-                "paragraph2": "Grâce à des insights basés sur les données, un savoir-faire créatif et une mentalité centrée sur l'humain, Tikit livre un engagement significatif qui génère une croissance commerciale mesurable.",
-                "benefits": {
-                    "dataDriven": "Basé sur les données",
-                    "creative": "Créatif",
-                    "authentic": "Authentique",
-                    "innovative": "Innovant"
-                }
-            },
-            "work": {
-                "title": "Ce que nous",
-                "titleHighlight": "Faisons",
-                "subtitle": "Chaque campagne est conçue avec un objectif — influencer les comportements, déclencher la conversation et créer une valeur de marque durable.",
-                "items": {
-                    "strategy": "Stratégie",
-                    "creation": "Création",
-                    "growth": "Croissance"
-                }
-            },
-            "services": {
-                "title": "Nos",
-                "titleHighlight": "Services",
-                "cta": "Prêt à transformer votre marque ? Créons ensemble quelque chose d'extraordinaire.",
-                "items": {
-                    "brandStrategy": {
-                        "name": "Stratégie de Marque",
-                        "desc": "Construire des fondations de marque solides"
-                    },
-                    "digitalMarketing": {
-                        "name": "Marketing Digital",
-                        "desc": "Campagnes digitales basées sur les données"
-                    },
-                    "socialMedia": {
-                        "name": "Réseaux Sociaux",
-                        "desc": "Présence sociale engageante"
-                    },
-                    "creativeDesign": {
-                        "name": "Design Créatif",
-                        "desc": "Excellence en narration visuelle"
-                    },
-                    "contentCreation": {
-                        "name": "Création de Contenu",
-                        "desc": "Contenu convaincant qui convertit"
-                    },
-                    "influencerMarketing": {
-                        "name": "Marketing d'Influence",
-                        "desc": "Partenariats d'influenceurs authentiques"
-                    }
-                },
-                "tags": {
-                    "dataDriven": "Basé sur les données",
-                    "creative": "Créatif",
-                    "authentic": "Authentique",
-                    "innovative": "Innovant"
-                }
-            }
         }
     },
     "contact": {
@@ -373,8 +296,7 @@
         },
         "action": {
             "subtitle": "Commencez avec Tikit !",
-            "title": "Contactez-nous",
-            "mainWord": "Maintenant",
+            "title": "Contactez-nous maintenant",
             "description": "Nous voulons vous entendre. Faites-nous savoir comment nous pouvons vous aider !",
             "client": "Client",
             "influencer": "Influenceur",
@@ -415,28 +337,20 @@
             "scrollHint": "Défilez pour explorer",
             "items": [
                 {
-                    "title": "Marketing d'Influence",
-                    "description": "Connectez votre marque à des voix qui comptent. Nous vous mettons en relation avec des créateurs authentiques qui génèrent un engagement réel, transformant l'influence en impact mesurable à Dubaï, en Arabie Saoudite et dans la région du Golfe."
+                    "title": "Développement Web",
+                    "description": "Création d'applications web modernes et réactives avec des technologies de pointe"
                 },
                 {
                     "title": "Marketing des Réseaux Sociaux",
-                    "description": "Dominez Instagram, TikTok et au-delà avec du contenu captivant, des campagnes stratégiques et une croissance communautaire qui transforme les abonnés en clients fidèles."
+                    "description": "Dominez Instagram, TikTok et au-delà avec du contenu captivant, des campagnes stratégiques et une croissance communautaire qui transforme les abonnés en clients fidèles"
                 },
                 {
-                    "title": "Image de Marque",
-                    "description": "Construisez une marque qui se démarque et défend une cause. De l'identité visuelle à la voix de marque, nous façonnons la façon dont les audiences vous voient, ressentent et se souviennent de vous — créant clarté, cohérence et connexion à chaque point de contact."
-                },
-                {
-                    "title": "Production",
-                    "description": "Du concept au rendu final, nous donnons vie aux idées audacieuses. Qu'il s'agisse de contenu social, de visuels de marque ou de tournages commerciaux, notre équipe de production livre une narration de qualité qui capte l'attention."
-                },
-                {
-                    "title": "Développement Web",
-                    "description": "Création d'applications web modernes et réactives avec des technologies de pointe qui élèvent votre présence numérique et convertissent les visiteurs en clients."
+                    "title": "Design UI/UX",
+                    "description": "Conception d'interfaces utilisateur intuitives et élégantes qui ravissent vos clients"
                 },
                 {
                     "title": "Marketing Digital",
-                    "description": "Stimuler la croissance grâce à des campagnes stratégiques, des analyses basées sur les données et une exécution axée sur le ROI qui livre des résultats mesurables pour votre marque."
+                    "description": "Stimuler la croissance grâce à des campagnes stratégiques et des analyses basées sur les données"
                 }
             ]
         }
@@ -474,13 +388,10 @@
         "contactText": "Si vous souhaitez travailler avec nous ou simplement prendre contact, nous serions ravis de vous entendre !",
         "contactTitle": "Contact –",
         "contactSubtitle": "pour Client ou Influenceur partout",
-        "locationDubai": "The Burlington Tower, Marasi Drive, Dubaï – Bureau 309",
-        "locationKSA": "Arabie Saoudite - KSA",
-        "locationTurkey": "Istanbul - Türkiye",
+        "locationDubai": "Dubaï - EAU",
+        "locationLondon": "Londres - Royaume-Uni",
         "locationSyria": "Syrie - Damas",
-        "phone": "+971 4 577 4042",
-        "email": "Holla@tikit.ae",
-        "copyright": "© Copyright 2025 | Tous droits réservés par Tikit Agency",
+        "copyright": "© Copyright 2025 | Tous droits réservés par Tikit",
         "links": {
             "aboutUs": "À propos",
             "services": "Services",
@@ -524,8 +435,7 @@
         "noInfluencers": "Nous n'avons pas encore trouvé d'influenceurs pour cette section. Veuillez revenir bientôt."
     },
     "influencerRegister": {
-        "title": "Voulez-vous être géré par",
-        "mainWord": "Tikit ?",
+        "title": "Voulez-vous être géré par Tikit ?",
         "formTitle": "remplir le formulaire d'inscription",
         "fields": {
             "fullName": "Nom complet",
@@ -618,9 +528,7 @@
                 ],
                 "mostPopular": "Le plus populaire",
                 "selectPlan": "Sélectionner le plan",
-                "selected": "Sélectionné",
-                "disabled": "Indisponible",
-                "disabledMessage": "Le plan Premium nécessite un minimum de 35 000 abonnés"
+                "selected": "Sélectionné"
             }
         },
         "proceedButton": "Continuer"

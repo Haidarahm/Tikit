@@ -104,7 +104,7 @@ const Hero = () => {
       dir={isRtl ? "rtl" : "ltr"}
     >
        <div className="absolute w-full h-full -translate-x-1/2 left-1/2 top-0">
-        {theme === "dark" && (
+        {/* {isDark ? ( */}
           <LightRays
             raysOrigin="top-center"
             raysColor="#52C3C5"
@@ -115,7 +115,7 @@ const Hero = () => {
             mouseInfluence={0.1}
             className="custom-rays"
           />
-        )}
+        
       </div>
       <div className="top-section text-center md:mt-16 2xl:mt-12">
         <div ref={h1WrapRef} className="overflow-hidden">

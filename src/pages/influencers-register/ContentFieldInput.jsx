@@ -1,55 +1,33 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useI18nLanguage } from "../../store/I18nLanguageContext";
 import { useNichesStore } from "../../store/nichesStore";
-import {
-  FiHeart,
-  FiShoppingBag,
-  FiStar,
-  FiActivity,
-  FiMapPin,
-  FiCoffee,
-  FiSmartphone,
-  FiPlay,
-  FiBook,
-  FiZap,
-  FiBriefcase,
-  FiDollarSign,
-  FiUsers,
-  FiCamera,
-  FiPenTool,
-  FiTool,
-  FiSmile,
-  FiMusic,
-  FiTruck,
-  FiTag,
-} from "react-icons/fi";
 
 // Icon mapping for niches (fallback if API doesn't provide icons)
 const nicheIcons = {
-  Beauty: FiHeart,
-  Fashion: FiShoppingBag,
-  Lifestyle: FiStar,
-  Fitness: FiActivity,
-  Travel: FiMapPin,
-  Food: FiCoffee,
-  Cooking: FiCoffee,
-  Tech: FiSmartphone,
-  Gaming: FiPlay,
-  Education: FiBook,
-  Motivation: FiZap,
-  Business: FiBriefcase,
-  Finance: FiDollarSign,
-  Parenting: FiUsers,
-  "Health & Wellness": FiHeart,
-  Photography: FiCamera,
-  Art: FiPenTool,
-  "DIY & Crafts": FiTool,
-  Comedy: FiSmile,
-  Music: FiMusic,
-  Sports: FiActivity,
-  Cars: FiTruck,
-  Pets: FiHeart,
-  Reviews: FiStar,
+  Beauty: "💄",
+  Fashion: "👗",
+  Lifestyle: "🌟",
+  Fitness: "💪",
+  Travel: "✈️",
+  Food: "🍳",
+  Cooking: "🍳",
+  Tech: "📱",
+  Gaming: "🎮",
+  Education: "📚",
+  Motivation: "🔥",
+  Business: "💼",
+  Finance: "💰",
+  Parenting: "👨‍👩‍👧",
+  "Health & Wellness": "🧘",
+  Photography: "📸",
+  Art: "🎨",
+  "DIY & Crafts": "🔨",
+  Comedy: "😂",
+  Music: "🎵",
+  Sports: "⚽",
+  Cars: "🚗",
+  Pets: "🐾",
+  Reviews: "⭐",
 };
 
 const ContentFieldInput = ({
@@ -82,7 +60,7 @@ const ContentFieldInput = ({
   const contentFields = niches.map((niche) => ({
     id: niche.id,
     name: niche.name,
-    icon: nicheIcons[niche.name] || FiTag,
+    icon: nicheIcons[niche.name] || "📌",
   }));
 
   // Filter fields based on search query and exclude already selected
@@ -227,15 +205,13 @@ const ContentFieldInput = ({
           onClick={() => !disabled && inputRef.current?.focus()}
         >
           {/* Selected Tags */}
-          {selectedFields.map((field) => {
-            const IconComponent = field.icon;
-            return (
-              <span
-                key={field.id}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[var(--secondary)]/10 text-[var(--secondary)] rounded-full text-sm font-medium transition-all duration-200 hover:bg-[var(--secondary)]/20"
-              >
-                <IconComponent className="w-4 h-4" />
-                <span>{field.name}</span>
+          {selectedFields.map((field) => (
+            <span
+              key={field.id}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[var(--secondary)]/10 text-[var(--secondary)] rounded-full text-sm font-medium transition-all duration-200 hover:bg-[var(--secondary)]/20"
+            >
+              <span>{field.icon}</span>
+              <span>{field.name}</span>
               {!disabled && (
                 <button
                   type="button"
@@ -262,9 +238,8 @@ const ContentFieldInput = ({
                   </svg>
                 </button>
               )}
-              </span>
-            );
-          })}
+            </span>
+          ))}
 
           {/* Search Input */}
           {canAddMore && (
@@ -313,24 +288,22 @@ const ContentFieldInput = ({
             role="listbox"
           >
             {filteredFields.length > 0 ? (
-              filteredFields.map((field, index) => {
-                const IconComponent = field.icon;
-                return (
-                  <li
-                    key={field.id}
-                    role="option"
-                    aria-selected={false}
-                    onClick={() => handleSelect(field)}
-                    className={`flex items-center gap-3 px-4 py-3 cursor-pointer transition-colors duration-150 ${
-                      index === highlightedIndex
-                        ? "bg-[var(--secondary)]/10"
-                        : "hover:bg-gray-100 dark:hover:bg-gray-800"
-                    }`}
-                  >
-                    <IconComponent className="w-5 h-5 text-[var(--secondary)] flex-shrink-0" />
-                    <span className="flex-1 text-sm md:text-base text-[var(--foreground)]">
-                      {field.name}
-                    </span>
+              filteredFields.map((field, index) => (
+                <li
+                  key={field.id}
+                  role="option"
+                  aria-selected={false}
+                  onClick={() => handleSelect(field)}
+                  className={`flex items-center gap-3 px-4 py-3 cursor-pointer transition-colors duration-150 ${
+                    index === highlightedIndex
+                      ? "bg-[var(--secondary)]/10"
+                      : "hover:bg-gray-100 dark:hover:bg-gray-800"
+                  }`}
+                >
+                  <span className="text-2xl flex-shrink-0">{field.icon}</span>
+                  <span className="flex-1 text-sm md:text-base text-[var(--foreground)]">
+                    {field.name}
+                  </span>
                   <svg
                     className="w-5 h-5 text-gray-300"
                     fill="none"
@@ -344,9 +317,8 @@ const ContentFieldInput = ({
                       d="M12 4v16m8-8H4"
                     />
                   </svg>
-                  </li>
-                );
-              })
+                </li>
+              ))
             ) : (
               <li className="px-4 py-4 text-sm text-gray-500 dark:text-gray-400 text-center">
                 {searchQuery

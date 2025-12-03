@@ -312,83 +312,6 @@
                 "text3": "y",
                 "text4": "Grow"
             }
-        },
-        "details": {
-            "header": {
-                "title": "Our Vision",
-                "subtitle": "& Mission",
-                "marquee": {
-                    "strategy": "Strategy",
-                    "creativity": "Creativity",
-                    "innovation": "Innovation",
-                    "growth": "Growth"
-                }
-            },
-            "vision": {
-                "title": "Our",
-                "titleHighlight": "Vision",
-                "paragraph1": "To redefine the global marketing landscape by bridging creativity, culture, and technology. We envision a future where brands don't just communicate — they connect, inspire, and shape conversations worldwide.",
-                "paragraph2": "At Tikit, our vision is not only to deliver marketing campaigns but to build emotional resonance between brands and their audiences, helping companies grow while remaining true to their identity."
-            },
-            "mission": {
-                "title": "Our",
-                "titleHighlight": "Mission",
-                "paragraph1": "Our mission is to empower brands with strategies that are not only effective but culturally relevant. We believe marketing is an ever-evolving ecosystem, and success lies in adaptability, authenticity, and innovation.",
-                "paragraph2": "Through data-driven insights, creative craftsmanship, and a people-first mindset, Tikit delivers meaningful engagement that drives measurable business growth.",
-                "benefits": {
-                    "dataDriven": "Data-Driven",
-                    "creative": "Creative",
-                    "authentic": "Authentic",
-                    "innovative": "Innovative"
-                }
-            },
-            "work": {
-                "title": "What We",
-                "titleHighlight": "Do",
-                "subtitle": "Every campaign is designed with purpose — to influence behavior, ignite conversation, and create enduring brand value.",
-                "items": {
-                    "strategy": "Strategy",
-                    "creation": "Creation",
-                    "growth": "Growth"
-                }
-            },
-            "services": {
-                "title": "Our",
-                "titleHighlight": "Services",
-                "cta": "Ready to transform your brand? Let's create something extraordinary together.",
-                "items": {
-                    "brandStrategy": {
-                        "name": "Brand Strategy",
-                        "desc": "Building strong brand foundations"
-                    },
-                    "digitalMarketing": {
-                        "name": "Digital Marketing",
-                        "desc": "Data-driven digital campaigns"
-                    },
-                    "socialMedia": {
-                        "name": "Social Media",
-                        "desc": "Engaging social presence"
-                    },
-                    "creativeDesign": {
-                        "name": "Creative Design",
-                        "desc": "Visual storytelling excellence"
-                    },
-                    "contentCreation": {
-                        "name": "Content Creation",
-                        "desc": "Compelling content that converts"
-                    },
-                    "influencerMarketing": {
-                        "name": "Influencer Marketing",
-                        "desc": "Authentic influencer partnerships"
-                    }
-                },
-                "tags": {
-                    "dataDriven": "Data-Driven",
-                    "creative": "Creative",
-                    "authentic": "Authentic",
-                    "innovative": "Innovative"
-                }
-            }
         }
     },
     "contact": {
@@ -400,8 +323,7 @@
         },
         "action": {
             "subtitle": "Kick it off with Tikit!",
-            "title": "Holla at us",
-            "mainWord": "Now",
+            "title": "Holla at us Now",
             "description": "We want to hear from you. Let us know how we can help!",
             "client": "Client",
             "influencer": "Influencer",
@@ -551,8 +473,7 @@
         "noInfluencers": "We couldn't find influencers for this section yet. Please check back soon."
     },
     "influencerRegister": {
-        "title": "Want to be managed by",
-        "mainWord": "Tikit?",
+        "title": "Want to be managed by Tikit?",
         "formTitle": "fill the registration form",
         "fields": {
             "fullName": "Full Name",
@@ -645,9 +566,7 @@
                 ],
                 "mostPopular": "Most Popular",
                 "selectPlan": "Select Plan",
-                "selected": "Selected",
-                "disabled": "Unavailable",
-                "disabledMessage": "Premium plan requires a minimum of 35,000 followers"
+                "selected": "Selected"
             }
         },
         "proceedButton": "Proceed"

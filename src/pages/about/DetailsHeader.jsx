@@ -22,17 +22,17 @@ const DetailsHeader = () => {
 
     const ctx = gsap.context(() => {
       // Set initial states
-      gsap.set(titleRef.current, { opacity: 0 });
+      gsap.set(titleRef.current, { opacity: 0, y: 50 });
       gsap.set(subtitleRef.current, { opacity: 0, y: 30 });
       gsap.set(lineRef.current, { scaleX: 0 });
       gsap.set(imgRef.current, { opacity: 0 });
       gsap.set(marqRef.current, { opacity: 0, y: 20 });
 
-      // Create timeline for entrance animations (trigger when header is in view)
+      // Create timeline for entrance animations
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: headerRef.current,
-          start: "top 80%",
+          start: "top 85%",
           once: true,
         },
       });
@@ -40,7 +40,8 @@ const DetailsHeader = () => {
       // Animate in sequence
       tl.to(titleRef.current, {
         opacity: 1,
-        duration: 0.5,
+        y: 0,
+        duration: 0.8,
         ease: "power3.out",
       })
         .to(

@@ -1,6 +1,7 @@
 import React, { useEffect, useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
 import GradientText from "../../../components/GradientText";
+import TikitTitle from "../../../components/TikitTitle";
 
 const WorkHero = ({ gradientColors, t, isRtl }) => {
   const titleContainerRef = useRef(null);
@@ -60,12 +61,9 @@ const WorkHero = ({ gradientColors, t, isRtl }) => {
           ref={titleRef}
           className="title will-change-transform translate-y-full"
         >
-          <h1
-          
-            className="tikit-title font-[800]  md:h-22"
-          >
-            {t("work.title")}
-          </h1>
+          <TikitTitle
+           title={t("work.title")}
+          />
         </div>
       </div>
       <div
@@ -78,7 +76,8 @@ const WorkHero = ({ gradientColors, t, isRtl }) => {
         <div ref={descTitleWrapRef} className="overflow-hidden  md:w-[20%]">
           <div
             ref={descTitleRef}
-            className="title font-antonio font-bold mt-4 md:mt-0 text-[20px] md:text-[34px] will-change-transform translate-y-full"
+            style={{fontFamily: isRtl ? "Cairo" : "Antonio"}}
+            className="title text-start  font-bold mt-4 md:mt-0 text-[20px] md:text-[34px] will-change-transform translate-y-full"
           >
             {t("work.specialTitle")}
           </div>
