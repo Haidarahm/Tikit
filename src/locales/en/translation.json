@@ -312,6 +312,83 @@
                 "text3": "y",
                 "text4": "Grow"
             }
+        },
+        "details": {
+            "header": {
+                "title": "About Tikit",
+                "subtitle": "Driven by insight, powered by creativity",
+                "marquee": {
+                    "strategy": "Strategy",
+                    "creativity": "Creativity",
+                    "innovation": "Innovation",
+                    "growth": "Growth"
+                }
+            },
+            "vision": {
+                "title": "Our",
+                "titleHighlight": "Vision",
+                "paragraph1": "We envision a future where brands and creators collaborate seamlessly, driving authentic connections and measurable impact across the GCC and MENA region. Our vision is to be the bridge that transforms influence into meaningful business outcomes.",
+                "paragraph2": "Through data-driven insights, creative excellence, and strategic partnerships, we empower brands to reach their ideal audiences while helping creators build sustainable, impactful careers."
+            },
+            "mission": {
+                "title": "Our",
+                "titleHighlight": "Mission",
+                "paragraph1": "At Tikit, we're committed to revolutionizing influencer marketing by combining strategic thinking with creative execution. Our mission is to deliver measurable ROI while fostering authentic relationships between brands and creators.",
+                "paragraph2": "We believe in transparency, data-driven decisions, and results that speak for themselves. Every campaign we execute is designed to drive real engagement, build brand trust, and create lasting impact.",
+                "benefits": {
+                    "dataDriven": "Data-Driven Approach",
+                    "creative": "Creative Excellence",
+                    "authentic": "Authentic Partnerships",
+                    "innovative": "Innovative Solutions"
+                }
+            },
+            "work": {
+                "title": "How We",
+                "titleHighlight": "Work",
+                "subtitle": "Our proven process transforms ideas into impactful campaigns that drive real results",
+                "items": {
+                    "strategy": "Strategy & Planning",
+                    "creation": "Content Creation",
+                    "growth": "Growth & Optimization"
+                }
+            },
+            "services": {
+                "title": "Our Core",
+                "titleHighlight": "Services",
+                "cta": "We combine strategic thinking with creative execution to deliver services that drive measurable results",
+                "items": {
+                    "brandStrategy": {
+                        "name": "Brand Strategy",
+                        "desc": "Develop comprehensive brand strategies that align with your business goals and resonate with your target audience."
+                    },
+                    "digitalMarketing": {
+                        "name": "Digital Marketing",
+                        "desc": "Drive growth through strategic campaigns, data-driven insights, and ROI-focused execution."
+                    },
+                    "socialMedia": {
+                        "name": "Social Media Management",
+                        "desc": "Manage your brand's online presence with precision and creativity across all major platforms."
+                    },
+                    "creativeDesign": {
+                        "name": "Creative Design",
+                        "desc": "Build brands that stand out with compelling visual identity and consistent brand voice."
+                    },
+                    "contentCreation": {
+                        "name": "Content Creation",
+                        "desc": "From concept to final cut, we bring bold ideas to life with quality storytelling."
+                    },
+                    "influencerMarketing": {
+                        "name": "Influencer Marketing",
+                        "desc": "Connect your brand with authentic creators who drive real engagement and measurable impact."
+                    }
+                },
+                "tags": {
+                    "dataDriven": "Data-Driven",
+                    "creative": "Creative",
+                    "authentic": "Authentic",
+                    "innovative": "Innovative"
+                }
+            }
         }
     },
     "contact": {

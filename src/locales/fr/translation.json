@@ -285,6 +285,83 @@
                 "text3": "et",
                 "text4": "Croître"
             }
+        },
+        "details": {
+            "header": {
+                "title": "À propos de Tikit",
+                "subtitle": "Guidé par l'analyse, propulsé par la créativité",
+                "marquee": {
+                    "strategy": "Stratégie",
+                    "creativity": "Créativité",
+                    "innovation": "Innovation",
+                    "growth": "Croissance"
+                }
+            },
+            "vision": {
+                "title": "Notre",
+                "titleHighlight": "Vision",
+                "paragraph1": "Nous envisageons un avenir où les marques et les créateurs collaborent de manière transparente, créant des connexions authentiques et un impact mesurable dans la région du CCG et du MENA. Notre vision est d'être le pont qui transforme l'influence en résultats commerciaux significatifs.",
+                "paragraph2": "Grâce aux insights basés sur les données, l'excellence créative et les partenariats stratégiques, nous permettons aux marques d'atteindre leurs audiences idéales tout en aidant les créateurs à construire des carrières durables et impactantes."
+            },
+            "mission": {
+                "title": "Notre",
+                "titleHighlight": "Mission",
+                "paragraph1": "Chez Tikit, nous nous engageons à révolutionner le marketing d'influence en combinant la réflexion stratégique avec l'exécution créative. Notre mission est de fournir un retour sur investissement mesurable tout en favorisant des relations authentiques entre les marques et les créateurs.",
+                "paragraph2": "Nous croyons en la transparence, les décisions basées sur les données et les résultats qui parlent d'eux-mêmes. Chaque campagne que nous exécutons est conçue pour générer un engagement réel, construire la confiance de la marque et créer un impact durable.",
+                "benefits": {
+                    "dataDriven": "Approche basée sur les données",
+                    "creative": "Excellence créative",
+                    "authentic": "Partenariats authentiques",
+                    "innovative": "Solutions innovantes"
+                }
+            },
+            "work": {
+                "title": "Comment nous",
+                "titleHighlight": "Travaillons",
+                "subtitle": "Notre processus éprouvé transforme les idées en campagnes impactantes qui génèrent de vrais résultats",
+                "items": {
+                    "strategy": "Stratégie et Planification",
+                    "creation": "Création de Contenu",
+                    "growth": "Croissance et Optimisation"
+                }
+            },
+            "services": {
+                "title": "Nos Services",
+                "titleHighlight": "Principaux",
+                "cta": "Nous combinons la réflexion stratégique avec l'exécution créative pour offrir des services qui génèrent des résultats mesurables",
+                "items": {
+                    "brandStrategy": {
+                        "name": "Stratégie de Marque",
+                        "desc": "Développer des stratégies de marque complètes qui s'alignent avec vos objectifs commerciaux et résonnent avec votre public cible."
+                    },
+                    "digitalMarketing": {
+                        "name": "Marketing Digital",
+                        "desc": "Stimuler la croissance grâce à des campagnes stratégiques, des insights basés sur les données et une exécution axée sur le ROI."
+                    },
+                    "socialMedia": {
+                        "name": "Gestion des Réseaux Sociaux",
+                        "desc": "Gérer la présence en ligne de votre marque avec précision et créativité sur toutes les principales plateformes."
+                    },
+                    "creativeDesign": {
+                        "name": "Design Créatif",
+                        "desc": "Construire des marques qui se démarquent avec une identité visuelle convaincante et une voix de marque cohérente."
+                    },
+                    "contentCreation": {
+                        "name": "Création de Contenu",
+                        "desc": "Du concept au montage final, nous donnons vie aux idées audacieuses avec une narration de qualité."
+                    },
+                    "influencerMarketing": {
+                        "name": "Marketing d'Influence",
+                        "desc": "Connectez votre marque avec des créateurs authentiques qui génèrent un engagement réel et un impact mesurable."
+                    }
+                },
+                "tags": {
+                    "dataDriven": "Basé sur les données",
+                    "creative": "Créatif",
+                    "authentic": "Authentique",
+                    "innovative": "Innovant"
+                }
+            }
         }
     },
     "contact": {
