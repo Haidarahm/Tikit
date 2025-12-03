@@ -4,8 +4,8 @@ const NonDigitalWorkCard = ({ innerRef, normalized, t, onViewDetails }) => {
   return (
     <div
       ref={innerRef}
-      className="group relative overflow-hidden rounded-lg shadow-lg"
-      style={{ height: "10%" }}
+      className="group relative overflow-hidden rounded-lg shadow-lg h-full w-full"
+      style={{ minHeight: "10%" }}
     >
       {normalized.image ? (
         <img

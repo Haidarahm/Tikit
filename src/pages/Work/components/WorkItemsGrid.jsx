@@ -259,8 +259,9 @@ const WorkItemsGrid = ({
         if (!el) return;
         gsap.fromTo(
           el,
-          { height: "10%" },
+          { minHeight: "10%", height: "10%" },
           {
+            minHeight: "100%",
             height: "100%",
             ease: "none",
             scrollTrigger: {
@@ -284,14 +285,16 @@ const WorkItemsGrid = ({
     2: "md:grid-rows-2",
     3: "md:grid-rows-3",
     4: "md:grid-rows-4",
+    5: "md:grid-rows-5",
     6: "md:grid-rows-6",
   };
+  console.log(computedRows)
   const rowClass = rowClassMap[computedRows] ?? "md:grid-rows-4";
   const dynamicHeight = computedRows * 55;
 
   const containerClass = isDigital
     ? "images grid grid-cols-1 gap-6 md:gap-8 p-4 md:px-6"
-    : `images grid grid-cols-1 md:grid-cols-2 ${rowClass} gap-4 p-4`;
+    : `images grid grid-cols-1 md:grid-cols-2 ${rowClass} gap-4 p-4 `;
 
   const digitalMetrics = useMemo(
     () =>
