@@ -143,7 +143,7 @@ const Footer = ({ className }) => {
                     "group w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300";
                   const themeClasses =
                     theme === "dark"
-                      ? "bg-white/5 text-white/70 hover:bg-[var(--secondary)] hover:text-white"
+                      ? "bg-white/5 text-white/70 hover:bg-[var(--secondary)] hover:text-black"
                       : "bg-[var(--secondary)]/10 text-[var(--secondary)] hover:bg-[var(--secondary)] hover:text-white";
                   return (
                     <a
@@ -156,7 +156,7 @@ const Footer = ({ className }) => {
                     >
                       <Icon
                         size={16}
-                        className="group-hover:scale-110 transition-transform"
+                        className="group-hover:scale-110 transition-transform hover:"
                       />
                     </a>
                   );
@@ -222,7 +222,7 @@ const Footer = ({ className }) => {
                   <span
                     className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${
                       theme === "dark"
-                        ? "bg-white/5 text-white/80 group-hover:bg-[var(--secondary)] group-hover:text-white"
+                        ? "bg-white/5 text-white/80 group-hover:bg-[var(--secondary)] group-hover:text-black"
                         : "bg-[var(--secondary)]/10 text-[var(--secondary)] group-hover:bg-[var(--secondary)] group-hover:text-white"
                     }`}
                   >
@@ -243,7 +243,7 @@ const Footer = ({ className }) => {
                   <span
                     className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${
                       theme === "dark"
-                        ? "bg-white/5 text-white/80 group-hover:bg-[var(--secondary)] group-hover:text-white"
+                        ? "bg-white/5 text-white/80 group-hover:bg-[var(--secondary)] group-hover:text-black"
                         : "bg-[var(--secondary)]/10 text-[var(--secondary)] group-hover:bg-[var(--secondary)] group-hover:text-white"
                     }`}
                   >

@@ -3,7 +3,6 @@ import { gsap } from "gsap";
 import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../store/I18nLanguageContext";
 import { useTheme } from "../../store/ThemeContext";
-import LogoLoop from "../../components/LogoLoop";
 import LightRays from "../../components/LightRays";
 
 // Import all influencer images
@@ -103,8 +102,9 @@ const Hero = () => {
       }`}
       dir={isRtl ? "rtl" : "ltr"}
     >
-       <div className="absolute w-full h-full -translate-x-1/2 left-1/2 top-0">
-        {/* {isDark ? ( */}
+         {theme === "dark" && ( 
+                 <div className="absolute z-0 w-full h-full -translate-x-1/2 left-1/2 top-0">
+
           <LightRays
             raysOrigin="top-center"
             raysColor="#52C3C5"
@@ -115,8 +115,8 @@ const Hero = () => {
             mouseInfluence={0.1}
             className="custom-rays"
           />
-        
-      </div>
+          </div>
+        ) }
       <div className="top-section text-center md:mt-16 2xl:mt-12">
         <div ref={h1WrapRef} className="overflow-hidden">
           <h1
@@ -148,7 +148,7 @@ const Hero = () => {
           imageHeight={110}
           gap={35}
         />
-        <div className="register-button text-[var(--foreground)] flex justify-center">
+        <div className="register-button z-10 text-[var(--foreground)] flex justify-center">
           <button
             className="inline-flex items-center
            gap-2 px-2 py-2 lg:px-6 lg:py-2 xl:py-3 xl:px-8 rounded-full 

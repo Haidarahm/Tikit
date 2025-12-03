@@ -136,8 +136,8 @@
                     "description": "Track results in real time and optimize every move — all managed on one smart platform."
                 },
                 {
-                    "title": "Drive real engagement",
-                    "description": "Reach real audiences with meaningful content. We grow traffic that actually converts."
+                    "title": "Create with Purpose",
+                    "description": "Every piece of content we craft tells your story authentically. We turn creative vision into lasting brand impact."
                 },
                 {
                     "title": "Drive real engagement",
@@ -512,7 +512,7 @@
         "links": {
             "aboutUs": "About Us",
             "services": "Services",
-            "work": "Work",
+            "work": "Case Studies",
             "contact": "Contact"
         },
         "services": {

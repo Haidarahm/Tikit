@@ -10,7 +10,7 @@ function LogoIntro() {
   const { theme } = useTheme();
 
   const logoColor = theme === "light" ? "#363737" : "#ffffff";
-  const logoJumpColor = theme === "light" ? "#52C3C5" : "#52C3C5";
+  const logoJumpColor = "#52C3C5";
 
   useEffect(() => {
     if (!wrapperRef.current) return;

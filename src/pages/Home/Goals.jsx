@@ -1,9 +1,9 @@
 import React, { useMemo, memo } from "react";
 import ScrollStack, { ScrollStackItem } from "../../components/ScrollStackItem";
-import image1 from "../../assets/images/goal-image-1.png";
-import image2 from "../../assets/images/goal-image-2.png";
-import image3 from "../../assets/images/goal-image-3.png";
-import image4 from "../../assets/images/goal-image-4.png";
+import image1 from "../../assets/images/goal-image-1.webp";
+import image2 from "../../assets/images/goal-image-2.webp";
+import image3 from "../../assets/images/goal-image-3.webp";
+import image4 from "../../assets/images/goal-image-4.webp";
 import { useTheme } from "../../store/ThemeContext.jsx";
 import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
@@ -35,9 +35,8 @@ const Goals = memo(() => {
         backgroundColorLight: "bg-[#E84B43]/28",
       },
       {
-        title: "Drive real engagement",
-        description:
-          "Reach real audiences with meaningful content. We grow traffic that actually converts.",
+        title: "Create with Purpose",
+        description:"From concept to final cut, we bring bold ideas to life with quality storytelling.",
         image: image3,
         backgroundColor: "bg-[#252525]/28",
         backgroundColorLight: "bg-[#252525]/28",
@@ -51,6 +50,7 @@ const Goals = memo(() => {
         backgroundColorLight: "bg-[#F3A67A]/28",
       },
     ];
+
     const withImages = (items && items.length ? items : fallback).map(
       (it, idx) => ({
         id: idx + 1,
@@ -89,7 +89,7 @@ const Goals = memo(() => {
         {goalsData.map((goal) => (
           <ScrollStackItem
             key={goal.id}
-            itemClassName={`flex backdrop-blur-lg relative mx-[4px] items-center overflow-hidden ${getBackgroundClass(
+            itemClassName={`flex backdrop-blur-lg relative  items-center overflow-hidden ${getBackgroundClass(
               goal
             )}`}
           >
@@ -99,12 +99,15 @@ const Goals = memo(() => {
                 {goal.description}
               </p>
             </div>
+            <div className="img h-full rounded-[15px] w-[120px] md:w-[600px]  overflow-hidden">
             <img
               src={goal.image}
               alt={goal.title}
-              className="rounded-[15px] md:rounded-[39px]  object-cover"
+              className="w-full h-full object-cover"
               loading="lazy"
             />
+            </div>
+           
           </ScrollStackItem>
         ))}
       </ScrollStack>
