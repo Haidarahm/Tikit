@@ -7,7 +7,7 @@ function Loader() {
   const { theme } = useTheme();
 
   const logoColor = theme === "light" ? "#363737" : "#ffffff";
-  const logoJumpColor = theme === "light" ? "#52C3C5" : "#ffffff";
+  const logoJumpColor =  "#52C3C5" ;
 
   return (
     <div className="animate-fade-loop h-screen w-full flex justify-center items-center">

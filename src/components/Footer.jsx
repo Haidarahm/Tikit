@@ -57,10 +57,11 @@ const Footer = ({ className }) => {
   ];
 
   const locations = [
-    { name: t("footer.locationDubai"), flag: "🇦🇪" },
-    { name: t("footer.locationKSA", "Saudi Arabia"), flag: "🇸🇦" },
-    { name: t("footer.locationTurkey", "Istanbul, Türkiye"), flag: "🇹🇷" },
-    { name: t("footer.locationSyria"), flag: "🇸🇾" },
+    { name: t("footer.locations.uae"), flag: "🇦🇪" },
+    { name: t("footer.locations.uk"), flag: "🇬🇧" },
+    { name: t("footer.locations.ksa"), flag: "🇸🇦" },
+    { name: t("footer.locations.turkey"), flag: "🇹🇷" },
+    { name: t("footer.locations.syria"), flag: "🇸🇾" },
   ];
 
   return (
@@ -168,7 +169,7 @@ const Footer = ({ className }) => {
             <div>
               <h4 className="text-lg font-semibold text-[var(--foreground)] mb-6 relative">
                 {t("nav.home", "Quick Links")}
-                <span className="absolute bottom-[-8px] left-0 w-8 h-0.5 bg-[var(--secondary)]"></span>
+                <span className={`absolute bottom-[-8px] ${isRtl ? "right-0" : "left-0"} w-8 h-0.5 bg-[var(--secondary)]`}></span>
               </h4>
               <nav className="flex flex-col gap-3">
                 {quickLinks.map((link) => (
@@ -187,7 +188,7 @@ const Footer = ({ className }) => {
             <div>
               <h4 className="text-lg font-semibold text-[var(--foreground)] mb-6 relative">
                 {t("nav.services", "Services")}
-                <span className="absolute bottom-[-8px] left-0 w-8 h-0.5 bg-[var(--secondary)]"></span>
+                <span className={`absolute bottom-[-8px] ${isRtl ? "right-0" : "left-0"} w-8 h-0.5 bg-[var(--secondary)]`}></span>
               </h4>
               <nav className="flex flex-col gap-3">
                 {serviceLinks.map((link, index) => (
@@ -206,7 +207,7 @@ const Footer = ({ className }) => {
             <div>
               <h4 className="text-lg font-semibold text-[var(--foreground)] mb-6 relative">
                 {t("nav.contact", "Contact Us")}
-                <span className="absolute bottom-[-8px] left-0 w-8 h-0.5 bg-[var(--secondary)]"></span>
+                <span className={`absolute bottom-[-8px] ${isRtl ? "right-0" : "left-0"} w-8 h-0.5 bg-[var(--secondary)]`}></span>
               </h4>
               
               <div className="space-y-4">

@@ -99,7 +99,7 @@ const Goals = memo(() => {
                 {goal.description}
               </p>
             </div>
-            <div className="img h-full rounded-[15px] w-[120px] md:w-[600px]  overflow-hidden">
+            <div className="img max-h-[400px] rounded-[15px] w-[120px] md:w-[600px]  overflow-hidden">
             <img
               src={goal.image}
               alt={goal.title}

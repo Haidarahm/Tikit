@@ -502,13 +502,16 @@
         "contactText": "If you would like to work with us or just want to get in touch, we'd love to hear from you!",
         "contactTitle": "Contact –",
         "contactSubtitle": "for Client or Influencer throughout",
-        "locationDubai": "The Burlington Tower, Marasi Drive, Dubai – Office 309",
-        "locationKSA": "Saudi Arabia - KSA",
-        "locationTurkey": "Istanbul - Türkiye",
-        "locationSyria": "Syria - Damascus",
         "phone": "+971 4 577 4042",
         "email": "Holla@tikit.ae",
         "copyright": "© Copyright 2025 | All rights reserved by Tikit Agency",
+        "locations": {
+            "uae": "UAE - Marasi Drive, Dubai",
+            "uk": "UK - Paddington, London",
+            "ksa": "KSA - Financial District, Riyadh",
+            "turkey": "Turkey - Levent, Istanbul",
+            "syria": "Syria - Ziad Ibn Abi Softyan, Damascus"
+        },
         "links": {
             "aboutUs": "About Us",
             "services": "Services",

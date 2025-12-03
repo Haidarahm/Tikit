@@ -467,10 +467,14 @@
         "contactText": "Si vous souhaitez travailler avec nous ou simplement prendre contact, nous serions ravis de vous entendre !",
         "contactTitle": "Contact –",
         "contactSubtitle": "pour Client ou Influenceur partout",
-        "locationDubai": "Dubaï - EAU",
-        "locationLondon": "Londres - Royaume-Uni",
-        "locationSyria": "Syrie - Damas",
         "copyright": "© Copyright 2025 | Tous droits réservés par Tikit",
+        "locations": {
+            "uae": "EAU - Marasi Drive, Dubaï",
+            "uk": "RU - Paddington, Londres",
+            "ksa": "Arabie Saoudite - Quartier Financier, Riyad",
+            "turkey": "Turquie - Levent, Istanbul",
+            "syria": "Syrie - Ziad Ibn Abi Softyan, Damas"
+        },
         "links": {
             "aboutUs": "À propos",
             "services": "Services",
