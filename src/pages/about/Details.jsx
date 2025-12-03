@@ -15,21 +15,23 @@ const Details = () => {
   useEffect(() => {
     if (!wrapperRef.current) return;
 
-    // Rotating squares animation
-    const squares = gsap.utils.toArray('.section-title__square');
-    squares.forEach((sq) => {
-      gsap.from(sq, {
-        rotation: 720,
-        scrollTrigger: {
-          trigger: sq,
-          start: 'top bottom',
-          scrub: 1.9,
-        },
+    const ctx = gsap.context(() => {
+      // Rotating squares animation
+      const squares = gsap.utils.toArray('.section-title__square');
+      squares.forEach((sq) => {
+        gsap.from(sq, {
+          rotation: 720,
+          scrollTrigger: {
+            trigger: sq,
+            start: 'top bottom',
+            scrub: 1.9,
+          },
+        });
       });
-    });
+    }, wrapperRef);
 
     return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      ctx.revert();
     };
   }, []);
 

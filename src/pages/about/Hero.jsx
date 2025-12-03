@@ -5,7 +5,7 @@ import InfiniteScroll from "../../components/InfiniteScroll";
 import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../store/I18nLanguageContext";
 import { useAboutBannersStore } from "../../store/aboutBannersStore";
-
+import TikitTitle from "../../components/TikitTitle";
 gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
@@ -128,11 +128,21 @@ const Hero = () => {
         <div
           ref={titleRef}
           style={{fontFamily: isRtl ? "Cairo" : "Antonio"}}
-          className={`title  z-30 px-2 md:px-0 w-full md:w-3/4 text-[var(--foreground)] text-center md:text-start absolute text-[32px] md:text-[64px] capitalize flex items-center font-bold  h-full ${
+          className={`title text-start justify-center flex-col  z-30 px-2 md:px-0 w-full md:w-3/4 text-[var(--foreground)]  md:text-start absolute  capitalize flex  font-bold  h-full ${
             isRtl ? "md:pr-[60px]" : "md:pl-[60px]"
           }`}
         >
-          {t("about.hero.title")}
+          <div className="flex gap-2 items-center">
+          <TikitTitle
+           title={t("about.hero.title")}
+           mainWord={t("about.hero.mainWord")}
+          />
+           
+          
+          </div>
+          <TikitTitle
+           title={t("about.hero.title2")}
+          />
         </div>
         <InfiniteScroll
           items={items}

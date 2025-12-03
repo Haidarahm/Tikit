@@ -628,5 +628,5 @@ footer .bottom-section .right-section .items li {
   @apply font-[700] text-5xl sm:text-6xl md:text-7xl lg:text-[64px] leading-tight text-[var(--foreground)];
 }
 .tikit-gradient {
-  @apply bg-gradient-to-r from-[#6ACBCC] to-[#1C6F6C] bg-clip-text text-transparent;
+  @apply  bg-gradient-to-r from-[#6ACBCC] to-[#1C6F6C] bg-clip-text text-transparent;
 }
