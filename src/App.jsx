@@ -63,6 +63,8 @@ const InfluencerMarketingSaudiArabia = lazy(() =>
 
 // Legal Pages
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy.jsx"));
+// 404 Page
+const NotFound = lazy(() => import("./pages/NotFound.jsx"));
 // Loading component
 const LoadingSpinner = () => <Loader />;
 
@@ -127,6 +129,8 @@ function App() {
               <Route path="/influencer-marketing-saudi-arabia" element={<InfluencerMarketingSaudiArabia />} />
               {/* Legal Pages */}
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+              {/* 404 Page */}
+              <Route path="*" element={<NotFound />} />
             </Route>
           </Routes>
         </Suspense>
