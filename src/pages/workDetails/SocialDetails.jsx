@@ -38,6 +38,11 @@ const SocialDetails = () => {
   const mediaRef = useRef(null);
   const textRef = useRef(null);
 
+  // Scroll to top on mount
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, [id]);
+
   useEffect(() => {
     if (!id) return;
 
@@ -240,7 +245,7 @@ const SocialDetails = () => {
                         }
                         animationSpeed={6}
                         showBorder={false}
-                        className="text-[32px] md:text-[48px] font-bold leading-tight"
+                        className={`text-[32px] md:text-[48px] font-bold leading-tight ${isRtl ? "font-cairo" : "font-antonio"}`}
                       >
                         {title}
                       </GradientText>

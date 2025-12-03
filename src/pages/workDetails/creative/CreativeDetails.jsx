@@ -25,6 +25,11 @@ const CreativeDetails = () => {
   );
   const resetCategory = useWorkItemDetailsStore((state) => state.resetCategory);
 
+  // Scroll to top on mount
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, [id]);
+
   useEffect(() => {
     if (!id) return;
 

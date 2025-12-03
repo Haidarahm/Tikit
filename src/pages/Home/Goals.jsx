@@ -94,7 +94,7 @@ const Goals = memo(() => {
             )}`}
           >
             <div className="text">
-             <TikitTitle title={goal.title}/>
+             <TikitTitle title={goal.title} className={"xl:w-1/2"}/>
               <p className=" font-light text-[var(--foreground)]  text:[14px] md:text-[32px] leading-[20px] md:leading-[45px]">
                 {goal.description}
               </p>

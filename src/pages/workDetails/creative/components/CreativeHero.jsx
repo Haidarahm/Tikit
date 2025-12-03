@@ -13,6 +13,7 @@ const gradientPalette = (theme, isRtl) => {
 };
 
 const CreativeHero = ({ mainImage, title, logo, theme, isRtl, t, onBack }) => {
+  const fontClass = isRtl ? "font-cairo" : "font-antonio";
   const gradientColors = gradientPalette(theme, isRtl);
 
   if (mainImage) {
@@ -45,7 +46,7 @@ const CreativeHero = ({ mainImage, title, logo, theme, isRtl, t, onBack }) => {
                 colors={gradientColors}
                 animationSpeed={6}
                 showBorder={false}
-                className="text-[48px] md:text-[64px] lg:text-[80px] font-bold leading-tight max-w-full"
+                className={`text-[48px] md:text-[64px] lg:text-[80px] font-bold leading-tight max-w-full ${fontClass}`}
               >
                 {title}
               </GradientText>
@@ -90,7 +91,7 @@ const CreativeHero = ({ mainImage, title, logo, theme, isRtl, t, onBack }) => {
                 colors={gradientColors}
                 animationSpeed={6}
                 showBorder={false}
-                className="text-[32px] md:text-[48px] font-bold"
+                className={`text-[32px] md:text-[48px] font-bold ${fontClass}`}
               >
                 {title}
               </GradientText>

@@ -37,6 +37,11 @@ const InfluenceDetails = () => {
   );
   const resetCategory = useWorkItemDetailsStore((state) => state.resetCategory);
 
+  // Scroll to top on mount
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, [id]);
+
   useEffect(() => {
     if (!id) return;
 
@@ -222,7 +227,7 @@ const InfluenceDetails = () => {
                         }
                         animationSpeed={6}
                         showBorder={false}
-                        className="text-[32px] md:text-[48px] font-bold leading-tight"
+                        className={`text-[32px] md:text-[48px] font-bold leading-tight ${isRtl ? "font-cairo" : "font-antonio"}`}
                       >
                         {title}
                       </GradientText>

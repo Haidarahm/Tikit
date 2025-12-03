@@ -125,7 +125,7 @@ const Hero = memo(() => {
           autoPlay
           loop
           muted
-          poster="/showcase-cover.png"
+          poster="/showcase-cover.webp"
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
         >

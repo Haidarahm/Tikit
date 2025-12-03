@@ -111,6 +111,11 @@ const EventDetails = () => {
     return () => ctx.revert();
   }, [item?.id, media.length]);
 
+  // Scroll to top on mount
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, [id]);
+
   useEffect(() => {
     if (!id) return;
 
@@ -173,7 +178,7 @@ const EventDetails = () => {
               </p>
               <h1
                 data-hero-child
-                className="text-3xl md:text-5xl font-semibold text-[var(--foreground)]"
+                className={`text-3xl md:text-5xl font-semibold text-[var(--foreground)] ${isRtl ? "font-cairo" : "font-antonio"}`}
               >
                 {title || t("work.details.event.titleFallback", "Event Title")}
               </h1>
