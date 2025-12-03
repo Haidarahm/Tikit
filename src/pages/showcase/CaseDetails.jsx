@@ -4,6 +4,7 @@ import "locomotive-scroll/dist/locomotive-scroll.css";
 import Hero from "./Hero";
 import CaseNumbers from "./CaseNumbers";
 import Images from "./Images";
+import CaseStudy from "./CaseStudy";
 
 const CaseDetails = () => {
   const scrollRef = useRef(null);
@@ -41,6 +42,7 @@ const CaseDetails = () => {
         <Hero />
         <CaseNumbers />
         <Images />
+        <CaseStudy />
       </div>
     </section>
   );

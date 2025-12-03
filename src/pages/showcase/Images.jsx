@@ -7,7 +7,7 @@ import work5 from "../../assets/work/krave.webp";
 
 // Optional: can accept props later if you want to pass custom images/columns
 const Images = memo(({ images, columns = 3 }) => {
-  const defaultImages = [work1, work2, work3, work4, work5];
+  const defaultImages = [work1, work2, work3];
   const items =
     Array.isArray(images) && images.length > 0 ? images : defaultImages;
 
@@ -24,7 +24,7 @@ const Images = memo(({ images, columns = 3 }) => {
     <section className="py-10 md:py-16 h-screen">
       <div className="container h-full w-full mx-auto px-4">
         <div
-          className={`grid grid-cols-5 gap-4 md:gap-6 h-full w-full`}
+          className={`grid ${colsClass} gap-4 md:gap-6 h-full w-full`}
         >
           {items.map((src, idx) => (
             <div

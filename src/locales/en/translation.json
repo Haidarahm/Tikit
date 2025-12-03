@@ -81,9 +81,9 @@
             "description": "Tikit is an award-winning global influencer marketing agency. Whether you want to shift perceptions or create scroll-stopping content, we do it better than anyone."
         },
         "numbers": {
-            "headline": "The best measure of",
+            "headline": "The true measure of",
             "mainWord": "Success",
-            "subheadline": "Clients who stay. Most of ours work with us well beyond one project",
+            "subheadline": "Clients who come back. Most of ours stay long after the first project.",
             "items": {
                 "happyClients": { "text1": "Happy", "text2": "Clients" },
                 "years": { "text1": "Years", "text2": "Of Experiences" },
@@ -111,9 +111,9 @@
         },
         "connections": {
             "question": "Are you an influencer?",
-            "headline": "Join our list",
+            "headline": "Join our creator network",
             "mainWord": "Today!",
-            "description": "Blend data with creativity to help brands reach and resonate with the right audience",
+            "description": "Partner with brands that match your style, and make every collaboration count",
             "joinNow": "Join Now"
         },
         "work": {

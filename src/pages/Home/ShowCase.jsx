@@ -13,7 +13,7 @@ const showcaseData = [
   {
     id: 1,
     img: img1,
-    title: "Hidden",
+    title: "Spotify",
     subtitle: "Marketing",
     size: "small", // small = 1 col, large = 2 col
   },
@@ -27,9 +27,16 @@ const showcaseData = [
   {
     id: 3,
     img: img3,
-    title: "The Reve",
+    title: "Ounass",
     subtitle: "Creative",
-    size: "large",
+    size: "small",
+  },
+  {
+    id: 4,
+    img: img3,
+    title: "Department of culture and tourism",
+    subtitle: "Creative",
+    size: "small",
   },
 ];
 
@@ -145,6 +152,7 @@ const ShowCase = () => {
       >
         <TikitTitle
           title={t("home.showcase.title")}
+
           mainWord={t("home.showcase.mainWord")}
         />
         <p className="text-base sm:text-lg md:text-xl lg:text-[24px] max-w-4xl">
@@ -166,7 +174,7 @@ const ShowCase = () => {
             `}
           >
             <div
-              className="showcase-card_media h-full w-full absolute rounded-[10px] inset-0 bg-center bg-cover"
+              className="showcase-card_media  h-full w-full absolute rounded-[10px] inset-0 bg-center bg-cover"
               style={{ backgroundImage: `url(${item.img})` }}
               role="img"
               aria-label={item.title}
@@ -176,7 +184,7 @@ const ShowCase = () => {
             <div className="absolute py-[13px] bg-white/10 rounded-[10px] backdrop-blur-md flex justify-center w-[80%] md:w-[60%] bottom-[35px] z-10 left-1/2 translate-x-[-50%]">
               <div className="action-content items-center justify-center text-white flex gap-[25px] flex-col">
                 <div className="title-subtitle flex flex-col items-center">
-                  <h2 className="text-[30px] md:text-[40px] font-[700] font-antonio">
+                  <h2 className="text-[30px] text-center md:text-[40px] font-[700] font-antonio">
                     {item.title}
                   </h2>
                   <h3 className="text-[15px] md:text-[20px] font-[200]">

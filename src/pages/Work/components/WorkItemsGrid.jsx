@@ -284,9 +284,10 @@ const WorkItemsGrid = ({
     2: "md:grid-rows-2",
     3: "md:grid-rows-3",
     4: "md:grid-rows-4",
+    6: "md:grid-rows-6",
   };
   const rowClass = rowClassMap[computedRows] ?? "md:grid-rows-4";
-  const dynamicHeight = computedRows * 75;
+  const dynamicHeight = computedRows * 55;
 
   const containerClass = isDigital
     ? "images grid grid-cols-1 gap-6 md:gap-8 p-4 md:px-6"
