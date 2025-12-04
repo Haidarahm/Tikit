@@ -2,31 +2,36 @@ import React, { memo } from "react";
 import CountUp from "../../components/CountUp";
 import { useI18nLanguage } from "../../store/I18nLanguageContext";
 
-const CaseNumbers = memo(() => {
-  // Fake showcase data (no translations / AOS)
+const CaseNumbers = memo(({ caseData, loading }) => {
   const { isRtl } = useI18nLanguage();
+  
+  // Extract numbers from caseData
+  const reach = caseData?.reach ? parseFloat(caseData.reach) : 0;
+  const views = caseData?.views ? parseFloat(caseData.views) : 0;
+  const engagementRate = caseData?.engagement_rate ? parseFloat(caseData.engagement_rate) : 0;
+
   const data = [
     {
-      count: 4.2,
-      suffix: "M",
+      count: reach,
+      suffix: "",
       text1: "Total",
       text2: "Reach",
       plus: true,
       color: "#e84b4326",
     },
     {
-      count: 3.7,
-      suffix: "x",
-      text1: "Engagement",
-      text2: "Lift",
+      count: views,
+      suffix: "",
+      text1: "Total",
+      text2: "Views",
       plus: false,
       color: "#F3A67A26",
     },
     {
-      count: 92,
+      count: engagementRate,
       suffix: "%",
-      text1: "Positive",
-      text2: "Sentiment",
+      text1: "Engagement",
+      text2: "Rate",
       plus: false,
       color: "#35D5D026",
     },

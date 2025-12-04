@@ -4,7 +4,8 @@ import { Observer } from "gsap/Observer";
 import { SplitText } from "gsap/SplitText";
 import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
-
+import influencerMarketing from "../../assets/services/Influencer-Marketing.webp"
+import SocialMedia from "../../assets/services/Social-Media.webp"
 gsap.registerPlugin(Observer, SplitText);
 
 const Services = () => {
@@ -26,14 +27,14 @@ const Services = () => {
     {
       // Influencer Marketing - Content creator with ring light
       image:
-        "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=1920&h=1080&fit=crop",
+      influencerMarketing,
       gradient:
         "linear-gradient(180deg, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0.1) 100%)",
     },
     {
       // Social Media Marketing
       image:
-        "https://images.unsplash.com/photo-1562577309-4932fdd64cd1?w=1920&h=1080&fit=crop",
+       SocialMedia,
       gradient:
         "linear-gradient(180deg, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0.1) 100%)",
     },

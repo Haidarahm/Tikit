@@ -55,7 +55,7 @@ const CaseDetails = () => {
       <div data-scroll-section>
         <Hero caseData={caseData} loading={loading} />
         <CaseNumbers caseData={caseData} loading={loading} />
-        <Images />
+        <Images images={caseData?.media} />
         <CaseStudy caseData={caseData} loading={loading} />
         <ContactUs/>
         <Footer/>

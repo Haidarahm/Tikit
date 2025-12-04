@@ -4,6 +4,7 @@ const NonDigitalWorkCard = ({ innerRef, normalized, t, onViewDetails }) => {
   return (
     <div
       ref={innerRef}
+      data-nav-color="white"
       className="group relative overflow-hidden rounded-lg shadow-lg h-full w-full"
       style={{ minHeight: "10%" }}
     >
