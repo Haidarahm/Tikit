@@ -103,7 +103,7 @@ function Home() {
       <Services />
       <Connections />
       <WorkSection />
-      <AboutUs />
+      {/* <Map /> */}
       <Reviews />
       <ContactUs />
       <Footer />
