@@ -4,6 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
 import { useShowcaseStore } from "../../store/showcaseStore";
+import { useNavigate } from "react-router-dom";
 import img1 from "../../assets/test/hidden.webp";
 import img2 from "../../assets/test/porsche.webp";
 import img3 from "../../assets/test/the-reve.webp";
@@ -48,6 +49,7 @@ const ShowCase = () => {
   const { t } = useTranslation();
   const { language } = useI18nLanguage();
   const { cases, loadCases, loading } = useShowcaseStore();
+  const navigate = useNavigate();
 
   // Load showcase cases from API when language changes
   useEffect(() => {
@@ -249,7 +251,10 @@ const ShowCase = () => {
                       </h3>
                     </div>
 
-                    <button className="text-[15px] md:text-[20px] bg-transparent px-[10px] py-[5px] border border-white rounded-[10px] transition-all duration-300 ease-out hover:bg-white hover:text-black hover:-translate-y-[3px] hover:shadow-[0_15px_35px_rgba(0,0,0,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80">
+                    <button
+                      onClick={() => navigate(`/showcase/${item.id}`)}
+                      className="text-[15px] md:text-[20px] bg-transparent px-[10px] py-[5px] border border-white rounded-[10px] transition-all duration-300 ease-out hover:bg-white hover:text-black hover:-translate-y-[3px] hover:shadow-[0_15px_35px_rgba(0,0,0,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80"
+                    >
                       View Project
                     </button>
                   </div>

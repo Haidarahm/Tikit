@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useMemo } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -36,7 +36,7 @@ const caseStudySections = [
 ];
 
 // Placeholder content for each section - replace with actual data
-const sectionContent = {
+const defaultSectionContent = {
   objective: {
     title: "Campaign Objective",
     content: `Our primary objective was to establish a powerful brand presence across multiple digital touchpoints while driving measurable engagement and conversion metrics. We focused on creating authentic connections with the target audience through strategic influencer partnerships and compelling content narratives.
@@ -88,10 +88,38 @@ Below are examples of the creative executions that drove exceptional engagement 
   },
 };
 
-const CaseStudy = () => {
+const CaseStudy = ({ caseData }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const sectionRefs = useRef([]);
   const containerRef = useRef(null);
+
+  const sectionContent = useMemo(() => {
+    if (!caseData) return defaultSectionContent;
+
+    const { objective, brief, strategy, approach } = caseData;
+
+    return {
+      objective: {
+        ...defaultSectionContent.objective,
+        content: objective || defaultSectionContent.objective.content,
+      },
+      brief: {
+        ...defaultSectionContent.brief,
+        content: brief || defaultSectionContent.brief.content,
+      },
+      strategy: {
+        ...defaultSectionContent.strategy,
+        content: strategy || defaultSectionContent.strategy.content,
+      },
+      // Keep fake data of Approach if API doesn't provide it
+      approach: {
+        ...defaultSectionContent.approach,
+        content: approach || defaultSectionContent.approach.content,
+        hasVideos: defaultSectionContent.approach.hasVideos,
+        videos: defaultSectionContent.approach.videos,
+      },
+    };
+  }, [caseData]);
 
   useEffect(() => {
     let locomotiveScroll = null;
