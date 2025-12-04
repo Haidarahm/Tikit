@@ -66,7 +66,6 @@ const Footer = ({ className }) => {
 
   return (
     <footer
-      data-scroll-section
       className={`w-full md:min-h-[670px] bg-gradient-to-b from-transparent to-[var(--secondary)]/5 text-[var(--foreground)] ${
         isRtl ? "font-cairo" : "font-hero-light"
       } ${className}`}
@@ -120,7 +119,7 @@ const Footer = ({ className }) => {
       </div>
 
       {/* Main Footer Content */}
-      <div className="w-full px-6 md:px-20 py-16">
+      <div className="w-full px-6 md:px-20 pt-16 pb-6">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-8">
             

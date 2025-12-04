@@ -5,7 +5,8 @@ import Hero from "./Hero";
 import CaseNumbers from "./CaseNumbers";
 import Images from "./Images";
 import CaseStudy from "./CaseStudy";
-
+import ContactUs from "../Home/ContactUs";
+import Footer from "../../components/Footer";
 const CaseDetails = () => {
   const scrollRef = useRef(null);
 
@@ -43,6 +44,8 @@ const CaseDetails = () => {
         <CaseNumbers />
         <Images />
         <CaseStudy />
+        <ContactUs/>
+        <Footer/>
       </div>
     </section>
   );
