@@ -16,6 +16,7 @@ import Footer from "../../components/Footer";
 import SEOHead from "../../components/SEOHead";
 import Influencers from "./influencers/Influencers";
 import ShowCase from "./ShowCase";
+import Map from "./map/Map";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -103,7 +104,7 @@ function Home() {
       <Services />
       <Connections />
       <WorkSection />
-      {/* <Map /> */}
+      <Map />
       <Reviews />
       <ContactUs />
       <Footer />
