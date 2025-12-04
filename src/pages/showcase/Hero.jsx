@@ -4,7 +4,7 @@ import { useI18nLanguage } from "../../store/I18nLanguageContext";
 const Hero = () => {
     const { isRtl } = useI18nLanguage();
   return (
-    <div className="relative overflow-hidden min-h-[60vh] w-full md:min-h-screen ">
+    <div   data-nav-color="white" className="relative overflow-hidden min-h-[60vh] w-full md:min-h-screen ">
       <img
         className="absolute w-full h-full object-cover blur-sm z-0"
         src="https://i.pinimg.com/1200x/68/e2/d5/68e2d57bbb51cf28c66f4b72ea9b8804.jpg"

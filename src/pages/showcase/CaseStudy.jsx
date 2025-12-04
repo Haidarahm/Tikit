@@ -94,53 +94,105 @@ const CaseStudy = () => {
   const containerRef = useRef(null);
 
   useEffect(() => {
-    // Check if we're in a Locomotive Scroll context
-    const hasLocomotiveScroll = !!window.locomotiveScrollInstance;
+    let locomotiveScroll = null;
+    let scrollHandler = null;
+    let checkInterval = null;
 
-    if (hasLocomotiveScroll) {
-      // For Locomotive Scroll, we'll use intersection observer instead
-      const observerOptions = {
-        root: null,
-        rootMargin: "-40% 0px -40% 0px",
-        threshold: 0,
-      };
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const index = parseInt(
-              entry.target.getAttribute("data-section-index"),
-              10
-            );
-            if (!isNaN(index)) {
+    const handleScroll = () => {
+      const viewportTop = window.innerHeight * 0.3;
+      const viewportBottom = window.innerHeight * 0.7;
+      
+      let activeFound = false;
+      
+      // Find which section is most visible in the viewport
+      for (let index = 0; index < sectionRefs.current.length; index++) {
+        const ref = sectionRefs.current[index];
+        if (ref) {
+          const rect = ref.getBoundingClientRect();
+          // Check if section top is in the target zone
+          if (rect.top <= viewportBottom && rect.bottom >= viewportTop) {
+            if (!activeFound) {
               setActiveIndex(index);
+              activeFound = true;
+            }
+          }
+        }
+      }
+      
+      // If no section found in viewport, find closest
+      if (!activeFound) {
+        let closestIndex = 0;
+        let closestDistance = Infinity;
+        
+        sectionRefs.current.forEach((ref, index) => {
+          if (ref) {
+            const rect = ref.getBoundingClientRect();
+            const distance = Math.abs(rect.top - viewportTop);
+            if (distance < closestDistance) {
+              closestDistance = distance;
+              closestIndex = index;
             }
           }
         });
-      }, observerOptions);
+        
+        setActiveIndex(closestIndex);
+      }
+    };
 
-      sectionRefs.current.forEach((ref) => {
-        if (ref) observer.observe(ref);
-      });
+    const setupLocomotiveScroll = () => {
+      locomotiveScroll = window.locomotiveScrollInstance;
+      
+      if (locomotiveScroll) {
+        scrollHandler = handleScroll;
+        locomotiveScroll.on("scroll", scrollHandler);
+        // Initial check
+        handleScroll();
+        
+        if (checkInterval) {
+          clearInterval(checkInterval);
+          checkInterval = null;
+        }
+        return true;
+      }
+      return false;
+    };
 
-      return () => observer.disconnect();
-    } else {
-      // Use GSAP ScrollTrigger for standard scroll
-      const triggers = sectionRefs.current.map((sectionEl, index) => {
-        if (!sectionEl) return null;
-        return ScrollTrigger.create({
-          trigger: sectionEl,
-          start: "top center",
-          end: "bottom center",
-          onEnter: () => setActiveIndex(index),
-          onEnterBack: () => setActiveIndex(index),
-        });
-      });
-
-      return () => {
-        triggers.forEach((trigger) => trigger?.kill());
-      };
+    // Try to setup immediately
+    if (!setupLocomotiveScroll()) {
+      // If not available, poll for it
+      checkInterval = setInterval(() => {
+        if (setupLocomotiveScroll()) {
+          clearInterval(checkInterval);
+        }
+      }, 100);
+      
+      // Fallback: clear interval after 5 seconds
+      setTimeout(() => {
+        if (checkInterval) {
+          clearInterval(checkInterval);
+          // Fallback to GSAP ScrollTrigger
+          const triggers = sectionRefs.current.map((sectionEl, index) => {
+            if (!sectionEl) return null;
+            return ScrollTrigger.create({
+              trigger: sectionEl,
+              start: "top center",
+              end: "bottom center",
+              onEnter: () => setActiveIndex(index),
+              onEnterBack: () => setActiveIndex(index),
+            });
+          });
+        }
+      }, 5000);
     }
+
+    return () => {
+      if (checkInterval) {
+        clearInterval(checkInterval);
+      }
+      if (locomotiveScroll && scrollHandler) {
+        locomotiveScroll.off("scroll", scrollHandler);
+      }
+    };
   }, []);
 
   const handleNavClick = (index) => {
@@ -163,6 +215,7 @@ const CaseStudy = () => {
   return (
     <div
       ref={containerRef}
+      id="case-study-container"
       className="case-study-section w-full py-20 lg:py-32 bg-[var(--background)]"
     >
       <div className="w-full px-6 mx-auto max-w-7xl">
@@ -182,10 +235,16 @@ const CaseStudy = () => {
         </div>
 
         {/* Main Content */}
-        <div className="flex flex-col lg:flex-row gap-8 lg:gap-16">
+        <div id="case-study-content" className="flex flex-col lg:flex-row gap-8 lg:gap-16 relative">
           {/* Left Sticky Selector - Desktop */}
-          <aside className="lg:w-72 xl:w-80 flex-shrink-0 hidden md:block">
-            <div className="sticky top-32">
+          <aside className="lg:w-72 xl:w-80 flex-shrink-0 hidden lg:block">
+            <div 
+              data-scroll
+              data-scroll-sticky
+              data-scroll-target="#case-study-content"
+              className="lg:pt-8"
+              style={{ top: '120px' }}
+            >
               <div className="mb-6 space-y-3">
                 <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#52C3C5]">
                   Sections
@@ -236,7 +295,7 @@ const CaseStudy = () => {
           </aside>
 
           {/* Mobile Selector */}
-          <div className="md:hidden w-full mb-6">
+          <div className="lg:hidden w-full mb-6">
             <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
               {caseStudySections.map((section, index) => {
                 const isActive = index === activeIndex;
