@@ -52,8 +52,8 @@ const CaseDetails = () => {
     <section data-nav-color="black" className="min-h-screen">
       <Hero caseData={caseData} loading={loading} />
       <CaseNumbers caseData={caseData} loading={loading} />
-      <Images images={caseData?.media} />
-      <CaseStudy caseData={caseData} lenis={lenisRef} />
+      <Images images={caseData?.images} />
+      <CaseStudy caseData={caseData} videos={caseData?.videos} lenis={lenisRef} />
       <ContactUs />
       <Footer />
     </section>

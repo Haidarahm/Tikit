@@ -64,28 +64,13 @@ Phase Three amplified top-performing content through paid media support and cros
     title: "Creative Approach",
     content: `Our creative approach prioritized authentic storytelling over traditional advertising formats. Each piece of content was developed collaboratively with influencer partners, ensuring their unique voice remained central while effectively communicating brand messages.
 
-The visual identity maintained consistency through subtle brand integration techniques that felt native to each platform's aesthetic expectations. We developed platform-specific content variations that respected the unique culture and consumption patterns of each channel's user base.
-
-Below are examples of the creative executions that drove exceptional engagement and brand recall metrics throughout the campaign:`,
-    hasVideos: true,
-    videos: [
-      {
-        id: 1,
-        src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-        poster: "",
-        title: "Campaign Highlight Reel",
-      },
-      {
-        id: 2,
-        src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
-        poster: "",
-        title: "Behind the Scenes",
-      },
-    ],
+The visual identity maintained consistency through subtle brand integration techniques that felt native to each platform's aesthetic expectations. We developed platform-specific content variations that respected the unique culture and consumption patterns of each channel's user base.`,
+    hasVideos: false,
+    videos: [],
   },
 };
 
-const CaseStudy = ({ caseData, lenis }) => {
+const CaseStudy = ({ caseData, videos: videosFromProps, lenis }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const sectionRefs = useRef([]);
   const containerRef = useRef(null);
@@ -96,6 +81,17 @@ const CaseStudy = ({ caseData, lenis }) => {
     if (!caseData) return defaultSectionContent;
 
     const { objective, brief, strategy, approach } = caseData;
+
+    // Map API videos to the format used in the component
+    const hasVideos = videosFromProps && videosFromProps.length > 0;
+    const apiVideos = hasVideos
+      ? videosFromProps.map((src, idx) => ({
+          id: idx + 1,
+          src,
+          poster: "",
+          title: `Video ${idx + 1}`,
+        }))
+      : [];
 
     return {
       objective: {
@@ -110,15 +106,14 @@ const CaseStudy = ({ caseData, lenis }) => {
         ...defaultSectionContent.strategy,
         content: strategy || defaultSectionContent.strategy.content,
       },
-      // Keep fake data of Approach if API doesn't provide it
       approach: {
         ...defaultSectionContent.approach,
         content: approach || defaultSectionContent.approach.content,
-        hasVideos: defaultSectionContent.approach.hasVideos,
-        videos: defaultSectionContent.approach.videos,
+        hasVideos,
+        videos: apiVideos,
       },
     };
-  }, [caseData]);
+  }, [caseData, videosFromProps]);
 
   // Scroll listener for active section detection (works with Lenis)
   useEffect(() => {
