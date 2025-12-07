@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
+import Lenis from "lenis";
 import Hero from "./Hero";
 import CaseNumbers from "./CaseNumbers";
 import Images from "./Images";
@@ -14,6 +15,7 @@ const CaseDetails = () => {
   const { language } = useI18nLanguage();
   const { caseDetails, loadCaseById, loading } = useShowcaseStore();
   const caseData = caseDetails?.[id];
+  const lenisRef = useRef(null);
 
   useEffect(() => {
     if (id) {
@@ -21,12 +23,37 @@ const CaseDetails = () => {
     }
   }, [id, language, loadCaseById]);
 
+  // Initialize Lenis smooth scroll (local to this page)
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+    });
+
+    lenisRef.current = lenis;
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    // Scroll to top on mount
+    lenis.scrollTo(0, { immediate: true });
+
+    return () => {
+      lenis.destroy();
+      lenisRef.current = null;
+    };
+  }, []);
+
   return (
     <section data-nav-color="black" className="min-h-screen">
       <Hero caseData={caseData} loading={loading} />
       <CaseNumbers caseData={caseData} loading={loading} />
       <Images images={caseData?.media} />
-      <CaseStudy caseData={caseData} loading={loading} />
+      <CaseStudy caseData={caseData} lenis={lenisRef} />
       <ContactUs />
       <Footer />
     </section>

@@ -85,7 +85,7 @@ Below are examples of the creative executions that drove exceptional engagement 
   },
 };
 
-const CaseStudy = ({ caseData }) => {
+const CaseStudy = ({ caseData, lenis }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const sectionRefs = useRef([]);
   const containerRef = useRef(null);
@@ -120,7 +120,7 @@ const CaseStudy = ({ caseData }) => {
     };
   }, [caseData]);
 
-  // Simple scroll listener for active section detection
+  // Scroll listener for active section detection (works with Lenis)
   useEffect(() => {
     const handleScroll = () => {
       const viewportCenter = window.innerHeight * 0.4;
@@ -158,17 +158,35 @@ const CaseStudy = ({ caseData }) => {
       }
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    // Use Lenis scroll event if available, otherwise fallback to window
+    if (lenis?.current) {
+      lenis.current.on("scroll", handleScroll);
+    } else {
+      window.addEventListener("scroll", handleScroll, { passive: true });
+    }
+    
     handleScroll(); // Initial check
 
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    return () => {
+      if (lenis?.current) {
+        lenis.current.off("scroll", handleScroll);
+      } else {
+        window.removeEventListener("scroll", handleScroll);
+      }
+    };
+  }, [lenis]);
 
   const handleNavClick = (index) => {
     setActiveIndex(index);
     const target = sectionRefs.current[index];
     if (!target) return;
-    target.scrollIntoView({ behavior: "smooth", block: "start" });
+    
+    // Use Lenis for smooth scrolling if available
+    if (lenis?.current) {
+      lenis.current.scrollTo(target, { offset: -100 });
+    } else {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   };
 
   // GSAP Header Animation
