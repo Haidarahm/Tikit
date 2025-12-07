@@ -163,6 +163,40 @@
             "button": "Holla at us",
             "brandsTrust": "20+ Brands Trust Us"
         },
+        "map": {
+            "badge": "Global Presence",
+            "title": "Tikit Agency",
+            "titleHighlight": "Worldwide",
+            "description": "From Dubai to London, we connect brands with audiences across the globe. Our strategic locations enable us to deliver culturally relevant campaigns that resonate with diverse markets.",
+            "hoverHint": "Hover over the pins to explore our locations",
+            "stats": [
+                { "text": "5+ Global Offices" },
+                { "text": "20+ Countries Served" },
+                { "text": "500M+ Audience Reach" }
+            ],
+            "locations": [
+                {
+                    "title": "Dubai, UAE",
+                    "description": "Our headquarters in the heart of the Middle East, driving innovation in social media marketing."
+                },
+                {
+                    "title": "Riyadh, KSA",
+                    "description": "Expanding our reach across Saudi Arabia with cutting-edge influencer campaigns."
+                },
+                {
+                    "title": "Cairo, Egypt",
+                    "description": "Connecting brands with millions across North Africa through creative storytelling."
+                },
+                {
+                    "title": "London, UK",
+                    "description": "European hub for global brand partnerships and celebrity management."
+                },
+                {
+                    "title": "Mumbai, India",
+                    "description": "Tapping into the world's largest digital audience with localized strategies."
+                }
+            ]
+        },
         "reviews": {
             "testimonials": [
                 {

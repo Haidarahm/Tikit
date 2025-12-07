@@ -136,6 +136,40 @@
             "button": "Contactez-nous",
             "brandsTrust": "20+ marques nous font confiance"
         },
+        "map": {
+            "badge": "Présence Mondiale",
+            "title": "Tikit Agency",
+            "titleHighlight": "Mondial",
+            "description": "De Dubaï à Londres, nous connectons les marques avec des audiences du monde entier. Nos emplacements stratégiques nous permettent de proposer des campagnes culturellement pertinentes qui résonnent avec des marchés diversifiés.",
+            "hoverHint": "Survolez les épingles pour explorer nos emplacements",
+            "stats": [
+                { "text": "5+ Bureaux Mondiaux" },
+                { "text": "20+ Pays Servis" },
+                { "text": "500M+ Portée d'Audience" }
+            ],
+            "locations": [
+                {
+                    "title": "Dubaï, EAU",
+                    "description": "Notre siège au cœur du Moyen-Orient, moteur de l'innovation en marketing sur les réseaux sociaux."
+                },
+                {
+                    "title": "Riyad, KSA",
+                    "description": "Expansion de notre portée en Arabie Saoudite avec des campagnes d'influenceurs de pointe."
+                },
+                {
+                    "title": "Le Caire, Égypte",
+                    "description": "Connexion des marques avec des millions en Afrique du Nord grâce à une narration créative."
+                },
+                {
+                    "title": "Londres, UK",
+                    "description": "Hub européen pour les partenariats de marques mondiales et la gestion des célébrités."
+                },
+                {
+                    "title": "Mumbai, Inde",
+                    "description": "Exploitation du plus grand public numérique au monde avec des stratégies localisées."
+                }
+            ]
+        },
         "reviews": {
             "testimonials": [
                 {

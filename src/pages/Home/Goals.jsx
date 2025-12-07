@@ -93,17 +93,17 @@ const Goals = memo(() => {
               goal
             )}`}
           >
-            <div className="text">
-             <TikitTitle title={goal.title} className={"xl:w-1/2"}/>
+            <div className="text w-2/3">
+             <TikitTitle title={goal.title} />
               <p className=" font-light text-[var(--foreground)]  text:[14px] md:text-[32px] leading-[20px] md:leading-[45px]">
                 {goal.description}
               </p>
             </div>
-            <div className="img max-h-[400px] rounded-[15px] w-[120px] md:w-[600px]  overflow-hidden">
+            <div className="img h-full rounded-[15px]  w-1/3 px-4 overflow-hidden">
             <img
               src={goal.image}
               alt={goal.title}
-              className="w-full h-full object-cover"
+              className="w-full h-full rounded-[15px] object-cover"
               loading="lazy"
             />
             </div>
@@ -136,7 +136,7 @@ const Goals = memo(() => {
               data-aos-mirror="true"
             >
               <div className="text">
-                <h2 className=" tikit-title w-full">{goal.title}</h2>
+                <h2 style={{fontFamily: isRtl ? "Cairo" : "Antonio"}} className=" tikit-title w-full">{goal.title}</h2>
                 <p className=" text-[var(--foreground)] text:[14px] font-light leading-[20px]">
                   {goal.description}
                 </p>

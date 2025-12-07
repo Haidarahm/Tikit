@@ -1,51 +1,34 @@
 import React, { useState, useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useTranslation } from 'react-i18next'
+import { useI18nLanguage } from '../../../store/I18nLanguageContext'
 import mapXml from './map.xml?raw'
+import { useTheme } from '../../../store/ThemeContext'
 
 gsap.registerPlugin(ScrollTrigger)
-
-// Location data for pins
-const locations = [
-  {
-    id: 1,
-    title: 'Dubai, UAE',
-    description: 'Our headquarters in the heart of the Middle East, driving innovation in social media marketing.'
-  },
-  {
-    id: 2,
-    title: 'Riyadh, KSA',
-    description: 'Expanding our reach across Saudi Arabia with cutting-edge influencer campaigns.'
-  },
-  {
-    id: 3,
-    title: 'Cairo, Egypt',
-    description: 'Connecting brands with millions across North Africa through creative storytelling.'
-  },
-  {
-    id: 4,
-    title: 'London, UK',
-    description: 'European hub for global brand partnerships and celebrity management.'
-  },
-  {
-    id: 5,
-    title: 'Mumbai, India',
-    description: 'Tapping into the world\'s largest digital audience with localized strategies.'
-  }
-]
 
 const Map = ({ 
   strokeColor = '#4ec0c3', 
   pinColor = '#4baaad'
 }) => {
-  const [currentStrokeColor] = useState(strokeColor)
-  const [currentPinColor] = useState(pinColor)
+  const { theme } = useTheme()
+  const { t } = useTranslation()
+  const { isRtl } = useI18nLanguage()
+  
+  // Use #363737 for stroke in light mode, otherwise use the provided strokeColor
+  const currentStrokeColor = theme === 'light' ? '#363737' : strokeColor
+  const currentPinColor = pinColor
   const svgRef = useRef(null)
   const containerRef = useRef(null)
   const leftSectionRef = useRef(null)
   const [svgContent, setSvgContent] = useState('')
   const [hoveredPin, setHoveredPin] = useState(null)
   const [hoverPosition, setHoverPosition] = useState({ x: 0, y: 0 })
+
+  // Get translated data
+  const stats = t('home.map.stats', { returnObjects: true }) || []
+  const locations = t('home.map.locations', { returnObjects: true }) || []
 
   // Load SVG content
   useEffect(() => {
@@ -123,6 +106,7 @@ const Map = ({
         // ===== INITIAL STATES =====
         
         // World map paths - set up for drawing animation
+        const mapStrokeColor = theme === 'light' ? '#363737' : '#ffffff'
         worldMapPaths.forEach(path => {
           if (path.getTotalLength) {
             try {
@@ -131,7 +115,7 @@ const Map = ({
                 strokeDasharray: length,
                 strokeDashoffset: length,
                 opacity: 0,
-                stroke: '#ffffff',
+                stroke: mapStrokeColor,
                 strokeWidth: 0.5,
                 fill: 'transparent'
               })
@@ -209,47 +193,47 @@ const Map = ({
                   masterTl.to(path, {
                     strokeDashoffset: 0,
                     opacity: 1,
-                    duration: 0.6,
+                    duration: 0.4,
                     ease: 'power2.out'
-                  }, 0.05 + index * 0.003)
+                  }, 0.02 + index * 0.002)
                   
                   // Fill in the continents immediately after
                   masterTl.to(path, {
-                    fill: '#ffffff',
-                    duration: 0.3,
+                    fill: theme === 'light' ? '#363737' : '#ffffff',
+                    duration: 0.2,
                     ease: 'power2.out'
-                  }, 0.6 + index * 0.002)
+                  }, 0.4 + index * 0.001)
                 } catch (e) {
                   masterTl.to(path, {
                     opacity: 1,
-                    duration: 0.5,
+                    duration: 0.3,
                     ease: 'power2.out'
-                  }, 0.2)
+                  }, 0.1)
                 }
               } else {
                 masterTl.to(path, {
                   opacity: 1,
-                  duration: 0.5,
+                  duration: 0.3,
                   ease: 'power2.out'
-                }, 0.2)
+                }, 0.1)
               }
             })
 
             // ========== STEP 3: Draw connection lines (after map is complete) ==========
-            const linesStartTime = 1.0 // Start after map is drawn
+            const linesStartTime = 0.5 // Start quickly after map
             strokePaths.forEach((path, index) => {
               if (path.getTotalLength) {
                 masterTl.to(path, {
                   strokeDashoffset: 0,
                   opacity: 1,
-                  duration: 0.8,
+                  duration: 0.5,
                   ease: 'power2.inOut'
-                }, linesStartTime + index * 0.15)
+                }, linesStartTime + index * 0.08)
               }
             })
 
             // ========== STEP 4: Pins appear smoothly (after lines are done) ==========
-            const linesEndTime = linesStartTime + (strokePaths.length * 0.15) + 0.8
+            const linesEndTime = linesStartTime + (strokePaths.length * 0.08) + 0.4
             
             // First make pins visible
             masterTl.call(() => {
@@ -264,13 +248,13 @@ const Map = ({
                 opacity: 1,
                 scale: 1,
                 y: 0,
-                duration: 0.8,
-                ease: 'elastic.out(1, 0.6)'
-              }, linesEndTime + 0.1 + index * 0.1)
+                duration: 0.5,
+                ease: 'back.out(1.7)'
+              }, linesEndTime + index * 0.05)
             })
 
             // ========== STEP 5: Glow elements (st44, st32, etc.) appear after pins ==========
-            const pinsEndTime = linesEndTime + 0.1 + (allPins.length * 0.1) + 0.5
+            const pinsEndTime = linesEndTime + (allPins.length * 0.05) + 0.2
             
             // Make glow elements visible
             masterTl.call(() => {
@@ -284,9 +268,9 @@ const Map = ({
               masterTl.to(el, {
                 opacity: 1,
                 scale: 1,
-                duration: 0.8,
-                ease: 'elastic.out(1, 0.6)'
-              }, pinsEndTime + 0.1 + index * 0.08)
+                duration: 0.5,
+                ease: 'back.out(1.7)'
+              }, pinsEndTime + index * 0.04)
             })
 
           },
@@ -342,51 +326,46 @@ const Map = ({
     }, 150)
 
     return () => clearTimeout(timeout)
-  }, [svgContent])
+  }, [svgContent, theme, locations])
+
+  // Font class based on language
+  const titleFont = isRtl ? 'font-cairo' : 'font-antonio'
 
   return (
     <section 
       ref={containerRef} 
-      className='w-full min-h-screen relative overflow-hidden bg-[#0a0a0a] py-16 md:py-24'
+      className='w-full min-h-screen relative overflow-hidden bg-[var(--background)] py-16 md:py-24'
     >
       <div className='max-w-[1400px] mx-auto px-4 md:px-8 h-full'>
-        <div className='flex flex-col lg:flex-row items-center gap-8 lg:gap-12 h-full'>
+        <div className={`flex flex-col lg:flex-row items-center gap-8 lg:gap-12 h-full`}>
           
           {/* Left Section - Agency Info */}
-          <div ref={leftSectionRef} className='w-full lg:w-2/5 flex flex-col justify-center'>
+          <div ref={leftSectionRef} className={`w-full lg:w-2/5 flex flex-col justify-center ${isRtl ? 'text-right' : ''}`}>
             <span className='animate-text text-[#4ec0c3] text-sm md:text-base font-medium tracking-widest uppercase mb-4'>
-              Global Presence
+              {t('home.map.badge')}
             </span>
             
-            <h2 className='animate-text text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight'>
-              Tikit Agency
-              <span className='block text-[#4ec0c3]'>Worldwide</span>
+            <h2 className={`animate-text text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--foreground)] mb-6 leading-tight ${titleFont}`}>
+              {t('home.map.title')}
+              <span className='block text-[#4ec0c3]'>{t('home.map.titleHighlight')}</span>
             </h2>
             
             <p className='animate-text text-gray-400 text-base md:text-lg leading-relaxed mb-8 max-w-md'>
-              From Dubai to London, we connect brands with audiences across the globe. 
-              Our strategic locations enable us to deliver culturally relevant campaigns 
-              that resonate with diverse markets.
+              {t('home.map.description')}
             </p>
 
-            <div className='animate-text flex flex-col gap-4'>
-              <div className='flex items-center gap-3'>
-                <div className='w-2 h-2 rounded-full bg-[#4ec0c3]'></div>
-                <span className='text-white text-sm md:text-base'>5+ Global Offices</span>
-              </div>
-              <div className='flex items-center gap-3'>
-                <div className='w-2 h-2 rounded-full bg-[#4ec0c3]'></div>
-                <span className='text-white text-sm md:text-base'>20+ Countries Served</span>
-              </div>
-              <div className='flex items-center gap-3'>
-                <div className='w-2 h-2 rounded-full bg-[#4ec0c3]'></div>
-                <span className='text-white text-sm md:text-base'>500M+ Audience Reach</span>
-              </div>
+            <div dir={isRtl ? 'rtl' : 'ltr'} className='animate-text flex flex-col gap-4'>
+              {Array.isArray(stats) && stats.map((stat, index) => (
+                <div key={index} className={`flex items-center gap-3 ${isRtl ? 'flex-row-reverse' : ''}`}>
+                  <div className='w-2 h-2 rounded-full bg-[#4ec0c3]'></div>
+                  <span className='text-[var(--foreground)] text-sm md:text-base'>{stat.text}</span>
+                </div>
+              ))}
             </div>
 
             <div className='animate-text mt-10'>
               <p className='text-gray-500 text-sm italic'>
-                Hover over the pins to explore our locations
+                {t('home.map.hoverHint')}
               </p>
             </div>
           </div>
@@ -409,10 +388,10 @@ const Map = ({
                   transform: 'translate(-50%, calc(-100% - 20px))',
                 }}
               >
-                <div className='bg-white/95 backdrop-blur-sm rounded-xl shadow-2xl p-5 min-w-[220px] max-w-[280px] border border-[#4ec0c3]/20'>
-                  <div className='flex items-center gap-2 mb-2'>
+                <div className={`bg-white/95 backdrop-blur-sm rounded-xl shadow-2xl p-5 min-w-[220px] max-w-[280px] border border-[#4ec0c3]/20 ${isRtl ? 'text-right' : ''}`}>
+                  <div className={`flex items-center gap-2 mb-2 ${isRtl ? 'flex-row-reverse' : ''}`}>
                     <div className='w-3 h-3 rounded-full bg-[#4ec0c3] animate-pulse'></div>
-                    <h3 className='text-lg font-bold text-gray-900'>
+                    <h3 className={`text-lg font-bold text-gray-900 ${titleFont}`}>
                       {hoveredPin.title}
                     </h3>
                   </div>
@@ -430,8 +409,7 @@ const Map = ({
         </div>
       </div>
 
-      {/* Background gradient */}
-      <div className='absolute inset-0 bg-gradient-to-br from-[#4ec0c3]/5 via-transparent to-[#4baaad]/5 pointer-events-none'></div>
+   
     </section>
   )
 }
