@@ -233,7 +233,7 @@ const CaseStudy = ({ caseData, lenis }) => {
       id="case-study-container"
       className="case-study-section w-full py-20 lg:py-32 bg-[var(--background)]"
     >
-      <div className="w-full px-6 mx-auto max-w-7xl">
+      <div className="w-full px-6 mx-auto max-w-8xl">
         {/* Header */}
         <div ref={headerRef} className="mb-16 lg:mb-24">
           <span className="header-animate inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#52C3C5]/10 text-[#52C3C5] text-sm font-medium mb-4">
