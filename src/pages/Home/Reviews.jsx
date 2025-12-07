@@ -1,119 +1,138 @@
-import React, { useMemo, memo } from "react";
+import React, { useEffect, useRef, useState, memo } from "react";
 import {
   ThreeDScrollTriggerContainer,
   ThreeDScrollTriggerRow,
 } from "../../components/ui/ThreeDScrollTriggerRow";
-import quote from "../../assets/icons/quot.svg";
 import { useTheme } from "../../store/ThemeContext.jsx";
-import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
+import { useBannersStore } from "../../store/bannersStore";
 
-const FALLBACK_TESTIMONIALS = [
-  {
-    name: "Sophia Martinez",
-    company: "Global Enterprises Ltd.",
-    text: "AtomWallet has completely transformed how we manage international payments. Transactions are fast, secure, and effortless.",
-  },
-  {
-    name: "David Lee",
-    company: "TechBridge Solutions",
-    text: "Sending money to partners abroad has never been this smooth. AtomWallet's real-time tracking gives us complete peace of mind.",
-  },
-  {
-    name: "Amira Hassan",
-    company: "FinEdge Capital",
-    text: "The security features are outstanding. Multi-layer protection ensures our business transactions remain private and protected.",
-  },
-  {
-    name: "Liam Anderson",
-    company: "Anderson Trading Co.",
-    text: "With AtomWallet, I can pay vendors and receive funds globally without worrying about hidden fees. Transparent and reliable!",
-  },
-  {
-    name: "Chen Wei",
-    company: "BrightPath Logistics",
-    text: "The interface is so intuitive. Within minutes, my team was making international payments without any training required.",
-  },
-];
+// Video Reel Card Component
+const VideoReelCard = memo(({ video, index, theme }) => {
+  const videoRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
 
-// Extracted testimonial card component to avoid duplication
-const TestimonialCard = memo(
-  ({ testimonial, index, theme, lightBgs, isRtl }) => (
+  const handleMouseEnter = () => {
+    if (videoRef.current) {
+      videoRef.current.play();
+      setIsPlaying(true);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (videoRef.current) {
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0;
+      setIsPlaying(false);
+    }
+  };
+
+  const toggleMute = (e) => {
+    e.stopPropagation();
+    if (videoRef.current) {
+      videoRef.current.muted = !videoRef.current.muted;
+      setIsMuted(!isMuted);
+    }
+  };
+
+  return (
     <div
-      className={`flex gap-[23px] h-[180px] md:h-[300px] w-[320px] md:w-[600px] p-2 md:p-7 rounded-xl text-[var(--foreground)] border border-white/15 dark:bg-white/10 backdrop-blur-md shadow-xl ${
-        isRtl ? "flex-row-reverse mr-[20px]" : "ml-[20px]"
-      }`}
-      dir={isRtl ? "rtl" : "ltr"}
-      lang={isRtl ? "ar" : undefined}
-      style={
-        theme === "dark"
-          ? undefined
-          : { backgroundColor: lightBgs[index % lightBgs.length] }
-      }
+      className="relative flex-shrink-0 mx-3 group cursor-pointer"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
-      <div className="icon h-full">
-        <img
-          src={quote}
-          alt="Quote icon"
-          className="mh-[20px] d:h-[40px] w-[20px] md:w-[40px]"
+      <div
+        className="relative overflow-hidden rounded-2xl border border-white/15 dark:bg-white/5 backdrop-blur-md shadow-xl transition-transform duration-300 ease-out group-hover:scale-105"
+        style={{
+          width: "200px",
+          height: "350px",
+        }}
+      >
+        {/* Video */}
+        <video
+          ref={videoRef}
+          className="w-full h-full object-cover"
+          src={video.videoUrl}
+          muted={isMuted}
+          loop
+          playsInline
+          preload="metadata"
         />
-      </div>
 
-      <div className="content flex-col flex-1 justify-between w-full flex">
-        <p
-          className={`relative block text-wrap text-[14px] md:text-[24px] font-light ${
-            isRtl ? "text-right" : "text-left"
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+
+        {/* Play indicator */}
+        <div
+          className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${
+            isPlaying ? "opacity-0" : "opacity-100"
           }`}
         >
-          {testimonial.text}
-        </p>
-        <div
-          className={`user flex items-center `}
-        >
-          <img
-            src={testimonial.avatar}
-            alt={testimonial.name}
-            className="w-[31px] md:w-[75px] h-[31px] md:h-[75px] rounded-full"
-          />
-          <div
-            className={`name-specialist flex flex-col ${
-              isRtl ? "mr-[20px] text-right" : "ml-[20px] text-left"
-            }`}
-          >
-            <div className="text-[16px] md:text-[20px]">{testimonial.name}</div>
-            <div className="specialist text-[12px] md:text-[18px] text-gray-400">
-              {testimonial.company}
-            </div>
+          <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+            <svg
+              className="w-6 h-6 text-white ml-1"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path d="M8 5v14l11-7z" />
+            </svg>
           </div>
+        </div>
+
+        {/* Mute button */}
+        <button
+          onClick={toggleMute}
+          className={`absolute bottom-4 right-4 w-8 h-8 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center transition-opacity duration-300 ${
+            isPlaying ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          {isMuted ? (
+            <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z" />
+            </svg>
+          ) : (
+            <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z" />
+            </svg>
+          )}
+        </button>
+
+        {/* Video number badge */}
+        <div className="absolute top-3 left-3 px-2 py-1 rounded-full bg-[#52C3C5]/80 backdrop-blur-sm">
+          <span className="text-white text-xs font-medium">#{index + 1}</span>
         </div>
       </div>
     </div>
-  )
-);
+  );
+});
 
-TestimonialCard.displayName = "TestimonialCard";
+VideoReelCard.displayName = "VideoReelCard";
 
 const Reviews = memo(() => {
   const { theme } = useTheme();
-  const { t, i18n } = useTranslation();
   const { isRtl } = useI18nLanguage();
-  const lightBgs = ["#DAF4F4", "#F5DFDF", "#f0f2f3"];
+  const { videos, loadVideos, loading } = useBannersStore();
 
-  const testimonials = useMemo(() => {
-    const data =
-      t("home.reviews.testimonials", {
-        returnObjects: true,
-      }) || [];
+  useEffect(() => {
+    loadVideos({ per_page: 20 });
+  }, [loadVideos]);
 
-    const normalized = Array.isArray(data) ? data : [];
-    const source = normalized.length > 0 ? normalized : FALLBACK_TESTIMONIALS;
+  // Split videos into two rows
+  const firstRowVideos = videos.filter((_, i) => i % 2 === 0);
+  const secondRowVideos = videos.filter((_, i) => i % 2 === 1);
 
-    return source.map((testimonial) => ({
-      ...testimonial,
-      avatar:
-        "https://i.pinimg.com/736x/84/8f/3b/848f3b92a3e2a6040faccad5888f851e.jpg",
-    }));
-  }, [t, i18n.language]);
+  if (loading && videos.length === 0) {
+    return (
+      <div className="reviews relative w-full min-h-[400px] py-10 md:py-20 flex items-center justify-center">
+        <div className="animate-pulse text-[var(--foreground)]/60">Loading reels...</div>
+      </div>
+    );
+  }
+
+  if (videos.length === 0) {
+    return null;
+  }
 
   return (
     <div
@@ -122,36 +141,33 @@ const Reviews = memo(() => {
       }`}
       dir={isRtl ? "rtl" : "ltr"}
     >
-      <h2
-       
-          className="text-[18px] font-antonio text-[var(--foreground)] text-center md:text-4xl font-bold mb-2 md:mb-4"
-        >
-         Clients Review
-        </h2>
+      <h2 className="text-[18px] font-antonio text-[var(--foreground)] text-center md:text-4xl font-bold mb-6 md:mb-10">
+        Featured Reels
+      </h2>
+      
       <ThreeDScrollTriggerContainer dir="ltr">
-        <ThreeDScrollTriggerRow baseVelocity={3} direction={1}>
-          {testimonials.map((testimonial, index) => (
-            <TestimonialCard
-              key={`${index}-row1`}
-              testimonial={testimonial}
-              index={index}
+        <ThreeDScrollTriggerRow baseVelocity={2} direction={1}>
+          {firstRowVideos.map((video, index) => (
+            <VideoReelCard
+              key={`${video.id}-row1`}
+              video={video}
+              index={index * 2}
               theme={theme}
-              lightBgs={lightBgs}
-              isRtl={isRtl}
             />
           ))}
         </ThreeDScrollTriggerRow>
       </ThreeDScrollTriggerContainer>
+      
+      <div className="h-6" />
+      
       <ThreeDScrollTriggerContainer dir="ltr">
-        <ThreeDScrollTriggerRow baseVelocity={3} direction={-1}>
-          {testimonials.map((testimonial, index) => (
-            <TestimonialCard
-              key={`${index}-row2`}
-              testimonial={testimonial}
-              index={index}
+        <ThreeDScrollTriggerRow baseVelocity={2} direction={-1}>
+          {secondRowVideos.map((video, index) => (
+            <VideoReelCard
+              key={`${video.id}-row2`}
+              video={video}
+              index={index * 2 + 1}
               theme={theme}
-              lightBgs={lightBgs}
-              isRtl={isRtl}
             />
           ))}
         </ThreeDScrollTriggerRow>
