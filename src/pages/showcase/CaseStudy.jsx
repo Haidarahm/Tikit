@@ -1,8 +1,5 @@
 import React, { useState, useRef, useEffect, useMemo } from "react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const caseStudySections = [
   {
@@ -92,6 +89,8 @@ const CaseStudy = ({ caseData }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const sectionRefs = useRef([]);
   const containerRef = useRef(null);
+  const headerRef = useRef(null);
+  const contentAreaRef = useRef(null);
 
   const sectionContent = useMemo(() => {
     if (!caseData) return defaultSectionContent;
@@ -121,33 +120,25 @@ const CaseStudy = ({ caseData }) => {
     };
   }, [caseData]);
 
+  // Simple scroll listener for active section detection
   useEffect(() => {
-    let locomotiveScroll = null;
-    let scrollHandler = null;
-    let checkInterval = null;
-
     const handleScroll = () => {
-      const viewportTop = window.innerHeight * 0.3;
-      const viewportBottom = window.innerHeight * 0.7;
+      const viewportCenter = window.innerHeight * 0.4;
       
       let activeFound = false;
       
-      // Find which section is most visible in the viewport
       for (let index = 0; index < sectionRefs.current.length; index++) {
         const ref = sectionRefs.current[index];
         if (ref) {
           const rect = ref.getBoundingClientRect();
-          // Check if section top is in the target zone
-          if (rect.top <= viewportBottom && rect.bottom >= viewportTop) {
-            if (!activeFound) {
-              setActiveIndex(index);
-              activeFound = true;
-            }
+          if (rect.top <= viewportCenter && rect.bottom >= viewportCenter) {
+            setActiveIndex(index);
+            activeFound = true;
+            break;
           }
         }
       }
       
-      // If no section found in viewport, find closest
       if (!activeFound) {
         let closestIndex = 0;
         let closestDistance = Infinity;
@@ -155,7 +146,7 @@ const CaseStudy = ({ caseData }) => {
         sectionRefs.current.forEach((ref, index) => {
           if (ref) {
             const rect = ref.getBoundingClientRect();
-            const distance = Math.abs(rect.top - viewportTop);
+            const distance = Math.abs(rect.top - viewportCenter);
             if (distance < closestDistance) {
               closestDistance = distance;
               closestIndex = index;
@@ -167,78 +158,56 @@ const CaseStudy = ({ caseData }) => {
       }
     };
 
-    const setupLocomotiveScroll = () => {
-      locomotiveScroll = window.locomotiveScrollInstance;
-      
-      if (locomotiveScroll) {
-        scrollHandler = handleScroll;
-        locomotiveScroll.on("scroll", scrollHandler);
-        // Initial check
-        handleScroll();
-        
-        if (checkInterval) {
-          clearInterval(checkInterval);
-          checkInterval = null;
-        }
-        return true;
-      }
-      return false;
-    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll(); // Initial check
 
-    // Try to setup immediately
-    if (!setupLocomotiveScroll()) {
-      // If not available, poll for it
-      checkInterval = setInterval(() => {
-        if (setupLocomotiveScroll()) {
-          clearInterval(checkInterval);
-        }
-      }, 100);
-      
-      // Fallback: clear interval after 5 seconds
-      setTimeout(() => {
-        if (checkInterval) {
-          clearInterval(checkInterval);
-          // Fallback to GSAP ScrollTrigger
-          const triggers = sectionRefs.current.map((sectionEl, index) => {
-            if (!sectionEl) return null;
-            return ScrollTrigger.create({
-              trigger: sectionEl,
-              start: "top center",
-              end: "bottom center",
-              onEnter: () => setActiveIndex(index),
-              onEnterBack: () => setActiveIndex(index),
-            });
-          });
-        }
-      }, 5000);
-    }
-
-    return () => {
-      if (checkInterval) {
-        clearInterval(checkInterval);
-      }
-      if (locomotiveScroll && scrollHandler) {
-        locomotiveScroll.off("scroll", scrollHandler);
-      }
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const handleNavClick = (index) => {
     setActiveIndex(index);
     const target = sectionRefs.current[index];
     if (!target) return;
-
-    const locomotiveScroll = window.locomotiveScrollInstance;
-    if (locomotiveScroll) {
-      locomotiveScroll.scrollTo(target, {
-        offset: -100,
-        duration: 800,
-        easing: [0.25, 0.0, 0.35, 1.0],
-      });
-    } else {
-      target.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
+    target.scrollIntoView({ behavior: "smooth", block: "start" });
   };
+
+  // GSAP Header Animation
+  useEffect(() => {
+    if (!headerRef.current) return;
+
+    const elements = headerRef.current.querySelectorAll('.header-animate');
+    
+    // Set initial state
+    gsap.set(elements, {
+      opacity: 0,
+      y: 40
+    });
+
+    // Create intersection observer for better compatibility with Locomotive Scroll
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            gsap.to(elements, {
+              opacity: 1,
+              y: 0,
+              duration: 0.9,
+              stagger: 0.12,
+              ease: 'power3.out',
+              delay: 0.1
+            });
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    observer.observe(headerRef.current);
+
+    return () => observer.disconnect();
+  }, []);
+
 
   return (
     <div
@@ -248,31 +217,25 @@ const CaseStudy = ({ caseData }) => {
     >
       <div className="w-full px-6 mx-auto max-w-7xl">
         {/* Header */}
-        <div className="mb-16 lg:mb-24">
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#52C3C5]/10 text-[#52C3C5] text-sm font-medium mb-4">
+        <div ref={headerRef} className="mb-16 lg:mb-24">
+          <span className="header-animate inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#52C3C5]/10 text-[#52C3C5] text-sm font-medium mb-4">
             Case Studies
             <span className="w-2 h-2 rounded-full bg-[#52C3C5] animate-pulse" />
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[var(--foreground)] mb-4">
+          <h2 className="header-animate text-3xl md:text-4xl lg:text-5xl font-bold text-[var(--foreground)] mb-4">
             Project Deep Dive
           </h2>
-          <p className="text-base md:text-lg text-[var(--foreground)]/60 max-w-2xl leading-relaxed">
+          <p className="header-animate text-base md:text-lg text-[var(--foreground)]/60 max-w-2xl leading-relaxed">
             Browse categories on the left and explore each section within the
             selected area on the right.
           </p>
         </div>
 
         {/* Main Content */}
-        <div id="case-study-content" className="flex flex-col lg:flex-row gap-8 lg:gap-16 relative">
+        <div id="case-study-content" ref={contentAreaRef} className="flex flex-col lg:flex-row lg:items-start gap-8 lg:gap-16 relative">
           {/* Left Sticky Selector - Desktop */}
-          <aside className="lg:w-72 xl:w-80 flex-shrink-0 hidden lg:block">
-            <div 
-              data-scroll
-              data-scroll-sticky
-              data-scroll-target="#case-study-content"
-              className="lg:pt-8"
-              style={{ top: '120px' }}
-            >
+          <aside className="lg:w-72 xl:w-80 flex-shrink-0 hidden lg:block sticky top-32 h-fit">
+            <div className="lg:pt-8">
               <div className="mb-6 space-y-3">
                 <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#52C3C5]">
                   Sections
