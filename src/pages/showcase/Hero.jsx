@@ -18,20 +18,30 @@ const Hero = ({ caseData, loading }) => {
 
     // Simple fade-in animation
     useEffect(() => {
-      const tl = gsap.timeline();
+      let tl;
       
-      tl.fromTo(
-        titleRef.current,
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }
-      ).fromTo(
-        subtitleRef.current,
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" },
-        "-=0.4"
-      );
+      // Wait for next frame to ensure DOM is painted
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          tl = gsap.timeline();
+          
+          tl.to(titleRef.current, {
+            opacity: 1,
+            y: 0,
+            duration: 1.2,
+            ease: "power2.out"
+          }).to(subtitleRef.current, {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            ease: "power2.out"
+          }, "-=0.8");
+        });
+      });
 
-      return () => tl.kill();
+      return () => {
+        if (tl) tl.kill();
+      };
     }, []);
     
   return (
@@ -49,6 +59,7 @@ const Hero = ({ caseData, loading }) => {
             textShadow: "2px 2px 10px rgba(0, 0, 0, 0.8)",
             fontFamily: isRtl ? "" : "Antonio",
             opacity: 0,
+            transform: "translateY(30px)",
           }}
           className="tikit-title"
         >
@@ -61,6 +72,7 @@ const Hero = ({ caseData, loading }) => {
             textShadow: "2px 2px 10px rgba(0, 0, 0, 0.8)",
             fontFamily: isRtl ? "" : "Antonio",
             opacity: 0,
+            transform: "translateY(30px)",
           }}
           className="subtitle font-[700] text-2xl sm:text-3xl md:text-4xl leading-tight text-[var(--foreground)]"
         >
