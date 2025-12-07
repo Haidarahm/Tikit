@@ -103,18 +103,22 @@ export default function StickyPinnedSection({
             },
             at + switchDelay
           );
-          tl.to(
-            textNode,
-            {
-              autoAlpha: 0,
-              zIndex: 0,
-              y: -8,
-              filter: "blur(6px)",
-              duration: textFadeDur,
-              ease: "power2.in",
-            },
-            at + segment - textFadeDur - switchDelay
-          );
+          
+          // Skip fade out for the last item so it stays visible
+          if (i < count - 1) {
+            tl.to(
+              textNode,
+              {
+                autoAlpha: 0,
+                zIndex: 0,
+                y: -8,
+                filter: "blur(6px)",
+                duration: textFadeDur,
+                ease: "power2.in",
+              },
+              at + segment - textFadeDur - switchDelay
+            );
+          }
 
           // Prepare letters
           gsap.set([lettersTitle, lettersSubtitle, lettersDesc, lettersBtn], {
@@ -283,34 +287,25 @@ export default function StickyPinnedSection({
           }
 
           // animate OUT near end of segment (reversible on scroll back)
-          tl.to(
-            mediaNode,
-            {
-              opacity: 0,
-              scale: 0.9,
-              y: -30,
-              filter: "blur(12px)",
-              duration: segment * 0.25,
-              ease: outEase,
-            },
-            at + segment - 0.25
-          );
+          // Skip fade out for the last item so it stays visible
+          if (i < count - 1) {
+            tl.to(
+              mediaNode,
+              {
+                opacity: 0,
+                scale: 0.9,
+                y: -30,
+                filter: "blur(12px)",
+                duration: segment * 0.25,
+                ease: outEase,
+              },
+              at + segment - 0.25
+            );
+          }
         }
       }
 
-      // Fade out entire section at the very end
-      const fadeOutPortion = 0.15;
-      const fadeStart = pinDistance * (1 - fadeOutPortion);
-      gsap
-        .timeline({
-          scrollTrigger: {
-            trigger: el,
-            start: `top+=${fadeStart} top`,
-            end: `top+=${pinDistance} top`,
-            scrub: true,
-          },
-        })
-        .to(stickyRef.current, { autoAlpha: 0, y: -40, ease: "none" });
+      // Keep last item visible - no section fade out
 
       // Featured Work title entrance on section enter
       const fwLetters = el.querySelectorAll(".fw-letter");
