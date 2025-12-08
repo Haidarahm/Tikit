@@ -355,7 +355,7 @@ export default function StickyPinnedSection({
         ref={stickyRef}
         className="sticky top-0 flex h-screen items-center justify-between gap-10 px-10"
       >
-        <div className=" text-[var(--foreground)] px-10 flex  w-full font-bold absolute top-28 left-1/2 -translate-x-1/2 uppercase  items-center justify-between gap-4 ">
+        <div className=" text-[var(--foreground)] hidden xl:flex px-10   w-full font-bold absolute top-28 left-1/2 -translate-x-1/2 uppercase  items-center justify-between gap-4 ">
           <div>
             {isRtl ? (
               <span className="fw-letter text-[32px]">
