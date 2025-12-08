@@ -43,7 +43,7 @@ const VideoReelCard = memo(({ video, index, theme }) => {
       onMouseLeave={handleMouseLeave}
     >
       <div
-        className="relative overflow-hidden rounded-2xl border border-white/15 dark:bg-white/5 backdrop-blur-md shadow-xl transition-transform duration-300 ease-out group-hover:scale-105"
+        className="relative overflow-hidden rounded-2xl border border-white/15 dark:bg-white/5 backdrop-blur-md shadow-xl transition-transform duration-300 ease-out "
         style={{
           width: "200px",
           height: "350px",
@@ -51,10 +51,12 @@ const VideoReelCard = memo(({ video, index, theme }) => {
       >
         {/* Video */}
         <video
+        autoPlay={false}
           ref={videoRef}
           className="w-full h-full object-cover"
           src={video.videoUrl}
           muted={isMuted}
+           loading="lazy"
           loop
           playsInline
           preload="metadata"
@@ -136,7 +138,7 @@ const Reviews = memo(() => {
 
   return (
     <div
-      className={`reviews relative w-full md:min-h-screen py-10 md:py-20 ${
+      className={`reviews relative w-full md:min-h-[120vh] py-10 md:py-20 ${
         isRtl ? "font-cairo" : "font-hero-light"
       }`}
       dir={isRtl ? "rtl" : "ltr"}

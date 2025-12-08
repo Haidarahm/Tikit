@@ -97,14 +97,19 @@
   --font-cairo: "Cairo", sans-serif;
 }
 
-html,
-body,
-#root {
-  height: 100%;
-  /* background-color: oklch(16.5% 0.012 236.6); */
-  scroll-behavior: smooth;
+html, body {
+  height: auto !important;
+  min-height: 100%;
+  overflow-x: hidden;
+  overscroll-behavior: none;
+  scroll-behavior: auto !important; /* MUST remove smooth behavior */
   background: var(--background);
 }
+
+#root {
+  min-height: 100%;
+}
+
 
 /* Global scrollbar styling */
 html,
