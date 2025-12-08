@@ -700,5 +700,55 @@
             "views": { "line1": "Total", "line2": "Views" },
             "engagement": { "line1": "Engagement", "line2": "Rate" }
         }
+    },
+    "caseStudy": {
+        "header": {
+            "badge": "Case Studies",
+            "title": "Project Deep Dive",
+            "description": "Browse categories on the left and explore each section within the selected area on the right."
+        },
+        "sidebar": {
+            "title": "Sections",
+            "description": "Navigate through each phase of our campaign methodology."
+        },
+        "sections": {
+            "objective": {
+                "title": "Objective",
+                "description": "Define clear goals and measurable outcomes that drive the entire campaign strategy forward."
+            },
+            "brief": {
+                "title": "Brief",
+                "description": "Comprehensive overview of the project scope, requirements, and creative direction."
+            },
+            "strategy": {
+                "title": "Strategy",
+                "description": "Detailed execution plan mapping out channels, timeline, and resource allocation."
+            },
+            "approach": {
+                "title": "Approach",
+                "description": "Creative methodology and tactical implementation showcasing our unique process."
+            }
+        },
+        "content": {
+            "objective": {
+                "title": "Campaign Objective",
+                "body": "Our primary objective was to establish a powerful brand presence across multiple digital touchpoints while driving measurable engagement and conversion metrics. We focused on creating authentic connections with the target audience through strategic influencer partnerships and compelling content narratives.\n\nThe campaign aimed to achieve a 40% increase in brand awareness within the target demographic, generate over 2 million organic impressions, and establish long-term relationships with key industry influencers. By leveraging data-driven insights and creative storytelling, we positioned the brand as an industry leader in innovation and customer-centric values.\n\nSecondary objectives included building a sustainable content ecosystem, fostering community engagement, and creating shareable moments that would extend the campaign's reach organically beyond paid media investments."
+            },
+            "brief": {
+                "title": "Project Brief",
+                "body": "The client approached us with a clear vision: transform their digital presence and connect with a younger, more engaged audience segment. The brief outlined specific requirements for influencer selection, content themes, and brand messaging consistency across all touchpoints.\n\nKey deliverables included a comprehensive influencer partnership program spanning 12 weeks, creation of 50+ pieces of original content across Instagram, TikTok, and YouTube, and development of a brand ambassador program for sustained engagement.\n\nThe brief emphasized authenticity as the cornerstone of all content creation, ensuring that influencer partnerships felt genuine and aligned with both the brand's values and the creator's personal style. Budget allocation prioritized quality over quantity, with focus on micro-influencers who demonstrated high engagement rates within niche communities."
+            },
+            "strategy": {
+                "title": "Strategic Framework",
+                "body": "Our strategy centered on a three-phase approach: Discovery, Activation, and Amplification. Each phase built upon the previous, creating a cohesive narrative arc that kept audiences engaged throughout the campaign duration.\n\nPhase One focused on identifying and vetting potential influencer partners, conducting audience analysis, and establishing content guidelines. We utilized proprietary tools to assess creator authenticity scores and audience overlap potential.\n\nPhase Two involved coordinated content rollout across platforms, with carefully timed posts designed to maximize algorithmic visibility. Real-time monitoring allowed for agile adjustments to content strategy based on performance metrics.\n\nPhase Three amplified top-performing content through paid media support and cross-platform repurposing, extending reach while maintaining cost efficiency. Community management protocols ensured consistent brand voice in all audience interactions."
+            },
+            "approach": {
+                "title": "Creative Approach",
+                "body": "Our creative approach prioritized authentic storytelling over traditional advertising formats. Each piece of content was developed collaboratively with influencer partners, ensuring their unique voice remained central while effectively communicating brand messages.\n\nThe visual identity maintained consistency through subtle brand integration techniques that felt native to each platform's aesthetic expectations. We developed platform-specific content variations that respected the unique culture and consumption patterns of each channel's user base."
+            }
+        },
+        "videos": {
+            "title": "Campaign Videos"
+        }
     }
 }

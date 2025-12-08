@@ -1,85 +1,72 @@
 import React, { useState, useRef, useEffect, useMemo, useLayoutEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useTranslation } from "react-i18next";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const caseStudySections = [
-  {
-    id: "objective",
-    number: "01",
-    title: "Objective",
-    description:
-      "Define clear goals and measurable outcomes that drive the entire campaign strategy forward.",
-  },
-  {
-    id: "brief",
-    number: "02",
-    title: "Brief",
-    description:
-      "Comprehensive overview of the project scope, requirements, and creative direction.",
-  },
-  {
-    id: "strategy",
-    number: "03",
-    title: "Strategy",
-    description:
-      "Detailed execution plan mapping out channels, timeline, and resource allocation.",
-  },
-  {
-    id: "approach",
-    number: "04",
-    title: "Approach",
-    description:
-      "Creative methodology and tactical implementation showcasing our unique process.",
-  },
-];
-
-// Placeholder content for each section - replace with actual data
-const defaultSectionContent = {
-  objective: {
-    title: "Campaign Objective",
-    content: `Our primary objective was to establish a powerful brand presence across multiple digital touchpoints while driving measurable engagement and conversion metrics. We focused on creating authentic connections with the target audience through strategic influencer partnerships and compelling content narratives.
-
-The campaign aimed to achieve a 40% increase in brand awareness within the target demographic, generate over 2 million organic impressions, and establish long-term relationships with key industry influencers. By leveraging data-driven insights and creative storytelling, we positioned the brand as an industry leader in innovation and customer-centric values.
-
-Secondary objectives included building a sustainable content ecosystem, fostering community engagement, and creating shareable moments that would extend the campaign's reach organically beyond paid media investments.`,
-  },
-  brief: {
-    title: "Project Brief",
-    content: `The client approached us with a clear vision: transform their digital presence and connect with a younger, more engaged audience segment. The brief outlined specific requirements for influencer selection, content themes, and brand messaging consistency across all touchpoints.
-
-Key deliverables included a comprehensive influencer partnership program spanning 12 weeks, creation of 50+ pieces of original content across Instagram, TikTok, and YouTube, and development of a brand ambassador program for sustained engagement.
-
-The brief emphasized authenticity as the cornerstone of all content creation, ensuring that influencer partnerships felt genuine and aligned with both the brand's values and the creator's personal style. Budget allocation prioritized quality over quantity, with focus on micro-influencers who demonstrated high engagement rates within niche communities.`,
-  },
-  strategy: {
-    title: "Strategic Framework",
-    content: `Our strategy centered on a three-phase approach: Discovery, Activation, and Amplification. Each phase built upon the previous, creating a cohesive narrative arc that kept audiences engaged throughout the campaign duration.
-
-Phase One focused on identifying and vetting potential influencer partners, conducting audience analysis, and establishing content guidelines. We utilized proprietary tools to assess creator authenticity scores and audience overlap potential.
-
-Phase Two involved coordinated content rollout across platforms, with carefully timed posts designed to maximize algorithmic visibility. Real-time monitoring allowed for agile adjustments to content strategy based on performance metrics.
-
-Phase Three amplified top-performing content through paid media support and cross-platform repurposing, extending reach while maintaining cost efficiency. Community management protocols ensured consistent brand voice in all audience interactions.`,
-  },
-  approach: {
-    title: "Creative Approach",
-    content: `Our creative approach prioritized authentic storytelling over traditional advertising formats. Each piece of content was developed collaboratively with influencer partners, ensuring their unique voice remained central while effectively communicating brand messages.
-
-The visual identity maintained consistency through subtle brand integration techniques that felt native to each platform's aesthetic expectations. We developed platform-specific content variations that respected the unique culture and consumption patterns of each channel's user base.`,
-    hasVideos: false,
-    videos: [],
-  },
-};
-
 const CaseStudy = ({ caseData, videos: videosFromProps }) => {
+  const { t } = useTranslation();
   const [activeIndex, setActiveIndex] = useState(0);
   const sectionRefs = useRef([]);
   const containerRef = useRef(null);
   const headerRef = useRef(null);
   const contentAreaRef = useRef(null);
   const asideRef = useRef(null);
+
+  const caseStudySections = useMemo(
+    () => [
+      {
+        id: "objective",
+        number: "01",
+        title: t("caseStudy.sections.objective.title"),
+        description: t("caseStudy.sections.objective.description"),
+      },
+      {
+        id: "brief",
+        number: "02",
+        title: t("caseStudy.sections.brief.title"),
+        description: t("caseStudy.sections.brief.description"),
+      },
+      {
+        id: "strategy",
+        number: "03",
+        title: t("caseStudy.sections.strategy.title"),
+        description: t("caseStudy.sections.strategy.description"),
+      },
+      {
+        id: "approach",
+        number: "04",
+        title: t("caseStudy.sections.approach.title"),
+        description: t("caseStudy.sections.approach.description"),
+      },
+    ],
+    [t]
+  );
+
+  const defaultSectionContent = useMemo(
+    () => ({
+      objective: {
+        title: t("caseStudy.content.objective.title"),
+        content: t("caseStudy.content.objective.body"),
+      },
+      brief: {
+        title: t("caseStudy.content.brief.title"),
+        content: t("caseStudy.content.brief.body"),
+      },
+      strategy: {
+        title: t("caseStudy.content.strategy.title"),
+        content: t("caseStudy.content.strategy.body"),
+      },
+      approach: {
+        title: t("caseStudy.content.approach.title"),
+        content: t("caseStudy.content.approach.body"),
+        hasVideos: false,
+        videos: [],
+      },
+    }),
+    [t]
+  );
 
   const sectionContent = useMemo(() => {
     if (!caseData) return defaultSectionContent;
@@ -248,15 +235,14 @@ const CaseStudy = ({ caseData, videos: videosFromProps }) => {
         {/* Header */}
         <div ref={headerRef} className="mb-16 lg:mb-24">
           <span className="header-animate inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#52C3C5]/10 text-[#52C3C5] text-sm font-medium mb-4">
-            Case Studies
+            {t("caseStudy.header.badge")}
             <span className="w-2 h-2 rounded-full bg-[#52C3C5] animate-pulse" />
           </span>
           <h2 className="header-animate text-3xl md:text-4xl lg:text-5xl font-bold text-[var(--foreground)] mb-4">
-            Project Deep Dive
+            {t("caseStudy.header.title")}
           </h2>
           <p className="header-animate text-base md:text-lg text-[var(--foreground)]/60 max-w-2xl leading-relaxed">
-            Browse categories on the left and explore each section within the
-            selected area on the right.
+            {t("caseStudy.header.description")}
           </p>
         </div>
 
@@ -270,10 +256,10 @@ const CaseStudy = ({ caseData, videos: videosFromProps }) => {
             <div className="lg:pt-8">
               <div className="mb-6 space-y-3">
                 <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#52C3C5]">
-                  Sections
+                  {t("caseStudy.sidebar.title")}
                 </span>
                 <p className="text-xs text-[var(--foreground)]/60 leading-relaxed">
-                  Navigate through each phase of our campaign methodology.
+                  {t("caseStudy.sidebar.description")}
                 </p>
               </div>
 
@@ -385,7 +371,7 @@ const CaseStudy = ({ caseData, videos: videosFromProps }) => {
                     {content.hasVideos && (
                       <div className="mt-12">
                         <h4 className="text-lg font-semibold text-[var(--foreground)] mb-6">
-                          Campaign Videos
+                          {t("caseStudy.videos.title")}
                         </h4>
                         <div className="flex flex-col sm:flex-row gap-6 justify-start">
                           {content.videos.map((video) => (

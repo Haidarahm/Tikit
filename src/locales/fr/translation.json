@@ -663,5 +663,55 @@
             "views": { "line1": "Vues", "line2": "Totales" },
             "engagement": { "line1": "Taux", "line2": "d'engagement" }
         }
+    },
+    "caseStudy": {
+        "header": {
+            "badge": "Études de cas",
+            "title": "Plongée dans le projet",
+            "description": "Parcourez les catégories à gauche et explorez chaque section dans la zone sélectionnée à droite."
+        },
+        "sidebar": {
+            "title": "Sections",
+            "description": "Parcourez chaque phase de notre méthodologie de campagne."
+        },
+        "sections": {
+            "objective": {
+                "title": "Objectif",
+                "description": "Définir des objectifs clairs et des résultats mesurables qui orientent toute la stratégie de campagne."
+            },
+            "brief": {
+                "title": "Brief",
+                "description": "Aperçu complet de la portée du projet, des exigences et de la direction créative."
+            },
+            "strategy": {
+                "title": "Stratégie",
+                "description": "Plan d'exécution détaillé définissant les canaux, le calendrier et l'allocation des ressources."
+            },
+            "approach": {
+                "title": "Approche",
+                "description": "Méthodologie créative et mise en œuvre tactique mettant en valeur notre processus unique."
+            }
+        },
+        "content": {
+            "objective": {
+                "title": "Objectif de la campagne",
+                "body": "Notre objectif principal était d'établir une forte présence de marque sur plusieurs points de contact numériques tout en générant un engagement mesurable et des conversions. Nous avons mis l'accent sur des liens authentiques avec la cible via des partenariats stratégiques avec des influenceurs et des récits de contenu convaincants.\n\nLa campagne visait une hausse de 40 % de la notoriété dans la cible, plus de 2 millions d'impressions organiques et des relations durables avec les principaux influenceurs du secteur. Grâce aux données et au storytelling, nous avons positionné la marque comme leader en innovation et en attention portée au client.\n\nLes objectifs secondaires incluaient la création d'un écosystème de contenu durable, le développement de la communauté et la création de moments partageables pour étendre la portée au-delà des investissements médias payants."
+            },
+            "brief": {
+                "title": "Brief du projet",
+                "body": "Le client est venu avec une vision claire : transformer sa présence digitale et toucher un public plus jeune et engagé. Le brief précisait la sélection des influenceurs, les thèmes de contenu et la cohérence du message sur tous les points de contact.\n\nLes livrables clés incluaient un programme de partenariats influenceurs sur 12 semaines, la création de plus de 50 contenus originaux sur Instagram, TikTok et YouTube, et le lancement d'un programme d'ambassadeurs pour un engagement durable.\n\nLe brief insistait sur l'authenticité comme fondation de toute création, pour que les partenariats paraissent sincères et alignés sur les valeurs de la marque et le style des créateurs. Le budget privilégiait la qualité à la quantité, en ciblant des micro-influenceurs à forts taux d'engagement dans des niches."
+            },
+            "strategy": {
+                "title": "Cadre stratégique",
+                "body": "Notre stratégie reposait sur trois phases : Découverte, Activation et Amplification. Chaque phase s'appuyait sur la précédente pour créer un récit cohérent maintenant l'audience engagée tout au long de la campagne.\n\nLa Phase 1 identifiait et évaluait les partenaires influenceurs, analysait l'audience et établissait les lignes directrices de contenu. Nous avons utilisé des outils propriétaires pour mesurer l'authenticité des créateurs et le recoupement des audiences.\n\nLa Phase 2 lançait le contenu de façon coordonnée sur les plateformes avec un timing optimisé pour la visibilité algorithmique. Le suivi en temps réel permettait d'ajuster la stratégie selon les performances.\n\nLa Phase 3 amplifiait les meilleurs contenus via du média payé et du recyclage cross-plateforme, étendant la portée tout en restant efficient. La modération communautaire assurait une voix de marque cohérente dans chaque interaction."
+            },
+            "approach": {
+                "title": "Approche créative",
+                "body": "Notre approche créative privilégiait le storytelling authentique plutôt que les formats publicitaires classiques. Chaque contenu a été co-créé avec les influenceurs pour conserver leur voix unique tout en transmettant les messages de la marque.\n\nL'identité visuelle est restée cohérente grâce à une intégration subtile de la marque, adaptée aux attentes esthétiques de chaque plateforme. Nous avons produit des variantes spécifiques à chaque canal, respectant sa culture et ses usages."
+            }
+        },
+        "videos": {
+            "title": "Vidéos de campagne"
+        }
     }
 }
