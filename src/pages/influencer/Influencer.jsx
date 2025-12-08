@@ -1,4 +1,10 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, {
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import AOS from "aos";
@@ -24,6 +30,8 @@ import {
   FaFacebookF,
   FaSnapchatGhost,
 } from "react-icons/fa";
+import ContactUs from "../Home/ContactUs.jsx";
+import Footer from "../../components/Footer.jsx";
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
@@ -64,6 +72,10 @@ export const Influencer = () => {
   const mobileCardsRef = useRef(null);
   const swiperRef = useRef(null);
   const phoneCardTriggerRef = useRef(null);
+  const asidePinRef = useRef(null);
+  const mainContentRef = useRef(null);
+  const navListRef = useRef(null);
+  const navButtonRefs = useRef([]);
   const [activeIndex, setActiveIndex] = useState(0);
   const [activeSectionKey, setActiveSectionKey] = useState(null);
   const { isRtl, language } = useI18nLanguage();
@@ -190,6 +202,58 @@ export const Influencer = () => {
     loadInfluencers,
     language,
   ]);
+
+  // Keep the nav scroller synced to the active button without showing a scrollbar
+  useEffect(() => {
+    const container = navListRef.current;
+    const activeBtn = navButtonRefs.current[activeIndex];
+    if (!container || !activeBtn) return;
+    activeBtn.scrollIntoView({
+      block: "nearest",
+      inline: "nearest",
+      behavior: "smooth",
+    });
+  }, [activeIndex, normalizedSections.length]);
+
+  // Desktop: pin the aside similarly to StickyPinnedSection behavior
+  useLayoutEffect(() => {
+    const asideEl = asidePinRef.current;
+    const contentEl = mainContentRef.current;
+    if (!asideEl || !contentEl) return;
+
+    const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+    if (!isDesktop) return;
+
+    // Kill any previous pin trigger to avoid stacking spacers/scrollbars
+    const existing = ScrollTrigger.getById("influencer-aside-pin");
+    if (existing) existing.kill(true);
+
+    const ctx = gsap.context(() => {
+      const startOffset = 120;
+      ScrollTrigger.create({
+        id: "influencer-aside-pin",
+        trigger: contentEl,
+        start: `top top+=${startOffset}`,
+        end: () =>
+          Math.max(
+            startOffset,
+            contentEl.scrollHeight -
+              asideEl.offsetHeight +
+              contentEl.offsetTop -
+              startOffset
+          ),
+        pin: asideEl,
+        pinSpacing: true,
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
+        fastScrollEnd: true,
+      });
+    }, contentEl);
+
+    ScrollTrigger.refresh();
+
+    return () => ctx.revert();
+  }, [normalizedSections, influencersBySection]);
 
   useEffect(() => {
     const isDesktop = window.matchMedia("(min-width: 768px)").matches;
@@ -319,7 +383,7 @@ export const Influencer = () => {
       <div className="w-full px-6 mx-auto ">
         <div className="flex flex-col lg:flex-row gap-4 lg:gap-16">
           <aside className="lg:w-72 hidden md:block xl:w-80 flex-shrink-0">
-            <div className="sticky top-32">
+            <div ref={asidePinRef} className="sticky top-0">
               <div className="mb-6 space-y-3">
                 <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#52C3C5]/10 text-[#52C3C5] text-sm font-medium">
                   {t("influencer.sections.title")}
@@ -342,7 +406,10 @@ export const Influencer = () => {
                   {t("influencer.sections.noSections")}
                 </div>
               ) : (
-                <div className="flex flex-col gap-3 influencer-nav-scroll">
+                <div
+                  ref={navListRef}
+                  className="flex flex-col gap-3 influencer-nav-scroll overflow-y-auto max-h-[70vh] pr-2 no-scrollbar"
+                >
                   {normalizedSections.map((section, index) => {
                     const isActive = index === activeIndex;
                     return (
@@ -350,6 +417,7 @@ export const Influencer = () => {
                         key={section.key}
                         type="button"
                         onClick={() => handleNavClick(index)}
+                        ref={(el) => (navButtonRefs.current[index] = el)}
                         className={`text-left px-4 py-3 rounded-2xl border transition-all duration-300 ease-out backdrop-blur-sm ${
                           isActive
                             ? "bg-[#52C3C5]/15 border-[#52C3C5]/60 text-[#52C3C5] shadow-lg shadow-[#52C3C5]/20"
@@ -432,7 +500,10 @@ export const Influencer = () => {
               </Swiper>
             )}
           </div>
-          <div className="flex-1 space-y-16 hidden md:block">
+          <div
+            className="flex-1 space-y-16 hidden md:block"
+            ref={mainContentRef}
+          >
             {normalizedSections.map((section, index) => {
               const influencers = getInfluencersForSection(section.key, [
                 influencer1,
@@ -621,6 +692,8 @@ export const Influencer = () => {
           </div>
         </div>
       </div>
+      <ContactUs/>
+      <Footer/>
     </div>
   );
 };
