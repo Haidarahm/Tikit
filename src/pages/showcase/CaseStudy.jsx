@@ -1,5 +1,8 @@
-import React, { useState, useRef, useEffect, useMemo } from "react";
+import React, { useState, useRef, useEffect, useMemo, useLayoutEffect } from "react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const caseStudySections = [
   {
@@ -70,12 +73,13 @@ The visual identity maintained consistency through subtle brand integration tech
   },
 };
 
-const CaseStudy = ({ caseData, videos: videosFromProps, lenis }) => {
+const CaseStudy = ({ caseData, videos: videosFromProps }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const sectionRefs = useRef([]);
   const containerRef = useRef(null);
   const headerRef = useRef(null);
   const contentAreaRef = useRef(null);
+  const asideRef = useRef(null);
 
   const sectionContent = useMemo(() => {
     if (!caseData) return defaultSectionContent;
@@ -115,7 +119,7 @@ const CaseStudy = ({ caseData, videos: videosFromProps, lenis }) => {
     };
   }, [caseData, videosFromProps]);
 
-  // Scroll listener for active section detection (works with Lenis)
+  // Scroll listener for active section detection
   useEffect(() => {
     const handleScroll = () => {
       const viewportCenter = window.innerHeight * 0.4;
@@ -153,36 +157,48 @@ const CaseStudy = ({ caseData, videos: videosFromProps, lenis }) => {
       }
     };
 
-    // Use Lenis scroll event if available, otherwise fallback to window
-    if (lenis?.current) {
-      lenis.current.on("scroll", handleScroll);
-    } else {
-      window.addEventListener("scroll", handleScroll, { passive: true });
-    }
+    window.addEventListener("scroll", handleScroll, { passive: true });
     
     handleScroll(); // Initial check
 
     return () => {
-      if (lenis?.current) {
-        lenis.current.off("scroll", handleScroll);
-      } else {
-        window.removeEventListener("scroll", handleScroll);
-      }
+      window.removeEventListener("scroll", handleScroll);
     };
-  }, [lenis]);
+  }, []);
 
   const handleNavClick = (index) => {
     setActiveIndex(index);
     const target = sectionRefs.current[index];
     if (!target) return;
     
-    // Use Lenis for smooth scrolling if available
-    if (lenis?.current) {
-      lenis.current.scrollTo(target, { offset: -100 });
-    } else {
-      target.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
+    target.scrollIntoView({ behavior: "smooth", block: "start" });
   };
+
+  // Pin aside using ScrollTrigger (works even with other smooth scroll libs)
+  useLayoutEffect(() => {
+    const asideEl = asideRef.current;
+    const contentEl = contentAreaRef.current;
+    if (!asideEl || !contentEl) return;
+
+    const ctx = gsap.context(() => {
+      ScrollTrigger.matchMedia({
+        "(min-width: 1024px)": () => {
+          const trigger = ScrollTrigger.create({
+            trigger: contentEl,
+            start: "top+=112 top", // align with top-28
+            end: () => `bottom top+=${asideEl.offsetHeight + 64}`,
+            pin: asideEl,
+            pinSpacing: false,
+            invalidateOnRefresh: true,
+            anticipatePin: 1,
+          });
+          return () => trigger.kill();
+        },
+      });
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
 
   // GSAP Header Animation
   useEffect(() => {
@@ -247,7 +263,10 @@ const CaseStudy = ({ caseData, videos: videosFromProps, lenis }) => {
         {/* Main Content */}
         <div id="case-study-content" ref={contentAreaRef} className="flex flex-col lg:flex-row lg:items-start gap-8 lg:gap-16 relative">
           {/* Left Sticky Selector - Desktop */}
-          <aside className="lg:w-72 xl:w-80 flex-shrink-0 hidden lg:block sticky top-32 h-fit">
+          <aside
+            ref={asideRef}
+            className="lg:w-72 xl:w-80 flex-shrink-0 hidden lg:block lg:self-start h-fit"
+          >
             <div className="lg:pt-8">
               <div className="mb-6 space-y-3">
                 <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#52C3C5]">
