@@ -356,7 +356,7 @@ const Map = ({
 
             <div dir={isRtl ? 'rtl' : 'ltr'} className='animate-text flex flex-col gap-4'>
               {Array.isArray(stats) && stats.map((stat, index) => (
-                <div key={index} className={`flex items-center gap-3 ${isRtl ? 'flex-row-reverse' : ''}`}>
+                <div key={index} className={`flex items-center gap-3 `}>
                   <div className='w-2 h-2 rounded-full bg-[#4ec0c3]'></div>
                   <span className='text-[var(--foreground)] text-sm md:text-base'>{stat.text}</span>
                 </div>
