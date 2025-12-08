@@ -654,5 +654,14 @@
         "title": "Oups ! Page Non Trouvée",
         "description": "La page que vous recherchez n'existe pas ou a été déplacée.",
         "backHome": "Retour à l'Accueil"
+    },
+    "caseNumbers": {
+        "title": "Résultats de la campagne d'influence",
+        "subtitle": "Département du Développement Économique",
+        "metrics": {
+            "reach": { "line1": "Portée", "line2": "Totale" },
+            "views": { "line1": "Vues", "line2": "Totales" },
+            "engagement": { "line1": "Taux", "line2": "d'engagement" }
+        }
     }
 }

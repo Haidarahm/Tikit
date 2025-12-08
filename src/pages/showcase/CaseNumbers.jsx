@@ -1,37 +1,51 @@
 import React, { memo } from "react";
 import CountUp from "../../components/CountUp";
 import { useI18nLanguage } from "../../store/I18nLanguageContext";
+import { useTranslation } from "react-i18next";
 
-const CaseNumbers = memo(({ caseData, loading }) => {
+const CaseNumbers = memo(({ caseData }) => {
   const { isRtl } = useI18nLanguage();
-  
+  const { t } = useTranslation();
+
   // Extract numbers from caseData
   const reach = caseData?.reach ? parseFloat(caseData.reach) : 0;
   const views = caseData?.views ? parseFloat(caseData.views) : 0;
   const engagementRate = caseData?.engagement_rate ? parseFloat(caseData.engagement_rate) : 0;
 
+  const formatMetric = (value, isPercentage = false) => {
+    if (isPercentage) return { value, suffix: "%" };
+    const abs = Math.abs(value);
+    if (abs >= 1_000_000) return { value: Number((value / 1_000_000).toFixed(1)), suffix: "M" };
+    if (abs >= 1_000) return { value: Number((value / 1_000).toFixed(1)), suffix: "K" };
+    return { value, suffix: "" };
+  };
+
+  const fmtReach = formatMetric(reach);
+  const fmtViews = formatMetric(views);
+  const fmtEngagement = formatMetric(engagementRate, true);
+
   const data = [
     {
-      count: reach,
-      suffix: "",
-      text1: "Total",
-      text2: "Reach",
+      count: fmtReach.value,
+      suffix: fmtReach.suffix,
+      text1: t("caseNumbers.metrics.reach.line1"),
+      text2: t("caseNumbers.metrics.reach.line2"),
       plus: true,
       color: "#e84b4326",
     },
     {
-      count: views,
-      suffix: "",
-      text1: "Total",
-      text2: "Views",
+      count: fmtViews.value,
+      suffix: fmtViews.suffix,
+      text1: t("caseNumbers.metrics.views.line1"),
+      text2: t("caseNumbers.metrics.views.line2"),
       plus: false,
       color: "#F3A67A26",
     },
     {
-      count: engagementRate,
-      suffix: "%",
-      text1: "Engagement",
-      text2: "Rate",
+      count: fmtEngagement.value,
+      suffix: fmtEngagement.suffix,
+      text1: t("caseNumbers.metrics.engagement.line1"),
+      text2: t("caseNumbers.metrics.engagement.line2"),
       plus: false,
       color: "#35D5D026",
     },
@@ -42,10 +56,10 @@ const CaseNumbers = memo(({ caseData, loading }) => {
       <div className="container mt-4 md:mt-0 mx-auto px-4">
         <div className="text-center flex flex-col md:gap-4 mb-10 md:mb-14">
           <h1 style={{fontFamily: isRtl ? "Cairo" : "Antonio"}} className="text-3xl md:text-5xl font-bold text-[var(--foreground)]">
-            Influence Campaign Results
+            {t("caseNumbers.title")}
           </h1>
           <h3 className="mt-2 text-base md:text-lg lg:text-2xl xl:text-3xl text-[var(--foreground)]/80">
-            Department of Economic Development
+            {t("caseNumbers.subtitle")}
           </h3>
         </div>
 
