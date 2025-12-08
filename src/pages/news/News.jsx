@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import NewsHero from "./NewsHero";
 import "./news.css";
 import SEOHead from "../../components/SEOHead";
@@ -8,9 +6,6 @@ import Content from "./Content";
 import { useTheme } from "../../store/ThemeContext.jsx";
 import Footer from "../../components/Footer.jsx";
 import ContactUs from "../Home/ContactUs.jsx";
-
-// Register ScrollTrigger plugin
-gsap.registerPlugin(ScrollTrigger);
 
 export const News = () => {
   const { theme } = useTheme();
@@ -30,72 +25,6 @@ export const News = () => {
     htmlEl.classList.remove("has-scroll-smooth", "has-scroll-init");
     document.body.style.removeProperty("overflow");
     window.scrollTo(0, 0);
-
-    let lenisInstance = null;
-    let rafId = null;
-    let refreshHandler = null;
-
-    const setupLenis = async () => {
-      try {
-        const { default: Lenis } = await import("lenis");
-        lenisInstance = new Lenis({
-          duration: 1.2,
-          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-          smoothWheel: true,
-          touchMultiplier: 2,
-          infinite: false,
-          wheelMultiplier: 1,
-          lerp: 0.1,
-          syncTouch: true,
-          syncTouchLerp: 0.075,
-        });
-
-        lenisInstance.on("scroll", ScrollTrigger.update);
-
-        refreshHandler = () => {
-          lenisInstance?.resize();
-        };
-        ScrollTrigger.addEventListener("refresh", refreshHandler);
-
-        const raf = (time) => {
-          lenisInstance?.raf(time);
-          rafId = requestAnimationFrame(raf);
-        };
-        rafId = requestAnimationFrame(raf);
-
-        setTimeout(() => {
-          lenisInstance?.scrollTo(0, { immediate: true });
-          lenisInstance?.resize();
-          ScrollTrigger.refresh();
-        }, 100);
-      } catch (error) {
-        console.error("Failed to load Lenis", error);
-      }
-    };
-
-    setupLenis();
-
-    const handleResize = () => {
-      ScrollTrigger.refresh();
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-      if (rafId) cancelAnimationFrame(rafId);
-      if (lenisInstance) {
-        lenisInstance.destroy();
-      }
-      if (refreshHandler) {
-        ScrollTrigger.removeEventListener("refresh", refreshHandler);
-      }
-      // Refresh ScrollTrigger instead of killing all - let individual components clean up their own triggers
-      // This prevents killing ScrollTriggers from other pages that are mounting
-      requestAnimationFrame(() => {
-        ScrollTrigger.refresh();
-      });
-    };
   }, [isReady]);
 
   // Don't render until theme is loaded

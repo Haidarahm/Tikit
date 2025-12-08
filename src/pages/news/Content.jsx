@@ -32,6 +32,22 @@ const Card = ({ item }) => {
 };
 
 // ======================
+// Skeleton Card Component
+// ======================
+const SkeletonCard = () => {
+  return (
+    <div className="card skeleton-card" aria-hidden="true">
+      <div className="skeleton-cover" />
+      <div className="skeleton-content">
+        <div className="skeleton-pill" />
+        <div className="skeleton-title" />
+        <div className="skeleton-text" />
+      </div>
+    </div>
+  );
+};
+
+// ======================
 // Main Content Component
 // ======================
 const Content = () => {
@@ -106,7 +122,13 @@ const Content = () => {
 
   return (
     <div ref={containerRef} className="news-cards-container">
-      {loading && <div className="cards-status">Loading news…</div>}
+      {loading && (
+        <div className="cards-skeleton">
+          {Array.from({ length: 6 }).map((_, index) => (
+            <SkeletonCard key={index} />
+          ))}
+        </div>
+      )}
       {!loading && error && (
         <div className="cards-status">
           Unable to load news right now. Please try again later.
