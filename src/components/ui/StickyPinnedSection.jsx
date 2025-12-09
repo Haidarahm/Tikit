@@ -88,7 +88,6 @@ export default function StickyPinnedSection({
         if (textNode) {
           const lettersTitle = textNode.querySelectorAll(".letter-title");
           const lettersSubtitle = textNode.querySelectorAll(".letter-subtitle");
-          const lettersDesc = textNode.querySelectorAll(".letter-desc");
           const lettersBtn = textNode.querySelectorAll(".letter-btn");
 
           tl.fromTo(
@@ -120,12 +119,21 @@ export default function StickyPinnedSection({
             );
           }
 
-          // Prepare letters
-          gsap.set([lettersTitle, lettersSubtitle, lettersDesc, lettersBtn], {
+          // Prepare letters (title, subtitle, button) - but NOT description
+          gsap.set([lettersTitle, lettersSubtitle, lettersBtn], {
             opacity: 0,
             y: 30,
             visibility: "inherit",
           });
+
+          // Prepare description separately - no letter splitting, just fade
+          const descElement = textNode.querySelector(".desc-container");
+          if (descElement) {
+            gsap.set(descElement, {
+              opacity: 0,
+              y: 20,
+            });
+          }
 
           const itemTl = gsap.timeline({ paused: true });
 
@@ -150,13 +158,14 @@ export default function StickyPinnedSection({
                 ">+0.1"
               );
             }
-            if (lettersDesc.length) {
+            // Description fade (no letter splitting)
+            if (descElement) {
               itemTl.to(
-                lettersDesc,
+                descElement,
                 {
                   opacity: 1,
                   y: 0,
-                  duration: 0.3,
+                  duration: 0.5,
                   ease: "power2.out",
                 },
                 ">+0.1"
@@ -175,7 +184,7 @@ export default function StickyPinnedSection({
               );
             }
           } else {
-            // Original staggered letter-by-letter animation for LTR languages
+            // Staggered letter-by-letter animation for title, subtitle, button (LTR)
             itemTl.to(lettersTitle, {
               opacity: 1,
               y: 0,
@@ -196,17 +205,17 @@ export default function StickyPinnedSection({
                 ">+0.04"
               );
             }
-            if (lettersDesc.length) {
+            // Description fade (no letter splitting for LTR too)
+            if (descElement) {
               itemTl.to(
-                lettersDesc,
+                descElement,
                 {
                   opacity: 1,
                   y: 0,
-                  duration: 0.18,
-                  stagger: 0.01,
-                  ease: "power3.out",
+                  duration: 0.5,
+                  ease: "power2.out",
                 },
-                ">+0.04"
+                ">+0.1"
               );
             }
             if (lettersBtn.length) {
@@ -426,16 +435,8 @@ export default function StickyPinnedSection({
                   )}
                 </p>
               ) : null}
-              <p className="mt-6 w-full font-light text-[var(--foreground)] text-[24px]">
-                {isRtl ? (
-                  <span className="letter-desc">{it.description ?? ""}</span>
-                ) : (
-                  Array.from(it.description ?? "").map((ch, j) => (
-                    <span key={j} className="letter letter-desc inline-block">
-                      {ch === " " ? "\u00A0" : ch}
-                    </span>
-                  ))
-                )}
+              <p className="mt-6 w-full font-light text-[var(--foreground)] text-[24px] desc-container">
+                {it.description ?? ""}
               </p>
               <div className="mt-8">
                 <button
