@@ -436,7 +436,8 @@
         },
         "action": {
             "subtitle": "Kick it off with Tikit!",
-            "title": "Holla at us Now",
+            "title": "Holla at us",
+            "mainWord": "Now",
             "description": "We want to hear from you. Let us know how we can help!",
             "client": "Client",
             "influencer": "Influencer",

@@ -146,6 +146,7 @@ const SocialMediaManagement = () => {
 
   return (
     <div
+    data-nav-color="black"
       className={`min-h-screen bg-[var(--background)] ${
         isRtl ? "font-cairo" : "font-hero-light"
       }`}

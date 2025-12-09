@@ -409,7 +409,8 @@
         },
         "action": {
             "subtitle": "Commencez avec Tikit !",
-            "title": "Contactez-nous maintenant",
+            "title": "Contactez-nous",
+            "mainWord": "Maintenant",
             "description": "Nous voulons vous entendre. Faites-nous savoir comment nous pouvons vous aider !",
             "client": "Client",
             "influencer": "Influenceur",

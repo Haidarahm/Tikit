@@ -10,6 +10,20 @@ import {
   HiCube,
   HiRefresh,
 } from "react-icons/hi";
+import {
+  MdBrush,
+  MdPalette,
+  MdTextFields,
+  MdDashboard,
+  MdCreditCard,
+  MdDescription,
+  MdEmail,
+  MdPhoneIphone,
+  MdCardGiftcard,
+  MdLocalMall,
+  MdDirectionsCar,
+  MdStorefront,
+} from "react-icons/md";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -128,6 +142,7 @@ const Branding = () => {
 
   return (
     <div
+    data-nav-color="black"
       className={`min-h-screen bg-[var(--background)] ${
         isRtl ? "font-cairo" : "font-hero-light"
       }`}
@@ -351,31 +366,34 @@ const Branding = () => {
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {[
-              { icon: "✨", title: "Logo Design" },
-              { icon: "🎨", title: "Color Palette" },
-              { icon: "📝", title: "Typography" },
-              { icon: "📐", title: "Design System" },
-              { icon: "📄", title: "Business Cards" },
-              { icon: "📋", title: "Letterhead" },
-              { icon: "📧", title: "Email Templates" },
-              { icon: "📱", title: "Social Media Templates" },
-              { icon: "🎁", title: "Packaging" },
-              { icon: "👕", title: "Merchandise" },
-              { icon: "🚗", title: "Vehicle Wraps" },
-              { icon: "🏢", title: "Signage" },
-            ].map((element, idx) => (
-              <div
-                key={idx}
-                className="element-card group text-center p-6 rounded-2xl bg-[var(--foreground)]/5 backdrop-blur-sm border border-[var(--foreground)]/10 hover:border-[#52C3C5]/50 transition-all duration-300 cursor-pointer"
-              >
-                <div className="text-4xl mb-3 group-hover:scale-125 transition-transform duration-300">
-                  {element.icon}
+              { icon: MdBrush, title: "Logo Design" },
+              { icon: MdPalette, title: "Color Palette" },
+              { icon: MdTextFields, title: "Typography" },
+              { icon: MdDashboard, title: "Design System" },
+              { icon: MdCreditCard, title: "Business Cards" },
+              { icon: MdDescription, title: "Letterhead" },
+              { icon: MdEmail, title: "Email Templates" },
+              { icon: MdPhoneIphone, title: "Social Media Templates" },
+              { icon: MdCardGiftcard, title: "Packaging" },
+              { icon: MdLocalMall, title: "Merchandise" },
+              { icon: MdDirectionsCar, title: "Vehicle Wraps" },
+              { icon: MdStorefront, title: "Signage" },
+            ].map((element, idx) => {
+              const IconComponent = element.icon;
+              return (
+                <div
+                  key={idx}
+                  className="element-card group text-center p-6 rounded-2xl bg-[var(--foreground)]/5 backdrop-blur-sm border border-[var(--foreground)]/10 hover:border-[#52C3C5]/50 transition-all duration-300 cursor-pointer"
+                >
+                  <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-[#52C3C5]/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <IconComponent className="w-7 h-7 text-[#52C3C5]" />
+                  </div>
+                  <p className="text-[var(--foreground)] font-semibold text-sm">
+                    {element.title}
+                  </p>
                 </div>
-                <p className="text-[var(--foreground)] font-semibold text-sm">
-                  {element.title}
-                </p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
