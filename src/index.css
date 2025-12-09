@@ -104,6 +104,7 @@ html, body {
   overscroll-behavior: none;
   scroll-behavior: auto !important; /* MUST remove smooth behavior */
   background: var(--background);
+  transition: background 0.3s ease;
 }
 
 #root {

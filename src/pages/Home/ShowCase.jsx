@@ -5,44 +5,9 @@ import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
 import { useShowcaseStore } from "../../store/showcaseStore";
 import { useNavigate } from "react-router-dom";
-import img1 from "../../assets/test/hidden.webp";
-import img2 from "../../assets/test/porsche.webp";
-import img3 from "../../assets/test/the-reve.webp";
 import TikitTitle from "../../components/TikitTitle";
 
 gsap.registerPlugin(ScrollTrigger);
-
-// Fallback static data for when API has no data or fails
-const FALLBACK_SHOWCASE_DATA = [
-  {
-    id: 1,
-    img: img1,
-    title: "Spotify",
-    subtitle: "Marketing",
-    size: "small", // small = 1 col, large = 2 col
-  },
-  {
-    id: 2,
-    img: img2,
-    title: "Porsche",
-    subtitle: "Branding",
-    size: "small",
-  },
-  {
-    id: 3,
-    img: img3,
-    title: "Ounass",
-    subtitle: "Creative",
-    size: "small",
-  },
-  {
-    id: 4,
-    img: img3,
-    title: "Department of culture and tourism",
-    subtitle: "Creative",
-    size: "small",
-  },
-];
 
 const ShowCase = () => {
   const sectionRef = useRef(null);
@@ -58,27 +23,26 @@ const ShowCase = () => {
 
   // Map API response into the structure used by the layout
   const showcaseData = useMemo(() => {
-    if (Array.isArray(cases) && cases.length > 0) {
-      return cases.map((item) => ({
-        id: item.id,
-        img:
-          (Array.isArray(item.media) && item.media.length > 0
-            ? item.media[0]
-            : item.logo) || img1,
-        title: item.title,
-        subtitle: item.subtitle,
-        size: "small", // keep existing layout
-      }));
+    if (!Array.isArray(cases) || cases.length === 0) {
+      return [];
     }
 
-    // Fallback to static local data so layout/design stays intact
-    return FALLBACK_SHOWCASE_DATA;
+    return cases.map((item) => ({
+      id: item.id,
+      img:
+        (Array.isArray(item.media) && item.media.length > 0
+          ? item.media[0]
+          : item.logo) || "",
+      title: item.title,
+      subtitle: item.subtitle,
+      size: "small", // keep existing layout
+    }));
   }, [cases]);
 
   useEffect(() => {
     if (!sectionRef.current) return;
-    // Don't attach GSAP effects while we're still showing skeletons
-    if (loading && (!cases || cases.length === 0)) return;
+    // Don't attach GSAP effects while we're still loading or have no data
+    if (loading || showcaseData.length === 0) return;
 
     const ctx = gsap.context(() => {
       const cards = gsap.utils.toArray(".showcase-card");
@@ -171,7 +135,7 @@ const ShowCase = () => {
     }, sectionRef);
 
     return () => ctx.revert();
-  }, [loading, cases, showcaseData.length]);
+  }, [loading, showcaseData.length]);
 
   return (
     <div
@@ -198,15 +162,12 @@ const ShowCase = () => {
         data-nav-color="white"
         className="md:h-[1200px] h-[800px] w-full grid grid-cols-2 gap-4 grid-rows-2"
       >
-        {/* Skeleton loader with same card dimensions */}
-        {loading && (!cases || cases.length === 0)
-          ? FALLBACK_SHOWCASE_DATA.map((item) => (
+        {/* Show skeleton loader while loading or when no data */}
+        {loading || showcaseData.length === 0
+          ? Array.from({ length: 4 }).map((_, index) => (
               <div
-                key={`skeleton-${item.id}`}
-                className={`
-              relative showcase-card rounded-[10px] overflow-hidden md:rounded-[15px]
-              ${item.size === "large" ? "col-span-2" : "col-span-1"}
-            `}
+                key={`skeleton-${index}`}
+                className="relative showcase-card rounded-[10px] overflow-hidden md:rounded-[15px] col-span-1"
               >
                 {/* Skeleton media area */}
                 <div className="showcase-card_media h-full w-full absolute rounded-[10px] inset-0 bg-gradient-to-br from-slate-300/70 via-slate-200/60 to-slate-100/40 dark:from-slate-800/70 dark:via-slate-700/60 dark:to-slate-600/40 animate-pulse" />
