@@ -67,7 +67,7 @@ const Hero = ({ caseData, loading }) => {
     }, []);
     
   return (
-    <div data-nav-color="white" className="relative overflow-hidden min-h-[60vh] w-full md:min-h-screen">
+    <div data-nav-color="white" className="relative overflow-hidden min-h-[60vh] w-full  md:min-h-screen">
       {/* Skeleton background */}
       <div 
         className={`absolute w-full h-full z-0 bg-gray-300 animate-pulse transition-opacity duration-500 ${
@@ -89,7 +89,7 @@ const Hero = ({ caseData, loading }) => {
         />
       )}
       
-      <div className="absolute z-20 flex flex-col justify-center items-center md:items-start w-full h-full mx-auto md:mx-[80px] container">
+      <div dir={isRtl ? "rtl" : "ltr"} className="absolute  z-20 flex flex-col justify-center items-center md:items-start w-full h-full mx-auto  container">
         <h1
           ref={titleRef}
           style={{
@@ -99,7 +99,7 @@ const Hero = ({ caseData, loading }) => {
             opacity: 0,
             transform: "translateY(30px)",
           }}
-          className="tikit-title"
+          className="tikit-title md:mx-22"
         >
           {title}
         </h1>
@@ -112,7 +112,7 @@ const Hero = ({ caseData, loading }) => {
             opacity: 0,
             transform: "translateY(30px)",
           }}
-          className="subtitle font-[700] text-2xl sm:text-3xl md:text-4xl leading-tight text-[var(--foreground)]"
+          className="subtitle md:mx-22 font-[700] text-2xl sm:text-3xl md:text-4xl leading-tight text-[var(--foreground)]"
         >
           {subtitle}
         </h3>

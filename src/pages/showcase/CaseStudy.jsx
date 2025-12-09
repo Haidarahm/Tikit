@@ -2,11 +2,13 @@ import React, { useState, useRef, useEffect, useMemo, useLayoutEffect } from "re
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useTranslation } from "react-i18next";
+import { useI18nLanguage } from "../../store/I18nLanguageContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const CaseStudy = ({ caseData, videos: videosFromProps }) => {
   const { t } = useTranslation();
+  const { isRtl } = useI18nLanguage();
   const [activeIndex, setActiveIndex] = useState(0);
   const sectionRefs = useRef([]);
   const containerRef = useRef(null);
@@ -233,7 +235,7 @@ const CaseStudy = ({ caseData, videos: videosFromProps }) => {
     >
       <div className="w-full px-6 mx-auto max-w-7xl">
         {/* Header */}
-        <div ref={headerRef} className="mb-16 lg:mb-24">
+        <div ref={headerRef} dir={isRtl ? "rtl" : "ltr"} className="mb-16 lg:mb-24">
           <span className="header-animate inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#52C3C5]/10 text-[#52C3C5] text-sm font-medium mb-4">
             {t("caseStudy.header.badge")}
             <span className="w-2 h-2 rounded-full bg-[#52C3C5] animate-pulse" />
@@ -251,7 +253,7 @@ const CaseStudy = ({ caseData, videos: videosFromProps }) => {
           {/* Left Sticky Selector - Desktop */}
           <aside
             ref={asideRef}
-            className="lg:w-72 xl:w-80 flex-shrink-0 hidden lg:block lg:self-start h-fit"
+            className="lg:w-72  xl:w-80 flex-shrink-0 hidden lg:block lg:self-start h-fit"
           >
             <div className="lg:pt-8">
               <div className="mb-6 space-y-3">
@@ -352,7 +354,7 @@ const CaseStudy = ({ caseData, videos: videosFromProps }) => {
                   </div>
 
                   {/* Section Content */}
-                  <div className="space-y-6">
+                  <div className="space-y-2" dir={isRtl ? "rtl" : "ltr"}>
                     <h3 className="text-2xl md:text-3xl font-bold text-[var(--foreground)]">
                       {content.title}
                     </h3>
