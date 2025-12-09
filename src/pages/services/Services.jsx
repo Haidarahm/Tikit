@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
 import influencerMarketing from "../../assets/services/Influencer-Marketing.webp"
 import SocialMedia from "../../assets/services/Social-Media.webp"
+import Branding from "../../assets/services/Branding.webp"
 gsap.registerPlugin(Observer, SplitText);
 
 const Services = () => {
@@ -41,7 +42,7 @@ const Services = () => {
     {
       // Branding - Creative brand identity design
       image:
-        "https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=1920&h=1080&fit=crop",
+      Branding,
       gradient:
         "linear-gradient(180deg, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0.1) 100%)",
     },

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import { gsap } from "gsap";
 
 function FlowingMenu({ items = [] }) {
@@ -81,14 +82,14 @@ function MenuItem({ link, text, image }) {
       ref={itemRef}
       className="flex-1 relative overflow-hidden text-center shadow-[0_-1px_0_0_var(--secondary)] py-6"
     >
-      <a
-        href={link}
+      <Link
+        to={link}
         className="flex items-center justify-center h-full relative cursor-pointer uppercase no-underline font-semibold text-[var(--secondary)] text-[20px] md:text-[4vh] hover:text-[var(--background)]"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
         {text}
-      </a>
+      </Link>
 
       {/* Y animation (GSAP) */}
       <div

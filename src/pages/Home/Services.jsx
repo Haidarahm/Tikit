@@ -23,10 +23,31 @@ const Services = memo(() => {
     }
   }, [language, loadServices, isClient]);
 
+  // Map service titles to their specific routes
+  const getServiceRoute = (title) => {
+    const titleLower = (title || "").toLowerCase();
+    
+    if (titleLower.includes("influencer marketing") || titleLower.includes("تسويق المؤثرين") || titleLower.includes("marketing d'influence")) {
+      return "/services/influencer-marketing";
+    }
+    if (titleLower.includes("social media management") || titleLower.includes("إدارة وسائل التواصل") || titleLower.includes("gestion des médias sociaux")) {
+      return "/services/social-media-management";
+    }
+    if (titleLower.includes("production") || titleLower.includes("الإنتاج") || titleLower.includes("production")) {
+      return "/services/production";
+    }
+    if (titleLower.includes("branding") || titleLower.includes("العلامة التجارية") || titleLower.includes("identité de marque")) {
+      return "/services/branding";
+    }
+    
+    // Fallback to original route if no match
+    return `service-details/${title}`;
+  };
+
   const items = useMemo(
     () =>
       (services || []).map((s) => ({
-        link: `service-details/${s?.id}`,
+        link: getServiceRoute(s?.title),
         text: s?.title,
         image: s?.media,
       })),
@@ -98,11 +119,12 @@ const Services = memo(() => {
           {items.map((item, index) => (
             <div
               key={index}
-              className={`flex pb-4 justify-center text-[20px] mb-4 ${
+              className={`flex pb-4 justify-center text-[20px] mb-4 cursor-pointer ${
                 index < items.length - 1
                   ? "border-[var(--secondary)] border-b-2"
                   : ""
               }`}
+              onClick={() => navigate(item.link)}
               data-aos="flip-up"
               data-aos-delay={index * 150}
               data-aos-duration="600"

@@ -1,7 +1,9 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../store/I18nLanguageContext";
+import { useScrollToTop } from "../../hooks/useScrollToTop";
 import socialHero from "../../assets/services/Social-Media.webp";
 import {
   FaInstagram,
@@ -20,15 +22,20 @@ import {
   HiLightningBolt,
   HiCheckCircle,
 } from "react-icons/hi";
+import TikitTitle from "../../components/TikitTitle";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const SocialMediaManagement = () => {
+  const { t } = useTranslation();
   const { isRtl, language } = useI18nLanguage();
   const heroRef = useRef(null);
   const servicesRef = useRef(null);
   const platformsRef = useRef(null);
   const benefitsRef = useRef(null);
+
+  // Scroll to top on mount
+  useScrollToTop();
 
   useEffect(() => {
     let ctx;
@@ -168,18 +175,11 @@ const SocialMediaManagement = () => {
 
         <div className="relative mt-10 z-10 max-w-6xl mx-auto text-center">
           <span className="hero-animate inline-block px-6 py-2 mb-6 rounded-full bg-[#52C3C5]/10 text-[#52C3C5] text-sm font-semibold uppercase tracking-wider">
-            Social Media Management
+            {t("serviceSections.socialMediaManagement.badge")}
           </span>
-          <h1 className={`hero-animate text-4xl md:text-6xl lg:text-7xl font-bold text-[var(--foreground)] mb-6 ${language === "ar" ? "font-cairo" : "font-antonio"}`}>
-            Elevate Your{" "}
-            <span className="bg-gradient-to-r from-[#6ACBCC] to-[#1C6F6C] bg-clip-text text-transparent">
-              Social Presence
-            </span>
-          </h1>
+          <TikitTitle title={t("serviceSections.socialMediaManagement.hero.title")} mainWord={t("serviceSections.socialMediaManagement.hero.mainWord")} />
           <p className="hero-animate text-lg md:text-xl text-[var(--foreground)]/70 max-w-3xl mx-auto leading-relaxed">
-            We craft compelling social media strategies that build communities,
-            drive engagement, and transform followers into loyal customers
-            across all major platforms.
+            {t("serviceSections.socialMediaManagement.hero.description")}
           </p>
         </div>
       </section>
@@ -193,11 +193,10 @@ const SocialMediaManagement = () => {
       <section ref={servicesRef} className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
           <h2 className={`text-3xl md:text-5xl font-bold text-[var(--foreground)] text-center mb-4 ${language === "ar" ? "font-cairo" : "font-antonio"}`}>
-            What We Offer
+            {t("serviceSections.socialMediaManagement.services.title")}
           </h2>
           <p className="text-[var(--foreground)]/60 text-center mb-16 max-w-2xl mx-auto">
-            Comprehensive social media management services tailored to your
-            brand
+            {t("serviceSections.socialMediaManagement.services.description")}
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -207,12 +206,10 @@ const SocialMediaManagement = () => {
                 <HiDocumentText className="w-7 h-7 text-[#52C3C5]" />
               </div>
               <h3 className="text-xl font-bold text-[var(--foreground)] mb-3">
-                Content Creation
+                {t("serviceSections.socialMediaManagement.services.items.contentCreation.title")}
               </h3>
               <p className="text-[var(--foreground)]/70 leading-relaxed">
-                Professional content creation including graphics, videos, and
-                copywriting that resonates with your audience and reflects your
-                brand identity.
+                {t("serviceSections.socialMediaManagement.services.items.contentCreation.description")}
               </p>
             </div>
 
@@ -222,11 +219,10 @@ const SocialMediaManagement = () => {
                 <HiCalendar className="w-7 h-7 text-[#52C3C5]" />
               </div>
               <h3 className="text-xl font-bold text-[var(--foreground)] mb-3">
-                Content Planning
+                {t("serviceSections.socialMediaManagement.services.items.contentPlanning.title")}
               </h3>
               <p className="text-[var(--foreground)]/70 leading-relaxed">
-                Strategic content calendars and scheduling to ensure consistent
-                posting and optimal timing for maximum reach and engagement.
+                {t("serviceSections.socialMediaManagement.services.items.contentPlanning.description")}
               </p>
             </div>
 
@@ -236,11 +232,10 @@ const SocialMediaManagement = () => {
                 <HiUserGroup className="w-7 h-7 text-[#52C3C5]" />
               </div>
               <h3 className="text-xl font-bold text-[var(--foreground)] mb-3">
-                Community Management
+                {t("serviceSections.socialMediaManagement.services.items.communityManagement.title")}
               </h3>
               <p className="text-[var(--foreground)]/70 leading-relaxed">
-                Active engagement with your audience through comments, messages,
-                and interactions to build a loyal community around your brand.
+                {t("serviceSections.socialMediaManagement.services.items.communityManagement.description")}
               </p>
             </div>
 
@@ -250,11 +245,10 @@ const SocialMediaManagement = () => {
                 <HiChartBar className="w-7 h-7 text-[#52C3C5]" />
               </div>
               <h3 className="text-xl font-bold text-[var(--foreground)] mb-3">
-                Analytics & Insights
+                {t("serviceSections.socialMediaManagement.services.items.analytics.title")}
               </h3>
               <p className="text-[var(--foreground)]/70 leading-relaxed">
-                Detailed performance tracking and reporting with actionable
-                insights to continuously improve your social media strategy.
+                {t("serviceSections.socialMediaManagement.services.items.analytics.description")}
               </p>
             </div>
 
@@ -264,11 +258,10 @@ const SocialMediaManagement = () => {
                 <HiCurrencyDollar className="w-7 h-7 text-[#52C3C5]" />
               </div>
               <h3 className="text-xl font-bold text-[var(--foreground)] mb-3">
-                Paid Advertising
+                {t("serviceSections.socialMediaManagement.services.items.paidAdvertising.title")}
               </h3>
               <p className="text-[var(--foreground)]/70 leading-relaxed">
-                Targeted ad campaigns across social platforms to amplify reach,
-                drive conversions, and maximize your marketing ROI.
+                {t("serviceSections.socialMediaManagement.services.items.paidAdvertising.description")}
               </p>
             </div>
 
@@ -278,11 +271,10 @@ const SocialMediaManagement = () => {
                 <HiLightningBolt className="w-7 h-7 text-[#52C3C5]" />
               </div>
               <h3 className="text-xl font-bold text-[var(--foreground)] mb-3">
-                Crisis Management
+                {t("serviceSections.socialMediaManagement.services.items.crisisManagement.title")}
               </h3>
               <p className="text-[var(--foreground)]/70 leading-relaxed">
-                Rapid response and strategic handling of negative feedback or
-                PR situations to protect your brand reputation online.
+                {t("serviceSections.socialMediaManagement.services.items.crisisManagement.description")}
               </p>
             </div>
           </div>
@@ -298,10 +290,10 @@ const SocialMediaManagement = () => {
       <section ref={platformsRef} className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
           <h2 className={`text-3xl md:text-5xl font-bold text-[var(--foreground)] text-center mb-4 ${language === "ar" ? "font-cairo" : "font-antonio"}`}>
-            Platforms We Master
+            {t("serviceSections.socialMediaManagement.platforms.title")}
           </h2>
           <p className="text-[var(--foreground)]/60 text-center mb-16 max-w-2xl mx-auto">
-            Expert management across all major social media platforms
+            {t("serviceSections.socialMediaManagement.platforms.description")}
           </p>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
@@ -329,33 +321,33 @@ const SocialMediaManagement = () => {
       <section ref={benefitsRef} className="py-20 px-6">
         <div className="max-w-5xl mx-auto">
           <h2 className={`text-3xl md:text-5xl font-bold text-[var(--foreground)] text-center mb-4 ${language === "ar" ? "font-cairo" : "font-antonio"}`}>
-            Why Choose Us?
+            {t("serviceSections.socialMediaManagement.benefits.title")}
           </h2>
           <p className="text-[var(--foreground)]/60 text-center mb-16 max-w-2xl mx-auto">
-            We deliver results that matter to your business
+            {t("serviceSections.socialMediaManagement.benefits.description")}
           </p>
 
           <div className="space-y-6">
             {[
               {
-                title: "Data-Driven Strategy",
-                desc: "Every decision backed by analytics and performance metrics",
+                title: t("serviceSections.socialMediaManagement.benefits.items.dataDriven.title"),
+                desc: t("serviceSections.socialMediaManagement.benefits.items.dataDriven.description"),
               },
               {
-                title: "Creative Excellence",
-                desc: "Award-winning content that stands out and engages",
+                title: t("serviceSections.socialMediaManagement.benefits.items.creative.title"),
+                desc: t("serviceSections.socialMediaManagement.benefits.items.creative.description"),
               },
               {
-                title: "24/7 Monitoring",
-                desc: "Round-the-clock social media monitoring and rapid response",
+                title: t("serviceSections.socialMediaManagement.benefits.items.monitoring.title"),
+                desc: t("serviceSections.socialMediaManagement.benefits.items.monitoring.description"),
               },
               {
-                title: "Transparent Reporting",
-                desc: "Clear, detailed reports showing exactly what's working",
+                title: t("serviceSections.socialMediaManagement.benefits.items.reporting.title"),
+                desc: t("serviceSections.socialMediaManagement.benefits.items.reporting.description"),
               },
               {
-                title: "Industry Expertise",
-                desc: "Years of experience across diverse industries and markets",
+                title: t("serviceSections.socialMediaManagement.benefits.items.expertise.title"),
+                desc: t("serviceSections.socialMediaManagement.benefits.items.expertise.description"),
               },
             ].map((benefit, idx) => (
               <div
@@ -383,17 +375,16 @@ const SocialMediaManagement = () => {
       <section className="py-20 px-6">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className={`text-3xl md:text-5xl font-bold text-[var(--foreground)] mb-6 ${language === "ar" ? "font-cairo" : "font-antonio"}`}>
-            Let's Grow Your Social Media Together
+            {t("serviceSections.socialMediaManagement.cta.title")}
           </h2>
           <p className="text-[var(--foreground)]/70 text-lg mb-8">
-            Partner with us to transform your social media into a powerful
-            business asset
+            {t("serviceSections.socialMediaManagement.cta.description")}
           </p>
           <a
             href="/contact"
             className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-[#52C3C5] rounded-full hover:bg-[#1C6F6C] transition-all duration-300 hover:scale-105 shadow-lg shadow-[#52C3C5]/30"
           >
-            Start Now
+            {t("serviceSections.socialMediaManagement.cta.button")}
           </a>
         </div>
       </section>

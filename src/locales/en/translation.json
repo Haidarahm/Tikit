@@ -751,5 +751,289 @@
         "videos": {
             "title": "Campaign Videos"
         }
+    },
+    "serviceSections": {
+        "influencerMarketing": {
+            "badge": "Influencer Marketing",
+            "hero": {
+                "title": "Connect With The Right",
+                "mainWord": "Influencers",
+                "description": "We bridge the gap between brands and influential voices, creating authentic partnerships that drive engagement, build trust, and deliver measurable results across all platforms."
+            },
+            "stats": {
+                "influencersNetwork": "Influencers Network",
+                "successfulCampaigns": "Successful Campaigns",
+                "totalReach": "Total Reach",
+                "clientSatisfaction": "Client Satisfaction"
+            },
+            "process": {
+                "title": "Our Process",
+                "description": "From strategy to execution, we handle every aspect of your influencer marketing campaigns",
+                "steps": {
+                    "strategy": {
+                        "title": "Strategy & Planning",
+                        "description": "We analyze your brand, target audience, and goals to create a customized influencer marketing strategy that aligns with your objectives and maximizes ROI."
+                    },
+                    "selection": {
+                        "title": "Influencer Selection",
+                        "description": "We carefully match your brand with influencers whose audience, values, and content style align perfectly with your campaign goals, ensuring authentic partnerships."
+                    },
+                    "management": {
+                        "title": "Campaign Management",
+                        "description": "From contract negotiation to content approval and posting schedules, we manage every detail to ensure smooth execution and optimal performance."
+                    },
+                    "analytics": {
+                        "title": "Analytics & Reporting",
+                        "description": "Track campaign performance with detailed analytics, insights, and comprehensive reports that demonstrate real impact and inform future strategies."
+                    }
+                }
+            },
+            "showcase": {
+                "title": "Featured Influencers",
+                "description": "Connect with top-tier influencers across various niches and platforms"
+            },
+            "cta": {
+                "title": "Ready to Amplify Your Brand?",
+                "description": "Let's create an influencer marketing campaign that drives real results",
+                "button": "Get Started"
+            }
+        },
+        "socialMediaManagement": {
+            "badge": "Social Media Management",
+            "hero": {
+                "title": "Elevate Your",
+                "mainWord": "Social Presence",
+                "description": "We craft compelling social media strategies that build communities, drive engagement, and transform followers into loyal customers across all major platforms."
+            },
+            "services": {
+                "title": "What We Offer",
+                "description": "Comprehensive social media management services tailored to your brand",
+                "items": {
+                    "contentCreation": {
+                        "title": "Content Creation",
+                        "description": "Professional content creation including graphics, videos, and copywriting that resonates with your audience and reflects your brand identity."
+                    },
+                    "contentPlanning": {
+                        "title": "Content Planning",
+                        "description": "Strategic content calendars and scheduling to ensure consistent posting and optimal timing for maximum reach and engagement."
+                    },
+                    "communityManagement": {
+                        "title": "Community Management",
+                        "description": "Active engagement with your audience through comments, messages, and interactions to build a loyal community around your brand."
+                    },
+                    "analytics": {
+                        "title": "Analytics & Insights",
+                        "description": "Detailed performance tracking and reporting with actionable insights to continuously improve your social media strategy."
+                    },
+                    "paidAdvertising": {
+                        "title": "Paid Advertising",
+                        "description": "Targeted ad campaigns across social platforms to amplify reach, drive conversions, and maximize your marketing ROI."
+                    },
+                    "crisisManagement": {
+                        "title": "Crisis Management",
+                        "description": "Rapid response and strategic handling of negative feedback or PR situations to protect your brand reputation online."
+                    }
+                }
+            },
+            "platforms": {
+                "title": "Platforms We Master",
+                "description": "Expert management across all major social media platforms"
+            },
+            "benefits": {
+                "title": "Why Choose Us?",
+                "description": "We deliver results that matter to your business",
+                "items": {
+                    "dataDriven": {
+                        "title": "Data-Driven Strategy",
+                        "description": "Every decision backed by analytics and performance metrics"
+                    },
+                    "creative": {
+                        "title": "Creative Excellence",
+                        "description": "Award-winning content that stands out and engages"
+                    },
+                    "monitoring": {
+                        "title": "24/7 Monitoring",
+                        "description": "Round-the-clock social media monitoring and rapid response"
+                    },
+                    "reporting": {
+                        "title": "Transparent Reporting",
+                        "description": "Clear, detailed reports showing exactly what's working"
+                    },
+                    "expertise": {
+                        "title": "Industry Expertise",
+                        "description": "Years of experience across diverse industries and markets"
+                    }
+                }
+            },
+            "cta": {
+                "title": "Let's Grow Your Social Media Together",
+                "description": "Partner with us to transform your social media into a powerful business asset",
+                "button": "Start Now"
+            }
+        },
+        "production": {
+            "badge": "Production Services",
+            "hero": {
+                "title": "Bring Your Vision",
+                "mainWord": "To Life",
+                "description": "From concept to final cut, we produce high-quality video content, photography, and multimedia that captivates audiences and tells your brand's story with cinematic excellence."
+            },
+            "services": {
+                "title": "Production Services",
+                "description": "Full-service production capabilities for all your content needs",
+                "items": {
+                    "videoProduction": {
+                        "title": "Video Production",
+                        "description": "Commercial videos, corporate films, documentaries, and branded content produced with cinematic quality.",
+                        "features": ["4K & 8K Resolution", "Drone Cinematography", "Professional Crew"]
+                    },
+                    "photography": {
+                        "title": "Photography",
+                        "description": "Professional photography for products, events, portraits, and lifestyle content that captures perfect moments.",
+                        "features": ["Studio & On-Location", "Product Photography", "Event Coverage"]
+                    },
+                    "postProduction": {
+                        "title": "Post-Production",
+                        "description": "Expert editing, color grading, motion graphics, and visual effects to polish your content to perfection.",
+                        "features": ["Professional Editing", "Color Grading", "VFX & Animation"]
+                    },
+                    "audioProduction": {
+                        "title": "Audio Production",
+                        "description": "Professional audio recording, mixing, and sound design for pristine audio quality in all productions.",
+                        "features": ["Voice-Over Recording", "Sound Mixing", "Music Composition"]
+                    },
+                    "liveStreaming": {
+                        "title": "Live Streaming",
+                        "description": "Professional live streaming services for events, webinars, and broadcasts with multi-camera setups.",
+                        "features": ["Multi-Platform Streaming", "Live Switching", "Graphics Overlay"]
+                    },
+                    "creativeDirection": {
+                        "title": "Creative Direction",
+                        "description": "Concept development, storyboarding, and creative strategy to ensure your vision is perfectly realized.",
+                        "features": ["Concept Development", "Storyboarding", "Art Direction"]
+                    }
+                }
+            },
+            "process": {
+                "title": "Production Process",
+                "description": "A streamlined workflow that ensures quality at every stage",
+                "steps": {
+                    "preProduction": {
+                        "phase": "Pre-Production",
+                        "title": "Planning & Preparation",
+                        "description": "Concept development, scriptwriting, location scouting, casting, and scheduling."
+                    },
+                    "production": {
+                        "phase": "Production",
+                        "title": "Filming & Recording",
+                        "description": "Professional crew captures your content with state-of-the-art equipment."
+                    },
+                    "postProduction": {
+                        "phase": "Post-Production",
+                        "title": "Editing & Finishing",
+                        "description": "Editing, color grading, sound design, and final touches bring it all together."
+                    },
+                    "delivery": {
+                        "phase": "Delivery",
+                        "title": "Final Output",
+                        "description": "Optimized deliverables in all required formats for your platforms."
+                    }
+                }
+            },
+            "equipment": {
+                "title": "Professional Equipment",
+                "description": "Industry-leading tools and technology for exceptional results",
+                "items": ["Cinema Cameras", "Drones (4K & 8K)", "Professional Lighting", "Gimbal Stabilizers", "Studio Setup", "Audio Equipment", "Editing Suites", "Color Grading Tools"]
+            },
+            "cta": {
+                "title": "Ready To Create Something Amazing?",
+                "description": "Let's bring your creative vision to life with professional production",
+                "button": "Start Your Project"
+            }
+        },
+        "branding": {
+            "badge": "Branding & Identity",
+            "hero": {
+                "title": "Build A Brand",
+                "mainWord": "That Stands Out",
+                "description": "We create distinctive brand identities that resonate with your audience, communicate your values, and set you apart in a crowded marketplace with memorable design and strategic positioning."
+            },
+            "services": {
+                "title": "Branding Services",
+                "description": "Complete branding solutions to establish and elevate your brand",
+                "items": {
+                    "brandStrategy": {
+                        "title": "Brand Strategy",
+                        "description": "Comprehensive brand strategy development including positioning, messaging, values, and market differentiation to guide all brand communications."
+                    },
+                    "logoDesign": {
+                        "title": "Logo Design",
+                        "description": "Custom logo design that captures your brand essence with memorable, scalable, and timeless visual marks that work across all applications."
+                    },
+                    "visualIdentity": {
+                        "title": "Visual Identity",
+                        "description": "Complete visual identity systems including color palettes, typography, imagery style, and design patterns for cohesive brand expression."
+                    },
+                    "brandGuidelines": {
+                        "title": "Brand Guidelines",
+                        "description": "Comprehensive brand guidelines documentation ensuring consistent brand application across all touchpoints and teams."
+                    },
+                    "packagingDesign": {
+                        "title": "Packaging Design",
+                        "description": "Eye-catching packaging design that protects your product while attracting customers and communicating brand value on the shelf."
+                    },
+                    "brandRefresh": {
+                        "title": "Brand Refresh",
+                        "description": "Modernize and revitalize existing brands to stay relevant, appeal to new audiences, and reflect business evolution while maintaining brand equity."
+                    }
+                }
+            },
+            "process": {
+                "title": "Our Branding Process",
+                "description": "A strategic approach to creating powerful brand identities",
+                "steps": {
+                    "discovery": {
+                        "title": "Discovery & Research",
+                        "description": "Deep dive into your business, competitors, target audience, and market landscape to inform strategy."
+                    },
+                    "strategy": {
+                        "title": "Strategy Development",
+                        "description": "Define brand positioning, personality, values, and messaging that differentiate you in the market."
+                    },
+                    "visual": {
+                        "title": "Visual Exploration",
+                        "description": "Create multiple design directions exploring different visual approaches to your brand identity."
+                    },
+                    "refinement": {
+                        "title": "Design Refinement",
+                        "description": "Refine chosen direction with careful attention to every detail for perfect execution."
+                    },
+                    "system": {
+                        "title": "Brand System Creation",
+                        "description": "Develop complete brand system with all visual elements, patterns, and applications."
+                    },
+                    "launch": {
+                        "title": "Guidelines & Launch",
+                        "description": "Deliver comprehensive brand guidelines and support successful brand launch and rollout."
+                    }
+                }
+            },
+            "elements": {
+                "title": "Brand Identity Elements",
+                "description": "Everything you need for a complete and cohesive brand presence",
+                "items": ["Logo Design", "Color Palette", "Typography", "Design System", "Business Cards", "Letterhead", "Email Templates", "Social Media Templates", "Packaging", "Merchandise", "Vehicle Wraps", "Signage"]
+            },
+            "stats": {
+                "brandsCreated": "Brands Created",
+                "yearsExperience": "Years Experience",
+                "industryAwards": "Industry Awards",
+                "clientSatisfaction": "Client Satisfaction"
+            },
+            "cta": {
+                "title": "Ready To Build Your Brand?",
+                "description": "Let's create a brand identity that makes a lasting impression",
+                "button": "Let's Talk"
+            }
+        }
     }
 }

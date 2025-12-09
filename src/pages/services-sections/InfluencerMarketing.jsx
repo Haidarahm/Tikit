@@ -1,21 +1,28 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../store/I18nLanguageContext";
+import { useScrollToTop } from "../../hooks/useScrollToTop";
 import influencerHero from "../../assets/services/Influencer-Marketing.webp";
 import influencer1 from "../../assets/influencers/Ahmed ben chaibah.webp";
 import influencer2 from "../../assets/influencers/hessa alfalasi.webp";
 import influencer3 from "../../assets/influencers/sara Gazioglu.webp";
 import influencer4 from "../../assets/influencers/Sultan Alsuwaidi.webp";
+import TikitTitle from "../../components/TikitTitle";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const InfluencerMarketing = () => {
+  const { t } = useTranslation();
   const { isRtl, language } = useI18nLanguage();
   const heroRef = useRef(null);
   const statsRef = useRef(null);
   const processRef = useRef(null);
   const showcaseRef = useRef(null);
+
+  // Scroll to top on mount
+  useScrollToTop();
 
   useEffect(() => {
     let ctx;
@@ -146,18 +153,12 @@ const InfluencerMarketing = () => {
 
         <div className="relative z-10 mt-10 max-w-6xl mx-auto text-center">
           <span className="hero-animate inline-block px-6 py-2 mb-6 rounded-full bg-[#52C3C5]/10 text-[#52C3C5] text-sm font-semibold uppercase tracking-wider">
-            Influencer Marketing
+            {t("serviceSections.influencerMarketing.badge")}
           </span>
-          <h1 className={`hero-animate text-4xl md:text-6xl lg:text-7xl font-bold text-[var(--foreground)] mb-6 ${language === "ar" ? "font-cairo" : "font-antonio"}`}>
-            Connect With The Right{" "}
-            <span className="bg-gradient-to-r from-[#6ACBCC] to-[#1C6F6C] bg-clip-text text-transparent">
-              Influencers
-            </span>
-          </h1>
+         
+          <TikitTitle title={t("serviceSections.influencerMarketing.hero.title")} mainWord={t("serviceSections.influencerMarketing.hero.mainWord")} />
           <p className="hero-animate text-lg md:text-xl text-[var(--foreground)]/70 max-w-3xl mx-auto leading-relaxed">
-            We bridge the gap between brands and influential voices, creating
-            authentic partnerships that drive engagement, build trust, and
-            deliver measurable results across all platforms.
+            {t("serviceSections.influencerMarketing.hero.description")}
           </p>
         </div>
       </section>
@@ -176,7 +177,7 @@ const InfluencerMarketing = () => {
                 500+
               </h3>
               <p className="text-[var(--foreground)]/70 text-sm md:text-base">
-                Influencers Network
+                {t("serviceSections.influencerMarketing.stats.influencersNetwork")}
               </p>
             </div>
             <div className="stat-card text-center p-6 rounded-2xl bg-[var(--foreground)]/5 backdrop-blur-sm border border-[var(--foreground)]/10">
@@ -184,7 +185,7 @@ const InfluencerMarketing = () => {
                 200+
               </h3>
               <p className="text-[var(--foreground)]/70 text-sm md:text-base">
-                Successful Campaigns
+                {t("serviceSections.influencerMarketing.stats.successfulCampaigns")}
               </p>
             </div>
             <div className="stat-card text-center p-6 rounded-2xl bg-[var(--foreground)]/5 backdrop-blur-sm border border-[var(--foreground)]/10">
@@ -192,7 +193,7 @@ const InfluencerMarketing = () => {
                 50M+
               </h3>
               <p className="text-[var(--foreground)]/70 text-sm md:text-base">
-                Total Reach
+                {t("serviceSections.influencerMarketing.stats.totalReach")}
               </p>
             </div>
             <div className="stat-card text-center p-6 rounded-2xl bg-[var(--foreground)]/5 backdrop-blur-sm border border-[var(--foreground)]/10">
@@ -200,7 +201,7 @@ const InfluencerMarketing = () => {
                 95%
               </h3>
               <p className="text-[var(--foreground)]/70 text-sm md:text-base">
-                Client Satisfaction
+                {t("serviceSections.influencerMarketing.stats.clientSatisfaction")}
               </p>
             </div>
           </div>
@@ -216,11 +217,10 @@ const InfluencerMarketing = () => {
       <section ref={processRef} className="py-20 px-6">
         <div className="max-w-6xl mx-auto">
           <h2 className={`text-3xl md:text-5xl font-bold text-[var(--foreground)] text-center mb-4 ${language === "ar" ? "font-cairo" : "font-antonio"}`}>
-            Our Process
+            {t("serviceSections.influencerMarketing.process.title")}
           </h2>
           <p className="text-[var(--foreground)]/60 text-center mb-16 max-w-2xl mx-auto">
-            From strategy to execution, we handle every aspect of your
-            influencer marketing campaigns
+            {t("serviceSections.influencerMarketing.process.description")}
           </p>
 
           <div className="space-y-8">
@@ -231,12 +231,10 @@ const InfluencerMarketing = () => {
               </div>
               <div className="flex-1 text-center md:text-left">
                 <h3 className="text-2xl font-bold text-[var(--foreground)] mb-3">
-                  Strategy & Planning
+                  {t("serviceSections.influencerMarketing.process.steps.strategy.title")}
                 </h3>
                 <p className="text-[var(--foreground)]/70 leading-relaxed">
-                  We analyze your brand, target audience, and goals to create a
-                  customized influencer marketing strategy that aligns with your
-                  objectives and maximizes ROI.
+                  {t("serviceSections.influencerMarketing.process.steps.strategy.description")}
                 </p>
               </div>
             </div>
@@ -248,12 +246,10 @@ const InfluencerMarketing = () => {
               </div>
               <div className="flex-1 text-center md:text-left">
                 <h3 className="text-2xl font-bold text-[var(--foreground)] mb-3">
-                  Influencer Selection
+                  {t("serviceSections.influencerMarketing.process.steps.selection.title")}
                 </h3>
                 <p className="text-[var(--foreground)]/70 leading-relaxed">
-                  We carefully match your brand with influencers whose audience,
-                  values, and content style align perfectly with your campaign
-                  goals, ensuring authentic partnerships.
+                  {t("serviceSections.influencerMarketing.process.steps.selection.description")}
                 </p>
               </div>
             </div>
@@ -265,12 +261,10 @@ const InfluencerMarketing = () => {
               </div>
               <div className="flex-1 text-center md:text-left">
                 <h3 className="text-2xl font-bold text-[var(--foreground)] mb-3">
-                  Campaign Management
+                  {t("serviceSections.influencerMarketing.process.steps.management.title")}
                 </h3>
                 <p className="text-[var(--foreground)]/70 leading-relaxed">
-                  From contract negotiation to content approval and posting
-                  schedules, we manage every detail to ensure smooth execution
-                  and optimal performance.
+                  {t("serviceSections.influencerMarketing.process.steps.management.description")}
                 </p>
               </div>
             </div>
@@ -282,12 +276,10 @@ const InfluencerMarketing = () => {
               </div>
               <div className="flex-1 text-center md:text-left">
                 <h3 className="text-2xl font-bold text-[var(--foreground)] mb-3">
-                  Analytics & Reporting
+                  {t("serviceSections.influencerMarketing.process.steps.analytics.title")}
                 </h3>
                 <p className="text-[var(--foreground)]/70 leading-relaxed">
-                  Track campaign performance with detailed analytics, insights,
-                  and comprehensive reports that demonstrate real impact and
-                  inform future strategies.
+                  {t("serviceSections.influencerMarketing.process.steps.analytics.description")}
                 </p>
               </div>
             </div>
@@ -304,11 +296,10 @@ const InfluencerMarketing = () => {
       <section ref={showcaseRef} className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
           <h2 className={`text-3xl md:text-5xl font-bold text-[var(--foreground)] text-center mb-4 ${language === "ar" ? "font-cairo" : "font-antonio"}`}>
-            Featured Influencers
+            {t("serviceSections.influencerMarketing.showcase.title")}
           </h2>
           <p className="text-[var(--foreground)]/60 text-center mb-16 max-w-2xl mx-auto">
-            Connect with top-tier influencers across various niches and
-            platforms
+            {t("serviceSections.influencerMarketing.showcase.description")}
           </p>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -344,17 +335,16 @@ const InfluencerMarketing = () => {
       <section className="py-20 px-6">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className={`text-3xl md:text-5xl font-bold text-[var(--foreground)] mb-6 ${language === "ar" ? "font-cairo" : "font-antonio"}`}>
-            Ready to Amplify Your Brand?
+            {t("serviceSections.influencerMarketing.cta.title")}
           </h2>
           <p className="text-[var(--foreground)]/70 text-lg mb-8">
-            Let's create an influencer marketing campaign that drives real
-            results
+            {t("serviceSections.influencerMarketing.cta.description")}
           </p>
           <a
             href="/contact"
             className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-[#52C3C5] rounded-full hover:bg-[#1C6F6C] transition-all duration-300 hover:scale-105 shadow-lg shadow-[#52C3C5]/30"
           >
-            Get Started
+            {t("serviceSections.influencerMarketing.cta.button")}
           </a>
         </div>
       </section>

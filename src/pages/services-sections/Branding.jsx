@@ -1,7 +1,9 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../store/I18nLanguageContext";
+import { useScrollToTop } from "../../hooks/useScrollToTop";
 import {
   HiColorSwatch,
   HiLightBulb,
@@ -24,15 +26,20 @@ import {
   MdDirectionsCar,
   MdStorefront,
 } from "react-icons/md";
+import TikitTitle from "../../components/TikitTitle";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Branding = () => {
+  const { t } = useTranslation();
   const { isRtl, language } = useI18nLanguage();
   const heroRef = useRef(null);
   const servicesRef = useRef(null);
   const processRef = useRef(null);
   const elementsRef = useRef(null);
+
+  // Scroll to top on mount
+  useScrollToTop();
 
   useEffect(() => {
     let ctx;
@@ -159,18 +166,13 @@ const Branding = () => {
 
         <div className="relative mt-10 z-10 max-w-6xl mx-auto text-center">
           <span className="hero-animate inline-block px-6 py-2 mb-6 rounded-full bg-[#52C3C5]/10 text-[#52C3C5] text-sm font-semibold uppercase tracking-wider">
-            Branding & Identity
+            {t("serviceSections.branding.badge")}
           </span>
-          <h1 className={`hero-animate text-4xl md:text-6xl lg:text-7xl font-bold text-[var(--foreground)] mb-6 ${language === "ar" ? "font-cairo" : "font-antonio"}`}>
-            Build A Brand{" "}
-            <span className="bg-gradient-to-r from-[#6ACBCC] to-[#1C6F6C] bg-clip-text text-transparent">
-              That Stands Out
-            </span>
-          </h1>
+
+
+          <TikitTitle title={t("serviceSections.branding.hero.title")} mainWord={t("serviceSections.branding.hero.mainWord")} />
           <p className="hero-animate text-lg md:text-xl text-[var(--foreground)]/70 max-w-3xl mx-auto leading-relaxed">
-            We create distinctive brand identities that resonate with your
-            audience, communicate your values, and set you apart in a crowded
-            marketplace with memorable design and strategic positioning.
+            {t("serviceSections.branding.hero.description")}
           </p>
         </div>
       </section>
@@ -184,10 +186,10 @@ const Branding = () => {
       <section ref={servicesRef} className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
           <h2 className={`text-3xl md:text-5xl font-bold text-[var(--foreground)] text-center mb-4 ${language === "ar" ? "font-cairo" : "font-antonio"}`}>
-            Branding Services
+            {t("serviceSections.branding.services.title")}
           </h2>
           <p className="text-[var(--foreground)]/60 text-center mb-16 max-w-2xl mx-auto">
-            Complete branding solutions to establish and elevate your brand
+            {t("serviceSections.branding.services.description")}
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -197,12 +199,10 @@ const Branding = () => {
                 <HiColorSwatch className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-2xl font-bold text-[var(--foreground)] mb-3">
-                Brand Strategy
+                {t("serviceSections.branding.services.items.brandStrategy.title")}
               </h3>
               <p className="text-[var(--foreground)]/70 leading-relaxed">
-                Comprehensive brand strategy development including positioning,
-                messaging, values, and market differentiation to guide all brand
-                communications.
+                {t("serviceSections.branding.services.items.brandStrategy.description")}
               </p>
             </div>
 
@@ -212,12 +212,10 @@ const Branding = () => {
                 <HiLightBulb className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-2xl font-bold text-[var(--foreground)] mb-3">
-                Logo Design
+                {t("serviceSections.branding.services.items.logoDesign.title")}
               </h3>
               <p className="text-[var(--foreground)]/70 leading-relaxed">
-                Custom logo design that captures your brand essence with
-                memorable, scalable, and timeless visual marks that work across
-                all applications.
+                {t("serviceSections.branding.services.items.logoDesign.description")}
               </p>
             </div>
 
@@ -227,12 +225,10 @@ const Branding = () => {
                 <HiTemplate className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-2xl font-bold text-[var(--foreground)] mb-3">
-                Visual Identity
+                {t("serviceSections.branding.services.items.visualIdentity.title")}
               </h3>
               <p className="text-[var(--foreground)]/70 leading-relaxed">
-                Complete visual identity systems including color palettes,
-                typography, imagery style, and design patterns for cohesive
-                brand expression.
+                {t("serviceSections.branding.services.items.visualIdentity.description")}
               </p>
             </div>
 
@@ -242,11 +238,10 @@ const Branding = () => {
                 <HiBookOpen className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-2xl font-bold text-[var(--foreground)] mb-3">
-                Brand Guidelines
+                {t("serviceSections.branding.services.items.brandGuidelines.title")}
               </h3>
               <p className="text-[var(--foreground)]/70 leading-relaxed">
-                Comprehensive brand guidelines documentation ensuring consistent
-                brand application across all touchpoints and teams.
+                {t("serviceSections.branding.services.items.brandGuidelines.description")}
               </p>
             </div>
 
@@ -256,11 +251,10 @@ const Branding = () => {
                 <HiCube className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-2xl font-bold text-[var(--foreground)] mb-3">
-                Packaging Design
+                {t("serviceSections.branding.services.items.packagingDesign.title")}
               </h3>
               <p className="text-[var(--foreground)]/70 leading-relaxed">
-                Eye-catching packaging design that protects your product while
-                attracting customers and communicating brand value on the shelf.
+                {t("serviceSections.branding.services.items.packagingDesign.description")}
               </p>
             </div>
 
@@ -270,12 +264,10 @@ const Branding = () => {
                 <HiRefresh className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-2xl font-bold text-[var(--foreground)] mb-3">
-                Brand Refresh
+                {t("serviceSections.branding.services.items.brandRefresh.title")}
               </h3>
               <p className="text-[var(--foreground)]/70 leading-relaxed">
-                Modernize and revitalize existing brands to stay relevant,
-                appeal to new audiences, and reflect business evolution while
-                maintaining brand equity.
+                {t("serviceSections.branding.services.items.brandRefresh.description")}
               </p>
             </div>
           </div>
@@ -291,43 +283,43 @@ const Branding = () => {
       <section ref={processRef} className="py-20 px-6">
         <div className="max-w-6xl mx-auto">
           <h2 className={`text-3xl md:text-5xl font-bold text-[var(--foreground)] text-center mb-4 ${language === "ar" ? "font-cairo" : "font-antonio"}`}>
-            Our Branding Process
+            {t("serviceSections.branding.process.title")}
           </h2>
           <p className="text-[var(--foreground)]/60 text-center mb-16 max-w-2xl mx-auto">
-            A strategic approach to creating powerful brand identities
+            {t("serviceSections.branding.process.description")}
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
               {
                 step: "01",
-                title: "Discovery & Research",
-                desc: "Deep dive into your business, competitors, target audience, and market landscape to inform strategy.",
+                title: t("serviceSections.branding.process.steps.discovery.title"),
+                desc: t("serviceSections.branding.process.steps.discovery.description"),
               },
               {
                 step: "02",
-                title: "Strategy Development",
-                desc: "Define brand positioning, personality, values, and messaging that differentiate you in the market.",
+                title: t("serviceSections.branding.process.steps.strategy.title"),
+                desc: t("serviceSections.branding.process.steps.strategy.description"),
               },
               {
                 step: "03",
-                title: "Visual Exploration",
-                desc: "Create multiple design directions exploring different visual approaches to your brand identity.",
+                title: t("serviceSections.branding.process.steps.visual.title"),
+                desc: t("serviceSections.branding.process.steps.visual.description"),
               },
               {
                 step: "04",
-                title: "Design Refinement",
-                desc: "Refine chosen direction with careful attention to every detail for perfect execution.",
+                title: t("serviceSections.branding.process.steps.refinement.title"),
+                desc: t("serviceSections.branding.process.steps.refinement.description"),
               },
               {
                 step: "05",
-                title: "Brand System Creation",
-                desc: "Develop complete brand system with all visual elements, patterns, and applications.",
+                title: t("serviceSections.branding.process.steps.system.title"),
+                desc: t("serviceSections.branding.process.steps.system.description"),
               },
               {
                 step: "06",
-                title: "Guidelines & Launch",
-                desc: "Deliver comprehensive brand guidelines and support successful brand launch and rollout.",
+                title: t("serviceSections.branding.process.steps.launch.title"),
+                desc: t("serviceSections.branding.process.steps.launch.description"),
               },
             ].map((item, idx) => (
               <div
@@ -358,28 +350,29 @@ const Branding = () => {
       <section ref={elementsRef} className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
           <h2 className={`text-3xl md:text-5xl font-bold text-[var(--foreground)] text-center mb-4 ${language === "ar" ? "font-cairo" : "font-antonio"}`}>
-            Brand Identity Elements
+            {t("serviceSections.branding.elements.title")}
           </h2>
           <p className="text-[var(--foreground)]/60 text-center mb-16 max-w-2xl mx-auto">
-            Everything you need for a complete and cohesive brand presence
+            {t("serviceSections.branding.elements.description")}
           </p>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {[
-              { icon: MdBrush, title: "Logo Design" },
-              { icon: MdPalette, title: "Color Palette" },
-              { icon: MdTextFields, title: "Typography" },
-              { icon: MdDashboard, title: "Design System" },
-              { icon: MdCreditCard, title: "Business Cards" },
-              { icon: MdDescription, title: "Letterhead" },
-              { icon: MdEmail, title: "Email Templates" },
-              { icon: MdPhoneIphone, title: "Social Media Templates" },
-              { icon: MdCardGiftcard, title: "Packaging" },
-              { icon: MdLocalMall, title: "Merchandise" },
-              { icon: MdDirectionsCar, title: "Vehicle Wraps" },
-              { icon: MdStorefront, title: "Signage" },
-            ].map((element, idx) => {
-              const IconComponent = element.icon;
+            {t("serviceSections.branding.elements.items", { returnObjects: true }).map((itemTitle, idx) => {
+              const elementIcons = [
+                MdBrush,
+                MdPalette,
+                MdTextFields,
+                MdDashboard,
+                MdCreditCard,
+                MdDescription,
+                MdEmail,
+                MdPhoneIphone,
+                MdCardGiftcard,
+                MdLocalMall,
+                MdDirectionsCar,
+                MdStorefront,
+              ];
+              const IconComponent = elementIcons[idx];
               return (
                 <div
                   key={idx}
@@ -389,7 +382,7 @@ const Branding = () => {
                     <IconComponent className="w-7 h-7 text-[#52C3C5]" />
                   </div>
                   <p className="text-[var(--foreground)] font-semibold text-sm">
-                    {element.title}
+                    {itemTitle}
                   </p>
                 </div>
               );
@@ -407,7 +400,7 @@ const Branding = () => {
                 300+
               </h3>
               <p className="text-[var(--foreground)]/70 text-sm md:text-base">
-                Brands Created
+                {t("serviceSections.branding.stats.brandsCreated")}
               </p>
             </div>
             <div className="text-center p-6 rounded-2xl bg-[var(--foreground)]/5 backdrop-blur-sm border border-[var(--foreground)]/10">
@@ -415,7 +408,7 @@ const Branding = () => {
                 15+
               </h3>
               <p className="text-[var(--foreground)]/70 text-sm md:text-base">
-                Years Experience
+                {t("serviceSections.branding.stats.yearsExperience")}
               </p>
             </div>
             <div className="text-center p-6 rounded-2xl bg-[var(--foreground)]/5 backdrop-blur-sm border border-[var(--foreground)]/10">
@@ -423,7 +416,7 @@ const Branding = () => {
                 25+
               </h3>
               <p className="text-[var(--foreground)]/70 text-sm md:text-base">
-                Industry Awards
+                {t("serviceSections.branding.stats.industryAwards")}
               </p>
             </div>
             <div className="text-center p-6 rounded-2xl bg-[var(--foreground)]/5 backdrop-blur-sm border border-[var(--foreground)]/10">
@@ -431,7 +424,7 @@ const Branding = () => {
                 98%
               </h3>
               <p className="text-[var(--foreground)]/70 text-sm md:text-base">
-                Client Satisfaction
+                {t("serviceSections.branding.stats.clientSatisfaction")}
               </p>
             </div>
           </div>
@@ -442,16 +435,16 @@ const Branding = () => {
       <section className="py-20 px-6">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className={`text-3xl md:text-5xl font-bold text-[var(--foreground)] mb-6 ${language === "ar" ? "font-cairo" : "font-antonio"}`}>
-            Ready To Build Your Brand?
+            {t("serviceSections.branding.cta.title")}
           </h2>
           <p className="text-[var(--foreground)]/70 text-lg mb-8">
-            Let's create a brand identity that makes a lasting impression
+            {t("serviceSections.branding.cta.description")}
           </p>
           <a
             href="/contact"
             className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-[#52C3C5] rounded-full hover:bg-[#1C6F6C] transition-all duration-300 hover:scale-105 shadow-lg shadow-[#52C3C5]/30"
           >
-            Let's Talk
+            {t("serviceSections.branding.cta.button")}
           </a>
         </div>
       </section>
