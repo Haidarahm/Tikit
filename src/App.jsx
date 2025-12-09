@@ -20,9 +20,7 @@ import CaseDetails from "./pages/showcase/CaseDetails.jsx";
 
 // Lazy load components
 const Home = lazy(() => import("./pages/Home/Home"));
-const ServiceDetails = lazy(() =>
-  import("./pages/service-details/ServiceDetails")
-);
+
 const Work = lazy(() => import("./pages/Work/Work"));
 const AboutUs = lazy(() => import("./pages/about/AboutUs"));
 const Services = lazy(() => import("./pages/services/Services.jsx"));
@@ -30,6 +28,20 @@ const Contact = lazy(() => import("./pages/contact/Contact"));
 const News = lazy(() => import("./pages/news/News"));
 const InfluencersRegister = lazy(() =>
   import("./pages/influencers-register/InfluencersRegister")
+);
+
+// Service Sections
+const InfluencerMarketing = lazy(() =>
+  import("./pages/services-sections/InfluencerMarketing")
+);
+const SocialMediaManagement = lazy(() =>
+  import("./pages/services-sections/SocialMediaManagement")
+);
+const Production = lazy(() =>
+  import("./pages/services-sections/Production")
+);
+const Branding = lazy(() =>
+  import("./pages/services-sections/Branding")
 );
 
 const InfluenceDetails = lazy(() =>
@@ -109,14 +121,13 @@ function App() {
               <Route path="/about" element={<AboutUs />} />
               <Route path="/services" element={<Services />} />
               <Route path="/news" element={<News />} />
-              <Route path="/contact" element={<Contact />} />
+            <Route path="/contact" element={<Contact />} />
               <Route path="/influencer" element={<Influencer />} />
               <Route
                 path="/influencer-register"
                 element={<InfluencersRegister />}
               />
               <Route path="/showcase/:id" element={<CaseDetails />} />
-              <Route path="/service-details/:id" element={<ServiceDetails />} />
               <Route
                 path="/work/influence/:id"
                 element={<InfluenceDetails />}
@@ -124,6 +135,11 @@ function App() {
               <Route path="/work/social/:id" element={<SocialDetails />} />
               <Route path="/work/creative/:id" element={<CreativeDetails />} />
               <Route path="/work/event/:id" element={<EventDetails />} />
+              {/* Service Sections */}
+              <Route path="/services/influencer-marketing" element={<InfluencerMarketing />} />
+              <Route path="/services/social-media-management" element={<SocialMediaManagement />} />
+              <Route path="/services/production" element={<Production />} />
+              <Route path="/services/branding" element={<Branding />} />
               {/* AI-Targeted Landing Pages */}
               <Route path="/influencer-marketing-dubai" element={<InfluencerMarketingDubai />} />
               <Route path="/influencer-marketing-saudi-arabia" element={<InfluencerMarketingSaudiArabia />} />
