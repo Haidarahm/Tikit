@@ -9,8 +9,17 @@ import {
   HiMicrophone,
   HiDesktopComputer,
   HiLightBulb,
-  HiCheckCircle,
 } from "react-icons/hi";
+import {
+  MdCameraEnhance,
+  MdFlightTakeoff,
+  MdLightMode,
+  MdSlowMotionVideo,
+  MdMeetingRoom,
+  MdHeadphones,
+  MdComputer,
+  MdColorLens,
+} from "react-icons/md";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -446,27 +455,30 @@ const Production = () => {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
-              "Cinema Cameras",
-              "Drones (4K & 8K)",
-              "Professional Lighting",
-              "Gimbal Stabilizers",
-              "Studio Setup",
-              "Audio Equipment",
-              "Editing Suites",
-              "Color Grading Tools",
-            ].map((item, idx) => (
-              <div
-                key={idx}
-                className="equipment-item p-6 rounded-2xl bg-[var(--foreground)]/5 backdrop-blur-sm border border-[var(--foreground)]/10 hover:border-[#52C3C5]/50 transition-all duration-300 text-center group"
-              >
-                <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-[#52C3C5]/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <HiCheckCircle className="w-6 h-6 text-[#52C3C5]" />
+              { name: "Cinema Cameras", icon: MdCameraEnhance },
+              { name: "Drones (4K & 8K)", icon: MdFlightTakeoff },
+              { name: "Professional Lighting", icon: MdLightMode },
+              { name: "Gimbal Stabilizers", icon: MdSlowMotionVideo },
+              { name: "Studio Setup", icon: MdMeetingRoom },
+              { name: "Audio Equipment", icon: MdHeadphones },
+              { name: "Editing Suites", icon: MdComputer },
+              { name: "Color Grading Tools", icon: MdColorLens },
+            ].map((item, idx) => {
+              const IconComponent = item.icon;
+              return (
+                <div
+                  key={idx}
+                  className="equipment-item p-6 rounded-2xl bg-[var(--foreground)]/5 backdrop-blur-sm border border-[var(--foreground)]/10 hover:border-[#52C3C5]/50 transition-all duration-300 text-center group"
+                >
+                  <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-[#52C3C5]/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <IconComponent className="w-6 h-6 text-[#52C3C5]" />
+                  </div>
+                  <p className="text-[var(--foreground)] font-semibold">
+                    {item.name}
+                  </p>
                 </div>
-                <p className="text-[var(--foreground)] font-semibold">
-                  {item}
-                </p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
