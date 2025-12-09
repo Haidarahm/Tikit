@@ -33,23 +33,56 @@ const Services = memo(() => {
     [services]
   );
 
-  const renderContent = () => {
-    // Show loading state during initial load
-    if (!isClient || loading) {
-      return (
-        <div className="flex justify-center items-center h-64">
-          <div className="text-[var(--foreground)]">Loading...</div>
+  // Skeleton loader component
+  const SkeletonLoader = () => {
+    const skeletonItems = Array.from({ length: 4 }).map((_, index) => (
+      <div
+        key={index}
+        className={`flex pb-4 justify-center text-[20px] mb-4 ${
+          index < 3 ? "border-[var(--secondary)] border-b-2" : ""
+        }`}
+      >
+        <div className="h-6 w-48 bg-gradient-to-r from-[var(--foreground)]/20 via-[var(--foreground)]/10 to-[var(--foreground)]/20 rounded animate-pulse" />
+      </div>
+    ));
+
+    return (
+      <>
+        {/* Desktop skeleton */}
+        <div
+          className="hidden md:block"
+          style={{ position: "relative", height: "100%" }}
+        >
+          <div className="w-full h-full overflow-hidden">
+            <nav className="flex flex-col h-full m-0 p-0">
+              {Array.from({ length: 4 }).map((_, idx) => (
+                <div
+                  key={idx}
+                  className="flex-1 relative overflow-hidden text-center shadow-[0_-1px_0_0_var(--secondary)] py-6 flex items-center justify-center"
+                >
+                  <div className="h-8 w-64 bg-gradient-to-r from-[var(--foreground)]/20 via-[var(--foreground)]/10 to-[var(--foreground)]/20 rounded animate-pulse" />
+                </div>
+              ))}
+            </nav>
+          </div>
         </div>
-      );
+        {/* Mobile skeleton */}
+        <div className="mobile-view flex flex-col md:hidden">
+          {skeletonItems}
+        </div>
+      </>
+    );
+  };
+
+  const renderContent = () => {
+    // Show skeleton loader during initial load or if there's an error (retry silently)
+    if (!isClient || loading || error) {
+      return <SkeletonLoader />;
     }
 
-    // Show error state if API call failed
-    if (error) {
-      return (
-        <div className="flex justify-center items-center h-64">
-          <div className="text-red-500">Error loading services: {error}</div>
-        </div>
-      );
+    // Show content only if we have items
+    if (!items || items.length === 0) {
+      return <SkeletonLoader />;
     }
 
     // Main content
@@ -98,7 +131,7 @@ const Services = memo(() => {
         <h1 className="text-[var(--foreground)] font-antonio md:text-center font-bold text-[18px] md:text-[40px]">
           {t("home.services.title")}
         </h1>
-        {!loading && !error && (
+        {!loading && !error && items && items.length > 0 && (
           <button
             onClick={() => navigate("/services")}
             className="bg-transparent hover:text-[var(--background)] shadow-lg shadow-[#52C3C5]/30 font-bold dark:shadow-[#000]/30 hover:bg-[var(--secondary)] border-[var(--secondary)] text-[var(--secondary)] transition duration-75 ease-in border px-2 h-8 md:h-10 text-[14px] rounded-full uppercase"

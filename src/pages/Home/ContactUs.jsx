@@ -5,16 +5,59 @@ import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
 import { useContactStore } from "../../store/contactStore";
 import { useToastStore } from "../../store/toastStore";
-import b1 from "../../assets/brands/1.svg";
-import b2 from "../../assets/brands/2.svg";
-import b3 from "../../assets/brands/3.svg";
-import b4 from "../../assets/brands/4.svg";
-import b5 from "../../assets/brands/5.svg";
-import b1Light from "../../assets/brands/1-light.svg";
-import b2Light from "../../assets/brands/2-light.svg";
-import b3Light from "../../assets/brands/3-light.svg";
-import b4Light from "../../assets/brands/4-light.svg";
-import b5Light from "../../assets/brands/5-light.svg";
+// Import dark mode brand images
+import dark1 from "../../assets/brands/dark/1.webp";
+import dark2 from "../../assets/brands/dark/2.webp";
+import dark3 from "../../assets/brands/dark/3.webp";
+import dark4 from "../../assets/brands/dark/4.webp";
+import dark5 from "../../assets/brands/dark/5.webp";
+import dark6 from "../../assets/brands/dark/6.webp";
+import dark7 from "../../assets/brands/dark/7.webp";
+import dark8 from "../../assets/brands/dark/8.webp";
+import dark9 from "../../assets/brands/dark/9.webp";
+import dark10 from "../../assets/brands/dark/10.webp";
+import dark11 from "../../assets/brands/dark/11.webp";
+import dark12 from "../../assets/brands/dark/12.webp";
+import dark13 from "../../assets/brands/dark/13.webp";
+import dark14 from "../../assets/brands/dark/14.webp";
+import dark15 from "../../assets/brands/dark/15.webp";
+import dark16 from "../../assets/brands/dark/16.webp";
+import dark17 from "../../assets/brands/dark/17.webp";
+import dark18 from "../../assets/brands/dark/18.webp";
+import dark19 from "../../assets/brands/dark/19.webp";
+import dark20 from "../../assets/brands/dark/20.webp";
+import dark21 from "../../assets/brands/dark/21.webp";
+import dark22 from "../../assets/brands/dark/22.webp";
+import dark23 from "../../assets/brands/dark/23.webp";
+import dark24 from "../../assets/brands/dark/24.webp";
+import dark25 from "../../assets/brands/dark/25.webp";
+
+// Import light mode brand images
+import light1 from "../../assets/brands/light/1.webp";
+import light2 from "../../assets/brands/light/2.webp";
+import light3 from "../../assets/brands/light/3.webp";
+import light4 from "../../assets/brands/light/4.webp";
+import light5 from "../../assets/brands/light/5.webp";
+import light6 from "../../assets/brands/light/6.webp";
+import light7 from "../../assets/brands/light/7.webp";
+import light8 from "../../assets/brands/light/8.webp";
+import light9 from "../../assets/brands/light/9.webp";
+import light10 from "../../assets/brands/light/10.webp";
+import light11 from "../../assets/brands/light/11.webp";
+import light12 from "../../assets/brands/light/12.webp";
+import light13 from "../../assets/brands/light/13.webp";
+import light14 from "../../assets/brands/light/14.webp";
+import light15 from "../../assets/brands/light/15.webp";
+import light16 from "../../assets/brands/light/16.webp";
+import light17 from "../../assets/brands/light/17.webp";
+import light18 from "../../assets/brands/light/18.webp";
+import light19 from "../../assets/brands/light/19.webp";
+import light20 from "../../assets/brands/light/20.webp";
+import light21 from "../../assets/brands/light/21.webp";
+import light22 from "../../assets/brands/light/22.webp";
+import light23 from "../../assets/brands/light/23.webp";
+import light24 from "../../assets/brands/light/24.webp";
+import light25 from "../../assets/brands/light/25.webp";
 import { useTheme } from "../../store/ThemeContext";
 import {
   FaInstagram,
@@ -38,6 +81,19 @@ const SOCIAL_PLATFORMS = [
   { value: "linkedin", label: "LinkedIn", icon: FaLinkedin },
   { value: "snapchat", label: "Snapchat", icon: FaSnapchat },
   { value: "other", label: "Other", icon: FaLink },
+];
+
+// Brand logo arrays
+const DARK_LOGOS = [
+  dark1, dark2, dark3, dark4, dark5, dark6, dark7, dark8, dark9, dark10,
+  dark11, dark12, dark13, dark14, dark15, dark16, dark17, dark18, dark19, dark20,
+  dark21, dark22, dark23, dark24, dark25
+];
+
+const LIGHT_LOGOS = [
+  light1, light2, light3, light4, light5, light6, light7, light8, light9, light10,
+  light11, light12, light13, light14, light15, light16, light17, light18, light19, light20,
+  light21, light22, light23, light24, light25
 ];
 
 // Social Platform Dropdown
@@ -294,22 +350,13 @@ const ContactUs = memo(({ className = "" }) => {
   const { isRtl } = useI18nLanguage();
 
   const imageLogos = useMemo(
-    () =>
-      theme === "light"
-        ? [
-            { src: b1Light, alt: "Brand 1" },
-            { src: b2Light, alt: "Brand 2" },
-            { src: b3Light, alt: "Brand 3" },
-            { src: b4Light, alt: "Brand 4" },
-            { src: b5Light, alt: "Brand 5" },
-          ]
-        : [
-            { src: b1, alt: "Brand 1" },
-            { src: b2, alt: "Brand 2" },
-            { src: b3, alt: "Brand 3" },
-            { src: b4, alt: "Brand 4" },
-            { src: b5, alt: "Brand 5" },
-          ],
+    () => {
+      const logos = theme === "light" ? LIGHT_LOGOS : DARK_LOGOS;
+      return logos.map((src, index) => ({
+        src,
+        alt: `Brand ${index + 1}`,
+      }));
+    },
     [theme]
   );
   // "bg-[#F5F7FB] text-[var(--foreground)] border border-black/5"
@@ -542,8 +589,8 @@ const ContactUs = memo(({ className = "" }) => {
             logos={imageLogos}
             speed={50}
             direction={isRtl ? "right" : "left"}
-            logoHeight={70}
-            gap={150}
+            logoHeight={100}
+            gap={100}
             pauseOnHover
             scaleOnHover
             className={isRtl ? "flex-row-reverse" : ""}
