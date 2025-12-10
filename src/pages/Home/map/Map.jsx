@@ -363,11 +363,7 @@ const Map = ({
               ))}
             </div>
 
-            <div className='animate-text mt-10'>
-              <p className='text-gray-500 text-sm italic'>
-                {t('home.map.hoverHint')}
-              </p>
-            </div>
+           
           </div>
 
           {/* Right Section - Map */}
