@@ -313,6 +313,7 @@ const WorkItemsGrid = ({
   return (
     <div
       ref={containerRef}
+      data-nav-color="white"
       className={`${containerClass} relative`}
       style={
         !isDigital && nonDigitalCount

@@ -194,7 +194,7 @@ const Work = () => {
 
   return (
     <div
-    data-nav-color="black"
+   
       className={`work-section min-h-[100vh] flex flex-col  ${
         isRtl ? "font-cairo" : "font-hero-light"
       }`}

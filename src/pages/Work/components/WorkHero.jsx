@@ -53,7 +53,7 @@ const WorkHero = ({  t, isRtl }) => {
   }, []);
 
   return (
-    <div className="h-[50vh] md:h-[70vh] flex flex-col justify-around items-center w-full description  mt-[104px]">
+    <div  data-nav-color="black" className="h-[50vh] md:h-[70vh] flex flex-col justify-around items-center w-full description  mt-[104px]">
       <div className="w-full"></div>
       <div ref={titleContainerRef} className="overflow-hidden">
         <div

@@ -188,7 +188,7 @@ const InfluenceDetails = () => {
           ))}
         </div>
       ) : itemData ? (
-        <div className="px-4 md:px-10 pb-20 pt-28">
+        <div className="px-4 md:px-10 pb-10 pt-28">
           <div className="space-y-12">
             {/* Header Card with Title, Logo, and Metrics */}
             <div
@@ -292,15 +292,15 @@ const InfluenceDetails = () => {
                             ? thumbsSwiper
                             : null,
                       }}
-                      className="w-full rounded-3xl shadow-xl"
+                      className="w-full rounded-3xl shadow-xl h-[500px] md:h-[600px]"
                     >
                       {media.map((src, index) => (
                         <SwiperSlide key={`${src}-${index}`}>
-                          <div className="group relative overflow-hidden rounded-[28px] border border-[var(--foreground)]/10 bg-[var(--container-bg)]/60 shadow-2xl">
+                          <div className="group relative h-full w-full overflow-hidden rounded-[28px] border border-[var(--foreground)]/10 bg-[var(--container-bg)]/60 shadow-2xl">
                             <img
                               src={src}
                               alt={`${title} media ${index + 1}`}
-                              className="h-full w-full max-h-[380px] object-cover transition-transform duration-700 group-hover:scale-105"
+                              className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)]/60 via-[var(--background)]/10 to-transparent transition-opacity duration-300 group-hover:opacity-100" />
                           </div>
