@@ -18,7 +18,7 @@ export default defineConfig({
           "vendor-react": ["react", "react-dom", "react-router-dom"],
           "vendor-gsap": ["gsap", "@gsap/react"],
           "vendor-animations": ["aos", "lenis"],
-          "vendor-3d": ["three", "ogl", "postprocessing"],
+          "vendor-ogl": ["ogl"],
           "vendor-ui": [
             "@radix-ui/react-avatar",
             "@radix-ui/react-slot",
