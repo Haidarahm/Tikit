@@ -345,7 +345,7 @@ const InfluenceDetails = () => {
               {objective && (
                 <div
                   data-text-card
-                  className="relative overflow-hidden rounded-[28px] border border-[var(--foreground)]/10 bg-[var(--container-bg)] p-8 md:p-10 shadow-xl"
+                  className="relative h-fit overflow-hidden rounded-[28px] border border-[var(--foreground)]/10 bg-[var(--container-bg)] p-8 md:p-10 shadow-xl"
                 >
                   <div className="relative space-y-4">
                     <h2 className="text-xs font-semibold uppercase tracking-[0.6em] text-[var(--foreground)]/60">
