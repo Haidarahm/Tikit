@@ -45,25 +45,54 @@
         }
     },
     "faq": {
-        "home": {
-            "q1": "What is Tikit Agency?",
-            "a1": "Tikit Agency is a leading influencer marketing and talent management agency based in Dubai, UAE, with offices in Saudi Arabia, Istanbul (Turkey), and Syria. We connect brands with authentic creators to drive real engagement and measurable ROI across the GCC and MENA region. With 300+ happy clients and 50+ team members, we're one of the top influencer marketing agencies in the Middle East.",
-            "q2": "What services does Tikit Agency offer?",
-            "a2": "Tikit Agency offers comprehensive marketing services including: Influencer Marketing, Talent Management, Social Media Marketing, Branding & Identity Design, Content Production, Web Development, and Digital Marketing. We serve clients across Dubai, Abu Dhabi, Saudi Arabia (Riyadh, Jeddah), Istanbul (Turkey), and the broader MENA region.",
-            "q3": "How can I contact Tikit Agency?",
-            "a3": "You can contact Tikit Agency at +971 4 577 4042 or email Holla@tikit.ae. Our main office is located in The Burlington Tower, Marasi Drive, Dubai – Office 309. We also have offices in Saudi Arabia, Istanbul (Turkey), and Syria. Follow us on Instagram @tikit.ae for updates.",
-            "q4": "Does Tikit work with influencers in Saudi Arabia?",
-            "a4": "Yes! Tikit Agency has a dedicated office in Saudi Arabia and works with top influencers across Riyadh, Jeddah, and the entire Kingdom. We're recognized as one of the best influencer marketing agencies in KSA, helping brands connect with authentic Saudi content creators.",
-            "q5": "How do I become an influencer with Tikit?",
-            "a5": "Content creators can register with Tikit Agency through our Influencer Registration page. We offer three plans: Management, Affiliate, and Premium, each providing different levels of support including brand deal negotiations, contract review, dedicated account management, and international opportunities."
+        "title": "Frequently Asked Questions",
+        "subtitle": "Find answers to common questions about our services, processes, and how we can help your brand grow.",
+        "cta": {
+            "title": "Still have questions?",
+            "description": "Get in touch with our team and we'll be happy to help you.",
+            "button": "Contact Us"
         },
-        "services": {
-            "q1": "What makes Tikit different from other influencer agencies?",
-            "a1": "Tikit Agency combines data-driven matchmaking with authentic creator relationships. Unlike traditional agencies, we focus on ROI and measurable results. Our team of 50+ experts, presence in Dubai and Saudi Arabia, and track record of 300+ happy clients make us a trusted partner for brands seeking real impact in the GCC market.",
-            "q2": "How does influencer marketing work with Tikit?",
-            "a2": "Our influencer marketing process includes: 1) Understanding your brand goals, 2) Data-backed influencer matching, 3) Campaign strategy development, 4) Content creation and approval, 5) Campaign execution across platforms, 6) Real-time analytics and reporting. We handle everything from nano-influencers to celebrity partnerships.",
-            "q3": "What platforms does Tikit cover?",
-            "a3": "Tikit Agency manages influencer campaigns across all major platforms including Instagram, TikTok, YouTube, Snapchat, Twitter/X, LinkedIn, and Facebook. We specialize in platforms popular in the MENA region and can customize campaigns for specific audience segments."
+        "questions": {
+            "q1": {
+                "question": "How does Tikit Agency work?",
+                "answer": "Our process is simple and effective: First, we dive deep into understanding your brand goals and target audience. Then, our strategy team develops a customized campaign plan. Next, we match you with the right creators or create compelling content. Finally, we execute the campaign and provide real-time analytics and reporting. Throughout the process, you'll have a dedicated account manager ensuring everything runs smoothly."
+            },
+            "q2": {
+                "question": "What is your production process?",
+                "answer": "Our production workflow has four phases: 1) Pre-Production - concept development, scriptwriting, location scouting, and planning. 2) Production - professional filming with cinema cameras, drones, and state-of-the-art equipment. 3) Post-Production - expert editing, color grading, motion graphics, and sound design. 4) Delivery - optimized content in all required formats for your platforms. We handle everything from social media reels to full-scale commercial productions."
+            },
+            "q3": {
+                "question": "Who is on the Tikit team?",
+                "answer": "Our team consists of 50+ creative professionals including: strategists who plan data-driven campaigns, content creators and videographers who bring ideas to life, social media managers who engage audiences, designers who craft visual identities, and account managers who ensure client satisfaction. We also have specialists in influencer relations, analytics, and paid advertising across the MENA region."
+            },
+            "q4": {
+                "question": "Where are Tikit's offices located?",
+                "answer": "Tikit Agency has a strategic presence across the MENA region. Our headquarters is in Dubai at The Burlington Tower, Marasi Drive, Office 309. We also have dedicated offices in Saudi Arabia (serving Riyadh and Jeddah), Istanbul (Turkey), and Syria. This regional presence allows us to understand local markets and deliver culturally relevant campaigns across the GCC and broader MENA region."
+            },
+            "q5": {
+                "question": "How long does a typical campaign take?",
+                "answer": "Campaign timelines vary based on scope and objectives. A quick influencer activation can launch in 1-2 weeks, while comprehensive brand campaigns typically take 4-8 weeks from strategy to execution. Full-scale production projects may require 6-12 weeks. During our initial consultation, we'll provide a detailed timeline tailored to your specific project and goals."
+            },
+            "q6": {
+                "question": "What platforms do you specialize in?",
+                "answer": "We manage campaigns across all major social media platforms including Instagram, TikTok, YouTube, Snapchat, Twitter/X, LinkedIn, and Facebook. We're particularly strong in platforms popular in the MENA region like Instagram and Snapchat. Our team stays updated with platform algorithms, trending formats, and best practices to maximize your content's reach and engagement."
+            },
+            "q7": {
+                "question": "Do you work with international brands?",
+                "answer": "Absolutely! While we're based in the MENA region, we work with both local and international brands. Our multilingual team (English, Arabic, French, Turkish) and cultural expertise help global brands enter and succeed in Middle Eastern markets. We've successfully launched campaigns for brands from Europe, Asia, and North America looking to establish presence in the GCC region."
+            },
+            "q8": {
+                "question": "What is your pricing structure?",
+                "answer": "Our pricing is customized based on project scope, deliverables, and campaign duration. We offer flexible packages ranging from one-time projects to ongoing retainer agreements. Influencer marketing campaigns start based on the creator tier and engagement goals. Production services are quoted per project based on complexity. Contact us for a detailed proposal tailored to your budget and objectives."
+            },
+            "q9": {
+                "question": "How do you measure campaign success?",
+                "answer": "We track comprehensive metrics aligned with your goals: reach and impressions, engagement rates (likes, comments, shares), website traffic and conversions, follower growth, brand sentiment analysis, and ROI. You'll receive detailed analytics reports showing campaign performance, audience insights, and recommendations for optimization. We believe in transparency and data-driven results."
+            },
+            "q10": {
+                "question": "Can you help with both organic and paid campaigns?",
+                "answer": "Yes! We offer both organic content strategy and paid advertising services. Our organic approach focuses on authentic engagement, community building, and content that resonates. For paid campaigns, we manage social media ads across Facebook, Instagram, TikTok, Snapchat, and LinkedIn with precise targeting and budget optimization. Most clients benefit from a hybrid approach combining both strategies for maximum impact."
+            }
         }
     },
     "home": {

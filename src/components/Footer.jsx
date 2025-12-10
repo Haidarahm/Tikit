@@ -56,6 +56,7 @@ const Footer = ({ className }) => {
     { to: "/work", label: t("footer.links.work") },
     { to: "/contact", label: t("footer.links.contact") },
     { to: "/influencer", label: t("nav.influencers", "Influencers") },
+    { to: "/faq", label: t("footer.links.faq", "FAQ") },
   ];
 
   const serviceLinks = [

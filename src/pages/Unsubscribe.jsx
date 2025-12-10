@@ -43,7 +43,7 @@ const Unsubscribe = () => {
   }, [token]);
 
   return (
-    <div data-nav-color="dark" className="min-h-screen flex items-center justify-center bg-[var(--background)] px-4 py-12">
+    <div data-nav-color="black" className="min-h-screen flex items-center justify-center bg-[var(--background)] px-4 py-12">
       <div className="max-w-2xl w-full">
         <div className="bg-[var(--container-bg)] dark:bg-[var(--container-bg)] border border-[var(--foreground)]/10 dark:border-[var(--foreground)]/20 rounded-2xl shadow-lg p-8 md:p-12 text-center">
           {loading ? (

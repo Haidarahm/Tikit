@@ -41,18 +41,18 @@ const SEOHead = ({
 
   const fullTitle = title
     ? `${title} | ${siteName}`
-    : `${siteName} - Best Influencer Marketing Agency in Dubai & Saudi Arabia`;
+    : `${siteName} - Best Social Media Management Company in Emirates & Saudi Arabia | Influencer Marketing & Branding`;
   const fullDescription =
     description ||
     t(
       "seo.defaultDescription",
-      "Tikit Agency is a leading influencer marketing agency in Dubai and Saudi Arabia. We connect brands with authentic creators to drive real engagement and measurable ROI across the GCC region. 300+ happy clients, 50+ team members."
+      "Tikit Agency is the best social media management company in Emirates (UAE) and Saudi Arabia. We offer comprehensive influencer marketing, social media management, and branding services. Connect with authentic creators, build engaged communities, and create memorable brand identities across Dubai, Abu Dhabi, Riyadh, Jeddah, and the GCC region. 300+ happy clients, 50+ team members."
     );
   const fullKeywords =
     keywords ||
     t(
       "seo.defaultKeywords",
-      "influencer marketing agency Dubai, influencer agency Saudi Arabia, best influencer marketing agency UAE, talent management Dubai, social media marketing GCC, influencer marketing KSA, content creators Dubai"
+      "best social media management company Emirates, best social media management company Saudi Arabia, best social media management company UAE, influencer marketing Emirates, influencer marketing Saudi Arabia, branding company Emirates, branding company Saudi Arabia, social media agency Dubai, influencer marketing agency Dubai, branding agency Dubai, social media management Dubai, influencer marketing or branding, best influencer marketing company Emirates"
     );
   const fullCanonicalUrl = canonicalUrl ? `${baseUrl}${canonicalUrl}` : baseUrl;
   const fullOgImage = ogImage || defaultImage;
@@ -287,8 +287,21 @@ const SEOHead = ({
           "Influencer Marketing",
           "Talent Management", 
           "Social Media Marketing",
+          "Social Media Management",
           "Branding",
-          "Content Production"
+          "Brand Identity Design",
+          "Content Production",
+          "Digital Marketing",
+          "Community Management",
+          "Brand Strategy"
+        ],
+        "alternateName": [
+          "Best Social Media Management Company Emirates",
+          "Best Social Media Management Company Saudi Arabia",
+          "Best Influencer Marketing Company Emirates",
+          "Best Branding Company UAE",
+          "Social Media Agency Dubai",
+          "Influencer Marketing Agency Dubai"
         ]
       };
       schemas.push(defaultSchema);

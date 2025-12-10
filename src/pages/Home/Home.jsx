@@ -21,9 +21,9 @@ function Home() {
       className="sections overflow-hidden relative w-full home-scroll-trigger"
     >
       <SEOHead
-        title="Social Media Marketing Agency | Tikit"
-        description="Partner with Tikit Agency for full-service social media marketing, influencer campaigns, celebrity management, and creative production tailored for growth."
-        keywords="social media marketing, influencer marketing agency, celebrity management, social media agency UAE, content marketing, paid social campaigns"
+        title="Best Social Media Management Company in Emirates & Saudi Arabia | Influencer Marketing & Branding"
+        description="Tikit Agency is the best social media management company in Emirates (UAE) and Saudi Arabia. We offer comprehensive influencer marketing, social media management, and branding services. Connect with authentic creators, build engaged communities, and create memorable brand identities across Dubai, Abu Dhabi, Riyadh, Jeddah, and the GCC region."
+        keywords="best social media management company Emirates, best social media management company Saudi Arabia, best social media management company UAE, influencer marketing Emirates, influencer marketing Saudi Arabia, branding company Emirates, branding company Saudi Arabia, social media agency Dubai, influencer marketing agency Dubai, branding agency Dubai, influencer marketing or branding, best influencer marketing company Emirates, social media management Dubai, social media management Saudi Arabia"
         canonicalUrl="/home"
       />
 

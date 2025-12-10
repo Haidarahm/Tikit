@@ -39,6 +39,57 @@
             "keywords": "contacter agence marketing, obtenir devis marketing, consultation marketing, consultation marque, demande services marketing"
         }
     },
+    "faq": {
+        "title": "Questions Fréquemment Posées",
+        "subtitle": "Trouvez des réponses aux questions courantes sur nos services, nos processus et comment nous pouvons aider votre marque à se développer.",
+        "cta": {
+            "title": "Vous avez encore des questions ?",
+            "description": "Contactez notre équipe et nous serons ravis de vous aider.",
+            "button": "Contactez-nous"
+        },
+        "questions": {
+            "q1": {
+                "question": "Comment fonctionne l'Agence Tikit ?",
+                "answer": "Notre processus est simple et efficace : D'abord, nous plongeons profondément dans la compréhension des objectifs de votre marque et de votre public cible. Ensuite, notre équipe stratégique développe un plan de campagne personnalisé. Ensuite, nous vous mettons en relation avec les bons créateurs ou créons du contenu convaincant. Enfin, nous exécutons la campagne et fournissons des analyses et des rapports en temps réel. Tout au long du processus, vous aurez un responsable de compte dédié garantissant que tout se déroule sans accroc."
+            },
+            "q2": {
+                "question": "Quel est votre processus de production ?",
+                "answer": "Notre flux de travail de production comprend quatre phases : 1) Pré-production - développement du concept, scénarisation, repérage de lieux et planification. 2) Production - tournage professionnel avec des caméras cinéma, des drones et des équipements de pointe. 3) Post-production - montage expert, étalonnage des couleurs, motion graphics et design sonore. 4) Livraison - contenu optimisé dans tous les formats requis pour vos plateformes. Nous gérons tout, des reels sur les réseaux sociaux aux productions commerciales à grande échelle."
+            },
+            "q3": {
+                "question": "Qui compose l'équipe Tikit ?",
+                "answer": "Notre équipe se compose de plus de 50 professionnels créatifs comprenant : des stratèges qui planifient des campagnes basées sur les données, des créateurs de contenu et vidéastes qui donnent vie aux idées, des gestionnaires de médias sociaux qui engagent les audiences, des designers qui créent des identités visuelles, et des responsables de compte qui assurent la satisfaction des clients. Nous avons également des spécialistes en relations avec les influenceurs, en analytique et en publicité payante dans la région MENA."
+            },
+            "q4": {
+                "question": "Où sont situés les bureaux de Tikit ?",
+                "answer": "L'Agence Tikit a une présence stratégique dans toute la région MENA. Notre siège social est à Dubaï au Burlington Tower, Marasi Drive, Bureau 309. Nous avons également des bureaux dédiés en Arabie Saoudite (desservant Riyad et Djeddah), à Istanbul (Turquie) et en Syrie. Cette présence régionale nous permet de comprendre les marchés locaux et de livrer des campagnes culturellement pertinentes dans le CCG et la région MENA plus large."
+            },
+            "q5": {
+                "question": "Combien de temps dure une campagne typique ?",
+                "answer": "Les délais de campagne varient en fonction de la portée et des objectifs. Une activation rapide d'influenceur peut être lancée en 1-2 semaines, tandis que les campagnes de marque complètes prennent généralement 4-8 semaines de la stratégie à l'exécution. Les projets de production à grande échelle peuvent nécessiter 6-12 semaines. Lors de notre consultation initiale, nous fournirons un calendrier détaillé adapté à votre projet spécifique et à vos objectifs."
+            },
+            "q6": {
+                "question": "Quelles plateformes sont votre spécialité ?",
+                "answer": "Nous gérons des campagnes sur toutes les principales plateformes de médias sociaux, notamment Instagram, TikTok, YouTube, Snapchat, Twitter/X, LinkedIn et Facebook. Nous sommes particulièrement forts sur les plateformes populaires dans la région MENA comme Instagram et Snapchat. Notre équipe reste à jour avec les algorithmes des plateformes, les formats tendance et les meilleures pratiques pour maximiser la portée et l'engagement de votre contenu."
+            },
+            "q7": {
+                "question": "Travaillez-vous avec des marques internationales ?",
+                "answer": "Absolument ! Bien que nous soyons basés dans la région MENA, nous travaillons avec des marques locales et internationales. Notre équipe multilingue (anglais, arabe, français, turc) et notre expertise culturelle aident les marques mondiales à entrer et à réussir sur les marchés du Moyen-Orient. Nous avons lancé avec succès des campagnes pour des marques d'Europe, d'Asie et d'Amérique du Nord cherchant à établir une présence dans la région du CCG."
+            },
+            "q8": {
+                "question": "Quelle est votre structure tarifaire ?",
+                "answer": "Notre tarification est personnalisée en fonction de la portée du projet, des livrables et de la durée de la campagne. Nous proposons des forfaits flexibles allant des projets ponctuels aux accords de rétention en cours. Les campagnes de marketing d'influence commencent en fonction du niveau du créateur et des objectifs d'engagement. Les services de production sont cotés par projet en fonction de la complexité. Contactez-nous pour une proposition détaillée adaptée à votre budget et à vos objectifs."
+            },
+            "q9": {
+                "question": "Comment mesurez-vous le succès d'une campagne ?",
+                "answer": "Nous suivons des métriques complètes alignées avec vos objectifs : portée et impressions, taux d'engagement (likes, commentaires, partages), trafic sur le site web et conversions, croissance des abonnés, analyse du sentiment de marque et ROI. Vous recevrez des rapports d'analyse détaillés montrant les performances de la campagne, les insights sur l'audience et les recommandations d'optimisation. Nous croyons en la transparence et les résultats basés sur les données."
+            },
+            "q10": {
+                "question": "Pouvez-vous aider avec les campagnes organiques et payantes ?",
+                "answer": "Oui ! Nous offrons à la fois une stratégie de contenu organique et des services de publicité payante. Notre approche organique se concentre sur l'engagement authentique, la construction de communauté et le contenu qui résonne. Pour les campagnes payantes, nous gérons les publicités sur les médias sociaux sur Facebook, Instagram, TikTok, Snapchat et LinkedIn avec un ciblage précis et une optimisation du budget. La plupart des clients bénéficient d'une approche hybride combinant les deux stratégies pour un impact maximal."
+            }
+        }
+    },
     "home": {
         "title": "Accueil",
         "description": "Page d'accueil",

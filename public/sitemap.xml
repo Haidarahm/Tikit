@@ -77,6 +77,14 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- FAQ Page -->
+  <url>
+    <loc>https://tikit.ae/faq</loc>
+    <lastmod>2025-12-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- AI-Targeted Landing Pages -->
   <url>
     <loc>https://tikit.ae/influencer-marketing-dubai</loc>
