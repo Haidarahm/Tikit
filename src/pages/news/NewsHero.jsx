@@ -114,7 +114,7 @@ const NewsHero = () => {
   if (!isThemeReady || isDark === null) {
     return (
       <section className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-[var(--background)]">
-        <div className="text-[var(--foreground)] opacity-0">Loading...</div>
+        <div className="text-[var(--foreground)] opacity-0"></div>
       </section>
     );
   }

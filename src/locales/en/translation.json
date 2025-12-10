@@ -523,7 +523,11 @@
             "title3": "Attribution in 2025: What Actually Matters",
             "excerpt3": "How modern marketers measure success in an era of signal loss and privacy changes.",
             "readMore": "Read more"
-        }
+        },
+        "showMore": "Show More",
+        "loading": "Loading...",
+        "error": "Unable to load news right now. Please try again later.",
+        "noNews": "No news available."
     },
     "newsletter": {
         "title": "Stay Updated",

@@ -488,7 +488,11 @@
             "title3": "Attribution en 2025 : Ce Qui Compte Vraiment",
             "excerpt3": "Comment les spécialistes du marketing modernes mesurent le succès dans une ère de perte de signal et de changements de confidentialité.",
             "readMore": "Lire la suite"
-        }
+        },
+        "showMore": "Voir Plus",
+        "loading": "Chargement...",
+        "error": "Impossible de charger les actualités pour le moment. Veuillez réessayer plus tard.",
+        "noNews": "Aucune actualité disponible."
     },
     "newsletter": {
         "title": "Restez Informé",

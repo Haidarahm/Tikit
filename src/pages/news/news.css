@@ -68,7 +68,7 @@
 .news-cards-container {
   min-height: 100vh;
   background-color: var(--background);
-  padding: 0;
+  padding: 0 0 60px 0;
 }
 
 /* ---------- Cards Grid ---------- */
