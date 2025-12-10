@@ -442,6 +442,8 @@
             "client": "Client",
             "influencer": "Influencer",
             "addSocialLink": "Add Social Link",
+            "addMessage": "Add Message",
+            "hideMessage": "Hide Message",
             "selectPlatform": "Select platform",
             "socialPlatforms": {
                 "instagram": "Instagram",

@@ -254,6 +254,7 @@ const ContactUs = memo(({ className = "" }) => {
     { platform: "instagram", link: "" },
   ]);
   const [removingIndex, setRemovingIndex] = useState(null);
+  const [showMessage, setShowMessage] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -335,6 +336,7 @@ const ContactUs = memo(({ className = "" }) => {
           message: "",
         });
         setSocialLinks([{ platform: "instagram", link: "" }]);
+        setShowMessage(false);
       }
     } else {
       // Regular contact form
@@ -542,6 +544,44 @@ const ContactUs = memo(({ className = "" }) => {
                     {t("contact.action.addSocialLink") || "Add Social Link"}
                   </span>
                 </button>
+
+                {/* Message Toggle Button */}
+                <button
+                  type="button"
+                  onClick={() => setShowMessage(!showMessage)}
+                  className="flex items-center justify-center gap-2 px-3 py-2 bg-transparent border border-[var(--foreground)]/40 dark:border-white/30 rounded-lg text-[var(--foreground)] hover:bg-[var(--foreground)]/10 text-sm"
+                >
+                  <span className="text-lg font-bold">{showMessage ? "−" : "+"}</span>
+                  <span>
+                    {showMessage
+                      ? t("contact.action.hideMessage")
+                      : t("contact.action.addMessage")}
+                  </span>
+                </button>
+
+                {/* Message Textarea */}
+                {showMessage && (
+                  <div className="relative w-full">
+                    <textarea
+                      id="influencer-message"
+                      rows={3}
+                      value={formData.message}
+                      onChange={(e) =>
+                        handleInputChange("message", e.target.value)
+                      }
+                      className="w-full px-3 py-2 bg-transparent border border-[var(--foreground)]/40 rounded-lg text-[var(--foreground)] placeholder-transparent focus:border-[var(--foreground)] focus:outline-none peer resize-y min-h-[80px] text-sm"
+                      placeholder={t("contact.action.form.message")}
+                    />
+                    <label
+                      htmlFor="influencer-message"
+                      className={`absolute ${
+                        isRtl ? "right-3" : "left-3"
+                      } -top-2.5 bg-[#F5F7FB] dark:bg-[#000] px-1 text-[var(--foreground)] text-xs transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-2 peer-focus:-top-2.5 peer-focus:text-xs`}
+                    >
+                      {t("contact.action.form.message")}
+                    </label>
+                  </div>
+                )}
               </>
             )}
           </form>

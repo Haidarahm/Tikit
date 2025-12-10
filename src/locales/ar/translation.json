@@ -416,6 +416,8 @@
             "client": "عميل",
             "influencer": "مؤثر",
             "addSocialLink": "إضافة رابط اجتماعي",
+            "addMessage": "إضافة رسالة",
+            "hideMessage": "إخفاء الرسالة",
             "selectPlatform": "اختر المنصة",
             "socialPlatforms": {
                 "instagram": "إنستجرام",
