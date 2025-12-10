@@ -261,7 +261,7 @@ const ContactUs = memo(({ className = "" }) => {
     subject: "",
     message: "",
   });
-  const { sendContactEmail, loading } = useContactStore();
+  const { sendContactEmail, sendContactAsInfluencer, loading } = useContactStore();
 
   const handleSlideClick = (slideNumber) => {
     setIsSecondSlide(slideNumber === 2);
@@ -308,40 +308,56 @@ const ContactUs = memo(({ className = "" }) => {
       return;
     }
 
-    // For influencer form, include social links in message
-    let messageToSend = formData.message;
-    if (isSecondSlide && socialLinks.length > 0) {
-      const socialLinksText = socialLinks
-        .map((social) => `${social.platform}: ${social.link}`)
-        .join("\n");
-      messageToSend = messageToSend
-        ? `${messageToSend}\n\nSocial Links:\n${socialLinksText}`
-        : `Social Links:\n${socialLinksText}`;
-    }
+    if (isSecondSlide) {
+      // Format data for influencer registration
+      const influencerData = {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        subject: formData.subject || "Influencer Registration",
+        message: formData.message || "Influencer registration request",
+        social_links: socialLinks
+          .filter((social) => social.link && social.link.trim())
+          .map((social) => ({
+            link: social.link,
+            link_type: social.platform,
+          })),
+      };
 
-    const emailData = {
-      name: formData.name,
-      email: formData.email,
-      phone: formData.phone,
-      subject: isSecondSlide
-        ? "Influencer Registration"
-        : formData.subject || "Contact Form",
-      message:
-        messageToSend ||
-        (isSecondSlide ? "Influencer registration request" : ""),
-    };
+      const success = await sendContactAsInfluencer(influencerData);
+      if (success) {
+        // Reset form on success
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          subject: "",
+          message: "",
+        });
+        setSocialLinks([{ platform: "instagram", link: "" }]);
+      }
+    } else {
+      // Regular contact form
+      const emailData = {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        subject: formData.subject || "Contact Form",
+        message: formData.message,
+      };
 
-    const success = await sendContactEmail(emailData);
-    if (success) {
-      // Reset form on success
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        subject: "",
-        message: "",
-      });
-      setSocialLinks([{ platform: "instagram", link: "" }]);
+      const success = await sendContactEmail(emailData);
+      if (success) {
+        // Reset form on success
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          subject: "",
+          message: "",
+        });
+        setSocialLinks([{ platform: "instagram", link: "" }]);
+      }
     }
   };
 

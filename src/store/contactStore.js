@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { sendEmail } from "../apis/Contact";
+import { sendEmail, contactasinfluencer } from "../apis/Contact";
 import { useToastStore } from "./toastStore";
 
 const STORAGE_KEY = "contact_email_tracking";
@@ -85,6 +85,51 @@ export const useContactStore = create((set) => ({
         err?.response?.data?.message ||
         err?.message ||
         "Failed to send message";
+
+      if (!silent) {
+        useToastStore.getState().addToast(errorMsg, "error");
+      }
+
+      set({ error: errorMsg, loading: false });
+      return false;
+    }
+  },
+
+  sendContactAsInfluencer: async (data, silent = false) => {
+    // Check if email has exceeded message limit
+    if (!canSendMessage(data.email)) {
+      const errorMsg = `You have exceeded the maximum number of messages (${MAX_MESSAGES_PER_EMAIL}) allowed per email address. Please wait before sending another message.`;
+      set({ error: errorMsg, loading: false });
+      if (!silent) {
+        useToastStore.getState().addToast(errorMsg, "error");
+      }
+      return false;
+    }
+
+    set({ loading: true, error: null, success: false });
+    try {
+      const res = await contactasinfluencer(data);
+
+      if (res.status) {
+        // Increment message count on success
+        incrementMessageCount(data.email);
+
+        const msg = res.message || "Registration sent successfully";
+
+        if (!silent) {
+          useToastStore.getState().addToast(msg, "success");
+        }
+
+        set({ success: true, loading: false });
+        return true;
+      } else {
+        throw new Error(res.message || "Failed to send registration");
+      }
+    } catch (err) {
+      const errorMsg =
+        err?.response?.data?.message ||
+        err?.message ||
+        "Failed to send registration";
 
       if (!silent) {
         useToastStore.getState().addToast(errorMsg, "error");

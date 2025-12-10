@@ -120,13 +120,9 @@ const Reviews = memo(() => {
     loadVideos({ per_page: 20 });
   }, [loadVideos]);
 
-  // Split videos into two rows
-  const firstRowVideos = videos.filter((_, i) => i % 2 === 0);
-  const secondRowVideos = videos.filter((_, i) => i % 2 === 1);
-
   if (loading && videos.length === 0) {
     return (
-      <div className="reviews relative w-full min-h-[400px] py-10 md:py-20 flex items-center justify-center">
+      <div className="reviews relative w-full py-10 md:py-20 flex items-center justify-center">
         <div className="animate-pulse text-[var(--foreground)]/60">Loading reels...</div>
       </div>
     );
@@ -138,7 +134,7 @@ const Reviews = memo(() => {
 
   return (
     <div
-      className={`reviews relative w-full md:min-h-[120vh] py-10 md:py-20 ${
+      className={`reviews relative w-full py-10 md:py-20 ${
         isRtl ? "font-cairo" : "font-hero-light"
       }`}
       dir={isRtl ? "rtl" : "ltr"}
@@ -149,26 +145,11 @@ const Reviews = memo(() => {
       
       <ThreeDScrollTriggerContainer dir="ltr">
         <ThreeDScrollTriggerRow baseVelocity={2} direction={1}>
-          {firstRowVideos.map((video, index) => (
+          {videos.map((video, index) => (
             <VideoReelCard
-              key={`${video.id}-row1`}
+              key={`${video.id}`}
               video={video}
-              index={index * 2}
-              theme={theme}
-            />
-          ))}
-        </ThreeDScrollTriggerRow>
-      </ThreeDScrollTriggerContainer>
-      
-      <div className="h-6" />
-      
-      <ThreeDScrollTriggerContainer dir="ltr">
-        <ThreeDScrollTriggerRow baseVelocity={2} direction={-1}>
-          {secondRowVideos.map((video, index) => (
-            <VideoReelCard
-              key={`${video.id}-row2`}
-              video={video}
-              index={index * 2 + 1}
+              index={index}
               theme={theme}
             />
           ))}
