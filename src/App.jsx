@@ -75,6 +75,7 @@ const InfluencerMarketingSaudiArabia = lazy(() =>
 
 // Legal Pages
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy.jsx"));
+const Unsubscribe = lazy(() => import("./pages/Unsubscribe.jsx"));
 // 404 Page
 const NotFound = lazy(() => import("./pages/NotFound.jsx"));
 // Loading component
@@ -145,6 +146,7 @@ function App() {
               <Route path="/influencer-marketing-saudi-arabia" element={<InfluencerMarketingSaudiArabia />} />
               {/* Legal Pages */}
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="/unsubscribe/:token" element={<Unsubscribe />} />
               {/* 404 Page */}
               <Route path="*" element={<NotFound />} />
             </Route>
