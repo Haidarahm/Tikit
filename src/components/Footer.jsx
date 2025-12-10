@@ -1,13 +1,12 @@
 import React from "react";
 import {
-  FaFacebookF,
   FaInstagram,
   FaLinkedinIn,
   FaPhone,
   FaEnvelope,
   FaMapMarkerAlt,
+  FaTiktok,
 } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import FloatingInput from "./ui/FloatingInput";
 import SVGComponent from "../assets/logo";
@@ -31,14 +30,24 @@ const Footer = ({ className }) => {
   };
 
   const social = [
-    { href: "https://facebook.com", labelKey: "facebook", Icon: FaFacebookF },
     {
       href: "https://www.instagram.com/tikit.ae/",
       labelKey: "instagram",
       Icon: FaInstagram,
+      comingSoon: false,
     },
-    { href: "https://linkedin.com", labelKey: "linkedin", Icon: FaLinkedinIn },
-    { href: "https://x.com", labelKey: "twitter", Icon: FaXTwitter },
+    {
+      href: "https://www.linkedin.com/company/tikitmarketingmanagement",
+      labelKey: "linkedin",
+      Icon: FaLinkedinIn,
+      comingSoon: false,
+    },
+    {
+      href: "#",
+      labelKey: "tiktok",
+      Icon: FaTiktok,
+      comingSoon: true,
+    },
   ];
 
   const quickLinks = [
@@ -138,16 +147,31 @@ const Footer = ({ className }) => {
               
               {/* Social Icons */}
               <div className="flex items-center gap-3">
-                {social.map(({ href, labelKey, Icon }) => {
+                {social.map(({ href, labelKey, Icon, comingSoon }) => {
                   const base =
-                    "group w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300";
+                    "group relative w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300";
                   const themeClasses =
                     theme === "dark"
                       ? "bg-white/5 text-white/70 hover:bg-[var(--secondary)] hover:text-black"
                       : "bg-[var(--secondary)]/10 text-[var(--secondary)] hover:bg-[var(--secondary)] hover:text-white";
-                  return (
+                  
+                  const content = comingSoon ? (
+                    <div
+                      className={`${base} ${themeClasses} cursor-not-allowed`}
+                      onClick={(e) => e.preventDefault()}
+                    >
+                      <Icon
+                        size={16}
+                        className="group-hover:scale-110 transition-transform"
+                      />
+                      {/* Tooltip */}
+                      <span className={`absolute bottom-full ${isRtl ? "right-1/2 translate-x-1/2" : "left-1/2 -translate-x-1/2"} mb-2 px-3 py-1.5 bg-gray-900 dark:bg-gray-800 text-white text-xs rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 pointer-events-none transition-all duration-300 ease-in-out shadow-lg z-50`}>
+                        {t("footer.social.comingSoon")}
+                        <span className={`absolute top-full ${isRtl ? "right-1/2 translate-x-1/2" : "left-1/2 -translate-x-1/2"} border-4 border-transparent border-t-gray-900 dark:border-t-gray-800`}></span>
+                      </span>
+                    </div>
+                  ) : (
                     <a
-                      key={labelKey}
                       href={href}
                       target="_blank"
                       rel="noreferrer noopener"
@@ -156,10 +180,12 @@ const Footer = ({ className }) => {
                     >
                       <Icon
                         size={16}
-                        className="group-hover:scale-110 transition-transform hover:"
+                        className="group-hover:scale-110 transition-transform"
                       />
                     </a>
                   );
+                  
+                  return <React.Fragment key={labelKey}>{content}</React.Fragment>;
                 })}
               </div>
             </div>

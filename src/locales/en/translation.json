@@ -570,7 +570,9 @@
             "facebook": "Facebook",
             "instagram": "Instagram",
             "linkedin": "LinkedIn",
-            "twitter": "X (Twitter)"
+            "twitter": "X (Twitter)",
+            "tiktok": "TikTok",
+            "comingSoon": "Will be soon"
         }
     },
     "influencer": {

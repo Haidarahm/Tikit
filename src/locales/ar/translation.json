@@ -534,7 +534,9 @@
             "facebook": "فيسبوك",
             "instagram": "إنستجرام",
             "linkedin": "لينكد إن",
-            "twitter": "اكس (تويتر)"
+            "twitter": "اكس (تويتر)",
+            "tiktok": "تيك توك",
+            "comingSoon": "قريباً"
         }
     },
     "influencer": {
