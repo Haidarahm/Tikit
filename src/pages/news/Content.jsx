@@ -96,6 +96,14 @@ const Content = () => {
       const cards = gsap.utils.toArray("[data-parallax-card]");
       cards.forEach((card) => {
         const img = card.querySelector("[data-parallax-image]");
+        if (!img) return;
+        
+        // Set GPU acceleration hints
+        gsap.set(img, {
+          force3D: true,
+          willChange: "transform",
+        });
+
         gsap.to(img, {
           yPercent: 40,
           ease: "none",
@@ -103,21 +111,40 @@ const Content = () => {
             trigger: card,
             start: "top bottom",
             end: "bottom top",
-            scrub: true,
+            scrub: 1, // Use numeric scrub for better performance
+            fastScrollEnd: true, // Better performance for fast scrolling
+            refreshPriority: -1, // Lower priority for parallax effects
+            invalidateOnRefresh: false, // Don't recalculate on refresh
           },
         });
       });
-      ScrollTrigger.refresh();
+      
+      // Defer refresh to next frame for better performance
+      requestAnimationFrame(() => {
+        ScrollTrigger.refresh();
+      });
     }, containerRef);
 
     return () => ctx.revert();
   }, [newsItems, loading]);
 
-  // Refresh ScrollTrigger on window resize
+  // Refresh ScrollTrigger on window resize (debounced)
   useEffect(() => {
-    const handleResize = () => ScrollTrigger.refresh();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    let resizeTimeout;
+    const handleResize = () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        requestAnimationFrame(() => {
+          ScrollTrigger.refresh();
+        });
+      }, 150);
+    };
+    
+    window.addEventListener("resize", handleResize, { passive: true });
+    return () => {
+      clearTimeout(resizeTimeout);
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   return (

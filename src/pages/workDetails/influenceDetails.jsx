@@ -161,6 +161,7 @@ const InfluenceDetails = () => {
 
   return (
     <div
+    data-nav-color="black"
       className={`influence-details min-h-screen ${
         isRtl ? "font-cairo" : "font-hero-light"
       }`}

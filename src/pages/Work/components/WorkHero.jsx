@@ -1,9 +1,8 @@
 import React, { useEffect, useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
-import GradientText from "../../../components/GradientText";
 import TikitTitle from "../../../components/TikitTitle";
 
-const WorkHero = ({ gradientColors, t, isRtl }) => {
+const WorkHero = ({  t, isRtl }) => {
   const titleContainerRef = useRef(null);
   const titleRef = useRef(null);
   const descTitleWrapRef = useRef(null);

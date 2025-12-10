@@ -1,10 +1,11 @@
 import React from "react";
 
-const NonDigitalWorkCard = ({ innerRef, normalized, t, onViewDetails }) => {
+const NonDigitalWorkCard = ({isRtl, innerRef, normalized, t, onViewDetails }) => {
+  
   return (
     <div
       ref={innerRef}
-      data-nav-color="white"
+      
       className="group relative overflow-hidden rounded-lg shadow-lg h-full w-full"
       style={{ minHeight: "10%" }}
     >
@@ -12,7 +13,7 @@ const NonDigitalWorkCard = ({ innerRef, normalized, t, onViewDetails }) => {
         <img
           src={normalized.image}
           alt={normalized.title || "work"}
-          className="h-full w-full rounded-lg object-cover"
+          className="h-full w-full object-center rounded-lg object-cover"
           loading="lazy"
         />
       ) : (
@@ -21,13 +22,13 @@ const NonDigitalWorkCard = ({ innerRef, normalized, t, onViewDetails }) => {
 
       <div className="content-work absolute inset-0 flex flex-col items-center justify-center overflow-hidden bg-black/30 opacity-100 transition-opacity duration-300 md:bg-black/60 md:opacity-0 md:group-hover:opacity-100">
         {normalized.title ? (
-          <h3 className="text-center text-[26px] font-bold text-white md:text-[30px]">
+          <h3  className={`${isRtl ? "font-cairo" : "font-antonio"}  text-center text-[28px] font-bold text-white md:text-[60px]`}>
             {normalized.title}
           </h3>
         ) : null}
-        {normalized.subtitle ? (
+        {normalized.objective ? (
           <p className="mb-4 text-center text-[18px] text-gray-200 md:text-[20px]">
-            {normalized.subtitle}
+            {normalized.objective}
           </p>
         ) : null}
         <button

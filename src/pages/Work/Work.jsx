@@ -63,10 +63,6 @@ const Work = () => {
     window.scrollTo(0, 0);
     gsap.ticker.add(() => ScrollTrigger.update());
   }, []);
-  const gradientColors =
-    theme === "light"
-      ? ["#52C3C5", "#5269C5", "#52C3C5", "#52A0C5", "#52C3C5"] // Light theme colors
-      : ["#07D9F5", "#06AEC4", "#4E7CC6", "#CE88C6", "#FB8DEF"]; // Dark theme colors (original)
 
   useEffect(() => {
     const htmlEl = document.documentElement;
@@ -209,7 +205,7 @@ const Work = () => {
         keywords="portfolio, case studies, marketing projects, creative work, brand campaigns, digital marketing examples, UAE agency work"
         canonicalUrl="/work"
       />
-      <WorkHero gradientColors={gradientColors} t={t} isRtl={isRtl} />
+      <WorkHero  t={t} isRtl={isRtl} />
 
       <WorkSectionSelector
         sections={sections}

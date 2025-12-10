@@ -18,6 +18,7 @@ import {
 } from "react-icons/fi";
 import DigitalWorkCard from "./DigitalWorkCard";
 import NonDigitalWorkCard from "./NonDigitalWorkCard";
+import { useI18nLanguage } from "../../../store/I18nLanguageContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -43,6 +44,7 @@ const normalizeItem = (item, type, fallbackImage) => {
       const data = item ?? {};
       return {
         title: data?.title ?? "",
+        objective: data?.objective ?? "",
         image:
           getFirstMediaUrl(item?.media) ??
           extractMediaUrl(data?.logo) ??
@@ -127,7 +129,6 @@ const plannedMetrics = new Set([
   "traffic",
   "ftus",
 ]);
-
 const percentMetrics = new Set(["ctr", "top_search"]);
 const dollarMetrics = new Set(["cpp"]);
 const kwdMetrics = new Set(["avg_cart", "cltv"]);
@@ -252,7 +253,7 @@ const WorkItemsGrid = ({
 
     const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
     const start = isMobile ? "top 80%" : "top 90%";
-    const end = isMobile ? "top 60%" : "top 20%";
+    const end = isMobile ? "top 60%" : "top 10%";
 
     const ctx = gsap.context(() => {
       imagesRef.current.forEach((el) => {
@@ -288,9 +289,9 @@ const WorkItemsGrid = ({
     5: "md:grid-rows-5",
     6: "md:grid-rows-6",
   };
-  console.log(computedRows)
+  const { isRtl } = useI18nLanguage();
   const rowClass = rowClassMap[computedRows] ?? "md:grid-rows-4";
-  const dynamicHeight = computedRows * 55;
+  const dynamicHeight = computedRows * 85;
 
   const containerClass = isDigital
     ? "images grid grid-cols-1 gap-6 md:gap-8 p-4 md:px-6"
@@ -347,6 +348,7 @@ const WorkItemsGrid = ({
               return (
                 <NonDigitalWorkCard
                   key={normalized.detailId ?? `${activeKey}-${index}`}
+                  isRtl={isRtl}
                   innerRef={(el) => {
                     imagesRef.current[index] = el;
                   }}
