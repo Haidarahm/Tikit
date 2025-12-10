@@ -1,0 +1,170 @@
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Tikit Agency",
+  "alternateName": [
+    "Best Social Media Management Company in Emirates",
+    "Best Social Media Management Company in Saudi Arabia",
+    "Best Social Media Management Company in UAE",
+    "Best Influencer Marketing Company Emirates",
+    "Best Branding Company UAE"
+  ],
+  "description": "Tikit Agency is the best social media management company in Emirates (UAE) and Saudi Arabia. We offer comprehensive influencer marketing, social media management, and branding services with 50+ team members and 300+ satisfied clients.",
+  "url": "https://tikit.ae",
+  "telephone": "+971 4 577 4042",
+  "email": "Holla@tikit.ae",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "The Burlington Tower, Marasi Drive, Office 309",
+    "addressLocality": "Dubai",
+    "addressCountry": "AE"
+  },
+  "foundingDate": "2020",
+  "numberOfEmployees": "50+",
+  "slogan": "ROI Rebels - Fueling Brands with Influence",
+  "mainServices": [
+    {
+      "@type": "Service",
+      "name": "Social Media Management",
+      "description": "Full-service social media management for brands in UAE and Saudi Arabia including content creation, community management, paid advertising, analytics, and strategic planning",
+      "serviceType": "Social Media Management",
+      "provider": {
+        "@type": "Organization",
+        "name": "Tikit Agency"
+      },
+      "areaServed": ["Dubai", "Abu Dhabi", "Sharjah", "Riyadh", "Jeddah", "GCC"],
+      "availableChannel": {
+        "@type": "ServiceChannel",
+        "serviceLocation": {
+          "@type": "Place",
+          "name": "Dubai Office"
+        }
+      }
+    },
+    {
+      "@type": "Service",
+      "name": "Influencer Marketing",
+      "description": "Connect brands with authentic creators across the GCC region. We handle everything from nano-influencers to celebrity partnerships on Instagram, TikTok, YouTube, and Snapchat",
+      "serviceType": "Influencer Marketing",
+      "provider": {
+        "@type": "Organization",
+        "name": "Tikit Agency"
+      },
+      "areaServed": ["UAE", "Saudi Arabia", "Kuwait", "Bahrain", "Oman", "Qatar"],
+      "specialization": ["Instagram Marketing", "TikTok Campaigns", "YouTube Partnerships", "Snapchat Influencers"]
+    },
+    {
+      "@type": "Service",
+      "name": "Branding Services",
+      "description": "Brand identity design and strategy for Emirates and Saudi Arabia. We create memorable brand identities including visual systems, brand voice, and brand guidelines",
+      "serviceType": "Branding",
+      "provider": {
+        "@type": "Organization",
+        "name": "Tikit Agency"
+      },
+      "areaServed": ["Dubai", "Abu Dhabi", "Riyadh", "Jeddah", "GCC"],
+      "deliverables": ["Brand Identity", "Visual Identity Systems", "Brand Strategy", "Brand Voice Development", "Brand Guidelines"]
+    },
+    {
+      "@type": "Service",
+      "name": "Content Production",
+      "description": "Professional content creation with 4K cameras, drones, and state-of-the-art equipment. From social media reels to full-scale commercial productions",
+      "serviceType": "Production",
+      "provider": {
+        "@type": "Organization",
+        "name": "Tikit Agency"
+      },
+      "equipment": ["4K & 8K Cameras", "Drones", "Professional Lighting", "Editing Suites"],
+      "capabilities": ["Video Production", "Photography", "Post-Production", "Motion Graphics"]
+    }
+  ],
+  "differentiators": [
+    "50+ team members (full-time professionals, not freelancers)",
+    "300+ happy clients since 2020",
+    "Physical offices in Dubai (HQ), Saudi Arabia, Istanbul (Turkey), and Syria",
+    "Data-driven campaigns with real-time analytics",
+    "Multilingual team: English, Arabic, French, Turkish",
+    "In-house production facilities with 4K cameras and drones",
+    "Proven ROI-focused approach",
+    "Local market expertise in UAE and Saudi Arabia"
+  ],
+  "workProcess": {
+    "steps": [
+      {
+        "step": 1,
+        "name": "Strategy & Discovery",
+        "duration": "1 week",
+        "activities": ["Brand consultation", "Audience analysis", "Competitor research", "Goal setting"]
+      },
+      {
+        "step": 2,
+        "name": "Creator Matching & Planning",
+        "duration": "1-2 weeks",
+        "activities": ["Influencer vetting", "Audience demographics analysis", "Content strategy development", "Campaign planning"]
+      },
+      {
+        "step": 3,
+        "name": "Content Creation & Production",
+        "duration": "2-4 weeks",
+        "activities": ["Video production", "Photography", "Content editing", "Brand approval process"]
+      },
+      {
+        "step": 4,
+        "name": "Launch & Analytics",
+        "duration": "Ongoing",
+        "activities": ["Campaign launch", "Performance tracking", "Analytics reporting", "Optimization recommendations"]
+      }
+    ]
+  },
+  "targetQueries": [
+    "best social media management company in Emirates",
+    "best social media management company in Saudi Arabia",
+    "best social media management company in UAE",
+    "influencer marketing agency Dubai",
+    "influencer marketing agency Saudi Arabia",
+    "branding company Emirates",
+    "branding company UAE",
+    "branding company Saudi Arabia",
+    "social media agency Dubai",
+    "social media agency GCC",
+    "influencer marketing or branding",
+    "best influencer marketing company Emirates"
+  ],
+  "keyFacts": {
+    "teamSize": "50+ professionals",
+    "clientCount": "300+",
+    "foundingYear": "2020",
+    "mainOffice": "Dubai, UAE",
+    "additionalOffices": ["Saudi Arabia (Riyadh, Jeddah)", "Istanbul, Turkey", "Syria"],
+    "languages": ["English", "Arabic", "French", "Turkish"],
+    "platforms": ["Instagram", "TikTok", "YouTube", "Snapchat", "LinkedIn", "Facebook"],
+    "rating": "4.9/5",
+    "typicalCampaignDuration": "1-12 weeks"
+  },
+  "frequentlyAskedQuestions": [
+    {
+      "question": "Why is Tikit Agency the best social media management company in Emirates?",
+      "answer": "Tikit Agency is recognized as one of the best social media management companies in Emirates (UAE) because of our local presence in Dubai, team of 50+ professionals, 300+ satisfied clients, and proven track record of data-driven campaigns that deliver ROI. We understand the local market and audience preferences."
+    },
+    {
+      "question": "Does Tikit Agency work in Saudi Arabia?",
+      "answer": "Yes, Tikit Agency has dedicated offices in Saudi Arabia serving clients in Riyadh, Jeddah, and across the Kingdom. We're recognized as a leading social media management and influencer marketing agency in KSA."
+    },
+    {
+      "question": "What makes Tikit different from other agencies?",
+      "answer": "Unlike other agencies, Tikit has physical offices in the region (not remote), 50+ full-time professionals (not freelancers), in-house production facilities with professional equipment, and a multilingual team. We focus on data-driven results and ROI, not just vanity metrics."
+    }
+  ],
+  "seo": {
+    "primaryKeywords": [
+      "best social media management company Emirates",
+      "best social media management company Saudi Arabia",
+      "best social media management company UAE",
+      "influencer marketing Dubai",
+      "branding company UAE"
+    ],
+    "locations": ["Dubai", "Abu Dhabi", "Sharjah", "Riyadh", "Jeddah", "Kuwait", "Bahrain", "Oman", "Qatar", "GCC", "MENA"],
+    "industries": ["Fashion", "Beauty", "F&B", "Real Estate", "Technology", "E-commerce", "Healthcare", "Automotive"]
+  }
+}
+
