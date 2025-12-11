@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useTranslation } from 'react-i18next'
@@ -22,7 +22,8 @@ const Map = ({
   const svgRef = useRef(null)
   const containerRef = useRef(null)
   const leftSectionRef = useRef(null)
-  const [svgContent] = useState(mapXml)
+  const lastHoveredIdRef = useRef(null)
+  const svgContent = mapXml
   const [hoveredPin, setHoveredPin] = useState(null)
   const [hoverPosition, setHoverPosition] = useState({ x: 0, y: 0 })
 
@@ -74,10 +75,10 @@ const Map = ({
         filter: drop-shadow(0 0 15px ${currentPinColor}) drop-shadow(0 0 30px ${currentPinColor}80);
       }
     `
-  }, [currentStrokeColor, currentPinColor, svgContent])
+  }, [currentStrokeColor, currentPinColor])
 
   // GSAP Animations
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!svgRef.current || !containerRef.current || !svgContent) return
 
     const svgElement = svgRef.current.querySelector('svg')
@@ -291,10 +292,20 @@ const Map = ({
             const x = rect.left + rect.width / 2 - containerRect.left
             const y = rect.top - containerRect.top
             
-            setHoverPosition({ x, y })
-            setHoveredPin(locations[index] || {
+            const nextHovered = locations[index] || {
               title: `Location ${index + 1}`,
               description: 'Tikit Agency global presence'
+            }
+            const nextId = nextHovered.title
+
+            if (lastHoveredIdRef.current !== nextId) {
+              lastHoveredIdRef.current = nextId
+              setHoveredPin(nextHovered)
+            }
+
+            setHoverPosition(prev => {
+              if (prev.x === x && prev.y === y) return prev
+              return { x, y }
             })
             
             // Hover animation - lift up and scale
@@ -307,7 +318,10 @@ const Map = ({
           }
 
           const handleMouseLeave = () => {
-            setHoveredPin(null)
+            if (lastHoveredIdRef.current) {
+              lastHoveredIdRef.current = null
+              setHoveredPin(null)
+            }
             
             // Return to normal state (no floating for pins)
             gsap.to(pin, {
