@@ -3,7 +3,8 @@ import { useLocation } from "react-router-dom";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 function ScrollToTop() {
-  const { pathname } = useLocation();
+  const location = useLocation();
+  const { pathname, state } = location;
   const previousPathnameRef = useRef(pathname);
 
   const scrollToTop = () => {
@@ -25,6 +26,11 @@ function ScrollToTop() {
     const currentPathname = pathname;
     const previousPathname = previousPathnameRef.current;
 
+    // Check if navigation state explicitly requests preserving scroll
+    if (state?.preserveScroll) {
+      return; // Don't scroll
+    }
+
     // Check if we're navigating between work sections (same base route, different workId)
     const isNavigatingBetweenWorkSections =
       previousPathname.startsWith("/work/") &&
@@ -38,11 +44,16 @@ function ScrollToTop() {
     }
 
     previousPathnameRef.current = currentPathname;
-  }, [pathname]);
+  }, [pathname, state]);
 
   useEffect(() => {
     const currentPathname = pathname;
     const previousPathname = previousPathnameRef.current;
+
+    // Check if navigation state explicitly requests preserving scroll
+    if (state?.preserveScroll) {
+      return; // Don't scroll
+    }
 
     // Check if we're navigating between work sections
     const isNavigatingBetweenWorkSections =
@@ -72,7 +83,7 @@ function ScrollToTop() {
     }
 
     previousPathnameRef.current = currentPathname;
-  }, [pathname]);
+  }, [pathname, state]);
 
   return null;
 }

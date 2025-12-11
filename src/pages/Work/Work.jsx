@@ -56,11 +56,17 @@ const Work = () => {
   const [activeSectionId, setActiveSectionId] = useState(null);
   const [activeType, setActiveType] = useState(null);
   const lenisCleanupTimeout = useRef(null);
+  const scrollPositionRef = useRef(0);
+  const isChangingSectionRef = useRef(false);
 
   // Only scroll to top on initial mount (when coming from another page)
-  // ScrollToTop component now handles preventing scroll when navigating between sections
+  // Don't scroll if we're just changing work sections
   useEffect(() => {
-    window.scrollTo(0, 0);
+    // Check if we're navigating from a non-work page
+    const isFromOtherPage = !document.referrer.includes('/work/');
+    if (isFromOtherPage || workId === undefined) {
+      window.scrollTo(0, 0);
+    }
     gsap.ticker.add(() => ScrollTrigger.update());
   }, []);
 
@@ -155,7 +161,19 @@ const Work = () => {
       page: 1,
       per_page: 10,
       work_id: activeSectionId,
-    }).catch(() => {});
+    }).catch(() => {})
+      .finally(() => {
+        // Restore scroll position after data loads if we were changing sections
+        if (isChangingSectionRef.current) {
+          requestAnimationFrame(() => {
+            window.scrollTo({
+              top: scrollPositionRef.current,
+              behavior: 'instant'
+            });
+            isChangingSectionRef.current = false;
+          });
+        }
+      });
   }, [
     activeSectionId,
     activeType,
@@ -214,7 +232,14 @@ const Work = () => {
         activeSectionId={activeSectionId}
         onSelect={(section) => {
           if (section.id === activeSectionId) return;
-          navigate(`/work/${section.id}`);
+          // Store current scroll position before navigation
+          scrollPositionRef.current = window.scrollY || window.pageYOffset;
+          isChangingSectionRef.current = true;
+          // Use navigate with state to prevent scroll
+          navigate(`/work/${section.id}`, { 
+            replace: false,
+            state: { preserveScroll: true, scrollPosition: scrollPositionRef.current }
+          });
         }}
         isRtl={isRtl}
       />
