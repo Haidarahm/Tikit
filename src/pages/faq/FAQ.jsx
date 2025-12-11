@@ -75,12 +75,9 @@ const FAQ = () => {
       dir={isRtl ? "rtl" : "ltr"}
     >
       <SEOHead
-        title={t("faq.title", "Frequently Asked Questions (FAQ) | Tikit Agency")}
-        description={t(
-          "faq.subtitle",
-          "Find answers to common questions about our services, processes, and how we can help your brand grow."
-        )}
-        keywords="FAQ, frequently asked questions, Tikit Agency, how we work, production process, team, locations"
+        title="FAQ - Social Media Agency Dubai & Saudi Arabia | Tikit"
+        description="Common questions about Tikit Agency's social media, influencer marketing & branding services in UAE and Saudi Arabia. Learn about our process."
+        keywords="FAQ, Tikit Agency, social media agency questions, influencer marketing FAQ, how we work, team, Dubai office, Saudi Arabia"
         canonicalUrl="/faq"
       />
 

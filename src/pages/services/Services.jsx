@@ -4,6 +4,7 @@ import { Observer } from "gsap/Observer";
 import { SplitText } from "gsap/SplitText";
 import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
+import SEOHead from "../../components/SEOHead";
 import influencerMarketing from "../../assets/services/Influencer-Marketing.webp"
 import SocialMedia from "../../assets/services/Social-Media.webp"
 import Branding from "../../assets/services/Branding.webp"
@@ -236,16 +237,29 @@ const Services = () => {
   }, [isArabic, services.length]);
 
   return (
-    <div
-      style={styles.container}
-      data-services2-page
-      data-nav-color="white"
-      dir={isRtl ? "rtl" : "ltr"}
-    >
-      <header style={styles.header}>
-        <div>{t("services.page.header")}</div>
-        <div style={styles.subtext}>{t("services.page.scrollHint")}</div>
-      </header>
+    <>
+      <SEOHead
+        title="Services - Social Media & Influencer Marketing | Tikit"
+        description="Explore Tikit's services: social media management, influencer marketing, branding & production. Serving Dubai, Abu Dhabi, Riyadh & Saudi Arabia."
+        keywords="social media services, influencer marketing, branding services, production, UAE, Dubai, Saudi Arabia"
+        canonicalUrl="/services"
+      />
+      
+      <div
+        style={styles.container}
+        data-services2-page
+        data-nav-color="white"
+        dir={isRtl ? "rtl" : "ltr"}
+      >
+        {/* SEO H1 - Hidden but readable by search engines */}
+        <h1 style={{ position: 'absolute', left: '-9999px', top: 'auto', width: '1px', height: '1px', overflow: 'hidden' }}>
+          Social Media Management, Influencer Marketing, Branding & Production Services - Tikit Agency Dubai & Saudi Arabia
+        </h1>
+        
+        <header style={styles.header}>
+          <div>{t("services.page.header")}</div>
+          <div style={styles.subtext}>{t("services.page.scrollHint")}</div>
+        </header>
 
       {services.map((service, index) => (
         <section
@@ -285,7 +299,8 @@ const Services = () => {
           </div>
         </section>
       ))}
-    </div>
+      </div>
+    </>
   );
 };
 

@@ -177,16 +177,18 @@ const Hero = memo(() => {
           >
             {t("home.hero.tagline")}
           </h2>
-          <h1
+          <div
             className=" font-[700] font-antonio text-[50px]  lg:text-6xl xl:text-[96px] leading-tight"
             data-hero-animate
             style={{
               textShadow:
                 "0 4px 12px rgba(0, 0, 0, 0.9), 0 8px 24px rgba(0, 0, 0, 0.7), 0 12px 32px rgba(0, 0, 0, 0.5)",
             }}
+            role="heading"
+            aria-level="2"
           >
             ROI REBELS
-          </h1>
+          </div>
         </div>
 
         {/* Subtitle */}
