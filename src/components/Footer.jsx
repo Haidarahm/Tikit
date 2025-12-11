@@ -54,7 +54,7 @@ const Footer = ({ className }) => {
     { to: "/about", label: t("footer.links.aboutUs") },
     { to: "/services", label: t("footer.links.services") },
     { to: "/work", label: t("footer.links.work") },
-    { to: "/contact", label: t("footer.links.contact") },
+    { to: "/contact-us", label: t("footer.links.contact") },
     { to: "/influencer", label: t("nav.influencers", "Influencers") },
     { to: "/faq", label: t("footer.links.faq", "FAQ") },
   ];

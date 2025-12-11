@@ -56,8 +56,6 @@ const Work = () => {
   const [activeSectionId, setActiveSectionId] = useState(null);
   const [activeType, setActiveType] = useState(null);
   const lenisCleanupTimeout = useRef(null);
-  const scrollPositionRef = useRef(0);
-  const isChangingSectionRef = useRef(false);
 
   // Only scroll to top on initial mount (when coming from another page)
   // Don't scroll if we're just changing work sections
@@ -161,19 +159,7 @@ const Work = () => {
       page: 1,
       per_page: 10,
       work_id: activeSectionId,
-    }).catch(() => {})
-      .finally(() => {
-        // Restore scroll position after data loads if we were changing sections
-        if (isChangingSectionRef.current) {
-          requestAnimationFrame(() => {
-            window.scrollTo({
-              top: scrollPositionRef.current,
-              behavior: 'instant'
-            });
-            isChangingSectionRef.current = false;
-          });
-        }
-      });
+    }).catch(() => {});
   }, [
     activeSectionId,
     activeType,
@@ -232,13 +218,9 @@ const Work = () => {
         activeSectionId={activeSectionId}
         onSelect={(section) => {
           if (section.id === activeSectionId) return;
-          // Store current scroll position before navigation
-          scrollPositionRef.current = window.scrollY || window.pageYOffset;
-          isChangingSectionRef.current = true;
-          // Use navigate with state to prevent scroll
+          // Navigate with preserveScroll flag to prevent ScrollToTop from triggering
           navigate(`/work/${section.id}`, { 
-            replace: false,
-            state: { preserveScroll: true, scrollPosition: scrollPositionRef.current }
+            state: { preserveScroll: true }
           });
         }}
         isRtl={isRtl}

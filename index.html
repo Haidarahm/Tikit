@@ -3,7 +3,10 @@
   <head>
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
     <meta charset="UTF-8" />
-    <link id="favicon" rel="icon" type="image/svg+xml" href="/logo-light.svg" />
+    <link id="favicon" rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="180x180" href="/logo-light.png">
+<link rel="icon" type="image/png" sizes="191x191" href="/icon-191.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <!-- Resource Hints -->
@@ -40,14 +43,17 @@
     <meta property="og:url" content="https://tikit.ae/" />
     <meta property="og:title" content="Tikit | Best Social Media Agency UAE & Saudi Arabia" />
     <meta property="og:description" content="Top social media management & influencer marketing agency in UAE and Saudi Arabia. 300+ clients, 50+ experts. Dubai, Riyadh & Jeddah offices." />
-    <meta property="og:image" content="https://tikit.ae/logo-light.svg" />
+    <meta property="og:image" content="https://tikit.ae/logo-light.png" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Tikit | Best Social Media Agency UAE & Saudi Arabia" />
     <meta name="twitter:description" content="Top social media management & influencer marketing agency in UAE and Saudi Arabia. 300+ clients, 50+ experts. Dubai, Riyadh & Jeddah offices." />
-    <meta name="twitter:image" content="https://tikit.ae/logo-light.svg" />
-
+    <meta property="og:image" content="https://tikit.ae/cover-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    
+    <meta name="twitter:image" content="https://tikit.ae/cover-image.png" />
     <!-- JSON-LD Organization Schema -->
     <script type="application/ld+json">
       {
@@ -58,7 +64,7 @@
         "url": "https://tikit.ae/",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://tikit.ae/logo-light.svg",
+          "url": "https://tikit.ae/logo-light.png",
           "width": 200,
           "height": 60
         },
@@ -179,7 +185,7 @@
         "telephone": "+971 4 577 4042",
         "email": "Holla@tikit.ae",
         "image": "https://tikit.ae/cover-image.png",
-        "logo": "https://tikit.ae/logo-light.svg",
+        "logo": "https://tikit.ae/icon-512.png",
         "priceRange": "$$$",
         "currenciesAccepted": "AED, USD, SAR",
         "paymentAccepted": "Bank Transfer, Credit Card",
@@ -232,7 +238,7 @@
         "telephone": "+971 4 577 4042",
         "email": "Holla@tikit.ae",
         "image": "https://tikit.ae/cover-image.png",
-        "logo": "https://tikit.ae/logo-light.svg",
+        "logo": "https://tikit.ae/icon-512.png",
         "priceRange": "$$$",
         "currenciesAccepted": "SAR, USD, AED",
         "address": {
@@ -272,7 +278,7 @@
         "telephone": "+971 4 577 4042",
         "email": "Holla@tikit.ae",
         "image": "https://tikit.ae/cover-image.png",
-        "logo": "https://tikit.ae/logo-light.svg",
+        "logo": "https://tikit.ae/icon-512.png",
         "priceRange": "$$$",
         "currenciesAccepted": "TRY, USD, EUR",
         "address": {
@@ -743,7 +749,7 @@
         // AOS initialization moved to App.jsx to prevent multiple initializations
         try {
           var link = document.querySelector('link#favicon');
-          if (link) link.href = '/logo-light.svg';
+          if (link) link.href = '/logo-light.png';
         } catch(e) {}
       });
     </script>

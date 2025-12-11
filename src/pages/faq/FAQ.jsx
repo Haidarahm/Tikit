@@ -155,7 +155,7 @@ const FAQ = () => {
                 )}
               </p>
               <button
-                onClick={() => navigate("/contact")}
+                onClick={() => navigate("/contact-us")}
                 className="group inline-flex items-center gap-3 bg-[var(--secondary)] hover:bg-[var(--secondary)]/90 text-[var(--background)] font-semibold px-10 py-4 rounded-full transition-all duration-300 shadow-lg shadow-[var(--secondary)]/30 hover:shadow-[var(--secondary)]/50 hover:scale-105"
               >
                 <span className="text-lg">{t("faq.cta.button", "Contact Us")}</span>

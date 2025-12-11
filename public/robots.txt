@@ -22,7 +22,7 @@ Allow: /about
 Allow: /services
 Allow: /work
 Allow: /influencer
-Allow: /contact
+Allow: /contact-us
 Allow: /news
 Allow: /faq
 
@@ -93,7 +93,7 @@ Allow: /work
 Allow: /news
 Allow: /influencer
 Allow: /influencer-register
-Allow: /contact
+Allow: /contact-us
 Allow: /faq
 Allow: /service-details/
 Allow: /showcase/

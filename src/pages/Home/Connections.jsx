@@ -135,7 +135,7 @@ const Connections = memo(() => {
             setClientType("influencer");
             // Set flag to scroll to action section
             sessionStorage.setItem("shouldScrollToAction", "true");
-            navigate("/contact");
+            navigate("/contact-us");
           }}
           className="bg-transparent mt-8 hover:text-[var(--background)] shadow-lg shadow-[#52C3C5]/30 font-bold dark:shadow-[#000]/30 hover:bg-[var(--secondary)] border-[var(--secondary)] text-[var(--secondary)] transition duration-75 ease-in border px-6 h-8 md:h-10 text-[14px] rounded-full uppercase"
 

@@ -127,7 +127,7 @@ const SEOHead = ({
         "name": siteName,
         "logo": {
           "@type": "ImageObject",
-          "url": `${baseUrl}/logo-light.svg`
+          "url": `${baseUrl}/logo-light.png`
         }
       },
       "datePublished": articleData.publishDate,
@@ -253,7 +253,7 @@ const SEOHead = ({
         "url": baseUrl,
         "logo": {
           "@type": "ImageObject",
-          "url": `${baseUrl}/logo-light.svg`,
+          "url": `${baseUrl}/logo-light.png`,
           "width": 200,
           "height": 60
         },

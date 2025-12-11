@@ -104,7 +104,7 @@ const InfluencerMarketingDubai = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
-              onClick={() => navigate("/contact")}
+              onClick={() => navigate("/contact-us")}
               className="px-8 py-4 bg-[var(--secondary)] text-white font-bold rounded-full hover:bg-[var(--secondary)]/90 transition-colors"
             >
               Get Free Consultation

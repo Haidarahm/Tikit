@@ -13,7 +13,7 @@ const Contact = () => {
         title="Contact Us"
         description="Get in touch with Tikit Agency. Contact us to discuss your marketing needs, request a quote, or learn more about how we can help your brand succeed."
         keywords="contact Tikit Agency, marketing consultation, get in touch, request quote, marketing agency contact, UAE marketing agency"
-        canonicalUrl="/contact"
+        canonicalUrl="/contact-us"
       />
       <Hero />
       {/* <AnimatedLines /> */}

@@ -17,7 +17,7 @@ The sitemap includes all main pages with proper priority and change frequency se
 - `/about` - Priority: 0.8, Monthly updates
 - `/services` - Priority: 0.8, Monthly updates
 - `/work` - Priority: 0.7, Weekly updates
-- `/contact` - Priority: 0.7, Monthly updates
+- `/contact-us` - Priority: 0.7, Monthly updates
 
 **Dynamic Pages:**
 
