@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useTranslation } from 'react-i18next'
@@ -13,7 +13,7 @@ const Map = ({
   pinColor = '#4baaad'
 }) => {
   const { theme } = useTheme()
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const { isRtl } = useI18nLanguage()
   
   // Use #363737 for stroke in light mode, otherwise use the provided strokeColor
@@ -22,57 +22,58 @@ const Map = ({
   const svgRef = useRef(null)
   const containerRef = useRef(null)
   const leftSectionRef = useRef(null)
-  const [svgContent, setSvgContent] = useState('')
+  const [svgContent] = useState(mapXml)
   const [hoveredPin, setHoveredPin] = useState(null)
   const [hoverPosition, setHoverPosition] = useState({ x: 0, y: 0 })
 
   // Get translated data
-  const stats = t('home.map.stats', { returnObjects: true }) || []
-  const locations = t('home.map.locations', { returnObjects: true }) || []
+  const stats = useMemo(() => {
+    const value = t('home.map.stats', { returnObjects: true })
+    return Array.isArray(value) ? value : []
+  }, [t, i18n.language])
 
-  // Load SVG content
-  useEffect(() => {
-    setSvgContent(mapXml)
-  }, [])
+  const locations = useMemo(() => {
+    const value = t('home.map.locations', { returnObjects: true })
+    return Array.isArray(value) ? value : []
+  }, [t, i18n.language])
 
   // Update colors in the SVG
   useEffect(() => {
-    if (svgRef.current) {
-      const svgElement = svgRef.current.querySelector('svg')
-      if (svgElement) {
-        let dynamicStyle = svgElement.querySelector('#map-dynamic-styles')
-        
-        if (!dynamicStyle) {
-          dynamicStyle = document.createElementNS('http://www.w3.org/2000/svg', 'style')
-          dynamicStyle.id = 'map-dynamic-styles'
-          const defs = svgElement.querySelector('defs')
-          if (defs) {
-            defs.appendChild(dynamicStyle)
-          } else {
-            const newDefs = document.createElementNS('http://www.w3.org/2000/svg', 'defs')
-            newDefs.appendChild(dynamicStyle)
-            svgElement.insertBefore(newDefs, svgElement.firstChild)
-          }
-        }
-        
-        dynamicStyle.textContent = `
-          .st17, .st18, .st19 {
-            stroke: ${currentStrokeColor} !important;
-          }
-          .st0, .st1, .st2, .st3, .st4, .st34, .st42, .st44 {
-            fill: ${currentPinColor} !important;
-          }
-          .map-pin {
-            cursor: pointer;
-            filter: drop-shadow(0 0 8px ${currentPinColor}80);
-            transition: filter 0.3s ease;
-          }
-          .map-pin:hover {
-            filter: drop-shadow(0 0 15px ${currentPinColor}) drop-shadow(0 0 30px ${currentPinColor}80);
-          }
-        `
+    if (!svgRef.current) return
+    const svgElement = svgRef.current.querySelector('svg')
+    if (!svgElement) return
+
+    let dynamicStyle = svgElement.querySelector('#map-dynamic-styles')
+    
+    if (!dynamicStyle) {
+      dynamicStyle = document.createElementNS('http://www.w3.org/2000/svg', 'style')
+      dynamicStyle.id = 'map-dynamic-styles'
+      const defs = svgElement.querySelector('defs')
+      if (defs) {
+        defs.appendChild(dynamicStyle)
+      } else {
+        const newDefs = document.createElementNS('http://www.w3.org/2000/svg', 'defs')
+        newDefs.appendChild(dynamicStyle)
+        svgElement.insertBefore(newDefs, svgElement.firstChild)
       }
     }
+    
+    dynamicStyle.textContent = `
+      .st17, .st18, .st19 {
+        stroke: ${currentStrokeColor} !important;
+      }
+      .st0, .st1, .st2, .st3, .st4, .st34, .st42, .st44 {
+        fill: ${currentPinColor} !important;
+      }
+      .map-pin {
+        cursor: pointer;
+        filter: drop-shadow(0 0 8px ${currentPinColor}80);
+        transition: filter 0.3s ease;
+      }
+      .map-pin:hover {
+        filter: drop-shadow(0 0 15px ${currentPinColor}) drop-shadow(0 0 30px ${currentPinColor}80);
+      }
+    `
   }, [currentStrokeColor, currentPinColor, svgContent])
 
   // GSAP Animations
@@ -82,8 +83,9 @@ const Map = ({
     const svgElement = svgRef.current.querySelector('svg')
     if (!svgElement) return
 
-    // Small delay to ensure SVG is rendered
-    const timeout = setTimeout(() => {
+    const cleanupFns = []
+
+    const timeout = window.setTimeout(() => {
       const ctx = gsap.context(() => {
         // Get all stroke paths (connection lines)
         const strokePaths = svgElement.querySelectorAll('.st17, .st18, .st19')
@@ -166,7 +168,7 @@ const Map = ({
         }
 
         // ===== SCROLL TRIGGER =====
-        ScrollTrigger.create({
+        const trigger = ScrollTrigger.create({
           trigger: containerRef.current,
           start: 'top 75%',
           onEnter: () => {
@@ -277,11 +279,14 @@ const Map = ({
           once: true
         })
 
+        cleanupFns.push(() => trigger.kill())
+
         // ===== PIN HOVER HANDLERS =====
-        allPins.forEach((pin, index) => {
+        const pinCleanup = allPins.map((pin, index) => {
           const handleMouseEnter = () => {
             const rect = pin.getBoundingClientRect()
-            const containerRect = containerRef.current.getBoundingClientRect()
+            const containerRect = containerRef.current?.getBoundingClientRect()
+            if (!containerRect) return
             
             const x = rect.left + rect.width / 2 - containerRect.left
             const y = rect.top - containerRect.top
@@ -315,17 +320,26 @@ const Map = ({
 
           pin.addEventListener('mouseenter', handleMouseEnter)
           pin.addEventListener('mouseleave', handleMouseLeave)
-          pin._hoverHandlers = { enter: handleMouseEnter, leave: handleMouseLeave }
+
+          return () => {
+            pin.removeEventListener('mouseenter', handleMouseEnter)
+            pin.removeEventListener('mouseleave', handleMouseLeave)
+          }
+        })
+
+        cleanupFns.push(() => {
+          pinCleanup.forEach(remove => remove())
         })
 
       }, containerRef)
 
-      return () => {
-        ctx.revert()
-      }
+      cleanupFns.push(() => ctx.revert())
     }, 150)
 
-    return () => clearTimeout(timeout)
+    return () => {
+      window.clearTimeout(timeout)
+      cleanupFns.forEach(fn => fn())
+    }
   }, [svgContent, theme, locations])
 
   // Font class based on language
