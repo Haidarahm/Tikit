@@ -206,12 +206,16 @@ export const InfluencerDetails = ({
         <img
           src={image}
           alt={`${name} - ${primarySubtitle}`}
+          width={400}
+          height={400}
           className=" w-full h-full px-[1px] lg:px-[2px]"
           loading="lazy"
         />
         <img
           src={theme === "dark" ? overlayDark : overlay}
           alt="overlay"
+          width={400}
+          height={267}
           className={`absolute w-full bottom-4 md:-bottom-2 md:h-2/3  ${
             isReversed ? "left-0" : "right-0"
           }`}

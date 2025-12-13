@@ -84,6 +84,8 @@ const Hero = ({ caseData, loading }) => {
           }`}
           src={firstImage}
           alt=""
+          width={1920}
+          height={1080}
           onLoad={() => setImageLoaded(true)}
           onError={() => setImageLoaded(false)}
         />

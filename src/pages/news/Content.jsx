@@ -21,6 +21,8 @@ const Card = ({ item }) => {
           data-parallax-image
           src={item.images || item.image || ""}
           alt={item.title || "News item"}
+          width={600}
+          height={400}
           className="card-cover"
           loading="lazy"
         />

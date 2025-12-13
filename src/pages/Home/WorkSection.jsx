@@ -58,6 +58,8 @@ const WorkSection = memo(() => {
           <img
             src={mediaUrl}
             alt={title || "work"}
+            width={400}
+            height={300}
             className="h-full rounded-[20px] w-full object-cover"
             loading="lazy"
           />

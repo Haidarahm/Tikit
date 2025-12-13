@@ -114,6 +114,8 @@ const Images = memo(({ images = [], columns = 3 }) => {
                   <img
                     src={src}
                     alt={`case-image-${idx + 1}`}
+                    width={600}
+                    height={400}
                     className="w-full h-full object-cover"
                   />
                 </div>

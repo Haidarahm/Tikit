@@ -76,6 +76,7 @@ export const Influencer = () => {
   const mainContentRef = useRef(null);
   const navListRef = useRef(null);
   const navButtonRefs = useRef([]);
+  const isProgrammaticScrollRef = useRef(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const [activeSectionKey, setActiveSectionKey] = useState(null);
   const { isRtl, language } = useI18nLanguage();
@@ -272,10 +273,14 @@ export const Influencer = () => {
         start: "top center",
         end: "bottom center",
         onEnter: () => {
+          // Don't update state if we're doing a programmatic scroll
+          if (isProgrammaticScrollRef.current) return;
           setActiveIndex(index);
           if (sectionKey) setActiveSectionKey(sectionKey);
         },
         onEnterBack: () => {
+          // Don't update state if we're doing a programmatic scroll
+          if (isProgrammaticScrollRef.current) return;
           setActiveIndex(index);
           if (sectionKey) setActiveSectionKey(sectionKey);
         },
@@ -325,13 +330,39 @@ export const Influencer = () => {
     const section = normalizedSections[index];
     if (!section) return;
 
-    const target = detailRefs.current[index];
-    if (!target) return;
-
+    // Update state first - this ensures influencers are loaded
     setActiveSectionKey(section.key);
     setActiveIndex(index);
 
-    target.scrollIntoView({ behavior: "smooth", block: "start" });
+    // Set flag to prevent ScrollTrigger from interfering
+    isProgrammaticScrollRef.current = true;
+
+    // Wait for DOM to update after state change, then scroll
+    setTimeout(() => {
+      const target = detailRefs.current[index];
+      if (!target) {
+        isProgrammaticScrollRef.current = false;
+        return;
+      }
+
+      // Calculate offset for pinned aside/navbar
+      const offset = 140;
+      const elementTop = target.getBoundingClientRect().top;
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const targetPosition = elementTop + scrollTop - offset;
+
+      // Scroll to target
+      window.scrollTo({
+        top: targetPosition,
+        behavior: "smooth",
+      });
+
+      // Clear flag after scroll animation completes
+      setTimeout(() => {
+        isProgrammaticScrollRef.current = false;
+        ScrollTrigger.refresh();
+      }, 800);
+    }, 100);
   };
 
   const getInfluencersForSection = (sectionKey, fallbackImages = []) => {
@@ -625,6 +656,8 @@ export const Influencer = () => {
                               <img
                                 src={influencer.image}
                                 alt={influencer.name}
+                                width={80}
+                                height={80}
                                 className="w-full h-full object-cover object-center"
                                 loading="lazy"
                               />

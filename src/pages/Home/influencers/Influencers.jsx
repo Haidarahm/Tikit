@@ -311,6 +311,8 @@ const Influencers = () => {
                         <img
                           src={inf.image}
                           alt={inf.name}
+                          width={300}
+                          height={400}
                           className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
                           loading="lazy"
                           draggable="false"

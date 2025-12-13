@@ -13,6 +13,8 @@ const NonDigitalWorkCard = ({isRtl, innerRef, normalized, t, onViewDetails }) =>
         <img
           src={normalized.image}
           alt={normalized.title || "work"}
+          width={400}
+          height={300}
           className="h-full w-full object-center rounded-lg object-cover"
           loading="lazy"
         />

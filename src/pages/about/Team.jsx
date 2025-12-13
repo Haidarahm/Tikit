@@ -341,6 +341,8 @@ const Team = () => {
                     <img
                       src={member.image}
                       alt={member.name || `team-${index + 1}`}
+                      width={320}
+                      height={400}
                       className="absolute w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-110"
                       draggable={false}
                     />
@@ -425,6 +427,8 @@ const Team = () => {
                 <img
                   src={member.image}
                   alt={member.name || `team-${index + 1}`}
+                  width={200}
+                  height={250}
                   className="h-full w-full object-cover select-none absolute inset-0 mix-blend-luminosity"
                   draggable={false}
                 />

@@ -37,9 +37,6 @@
 }
 
 
-
-
-
 @font-face {
   font-family: "Cairo";
   src: url("./assets/fonts/Cairo-VariableFont_slnt,wght.ttf") format("truetype");
@@ -143,11 +140,6 @@ body {
   will-change: transform;
 }
 
-/* Helper in case you want to mark sections explicitly */
-.snap-section {
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-}
 
 /* ScrollStack specific styles */
 .scroll-stack-card {
@@ -173,31 +165,6 @@ body {
   display: none;
 }
 
-/* Floating animation for decorative elements */
-@keyframes floatUpDown {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-16px);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-
-/* .float-up-down {
-  animation: floatUpDown 6s ease-in-out infinite;
-}
-
-.float-up-down-delayed {
-  animation: floatUpDown 7.5s ease-in-out infinite;
-  animation-delay: 1s;
-} */
-
-/* Performance optimization for scroll-triggered elements */
-
-/* Full-page snapping container */
 
 /* Dark theme overrides */
 @theme {
@@ -287,17 +254,6 @@ body {
   }
 }
 
-/* Simple fade-in used for first-render appearance */
-@keyframes fadeInOnce {
-  from {
-    opacity: 0;
-    transform: translateY(4px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
 /* Gradient text animation for Tailwind v4 usage: class `animate-gradient` */
 @keyframes gradient {
@@ -316,11 +272,6 @@ body {
   animation: gradient 8s linear infinite;
 }
 
-.fade-in-delay-1s {
-  opacity: 0;
-  animation: fadeInOnce 0.6s ease-out 1s forwards;
-  will-change: opacity, transform;
-}
 
 /* GPU hint for transform-heavy elements */
 .gpu-transform {
@@ -352,29 +303,6 @@ footer .bottom-section .right-section .items li {
   }
 }
 
-/*
-
-@media (min-width: 1395px) {
-  .goals-section {
-    height: 310vh;
-  }
-}
-@media (min-width: 1500px) {
-  .goals-section {
-    height: 340vh;
-  }
-  .scroll-stack-card {
-    height: 500px;
-  }
-}
-@media (min-width: 1540px) {
-  .goals-section {
-    height: 300vh;
-  }
-  .scroll-stack-card {
-    height: 500px;
-  }
-} */
 
 @media (min-width: 1080px) {
   .work-section-container {

@@ -1,31 +1,4 @@
-/* Initial hidden state */
-.reveal-img,
-.reveal-text {
-  overflow: hidden;
-}
-.animated-text-about-us .line {
-  color: rgb(123, 61, 182);
-}
-.reveal-img img {
-  clip-path: inset(100% 0 0 0);
-  transition: clip-path 1.2s cubic-bezier(0.77, 0, 0.175, 1);
-}
-
-.reveal-text {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.8s ease-out;
-}
-
-/* Active state */
-.is-inview.reveal-img img {
-  clip-path: inset(0 0 0 0);
-}
-
-.is-inview.reveal-text {
-  opacity: 1;
-  transform: translateY(0);
-}
+/* Team section shadows */
 #team-section .left-section.dark {
   box-shadow: 20px 1px 49px 70px rgba(0, 0, 0, 0.5);
 }
@@ -43,22 +16,6 @@
 
 [data-scroll].loco-reveal-card.is-inview {
   transform: scaleX(1);
-}
-
-[data-scroll].loco-reveal-text {
-  max-height: 0;
-  opacity: 0;
-  transform: translateY(6px);
-  overflow: hidden;
-  transition: max-height 700ms ease 150ms, opacity 500ms ease 250ms,
-    transform 500ms ease 250ms;
-  will-change: max-height, opacity, transform;
-}
-
-[data-scroll].loco-reveal-text.is-inview {
-  max-height: 480px; /* large enough to reveal content */
-  opacity: 1;
-  transform: translateY(0);
 }
 
 /* Generic text fade-up for section headings and inline texts */
@@ -110,10 +67,6 @@
   min-height: 100vh;
 }
 
-.details-title .char {
-  display: inline-block;
-  will-change: transform, opacity;
-}
 
 /* Section Title with rotating square */
 .section-title__square {
@@ -167,32 +120,4 @@
 
 .details-services .serv-arrow {
   will-change: transform;
-}
-
-/* Marquee animation */
-@keyframes marqueeScroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-.details-header .marq-wrap-animate {
-  animation: marqueeScroll 20s linear infinite;
-}
-
-/* Star pulse */
-@keyframes starPulse {
-  0%, 100% {
-    transform: scale(1) rotate(0deg);
-  }
-  50% {
-    transform: scale(1.1) rotate(180deg);
-  }
-}
-
-.marq-star svg {
-  animation: starPulse 3s ease-in-out infinite;
 }

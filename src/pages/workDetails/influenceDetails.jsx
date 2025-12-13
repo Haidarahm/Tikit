@@ -210,6 +210,8 @@ const InfluenceDetails = () => {
                         <img
                           src={itemData.logo}
                           alt={title}
+                          width={80}
+                          height={80}
                           className="h-full w-full object-contain"
                         />
                       </div>
@@ -300,6 +302,8 @@ const InfluenceDetails = () => {
                             <img
                               src={src}
                               alt={`${title} media ${index + 1}`}
+                              width={600}
+                              height={400}
                               className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)]/60 via-[var(--background)]/10 to-transparent transition-opacity duration-300 group-hover:opacity-100" />
@@ -324,6 +328,8 @@ const InfluenceDetails = () => {
                             <img
                               src={src}
                               alt={`Thumb ${index + 1}`}
+                              width={100}
+                              height={70}
                               className="h-[70px] w-full rounded-2xl object-cover opacity-80 transition border border-[var(--foreground)]/10 bg-[var(--container-bg)]/70 hover:opacity-100"
                             />
                           </SwiperSlide>

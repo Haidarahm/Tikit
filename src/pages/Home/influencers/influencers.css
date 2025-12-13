@@ -40,10 +40,6 @@
   scrollbar-width: none;
 }
 
-/* Additional utility classes */
-.scale-102 {
-  transform: scale(1.02);
-}
 
 /* Smooth transitions (scoped to influencers section) */
 .influencers-scope * {

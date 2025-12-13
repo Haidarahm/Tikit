@@ -227,6 +227,8 @@ const SocialDetails = () => {
                         <img
                           src={itemData.logo}
                           alt={title}
+                          width={80}
+                          height={80}
                           className="h-full w-full object-contain"
                         />
                       </div>
@@ -314,6 +316,8 @@ const SocialDetails = () => {
                             <img
                               src={src}
                               alt={`${title} media ${index + 1}`}
+                              width={600}
+                              height={380}
                               className="h-full w-full max-h-[380px] object-cover transition-transform duration-700 group-hover:scale-105"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)]/60 via-[var(--background)]/10 to-transparent transition-opacity duration-300 group-hover:opacity-100" />

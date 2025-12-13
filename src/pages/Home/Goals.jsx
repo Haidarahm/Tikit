@@ -103,6 +103,8 @@ const Goals = memo(() => {
             <img
               src={goal.image}
               alt={goal.title}
+              width={400}
+              height={300}
               className="w-full h-full rounded-[15px] object-cover"
               loading="lazy"
             />
@@ -144,6 +146,8 @@ const Goals = memo(() => {
               <img
                 src={goal.image}
                 alt={goal.title}
+                width={120}
+                height={120}
                 className="rounded-[15px] md:rounded-[39px] w-[120px] md:w-[500px] object-cover"
                 loading="lazy"
               />

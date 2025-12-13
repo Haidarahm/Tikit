@@ -183,6 +183,8 @@ const RegisterPlan = ({ selectedPlan, onPlanSelect, className = "", followerCoun
                 <img
                   src={plan.icon}
                   alt={plan.name}
+                  width={64}
+                  height={64}
                   className={`w-full h-full object-contain filter brightness-0 invert ${
                     isDisabled ? "opacity-50" : ""
                   }`}
