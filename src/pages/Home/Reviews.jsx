@@ -12,21 +12,42 @@ const VideoReelCard = memo(({ video, index, theme }) => {
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
-
+  const safePlay = (video) => {
+    if (!video) return;
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {});
+    }
+  };
+  
   const handleMouseEnter = () => {
-    if (videoRef.current) {
-      videoRef.current.play();
-      setIsPlaying(true);
-    }
+    const video = videoRef.current;
+    if (!video) return;
+    
+    safePlay(video);
+    setIsPlaying(true);
   };
-
+  
   const handleMouseLeave = () => {
-    if (videoRef.current) {
-      videoRef.current.pause();
-      videoRef.current.currentTime = 0;
-      setIsPlaying(false);
+    const video = videoRef.current;
+    if (!video) return;
+  
+    if (!video.paused) {
+      video.pause();
     }
+    video.currentTime = 0;
+    setIsPlaying(false);
   };
+  
+
+  useEffect(() => {
+    const video = videoRef.current;
+    return () => {
+      if (video && !video.paused) {
+        video.pause();
+      }
+    };
+  }, []);
 
   const toggleMute = (e) => {
     e.stopPropagation();
@@ -43,6 +64,7 @@ const VideoReelCard = memo(({ video, index, theme }) => {
       onMouseLeave={handleMouseLeave}
     >
       <div
+      
         className="relative overflow-hidden rounded-2xl border border-white/15 dark:bg-white/5 backdrop-blur-md shadow-xl transition-transform duration-300 ease-out "
         style={{
           width: "200px",
@@ -51,7 +73,6 @@ const VideoReelCard = memo(({ video, index, theme }) => {
       >
         {/* Video */}
         <video
-        autoPlay={false}
           ref={videoRef}
           className="w-full h-full object-cover"
           src={video.videoUrl}

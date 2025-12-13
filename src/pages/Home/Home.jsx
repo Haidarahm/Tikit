@@ -3,7 +3,6 @@ import Hero from "./Hero";
 import Numbers from "./Numbers";
 import Goals from "./Goals";
 import Services from "./Services";
-import AboutUs from "./AboutUs";
 import WorkSection from "./WorkSection";
 import Connections from "./Connections";
 import Reviews from "./Reviews";

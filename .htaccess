@@ -1,17 +1,49 @@
 RewriteEngine On
 
-# Allow direct access to existing files/directories
-RewriteCond %{REQUEST_FILENAME} -f [OR]
-RewriteCond %{REQUEST_FILENAME} -d
-RewriteRule ^ - [L]
+# Set proper MIME types for JavaScript modules (critical for ES modules)
+<IfModule mod_mime.c>
+  AddType application/javascript .js
+  AddType application/javascript .mjs
+  AddType text/css .css
+</IfModule>
 
-# Force HTTPS & non-www domain
+# Force HTTPS & non-www domain (skip for assets to avoid redirect loops)
+RewriteCond %{REQUEST_URI} !^/assets/
+RewriteCond %{REQUEST_URI} !\.(js|mjs|css|png|jpg|jpeg|gif|ico|svg|webp|woff|woff2|ttf|eot|mp4|webm|json|xml|txt|zip)$
 RewriteCond %{HTTPS} !=on [OR]
 RewriteCond %{HTTP_HOST} ^www\.tikit\.ae [NC]
 RewriteRule ^ https://tikit.ae%{REQUEST_URI} [L,R=301]
 
 RewriteBase /
 
-# React Router fallback
-RewriteRule ^ index.html [L]
+# CRITICAL: Serve JavaScript files directly - MUST come first
+# If it's a .js or .mjs file that exists, serve it immediately
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteCond %{REQUEST_URI} \.(js|mjs)$ [NC]
+RewriteRule ^ - [L]
 
+# CRITICAL: Return 404 for missing JS files (don't serve index.html for missing JS)
+# This prevents MIME type errors when JS files don't exist
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} \.(js|mjs)$ [NC]
+RewriteRule ^ - [R=404,L]
+
+# CRITICAL: Serve assets directory files directly
+# If file exists in /assets/, serve it immediately (before any other checks)
+RewriteCond %{REQUEST_URI} ^/assets/
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^ - [L]
+
+# Serve any other existing static files directly
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^ - [L]
+
+# Serve any existing directories directly
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# React SPA fallback - only for non-file, non-directory, non-JS requests
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !\.(js|mjs)$ [NC]
+RewriteRule .* /index.html [L]
