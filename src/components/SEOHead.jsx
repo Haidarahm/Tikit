@@ -41,7 +41,7 @@ const SEOHead = ({
 
   const fullTitle = title
     ? `${title} | ${siteName}`
-    : `${siteName} - Best Social Media Management Company in Emirates & Saudi Arabia | Influencer Marketing & Branding`;
+    : `${siteName} - Best Influencer Marketing Agency in Emirates | Social Media Management Company UAE & Saudi Arabia`;
   const fullDescription =
     description ||
     t(
@@ -52,7 +52,7 @@ const SEOHead = ({
     keywords ||
     t(
       "seo.defaultKeywords",
-      "best social media management company Emirates, best social media management company Saudi Arabia, best social media management company UAE, influencer marketing Emirates, influencer marketing Saudi Arabia, branding company Emirates, branding company Saudi Arabia, social media agency Dubai, influencer marketing agency Dubai, branding agency Dubai, social media management Dubai, influencer marketing or branding, best influencer marketing company Emirates"
+      "influencer marketing agency in emirates, influencer marketing agency emirates, best influencer marketing agency in emirates, influencer marketing agency UAE, best social media management company Emirates, best social media management company Saudi Arabia, best social media management company UAE, influencer marketing Emirates, influencer marketing Saudi Arabia, branding company Emirates, branding company Saudi Arabia, social media agency Dubai, influencer marketing agency Dubai, branding agency Dubai, social media management Dubai, influencer marketing or branding, best influencer marketing company Emirates"
     );
   const fullCanonicalUrl = canonicalUrl ? `${baseUrl}${canonicalUrl}` : baseUrl;
   const fullOgImage = ogImage || defaultImage;
@@ -296,6 +296,9 @@ const SEOHead = ({
           "Brand Strategy"
         ],
         "alternateName": [
+          "Influencer Marketing Agency in Emirates",
+          "Best Influencer Marketing Agency in Emirates",
+          "Influencer Marketing Agency Emirates",
           "Best Social Media Management Company Emirates",
           "Best Social Media Management Company Saudi Arabia",
           "Best Influencer Marketing Company Emirates",
