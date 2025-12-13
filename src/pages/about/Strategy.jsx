@@ -174,7 +174,7 @@ const Strategy = () => {
           <div
             key={String(i)}
             ref={(el) => (cardsRef.current[i] = el)}
-            className={`relative rounded-[14px] overflow-hidden col-span-2 row-span-1 border border-white/10 hover:border-white/20 transition-colors loco-reveal-card`}
+            className={`relative rounded-[14px] overflow-hidden col-span-2 row-span-1 border border-white/10 hover:border-white/20 transition-colors`}
             style={{
               background: `radial-gradient(circle at center, #D9D9D966, #${card.lightColor}66)`,
             }}

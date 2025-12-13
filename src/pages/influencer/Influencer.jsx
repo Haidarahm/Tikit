@@ -113,14 +113,6 @@ export const Influencer = () => {
   }, [sections]);
 
   useEffect(() => {
-    // Safety: ensure no leftover locomotive-scroll styles block scrolling
-    const htmlEl = document.documentElement;
-    htmlEl.classList.remove("has-scroll-smooth", "has-scroll-init");
-    document.body.style.removeProperty("overflow");
-    window.scrollTo(0, 0);
-  }, []);
-
-  useEffect(() => {
     const debouncedRefresh = debounce(() => {
       ScrollTrigger.refresh();
       if (window.AOS && window.aosInitialized) {

@@ -6,17 +6,9 @@
   box-shadow: 20px 1px 49px 70px rgba(255, 255, 255, 0.5);
 }
 
-/* Strategy section - Locomotive reveal animations */
-[data-scroll].loco-reveal-card {
-  transform: scaleX(0);
-  transform-origin: left center;
-  transition: transform 800ms cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: transform;
-}
+/* Strategy section - Reveal animations */
 
-[data-scroll].loco-reveal-card.is-inview {
-  transform: scaleX(1);
-}
+
 
 /* Generic text fade-up for section headings and inline texts */
 [data-scroll].loco-text-up {

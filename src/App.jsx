@@ -16,11 +16,10 @@ import { Influencer } from "./pages/influencer/Influencer.jsx";
 import NewsletterPopup from "./components/NewsletterPopup";
 
 import { ToastContainer } from "./components/ui/Toast";
-import CaseDetails from "./pages/showcase/CaseDetails.jsx";
 
 // Lazy load components
 const Home = lazy(() => import("./pages/Home/Home"));
-
+const CaseDetails = lazy(() => import("./pages/showcase/CaseDetails.jsx"));
 const Work = lazy(() => import("./pages/Work/Work"));
 const AboutUs = lazy(() => import("./pages/about/AboutUs"));
 const Services = lazy(() => import("./pages/services/Services.jsx"));

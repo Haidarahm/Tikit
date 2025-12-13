@@ -201,7 +201,7 @@ const CaseStudy = ({ caseData, videos: videosFromProps }) => {
       y: 40
     });
 
-    // Create intersection observer for better compatibility with Locomotive Scroll
+    // Create intersection observer to trigger header animation on view
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {

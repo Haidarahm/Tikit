@@ -422,7 +422,7 @@ const Team = () => {
               <div
                 key={member.id ? `mobile-${member.id}` : `mobile-${index}`}
                 data-scroll
-                className={`mobile-team-card loco-reveal-card relative w-full h-[320px] rounded-[20px] overflow-hidden shadow-lg border border-white/10 bg-gradient-to-br ${styles.gradient} backdrop-blur`}
+                className={`mobile-team-card  relative w-full h-[320px] rounded-[20px] overflow-hidden shadow-lg border border-white/10 bg-gradient-to-br ${styles.gradient} backdrop-blur`}
               >
                 <img
                   src={member.image}
