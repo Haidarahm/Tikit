@@ -69,6 +69,9 @@ const Map = () => {
       try {
         if (path.getTotalLength) {
           const length = path.getTotalLength()
+          // Clear any existing stroke-dasharray from original SVG before animating
+          path.style.strokeDasharray = length
+          path.style.strokeDashoffset = length
           gsap.set(path, {
             strokeDasharray: length,
             strokeDashoffset: length,
@@ -216,12 +219,12 @@ const Map = () => {
         .dark .tikit-map-section .tikit-map-container svg .cls-6 {
           stroke: #ffffff;
         }
-        /* Destination route lines */
+        /* Destination route lines - override original dasharray for animation */
         .tikit-map-section .tikit-map-container svg .cls-3,
         .tikit-map-section .tikit-map-container svg .cls-4,
         .tikit-map-section .tikit-map-container svg .cls-5 {
           stroke: #4ec0c3;
-          stroke-width: 2;
+          stroke-width: 12;
           fill: none;
         }
         /* Small ellipse markers */
