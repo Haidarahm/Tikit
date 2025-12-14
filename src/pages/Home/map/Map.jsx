@@ -85,84 +85,84 @@ const Map = () => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: sectionRef.current,
-        start: 'top 75%',
+        start: 'top 70%',
         toggleActions: 'play none none none',
         once: true
       }
     })
 
-    // Phase 1: Draw map strokes smoothly (2 seconds)
+    // Phase 1: Draw map strokes smoothly
     tl.to(mapStrokes, {
       strokeDashoffset: 0,
-      duration: 2,
-      ease: 'power1.inOut',
+      duration: 1.8,
+      ease: 'power2.inOut',
       stagger: {
-        each: 0.03,
+        each: 0.015,
         from: 'start'
       }
     })
 
-    // Phase 2: Draw destination lines with stagger (start after map is 60% done)
+    // Phase 2: Draw destination lines with stagger - starts when map is 70% done
     .to(destinationLines, {
       strokeDashoffset: 0,
-      duration: 1.5,
+      duration: 1.2,
       ease: 'power2.out',
       stagger: {
-        each: 0.15,
+        each: 0.2,
         from: 'start'
       }
-    }, '-=0.8')
+    }, '-=0.6')
 
-    // Phase 3: Fade in small markers along the routes
+    // Phase 3: Small route markers pop in along the paths
     .to(smallMarkers, {
       opacity: 1,
       visibility: 'visible',
       scale: 1,
-      duration: 0.4,
-      ease: 'back.out(1.7)',
+      duration: 0.35,
+      ease: 'back.out(2)',
       stagger: {
-        each: 0.1,
+        each: 0.08,
         from: 'start'
       }
-    }, '-=0.5')
+    }, '-=0.4')
 
-    // Phase 4: Fade in large endpoint markers
+    // Phase 4: Large endpoint markers appear
     .to(largeMarkers, {
       opacity: 1,
       visibility: 'visible',
       scale: 1,
-      duration: 0.5,
-      ease: 'back.out(1.7)',
+      duration: 0.4,
+      ease: 'back.out(2)',
       stagger: {
-        each: 0.12,
+        each: 0.1,
         from: 'start'
       }
-    }, '-=0.3')
+    }, '-=0.15')
 
-    // Phase 5: Pins appear with bounce effect (at the end)
+    // Phase 5: Location pins drop in with elastic bounce
     .to(pins, {
       opacity: 1,
       visibility: 'visible',
       scale: 1,
-      duration: 0.6,
-      ease: 'elastic.out(1, 0.5)',
+      duration: 0.7,
+      ease: 'elastic.out(1, 0.4)',
       stagger: {
-        each: 0.15,
-        from: 'random'
+        each: 0.12,
+        from: 'start'
       }
-    }, '-=0.2')
+    }, '-=0.1')
 
-    // Phase 6: Text labels fade in last
+    // Phase 6: Text labels fade in smoothly at the end
     .to(textLabels, {
       opacity: 1,
       visibility: 'visible',
-      duration: 0.5,
-      ease: 'power2.out',
+      duration: 0.4,
+      ease: 'power3.out',
       stagger: {
-        each: 0.06,
+        each: 0.04,
         from: 'start'
       }
-    }, '-=0.3')
+    }, '-=0.35')
 
     animationRef.current = tl
 
