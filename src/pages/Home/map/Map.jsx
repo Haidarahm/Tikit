@@ -200,7 +200,7 @@ const Map = () => {
   return (
     <section 
       ref={sectionRef}
-      className='tikit-map-section w-full min-h-screen relative overflow-hidden bg-[var(--background)] py-16 md:py-24'
+      className='tikit-map-section w-full  relative overflow-hidden  py-16 md:py-24'
     >
       {/* Scoped styles for this component only */}
       <style>{`

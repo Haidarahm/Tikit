@@ -215,17 +215,20 @@ const Influencers = () => {
         >
           <div className="flex flex-wrap gap-3 sm:gap-4 justify-center max-w-5xl px-2">
             {sectionsLoading && sections.length === 0 ? (
-              <div className="text-sm text-[var(--foreground)]/70">
-                {t("home.influencers.loadingCategories")}
-              </div>
-            ) : sectionsError ? (
-              <div className="text-sm text-red-500">
-                {sectionsError || t("home.influencers.categoriesError")}
+              <div className="flex gap-3 sm:gap-4">
+                {[...Array(5)].map((_, idx) => (
+                  <div
+                    key={idx}
+                    className="h-10 sm:h-12 w-20 sm:w-24 rounded-full bg-gradient-to-r from-[var(--foreground)]/10 via-[var(--foreground)]/20 to-[var(--foreground)]/10 animate-pulse"
+                    style={{
+                      animationDelay: `${idx * 100}ms`,
+                      animationDuration: '1.5s'
+                    }}
+                  />
+                ))}
               </div>
             ) : sections.length === 0 ? (
-              <div className="text-sm text-[var(--foreground)]/70">
-                {t("home.influencers.noCategories")}
-              </div>
+              null
             ) : (
               sections.map((section, idx) => {
                 const isActive = isSectionActive(section);
@@ -253,17 +256,22 @@ const Influencers = () => {
         {/* Carousel Container */}
         <div className="relative min-h-[370px]">
           {influencersLoading && !influencers.length ? (
-            <div className="text-center text-sm text-[var(--foreground)]/70">
-              {t("home.influencers.loadingInfluencers")}
-            </div>
-          ) : influencersError && !influencers.length ? (
-            <div className="text-center text-sm text-red-500">
-              {influencersError || t("home.influencers.influencersError")}
+            <div className="flex justify-center items-center min-h-[370px]">
+              <div className="flex gap-4">
+                {[...Array(4)].map((_, idx) => (
+                  <div
+                    key={idx}
+                    className="w-48 h-64 rounded-2xl bg-gradient-to-r from-[var(--foreground)]/10 via-[var(--foreground)]/20 to-[var(--foreground)]/10 animate-pulse"
+                    style={{
+                      animationDelay: `${idx * 150}ms`,
+                      animationDuration: '1.5s'
+                    }}
+                  />
+                ))}
+              </div>
             </div>
           ) : influencers.length === 0 ? (
-            <div className="text-center text-sm text-[var(--foreground)]/70 max-w-md mx-auto">
-              {t("home.influencers.noInfluencers")}
-            </div>
+            null
           ) : (
             <div className="relative">
               <Swiper
