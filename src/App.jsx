@@ -12,7 +12,6 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import LogoIntro from "./components/LogoIntro";
 import Loader from "./components/Loader.jsx";
-import { Influencer } from "./pages/influencer/Influencer.jsx";
 import NewsletterPopup from "./components/NewsletterPopup";
 
 import { ToastContainer } from "./components/ui/Toast";
@@ -25,6 +24,11 @@ const AboutUs = lazy(() => import("./pages/about/AboutUs"));
 const Services = lazy(() => import("./pages/services/Services.jsx"));
 const Contact = lazy(() => import("./pages/contact/Contact"));
 const News = lazy(() => import("./pages/news/News"));
+const Influencer = lazy(() =>
+  import("./pages/influencer/Influencer.jsx").then((module) => ({
+    default: module.Influencer,
+  }))
+);
 const InfluencersRegister = lazy(() =>
   import("./pages/influencers-register/InfluencersRegister")
 );
@@ -49,7 +53,7 @@ const InfluenceDetails = lazy(() =>
   }))
 );
 const SocialDetails = lazy(() =>
-  import("./pages/workDetails/socialDetails.jsx").then((module) => ({
+  import("./pages/workDetails/SocialDetails.jsx").then((module) => ({
     default: module.default,
   }))
 );
