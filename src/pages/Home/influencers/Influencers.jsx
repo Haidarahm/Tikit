@@ -257,16 +257,50 @@ const Influencers = () => {
         <div className="relative min-h-[370px]">
           {influencersLoading && !influencers.length ? (
             <div className="flex justify-center items-center min-h-[370px]">
-              <div className="flex gap-4">
+              <div className="flex gap-4 sm:gap-6 md:gap-8">
                 {[...Array(4)].map((_, idx) => (
                   <div
                     key={idx}
-                    className="w-48 h-64 rounded-2xl bg-gradient-to-r from-[var(--foreground)]/10 via-[var(--foreground)]/20 to-[var(--foreground)]/10 animate-pulse"
+                    className="flex flex-col items-center text-center"
                     style={{
                       animationDelay: `${idx * 150}ms`,
-                      animationDuration: '1.5s'
                     }}
-                  />
+                  >
+                    {/* Circular Image Skeleton */}
+                    <div
+                      className="w-28 h-28 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-full bg-gradient-to-r from-[var(--foreground)]/10 via-[var(--foreground)]/20 to-[var(--foreground)]/10 animate-pulse mb-3 sm:mb-4"
+                      style={{
+                        animationDuration: '1.5s'
+                      }}
+                    />
+                    {/* Name Skeleton */}
+                    <div
+                      className="h-4 sm:h-5 md:h-6 w-24 sm:w-32 md:w-40 rounded-full bg-gradient-to-r from-[var(--foreground)]/10 via-[var(--foreground)]/20 to-[var(--foreground)]/10 animate-pulse mb-2 sm:mb-3"
+                      style={{
+                        animationDuration: '1.5s'
+                      }}
+                    />
+                    {/* Subtitle Skeleton */}
+                    <div
+                      className="h-3 sm:h-4 w-20 sm:w-28 md:w-36 rounded-full bg-gradient-to-r from-[var(--foreground)]/10 via-[var(--foreground)]/20 to-[var(--foreground)]/10 animate-pulse mb-2"
+                      style={{
+                        animationDuration: '1.5s'
+                      }}
+                    />
+                    {/* Social Links Skeleton */}
+                    <div className="flex gap-1.5 sm:gap-2 justify-center mt-2">
+                      {[...Array(3)].map((_, socialIdx) => (
+                        <div
+                          key={socialIdx}
+                          className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 rounded-full bg-gradient-to-r from-[var(--foreground)]/10 via-[var(--foreground)]/20 to-[var(--foreground)]/10 animate-pulse"
+                          style={{
+                            animationDuration: '1.5s',
+                            animationDelay: `${(idx * 150) + (socialIdx * 100)}ms`
+                          }}
+                        />
+                      ))}
+                    </div>
+                  </div>
                 ))}
               </div>
             </div>

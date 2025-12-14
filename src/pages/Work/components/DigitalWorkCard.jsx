@@ -100,7 +100,7 @@ const DigitalWorkCard = ({ data, availableMetrics, t, formatMetricValue }) => {
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div className="flex flex-col gap-4 md:flex-row md:items-center md:gap-6">
           {data?.logo ? (
-            <div className="flex h-16 w-16 items-center justify-center overflow-hidden rounded-full border border-[var(--foreground)]/70 bg-[var(--surface)] p-2">
+            <div className="flex h-16 w-20 items-center bg-white justify-center overflow-hidden rounded-full border border-[var(--foreground)]/70 p-2">
               <img
                 src={data.logo}
                 alt={data.title ?? "logo"}
@@ -137,15 +137,32 @@ const DigitalWorkCard = ({ data, availableMetrics, t, formatMetricValue }) => {
           }`}
         >
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 pb-4 px-4">
-            {filteredMetrics.map((metric) => (
-              <MetricTile
-                key={metric.key}
-                Icon={metric.icon}
-                label={metric.label}
-                value={formatMetricValue(metric.key, data[metric.key])}
-                isObjective={metric.key === "objective"}
-              />
-            ))}
+            {filteredMetrics.map((metric) => {
+              const rawValue = data[metric.key];
+              // Skip rendering any metric tile when its raw value is empty/null/undefined/zero
+              if (
+                rawValue === null ||
+                rawValue === undefined ||
+                rawValue === "" ||
+                rawValue === "0" ||
+                rawValue === 0 ||
+                rawValue === "0.00" ||
+                (typeof rawValue === "string" && parseFloat(rawValue) === 0)
+              ) {
+                return null;
+              }
+
+              const value = formatMetricValue(metric.key, rawValue);
+              return (
+                <MetricTile
+                  key={metric.key}
+                  Icon={metric.icon}
+                  label={metric.label}
+                  value={value}
+                  isObjective={metric.key === "objective"}
+                />
+              );
+            })}
           </div>
         </div>
       ) : null}

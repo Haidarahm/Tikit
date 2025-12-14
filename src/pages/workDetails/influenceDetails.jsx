@@ -25,6 +25,28 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
+// Format number to K (thousands) or M (millions)
+const formatNumber = (num) => {
+  if (!num && num !== 0) return null;
+  const number = typeof num === 'string' ? parseFloat(num) : num;
+  if (isNaN(number)) return num;
+  
+  // If number has 6 zeros (1,000,000 or more), convert to M
+  if (number >= 1000000) {
+    const millions = number / 1000000;
+    // Remove decimal if it's a whole number
+    return millions % 1 === 0 ? `${millions}M` : `${millions.toFixed(1)}M`;
+  }
+  // If number has 3 zeros (1,000 or more), convert to K
+  if (number >= 1000) {
+    const thousands = number / 1000;
+    // Remove decimal if it's a whole number
+    return thousands % 1 === 0 ? `${thousands}K` : `${thousands.toFixed(1)}K`;
+  }
+  // Return as is for numbers less than 1000
+  return number.toString();
+};
+
 const InfluenceDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -72,12 +94,12 @@ const InfluenceDetails = () => {
     return [
       {
         label: t("work.details.influence.reach"),
-        value: itemData.reach ? itemData.reach.toLocaleString() : null,
+        value: itemData.reach != null ? formatNumber(itemData.reach) : null,
         Icon: FiUsers,
       },
       {
         label: t("work.details.influence.views"),
-        value: itemData.views ? itemData.views.toLocaleString() : null,
+        value: itemData.views != null ? formatNumber(itemData.views) : null,
         Icon: FiEye,
       },
       {
