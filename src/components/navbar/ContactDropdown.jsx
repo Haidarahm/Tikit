@@ -37,7 +37,8 @@ export default function ContactDropdown({ isMobile = false, onClose }) {
 
   const handleClientClick = () => {
     setClientType("client");
-    navigate("/contact-us");
+    sessionStorage.setItem("shouldScrollToAction", "true");
+    navigate("/contact-us", { state: { preserveScroll: true } });
     setIsContactDropdownOpen(false);
     if (onClose) onClose();
   };
@@ -45,7 +46,7 @@ export default function ContactDropdown({ isMobile = false, onClose }) {
   const handleInfluencerClick = () => {
     setClientType("influencer");
     sessionStorage.setItem("shouldScrollToAction", "true");
-    navigate("/contact-us");
+    navigate("/contact-us", { state: { preserveScroll: true } });
     setIsContactDropdownOpen(false);
     if (onClose) onClose();
   };

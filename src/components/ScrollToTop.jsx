@@ -26,6 +26,11 @@ function ScrollToTop() {
     const currentPathname = pathname;
     const previousPathname = previousPathnameRef.current;
 
+    // Skip scroll-to-top on contact page
+    if (currentPathname.startsWith("/contact-us")) {
+      return;
+    }
+
     // Check if navigation state explicitly requests preserving scroll
     if (state?.preserveScroll) {
       return; // Don't scroll
@@ -57,6 +62,11 @@ function ScrollToTop() {
   useEffect(() => {
     const currentPathname = pathname;
     const previousPathname = previousPathnameRef.current;
+
+    // Skip scroll-to-top on contact page
+    if (currentPathname.startsWith("/contact-us")) {
+      return;
+    }
 
     // Check if navigation state explicitly requests preserving scroll
     if (state?.preserveScroll) {
