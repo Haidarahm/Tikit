@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import ReactCountryFlag from "react-country-flag";
 import { useI18nLanguage } from "../../store/I18nLanguageContext";
 
 // Complete list of countries with flags
@@ -350,9 +351,12 @@ const ResidenceInput = ({
           >
             {selectedCountry ? (
               <>
-                <span className="text-xl flex-shrink-0">
-                  {selectedCountry.flag}
-                </span>
+                <ReactCountryFlag
+                  svg
+                  countryCode={selectedCountry.code}
+                  className="text-xl flex-shrink-0"
+                  aria-label={selectedCountry.name}
+                />
                 <span
                   className={`flex-1 truncate ${
                     isRtl ? "text-right" : "text-left"
@@ -435,10 +439,13 @@ const ResidenceInput = ({
                         ? "bg-[var(--secondary)]/5"
                         : ""
                     }`}
-                  >
-                    <span className="text-xl flex-shrink-0">
-                      {countryItem.flag}
-                    </span>
+                    >
+                      <ReactCountryFlag
+                        svg
+                        countryCode={countryItem.code}
+                        className="text-xl flex-shrink-0"
+                        aria-label={countryItem.name}
+                      />
                     <span className="flex-1 text-sm text-[var(--foreground)] truncate">
                       {countryItem.name}
                     </span>

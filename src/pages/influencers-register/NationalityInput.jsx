@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import ReactCountryFlag from "react-country-flag";
 import { useI18nLanguage } from "../../store/I18nLanguageContext";
 
 // Complete list of countries with flags
@@ -374,11 +375,12 @@ const NationalityInput = ({
         >
           {/* Selected Flag or Search Icon */}
           {selectedCountry && !isOpen ? (
-            <span
+            <ReactCountryFlag
+              svg
+              countryCode={selectedCountry.code}
               className={`text-xl flex-shrink-0 ${isRtl ? "ml-3" : "mr-3"}`}
-            >
-              {selectedCountry.flag}
-            </span>
+              aria-label={selectedCountry.name}
+            />
           ) : (
             <svg
               className={`w-5 h-5 text-gray-400 flex-shrink-0 ${
@@ -490,7 +492,12 @@ const NationalityInput = ({
                       : ""
                   }`}
                 >
-                  <span className="text-2xl flex-shrink-0">{country.flag}</span>
+                  <ReactCountryFlag
+                    svg
+                    countryCode={country.code}
+                    className="text-2xl flex-shrink-0"
+                    aria-label={country.name}
+                  />
                   <span className="flex-1 text-sm md:text-base text-[var(--foreground)]">
                     {country.name}
                   </span>
