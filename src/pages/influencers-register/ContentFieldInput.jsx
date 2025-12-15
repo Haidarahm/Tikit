@@ -1,33 +1,53 @@
 import React, { useState, useRef, useEffect } from "react";
+import {
+  FiHeart,
+  FiShoppingBag,
+  FiSun,
+  FiActivity,
+  FiMap,
+  FiCoffee,
+  FiCpu,
+  FiMonitor,
+  FiBook,
+  FiTrendingUp,
+  FiBriefcase,
+  FiDollarSign,
+  FiUsers,
+  FiCamera,
+  FiMusic,
+  FiSmile,
+  FiStar,
+  FiTag,
+} from "react-icons/fi";
 import { useI18nLanguage } from "../../store/I18nLanguageContext";
 import { useNichesStore } from "../../store/nichesStore";
 
-// Icon mapping for niches (fallback if API doesn't provide icons)
+// Icon mapping for niches using react-icons (fallback if API doesn't provide icons)
 const nicheIcons = {
-  Beauty: "💄",
-  Fashion: "👗",
-  Lifestyle: "🌟",
-  Fitness: "💪",
-  Travel: "✈️",
-  Food: "🍳",
-  Cooking: "🍳",
-  Tech: "📱",
-  Gaming: "🎮",
-  Education: "📚",
-  Motivation: "🔥",
-  Business: "💼",
-  Finance: "💰",
-  Parenting: "👨‍👩‍👧",
-  "Health & Wellness": "🧘",
-  Photography: "📸",
-  Art: "🎨",
-  "DIY & Crafts": "🔨",
-  Comedy: "😂",
-  Music: "🎵",
-  Sports: "⚽",
-  Cars: "🚗",
-  Pets: "🐾",
-  Reviews: "⭐",
+  Beauty: FiHeart,
+  Fashion: FiShoppingBag,
+  Lifestyle: FiSun,
+  Fitness: FiActivity,
+  Travel: FiMap,
+  Food: FiCoffee,
+  Cooking: FiCoffee,
+  Tech: FiCpu,
+  Gaming: FiMonitor,
+  Education: FiBook,
+  Motivation: FiTrendingUp,
+  Business: FiBriefcase,
+  Finance: FiDollarSign,
+  Parenting: FiUsers,
+  "Health & Wellness": FiActivity,
+  Photography: FiCamera,
+  Art: FiStar,
+  "DIY & Crafts": FiTag,
+  Comedy: FiSmile,
+  Music: FiMusic,
+  Sports: FiActivity,
+  Cars: FiMap,
+  Pets: FiHeart,
+  Reviews: FiStar,
 };
 
 const ContentFieldInput = ({
@@ -57,11 +77,14 @@ const ContentFieldInput = ({
   }, [language]);
 
   // Transform niches to contentFields format
-  const contentFields = niches.map((niche) => ({
-    id: niche.id,
-    name: niche.name,
-    icon: nicheIcons[niche.name] || "📌",
-  }));
+  const contentFields = niches.map((niche) => {
+    const Icon = nicheIcons[niche.name] || FiTag;
+    return {
+      id: niche.id,
+      name: niche.name,
+      Icon,
+    };
+  });
 
   // Filter fields based on search query and exclude already selected
   const filteredFields = contentFields.filter(
@@ -205,41 +228,44 @@ const ContentFieldInput = ({
           onClick={() => !disabled && inputRef.current?.focus()}
         >
           {/* Selected Tags */}
-          {selectedFields.map((field) => (
-            <span
-              key={field.id}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[var(--secondary)]/10 text-[var(--secondary)] rounded-full text-sm font-medium transition-all duration-200 hover:bg-[var(--secondary)]/20"
-            >
-              <span>{field.icon}</span>
-              <span>{field.name}</span>
-              {!disabled && (
-                <button
-                  type="button"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleRemove(field);
-                  }}
-                  className={`${
-                    isRtl ? "mr-1" : "ml-1"
-                  } hover:text-red-500 transition-colors`}
-                >
-                  <svg
-                    className="w-3.5 h-3.5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
+          {selectedFields.map((field) => {
+            const Icon = field.Icon || FiTag;
+            return (
+              <span
+                key={field.id}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[var(--secondary)]/10 text-[var(--secondary)] rounded-full text-sm font-medium transition-all duration-200 hover:bg-[var(--secondary)]/20"
+              >
+                <Icon className="w-4 h-4 text-[var(--secondary)]" />
+                <span>{field.name}</span>
+                {!disabled && (
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleRemove(field);
+                    }}
+                    className={`${
+                      isRtl ? "mr-1" : "ml-1"
+                    } hover:text-red-500 transition-colors`}
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
-                </button>
-              )}
-            </span>
-          ))}
+                    <svg
+                      className="w-3.5 h-3.5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
+                  </button>
+                )}
+              </span>
+            );
+          })}
 
           {/* Search Input */}
           {canAddMore && (
@@ -300,7 +326,7 @@ const ContentFieldInput = ({
                       : "hover:bg-gray-100 dark:hover:bg-gray-800"
                   }`}
                 >
-                  <span className="text-2xl flex-shrink-0">{field.icon}</span>
+                  <field.Icon className="w-5 h-5 flex-shrink-0 text-[var(--secondary)]" />
                   <span className="flex-1 text-sm md:text-base text-[var(--foreground)]">
                     {field.name}
                   </span>

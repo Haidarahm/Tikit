@@ -112,7 +112,7 @@ const NotFound = () => {
       ref={containerRef}
       data-nav-color="black"
       dir={isRtl ? "rtl" : "ltr"}
-      className="min-h-screen md:mt-[90px] w-full bg-[var(--background)] flex flex-col items-center justify-center px-4  overflow-hidden relative"
+      className="min-h-screen md:mt-[90px] w-full  flex flex-col items-center justify-center px-4  overflow-hidden relative"
     >
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -133,7 +133,7 @@ const NotFound = () => {
       {/* Logo */}
       <div ref={logoRef} className="mb-8 md:mb-12">
         <Logo
-          color={isDark ? "#ffffff" : "#1a1a1a"}
+          color={isDark ? "#ffffff" : "#363737"}
           logoJumpColor="#6ACBCC"
           className="w-32 h-auto md:w-40"
         />

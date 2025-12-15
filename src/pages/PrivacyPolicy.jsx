@@ -136,7 +136,7 @@ For data protection inquiries, please email Holla@tikit.ae with "Privacy" in the
 
   return (
     <div 
-      className="min-h-screen bg-[var(--background)]" 
+      className="min-h-screen " 
       data-nav-color="black"
       dir={isRtl ? "rtl" : "ltr"}
     >
