@@ -706,7 +706,9 @@
                 ],
                 "mostPopular": "الأكثر شعبية",
                 "selectPlan": "اختر الخطة",
-                "selected": "محدد"
+                "selected": "محدد",
+                "disabled": "غير متاح حالياً",
+                "disabledMessage": "عدد المتابعين يجب أن يكون أكبر"
             }
         },
         "proceedButton": "متابعة"

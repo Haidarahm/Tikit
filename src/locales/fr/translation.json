@@ -705,7 +705,9 @@
                 ],
                 "mostPopular": "Le plus populaire",
                 "selectPlan": "Sélectionner le plan",
-                "selected": "Sélectionné"
+                "selected": "Sélectionné",
+                "disabled": "Indisponible pour le moment",
+                "disabledMessage": "Le nombre d’abonnés doit être supérieur à 35K"
             }
         },
         "proceedButton": "Continuer"

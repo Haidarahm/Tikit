@@ -720,7 +720,9 @@
                 ],
                 "mostPopular": "Most Popular",
                 "selectPlan": "Select Plan",
-                "selected": "Selected"
+                "selected": "Selected",
+                "disabled": "Unavailable",
+                "disabledMessage": "Follower count must be greater than 35K"
             }
         },
         "proceedButton": "Proceed"
