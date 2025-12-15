@@ -708,7 +708,7 @@
                 "selectPlan": "اختر الخطة",
                 "selected": "محدد",
                 "disabled": "غير متاح حالياً",
-                "disabledMessage": "عدد المتابعين يجب أن يكون أكبر"
+                "disabledMessage": "يجب أن يكون عدد المتابعين أكبر من 35 ألف"
             }
         },
         "proceedButton": "متابعة"

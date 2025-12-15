@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import ReactCountryFlag from "react-country-flag";
 import { useI18nLanguage } from "../../store/I18nLanguageContext";
 
 // Complete list of countries with dial codes and flags
@@ -354,7 +355,12 @@ const NumberInput = ({
                 : "border-gray-200 dark:border-gray-700"
             }`}
           >
-            <span className="text-xl">{currentCountry.flag}</span>
+            <ReactCountryFlag
+              svg
+              countryCode={currentCountry.code}
+              className="text-xl"
+              aria-label={currentCountry.name}
+            />
             <span className="font-medium">{currentCountry.dialCode}</span>
             <svg
               className={`w-4 h-4 transition-transform duration-200 ${
@@ -419,9 +425,12 @@ const NumberInput = ({
                           : ""
                       }`}
                     >
-                      <span className="text-xl flex-shrink-0">
-                        {country.flag}
-                      </span>
+                      <ReactCountryFlag
+                        svg
+                        countryCode={country.code}
+                        className="text-xl flex-shrink-0"
+                        aria-label={country.name}
+                      />
                       <span className="flex-1 text-sm text-[var(--foreground)] truncate">
                         {country.name}
                       </span>
