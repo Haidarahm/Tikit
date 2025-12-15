@@ -12,11 +12,11 @@ const Images = memo(({ images = [], columns = 3 }) => {
   const containerRef = useRef(null);
   const cardRefs = useRef([]);
 
-  // Map allowed column counts to Tailwind classes (keeps it "dynamic" but safe)
+  // Map allowed column counts with mobile-first responsiveness
   const columnClasses = {
-    2: "grid-cols-2",
-    3: "grid-cols-3",
-    4: "grid-cols-4",
+    2: "grid-cols-1 sm:grid-cols-2",
+    3: "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3",
+    4: "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4",
   };
 
   const colsClass = columnClasses[columns] || columnClasses[3];
@@ -96,7 +96,7 @@ const Images = memo(({ images = [], columns = 3 }) => {
   const skeletonCount = items.length > 0 ? items.length : 6;
 
   return (
-    <section data-nav-color="white" className="py-10 md:py-16 h-screen">
+    <section data-nav-color="white" className="py-10 md:py-16 h-[180vh] md:h-screen">
       <div className="container h-full w-full mx-auto px-4">
         <div
           ref={containerRef}

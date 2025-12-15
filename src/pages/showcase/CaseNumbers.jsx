@@ -52,25 +52,25 @@ const CaseNumbers = memo(({ caseData }) => {
   ];
 
   return (
-    <div className="min-h-[50vh] md:min-h-[80vh] flex items-center overflow-hidden">
+    <div className="min-h-[80vh]  flex items-center overflow-hidden">
       <div className="container mt-4 md:mt-0 mx-auto px-4">
-        <div className="text-center flex flex-col md:gap-4 mb-10 md:mb-14">
-          <h1 style={{fontFamily: isRtl ? "Cairo" : "Antonio"}} className="text-3xl md:text-5xl font-bold text-[var(--foreground)]">
+        <div className="text-center flex flex-col md:gap-4 mb-8 md:mb-10 lg:mb-14">
+          <h1 style={{fontFamily: isRtl ? "Cairo" : "Antonio"}} className="text-2xl sm:text-3xl md:text-5xl font-bold text-[var(--foreground)]">
             {t("caseNumbers.title")}
           </h1>
-          <h3 className="mt-2 text-base md:text-lg lg:text-2xl xl:text-3xl text-[var(--foreground)]/80">
+          <h3 className="mt-2 text-sm sm:text-base md:text-lg lg:text-2xl xl:text-3xl text-[var(--foreground)]/80">
             {t("caseNumbers.subtitle")}
           </h3>
         </div>
 
-        <div className="numbers relative flex flex-wrap justify-around">
+        <div className="numbers relative flex flex-wrap justify-center md:justify-around gap-6 md:gap-0">
           {data.map(({ count, suffix, text1, text2, plus, color }, idx) => (
             <div
               key={idx}
               style={{ backgroundColor: color }}
-              className="circle shadow-2xl w-[180px] h-[180px] sm:w-[200px] sm:h-[200px] md:w-[220px] md:h-[220px] rounded-full text-center flex flex-col items-center justify-center backdrop-blur-lg"
+              className="circle shadow-2xl w-[140px] h-[140px] sm:w-[200px] sm:h-[200px] md:w-[220px] md:h-[220px] rounded-full text-center flex flex-col items-center justify-center backdrop-blur-lg p-3 md:p-0"
             >
-              <span className="font-[700] font-antonio text-center flex items-center justify-center text-3xl sm:text-4xl md:text-6xl text-[var(--foreground)]">
+              <span className="font-[700] font-antonio text-center flex items-center justify-center text-2xl sm:text-4xl md:text-6xl text-[var(--foreground)]">
                 <CountUp
                   from={0}
                   to={count}
@@ -82,7 +82,7 @@ const CaseNumbers = memo(({ caseData }) => {
                 {suffix}
                 {plus ? "+" : ""}
               </span>
-              <h2 className="mt-2 text-sm sm:text-base md:text-lg leading-tight text-[var(--foreground)]">
+              <h2 className="mt-1 md:mt-2 text-xs sm:text-base md:text-lg leading-tight text-[var(--foreground)]">
                 {text1} <br /> {text2}
               </h2>
             </div>

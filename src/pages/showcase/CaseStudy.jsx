@@ -231,7 +231,7 @@ const CaseStudy = ({ caseData, videos: videosFromProps }) => {
     <div
       ref={containerRef}
       id="case-study-container"
-      className="case-study-section w-full py-20 lg:py-32 bg-[var(--background)]"
+      className="case-study-section w-full py-12 lg:py-32 bg-[var(--background)]"
     >
       <div className="w-full px-6 mx-auto max-w-7xl">
         {/* Header */}
@@ -307,7 +307,7 @@ const CaseStudy = ({ caseData, videos: videosFromProps }) => {
 
           {/* Mobile Selector */}
           <div className="lg:hidden w-full mb-6">
-            <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
+            <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide -mx-4 sm:-mx-6 px-4 sm:px-6">
               {caseStudySections.map((section, index) => {
                 const isActive = index === activeIndex;
                 return (
