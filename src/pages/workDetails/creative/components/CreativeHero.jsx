@@ -79,7 +79,7 @@ const CreativeHero = ({ mainImage, title, logo, theme, isRtl, t, onBack }) => {
         <div className="flex flex-col gap-6">
           <div className="flex flex-1 items-start gap-5">
             {logo && (
-              <div className="flex h-20 w-20 items-center justify-center rounded-2xl border border-[var(--foreground)]/10 bg-[var(--background)]/50 p-2 shadow-lg">
+              <div className="flex h-20 w-20 items-center bg-[#f7f9fa] justify-center rounded-2xl border border-[var(--foreground)]/10 bg-[var(--background)]/50 p-2 shadow-lg">
                 <img
                   src={logo}
                   alt={title}

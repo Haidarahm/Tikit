@@ -37,8 +37,16 @@ function ScrollToTop() {
       currentPathname.startsWith("/work/") &&
       previousPathname !== currentPathname;
 
+    // Check if we're navigating to/from work detail pages (influence, social, creative, event)
+    const isWorkDetailRoute = (path) => 
+      path.match(/^\/work\/(influence|social|creative|event)\/\d+$/);
+    
+    const isNavigatingToWorkDetail = isWorkDetailRoute(currentPathname);
+    const isNavigatingFromWorkDetail = isWorkDetailRoute(previousPathname);
+
     // Only scroll to top if we're not navigating between work sections
-    if (!isNavigatingBetweenWorkSections) {
+    // Always scroll when navigating TO a work detail page (from any other page)
+    if (!isNavigatingBetweenWorkSections || isNavigatingToWorkDetail) {
       // Immediate scroll before paint
       scrollToTop();
     }
@@ -61,8 +69,16 @@ function ScrollToTop() {
       currentPathname.startsWith("/work/") &&
       previousPathname !== currentPathname;
 
+    // Check if we're navigating to/from work detail pages (influence, social, creative, event)
+    const isWorkDetailRoute = (path) => 
+      path.match(/^\/work\/(influence|social|creative|event)\/\d+$/);
+    
+    const isNavigatingToWorkDetail = isWorkDetailRoute(currentPathname);
+    const isNavigatingFromWorkDetail = isWorkDetailRoute(previousPathname);
+
     // Only scroll to top if we're not navigating between work sections
-    if (!isNavigatingBetweenWorkSections) {
+    // Always scroll when navigating TO a work detail page (from any other page)
+    if (!isNavigatingBetweenWorkSections || isNavigatingToWorkDetail) {
       // Immediate scroll
       scrollToTop();
       

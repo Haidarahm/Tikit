@@ -202,7 +202,7 @@ const Hero = ({ caseData, loading }) => {
           </h3>
 
           {/* CTA Button */}
-          <div className="flex flex-wrap items-center gap-6 pt-4">
+          <div className="flex flex-col md:flex-row flex-wrap items-center gap-4 md:gap-6 pt-4">
             <button
               ref={buttonRef}
               onClick={handleScrollDown}
@@ -210,7 +210,7 @@ const Hero = ({ caseData, loading }) => {
                 opacity: 0,
                 transform: "translateY(20px) scale(0.95)",
               }}
-              className="group relative inline-flex items-center gap-3 rounded-full bg-[var(--primary,#f97316)] px-8 py-4 text-base font-semibold text-black shadow-2xl shadow-[var(--primary,#f97316)]/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--primary,#f97316)]/50 hover:scale-105 active:scale-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              className="group relative w-full md:w-auto inline-flex items-center justify-center gap-2 md:gap-3 rounded-full bg-[var(--primary,#f97316)] px-6 py-3 md:px-8 md:py-4 text-sm md:text-base font-semibold text-black shadow-2xl shadow-[var(--primary,#f97316)]/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--primary,#f97316)]/50 hover:scale-105 active:scale-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             >
               <span>Explore case</span>
               <span className="inline-block transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-0.5" aria-hidden>
@@ -219,13 +219,7 @@ const Hero = ({ caseData, loading }) => {
             </button>
             
             {/* Scroll indicator */}
-            <div className="flex items-center gap-3 text-white/60 text-sm font-medium">
-              <div className="flex flex-col gap-1.5">
-                <span className="h-[2px] w-8 bg-white/30 rounded-full" aria-hidden />
-                <span className="h-[2px] w-6 bg-white/20 rounded-full" aria-hidden />
-              </div>
-              <span className="tracking-wide">Scroll to discover</span>
-            </div>
+          
           </div>
         </div>
       </div>

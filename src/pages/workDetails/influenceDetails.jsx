@@ -59,11 +59,6 @@ const InfluenceDetails = () => {
   );
   const resetCategory = useWorkItemDetailsStore((state) => state.resetCategory);
 
-  // Scroll to top on mount
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "instant" });
-  }, [id]);
-
   useEffect(() => {
     if (!id) return;
 
@@ -228,7 +223,7 @@ const InfluenceDetails = () => {
                     data-header-child
                   >
                     {itemData.logo && (
-                      <div className="flex h-20 w-20 items-center justify-center rounded-2xl border border-[var(--foreground)]/10 bg-[var(--background)]/50 p-2 shadow-lg">
+                      <div className="flex h-20 w-20 items-center justify-center rounded-2xl border border-[var(--foreground)]/10 bg-[#f7f9fa] p-2 shadow-lg">
                         <img
                           src={itemData.logo}
                           alt={title}
