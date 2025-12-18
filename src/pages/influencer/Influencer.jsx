@@ -7,7 +7,6 @@ import React, {
 } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import AOS from "aos";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import "swiper/css";
@@ -78,6 +77,7 @@ export const Influencer = () => {
   const navButtonRefs = useRef([]);
   const isProgrammaticScrollRef = useRef(false);
   const pendingScrollIndexRef = useRef(null);
+  const pendingInfluencerRequestsRef = useRef(new Set());
   const [activeIndex, setActiveIndex] = useState(0);
   const [activeSectionKey, setActiveSectionKey] = useState(null);
   const { isRtl, language } = useI18nLanguage();
@@ -116,9 +116,6 @@ export const Influencer = () => {
   useEffect(() => {
     const debouncedRefresh = debounce(() => {
       ScrollTrigger.refresh();
-      if (window.AOS && window.aosInitialized) {
-        AOS.refresh();
-      }
     }, 150);
 
     window.addEventListener("resize", debouncedRefresh, { passive: true });
@@ -138,9 +135,12 @@ export const Influencer = () => {
     loadSections({ lang: language });
     // Clear influencers cache when language changes to force reload with new language
     clearSection();
+    // Clear pending requests when language changes
+    pendingInfluencerRequestsRef.current.clear();
     setActiveIndex(0);
     setActiveSectionKey(null);
-  }, [loadSections, language, clearSection]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [language]);
 
   useEffect(() => {
     if (!normalizedSections.length) {
@@ -176,11 +176,22 @@ export const Influencer = () => {
 
   useEffect(() => {
     if (!activeSectionKey) return;
+    // Skip if already loaded
     if (influencersBySection[activeSectionKey]) {
+      pendingInfluencerRequestsRef.current.delete(activeSectionKey);
       return;
     }
-    loadInfluencers(activeSectionKey, { lang: language });
-  }, [activeSectionKey, influencersBySection, loadInfluencers, language]);
+    // Skip if request already pending
+    if (pendingInfluencerRequestsRef.current.has(activeSectionKey)) {
+      return;
+    }
+    // Mark as pending and load
+    pendingInfluencerRequestsRef.current.add(activeSectionKey);
+    loadInfluencers(activeSectionKey, { lang: language }).finally(() => {
+      pendingInfluencerRequestsRef.current.delete(activeSectionKey);
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeSectionKey, loadInfluencers, language]);
 
   // Handle programmatic scrolling after DOM and data are ready
   useEffect(() => {
@@ -251,15 +262,17 @@ export const Influencer = () => {
     const nextSection = normalizedSections[nextIndex];
     if (!nextSection) return;
     const nextKey = nextSection.key;
+    // Skip if already loaded
     if (!nextKey || influencersBySection[nextKey]) return;
-    loadInfluencers(nextKey, { lang: language });
-  }, [
-    activeIndex,
-    normalizedSections,
-    influencersBySection,
-    loadInfluencers,
-    language,
-  ]);
+    // Skip if request already pending
+    if (pendingInfluencerRequestsRef.current.has(nextKey)) return;
+    // Mark as pending and load
+    pendingInfluencerRequestsRef.current.add(nextKey);
+    loadInfluencers(nextKey, { lang: language }).finally(() => {
+      pendingInfluencerRequestsRef.current.delete(nextKey);
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeIndex, normalizedSections, loadInfluencers, language]);
 
   // Keep the nav scroller synced to the active button without showing a scrollbar
   useEffect(() => {

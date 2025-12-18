@@ -1,6 +1,4 @@
 import React, { useRef, useState } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
 import { useNavbarScroll } from "./hooks/useNavbarScroll";
 import { useNavbarAnimations } from "./hooks/useNavbarAnimations";
@@ -24,13 +22,6 @@ function Navbar() {
   useNavbarScroll(navRef);
   useNavbarAnimations(logoRef, navRef);
   const mobileMenuRef = useMobileMenu(isMobileMenuOpen, hamburgerRef);
-
-  // Refresh AOS when navbar mounts (AOS already initialized in App.jsx)
-  React.useEffect(() => {
-    if (window.AOS && window.aosInitialized) {
-      AOS.refresh();
-    }
-  }, []);
 
   // Toggle mobile menu
   const toggleMobileMenu = () => {

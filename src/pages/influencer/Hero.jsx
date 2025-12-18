@@ -103,7 +103,7 @@ const Hero = () => {
       dir={isRtl ? "rtl" : "ltr"}
     >
          {theme === "dark" && ( 
-                 <div className="absolute z-0 w-full h-full -translate-x-1/2 left-1/2 top-0">
+                 <div className="absolute hidden md:block z-0 w-full h-full -translate-x-1/2 left-1/2 top-0">
 
           <LightRays
             raysOrigin="top-center"
