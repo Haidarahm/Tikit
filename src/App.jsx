@@ -7,9 +7,6 @@ import { Outlet } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 import AOSRefresher from "./components/AOSRefresher";
 import ScrollToHash from "./components/ScrollToHash";
-import { useEffect } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
 import LogoIntro from "./components/LogoIntro";
 import Loader from "./components/Loader.jsx";
 import NewsletterPopup from "./components/NewsletterPopup";
@@ -100,19 +97,6 @@ const Layout = () => (
 );
 
 function App() {
-  useEffect(() => {
-    // Initialize AOS only once globally
-    if (!window.aosInitialized && window.AOS) {
-      AOS.init({
-        duration: 800,
-        easing: "ease-out-quart",
-        once: false, // Allow animations to replay on scroll
-        offset: 100,
-        delay: 0,
-      });
-      window.aosInitialized = true;
-    }
-  }, []);
   return (
     <ThemeProvider>
       <ClientProvider>
