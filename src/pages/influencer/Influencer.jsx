@@ -77,6 +77,7 @@ export const Influencer = () => {
   const navListRef = useRef(null);
   const navButtonRefs = useRef([]);
   const isProgrammaticScrollRef = useRef(false);
+  const pendingScrollIndexRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [activeSectionKey, setActiveSectionKey] = useState(null);
   const { isRtl, language } = useI18nLanguage();
@@ -180,6 +181,70 @@ export const Influencer = () => {
     }
     loadInfluencers(activeSectionKey, { lang: language });
   }, [activeSectionKey, influencersBySection, loadInfluencers, language]);
+
+  // Handle programmatic scrolling after DOM and data are ready
+  useEffect(() => {
+    const pendingIndex = pendingScrollIndexRef.current;
+    if (pendingIndex === null) return;
+
+    const section = normalizedSections[pendingIndex];
+    if (!section) {
+      pendingScrollIndexRef.current = null;
+      return;
+    }
+
+    // Check if section DOM exists
+    const targetElement = detailRefs.current[pendingIndex];
+    if (!targetElement) return;
+
+    // Check if influencers data has loaded (or if section has no influencers requirement)
+    const hasInfluencersData = influencersBySection[section.key] !== undefined;
+    if (!hasInfluencersData && !sectionsLoading && !influencersLoading) {
+      // If data should have loaded but hasn't, clear pending scroll
+      pendingScrollIndexRef.current = null;
+      return;
+    }
+    if (!hasInfluencersData) return; // Wait for data to load
+
+    // Set flag to prevent ScrollTrigger from updating active section during scroll
+    isProgrammaticScrollRef.current = true;
+
+    // Wait for layout using double requestAnimationFrame
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        // Refresh ScrollTrigger to ensure accurate positions
+        ScrollTrigger.refresh(true);
+
+        // Calculate scroll position using getBoundingClientRect + pageYOffset
+        const elementTop = targetElement.getBoundingClientRect().top;
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const fixedOffset = 120; // Fixed offset as specified
+        const targetPosition = elementTop + scrollTop - fixedOffset;
+
+        // Scroll to target
+        window.scrollTo({
+          top: targetPosition,
+          behavior: "smooth",
+        });
+
+        // Clear pending scroll index
+        pendingScrollIndexRef.current = null;
+
+        // Clear flag after scroll animation completes
+        setTimeout(() => {
+          isProgrammaticScrollRef.current = false;
+          ScrollTrigger.refresh();
+        }, 800);
+      });
+    });
+  }, [
+    normalizedSections,
+    influencersBySection,
+    sectionsLoading,
+    influencersLoading,
+    activeIndex,
+    activeSectionKey,
+  ]);
 
   useEffect(() => {
     const nextIndex = activeIndex + 1;
@@ -308,43 +373,12 @@ export const Influencer = () => {
     const section = normalizedSections[index];
     if (!section) return;
 
-    // Update state first - this ensures influencers are loaded
+    // Store the pending scroll index
+    pendingScrollIndexRef.current = index;
+
+    // Update state only - this ensures influencers are loaded
     setActiveSectionKey(section.key);
     setActiveIndex(index);
-
-    // Set flag to prevent ScrollTrigger from interfering
-    isProgrammaticScrollRef.current = true;
-
-    // Wait for DOM to update after state change, then scroll
-    setTimeout(() => {
-      const target = detailRefs.current[index];
-      if (!target) {
-        isProgrammaticScrollRef.current = false;
-        return;
-      }
-
-      // Calculate offset for pinned aside/navbar
-      const offset =
-  asidePinRef.current?.offsetHeight > 0
-    ? 120
-    : 80;
-
-      const elementTop = target.getBoundingClientRect().top;
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      const targetPosition = elementTop + scrollTop - offset;
-
-      // Scroll to target
-      window.scrollTo({
-        top: targetPosition,
-        behavior: "smooth",
-      });
-
-      // Clear flag after scroll animation completes
-      setTimeout(() => {
-        isProgrammaticScrollRef.current = false;
-        ScrollTrigger.refresh();
-      }, 800);
-    }, 100);
   };
 
   const getInfluencersForSection = (sectionKey, fallbackImages = []) => {
