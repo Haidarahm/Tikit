@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useMemo, useRef } from "react";
 import influencerPlaceholder from "../../../assets/influncer/1.png";
-import AOS from "aos";
 import {
   FaInstagram,
   FaYoutube,
@@ -121,9 +120,6 @@ const Influencers = () => {
   useEffect(() => {
     if (!activeSectionId) return;
     if (influencersBySection[activeSectionId]) {
-      if (window.AOS && window.aosInitialized) {
-        AOS.refresh();
-      }
       // Reset Swiper to first slide when section changes
       if (swiperInstance) {
         swiperInstance.slideTo(0);
@@ -132,12 +128,6 @@ const Influencers = () => {
     }
     loadInfluencers(activeSectionId, { lang: language, per_page: 20 });
   }, [activeSectionId, influencersBySection, loadInfluencers, language]);
-
-  useEffect(() => {
-    if (window.AOS && window.aosInitialized) {
-      AOS.refresh();
-    }
-  }, [activeSectionId, influencersBySection]);
 
   const influencers = useMemo(() => {
     if (!activeSectionId) return [];
@@ -210,8 +200,6 @@ const Influencers = () => {
         {/* Category Menu Bar */}
         <div
           className="flex justify-center mb-12"
-          data-aos="fade-up"
-          data-aos-duration="800"
         >
           <div className="flex flex-wrap gap-3 sm:gap-4 justify-center max-w-5xl px-2">
             {sectionsLoading && sections.length === 0 ? (
@@ -236,9 +224,6 @@ const Influencers = () => {
                   <button
                     key={section?.id ?? section?.slug ?? idx}
                     onClick={() => handleSectionChange(section)}
-                    data-aos="zoom-in"
-                    data-aos-duration="400"
-                    data-aos-delay={idx * 60}
                     className={`chip flex items-center justify-center px-5 sm:px-6 py-2.5 sm:py-3 rounded-full border transition-all duration-400 ease-out text-sm sm:text-base font-medium tracking-wide ${
                       isActive
                         ? "bg-[#52C3C5] text-white border-[#52C3C5] shadow-lg shadow-[#52C3C5]/30"
