@@ -114,7 +114,6 @@ function LogoIntro() {
     >
       <div
         className="intro-logo"
-        aria-label="Brand logo"
         style={{ opacity: 0, visibility: "hidden" }}
       >
         <SVGComponent
