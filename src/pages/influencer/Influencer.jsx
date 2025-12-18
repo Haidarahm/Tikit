@@ -213,41 +213,27 @@ export const Influencer = () => {
     const asideEl = asidePinRef.current;
     const contentEl = mainContentRef.current;
     if (!asideEl || !contentEl) return;
-
+  
     const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
     if (!isDesktop) return;
-
-    // Kill any previous pin trigger to avoid stacking spacers/scrollbars
-    const existing = ScrollTrigger.getById("influencer-aside-pin");
-    if (existing) existing.kill(true);
-
+  
     const ctx = gsap.context(() => {
-      const startOffset = 120;
       ScrollTrigger.create({
         id: "influencer-aside-pin",
         trigger: contentEl,
-        start: `top top+=${startOffset}`,
+        start: "top top+=120",
         end: () =>
-          Math.max(
-            startOffset,
-            contentEl.scrollHeight -
-              asideEl.offsetHeight +
-              contentEl.offsetTop -
-              startOffset
-          ),
+          `bottom bottom-=${asideEl.offsetHeight + 120}`,
         pin: asideEl,
         pinSpacing: true,
-        anticipatePin: 1,
         invalidateOnRefresh: true,
-        fastScrollEnd: true,
+        anticipatePin: 1,
       });
     }, contentEl);
-
-    ScrollTrigger.refresh();
-
+  
     return () => ctx.revert();
-  }, [normalizedSections, influencersBySection]);
-
+  }, [normalizedSections.length]);
+  
   useEffect(() => {
     const isDesktop = window.matchMedia("(min-width: 768px)").matches;
     if (!isDesktop) return undefined;
@@ -338,7 +324,11 @@ export const Influencer = () => {
       }
 
       // Calculate offset for pinned aside/navbar
-      const offset = 140;
+      const offset =
+  asidePinRef.current?.offsetHeight > 0
+    ? 120
+    : 80;
+
       const elementTop = target.getBoundingClientRect().top;
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
       const targetPosition = elementTop + scrollTop - offset;
@@ -406,7 +396,7 @@ export const Influencer = () => {
       <div className="w-full px-6 mx-auto ">
         <div className="flex flex-col lg:flex-row gap-4 lg:gap-16">
           <aside className="lg:w-72 hidden md:block xl:w-80 flex-shrink-0">
-            <div ref={asidePinRef} className="sticky top-0">
+            <div ref={asidePinRef} >
               <div className="mb-6 space-y-3">
                 <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#52C3C5]/10 text-[#52C3C5] text-sm font-medium">
                   {t("influencer.sections.title")}
