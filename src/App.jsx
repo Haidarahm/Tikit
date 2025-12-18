@@ -92,9 +92,9 @@ const Layout = () => (
     <AOSRefresher />
     <div className="relative w-full min-h-full">
       <Navbar />
-      <div>
+      <main>
         <Outlet />
-      </div>
+      </main>
     </div>
   </>
 );
