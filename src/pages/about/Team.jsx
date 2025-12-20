@@ -86,6 +86,8 @@ const Team = () => {
 
   // Vanilla JS Horizontal Scroll Effect
   useEffect(() => {
+    let isActive = false;
+
     if (!teamMembers || teamMembers.length === 0) return;
     if (!sectionRef.current || !trackRef.current || !stickyContainerRef.current)
       return;
@@ -139,7 +141,7 @@ const Team = () => {
         stickyContainer.style.top = "";
         stickyContainer.style.left = "";
         stickyContainer.style.width = "";
-        track.style.transform = "translateX(0px)";
+        track.style.transform = "translate3d(0, 0, 0)";
         return;
       }
 
@@ -149,7 +151,7 @@ const Team = () => {
         stickyContainer.style.top = "";
         stickyContainer.style.left = "";
         stickyContainer.style.width = "";
-        track.style.transform = "translateX(0px)";
+        track.style.transform = "translate3d(0, 0, 0)";
         return;
       }
 
@@ -159,7 +161,7 @@ const Team = () => {
         stickyContainer.style.top = `${sectionHeight - viewportHeight}px`;
         stickyContainer.style.left = "0";
         stickyContainer.style.width = "100%";
-        track.style.transform = `translateX(-${maxTranslate}px)`;
+        track.style.transform = `translate3d(-${maxTranslate}px, 0, 0)`;
         return;
       }
 
@@ -175,7 +177,7 @@ const Team = () => {
           : (scrollY - sectionStart) / (sectionEnd - sectionStart);
 
       const translateX = -(progress * maxTranslate);
-      track.style.transform = `translateX(${translateX}px)`;
+      track.style.transform = `translate3d(${translateX}px, 0, 0)`;
     };
 
     const init = () => {
@@ -325,7 +327,7 @@ const Team = () => {
         <div className="relative z-0 flex flex-row flex-1 h-screen pl-[30%] w-full">
           <div
             ref={trackRef}
-            className="flex flex-row items-center gap-6 will-change-transform py-0 pr-[30vw]"
+            className="flex flex-row items-center gap-6  py-0 pr-[30vw]"
           >
             <div className="relative w-[30px] h-[650px] shrink-0 overflow-hidden"></div>
             {teamMembers.map((member, index) => {
