@@ -6,48 +6,6 @@
   box-shadow: 20px 1px 49px 70px rgba(255, 255, 255, 0.5);
 }
 
-/* Strategy section - Reveal animations */
-
-
-
-/* Generic text fade-up for section headings and inline texts */
-[data-scroll].loco-text-up {
-  opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 600ms ease, transform 600ms ease;
-  will-change: opacity, transform;
-}
-
-[data-scroll].loco-text-up.is-inview {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Growth section animations */
-[data-scroll].loco-growth-text {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 700ms ease, transform 700ms ease;
-  will-change: opacity, transform;
-}
-
-[data-scroll].loco-growth-text.is-inview {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-[data-scroll].loco-growth-circle {
-  opacity: 0;
-  transform: scale(0.8);
-  transition: opacity 600ms ease, transform 600ms ease;
-  will-change: opacity, transform;
-}
-
-[data-scroll].loco-growth-circle.is-inview {
-  opacity: 1;
-  transform: scale(1);
-}
-
 /* Details Section - Parallax Effect Styles */
 .details-wrapper {
   position: relative;

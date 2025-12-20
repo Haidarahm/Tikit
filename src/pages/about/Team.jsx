@@ -14,49 +14,49 @@ import {
 const TYPE_STYLES = {
   default: {
     gradient: "from-[#ffffff] to-[#808285]",
-    badge: "bg-black/40 border border-white/30 text-white backdrop-blur-md",
+    badge: "bg-black/40 border border-white/30 text-white opacity-80",
     name: "text-white",
     specialist: "text-white/70",
   },
   "web development": {
     gradient: "from-[#dd9272] to-[#d54a25]",
-    badge: "bg-black/50 border border-orange-300/50 text-orange-100 backdrop-blur-md",
+    badge: "bg-black/50 border border-orange-300/50 text-orange-100 opacity-80",
     name: "text-orange-50",
     specialist: "text-orange-100/90",
   },
   "social media team": {
     gradient: "from-[#ffffff] to-[#35d4cf]",
-    badge: "bg-teal-900/60 border border-teal-300/50 text-teal-50 backdrop-blur-md",
+    badge: "bg-teal-900/60 border border-teal-300/50 text-teal-50 opacity-80",
     name: "text-teal-50",
     specialist: "text-teal-100/90",
   },
   monitor: {
     gradient: "from-[#808285] to-[#000000]",
-    badge: "bg-white/20 border border-gray-300/40 text-gray-100 backdrop-blur-md",
+    badge: "bg-white/20 border border-gray-300/40 text-gray-100 opacity-80",
     name: "text-gray-50",
     specialist: "text-gray-200/90",
   },
   "graphic design": {
     gradient: "from-[#ffffff] to-[#dd9272]",
-    badge: "bg-orange-900/50 border border-orange-300/50 text-orange-50 backdrop-blur-md",
+    badge: "bg-orange-900/50 border border-orange-300/50 text-orange-50 opacity-80",
     name: "text-orange-50",
     specialist: "text-orange-100/90",
   },
   photographers: {
     gradient: "from-[#35d4cf] to-[#006073]",
-    badge: "bg-cyan-900/60 border border-cyan-300/50 text-cyan-50 backdrop-blur-md",
+    badge: "bg-cyan-900/60 border border-cyan-300/50 text-cyan-50 opacity-80",
     name: "text-cyan-50",
     specialist: "text-cyan-100/90",
   },
   ceo: {
     gradient: "from-[#006073] to-[#000000]",
-    badge: "bg-blue-200/20 border border-blue-300/40 text-blue-50 backdrop-blur-md",
+    badge: "bg-blue-200/20 border border-blue-300/40 text-blue-50 opacity-80",
     name: "text-blue-50",
     specialist: "text-blue-100/90",
   },
   presenter: {
     gradient: "from-[#ffffff] to-[#808285]",
-    badge: "bg-black/40 border border-white/30 text-white backdrop-blur-md",
+    badge: "bg-black/40 border border-white/30 text-white opacity-80",
     name: "text-white",
     specialist: "text-white/70",
   },
@@ -179,26 +179,27 @@ const Team = () => {
     };
 
     const init = () => {
-      // Wait for images to load so widths are correct
-      Promise.all(
-        imgs.map(
-          (img) =>
-            new Promise((resolve) => {
-              if (img.complete) return resolve();
-              img.addEventListener("load", resolve, { once: true });
-              img.addEventListener("error", resolve, { once: true });
-            })
-        )
-      ).then(() => {
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            calculate();
-            onScroll();
-            window.addEventListener("scroll", onScroll, { passive: true });
-          });
-        });
+      // Initial calculation immediately
+      calculate();
+      onScroll();
+    
+      window.addEventListener("scroll", onScroll, { passive: true });
+    
+      // Recalculate again after images load (non-blocking)
+      imgs.forEach((img) => {
+        if (!img.complete) {
+          img.addEventListener(
+            "load",
+            () => {
+              calculate();
+              onScroll();
+            },
+            { once: true }
+          );
+        }
       });
     };
+    
 
     const handleResize = () => {
       clearTimeout(resizeTimer);
@@ -334,7 +335,7 @@ const Team = () => {
               return (
                 <div
                   key={member.id || index}
-                  className={`relative group flex flex-col justify-end rounded-[10px] transition-all duration-500 w-[450px] h-[650px] shrink-0 overflow-hidden border border-white/20 bg-gradient-to-br ${styles.gradient} backdrop-blur-xl shadow-[0_0_25px_rgba(255,255,255,0.12)] hover:shadow-[0_0_55px_rgba(255,255,255,0.25)]`}
+                  className={`relative group flex flex-col justify-end rounded-[10px] transition-all duration-500 w-[450px] h-[650px] shrink-0 overflow-hidden border border-white/20 bg-gradient-to-br ${styles.gradient} opacity-90 shadow-[0_0_25px_rgba(255,255,255,0.12)] hover:shadow-[0_0_55px_rgba(255,255,255,0.25)]`}
                 >
                   {/* Image */}
                   <div className="absolute inset-0">
@@ -342,6 +343,8 @@ const Team = () => {
                       src={member.image}
                       alt={member.name || `team-${index + 1}`}
                       width={320}
+                      loading="lazy"
+                      decoding="async"
                       height={400}
                       className="absolute w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-110"
                       draggable={false}
@@ -356,14 +359,14 @@ const Team = () => {
                     {/* Type badge */}
                     <div className="flex justify-start">
                       <span
-                        className={`inline-flex items-center rounded-full px-4 py-2 text-xs tracking-[0.22em] uppercase font-semibold backdrop-blur-xl ${styles.badge}`}
+                        className={`inline-flex items-center rounded-full px-4 py-2 text-xs tracking-[0.22em] uppercase font-semibold opacity-90 ${styles.badge}`}
                       >
                         {member.type}
                       </span>
                     </div>
 
                     {/* Name + Specialist */}
-                    <div className="text-center md:text-left space-y-3 bg-black/20 rounded-xl p-4 backdrop-blur-md border border-white/10 shadow-inner">
+                    <div className="text-center md:text-left space-y-3 bg-black/20 rounded-xl p-4 opacity-80 border border-white/10 shadow-inner">
                       <h3
                         className={`text-2xl md:text-3xl font-bold tracking-[0.28em] uppercase drop-shadow ${styles.name}`}
                       >
@@ -439,7 +442,7 @@ const Team = () => {
                   >
                     {member.type}
                   </span>
-                  <div className="bg-white/5 border border-white/10 backdrop-blur-md rounded-[16px] w-full p-5 text-center space-y-2">
+                  <div className="bg-white/5 border border-white/10 opacity-80 rounded-[16px] w-full p-5 text-center space-y-2">
                     <div
                       className={`text-xl font-semibold tracking-[0.3em] uppercase ${styles.name}`}
                     >
