@@ -353,7 +353,6 @@ const Team = () => {
                     />
 
                     {/* Enhanced Soft Gradient */}
-                    <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/20 to-black/65" />
                   </div>
 
                   {/* Content */}
@@ -427,20 +426,19 @@ const Team = () => {
               <div
                 key={member.id ? `mobile-${member.id}` : `mobile-${index}`}
                 data-scroll
-                className={`mobile-team-card  relative w-full h-[320px] rounded-[20px] overflow-hidden shadow-lg border border-white/10 bg-gradient-to-br ${styles.gradient} backdrop-blur`}
+                className={`mobile-team-card  relative w-full h-[400px] rounded-[20px] overflow-hidden shadow-lg border border-white/10 bg-gradient-to-br ${styles.gradient} `}
               >
                 <img
                   src={member.image}
                   alt={member.name || `team-${index + 1}`}
                   width={200}
                   height={250}
-                  className="h-full w-full object-cover select-none absolute inset-0 mix-blend-luminosity"
+                  className="h-full w-full object-cover select-none absolute inset-0"
                   draggable={false}
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/40 to-black/90" />
-                <div className="relative h-full flex flex-col justify-end items-center gap-4 p-6">
+                <div className="relative h-full flex flex-col justify-end items-center gap-2 p-6">
                   <span
-                    className={`inline-flex items-center rounded-full px-4 py-2 text-xs tracking-[0.25em] uppercase font-semibold backdrop-blur ${styles.badge}`}
+                    className={`inline-flex items-center rounded-full px-4 py-2 text-xs tracking-[0.25em] uppercase font-semibold  ${styles.badge}`}
                   >
                     {member.type}
                   </span>

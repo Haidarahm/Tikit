@@ -102,7 +102,7 @@ const DetailsHeader = () => {
     <header
       ref={headerRef}
       dir={isRtl ? "rtl" : "ltr"}
-      className="details-header relative flex items-center justify-center w-full h-screen px-4 md:px-[70px] overflow-hidden"
+      className="details-header relative flex items-center justify-center w-full h-[50vh] md:h-screen px-4 md:px-[70px] overflow-hidden"
     >
       {/* Main Title */}
       <div className="relative z-10 text-center">

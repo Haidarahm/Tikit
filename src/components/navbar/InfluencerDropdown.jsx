@@ -49,10 +49,10 @@ export default function InfluencerDropdown({ isMobile = false, onClose }) {
 
   if (isMobile) {
     return (
-      <div className="mobile-nav-item w-full px-6">
+      <div className="mobile-nav-item w-full">
         <button
           onClick={() => setIsInfluencerDropdownOpen((v) => !v)}
-          className="w-full flex items-center justify-between text-[var(--foreground)] text-2xl md:text-3xl font-light uppercase tracking-wider"
+          className="text-[var(--foreground)] text-3xl md:text-4xl uppercase tracking-wider hover:opacity-70 transition-colors duration-300 flex items-center justify-center gap-2"
         >
           <span>{t("nav.influencers")}</span>
           <svg
