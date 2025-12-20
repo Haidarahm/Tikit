@@ -105,7 +105,7 @@ const InfluencersRegister = () => {
       <div className="title py-[40px] md:py-[100px]">
         <TikitTitle
           title={t("influencerRegister.title")}
-          mainWord={t("influencerRegister.mainWord","Tikit?")}
+          mainWord={t("influencerRegister.mainWord")}
         />
           
       </div>

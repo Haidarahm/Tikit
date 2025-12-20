@@ -627,7 +627,8 @@
         "noInfluencers": "We couldn't find influencers for this section yet. Please check back soon."
     },
     "influencerRegister": {
-        "title": "Want to be managed by Tikit?",
+        "title": "Want to be managed by",
+        "mainWord": "Tikit?",
         "formTitle": "fill the registration form",
         "fields": {
             "fullName": "Full Name",

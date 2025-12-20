@@ -612,7 +612,8 @@
         "noInfluencers": "Nous n'avons pas encore trouvé d'influenceurs pour cette section. Veuillez revenir bientôt."
     },
     "influencerRegister": {
-        "title": "Voulez-vous être géré par Tikit ?",
+        "title": "Voulez-vous être géré par",
+        "mainWord": "Tikit ?",
         "formTitle": "remplir le formulaire d'inscription",
         "fields": {
             "fullName": "Nom complet",
