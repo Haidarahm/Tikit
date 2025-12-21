@@ -21,6 +21,7 @@ const AboutUs = lazy(() => import("./pages/about/AboutUs"));
 const Services = lazy(() => import("./pages/services/Services.jsx"));
 const Contact = lazy(() => import("./pages/contact/Contact"));
 const News = lazy(() => import("./pages/news/News"));
+const NewsDetails = lazy(() => import("./pages/news/NewsDetails"));
 const Influencer = lazy(() =>
   import("./pages/influencer/Influencer.jsx").then((module) => ({
     default: module.Influencer,
@@ -110,6 +111,7 @@ function App() {
               <Route path="/about" element={<AboutUs />} />
               <Route path="/services" element={<Services />} />
               <Route path="/news" element={<News />} />
+              <Route path="/news/:id" element={<NewsDetails />} />
             <Route path="/contact-us/:contact?" element={<Contact />} />
               <Route path="/influencer" element={<Influencer />} />
               <Route
