@@ -14,6 +14,7 @@ const NewsDetailsHeader = () => {
   const [newsData, setNewsData] = useState(null)
   const [imageLoaded, setImageLoaded] = useState(false)
   const loadingRef = useRef(false)
+  const lastFetchedIdRef = useRef(null)
   
   const headerRef = useRef(null)
   const headerImageRef = useRef(null)
@@ -37,13 +38,30 @@ const NewsDetailsHeader = () => {
 
   // Load news data
   useEffect(() => {
-    if (!id) return
+    if (!id) {
+      setNewsData(null)
+      setImageLoaded(false)
+      loadingRef.current = false
+      lastFetchedIdRef.current = null
+      return
+    }
+
+    // If we already fetched this id, don't fetch again
+    if (lastFetchedIdRef.current === id) {
+      // Check if we have data in store or local state
+      const existingData = newsData || newsDetails[id]
+      if (existingData && typeof existingData === 'object' && existingData.id) {
+        return
+      }
+    }
 
     // Check if data already exists in store for this id
     const existingData = newsDetails[id]
-    if (existingData) {
+    if (existingData && typeof existingData === 'object' && existingData.id) {
       setNewsData(existingData)
       setImageLoaded(false) // Still need to wait for image to load
+      lastFetchedIdRef.current = id
+      loadingRef.current = false
       return
     }
 
@@ -53,24 +71,27 @@ const NewsDetailsHeader = () => {
     }
 
     loadingRef.current = id
+    lastFetchedIdRef.current = id
     setImageLoaded(false) // Reset image loaded state when fetching new news
+
+    let isCancelled = false
 
     const fetchNews = async () => {
       try {
         const data = await loadOneNews(id, language)
-        // Only update if we're still loading the same id
-        if (loadingRef.current === id) {
+        // Only update if we're still loading the same id and not cancelled
+        if (!isCancelled && loadingRef.current === id && lastFetchedIdRef.current === id) {
           setNewsData(data)
         }
       } catch (error) {
         console.error('Failed to load news:', error)
-        // Only update if we're still loading the same id
-        if (loadingRef.current === id) {
+        // Only update if we're still loading the same id and not cancelled
+        if (!isCancelled && loadingRef.current === id && lastFetchedIdRef.current === id) {
           setImageLoaded(true) // Allow skeleton to hide even on error
         }
       } finally {
         // Only clear if we're still on the same id
-        if (loadingRef.current === id) {
+        if (!isCancelled && loadingRef.current === id) {
           loadingRef.current = false
         }
       }
@@ -79,6 +100,7 @@ const NewsDetailsHeader = () => {
     fetchNews()
 
     return () => {
+      isCancelled = true
       // Clear ref if component unmounts or id changes
       if (loadingRef.current === id) {
         loadingRef.current = false
@@ -91,27 +113,45 @@ const NewsDetailsHeader = () => {
   const isLoading = loading || !currentNewsData || !imageLoaded
 
   useEffect(() => {
-    if (!currentNewsData || loading) return
+    if (!currentNewsData || loading || !imageLoaded) return
+
+    // Wait for refs to be attached (elements must be rendered)
+    if (!headerImageRef.current || !headerTitleRef.current) return
 
     // Set initial states for header elements
-    gsap.set(headerImageRef.current, { opacity: 0, scale: 1.08, y: 30 })
-    gsap.set(headerTitleRef.current, { opacity: 0, y: 50 })
-    if (headerSubtitleRef.current) gsap.set(headerSubtitleRef.current, { opacity: 0, y: 30 })
-    if (descriptionRef.current) gsap.set(descriptionRef.current, { opacity: 0, y: 30 })
-    if (badgeRef.current) gsap.set(badgeRef.current, { opacity: 0, scale: 0.9, y: 20 })
-    if (dateRef.current) gsap.set(dateRef.current, { opacity: 0, x: isRtl ? 30 : -30 })
-    if (lineRef.current) gsap.set(lineRef.current, { scaleX: 0 })
+    if (headerImageRef.current) {
+      gsap.set(headerImageRef.current, { opacity: 0, scale: 1.08, y: 30 })
+    }
+    if (headerTitleRef.current) {
+      gsap.set(headerTitleRef.current, { opacity: 0, y: 50 })
+    }
+    if (headerSubtitleRef.current) {
+      gsap.set(headerSubtitleRef.current, { opacity: 0, y: 30 })
+    }
+    if (descriptionRef.current) {
+      gsap.set(descriptionRef.current, { opacity: 0, y: 30 })
+    }
+    if (badgeRef.current) {
+      gsap.set(badgeRef.current, { opacity: 0, scale: 0.9, y: 20 })
+    }
+    if (dateRef.current) {
+      gsap.set(dateRef.current, { opacity: 0, x: isRtl ? 30 : -30 })
+    }
+    if (lineRef.current) {
+      gsap.set(lineRef.current, { scaleX: 0 })
+    }
 
     // Header animations - run immediately on first render
     const headerTl = gsap.timeline({ defaults: { ease: "power3.out" } })
     
-    headerTl
-      .to(headerImageRef.current, {
+    if (headerImageRef.current) {
+      headerTl.to(headerImageRef.current, {
         opacity: 1,
         scale: 1,
         y: 0,
         duration: 1.2,
       })
+    }
     if (badgeRef.current) {
       headerTl.to(badgeRef.current, {
         opacity: 1,
@@ -127,12 +167,14 @@ const NewsDetailsHeader = () => {
         duration: 0.8,
       }, "-=0.7")
     }
-    headerTl.to(headerTitleRef.current, {
-      opacity: 1,
-      y: 0,
-      duration: 1,
-      ease: "power2.out",
-    }, "-=0.5")
+    if (headerTitleRef.current) {
+      headerTl.to(headerTitleRef.current, {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power2.out",
+      }, "-=0.5")
+    }
     if (headerSubtitleRef.current) {
       headerTl.to(headerSubtitleRef.current, {
         opacity: 1,
@@ -158,21 +200,32 @@ const NewsDetailsHeader = () => {
     }
 
     // Parallax effect on scroll for image
-    gsap.to(headerImageRef.current?.querySelector('img'), {
-      scale: 1.08,
-      ease: "none",
-      scrollTrigger: {
-        trigger: headerImageRef.current,
-        start: "top bottom",
-        end: "bottom top",
-        scrub: 1.2,
-      },
-    })
+    if (headerImageRef.current) {
+      const imgElement = headerImageRef.current.querySelector('img')
+      if (imgElement) {
+        gsap.to(imgElement, {
+          scale: 1.08,
+          ease: "none",
+          scrollTrigger: {
+            trigger: headerImageRef.current,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 1.2,
+          },
+        })
+      }
+    }
 
     return () => {
       headerTl.kill()
+      // Kill any ScrollTriggers
+      ScrollTrigger.getAll().forEach(trigger => {
+        if (trigger.vars?.trigger === headerImageRef.current) {
+          trigger.kill()
+        }
+      })
     }
-  }, [isRtl, currentNewsData, loading])
+  }, [isRtl, currentNewsData, loading, imageLoaded])
 
   return (
     <header
