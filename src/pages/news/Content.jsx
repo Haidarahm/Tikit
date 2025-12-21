@@ -1,4 +1,5 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { getAllNewsItems } from "../../apis/news";
@@ -14,8 +15,28 @@ const ITEMS_PER_PAGE = 6;
 // Card Component
 // ======================
 const Card = ({ item }) => {
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    if (item.id) {
+      navigate(`/news/${item.id}`);
+    }
+  };
+
   return (
-    <div className="card" data-parallax-card>
+    <div 
+      className="card cursor-pointer" 
+      data-parallax-card
+      onClick={handleCardClick}
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          handleCardClick();
+        }
+      }}
+    >
       <figure className="card-cover-container">
         <img
           data-parallax-image

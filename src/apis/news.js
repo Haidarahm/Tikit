@@ -12,3 +12,14 @@ export const getAllNewsItems = async (params = {}) => {
 
   return response.data;
 };
+
+export const getNewsDetails = async (id, params = {}) => {
+  const { lang } = params;
+  const response = await api.get(`/news-details/${id}/get`, {
+    params: {
+      ...(lang ? { lang } : {}),
+    },
+  });
+
+  return response.data;
+};
