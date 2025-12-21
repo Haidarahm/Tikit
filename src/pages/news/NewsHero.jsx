@@ -139,7 +139,7 @@ const NewsHero = () => {
             className="custom-rays"
           />
         ) : (
-          <Threads amplitude={1} distance={0} enableMouseInteraction={true} />
+          <></>
         )}
       </div>
 
