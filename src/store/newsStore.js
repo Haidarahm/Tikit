@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { getAllNewsItems, getNewsDetails } from "../apis/news";
+import { getAllNewsItems, getNewsDetails, showOneNews } from "../apis/news";
 
 export const useNewsStore = create((set, get) => ({
   newsItems: [],
@@ -76,6 +76,38 @@ export const useNewsStore = create((set, get) => ({
     } catch (error) {
       set({
         error: error?.message || "Failed to load news details",
+        loading: false,
+      });
+      throw error;
+    }
+  },
+
+  // Show single news by id
+  loadOneNews: async (id, lang) => {
+    if (!id) return null;
+
+    const effectiveLang = lang ?? get().lang ?? "en";
+    set({ loading: true, error: null });
+
+    try {
+      const response = await showOneNews(id, { lang: effectiveLang });
+      const data = response?.data ?? response ?? null;
+
+      if (!data) {
+        throw new Error("News not found");
+      }
+
+      set((state) => ({
+        newsDetails: { ...state.newsDetails, [id]: data },
+        activeNewsId: id,
+        lang: effectiveLang,
+        loading: false,
+      }));
+
+      return data;
+    } catch (error) {
+      set({
+        error: error?.message || "Failed to load news",
         loading: false,
       });
       throw error;

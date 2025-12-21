@@ -23,3 +23,14 @@ export const getNewsDetails = async (id, params = {}) => {
 
   return response.data;
 };
+
+export const showOneNews = async (id, params = {}) => {
+  const { lang } = params;
+  const response = await api.get(`/news/${id}/show`, {
+    params: {
+      ...(lang ? { lang } : {}),
+    },
+  });
+
+  return response.data;
+};
