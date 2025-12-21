@@ -12,6 +12,8 @@ const NewsDetailsHeader = () => {
   const { isRtl, language } = useI18nLanguage()
   const { loadOneNews, newsDetails, loading } = useNewsStore()
   const [newsData, setNewsData] = useState(null)
+  const [imageLoaded, setImageLoaded] = useState(false)
+  const loadingRef = useRef(false)
   
   const headerRef = useRef(null)
   const headerImageRef = useRef(null)
@@ -37,20 +39,56 @@ const NewsDetailsHeader = () => {
   useEffect(() => {
     if (!id) return
 
+    // Check if data already exists in store for this id
+    const existingData = newsDetails[id]
+    if (existingData) {
+      setNewsData(existingData)
+      setImageLoaded(false) // Still need to wait for image to load
+      return
+    }
+
+    // Prevent duplicate calls - check if already loading for this specific id
+    if (loadingRef.current === id) {
+      return
+    }
+
+    loadingRef.current = id
+    setImageLoaded(false) // Reset image loaded state when fetching new news
+
     const fetchNews = async () => {
       try {
         const data = await loadOneNews(id, language)
-        setNewsData(data)
+        // Only update if we're still loading the same id
+        if (loadingRef.current === id) {
+          setNewsData(data)
+        }
       } catch (error) {
         console.error('Failed to load news:', error)
+        // Only update if we're still loading the same id
+        if (loadingRef.current === id) {
+          setImageLoaded(true) // Allow skeleton to hide even on error
+        }
+      } finally {
+        // Only clear if we're still on the same id
+        if (loadingRef.current === id) {
+          loadingRef.current = false
+        }
       }
     }
 
     fetchNews()
-  }, [id, language, loadOneNews])
+
+    return () => {
+      // Clear ref if component unmounts or id changes
+      if (loadingRef.current === id) {
+        loadingRef.current = false
+      }
+    }
+  }, [id, language]) // Only depend on id and language
 
   // Get news data from store or local state
   const currentNewsData = newsData || newsDetails[id]
+  const isLoading = loading || !currentNewsData || !imageLoaded
 
   useEffect(() => {
     if (!currentNewsData || loading) return
@@ -150,17 +188,32 @@ const NewsDetailsHeader = () => {
               ref={headerImageRef}
               className="relative w-full h-[450px] md:h-[550px] lg:h-[650px] rounded-3xl overflow-hidden shadow-2xl group"
             >
-              <img
-                src={currentNewsData?.image || "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1920&h=1080&fit=crop"}
-                alt={currentNewsData?.title || "News Header"}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                loading="eager"
-              />
+              {/* Skeleton Loader */}
+              {isLoading && (
+                <div className="absolute inset-0 bg-gradient-to-br from-gray-300/20 dark:from-gray-700/40 via-gray-200/30 dark:via-gray-600/30 to-gray-300/20 dark:to-gray-700/40 animate-pulse rounded-3xl" />
+              )}
+              
+              {/* Image */}
+              {currentNewsData?.image && (
+                <img
+                  src={currentNewsData.image}
+                  alt={currentNewsData.title || "News Header"}
+                  className={`w-full h-full object-cover transition-all duration-700 group-hover:scale-105 ${
+                    imageLoaded ? 'opacity-100' : 'opacity-0'
+                  }`}
+                  loading="eager"
+                  onLoad={() => setImageLoaded(true)}
+                  onError={() => setImageLoaded(true)}
+                />
+              )}
+              
               {/* Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-black/30 via-transparent to-black/50" />
+              {imageLoaded && (
+                <div className="absolute inset-0 bg-gradient-to-br from-black/30 via-transparent to-black/50" />
+              )}
               
               {/* Badge and Date Overlay */}
-              {currentNewsData && (
+              {currentNewsData && imageLoaded && (
                 <div className={`absolute ${isRtl ? 'top-6 right-6 md:top-8 md:right-8' : 'top-6 left-6 md:top-8 md:left-8'} flex flex-col gap-3 z-10`}>
                   <div
                     ref={badgeRef}
@@ -182,39 +235,61 @@ const NewsDetailsHeader = () => {
           {/* Content Section - Takes 4 columns on large screens */}
           <div className="lg:col-span-4 flex flex-col justify-center lg:pt-8">
             <div className="space-y-6 md:space-y-8">
-              {/* Title */}
-              <h1 
-                ref={headerTitleRef}
-                className={`text-3xl md:text-4xl lg:text-5xl font-bold text-[var(--foreground)] leading-[1.1] ${isRtl ? "font-cairo" : "font-antonio"}`}
-              >
-                {currentNewsData?.title || "Loading..."}
-              </h1>
+              {isLoading ? (
+                // Skeleton for content
+                <>
+                  <div className="space-y-4">
+                    <div className="h-8 md:h-10 lg:h-12 w-full bg-gradient-to-r from-[var(--foreground)]/20 via-[var(--foreground)]/10 to-[var(--foreground)]/20 rounded-lg animate-pulse" />
+                    <div className="h-8 md:h-10 w-3/4 bg-gradient-to-r from-[var(--foreground)]/20 via-[var(--foreground)]/10 to-[var(--foreground)]/20 rounded-lg animate-pulse" />
+                  </div>
+                  <div className="space-y-3">
+                    <div className="h-5 md:h-6 w-full bg-gradient-to-r from-[var(--foreground)]/20 via-[var(--foreground)]/10 to-[var(--foreground)]/20 rounded animate-pulse" />
+                    <div className="h-5 md:h-6 w-5/6 bg-gradient-to-r from-[var(--foreground)]/20 via-[var(--foreground)]/10 to-[var(--foreground)]/20 rounded animate-pulse" />
+                  </div>
+                  <div className="space-y-2">
+                    <div className="h-4 md:h-5 w-full bg-gradient-to-r from-[var(--foreground)]/20 via-[var(--foreground)]/10 to-[var(--foreground)]/20 rounded animate-pulse" />
+                    <div className="h-4 md:h-5 w-full bg-gradient-to-r from-[var(--foreground)]/20 via-[var(--foreground)]/10 to-[var(--foreground)]/20 rounded animate-pulse" />
+                    <div className="h-4 md:h-5 w-4/5 bg-gradient-to-r from-[var(--foreground)]/20 via-[var(--foreground)]/10 to-[var(--foreground)]/20 rounded animate-pulse" />
+                  </div>
+                  <div className="h-0.5 w-full bg-gradient-to-r from-[var(--foreground)]/20 via-[var(--foreground)]/10 to-transparent rounded-full animate-pulse" />
+                </>
+              ) : (
+                <>
+                  {/* Title */}
+                  <h1 
+                    ref={headerTitleRef}
+                    className={`text-3xl md:text-4xl lg:text-5xl font-bold text-[var(--foreground)] leading-[1.1] ${isRtl ? "font-cairo" : "font-antonio"}`}
+                  >
+                    {currentNewsData?.title || ""}
+                  </h1>
 
-              {/* Subtitle */}
-              {currentNewsData?.subtitle && (
-                <p 
-                  ref={headerSubtitleRef}
-                  className="text-lg md:text-xl lg:text-2xl text-[var(--foreground)]/80 leading-relaxed font-medium"
-                >
-                  {currentNewsData.subtitle}
-                </p>
+                  {/* Subtitle */}
+                  {currentNewsData?.subtitle && (
+                    <p 
+                      ref={headerSubtitleRef}
+                      className="text-lg md:text-xl lg:text-2xl text-[var(--foreground)]/80 leading-relaxed font-medium"
+                    >
+                      {currentNewsData.subtitle}
+                    </p>
+                  )}
+
+                  {/* Description */}
+                  {currentNewsData?.description && (
+                    <p 
+                      ref={descriptionRef}
+                      className="text-base md:text-lg text-[var(--foreground)]/70 leading-relaxed"
+                    >
+                      {currentNewsData.description}
+                    </p>
+                  )}
+
+                  {/* Decorative Line */}
+                  <div 
+                    ref={lineRef}
+                    className="w-full h-0.5 bg-gradient-to-r from-[#6ACBCC] via-[#1C6F6C] to-transparent rounded-full origin-left"
+                  />
+                </>
               )}
-
-              {/* Description */}
-              {currentNewsData?.description && (
-                <p 
-                  ref={descriptionRef}
-                  className="text-base md:text-lg text-[var(--foreground)]/70 leading-relaxed"
-                >
-                  {currentNewsData.description}
-                </p>
-              )}
-
-              {/* Decorative Line */}
-              <div 
-                ref={lineRef}
-                className="w-full h-0.5 bg-gradient-to-r from-[#6ACBCC] via-[#1C6F6C] to-transparent rounded-full origin-left"
-              />
             </div>
           </div>
         </div>
