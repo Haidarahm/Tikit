@@ -46,7 +46,7 @@ export const useNewsStore = create((set, get) => ({
     }
   },
 
-  // Load single news details by id
+  // Load single news details by id (returns array of detail items)
   loadNewsDetails: async (id, lang) => {
     if (!id) return null;
 
@@ -55,15 +55,9 @@ export const useNewsStore = create((set, get) => ({
 
     try {
       const response = await getNewsDetails(id, { lang: effectiveLang });
-      const data = Array.isArray(response?.data) && response.data.length > 0
-        ? response.data[0]
-        : response?.data
+      const data = Array.isArray(response?.data) 
         ? response.data
-        : null;
-
-      if (!data) {
-        throw new Error("News details not found");
-      }
+        : [];
 
       set((state) => ({
         newsDetails: { ...state.newsDetails, [id]: data },
@@ -72,7 +66,7 @@ export const useNewsStore = create((set, get) => ({
         loading: false,
       }));
 
-      return data;
+      return response;
     } catch (error) {
       set({
         error: error?.message || "Failed to load news details",
