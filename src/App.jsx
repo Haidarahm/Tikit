@@ -21,7 +21,7 @@ const AboutUs = lazy(() => import("./pages/about/AboutUs"));
 const Services = lazy(() => import("./pages/services/Services.jsx"));
 const Contact = lazy(() => import("./pages/contact/Contact"));
 const News = lazy(() => import("./pages/news/News"));
-const NewsDetails = lazy(() => import("./pages/news/NewsDetails"));
+const NewsDetails = lazy(() => import("./pages/newsDetails/NewsDetails.jsx"));
 const Influencer = lazy(() =>
   import("./pages/influencer/Influencer.jsx").then((module) => ({
     default: module.Influencer,

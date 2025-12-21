@@ -1,14 +1,14 @@
 import React, { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useI18nLanguage } from '../../store/I18nLanguageContext'
+import NewsDetailsHeader from './NewsDetailsHeader'
 
 gsap.registerPlugin(ScrollTrigger)
 
 const NewsDetails = () => {
+  const { isRtl } = useI18nLanguage()
   const sectionRef = useRef(null)
-  const headerImageRef = useRef(null)
-  const headerTitleRef = useRef(null)
-  const headerSubtitleRef = useRef(null)
   const paragraphsRef = useRef([])
 
   // Fake data array - paragraphes (as requested)
@@ -73,59 +73,6 @@ const NewsDetails = () => {
     if (!sectionRef.current) return
 
     const ctx = gsap.context(() => {
-      // Header image animation
-      gsap.fromTo(
-        headerImageRef.current,
-        { opacity: 0, scale: 1.1, clipPath: "inset(0 0 100% 0)" },
-        {
-          opacity: 1,
-          scale: 1,
-          clipPath: "inset(0 0 0% 0)",
-          duration: 1.2,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: headerImageRef.current,
-            start: "top 85%",
-            once: true,
-          },
-        }
-      )
-
-      // Header title animation
-      gsap.fromTo(
-        headerTitleRef.current,
-        { opacity: 0, y: 50 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: headerTitleRef.current,
-            start: "top 85%",
-            once: true,
-          },
-        }
-      )
-
-      // Header subtitle animation
-      gsap.fromTo(
-        headerSubtitleRef.current,
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: "power2.out",
-          delay: 0.2,
-          scrollTrigger: {
-            trigger: headerSubtitleRef.current,
-            start: "top 85%",
-            once: true,
-          },
-        }
-      )
-
       // Paragraphs animations
       paragraphsRef.current.forEach((paragraphEl, index) => {
         if (!paragraphEl) return
@@ -239,31 +186,7 @@ const NewsDetails = () => {
   return (
     <div ref={sectionRef} className="news-details w-full overflow-hidden py-12 md:py-20 px-4 md:px-8">
       {/* Header Section */}
-      <div className="max-w-6xl mx-auto mb-16 md:mb-24">
-        <div 
-          ref={headerImageRef}
-          className="header-image-container mb-8 rounded-2xl overflow-hidden"
-        >
-          <img
-            src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=600&fit=crop"
-            alt="News Header"
-            className="w-full h-[300px] md:h-[500px] object-cover"
-            loading="eager"
-          />
-        </div>
-        <h1 
-          ref={headerTitleRef}
-          className="text-3xl md:text-5xl font-bold text-[var(--foreground)] mb-4"
-        >
-          Breaking News: The Latest in Digital Marketing
-        </h1>
-        <p 
-          ref={headerSubtitleRef}
-          className="text-lg md:text-xl text-[var(--foreground)]/70"
-        >
-          Discover the trends, strategies, and innovations shaping the future of marketing
-        </p>
-      </div>
+      <NewsDetailsHeader />
 
       {/* Paragraphs Section */}
       <div className="max-w-6xl mx-auto space-y-20 md:space-y-32">
@@ -278,7 +201,7 @@ const NewsDetails = () => {
             >
               {/* Title and Subtitle */}
               <div className="mb-6 md:mb-8">
-                <h2 className="paragraph-title text-2xl md:text-4xl font-bold text-[var(--foreground)] mb-3">
+                <h2 className={`paragraph-title text-2xl md:text-4xl font-bold text-[var(--foreground)] mb-3 ${isRtl ? "font-cairo" : "font-antonio"}`}>
                   {paragraph.title}
                 </h2>
                 <h3 className="paragraph-subtitle text-lg md:text-xl text-[var(--foreground)]/60 mb-4">
