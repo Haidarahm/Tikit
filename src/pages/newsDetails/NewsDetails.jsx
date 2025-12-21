@@ -184,7 +184,7 @@ const NewsDetails = () => {
   }, [])
 
   return (
-    <div ref={sectionRef} className="news-details w-full overflow-hidden py-12 md:py-20 px-4 md:px-8">
+    <div data-nav-color="black" ref={sectionRef} className="news-details w-full overflow-hidden py-12 md:py-20 px-4 md:px-8">
       {/* Header Section */}
       <NewsDetailsHeader />
 
