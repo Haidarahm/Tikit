@@ -218,7 +218,6 @@ const Team = () => {
           return;
         }
 
-        // Recalculate geometry for desktop and update transform
         calculate();
         onScroll();
       }, 200);
@@ -367,7 +366,7 @@ const Team = () => {
                     </div>
 
                     {/* Name + Specialist */}
-                    <div className="text-center md:text-left space-y-3 bg-black/20 rounded-xl p-4 opacity-80 border border-white/10 shadow-inner">
+                    <div className="text-center md:text-left space-y-3 bg-black/30 rounded-xl p-4  border border-white/10 shadow-inner">
                       <h3
                         className={`text-2xl md:text-3xl font-bold tracking-[0.28em] uppercase drop-shadow ${styles.name}`}
                       >
@@ -442,7 +441,7 @@ const Team = () => {
                   >
                     {member.type}
                   </span>
-                  <div className="bg-white/5 border border-white/10 opacity-80 rounded-[16px] w-full p-5 text-center space-y-2">
+                  <div className="bg-black/20 border border-white/10 rounded-[16px] w-full p-5 text-center space-y-2">
                     <div
                       className={`text-xl font-semibold tracking-[0.3em] uppercase ${styles.name}`}
                     >
