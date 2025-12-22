@@ -22,7 +22,6 @@ import naemaAlshehi from "../../assets/influencers/Naema Alshehi.webp";
 import noufAlabd from "../../assets/influencers/nouf alabd.webp";
 import saeedAlshamsi from "../../assets/influencers/Saeed Alshamsi.webp";
 import salamahAlmuheri from "../../assets/influencers/Salamah Almuheri.webp";
-import saraGazioglu from "../../assets/influencers/sara Gazioglu.webp";
 import sultanAlsuwaidi from "../../assets/influencers/Sultan Alsuwaidi.webp";
 import thaerAlTurkmani from "../../assets/influencers/thaer al turkmani.webp";
 import yousifAlhammadi from "../../assets/influencers/Yousif Alhammadi.webp";
@@ -58,7 +57,6 @@ const Hero = () => {
       { src: noufAlabd, alt: "Nouf Alabd" },
       { src: saeedAlshamsi, alt: "Saeed Alshamsi" },
       { src: salamahAlmuheri, alt: "Salamah Almuheri" },
-      { src: saraGazioglu, alt: "Sara Gazioglu" },
       { src: sultanAlsuwaidi, alt: "Sultan Alsuwaidi" },
       { src: thaerAlTurkmani, alt: "Thaer Al Turkmani" },
       { src: yousifAlhammadi, alt: "Yousif Alhammadi" },

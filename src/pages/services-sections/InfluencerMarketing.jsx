@@ -7,7 +7,7 @@ import { useScrollToTop } from "../../hooks/useScrollToTop";
 import influencerHero from "../../assets/services/Influencer-Marketing.webp";
 import influencer1 from "../../assets/influencers/Ahmed ben chaibah.webp";
 import influencer2 from "../../assets/influencers/hessa alfalasi.webp";
-import influencer3 from "../../assets/influencers/sara Gazioglu.webp";
+import influencer3 from "../../assets/influencers/amira mohamed.webp";
 import influencer4 from "../../assets/influencers/Sultan Alsuwaidi.webp";
 import TikitTitle from "../../components/TikitTitle";
 
