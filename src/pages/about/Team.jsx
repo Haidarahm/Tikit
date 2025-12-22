@@ -8,6 +8,7 @@ import {
   FaPinterest,
   FaLinkedin,
   FaInstagram,
+  FaFacebook,
   FaGlobe,
 } from "react-icons/fa";
 
@@ -81,6 +82,8 @@ const Team = () => {
     youtube: <FaYoutube />,
     snapchat: <FaSnapchat />,
     pinterest: <FaPinterest />,
+    facebook: <FaFacebook />,
+    fb: <FaFacebook />,
     website: <FaGlobe />,
   };
 
@@ -452,6 +455,23 @@ const Team = () => {
                     >
                       {member.specialist}
                     </div>
+                    
+                    {/* Social Icons - Mobile */}
+                    {member.social_links?.length > 0 && (
+                      <div className="flex items-center justify-center gap-3 mt-3 pt-3 border-t border-white/10">
+                        {member.social_links.map((link, i) => (
+                          <a
+                            key={i}
+                            href={link.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-[20px] p-2 rounded-xl transition-all duration-300 hover:scale-110 hover:bg-white/20"
+                          >
+                            {iconMap[link.link_type] || <FaGlobe />}
+                          </a>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>

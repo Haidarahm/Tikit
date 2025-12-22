@@ -8,12 +8,17 @@ function LogoIntro() {
   const wrapperRef = useRef(null);
   const navigate = useNavigate();
   const { theme } = useTheme();
+  const homePreloadRef = useRef(null);
 
   const logoColor = theme === "light" ? "#363737" : "#ffffff";
   const logoJumpColor = "#52C3C5";
 
   useEffect(() => {
     if (!wrapperRef.current) return;
+
+    // Start preloading Home component early (while animation plays)
+    // This ensures the component is ready by the time navigation happens
+    homePreloadRef.current = import("../pages/Home/Home");
 
     const ctx = gsap.context(() => {
       const svg = document.querySelector(".intro-logo svg");
@@ -99,8 +104,18 @@ function LogoIntro() {
           ease: "power4.in",
         });
 
-      tl.eventCallback("onComplete", () => {
-        navigate("/home");
+      // Wait for both animation completion AND Home component preload
+      tl.eventCallback("onComplete", async () => {
+        try {
+          // Ensure Home component is loaded before navigating
+          // If already loaded, this will resolve immediately
+          await homePreloadRef.current;
+          navigate("/home");
+        } catch (error) {
+          console.error("Failed to preload Home component:", error);
+          // Navigate anyway if preload fails
+          navigate("/home");
+        }
       });
     }, wrapperRef);
 
