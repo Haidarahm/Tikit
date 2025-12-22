@@ -12,7 +12,7 @@ export default function ThemeToggle({ isMobile = false }) {
       onClick={toggleTheme}
       className={buttonClasses}
       aria-label="Toggle theme"
-      aria-pressed={theme === "dark"}
+      aria-checked={theme === "dark"}
       role="switch"
       title="Toggle theme"
     >

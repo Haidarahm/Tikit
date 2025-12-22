@@ -138,6 +138,7 @@ export default function LanguageSelector({
             : "opacity-0 -translate-y-2 pointer-events-none"
         } bg-[var(--background)] dark:bg-[var(--container-bg)] backdrop-blur-md border border-[var(--foreground)]/10 dark:border-white/10 shadow-lg`}
         role="listbox"
+        aria-label="Language selection"
       >
         {LANGUAGES.map((opt, index) => (
           <button
