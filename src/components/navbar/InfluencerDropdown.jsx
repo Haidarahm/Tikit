@@ -49,7 +49,7 @@ export default function InfluencerDropdown({ isMobile = false, onClose }) {
 
   if (isMobile) {
     return (
-      <div className="mobile-nav-item w-full">
+      <div className="mobile-nav-item w-full flex flex-col ">
         <button
           onClick={() => setIsInfluencerDropdownOpen((v) => !v)}
           className="text-[var(--foreground)] text-3xl md:text-4xl uppercase tracking-wider hover:opacity-70 transition-colors duration-300 flex items-center justify-center gap-2"

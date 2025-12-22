@@ -95,6 +95,7 @@ const Hero = () => {
               <video
                 src={banner.media}
                 muted
+                poster="/showcase-cover.webp"
                 loop
                 autoPlay
                 playsInline

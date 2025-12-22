@@ -5,7 +5,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useI18nLanguage } from '../../store/I18nLanguageContext'
 import { useNewsStore } from '../../store/newsStore'
 import NewsDetailsHeader from './NewsDetailsHeader'
-
+import Footer from '../../components/Footer'
 gsap.registerPlugin(ScrollTrigger)
 
 const NewsDetails = () => {
@@ -181,7 +181,7 @@ const NewsDetails = () => {
   }, [paragraphes, isLoading])
 
   return (
-    <div data-nav-color="black" ref={sectionRef} className="news-details w-full overflow-hidden py-12 md:py-20 px-4 md:px-8">
+    <div data-nav-color="black" ref={sectionRef} className="news-details w-full overflow-hidden   ">
       {/* Header Section */}
       <NewsDetailsHeader />
 
@@ -246,7 +246,7 @@ const NewsDetails = () => {
                   <div className="paragraph-images">
                     {imageCount === 1 ? (
                       // Single image - Full width with rounded corners
-                      <div className="single-image-container">
+                      <div data-nav-color="white" className="single-image-container">
                         <img
                           src={paragraph.images[0]}
                           alt={`${paragraph.title || 'News'} - Image 1`}
@@ -256,7 +256,7 @@ const NewsDetails = () => {
                       </div>
                     ) : imageCount === 2 ? (
                       // Two images - Side by side with gap
-                      <div className="two-images-container grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                      <div data-nav-color="white" className="two-images-container grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                         <img
                           src={paragraph.images[0]}
                           alt={`${paragraph.title || 'News'} - Image 1`}
@@ -298,6 +298,7 @@ const NewsDetails = () => {
           </div>
         )}
       </div>
+      <Footer/>
     </div>
   )
 }

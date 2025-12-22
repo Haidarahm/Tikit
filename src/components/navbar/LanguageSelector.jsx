@@ -46,7 +46,7 @@ export default function LanguageSelector({
       <div className="mobile-nav-item w-full px-6 mt-6">
         <button
           onClick={() => setIsLangOpen((v) => !v)}
-          className="w-full flex items-center justify-between text-[var(--foreground)] text-2xl md:text-3xl font-light uppercase tracking-wider transition-colors duration-200 hover:opacity-80"
+          className="w-full flex items-center justify-center  text-[var(--foreground)] text-2xl md:text-3xl font-light uppercase tracking-wider transition-colors duration-200 hover:opacity-80"
         >
           <span>
             {language === "en" ? "En" : language === "fr" ? "Fr" : "Ar"}

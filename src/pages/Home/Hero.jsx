@@ -8,9 +8,7 @@ import { useBannersStore } from "../../store/bannersStore";
 //   import("../../components/aurora/LiquidEther")
 // );
 
-const VerticalVideoLooper = React.lazy(() =>
-  import("../../components/videoLoop/VerticalVideoLooper.jsx")
-);
+
 
 import AvatarGroupDemo from "../../components/ui/AvatarGroupDemo";
 
