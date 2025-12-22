@@ -58,7 +58,7 @@ const AnimatedText = () => {
   return (
     <div
       ref={containerRef}
-      className={`animated-text-about-us relative w-full p-4 md:p-14 overflow-hidden mb-8 md:mb-16 `}
+      className={`animated-text-about-us relative w-full p-4 md:p-14 overflow-hidden   `}
       dir={isRtl ? "rtl" : "ltr"}
     >
       <div

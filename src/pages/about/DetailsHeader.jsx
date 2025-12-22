@@ -144,16 +144,16 @@ const DetailsHeader = () => {
       {/* Bottom Marquee */}
       <div
         ref={marqRef}
-        className="absolute bottom-8 left-0 w-full overflow-hidden"
+        className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-0 w-full overflow-hidden px-4"
       >
-        <div className={`flex items-center justify-center gap-6 md:gap-8 text-[var(--foreground)] dark:text-[var(--foreground)]/50 text-sm md:text-base uppercase tracking-widest ${isRtl ? "font-cairo" : "font-hero-light"}`}>
-          <span>{t("about.details.header.marquee.strategy")}</span>
-          <span className="w-2 h-2 rounded-full bg-[#6ACBCC]" />
-          <span>{t("about.details.header.marquee.creativity")}</span>
-          <span className="w-2 h-2 rounded-full bg-[#6ACBCC]" />
-          <span>{t("about.details.header.marquee.innovation")}</span>
-          <span className="w-2 h-2 rounded-full bg-[#6ACBCC]" />
-          <span>{t("about.details.header.marquee.growth")}</span>
+        <div className={`flex items-center justify-center flex-wrap gap-3 sm:gap-4 md:gap-6 lg:gap-8 text-[var(--foreground)] dark:text-[var(--foreground)]/50 text-xs sm:text-sm md:text-base uppercase tracking-wide sm:tracking-widest ${isRtl ? "font-cairo" : "font-hero-light"}`}>
+          <span className="whitespace-nowrap">{t("about.details.header.marquee.strategy")}</span>
+          <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#6ACBCC] flex-shrink-0" />
+          <span className="whitespace-nowrap">{t("about.details.header.marquee.creativity")}</span>
+          <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#6ACBCC] flex-shrink-0" />
+          <span className="whitespace-nowrap">{t("about.details.header.marquee.innovation")}</span>
+          <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#6ACBCC] flex-shrink-0" />
+          <span className="whitespace-nowrap">{t("about.details.header.marquee.growth")}</span>
         </div>
       </div>
     </header>

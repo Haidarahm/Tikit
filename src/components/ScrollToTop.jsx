@@ -18,8 +18,15 @@ function ScrollToTop() {
       lenisInstance.scrollTo(0, { immediate: true });
     }
     
-    // Refresh ScrollTrigger
-    ScrollTrigger.refresh();
+    // Safely refresh ScrollTrigger
+    try {
+      if (ScrollTrigger && typeof ScrollTrigger.refresh === 'function') {
+        ScrollTrigger.update();
+      }
+    } catch (error) {
+      // Silently handle scope errors
+      console.debug('ScrollTrigger update skipped:', error);
+    }
   };
 
   useLayoutEffect(() => {
@@ -99,7 +106,18 @@ function ScrollToTop() {
         setTimeout(scrollToTop, 300),
         setTimeout(() => {
           scrollToTop();
-          ScrollTrigger.refresh();
+          // Safely refresh ScrollTrigger after a delay
+          try {
+            if (ScrollTrigger && typeof ScrollTrigger.refresh === 'function') {
+              // Use requestAnimationFrame to ensure DOM is ready
+              requestAnimationFrame(() => {
+                ScrollTrigger.refresh();
+              });
+            }
+          } catch (error) {
+            // Silently handle scope errors
+            console.debug('ScrollTrigger refresh skipped:', error);
+          }
         }, 500),
       ];
       

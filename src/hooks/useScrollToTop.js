@@ -19,8 +19,15 @@ export const useScrollToTop = () => {
       mainContainer.scrollTop = 0;
     }
     
-    // Refresh ScrollTrigger to recalculate positions
-    ScrollTrigger.refresh();
+    // Safely refresh ScrollTrigger to recalculate positions
+    try {
+      if (ScrollTrigger && typeof ScrollTrigger.update === 'function') {
+        ScrollTrigger.update();
+      }
+    } catch (error) {
+      // Silently handle scope errors
+      console.debug('ScrollTrigger update skipped:', error);
+    }
   }, []);
 
   // Additional scroll attempts after render to handle Lenis and lazy loading
@@ -30,8 +37,15 @@ export const useScrollToTop = () => {
       document.documentElement.scrollTop = 0;
       document.body.scrollTop = 0;
       
-      // Refresh ScrollTrigger after scroll
-      ScrollTrigger.refresh();
+      // Safely refresh ScrollTrigger after scroll
+      try {
+        if (ScrollTrigger && typeof ScrollTrigger.update === 'function') {
+          ScrollTrigger.update();
+        }
+      } catch (error) {
+        // Silently handle scope errors
+        console.debug('ScrollTrigger update skipped:', error);
+      }
       
       // Try to access Lenis instance from the global scope or React context
       // Lenis might be stored in a ref or context
@@ -52,7 +66,16 @@ export const useScrollToTop = () => {
       setTimeout(() => {
         scrollToTop();
         // Final ScrollTrigger refresh
-        ScrollTrigger.refresh();
+        try {
+          if (ScrollTrigger && typeof ScrollTrigger.refresh === 'function') {
+            requestAnimationFrame(() => {
+              ScrollTrigger.refresh();
+            });
+          }
+        } catch (error) {
+          // Silently handle scope errors
+          console.debug('ScrollTrigger refresh skipped:', error);
+        }
       }, 500),
     ];
     
