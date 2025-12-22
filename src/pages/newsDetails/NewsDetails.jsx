@@ -159,20 +159,6 @@ const NewsDetails = () => {
               },
             }
           )
-
-          // Parallax effect on images
-          images.forEach((img) => {
-            gsap.to(img, {
-              yPercent: -20,
-              ease: "none",
-              scrollTrigger: {
-                trigger: img,
-                start: "top bottom",
-                end: "bottom top",
-                scrub: 1,
-              },
-            })
-          })
         }
       })
     }, sectionRef)
@@ -186,7 +172,7 @@ const NewsDetails = () => {
       <NewsDetailsHeader />
 
       {/* Paragraphs Section */}
-      <div className="max-w-6xl mx-auto space-y-20 md:space-y-32">
+      <div className="max-w-6xl mx-auto space-y-20 md:space-y-32 my-10 md:my-16">
         {isLoading ? (
           // Skeleton Loaders
           Array.from({ length: 3 }).map((_, skeletonIndex) => (

@@ -230,7 +230,7 @@ const NewsDetailsHeader = () => {
   return (
     <header
       ref={headerRef}
-      className="relative w-full mb-20 md:mb-28 mt-[104px] py-4"
+      className="relative w-full  mt-[104px] py-4"
       dir={isRtl ? "rtl" : "ltr"}
     >
       <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
