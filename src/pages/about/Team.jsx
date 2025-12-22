@@ -17,7 +17,7 @@ const TYPE_STYLES = {
     gradient: "from-[#ffffff] to-[#808285]",
     badge: "bg-black/40 border border-white/30 text-white opacity-80",
     name: "text-white",
-    specialist: "text-white/70",
+    specialist: "text-white/90",
   },
   "web development": {
     gradient: "from-[#dd9272] to-[#d54a25]",
@@ -59,7 +59,7 @@ const TYPE_STYLES = {
     gradient: "from-[#ffffff] to-[#808285]",
     badge: "bg-black/40 border border-white/30 text-white opacity-80",
     name: "text-white",
-    specialist: "text-white/70",
+    specialist: "text-white/90",
   },
 };
 
@@ -392,12 +392,13 @@ const Team = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-[22px] p-2 rounded-xl transition-all duration-300 hover:scale-110 hover:bg-white/20"
+                            aria-label={`${member.name}'s ${link.link_type || 'social media'} profile`}
                           >
                             {iconMap[link.link_type] || <FaGlobe />}
                           </a>
                         ))
                       ) : (
-                        <span className="text-white/60 text-sm tracking-[0.2em] uppercase">
+                        <span className="text-white/90 text-sm tracking-[0.2em] uppercase">
                           No social links
                         </span>
                       )}
@@ -466,6 +467,7 @@ const Team = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-[20px] p-2 rounded-xl transition-all duration-300 hover:scale-110 hover:bg-white/20"
+                            aria-label={`${member.name}'s ${link.link_type || 'social media'} profile`}
                           >
                             {iconMap[link.link_type] || <FaGlobe />}
                           </a>

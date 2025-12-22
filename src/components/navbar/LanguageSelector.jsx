@@ -47,6 +47,9 @@ export default function LanguageSelector({
         <button
           onClick={() => setIsLangOpen((v) => !v)}
           className="w-full flex items-center justify-center  text-[var(--foreground)] text-2xl md:text-3xl font-light uppercase tracking-wider transition-colors duration-200 hover:opacity-80"
+          aria-label={`Select language. Current language: ${language === "en" ? "English" : language === "fr" ? "French" : "Arabic"}`}
+          aria-expanded={isLangOpen}
+          aria-haspopup="listbox"
         >
           <span>
             {language === "en" ? "En" : language === "fr" ? "Fr" : "Ar"}
@@ -85,6 +88,8 @@ export default function LanguageSelector({
                     : "text-[var(--foreground)] hover:bg-[var(--container-bg)] dark:hover:bg-[var(--container-bg)]"
                 }`}
                 onClick={() => handleLanguageSelect(opt.value)}
+                aria-label={`Select ${opt.label} language`}
+                aria-selected={language === opt.value}
               >
                 {opt.label}
               </button>
@@ -102,6 +107,7 @@ export default function LanguageSelector({
         className={`nav-item uppercase font-light text-sm opacity-0 ${textColor} relative inline-flex items-center gap-2 transition-colors duration-300 ease-in-out hover:opacity-80`}
         aria-haspopup="listbox"
         aria-expanded={isLangOpen}
+        aria-label={`Select language. Current language: ${language === "en" ? "English" : language === "fr" ? "French" : "Arabic"}`}
       >
         <span className="relative inline-block">
           {language === "en" ? "En" : language === "fr" ? "Fr" : "Ar"}
@@ -136,27 +142,28 @@ export default function LanguageSelector({
           isLangOpen
             ? "opacity-100 translate-y-0 pointer-events-auto"
             : "opacity-0 -translate-y-2 pointer-events-none"
-        } bg-[var(--background)] dark:bg-[var(--container-bg)] backdrop-blur-md border border-[var(--foreground)]/10 dark:border-white/10 shadow-lg`}
+        } bg-[var(--background)] dark:bg-[var(--container-bg)] backdrop-blur-md border border-[var(--foreground)]/20 dark:border-white/20 shadow-lg`}
         role="listbox"
         aria-label="Language selection"
       >
-        {LANGUAGES.map((opt, index) => (
-          <button
-            key={opt.value}
-            className={`block w-full text-left px-4 py-3 text-sm uppercase transition-all duration-200 ${
-              index === 0 ? "rounded-t-lg" : ""
-            } ${index === LANGUAGES.length - 1 ? "rounded-b-lg" : ""} ${
-              language === opt.value
-                ? "bg-[var(--secondary)]/20 text-[var(--secondary)] dark:text-[var(--secondary)] border-l-2 border-[var(--secondary)] font-medium"
-                : "text-[var(--foreground)] hover:bg-[var(--container-bg)] dark:hover:bg-[var(--container-bg)]"
-            }`}
-            onClick={() => handleLanguageSelect(opt.value)}
-            role="option"
-            aria-selected={language === opt.value}
-          >
-            {opt.label}
-          </button>
-        ))}
+            {LANGUAGES.map((opt, index) => (
+              <button
+                key={opt.value}
+                className={`block w-full text-left px-4 py-3 text-sm uppercase transition-all duration-200 ${
+                  index === 0 ? "rounded-t-lg" : ""
+                } ${index === LANGUAGES.length - 1 ? "rounded-b-lg" : ""} ${
+                  language === opt.value
+                    ? "bg-[var(--secondary)]/20 text-[var(--secondary)] dark:text-[var(--secondary)] border-l-2 border-[var(--secondary)] font-medium"
+                    : "text-[var(--foreground)] hover:bg-[var(--container-bg)] dark:hover:bg-[var(--container-bg)]"
+                }`}
+                onClick={() => handleLanguageSelect(opt.value)}
+                role="option"
+                aria-selected={language === opt.value}
+                aria-label={`Select ${opt.label} language`}
+              >
+                {opt.label}
+              </button>
+            ))}
       </div>
     </div>
   );

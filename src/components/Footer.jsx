@@ -93,7 +93,7 @@ const Footer = ({ className }) => {
               <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
                 {t("newsletter.title", "Stay Updated")}
               </h3>
-              <p className="text-white/80 text-sm md:text-base">
+              <p className="text-white text-sm md:text-base">
                 {t("newsletter.description", "Subscribe to our newsletter for the latest updates")}
               </p>
             </div>
@@ -103,14 +103,14 @@ const Footer = ({ className }) => {
                 placeholder={t("newsletter.name")}
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="px-4 py-3 rounded-full bg-white/10 border border-white/20 text-white placeholder:text-white/60 focus:outline-none focus:border-white/50 min-w-[150px]"
+                className="px-4 py-3 rounded-full bg-white/10 border border-white/30 text-white placeholder:text-white/70 focus:outline-none focus:border-white/60 min-w-[150px]"
               />
               <input
                 type="email"
                 placeholder={t("newsletter.email")}
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="px-4 py-3 rounded-full bg-white/10 border border-white/20 text-white placeholder:text-white/60 focus:outline-none focus:border-white/50 min-w-[200px]"
+                className="px-4 py-3 rounded-full bg-white/10 border border-white/30 text-white placeholder:text-white/70 focus:outline-none focus:border-white/60 min-w-[200px]"
               />
               <button
                 onClick={handleSubscribe}
@@ -142,7 +142,7 @@ const Footer = ({ className }) => {
                   className="h-12 md:h-14 w-auto"
                 />
               </Link>
-              <p className="text-gray-500 text-sm leading-relaxed mb-6">
+              <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-6">
                 {t("footer.contactText")}
               </p>
               
@@ -202,7 +202,7 @@ const Footer = ({ className }) => {
                   <Link
                     key={link.to}
                     to={link.to}
-                    className="text-gray-500 hover:text-[var(--secondary)] hover:translate-x-1 transition-all duration-300 text-sm"
+                    className="text-gray-600 dark:text-gray-300 hover:text-[var(--secondary)] hover:translate-x-1 transition-all duration-300 text-sm"
                   >
                     {link.label}
                   </Link>
@@ -221,7 +221,7 @@ const Footer = ({ className }) => {
                   <Link
                     key={index}
                     to={link.to}
-                    className="text-gray-500 hover:text-[var(--secondary)] hover:translate-x-1 transition-all duration-300 text-sm"
+                    className="text-gray-600 dark:text-gray-300 hover:text-[var(--secondary)] hover:translate-x-1 transition-all duration-300 text-sm"
                   >
                     {link.label}
                   </Link>
@@ -242,15 +242,16 @@ const Footer = ({ className }) => {
                   href="tel:+97145774042"
                   className={`flex items-center gap-3 transition-colors group ${
                     theme === "dark"
-                      ? "text-gray-300 hover:text-[var(--secondary)]"
-                      : "text-gray-500 hover:text-[var(--secondary)]"
+                      ? "text-gray-200 hover:text-[var(--secondary)]"
+                      : "text-gray-600 hover:text-[var(--secondary)]"
                   }`}
+                  aria-label="Call us at +971 4 577 4042"
                 >
                   <span
                     className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${
                       theme === "dark"
-                        ? "bg-white/5 text-white/80 group-hover:bg-[var(--secondary)] group-hover:text-black"
-                        : "bg-[var(--secondary)]/10 text-[var(--secondary)] group-hover:bg-[var(--secondary)] group-hover:text-white"
+                        ? "bg-white/10 text-white group-hover:bg-[var(--secondary)] group-hover:text-black"
+                        : "bg-[var(--secondary)]/15 text-[var(--secondary)] group-hover:bg-[var(--secondary)] group-hover:text-white"
                     }`}
                   >
                     <FaPhone size={12} />
@@ -263,15 +264,16 @@ const Footer = ({ className }) => {
                   href="mailto:Holla@tikit.ae"
                   className={`flex items-center gap-3 transition-colors group ${
                     theme === "dark"
-                      ? "text-gray-300 hover:text-[var(--secondary)]"
-                      : "text-gray-500 hover:text-[var(--secondary)]"
+                      ? "text-gray-200 hover:text-[var(--secondary)]"
+                      : "text-gray-600 hover:text-[var(--secondary)]"
                   }`}
+                  aria-label="Email us at Holla@tikit.ae"
                 >
                   <span
                     className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${
                       theme === "dark"
-                        ? "bg-white/5 text-white/80 group-hover:bg-[var(--secondary)] group-hover:text-black"
-                        : "bg-[var(--secondary)]/10 text-[var(--secondary)] group-hover:bg-[var(--secondary)] group-hover:text-white"
+                        ? "bg-white/10 text-white group-hover:bg-[var(--secondary)] group-hover:text-black"
+                        : "bg-[var(--secondary)]/15 text-[var(--secondary)] group-hover:bg-[var(--secondary)] group-hover:text-white"
                     }`}
                   >
                     <FaEnvelope size={12} />
@@ -282,14 +284,14 @@ const Footer = ({ className }) => {
                 {/* Address */}
                 <div
                   className={`flex items-start gap-3 flex-shrink-0 ${
-                    theme === "dark" ? "text-gray-300" : "text-gray-500"
+                    theme === "dark" ? "text-gray-200" : "text-gray-600"
                   }`}
                 >
                   <span
                     className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
                       theme === "dark"
-                        ? "bg-white/5 text-white/80"
-                        : "bg-[var(--secondary)]/10 text-[var(--secondary)]"
+                        ? "bg-white/10 text-white"
+                        : "bg-[var(--secondary)]/15 text-[var(--secondary)]"
                     }`}
                   >
                     <FaMapMarkerAlt size={12} />
@@ -306,7 +308,7 @@ const Footer = ({ className }) => {
           <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800">
             <div className="flex flex-wrap justify-center gap-6 md:gap-10">
               {locations.map((location, index) => (
-                <div key={index} className="flex items-center gap-2 text-gray-500 text-sm">
+                <div key={index} className="flex items-center gap-2 text-gray-600 dark:text-gray-300 text-sm">
                   <span className="text-lg">{location.flag}</span>
                   <span>{location.name}</span>
                 </div>
@@ -321,7 +323,7 @@ const Footer = ({ className }) => {
         <div className="max-w-6xl mx-auto px-6 md:px-20 py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             {/* Legal Links */}
-            <div className="flex flex-wrap justify-center gap-4 text-sm text-gray-500 order-2 md:order-1">
+            <div className="flex flex-wrap justify-center gap-4 text-sm text-gray-600 dark:text-gray-300 order-2 md:order-1">
               <Link to="/privacy-policy" className="hover:text-[var(--secondary)] transition-colors">
                 {t("footer.terms.privacyPolicy")}
               </Link>
@@ -336,7 +338,7 @@ const Footer = ({ className }) => {
             </div>
             
             {/* Copyright - Center */}
-            <div className="text-center text-gray-500 text-sm order-1 md:order-2">
+            <div className="text-center text-gray-600 dark:text-gray-300 text-sm order-1 md:order-2">
               {t("footer.copyright")}
             </div>
             
@@ -344,7 +346,7 @@ const Footer = ({ className }) => {
             <div className="hidden md:block order-3">
               <button 
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                className="text-sm text-gray-500 hover:text-[var(--secondary)] transition-colors flex items-center gap-2"
+                className="text-sm text-gray-600 dark:text-gray-300 hover:text-[var(--secondary)] transition-colors flex items-center gap-2"
               >
                 Back to top ↑
               </button>

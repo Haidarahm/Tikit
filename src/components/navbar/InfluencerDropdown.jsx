@@ -53,6 +53,9 @@ export default function InfluencerDropdown({ isMobile = false, onClose }) {
         <button
           onClick={() => setIsInfluencerDropdownOpen((v) => !v)}
           className="text-[var(--foreground)] text-3xl md:text-4xl uppercase tracking-wider hover:opacity-70 transition-colors duration-300 flex items-center justify-center gap-2"
+          aria-label={`${t("nav.influencers")} menu`}
+          aria-haspopup="true"
+          aria-expanded={isInfluencerDropdownOpen}
         >
           <span>{t("nav.influencers")}</span>
           <svg
@@ -85,12 +88,14 @@ export default function InfluencerDropdown({ isMobile = false, onClose }) {
             <button
               onClick={handleOurInfluencersClick}
               className="text-xl md:text-2xl font-light uppercase tracking-wider transition-all duration-200 py-2 px-4 rounded-lg text-[var(--foreground)] hover:bg-[var(--container-bg)] dark:hover:bg-[var(--container-bg)] text-left"
+              aria-label={t("nav.ourInfluencers") || "View our influencers"}
             >
               {t("nav.ourInfluencers") || "Our Influencers"}
             </button>
             <button
               onClick={handleRegisterClick}
               className="text-xl md:text-2xl font-light uppercase tracking-wider transition-all duration-200 py-2 px-4 rounded-lg text-[var(--foreground)] hover:bg-[var(--container-bg)] dark:hover:bg-[var(--container-bg)] text-left"
+              aria-label={t("nav.registerAsInfluencer") || "Register as an influencer"}
             >
               {t("nav.registerAsInfluencer") || "Register as Influencer"}
             </button>
@@ -110,6 +115,9 @@ export default function InfluencerDropdown({ isMobile = false, onClose }) {
       <button
         onClick={() => setIsInfluencerDropdownOpen(!isInfluencerDropdownOpen)}
         className={`nav-item ${textColor} uppercase text-sm opacity-0 relative inline-flex items-center gap-1 transition-colors duration-300 ease-in-out hover:opacity-80`}
+        aria-label={`${t("nav.influencers")} menu`}
+        aria-haspopup="true"
+        aria-expanded={isInfluencerDropdownOpen}
       >
         <span className="relative inline-block">
           {t("nav.influencers")}
@@ -146,17 +154,19 @@ export default function InfluencerDropdown({ isMobile = false, onClose }) {
           isInfluencerDropdownOpen
             ? "opacity-100 translate-y-0 pointer-events-auto"
             : "opacity-0 -translate-y-2 pointer-events-none"
-        } bg-[var(--background)] dark:bg-[var(--container-bg)] backdrop-blur-md border border-[var(--foreground)]/10 dark:border-white/10 shadow-lg`}
+        } bg-[var(--background)] dark:bg-[var(--container-bg)] backdrop-blur-md border border-[var(--foreground)]/20 dark:border-white/20 shadow-lg`}
       >
         <button
           onClick={handleOurInfluencersClick}
           className="text-start block w-full px-4 py-3 text-sm transition-all duration-200 rounded-t-lg text-[var(--foreground)] hover:bg-[var(--container-bg)] dark:hover:bg-[var(--container-bg)]"
+          aria-label={t("nav.ourInfluencers") || "View our influencers"}
         >
           {t("nav.ourInfluencers") || "Our Influencers"}
         </button>
         <button
           onClick={handleRegisterClick}
           className="block text-start w-full text-left px-4 py-3 text-sm transition-all duration-200 rounded-b-lg text-[var(--foreground)] hover:bg-[var(--container-bg)] dark:hover:bg-[var(--container-bg)]"
+          aria-label={t("nav.registerAsInfluencer") || "Register as an influencer"}
         >
           {t("nav.registerAsInfluencer") || "Register as Influencer"}
         </button>

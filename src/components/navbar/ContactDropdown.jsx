@@ -80,17 +80,19 @@ export default function ContactDropdown({ isMobile = false, onClose }) {
           isContactDropdownOpen
             ? "opacity-100 translate-y-0 pointer-events-auto"
             : "opacity-0 -translate-y-2 pointer-events-none"
-        } bg-[var(--background)] dark:bg-[var(--container-bg)] backdrop-blur-md border border-[var(--foreground)]/10 dark:border-white/10 shadow-lg`}
+        } bg-[var(--background)] dark:bg-[var(--container-bg)] backdrop-blur-md border border-[var(--foreground)]/20 dark:border-white/20 shadow-lg`}
       >
         <button
           onClick={handleClientClick}
           className="block w-full text-left px-4 py-3 text-sm transition-all duration-200 rounded-t-lg text-[var(--foreground)] hover:bg-[var(--container-bg)] dark:hover:bg-[var(--container-bg)]"
+          aria-label={`Contact us as ${t("contact.action.client")}`}
         >
           {t("contact.action.client")}
         </button>
         <button
           onClick={handleInfluencerClick}
           className="block w-full text-left px-4 py-3 text-sm transition-all duration-200 rounded-b-lg text-[var(--foreground)] hover:bg-[var(--container-bg)] dark:hover:bg-[var(--container-bg)]"
+          aria-label={`Contact us as ${t("contact.action.influencer")}`}
         >
           {t("contact.action.influencer")}
         </button>
