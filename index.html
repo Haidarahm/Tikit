@@ -1,12 +1,11 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
     <meta charset="UTF-8" />
-    <link id="favicon" rel="icon" type="image/svg+xml" href="/favicon.ico" />
-    <link rel="icon" type="image/png" sizes="180x180" href="/logo-light.png">
-<link rel="icon" type="image/png" sizes="191x191" href="/icon-191.png">
-<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
+    <link id="favicon" rel="icon" type="image/svg+xml" href="/favicon.ico" fetchpriority="high" />
+    <link rel="icon" type="image/png" sizes="180x180" href="/logo-light.png" fetchpriority="high">
+<link rel="icon" type="image/png" sizes="191x191" href="/icon-191.png" fetchpriority="high">
+<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" fetchpriority="high">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <!-- Resource Hints -->
@@ -14,6 +13,29 @@
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://unpkg.com" crossorigin />
     <link rel="dns-prefetch" href="https://unpkg.com" />
+    
+    <!-- Async CSS Loader Script (must be inline and early) -->
+    <script>
+      !function(e){"use strict";var t=function(t,n,r){function o(e){return i.body?e():void setTimeout(function(){o(e)})}function d(){a.addEventListener&&a.removeEventListener("load",d),a.media=r||"all"}var i=e.document,a=i.createElement("link");if(n)a.href=n;if(r)a.media="only x";a.rel="stylesheet",a.addEventListener&&a.addEventListener("load",d),a.onloadcssdefined=function(e){for(var t=a.sheet.cssRules||a.sheet.rules,n=0;n<t.length;n++)if(t[n].media.mediaText===r){e();return}},a.onloadcssdefined(function(){a.media!==r&&(a.media=r)}),i.getElementsByTagName("head")[0].appendChild(a)};e.loadCSS=t}(this);
+    </script>
+    
+    <!-- Load Google Fonts CSS asynchronously to prevent render blocking -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" as="style" crossorigin="anonymous" />
+    <script>
+      (function(){loadCSS("https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap");})();
+    </script>
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" crossorigin="anonymous" /></noscript>
+    
+    <!-- Load AOS CSS asynchronously (non-critical for initial render) -->
+    <link rel="preload" href="https://unpkg.com/aos@2.3.4/dist/aos.css" as="style" crossorigin="anonymous" />
+    <script>
+      (function(){loadCSS("https://unpkg.com/aos@2.3.4/dist/aos.css");})();
+    </script>
+    <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" crossorigin="anonymous" /></noscript>
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="/showcase-cover.webp" as="image" fetchpriority="high" />
+    <link rel="preload" href="/logo-light.png" as="image" fetchpriority="high" />
     
     <!-- Fonts are handled by CSS @font-face with font-display: swap -->
     <!-- Preload removed to avoid path mismatches (Vite hashes font filenames in production) -->
@@ -747,10 +769,11 @@
         ]
       }
     </script>
+    
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <script type="module" src="/src/main.jsx" fetchpriority="high"></script>
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
     <script>
       window.addEventListener('DOMContentLoaded', function(){

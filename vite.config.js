@@ -2,11 +2,12 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import path from "path";
+import { asyncCSS } from "./vite-plugin-async-css.js";
 
 export default defineConfig({
   base: "/",
 
-  plugins: [react(), tailwindcss()],
+  plugins: [react(), tailwindcss(), asyncCSS()],
 
   resolve: {
     alias: {
