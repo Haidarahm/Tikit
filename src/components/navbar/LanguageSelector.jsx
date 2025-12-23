@@ -43,7 +43,7 @@ export default function LanguageSelector({
 
   if (isMobile) {
     return (
-      <div className="mobile-nav-item w-full px-6 mt-6">
+      <div className="mobile-nav-item w-full px-6 mt-6 overflow-visible">
         <button
           onClick={() => setIsLangOpen((v) => !v)}
           className="w-full flex items-center justify-center  text-[var(--foreground)] text-2xl md:text-3xl font-light uppercase tracking-wider transition-colors duration-200 hover:opacity-80"
@@ -74,9 +74,9 @@ export default function LanguageSelector({
           </svg>
         </button>
         <div
-          className={`overflow-hidden transition-all duration-300 ease-out ${
+          className={`transition-all duration-300 ease-out ${
             isLangOpen ? "max-h-96 opacity-100 mt-4" : "max-h-0 opacity-0 mt-0"
-          }`}
+          } overflow-visible`}
         >
           <div className="flex flex-col gap-3">
             {LANGUAGES.map((opt) => (
