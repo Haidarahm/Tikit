@@ -433,7 +433,7 @@ const Team = () => {
               <div
                 key={member.id ? `mobile-${member.id}` : `mobile-${index}`}
                 data-scroll
-                className={`mobile-team-card  relative w-full h-[400px] rounded-[20px] overflow-hidden shadow-lg border border-white/10 bg-gradient-to-br ${styles.gradient} `}
+                className={`mobile-team-card  relative w-full h-[450px] rounded-[20px] overflow-hidden shadow-lg border border-white/10 bg-gradient-to-br ${styles.gradient} `}
               >
                 <img
                   src={member.image}
@@ -443,7 +443,7 @@ const Team = () => {
                   className="h-full w-full object-cover select-none absolute inset-0"
                   draggable={false}
                 />
-                <div className="relative h-full flex flex-col justify-end items-center gap-2 p-6">
+                <div className="relative h-full flex flex-col justify-end items-center gap-2 p-2 md:p-6">
                   <span
                     className={`inline-flex items-center rounded-full px-4 py-2 text-xs tracking-[0.25em] uppercase font-semibold  ${styles.badge}`}
                   >
