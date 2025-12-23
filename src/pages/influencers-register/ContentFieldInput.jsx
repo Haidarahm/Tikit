@@ -247,6 +247,7 @@ const ContentFieldInput = ({
                     className={`${
                       isRtl ? "mr-1" : "ml-1"
                     } hover:text-red-500 transition-colors`}
+                    aria-label={`Remove ${field.name}`}
                   >
                     <svg
                       className="w-3.5 h-3.5"

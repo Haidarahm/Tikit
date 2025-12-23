@@ -175,6 +175,7 @@ For data protection inquiries, please email Holla@tikit.ae with "Privacy" in the
                   key={index}
                   href={`#section-${index}`}
                   className="text-[var(--secondary)] hover:underline text-sm"
+                  aria-label={`Navigate to ${section.title} section`}
                 >
                   {section.title}
                 </a>

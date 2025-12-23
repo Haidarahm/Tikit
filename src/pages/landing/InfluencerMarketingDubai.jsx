@@ -233,14 +233,22 @@ const InfluencerMarketingDubai = () => {
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             <div className="text-center">
               <div className="text-sm text-white/60 mb-1">Call Us</div>
-              <a href="tel:+97145774042" className="text-2xl font-bold hover:underline">
+              <a 
+                href="tel:+97145774042" 
+                className="text-2xl font-bold hover:underline"
+                aria-label="Call us at +971 4 577 4042"
+              >
                 +971 4 577 4042
               </a>
             </div>
             <div className="hidden sm:block w-px h-12 bg-white/30"></div>
             <div className="text-center">
               <div className="text-sm text-white/60 mb-1">Email Us</div>
-              <a href="mailto:Holla@tikit.ae" className="text-2xl font-bold hover:underline">
+              <a 
+                href="mailto:Holla@tikit.ae" 
+                className="text-2xl font-bold hover:underline"
+                aria-label="Email us at Holla@tikit.ae"
+              >
                 Holla@tikit.ae
               </a>
             </div>

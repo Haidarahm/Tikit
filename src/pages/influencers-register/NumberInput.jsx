@@ -354,6 +354,9 @@ const NumberInput = ({
                 ? "border-[var(--secondary)] dark:border-[var(--secondary)]"
                 : "border-gray-200 dark:border-gray-700"
             }`}
+            aria-label={`Selected country code: ${currentCountry.dialCode} (${currentCountry.name}). Click to change`}
+            aria-haspopup="listbox"
+            aria-expanded={isOpen}
           >
             <ReactCountryFlag
               svg

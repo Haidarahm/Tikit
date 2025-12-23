@@ -5,7 +5,7 @@ import Goals from "./Goals";
 import Services from "./Services";
 import WorkSection from "./WorkSection";
 import Connections from "./Connections";
-import Reviews from "./Reviews";
+// import Reviews from "./Reviews";
 import ContactUs from "./ContactUs";
 import Footer from "../../components/Footer";
 import SEOHead from "../../components/SEOHead";
@@ -47,7 +47,7 @@ function Home() {
           Emirates specializes in matching brands with the right influencers to drive real engagement and 
           measurable ROI.
         </p>
-        <h2>Why Tikit Agency is the Best Social Media Management Company in Emirates and Saudi Arabia</h2>
+        <h3>Why Tikit Agency is the Best Social Media Management Company in Emirates and Saudi Arabia</h3>
         <p>
           When searching for the best social media management company in Emirates (UAE) or the best 
           social media management company in Saudi Arabia, Tikit Agency consistently ranks as the 
@@ -114,7 +114,7 @@ function Home() {
       <Connections />
       <WorkSection />
       <Map />
-      <Reviews />
+      {/* <Reviews /> */}
       <ContactUs />
       <Footer />
     </div>

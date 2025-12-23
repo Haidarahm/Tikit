@@ -126,13 +126,13 @@ const Hero = () => {
           </h1>
         </div>
         <div ref={h2WrapRef} className="overflow-hidden">
-          <h1
+          <h2
             ref={h2Ref}
             style={{fontFamily: isRtl ? "" : "Caveat"}}
             className="text-[32px] leading-tight  font-[700] mx-auto md:text-[50px]  xl:text-[80px] 2xl:text-[90px] mb-8 capitalize  tikit-gradient will-change-transform"
           >
             {t("influencer.hero.subtitle")}
-          </h1>
+          </h2>
         </div>
       </div>
       <div className="bottom-section w-full flex flex-col gap-4 md:gap-6 2xl:gap-12">

@@ -332,7 +332,10 @@ const Footer = ({ className }) => {
                 {t("footer.terms.aboutUs")}
               </Link>
               <span className="hidden md:inline">•</span>
-              <button className="hover:text-[var(--secondary)] transition-colors">
+              <button 
+                className="hover:text-[var(--secondary)] transition-colors"
+                aria-label={t("footer.terms.cookieSettings") || "Cookie settings"}
+              >
                 {t("footer.terms.cookieSettings")}
               </button>
             </div>
@@ -347,6 +350,7 @@ const Footer = ({ className }) => {
               <button 
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                 className="text-sm text-gray-600 dark:text-gray-300 hover:text-[var(--secondary)] transition-colors flex items-center gap-2"
+                aria-label="Scroll to top of page"
               >
                 Back to top ↑
               </button>

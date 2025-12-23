@@ -102,6 +102,7 @@ const WorkSectionSelector = ({
                 }
               }}
               aria-pressed={isActive}
+              aria-label={`Select ${section.title} work section`}
             >
               <div
                 className={`absolute inset-0 transition-all duration-500 ${

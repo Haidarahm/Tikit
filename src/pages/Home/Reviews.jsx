@@ -109,6 +109,7 @@ const VideoReelCard = memo(({ video, index, theme }) => {
           className={`absolute bottom-4 right-4 w-8 h-8 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center transition-opacity duration-300 ${
             isPlaying ? "opacity-100" : "opacity-0"
           }`}
+          aria-label={isMuted ? "Unmute video" : "Mute video"}
         >
           {isMuted ? (
             <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">

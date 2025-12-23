@@ -370,11 +370,11 @@ const Team = () => {
 
                     {/* Name + Specialist */}
                     <div className="text-center md:text-left space-y-3 bg-black/30 rounded-xl p-4  border border-white/10 shadow-inner">
-                      <h3
+                      <h2
                         className={`text-2xl md:text-3xl font-bold tracking-[0.28em] uppercase drop-shadow ${styles.name}`}
                       >
                         {member.name}
-                      </h3>
+                      </h2>
                       <p
                         className={`text-sm md:text-base capitalize tracking-[0.25em] ${styles.specialist}`}
                       >

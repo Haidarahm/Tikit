@@ -693,9 +693,9 @@ export const Influencer = () => {
                               <div className="absolute inset-0 rounded-2xl border border-white/10 pointer-events-none"></div>
                             </div>
                             <div>
-                              <h3 className="text-xl font-semibold text-[var(--foreground)]">
+                              <h2 className="text-xl font-semibold text-[var(--foreground)]">
                                 {influencer.name}
-                              </h3>
+                              </h2>
                               <p className="text-sm text-[var(--secondary)] font-medium">
                                 {influencer.primarySubtitle}
                               </p>
@@ -734,6 +734,7 @@ export const Influencer = () => {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="flex items-center gap-2 text-xs px-3 py-1.5 rounded-full border border-[var(--secondary)]/30 text-[var(--secondary)] hover:bg-[var(--secondary)]/10 transition"
+                                    aria-label={`${influencer.name}'s ${platform} profile`}
                                   >
                                     <IconComponent className="w-3.5 h-3.5" />
                                     <span className="capitalize">

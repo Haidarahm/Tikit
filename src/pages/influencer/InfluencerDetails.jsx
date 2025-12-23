@@ -180,22 +180,22 @@ export const InfluencerDetails = ({
       <div className=" w-1/2 flex flex-col justify-center space-y-6 md:space-y-8 lg:space-y-10">
         {/* Name */}
         <div className="space-y-2">
-          <h1
+          <h2
             ref={nameRef}
             className={`text-4xl md:text-6xl lg:text-7xl  font-bold text-[var(--foreground)] leading-tight ${isRtl ? "font-cairo" : "font-antonio"}`}
           >
             {name}
-          </h1>
+          </h2>
         </div>
 
         {/* Subtitle */}
         <div ref={subtitleRef} className="space-y-4">
-          <h2 className="text-xl md:text-2xl lg:text-3xl text-[var(--secondary)] font-medium">
+          <h3 className="text-xl md:text-2xl lg:text-3xl text-[var(--secondary)] font-medium">
             {primarySubtitle}
-          </h2>
-          <h3 className="text-lg md:text-xl lg:text-2xl text-[var(--foreground)]/80 font-light">
-            {secondarySubtitle}
           </h3>
+          <h4 className="text-lg md:text-xl lg:text-2xl text-[var(--foreground)]/80 font-light">
+            {secondarySubtitle}
+          </h4>
         </div>
 
         {/* Social Media Links */}

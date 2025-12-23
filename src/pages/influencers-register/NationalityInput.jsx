@@ -426,6 +426,7 @@ const NationalityInput = ({
               className={`p-1 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full transition-colors duration-200 ${
                 isRtl ? "ml-2" : "mr-2"
               }`}
+              aria-label="Clear selected country"
             >
               <svg
                 className="w-4 h-4 text-gray-400"
