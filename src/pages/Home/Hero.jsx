@@ -18,7 +18,8 @@ const Hero = memo(() => {
   const hasLoadedVideosRef = useRef(false);
   const [showLiquid, setShowLiquid] = useState(false);
   const [showVideoLooper, setShowVideoLooper] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  // Set initial mobile state synchronously to avoid delay
+  const [isMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth < 768);
   const { t } = useTranslation();
   const { theme } = useTheme();
   const { videos, loadVideos, loading } = useBannersStore();
@@ -33,28 +34,8 @@ const Hero = memo(() => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); // Empty dependency array ensures this only runs once on mount
 
-  // Check if device is mobile - memoized
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768); // md breakpoint in Tailwind
-    };
-
-    checkMobile();
-
-    // Throttle resize listener
-    let resizeTimer;
-    const throttledCheckMobile = () => {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(checkMobile, 150);
-    };
-
-    window.addEventListener("resize", throttledCheckMobile);
-
-    return () => {
-      window.removeEventListener("resize", throttledCheckMobile);
-      clearTimeout(resizeTimer);
-    };
-  }, []);
+  // Note: Mobile check is now done synchronously in useState initializer
+  // This ensures video source is set immediately without delay
 
   // Delay rendering of VideoLooper by 2 seconds, only on desktop
   useEffect(() => {
@@ -67,15 +48,17 @@ const Hero = memo(() => {
     return () => clearTimeout(timerId);
   }, [isMobile]);
 
-  // GSAP background intro animation
+  // GSAP background intro animation - removed scale animation to prevent LCP delay
+  // Video should be visible immediately for better LCP
   useEffect(() => {
     const element = sectionRef.current;
     if (!element) return;
 
+    // Only animate opacity, not scale, to avoid hiding the video
     gsap.fromTo(
       element,
-      { scale: 0 },
-      { scale: 1, duration: 1.2, ease: "power3.out" }
+      { opacity: 0 },
+      { opacity: 1, duration: 0.6, ease: "power2.out" }
     );
   }, []);
 
@@ -90,10 +73,10 @@ const Hero = memo(() => {
       gsap.to(items, {
         autoAlpha: 1,
         y: 0,
-        duration: 1.4, // longer animation
+        duration: 1.0, // reduced duration
         ease: "power3.out", // smoother ease
-        stagger: 0.26, // more spaced-out stagger
-        delay: 1.3, // larger initial delay
+        stagger: 0.15, // reduced stagger
+        delay: 0.3, // reduced delay for faster LCP
       });
     }, contentRef);
 
@@ -114,6 +97,7 @@ const Hero = memo(() => {
       ref={sectionRef}
       data-nav-color="white"
       className="section relative h-[80vh] mb-[10vh] md:h-[97vh] md:mb-[3vh]  rounded-[15px] md:rounded-[25px]  overflow-hidden mx-auto gpu-transform w-[98vw] sm:w-[96vw] md:w-[95vw]"
+      style={{ opacity: 1 }}
     >
       {/* Background layer */}
       <div className="pointer-events-none h-full mt-[8px] md:mt-[16px] w-full mx-auto overflow-hidden  bg-[var(--container-bg)]  rounded-[15px] md:rounded-[25px] absolute inset-0 z-0">
@@ -125,8 +109,10 @@ const Hero = memo(() => {
           muted
           poster="/showcase-cover.webp"
           playsInline
-          preload="auto"
+          preload="metadata"
+          fetchPriority="high"
           className="absolute inset-0 w-full h-full object-cover"
+          style={{ opacity: 1 }}
         >
           <source
             src={isMobile ? "/main-hero-mobile.mp4" : "/showcase-video.mp4"}

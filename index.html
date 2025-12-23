@@ -14,28 +14,22 @@
     <link rel="preconnect" href="https://unpkg.com" crossorigin />
     <link rel="dns-prefetch" href="https://unpkg.com" />
     
-    <!-- Async CSS Loader Script (must be inline and early) -->
-    <script>
-      !function(e){"use strict";var t=function(t,n,r){function o(e){return i.body?e():void setTimeout(function(){o(e)})}function d(){a.addEventListener&&a.removeEventListener("load",d),a.media=r||"all"}var i=e.document,a=i.createElement("link");if(n)a.href=n;if(r)a.media="only x";a.rel="stylesheet",a.addEventListener&&a.addEventListener("load",d),a.onloadcssdefined=function(e){for(var t=a.sheet.cssRules||a.sheet.rules,n=0;n<t.length;n++)if(t[n].media.mediaText===r){e();return}},a.onloadcssdefined(function(){a.media!==r&&(a.media=r)}),i.getElementsByTagName("head")[0].appendChild(a)};e.loadCSS=t}(this);
-    </script>
-    
     <!-- Load Google Fonts CSS asynchronously to prevent render blocking -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" as="style" crossorigin="anonymous" />
-    <script>
-      (function(){loadCSS("https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap");})();
-    </script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" media="print" onload="this.media='all';this.onload=null;" crossorigin="anonymous" />
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" crossorigin="anonymous" /></noscript>
     
     <!-- Load AOS CSS asynchronously (non-critical for initial render) -->
     <link rel="preload" href="https://unpkg.com/aos@2.3.4/dist/aos.css" as="style" crossorigin="anonymous" />
-    <script>
-      (function(){loadCSS("https://unpkg.com/aos@2.3.4/dist/aos.css");})();
-    </script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" media="print" onload="this.media='all';this.onload=null;" crossorigin="anonymous" />
     <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" crossorigin="anonymous" /></noscript>
     
     <!-- Preload Critical Resources -->
     <link rel="preload" href="/showcase-cover.webp" as="image" fetchpriority="high" />
     <link rel="preload" href="/logo-light.png" as="image" fetchpriority="high" />
+    <!-- Preload video files for faster LCP -->
+    <link rel="preload" href="/showcase-video.mp4" as="video" type="video/mp4" fetchpriority="high" />
+    <link rel="preload" href="/main-hero-mobile.mp4" as="video" type="video/mp4" fetchpriority="high" />
     
     <!-- Fonts are handled by CSS @font-face with font-display: swap -->
     <!-- Preload removed to avoid path mismatches (Vite hashes font filenames in production) -->
