@@ -21,32 +21,32 @@ const TYPE_STYLES = {
     specialist: "text-white/90",
   },
   "web development department": {
-    badge: "bg-black/50 border border-orange-300/50 text-orange-100 opacity-80",
+    badge: "bg-gradient-to-br from-[#d64c28] to-[#f1aa92] border border-orange-300/50 text-white ",
     name: "text-orange-50",
     specialist: "text-orange-100/90",
   },
   "social media department": {
-    badge: "bg-teal-900/60 border border-teal-300/50 text-teal-50 opacity-80",
+    badge: "bg-gradient-to-br from-[#d882c1] to-[#f6e1f0] border border-pink-300/50 text-white ",
     name: "text-teal-50",
     specialist: "text-teal-100/90",
   },
   "graphic design department": {
-    badge: "bg-orange-900/50 border border-orange-300/50 text-orange-50 opacity-80",
+    badge: "bg-gradient-to-br from-[#4b0058] to-[#f4a0fe] border border-purple-300/50 text-white ",
     name: "text-orange-50",
     specialist: "text-orange-100/90",
   },
   "photography department": {
-    badge: "bg-cyan-900/60 border border-cyan-300/50 text-cyan-50 opacity-80",
+    badge: "bg-gradient-to-br from-[#78e3d8] to-[#cffff5] border border-cyan-300/50 text-white",
     name: "text-cyan-50",
     specialist: "text-cyan-100/90",
   },
   "management department": {
-    badge: "bg-blue-200/20 border border-blue-300/40 text-blue-50 opacity-80",
+    badge: "bg-gradient-to-br from-[#045d6d] to-[#16eee7] border border-cyan-300/50 text-white ",
     name: "text-blue-50",
     specialist: "text-blue-100/90",
   },
   "director": {
-    badge: "bg-black/40 border border-white/30 text-white opacity-80",
+    badge: "bg-gradient-to-br from-[#616161] to-[#ffffff] border border-white/30 text-white ",
     name: "text-white",
     specialist: "text-white/90",
   },
@@ -433,7 +433,7 @@ const Team = () => {
                 />
                 <div className="relative h-full flex flex-col justify-end items-center gap-2 p-2 md:p-6">
                   <span
-                    className={`inline-flex items-center rounded-full px-4 py-2 text-xs tracking-[0.25em] uppercase font-semibold  ${styles.badge}`}
+                    className={` inline-flex items-center rounded-full px-4 py-2 text-xs tracking-[0.25em] uppercase font-semibold  ${styles.badge}`}
                   >
                     {member.type}
                   </span>
