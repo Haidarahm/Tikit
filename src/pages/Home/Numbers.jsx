@@ -60,13 +60,13 @@ const Numbers = memo(() => {
             mainWord={t("home.numbers.mainWord")}
           />
         </div>
-        <h3
+        <h2
           className="text-sm sm:text-base md:text-lg lg:text-[25px] font-light px-4 md:px-0 max-w-4xl mx-auto text-[var(--foreground)]"
           data-aos="fade-up"
           data-aos-delay="100"
         >
           {t("home.numbers.subheadline")}
-        </h3>
+        </h2>
 
         <div className="numbers relative mt-6 md:mt-8">
           {/* Mobile Layout - 2x2 Grid */}
