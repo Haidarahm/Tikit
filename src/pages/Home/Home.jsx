@@ -6,12 +6,53 @@ import Services from "./Services";
 import WorkSection from "./WorkSection";
 import Connections from "./Connections";
 // import Reviews from "./Reviews";
-import ContactUs from "./ContactUs";
 import Footer from "../../components/Footer";
 import SEOHead from "../../components/SEOHead";
 import Influencers from "./influencers/Influencers";
 import ShowCase from "./ShowCase";
 import Map from "./map/Map";
+
+// Lazy-load ContactUs to keep it off the critical path
+const ContactUs = React.lazy(() => import("./ContactUs"));
+
+// Render ContactUs only when its placeholder is near the viewport
+const LazyContactSection = () => {
+  const ref = React.useRef(null);
+  const [shouldLoad, setShouldLoad] = React.useState(false);
+
+  React.useEffect(() => {
+    if (!ref.current || shouldLoad) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setShouldLoad(true);
+            observer.disconnect();
+          }
+        });
+      },
+      {
+        rootMargin: "200px", // start loading a bit before it enters viewport
+        threshold: 0.01,
+      }
+    );
+
+    observer.observe(ref.current);
+
+    return () => observer.disconnect();
+  }, [shouldLoad]);
+
+  return (
+    <div ref={ref}>
+      {shouldLoad && (
+        <React.Suspense fallback={null}>
+          <ContactUs />
+        </React.Suspense>
+      )}
+    </div>
+  );
+};
 
 function Home() {
   return (
@@ -115,7 +156,7 @@ function Home() {
       <WorkSection />
       <Map />
       {/* <Reviews /> */}
-      <ContactUs />
+      <LazyContactSection />
       <Footer />
     </div>
   );

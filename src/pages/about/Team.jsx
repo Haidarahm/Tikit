@@ -20,44 +20,32 @@ const TYPE_STYLES = {
     name: "text-white",
     specialist: "text-white/90",
   },
-  "web development": {
-    gradient: "from-[#dd9272] to-[#d54a25]",
+  "web development department": {
     badge: "bg-black/50 border border-orange-300/50 text-orange-100 opacity-80",
     name: "text-orange-50",
     specialist: "text-orange-100/90",
   },
-  "social media team": {
-    gradient: "from-[#ffffff] to-[#35d4cf]",
+  "social media department": {
     badge: "bg-teal-900/60 border border-teal-300/50 text-teal-50 opacity-80",
     name: "text-teal-50",
     specialist: "text-teal-100/90",
   },
-  monitor: {
-    gradient: "from-[#808285] to-[#000000]",
-    badge: "bg-white/20 border border-gray-300/40 text-gray-100 opacity-80",
-    name: "text-gray-50",
-    specialist: "text-gray-200/90",
-  },
-  "graphic design": {
-    gradient: "from-[#ffffff] to-[#dd9272]",
+  "graphic design department": {
     badge: "bg-orange-900/50 border border-orange-300/50 text-orange-50 opacity-80",
     name: "text-orange-50",
     specialist: "text-orange-100/90",
   },
-  photographers: {
-    gradient: "from-[#35d4cf] to-[#006073]",
+  "photography department": {
     badge: "bg-cyan-900/60 border border-cyan-300/50 text-cyan-50 opacity-80",
     name: "text-cyan-50",
     specialist: "text-cyan-100/90",
   },
-  ceo: {
-    gradient: "from-[#006073] to-[#000000]",
+  "management department": {
     badge: "bg-blue-200/20 border border-blue-300/40 text-blue-50 opacity-80",
     name: "text-blue-50",
     specialist: "text-blue-100/90",
   },
-  presenter: {
-    gradient: "from-[#ffffff] to-[#808285]",
+  "director": {
     badge: "bg-black/40 border border-white/30 text-white opacity-80",
     name: "text-white",
     specialist: "text-white/90",
@@ -343,7 +331,7 @@ const Team = () => {
               return (
                 <div
                   key={member.id || index}
-                  className={`relative group flex flex-col justify-end rounded-[10px] transition-all duration-500 w-[450px] h-[650px] shrink-0 overflow-hidden border border-white/20 bg-gradient-to-br ${styles.gradient} opacity-90 shadow-[0_0_25px_rgba(255,255,255,0.12)] hover:shadow-[0_0_55px_rgba(255,255,255,0.25)]`}
+                  className="relative group flex flex-col justify-end rounded-[10px] transition-all duration-500 w-[450px] h-[650px] shrink-0 overflow-hidden border border-white/20 opacity-90 shadow-[0_0_25px_rgba(255,255,255,0.12)] hover:shadow-[0_0_55px_rgba(255,255,255,0.25)]"
                 >
                   {/* Image */}
                   <div className="absolute inset-0">
@@ -433,7 +421,7 @@ const Team = () => {
               <div
                 key={member.id ? `mobile-${member.id}` : `mobile-${index}`}
                 data-scroll
-                className={`mobile-team-card  relative w-full h-[450px] rounded-[20px] overflow-hidden shadow-lg border border-white/10 bg-gradient-to-br ${styles.gradient} `}
+                className="mobile-team-card relative w-full h-[450px] rounded-[20px] overflow-hidden shadow-lg border border-white/10"
               >
                 <img
                   src={member.image}

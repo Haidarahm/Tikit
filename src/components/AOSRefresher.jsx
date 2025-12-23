@@ -7,6 +7,8 @@ export default function AOSRefresher() {
 
   useEffect(() => {
     let isMounted = true;
+    let idleId = null;
+    let timeoutId = null;
 
     const ensureAOS = async () => {
       // If AOS is already initialized, just refresh animations
@@ -40,10 +42,36 @@ export default function AOSRefresher() {
       }
     };
 
-    ensureAOS();
+    const scheduleAOSLoad = () => {
+      // Defer AOS loading so it doesn't block initial render / LCP
+      if ("requestIdleCallback" in window) {
+        idleId = window.requestIdleCallback(
+          () => {
+            if (isMounted) {
+              ensureAOS();
+            }
+          },
+          { timeout: 2500 }
+        );
+      } else {
+        timeoutId = window.setTimeout(() => {
+          if (isMounted) {
+            ensureAOS();
+          }
+        }, 2500);
+      }
+    };
+
+    scheduleAOSLoad();
 
     return () => {
       isMounted = false;
+      if (idleId !== null && "cancelIdleCallback" in window) {
+        window.cancelIdleCallback(idleId);
+      }
+      if (timeoutId !== null) {
+        window.clearTimeout(timeoutId);
+      }
     };
   }, [location.pathname]);
 
