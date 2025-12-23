@@ -35,91 +35,103 @@ export default function InfiniteScroll({
     const divItems = gsap.utils.toArray(container.children);
     if (!divItems.length) return;
 
-    const firstItem = divItems[0];
-    const itemStyle = getComputedStyle(firstItem);
-    const itemHeight = firstItem.offsetHeight;
-    const itemMarginTop = parseFloat(itemStyle.marginTop) || 0;
-    const totalItemHeight = itemHeight + itemMarginTop;
-    const totalHeight =
-      itemHeight * items.length + itemMarginTop * (items.length - 1);
-
-    const wrapFn = gsap.utils.wrap(-totalHeight, totalHeight);
-
-    divItems.forEach((child, i) => {
-      const y = i * totalItemHeight;
-      gsap.set(child, { y });
-    });
-
-    const observer = Observer.create({
-      target: container,
-      type: "wheel,touch,pointer",
-      preventDefault: true,
-      onPress: ({ target }) => {
-        target.style.cursor = "grabbing";
-      },
-      onRelease: ({ target }) => {
-        target.style.cursor = "grab";
-      },
-      onChange: ({ deltaY, isDragging, event }) => {
-        const d = event.type === "wheel" ? -deltaY : deltaY;
-        const distance = isDragging ? d * 5 : d * 10;
-        divItems.forEach((child) => {
-          gsap.to(child, {
-            duration: 0.5,
-            ease: "expo.out",
-            y: `+=${distance}`,
-            modifiers: {
-              y: gsap.utils.unitize(wrapFn),
-            },
-          });
-        });
-      },
-    });
-
+    // Batch all layout reads together to avoid forced reflow
+    let observer;
     let rafId;
-    if (autoplay) {
-      const directionFactor = autoplayDirection === "down" ? 1 : -1;
-      const speedPerFrame = autoplaySpeed * directionFactor;
+    let cleanupFn;
 
-      const tick = () => {
-        divItems.forEach((child) => {
-          gsap.set(child, {
-            y: `+=${speedPerFrame}`,
-            modifiers: {
-              y: gsap.utils.unitize(wrapFn),
-            },
+    requestAnimationFrame(() => {
+      const firstItem = divItems[0];
+      // Batch getComputedStyle and offsetHeight reads
+      const itemStyle = getComputedStyle(firstItem);
+      const itemHeight = firstItem.offsetHeight;
+      const itemMarginTop = parseFloat(itemStyle.marginTop) || 0;
+      const totalItemHeight = itemHeight + itemMarginTop;
+      const totalHeight =
+        itemHeight * items.length + itemMarginTop * (items.length - 1);
+
+      const wrapFn = gsap.utils.wrap(-totalHeight, totalHeight);
+
+      divItems.forEach((child, i) => {
+        const y = i * totalItemHeight;
+        gsap.set(child, { y });
+      });
+
+      observer = Observer.create({
+        target: container,
+        type: "wheel,touch,pointer",
+        preventDefault: true,
+        onPress: ({ target }) => {
+          target.style.cursor = "grabbing";
+        },
+        onRelease: ({ target }) => {
+          target.style.cursor = "grab";
+        },
+        onChange: ({ deltaY, isDragging, event }) => {
+          const d = event.type === "wheel" ? -deltaY : deltaY;
+          const distance = isDragging ? d * 5 : d * 10;
+          divItems.forEach((child) => {
+            gsap.to(child, {
+              duration: 0.5,
+              ease: "expo.out",
+              y: `+=${distance}`,
+              modifiers: {
+                y: gsap.utils.unitize(wrapFn),
+              },
+            });
           });
-        });
-        rafId = requestAnimationFrame(tick);
-      };
+        },
+      });
 
-      rafId = requestAnimationFrame(tick);
+      if (autoplay) {
+        const directionFactor = autoplayDirection === "down" ? 1 : -1;
+        const speedPerFrame = autoplaySpeed * directionFactor;
 
-      if (pauseOnHover) {
-        const stopTicker = () => rafId && cancelAnimationFrame(rafId);
-        const startTicker = () => (rafId = requestAnimationFrame(tick));
-
-        container.addEventListener("mouseenter", stopTicker);
-        container.addEventListener("mouseleave", startTicker);
-
-        return () => {
-          observer.kill();
-          stopTicker();
-          container.removeEventListener("mouseenter", stopTicker);
-          container.removeEventListener("mouseleave", startTicker);
+        const tick = () => {
+          divItems.forEach((child) => {
+            gsap.set(child, {
+              y: `+=${speedPerFrame}`,
+              modifiers: {
+                y: gsap.utils.unitize(wrapFn),
+              },
+            });
+          });
+          rafId = requestAnimationFrame(tick);
         };
+
+        rafId = requestAnimationFrame(tick);
+
+        if (pauseOnHover) {
+          const stopTicker = () => rafId && cancelAnimationFrame(rafId);
+          const startTicker = () => (rafId = requestAnimationFrame(tick));
+
+          container.addEventListener("mouseenter", stopTicker);
+          container.addEventListener("mouseleave", startTicker);
+
+          cleanupFn = () => {
+            if (observer) observer.kill();
+            stopTicker();
+            container.removeEventListener("mouseenter", stopTicker);
+            container.removeEventListener("mouseleave", startTicker);
+          };
+        } else {
+          cleanupFn = () => {
+            if (observer) observer.kill();
+            if (rafId) cancelAnimationFrame(rafId);
+          };
+        }
       } else {
-        return () => {
-          observer.kill();
-          rafId && cancelAnimationFrame(rafId);
+        cleanupFn = () => {
+          if (observer) observer.kill();
+          if (rafId) cancelAnimationFrame(rafId);
         };
       }
-    }
+    });
 
-    return () => {
-      observer.kill();
+    return cleanupFn || (() => {
+      if (observer) observer.kill();
       if (rafId) cancelAnimationFrame(rafId);
-    };
+    });
   }, [
     items,
     autoplay,

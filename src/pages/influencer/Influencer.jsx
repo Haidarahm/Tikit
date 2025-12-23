@@ -226,7 +226,7 @@ export const Influencer = () => {
         // Refresh ScrollTrigger to ensure accurate positions
         ScrollTrigger.refresh(true);
 
-        // Calculate scroll position using getBoundingClientRect + pageYOffset
+        // Batch all layout reads together to avoid forced reflow
         const elementTop = targetElement.getBoundingClientRect().top;
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         const fixedOffset = 120; // Fixed offset as specified

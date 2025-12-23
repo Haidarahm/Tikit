@@ -152,11 +152,14 @@ const Threads = ({ color = [1, 1, 1], amplitude = 1, distance = 0, enableMouseIn
     const mesh = new Mesh(gl, { geometry, program });
 
     function resize() {
-      const { clientWidth, clientHeight } = container;
-      renderer.setSize(clientWidth, clientHeight);
-      program.uniforms.iResolution.value.r = clientWidth;
-      program.uniforms.iResolution.value.g = clientHeight;
-      program.uniforms.iResolution.value.b = clientWidth / clientHeight;
+      // Batch layout reads to avoid forced reflow
+      requestAnimationFrame(() => {
+        const { clientWidth, clientHeight } = container;
+        renderer.setSize(clientWidth, clientHeight);
+        program.uniforms.iResolution.value.r = clientWidth;
+        program.uniforms.iResolution.value.g = clientHeight;
+        program.uniforms.iResolution.value.b = clientWidth / clientHeight;
+      });
     }
     window.addEventListener('resize', resize);
     resize();

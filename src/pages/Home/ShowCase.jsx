@@ -17,10 +17,32 @@ const ShowCase = () => {
   const navigate = useNavigate();
 
   /* =====================
-     LOAD DATA
+     LOAD DATA - Deferred until component is near viewport
   ====================== */
   useEffect(() => {
-    loadCases(language);
+    if (!sectionRef.current) return;
+
+    // Use IntersectionObserver to load data when component is about to be visible
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            loadCases(language);
+            observer.disconnect(); // Only load once
+          }
+        });
+      },
+      {
+        rootMargin: '200px', // Start loading 200px before component is visible
+        threshold: 0.01,
+      }
+    );
+
+    observer.observe(sectionRef.current);
+
+    return () => {
+      observer.disconnect();
+    };
   }, [language, loadCases]);
 
   /* =====================

@@ -75,6 +75,8 @@ const Influencers = () => {
   const navigate = useNavigate();
   const [activeSectionId, setActiveSectionId] = useState(null);
   const [swiperInstance, setSwiperInstance] = useState(null);
+  const sectionRef = useRef(null);
+  const hasLoadedSectionsRef = useRef(false);
 
   const sections = useInfluencersStore((state) => state.sections);
   const sectionsLoading = useInfluencersStore((state) => state.sectionsLoading);
@@ -94,8 +96,32 @@ const Influencers = () => {
   const { t } = useTranslation();
   const { language, isRtl } = useI18nLanguage();
 
+  // Defer sections API call until component is near viewport
   useEffect(() => {
-    loadSections({ lang: language });
+    if (!sectionRef.current || hasLoadedSectionsRef.current) return;
+
+    // Use IntersectionObserver to load data when component is about to be visible
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            hasLoadedSectionsRef.current = true;
+            loadSections({ lang: language });
+            observer.disconnect(); // Only load once
+          }
+        });
+      },
+      {
+        rootMargin: '200px', // Start loading 200px before component is visible
+        threshold: 0.01,
+      }
+    );
+
+    observer.observe(sectionRef.current);
+
+    return () => {
+      observer.disconnect();
+    };
   }, [loadSections, language]);
 
   useEffect(() => {
@@ -172,6 +198,7 @@ const Influencers = () => {
 
   return (
     <section
+      ref={sectionRef}
       className="influencers-scope influencers-home min-h-[880px] py-8 px-4 relative overflow-hidden bg-[var(--background)]"
       dir={isRtl ? "rtl" : "ltr"}
     >

@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import gsap from "gsap";
 import LightRays from "../../components/LightRays";
-import Threads from "../../components/Threads";
 import { useI18nLanguage } from "../../store/I18nLanguageContext";
 
 const NewsHero = () => {

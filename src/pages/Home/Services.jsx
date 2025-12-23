@@ -17,10 +17,32 @@ const Services = memo(() => {
     setIsClient(true);
   }, []);
 
+  const sectionRef = React.useRef(null);
+
   useEffect(() => {
-    if (isClient) {
-      loadServices({ lang: language, page: 1, per_page: 4 });
-    }
+    if (!isClient || !sectionRef.current) return;
+
+    // Use IntersectionObserver to load data when component is about to be visible
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            loadServices({ lang: language, page: 1, per_page: 4 });
+            observer.disconnect(); // Only load once
+          }
+        });
+      },
+      {
+        rootMargin: '200px', // Start loading 200px before component is visible
+        threshold: 0.01,
+      }
+    );
+
+    observer.observe(sectionRef.current);
+
+    return () => {
+      observer.disconnect();
+    };
   }, [language, loadServices, isClient]);
 
   // Map service titles to their specific routes
@@ -144,6 +166,7 @@ const Services = memo(() => {
 
   return (
     <div
+      ref={sectionRef}
       className={`section my-4 md:my-8 relative  md:min-h-[450px] 2xl:min-h-[490px] ${
         isRtl ? "font-cairo" : "font-hero-light"
       } flex flex-col mx-auto z-10 w-full justify-center`}

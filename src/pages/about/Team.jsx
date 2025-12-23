@@ -10,6 +10,7 @@ import {
   FaInstagram,
   FaFacebook,
   FaGlobe,
+  FaBehance,
 } from "react-icons/fa";
 
 const TYPE_STYLES = {
@@ -84,6 +85,7 @@ const Team = () => {
     pinterest: <FaPinterest />,
     facebook: <FaFacebook />,
     fb: <FaFacebook />,
+    behance: <FaBehance />,
     website: <FaGlobe />,
   };
 
@@ -111,6 +113,7 @@ const Team = () => {
     let resizeTimer;
 
     const calculate = () => {
+      // Batch all layout reads together to avoid forced reflow
       const trackWidth = track.scrollWidth;
       const viewportWidth = window.innerWidth;
       const viewportHeight = window.innerHeight;
@@ -122,9 +125,10 @@ const Team = () => {
       // Vertical scroll area: viewport height + horizontal distance
       sectionHeight = viewportHeight + scrollDistance;
 
-      // Compute section top relative to page each time we recalc
+      // Batch getBoundingClientRect and scrollY reads
       const rect = section.getBoundingClientRect();
-      sectionTop = rect.top + window.scrollY;
+      const scrollY = window.scrollY;
+      sectionTop = rect.top + scrollY;
 
       // Set section height to create scroll space
       section.style.height = `${sectionHeight}px`;

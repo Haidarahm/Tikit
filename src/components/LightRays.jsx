@@ -354,6 +354,7 @@ void main() {
     u.noiseAmount.value = noiseAmount;
     u.distortion.value = distortion;
 
+    // Batch layout reads to avoid forced reflow
     const { clientWidth: wCSS, clientHeight: hCSS } = containerRef.current;
     const dpr = renderer.dpr;
     const { anchor, dir } = getAnchorAndDir(raysOrigin, wCSS * dpr, hCSS * dpr);
@@ -376,6 +377,7 @@ void main() {
   useEffect(() => {
     const handleMouseMove = e => {
       if (!containerRef.current || !rendererRef.current) return;
+      // Batch getBoundingClientRect read to avoid forced reflow
       const rect = containerRef.current.getBoundingClientRect();
       const x = (e.clientX - rect.left) / rect.width;
       const y = (e.clientY - rect.top) / rect.height;

@@ -18,7 +18,9 @@ const WorkSectionSelector = ({
     if (!trackRef.current) return;
     isDraggingRef.current = true;
     setIsDragging(true);
-    startXRef.current = clientX - trackRef.current.getBoundingClientRect().left;
+    // Cache getBoundingClientRect to avoid multiple reads
+    const rect = trackRef.current.getBoundingClientRect();
+    startXRef.current = clientX - rect.left;
     scrollLeftRef.current = trackRef.current.scrollLeft;
   }, []);
 
@@ -34,10 +36,9 @@ const WorkSectionSelector = ({
     if (!isDraggingRef.current || !trackRef.current) return;
     event.preventDefault();
     const clientX = event.touches ? event.touches[0].clientX : event.clientX;
-    const delta =
-      clientX -
-      trackRef.current.getBoundingClientRect().left -
-      startXRef.current;
+    // Cache getBoundingClientRect to avoid multiple reads
+    const rect = trackRef.current.getBoundingClientRect();
+    const delta = clientX - rect.left - startXRef.current;
     trackRef.current.scrollLeft = scrollLeftRef.current - delta;
   }, []);
 

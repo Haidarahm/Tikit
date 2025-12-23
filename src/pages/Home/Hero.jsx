@@ -1,52 +1,14 @@
-import React, { useEffect, useRef, useState, Suspense, memo } from "react";
+import React, { useEffect, useRef, useState, memo } from "react";
 import gsap from "gsap";
 import { useTranslation } from "react-i18next";
-import { useTheme } from "../../store/ThemeContext.jsx";
-import { useBannersStore } from "../../store/bannersStore";
-
-// const LiquidEther = React.lazy(() =>
-//   import("../../components/aurora/LiquidEther")
-// );
-
-
-
 import AvatarGroupDemo from "../../components/ui/AvatarGroupDemo";
 
 const Hero = memo(() => {
   const sectionRef = useRef(null);
   const contentRef = useRef(null);
-  const hasLoadedVideosRef = useRef(false);
-  const [showLiquid, setShowLiquid] = useState(false);
-  const [showVideoLooper, setShowVideoLooper] = useState(false);
   // Set initial mobile state synchronously to avoid delay
   const [isMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth < 768);
   const { t } = useTranslation();
-  const { theme } = useTheme();
-  const { videos, loadVideos, loading } = useBannersStore();
-
-  // Load videos from API once on mount
-  useEffect(() => {
-    // Only load once, even if component remounts
-    if (!hasLoadedVideosRef.current) {
-      hasLoadedVideosRef.current = true;
-      loadVideos({ page: 1, per_page: 10 });
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); // Empty dependency array ensures this only runs once on mount
-
-  // Note: Mobile check is now done synchronously in useState initializer
-  // This ensures video source is set immediately without delay
-
-  // Delay rendering of VideoLooper by 2 seconds, only on desktop
-  useEffect(() => {
-    if (isMobile) return;
-
-    const timerId = setTimeout(() => {
-      setShowVideoLooper(true);
-    }, 3500);
-
-    return () => clearTimeout(timerId);
-  }, [isMobile]);
 
   // GSAP background intro animation - removed scale animation to prevent LCP delay
   // Video should be visible immediately for better LCP
@@ -83,15 +45,6 @@ const Hero = memo(() => {
     return () => ctx.revert();
   }, []);
 
-  // Delay for LiquidEther after animation ends
-  useEffect(() => {
-    const timerId = setTimeout(() => {
-      setShowLiquid(true);
-    }, 1000);
-
-    return () => clearTimeout(timerId);
-  }, []);
-
   return (
     <div
       ref={sectionRef}
@@ -121,28 +74,6 @@ const Hero = memo(() => {
         </video>
         {/* Overlay */}
         <div className="absolute inset-0 bg-black/50 z-10" />
-
-{/*         
-        {showVideoLooper && !isMobile && videos?.length > 0 && !loading && (
-          <div className="videos absolute overflow-hidden z-20 left-0 top-0 w-full h-full">
-            <Suspense fallback={null}>
-              <div className="h-full absolute left-8 ">
-                <VerticalVideoLooper
-                  videos={videos}
-                  speed={60}
-                  direction="up"
-                />
-              </div>
-              <div className="h-full absolute right-8 ">
-                <VerticalVideoLooper
-                  videos={videos}
-                  speed={60}
-                  direction="down"
-                />
-              </div>
-            </Suspense>
-          </div>
-        )} */}
       </div>
 
       {/* Foreground content */}

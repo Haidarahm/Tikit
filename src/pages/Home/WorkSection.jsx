@@ -17,10 +17,32 @@ const WorkSection = memo(() => {
     setIsClient(true);
   }, []);
 
+  const sectionRef = React.useRef(null);
+
   useEffect(() => {
-    if (isClient) {
-      loadSections({ lang: language ,page: 1, per_page: 3});
-    }
+    if (!isClient || !sectionRef.current) return;
+
+    // Use IntersectionObserver to load data when component is about to be visible
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            loadSections({ lang: language, page: 1, per_page: 3 });
+            observer.disconnect(); // Only load once
+          }
+        });
+      },
+      {
+        rootMargin: '200px', // Start loading 200px before component is visible
+        threshold: 0.01,
+      }
+    );
+
+    observer.observe(sectionRef.current);
+
+    return () => {
+      observer.disconnect();
+    };
   }, [loadSections, language, isClient]);
 
   const getLocalizedField = (item, baseKey) => {
@@ -101,7 +123,7 @@ const WorkSection = memo(() => {
   }
 
   return (
-    <>
+    <div ref={sectionRef} className="w-full">
       {items && items.length > 0 && (
         <div
           className={`relative hidden  md:block z-10 w-full overflow-visible text-[var(--foreground)] ${
@@ -173,7 +195,7 @@ const WorkSection = memo(() => {
           ) : null}
         </div>
       </div>
-    </>
+    </div>
   );
 });
 

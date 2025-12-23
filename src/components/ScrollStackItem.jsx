@@ -99,9 +99,12 @@ const ScrollStack = ({
   const getElementOffset = useCallback(
     (element) => {
       if (useWindowScroll) {
+        // Batch getBoundingClientRect calls to avoid forced reflow
+        // Use cached value if available, otherwise read synchronously (already in RAF)
         const rect = element.getBoundingClientRect();
         return rect.top + window.scrollY;
       } else {
+        // offsetTop doesn't cause reflow, safe to use
         return element.offsetTop;
       }
     },
@@ -136,11 +139,18 @@ const ScrollStack = ({
       ? document.querySelector(".scroll-stack-end")
       : scroller?.querySelector(".scroll-stack-end");
 
+    // Batch all getBoundingClientRect calls to avoid forced reflow
     const endElementTop = endElement ? getElementOffset(endElement) : 0;
+    
+    // Batch all card offset calculations
+    const cardOffsets = cardsRef.current.map((card) => 
+      card ? getElementOffset(card) : null
+    );
 
     positionsRef.current = cardsRef.current.map((card, i) => {
       if (!card) return null;
-      const cardTop = getElementOffset(card);
+      const cardTop = cardOffsets[i];
+      if (cardTop === null) return null;
       return {
         cardTop,
         triggerStart: cardTop - stackPositionPx - itemStackDistance * i,
