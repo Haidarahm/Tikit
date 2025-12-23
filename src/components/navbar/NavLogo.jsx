@@ -16,12 +16,22 @@ export default function NavLogo({ logoRef, language }) {
       <div
         onClick={() => navigate("/home")}
         ref={logoRef}
-        className="h-10 md:h-12 transform-gpu"
+        className="h-10 md:h-12 transform-gpu cursor-pointer"
+        role="button"
+        tabIndex={0}
+        aria-label="Go to Tikit homepage"
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            navigate("/home");
+          }
+        }}
       >
         <SVGComponent
           color={logoColor}
           logoJumpColor="#52C3C5"
           className="p-1 md:p-2 h-full overflow-visible"
+          aria-hidden="true"
         />
       </div>
     </div>

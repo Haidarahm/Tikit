@@ -386,7 +386,9 @@ const Team = () => {
                             className="text-[22px] p-2 rounded-xl transition-all duration-300 hover:scale-110 hover:bg-white/20"
                             aria-label={`${member.name}'s ${link.link_type || 'social media'} profile`}
                           >
-                            {iconMap[link.link_type] || <FaGlobe />}
+                            <span aria-hidden="true">
+                              {iconMap[link.link_type] || <FaGlobe />}
+                            </span>
                           </a>
                         ))
                       ) : (
@@ -461,7 +463,9 @@ const Team = () => {
                             className="text-[20px] p-2 rounded-xl transition-all duration-300 hover:scale-110 hover:bg-white/20"
                             aria-label={`${member.name}'s ${link.link_type || 'social media'} profile`}
                           >
-                            {iconMap[link.link_type] || <FaGlobe />}
+                            <span aria-hidden="true">
+                              {iconMap[link.link_type] || <FaGlobe />}
+                            </span>
                           </a>
                         ))}
                       </div>

@@ -135,11 +135,12 @@ const Footer = ({ className }) => {
             
             {/* Brand Column */}
             <div className="lg:col-span-1">
-              <Link to="/home" className="inline-block mb-6">
+              <Link to="/home" className="inline-block mb-6" aria-label="Go to Tikit homepage">
                 <SVGComponent
                   color={theme === "dark" ? "#FFFFFF" : "#363737"}
                   logoJumpColor="#52C3C5"
                   className="h-12 md:h-14 w-auto"
+                  aria-hidden="true"
                 />
               </Link>
               <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-6">
@@ -160,10 +161,14 @@ const Footer = ({ className }) => {
                     <div
                       className={`${base} ${themeClasses} cursor-not-allowed`}
                       onClick={(e) => e.preventDefault()}
+                      role="button"
+                      aria-label={`${t(`footer.social.${labelKey}`)} - ${t("footer.social.comingSoon")}`}
+                      tabIndex={0}
                     >
                       <Icon
                         size={16}
                         className="group-hover:scale-110 transition-transform"
+                        aria-hidden="true"
                       />
                       {/* Tooltip */}
                       <span className={`absolute bottom-full ${isRtl ? "right-1/2 translate-x-1/2" : "left-1/2 -translate-x-1/2"} mb-2 px-3 py-1.5 bg-gray-900 dark:bg-gray-800 text-white text-xs rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 pointer-events-none transition-all duration-300 ease-in-out shadow-lg z-50`}>
@@ -182,6 +187,7 @@ const Footer = ({ className }) => {
                       <Icon
                         size={16}
                         className="group-hover:scale-110 transition-transform"
+                        aria-hidden="true"
                       />
                     </a>
                   );
