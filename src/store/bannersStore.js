@@ -15,7 +15,6 @@ export const useBannersStore = create((set, get) => ({
     }
     set({ loading: true, error: null });
     try {
-      console.log("loading videos");
       const res = await fetchVideos({ page, per_page });
       const list = Array.isArray(res?.data) ? res.data : [];
       const normalized = list.map((it) => ({

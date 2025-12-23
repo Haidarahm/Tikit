@@ -2,12 +2,10 @@ import React from "react";
 import Hero from "./Hero";
 import "./about.css";
 import AnimatedText from "./AnimatedText";
-import Images from "./images";
 import Strategy from "./Strategy";
 import Team from "./Team";
 import Growth from "./Growth";
 import Footer from "../../components/Footer";
-// import ContactUs from "./ContactUs";
 import SEOHead from "../../components/SEOHead";
 import ContactUs from "../Home/ContactUs";
 import Details from "./Details";
@@ -26,7 +24,6 @@ const AboutUs = () => {
       />
       <Hero />
       <AnimatedText />
-      {/* <Images /> */}
       <Details />
       <Strategy />
       <Growth />

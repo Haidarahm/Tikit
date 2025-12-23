@@ -25,7 +25,6 @@ function ScrollToTop() {
       }
     } catch (error) {
       // Silently handle scope errors
-      console.debug('ScrollTrigger update skipped:', error);
     }
   };
 
@@ -116,7 +115,6 @@ function ScrollToTop() {
             }
           } catch (error) {
             // Silently handle scope errors
-            console.debug('ScrollTrigger refresh skipped:', error);
           }
         }, 500),
       ];

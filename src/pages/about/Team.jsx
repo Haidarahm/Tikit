@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useTheme } from "../../store/ThemeContext";
 import { useTeamStore } from "../../store/teamStore";
 import {
@@ -15,7 +15,6 @@ import {
 
 const TYPE_STYLES = {
   default: {
-    gradient: "from-[#ffffff] to-[#808285]",
     badge: "bg-black/40 border border-white/30 text-white opacity-80",
     name: "text-white",
     specialist: "text-white/90",
@@ -79,8 +78,6 @@ const Team = () => {
 
   // Vanilla JS Horizontal Scroll Effect
   useEffect(() => {
-    let isActive = false;
-
     if (!teamMembers || teamMembers.length === 0) return;
     if (!sectionRef.current || !trackRef.current || !stickyContainerRef.current)
       return;

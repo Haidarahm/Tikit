@@ -80,7 +80,6 @@ const InfluenceDetails = () => {
   }, [itemData, language]);
 
   const objective = useMemo(() => {
-    console.log(itemData);
     if (itemData?.objective) return itemData.objective;
   }, [itemData, language]);
 

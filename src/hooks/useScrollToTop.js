@@ -26,7 +26,6 @@ export const useScrollToTop = () => {
       }
     } catch (error) {
       // Silently handle scope errors
-      console.debug('ScrollTrigger update skipped:', error);
     }
   }, []);
 
@@ -44,7 +43,6 @@ export const useScrollToTop = () => {
         }
       } catch (error) {
         // Silently handle scope errors
-        console.debug('ScrollTrigger update skipped:', error);
       }
       
       // Try to access Lenis instance from the global scope or React context
@@ -74,7 +72,6 @@ export const useScrollToTop = () => {
           }
         } catch (error) {
           // Silently handle scope errors
-          console.debug('ScrollTrigger refresh skipped:', error);
         }
       }, 500),
     ];
