@@ -88,7 +88,6 @@ const Team = () => {
     const section = sectionRef.current;
     const track = trackRef.current;
     const stickyContainer = stickyContainerRef.current;
-    const imgs = Array.from(track.querySelectorAll("img"));
 
     // Scroll geometry
     let scrollDistance = 0; // horizontal distance the track moves
@@ -96,6 +95,7 @@ const Team = () => {
     let sectionTop = 0;
     let sectionHeight = 0; // vertical space allocated for the horizontal scroll
     let resizeTimer;
+    let imageLoadHandlers = new Set();
 
     const calculate = () => {
       // Batch all layout reads together to avoid forced reflow
@@ -172,28 +172,82 @@ const Team = () => {
       track.style.transform = `translate3d(${translateX}px, 0, 0)`;
     };
 
-    const init = () => {
-      // Initial calculation immediately
-      calculate();
-      onScroll();
-    
-      window.addEventListener("scroll", onScroll, { passive: true });
-    
-      // Recalculate again after images load (non-blocking)
+    const attachImageLoadListeners = () => {
+      // Get all images in the track, including newly added ones
+      const imgs = Array.from(track.querySelectorAll("img"));
+      
       imgs.forEach((img) => {
-        if (!img.complete) {
-          img.addEventListener(
-            "load",
-            () => {
-              calculate();
-              onScroll();
-            },
-            { once: true }
-          );
+        // Skip if we've already attached a listener to this image
+        if (imageLoadHandlers.has(img)) return;
+        
+        const handleImageLoad = () => {
+          // Use requestAnimationFrame to ensure layout has updated
+          requestAnimationFrame(() => {
+            calculate();
+            onScroll();
+          });
+        };
+
+        if (img.complete && img.naturalHeight !== 0) {
+          // Image already loaded, recalculate immediately
+          handleImageLoad();
+        } else {
+          // Image not loaded yet, attach listener
+          img.addEventListener("load", handleImageLoad, { once: true });
+          img.addEventListener("error", handleImageLoad, { once: true }); // Also handle errors
         }
+        
+        imageLoadHandlers.add(img);
       });
     };
-    
+
+    let mutationObserver = null;
+    let imageCheckTimeout = null;
+
+    const handleImageLoadEvent = () => {
+      requestAnimationFrame(() => {
+        calculate();
+        onScroll();
+      });
+    };
+
+    const init = () => {
+      // Listen for custom image load events from img onLoad handlers
+      window.addEventListener('teamImageLoaded', handleImageLoadEvent);
+      
+      // Wait for DOM to be fully rendered before querying images
+      requestAnimationFrame(() => {
+        // Initial calculation
+        calculate();
+        onScroll();
+        
+        // Attach image load listeners
+        attachImageLoadListeners();
+        
+        // Also check again after a short delay to catch lazy-loaded images
+        imageCheckTimeout = setTimeout(() => {
+          attachImageLoadListeners();
+          calculate();
+          onScroll();
+        }, 100);
+        
+        // Use MutationObserver to catch images added later
+        mutationObserver = new MutationObserver(() => {
+          attachImageLoadListeners();
+          requestAnimationFrame(() => {
+            calculate();
+            onScroll();
+          });
+        });
+        
+        mutationObserver.observe(track, {
+          childList: true,
+          subtree: true,
+        });
+        
+        window.addEventListener("scroll", onScroll, { passive: true });
+      });
+    };
 
     const handleResize = () => {
       clearTimeout(resizeTimer);
@@ -220,8 +274,13 @@ const Team = () => {
 
     return () => {
       clearTimeout(resizeTimer);
+      clearTimeout(imageCheckTimeout);
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", handleResize);
+      window.removeEventListener('teamImageLoaded', handleImageLoadEvent);
+      if (mutationObserver) {
+        mutationObserver.disconnect();
+      }
       // Cleanup styles
       if (section) section.style.height = "";
       if (stickyContainer) {
@@ -336,11 +395,21 @@ const Team = () => {
                       src={member.image}
                       alt={member.name || `team-${index + 1}`}
                       width={320}
-                      loading="lazy"
+                      loading="eager"
                       decoding="async"
                       height={400}
                       className="absolute w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-110"
                       draggable={false}
+                      onLoad={() => {
+                        // Trigger recalculation when image loads
+                        const event = new CustomEvent('teamImageLoaded');
+                        window.dispatchEvent(event);
+                      }}
+                      onError={() => {
+                        // Also handle errors to recalculate
+                        const event = new CustomEvent('teamImageLoaded');
+                        window.dispatchEvent(event);
+                      }}
                     />
 
                     {/* Enhanced Soft Gradient */}
