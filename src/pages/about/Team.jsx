@@ -309,7 +309,7 @@ const Team = () => {
             backgroundColor: theme === "light" ? "#f7f9fa" : "#000",
           }}
         >
-          <h1 className="font-antonio text-[var(--foreground)] font-bold md:text-[95px] leading-[1.1]">
+          <h1 className="font-antonio text-[var(--foreground)] font-bold md:text-[65px] lg:text-[85px] xl:text-[95px] leading-[1.1]">
             Our <span className="tikit-gradient">creative team</span>
           </h1>
         </div>
