@@ -223,12 +223,13 @@ const ShowCase = () => {
                   style={{ backgroundImage: `url(${item.img})` }}
                 />
 
+                {/* Black gradient overlay for enhanced visual depth */}
+                <div className="absolute inset-0 rounded-[10px] md:rounded-[15px] bg-gradient-to-t from-black/70 via-black/30 to-transparent pointer-events-none z-[1]" />
+
                 <div
                   className="
                     absolute
                     py-[10px] md:py-[13px]
-                    bg-white/10 rounded-[10px]
-                    backdrop-blur-md
                     flex justify-center
                     w-[90%] md:w-[60%]
                     bottom-[20px] md:bottom-[35px]
