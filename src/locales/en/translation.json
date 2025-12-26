@@ -2,7 +2,7 @@
     "nav": {
         "home": "Home",
         "work": "Case Studies",
-        "about": "About Us",
+        "about": "About us",
         "services": "Services",
         "news": "News",
         "influencers": "Influencers",
@@ -304,7 +304,7 @@
             "title": "We are",
             "mainWord": "Tikit!",
             "title2": "Driven by insight, powered by creativity",
-            "sectionTitle": "About Us",
+            "sectionTitle": "About us",
             "description": "Driven by insight and creativity: the story behind \"Tikit\" — a regional agency powering brands, building trust, and delivering results."
         },
         "images": {
@@ -583,7 +583,7 @@
             "syria": "Syria - Ziad Ibn Abi Softyan, Damascus"
         },
         "links": {
-            "aboutUs": "About Us",
+            "aboutUs": "About us",
             "services": "Services",
             "work": "Case Studies",
             "contact": "Contact"
@@ -596,7 +596,7 @@
         },
         "terms": {
             "privacyPolicy": "Privacy Policy",
-            "aboutUs": "About Us",
+            "aboutUs": "About us",
             "cookieSettings": "Cookie Settings"
         },
         "social": {

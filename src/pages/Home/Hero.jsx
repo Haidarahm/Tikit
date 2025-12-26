@@ -54,6 +54,7 @@ const Hero = memo(() => {
     >
       {/* Background layer */}
       <div className="pointer-events-none h-full mt-[8px] md:mt-[16px] w-full mx-auto overflow-hidden  bg-[var(--container-bg)]  rounded-[15px] md:rounded-[25px] absolute inset-0 z-0">
+        
         {/* Video Background */}
         <video
           key={isMobile ? "mobile" : "desktop"}
