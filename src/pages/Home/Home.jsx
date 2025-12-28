@@ -1,21 +1,27 @@
 import React from "react";
+// Critical above-the-fold components - load immediately
 import Hero from "./Hero";
-import Numbers from "./Numbers";
-import Goals from "./Goals";
-import Services from "./Services";
-import WorkSection from "./WorkSection";
-import Connections from "./Connections";
-import Footer from "../../components/Footer";
 import SEOHead from "../../components/SEOHead";
-import Influencers from "./influencers/Influencers";
-import ShowCase from "./ShowCase";
-import Map from "./map/Map";
 
-// Lazy-load ContactUs to keep it off the critical path
+// Lazy-load all below-the-fold components to keep them off the critical path
+const Numbers = React.lazy(() => import("./Numbers"));
+const Goals = React.lazy(() => import("./Goals"));
+const Services = React.lazy(() => import("./Services"));
+const WorkSection = React.lazy(() => import("./WorkSection"));
+const Connections = React.lazy(() => import("./Connections"));
+const Footer = React.lazy(() => import("../../components/Footer"));
+const Influencers = React.lazy(() => import("./influencers/Influencers"));
+const ShowCase = React.lazy(() => import("./ShowCase"));
+const Map = React.lazy(() => import("./map/Map"));
 const ContactUs = React.lazy(() => import("./ContactUs"));
 
-// Render ContactUs only when its placeholder is near the viewport
-const LazyContactSection = () => {
+// Generic lazy component wrapper with IntersectionObserver
+const LazyComponent = ({ 
+  component: Component, 
+  rootMargin = "300px", 
+  fallback = null,
+  placeholder = null 
+}) => {
   const ref = React.useRef(null);
   const [shouldLoad, setShouldLoad] = React.useState(false);
 
@@ -32,7 +38,7 @@ const LazyContactSection = () => {
         });
       },
       {
-        rootMargin: "200px", // start loading a bit before it enters viewport
+        rootMargin,
         threshold: 0.01,
       }
     );
@@ -40,18 +46,51 @@ const LazyContactSection = () => {
     observer.observe(ref.current);
 
     return () => observer.disconnect();
-  }, [shouldLoad]);
+  }, [shouldLoad, rootMargin]);
 
   return (
     <div ref={ref}>
-      {shouldLoad && (
-        <React.Suspense fallback={null}>
-          <ContactUs />
+      {shouldLoad ? (
+        <React.Suspense fallback={fallback}>
+          <Component />
         </React.Suspense>
+      ) : (
+        placeholder
       )}
     </div>
   );
 };
+
+// Render ShowCase only when its placeholder is near the viewport
+const LazyShowCaseSection = () => (
+  <LazyComponent
+    component={ShowCase}
+    rootMargin="400px"
+    fallback={
+      <div className="relative flex flex-col w-[98vw] mt-[30px] sm:w-[96vw] md:w-[95vw] gap-4 md:gap-8 overflow-hidden h-auto md:h-[1400px] mx-auto">
+        <div className="flex flex-col w-full items-center min-h-[200px] px-4 text-center gap-4">
+          <div className="h-12 w-64 bg-gray-200 animate-pulse rounded mx-auto" />
+          <div className="h-6 w-96 bg-gray-200 animate-pulse rounded mx-auto" />
+        </div>
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-4 h-auto md:h-[1200px]">
+          {Array.from({ length: 4 }).map((_, i) => (
+            <div key={i} className="relative h-[420px] sm:h-[480px] md:h-auto rounded-[10px] md:rounded-[15px] overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-slate-300/70 via-slate-200/60 to-slate-100/40 animate-pulse" />
+            </div>
+          ))}
+        </div>
+      </div>
+    }
+  />
+);
+
+// Render ContactUs only when its placeholder is near the viewport
+const LazyContactSection = () => (
+  <LazyComponent
+    component={ContactUs}
+    rootMargin="200px"
+  />
+);
 
 function Home() {
   return (
@@ -146,16 +185,32 @@ function Home() {
       </section>
 
       <Hero />
-      <ShowCase />
-      <Numbers />
-      <Goals />
-      <Influencers />
-      <Services />
-      <Connections />
-      <WorkSection />
-      <Map />
+      <LazyShowCaseSection />
+      <React.Suspense fallback={null}>
+        <Numbers />
+      </React.Suspense>
+      <React.Suspense fallback={null}>
+        <Goals />
+      </React.Suspense>
+      <React.Suspense fallback={null}>
+        <Influencers />
+      </React.Suspense>
+      <React.Suspense fallback={null}>
+        <Services />
+      </React.Suspense>
+      <React.Suspense fallback={null}>
+        <Connections />
+      </React.Suspense>
+      <React.Suspense fallback={null}>
+        <WorkSection />
+      </React.Suspense>
+      <React.Suspense fallback={null}>
+        <Map />
+      </React.Suspense>
       <LazyContactSection />
-      <Footer />
+      <React.Suspense fallback={null}>
+        <Footer />
+      </React.Suspense>
     </div>
   );
 }
