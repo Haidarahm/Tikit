@@ -1,6 +1,5 @@
 import React from "react";
 import { FaArrowRight } from "react-icons/fa6";
-import { useNavigate } from "react-router-dom";
 
 function TikitButton({ text ,onClick}) {
   return (

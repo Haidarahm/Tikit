@@ -6,7 +6,6 @@ import element2 from "../../assets/elements/2-light.png";
 import element1 from "../../assets/elements/1-light.png";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import GradientText from "../../components/GradientText";
 import { useTheme } from "../../store/ThemeContext.jsx";
 import { useClient } from "../../store/ClientContext.jsx";
 import { useNavigate } from "react-router-dom";

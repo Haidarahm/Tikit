@@ -1,20 +1,8 @@
 import React from "react";
-import GradientText from "../../../../components/GradientText.jsx";
 import { FiArrowLeft } from "react-icons/fi";
-
-const gradientPalette = (theme, isRtl) => {
-  if (theme === "dark") {
-    return ["#07D9F5", "#06AEC4", "#4E7CC6"];
-  }
-  if (isRtl) {
-    return ["#FB8DEF", "#CE88C6", "#4E7CC6"];
-  }
-  return ["#52C3C5", "#5269C5", "#52A0C5"];
-};
 
 const CreativeHero = ({ mainImage, title, logo, theme, isRtl, t, onBack }) => {
   const fontClass = isRtl ? "font-cairo" : "font-antonio";
-  const gradientColors = gradientPalette(theme, isRtl);
 
   if (mainImage) {
     return (
@@ -46,14 +34,9 @@ const CreativeHero = ({ mainImage, title, logo, theme, isRtl, t, onBack }) => {
               <p className="text-sm md:text-base uppercase tracking-[0.5em] text-white/80">
                 {t("work.details.creative.campaign")}
               </p>
-              <GradientText
-                colors={gradientColors}
-                animationSpeed={6}
-                showBorder={false}
-                className={`text-[48px] md:text-[64px] lg:text-[80px] font-bold leading-tight max-w-full ${fontClass}`}
-              >
+              <h1 className={`text-[48px] md:text-[64px] lg:text-[80px] font-bold leading-tight max-w-full text-white ${fontClass}`}>
                 {title}
-              </GradientText>
+              </h1>
             </div>
 
             <button
@@ -93,14 +76,9 @@ const CreativeHero = ({ mainImage, title, logo, theme, isRtl, t, onBack }) => {
               <p className="text-xs uppercase tracking-[0.5em] text-[var(--foreground)]/60">
                 {t("work.details.creative.campaign")}
               </p>
-              <GradientText
-                colors={gradientColors}
-                animationSpeed={6}
-                showBorder={false}
-                className={`text-[32px] md:text-[48px] font-bold ${fontClass}`}
-              >
+              <h1 className={`text-[32px] md:text-[48px] font-bold text-[var(--foreground)] ${fontClass}`}>
                 {title}
-              </GradientText>
+              </h1>
             </div>
           </div>
 

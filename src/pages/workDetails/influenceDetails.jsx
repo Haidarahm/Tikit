@@ -14,7 +14,6 @@ import { useTheme } from "../../store/ThemeContext.jsx";
 import SEOHead from "../../components/SEOHead";
 import Footer from "../../components/Footer";
 import ContactUs from "../Home/ContactUs";
-import GradientText from "../../components/GradientText";
 import { FiUsers, FiEye, FiActivity, FiArrowLeft } from "react-icons/fi";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Thumbs } from "swiper/modules";
@@ -236,20 +235,9 @@ const InfluenceDetails = () => {
                       <p className="text-xs uppercase tracking-[0.5em] text-[var(--foreground)]/60">
                         {t("work.details.influence.campaign")}
                       </p>
-                      <GradientText
-                        colors={
-                          theme === "dark"
-                            ? ["#07D9F5", "#06AEC4", "#4E7CC6"]
-                            : isRtl
-                            ? ["#FB8DEF", "#CE88C6", "#4E7CC6"]
-                            : ["#52C3C5", "#5269C5", "#52A0C5"]
-                        }
-                        animationSpeed={6}
-                        showBorder={false}
-                        className={`text-[32px] md:text-[48px] font-bold leading-tight ${isRtl ? "font-cairo" : "font-antonio"}`}
-                      >
+                      <h1 className={`text-[32px] md:text-[48px] font-bold leading-tight text-[var(--foreground)] ${isRtl ? "font-cairo" : "font-antonio"}`}>
                         {title}
-                      </GradientText>
+                      </h1>
                     </div>
                   </div>
 

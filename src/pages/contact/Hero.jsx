@@ -1,6 +1,5 @@
 import React, { useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
-import GradientText from "../../components/GradientText";
 import { useTheme } from "../../store/ThemeContext";
 import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../store/I18nLanguageContext";

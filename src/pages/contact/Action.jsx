@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from "react";
-import GradientText from "../../components/GradientText";
 import { useTheme } from "../../store/ThemeContext";
 import { useClient } from "../../store/ClientContext";
 import { useTranslation } from "react-i18next";
