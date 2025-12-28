@@ -6,37 +6,71 @@ import { BrowserRouter } from "react-router-dom";
 import "./locales/i18n";
 import { I18nLanguageProvider } from "./store/I18nLanguageContext.jsx";
 
-import Lenis from "lenis";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
-
-// Smooth Scroll Init
+// Smooth Scroll Init - lazy loaded to reduce initial bundle size
 function SmoothScrollProvider({ children }) {
   useEffect(() => {
-    const lenis = new Lenis({
-      duration: 1.2,
-      smooth: true,
-      smoothTouch: true,
-      infinite: false,
-      orientation: "vertical",
-      gestureOrientation: "vertical",
-    });
+    let lenis = null;
+    let gsapInstance = null;
+    let tickerCallback = null;
+    let isMounted = true;
 
-    // Sync Lenis with ScrollTrigger
-    lenis.on("scroll", ScrollTrigger.update);
+    // Defer loading of heavy animation libraries
+    const initSmoothScroll = async () => {
+      try {
+        // Load libraries asynchronously after initial render
+        const [LenisModule, gsapModule, scrollTriggerModule] = await Promise.all([
+          import("lenis"),
+          import("gsap"),
+          import("gsap/ScrollTrigger")
+        ]);
 
-    const tickerCallback = (time) => {
-      lenis.raf(time * 1000); // REQUIRED
+        if (!isMounted) return;
+
+        const Lenis = LenisModule.default;
+        const gsap = gsapModule.default;
+        const { ScrollTrigger } = scrollTriggerModule;
+        
+        gsapInstance = gsap;
+        gsap.registerPlugin(ScrollTrigger);
+        
+        lenis = new Lenis({
+          duration: 1.2,
+          smooth: true,
+          smoothTouch: true,
+          infinite: false,
+          orientation: "vertical",
+          gestureOrientation: "vertical",
+        });
+
+        // Sync Lenis with ScrollTrigger
+        lenis.on("scroll", ScrollTrigger.update);
+
+        tickerCallback = (time) => {
+          lenis.raf(time * 1000);
+        };
+
+        gsap.ticker.add(tickerCallback);
+        gsap.ticker.lagSmoothing(0);
+      } catch (error) {
+        console.error("Failed to load smooth scroll libraries", error);
+      }
     };
 
-    gsap.ticker.add(tickerCallback);
-    gsap.ticker.lagSmoothing(0);
+    // Defer initialization using requestIdleCallback or setTimeout
+    if ("requestIdleCallback" in window) {
+      window.requestIdleCallback(initSmoothScroll, { timeout: 1000 });
+    } else {
+      setTimeout(initSmoothScroll, 100);
+    }
 
     return () => {
-      gsap.ticker.remove(tickerCallback);
-      lenis.destroy();
+      isMounted = false;
+      if (gsapInstance && tickerCallback) {
+        gsapInstance.ticker.remove(tickerCallback);
+      }
+      if (lenis) {
+        lenis.destroy();
+      }
     };
   }, []);
 

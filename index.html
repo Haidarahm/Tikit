@@ -770,10 +770,9 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx" fetchpriority="high"></script>
-    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
+    <!-- AOS is now lazy loaded via AOSRefresher component - removed from here to reduce initial bundle -->
     <script>
       window.addEventListener('DOMContentLoaded', function(){
-        // AOS initialization moved to App.jsx to prevent multiple initializations
         try {
           var link = document.querySelector('link#favicon');
           if (link) link.href = '/logo-light.png';
