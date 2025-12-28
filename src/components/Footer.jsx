@@ -199,10 +199,10 @@ const Footer = ({ className }) => {
 
             {/* Quick Links */}
             <div>
-              <h4 className="text-lg font-semibold text-[var(--foreground)] mb-6 relative">
+              <h2 className="text-lg font-semibold text-[var(--foreground)] mb-6 relative">
                 {t("nav.home", "Quick Links")}
                 <span className={`absolute bottom-[-8px] ${isRtl ? "right-0" : "left-0"} w-8 h-0.5 bg-[var(--secondary)]`}></span>
-              </h4>
+              </h2>
               <nav className="flex flex-col gap-3">
                 {quickLinks.map((link) => (
                   <Link
@@ -218,10 +218,10 @@ const Footer = ({ className }) => {
 
             {/* Services */}
             <div>
-              <h4 className="text-lg font-semibold text-[var(--foreground)] mb-6 relative">
+              <h2 className="text-lg font-semibold text-[var(--foreground)] mb-6 relative">
                 {t("nav.services", "Services")}
                 <span className={`absolute bottom-[-8px] ${isRtl ? "right-0" : "left-0"} w-8 h-0.5 bg-[var(--secondary)]`}></span>
-              </h4>
+              </h2>
               <nav className="flex flex-col gap-3">
                 {serviceLinks.map((link, index) => (
                   <Link
@@ -247,10 +247,10 @@ const Footer = ({ className }) => {
 
             {/* Contact Info */}
             <div>
-              <h4 className="text-lg font-semibold text-[var(--foreground)] mb-6 relative">
+              <h2 className="text-lg font-semibold text-[var(--foreground)] mb-6 relative">
                 {t("nav.contact", "Contact Us")}
                 <span className={`absolute bottom-[-8px] ${isRtl ? "right-0" : "left-0"} w-8 h-0.5 bg-[var(--secondary)]`}></span>
-              </h4>
+              </h2>
               
               <div className="space-y-4">
                 {/* Phone */}
