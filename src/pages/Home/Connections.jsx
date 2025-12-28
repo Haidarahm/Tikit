@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, memo } from "react";
 import ScrollFloat from "../../components/ScrollFloat";
-import element1Dark from "../../assets/elements/6.png";
-import element2Dark from "../../assets/elements/5.png";
-import element2 from "../../assets/elements/2-light.png";
-import element1 from "../../assets/elements/1-light.png";
+import element1Dark from "../../assets/elements/6.webp";
+import element2Dark from "../../assets/elements/5.webp";
+import element2 from "../../assets/elements/2-light.webp";
+import element1 from "../../assets/elements/1-light.webp";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useTheme } from "../../store/ThemeContext.jsx";
@@ -83,6 +83,8 @@ const Connections = memo(() => {
       <img
         src={theme === "light" ? element2 : element2Dark}
         alt="Decorative element 1"
+        width={300}
+        height={300}
         className="element1-c hidden md:block absolute top-4 left-8 z-0  dark:grayscale-75 w-auto h-auto max-w-[300px] max-h-[300px] object-contain"
         loading="lazy"
       />
@@ -90,6 +92,8 @@ const Connections = memo(() => {
       <img
         src={theme === "light" ? element1 : element1Dark}
         alt="Decorative element 2"
+        width={300}
+        height={300}
         className="element2-c absolute hidden md:block top-[40vh] right-12  dark:grayscale-75 rotate-90 z-0 w-auto h-auto max-w-[300px] max-h-[300px] object-contain"
         loading="lazy"
       />
