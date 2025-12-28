@@ -196,6 +196,7 @@ const ShowCase = () => {
           gap-4
           h-auto
           md:h-[1200px]
+          items-stretch
         "
       >
         {loading || showcaseData.length === 0
@@ -214,13 +215,21 @@ const ShowCase = () => {
                   relative showcase-card
                   rounded-[10px] overflow-hidden
                   md:rounded-[15px]
-                  h-[420px] sm:h-[480px] md:h-auto
+                  h-[420px] sm:h-[480px] md:h-full
+                  w-full
                   ${item.size === "large" ? "md:col-span-2" : "col-span-1"}
                 `}
               >
                 <div
-                  className="showcase-card_media absolute inset-0 rounded-[10px] md:rounded-[15px] bg-cover bg-center"
-                  style={{ backgroundImage: `url(${item.img})` }}
+                  className="showcase-card_media absolute inset-0 rounded-[10px] md:rounded-[15px]"
+                  style={{ 
+                    backgroundImage: `url(${item.img})`,
+                    width: '100%',
+                    height: '100%',
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat'
+                  }}
                 />
 
                 {/* Black gradient overlay for enhanced visual depth */}
