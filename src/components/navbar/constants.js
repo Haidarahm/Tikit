@@ -1,7 +1,7 @@
 export const NAV_LINKS = [
   { to: "/home", key: "nav.home" },
   { to: "/work/1", key: "nav.work" },
-  { to: "/about", key: "nav.about" },
+  { to: "/about-us", key: "nav.about" },
   { to: "/services", key: "nav.services" },
   { to: "/news", key: "nav.news" },
   { to: "/influencer", key: "nav.influencers" },

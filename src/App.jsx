@@ -109,7 +109,7 @@ function App() {
             <Route element={<Layout />}>
               <Route path="/home" element={<Home />} />
               <Route path="/work/:workId?" element={<Work />} />
-              <Route path="/about" element={<AboutUs />} />
+              <Route path="/about-us" element={<AboutUs />} />
               <Route path="/services" element={<Services />} />
               <Route path="/news" element={<News />} />
               <Route path="/news/:id" element={<NewsDetails />} />

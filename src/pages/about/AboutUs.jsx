@@ -20,7 +20,7 @@ const AboutUs = () => {
         title="About Us"
         description="Learn about Tikit Agency - a full-service marketing agency driven by insight and creativity. Discover our team, values, and approach to delivering exceptional results."
         keywords="about Tikit Agency, marketing team, creative agency, brand strategy, digital marketing agency UAE"
-        canonicalUrl="/about"
+        canonicalUrl="/about-us"
       />
       <Hero />
       <AnimatedText />

@@ -18,7 +18,7 @@ Crawl-delay: 1
 User-agent: GPTBot
 Allow: /
 Allow: /home
-Allow: /about
+Allow: /about-us
 Allow: /services
 Allow: /work
 Allow: /influencer
@@ -87,7 +87,7 @@ Disallow: /_internal/
 # ===========================================
 
 Allow: /home
-Allow: /about
+Allow: /about-us
 Allow: /services
 Allow: /work
 Allow: /news

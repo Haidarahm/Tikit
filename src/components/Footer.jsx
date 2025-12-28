@@ -51,7 +51,7 @@ const Footer = ({ className }) => {
   ];
 
   const quickLinks = [
-    { to: "/about", label: t("footer.links.aboutUs") },
+    { to: "/about-us", label: t("footer.links.aboutUs") },
     { to: "/services", label: t("footer.links.services") },
     { to: "/work", label: t("footer.links.work") },
     { to: "/contact-us", label: t("footer.links.contact") },
@@ -344,7 +344,7 @@ const Footer = ({ className }) => {
                 {t("footer.terms.privacyPolicy")}
               </Link>
               <span className="hidden md:inline">•</span>
-              <Link to="/about" className="hover:text-[var(--secondary)] transition-colors">
+              <Link to="/about-us" className="hover:text-[var(--secondary)] transition-colors">
                 {t("footer.terms.aboutUs")}
               </Link>
               <span className="hidden md:inline">•</span>
