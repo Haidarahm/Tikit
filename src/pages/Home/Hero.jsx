@@ -10,18 +10,27 @@ const Hero = memo(() => {
   const [isMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth < 768);
   const { t } = useTranslation();
 
-  // GSAP background intro animation - removed scale animation to prevent LCP delay
-  // Video should be visible immediately for better LCP
+  // GSAP background intro animation with scale effect
   useEffect(() => {
     const element = sectionRef.current;
     if (!element) return;
 
-    // Only animate opacity, not scale, to avoid hiding the video
-    gsap.fromTo(
-      element,
-      { opacity: 0 },
-      { opacity: 1, duration: 0.6, ease: "power2.out" }
-    );
+    // Set initial state - start from scale 0
+    gsap.set(element, { 
+      scale: 0,
+      transformOrigin: "center center"
+    });
+
+    // Use requestAnimationFrame to ensure initial state is rendered
+    requestAnimationFrame(() => {
+      // Animate to full scale - fast and smooth
+      gsap.to(element, {
+        scale: 1,
+        duration: 0.8, // Faster animation
+        ease: "back.out(1.2)", // Smooth elastic easing for better effect
+        force3D: true, // Force GPU acceleration
+      });
+    });
   }, []);
 
   useEffect(() => {
@@ -35,10 +44,10 @@ const Hero = memo(() => {
       gsap.to(items, {
         autoAlpha: 1,
         y: 0,
-        duration: 1.0, // reduced duration
+        duration: 1.2, // Slightly longer for smoother effect
         ease: "power3.out", // smoother ease
-        stagger: 0.15, // reduced stagger
-        delay: 0.3, // reduced delay for faster LCP
+        stagger: 0.2, // More spacing between items
+        delay: 0.5, // Start after container scale animation begins
       });
     }, contentRef);
 
@@ -49,8 +58,7 @@ const Hero = memo(() => {
     <div
       ref={sectionRef}
       data-nav-color="white"
-      className="section relative h-[80vh] mb-[10vh] md:h-[97vh] md:mb-[3vh]  rounded-[15px] md:rounded-[25px]  overflow-hidden mx-auto gpu-transform w-[98vw] sm:w-[96vw] md:w-[95vw]"
-      style={{ opacity: 1 }}
+      className="section relative h-[80vh] mb-[10vh] md:h-[97vh] md:mb-[3vh]  rounded-[15px] md:rounded-[25px]  overflow-hidden mx-auto w-[98vw] sm:w-[96vw] md:w-[95vw]"
     >
       {/* Background layer */}
       <div className="pointer-events-none h-full mt-[8px] md:mt-[16px] w-full mx-auto overflow-hidden  bg-[var(--container-bg)]  rounded-[15px] md:rounded-[25px] absolute inset-0 z-0">
