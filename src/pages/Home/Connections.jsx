@@ -84,17 +84,15 @@ const Connections = memo(() => {
       <img
         src={theme === "light" ? element2 : element2Dark}
         alt="Decorative element 1"
-        width={300}
-        height={300}
-        className="element1-c hidden md:block absolute top-4 left-8 z-0  dark:grayscale-75 w-auto h-auto max-w-[300px] max-h-[300px]"
+        className="element1-c hidden md:block absolute top-4 left-8 z-0  dark:grayscale-75 w-auto h-auto max-w-[300px] max-h-[300px] object-contain"
+        loading="lazy"
       />
       {/* Element 2 */}
       <img
         src={theme === "light" ? element1 : element1Dark}
         alt="Decorative element 2"
-        width={300}
-        height={300}
-        className="element2-c absolute hidden md:block top-[40vh] right-12  dark:grayscale-75 rotate-90 z-0 w-auto h-auto max-w-[300px] max-h-[300px]"
+        className="element2-c absolute hidden md:block top-[40vh] right-12  dark:grayscale-75 rotate-90 z-0 w-auto h-auto max-w-[300px] max-h-[300px] object-contain"
+        loading="lazy"
       />
       <div className="flex items-center flex-col justify-center relative z-10 w-[90vw] md:w-[80vw] mx-auto text-center">
         {isRtl ? (

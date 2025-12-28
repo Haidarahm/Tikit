@@ -19,7 +19,7 @@ export default defineConfig({
     outDir: "dist",
     assetsDir: "assets",
     target: "es2018",
-    sourcemap: false,
+    sourcemap: true,
 
     rollupOptions: {
       output: {
