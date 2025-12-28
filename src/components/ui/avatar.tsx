@@ -29,6 +29,7 @@ function AvatarImage({
       className={cn("aspect-square size-full", className)}
       loading="lazy"
       decoding="async"
+      fetchPriority="low"
       width={48}
       height={48}
       {...props}
