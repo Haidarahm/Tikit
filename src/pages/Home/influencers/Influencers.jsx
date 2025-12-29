@@ -199,7 +199,7 @@ const Influencers = () => {
   return (
     <section
       ref={sectionRef}
-      className="influencers-scope influencers-home min-h-[880px] py-8 px-4 relative overflow-hidden bg-[var(--background)]"
+      className="influencers-scope influencers-home min-h-[900px] py-8 px-4 relative overflow-hidden bg-[var(--background)]"
       dir={isRtl ? "rtl" : "ltr"}
     >
       {/* Background decoration */}
