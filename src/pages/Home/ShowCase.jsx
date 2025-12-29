@@ -138,16 +138,6 @@ const ShowCase = () => {
           );
       });
 
-      gsap.to(".showcase-card_media", {
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: 0.8,
-        },
-        yPercent: 12,
-        ease: "none",
-      });
 
       ScrollTrigger.refresh(true);
     }, sectionRef);
