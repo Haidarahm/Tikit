@@ -114,10 +114,22 @@
             "mainWord": "Success",
             "subheadline": "Clients who come back. Most of ours stay long after the first project.",
             "items": {
-                "happyClients": { "text1": "Happy", "text2": "Clients" },
-                "years": { "text1": "Years", "text2": "Of Experiences" },
-                "projects": { "text1": "Completed", "text2": "Projects" },
-                "awards": { "text1": "Award", "text2": "Achievements" }
+                "happyClients": {
+                    "text1": "Happy",
+                    "text2": "Clients"
+                },
+                "years": {
+                    "text1": "Years",
+                    "text2": "Of Experiences"
+                },
+                "projects": {
+                    "text1": "Completed",
+                    "text2": "Projects"
+                },
+                "awards": {
+                    "text1": "Award",
+                    "text2": "Achievements"
+                }
             }
         },
         "services": {
@@ -199,9 +211,15 @@
             "description": "From Dubai to London, we connect brands with audiences across the globe. Our strategic locations enable us to deliver culturally relevant campaigns that resonate with diverse markets.",
             "hoverHint": "Hover over the pins to explore our locations",
             "stats": [
-                { "text": "5+ Global Offices" },
-                { "text": "20+ Countries Served" },
-                { "text": "500M+ Audience Reach" }
+                {
+                    "text": "5+ Global Offices"
+                },
+                {
+                    "text": "20+ Countries Served"
+                },
+                {
+                    "text": "500M+ Audience Reach"
+                }
             ],
             "locations": [
                 {
@@ -568,7 +586,7 @@
         "successTitle": "Thank You!",
         "successMessage": "You've successfully subscribed to our newsletter. We'll keep you updated with the latest news!"
     },
-        "footer": {
+    "footer": {
         "contactText": "If you would like to work with us or just want to get in touch, we'd love to hear from you!",
         "contactTitle": "Contact –",
         "contactSubtitle": "for Client or Influencer throughout",
@@ -596,6 +614,7 @@
         },
         "terms": {
             "privacyPolicy": "Privacy Policy",
+            "termsOfService": "Terms of Service",
             "aboutUs": "About us",
             "cookieSettings": "Cookie Settings"
         },
@@ -737,9 +756,18 @@
         "title": "Influence Campaign Results",
         "subtitle": "Department of Economic Development",
         "metrics": {
-            "reach": { "line1": "Total", "line2": "Reach" },
-            "views": { "line1": "Total", "line2": "Views" },
-            "engagement": { "line1": "Engagement", "line2": "Rate" }
+            "reach": {
+                "line1": "Total",
+                "line2": "Reach"
+            },
+            "views": {
+                "line1": "Total",
+                "line2": "Views"
+            },
+            "engagement": {
+                "line1": "Engagement",
+                "line2": "Rate"
+            }
         }
     },
     "caseStudy": {
@@ -925,32 +953,56 @@
                     "videoProduction": {
                         "title": "Video Production",
                         "description": "Commercial videos, corporate films, documentaries, and branded content produced with cinematic quality.",
-                        "features": ["4K & 8K Resolution", "Drone Cinematography", "Professional Crew"]
+                        "features": [
+                            "4K & 8K Resolution",
+                            "Drone Cinematography",
+                            "Professional Crew"
+                        ]
                     },
                     "photography": {
                         "title": "Photography",
                         "description": "Professional photography for products, events, portraits, and lifestyle content that captures perfect moments.",
-                        "features": ["Studio & On-Location", "Product Photography", "Event Coverage"]
+                        "features": [
+                            "Studio & On-Location",
+                            "Product Photography",
+                            "Event Coverage"
+                        ]
                     },
                     "postProduction": {
                         "title": "Post-Production",
                         "description": "Expert editing, color grading, motion graphics, and visual effects to polish your content to perfection.",
-                        "features": ["Professional Editing", "Color Grading", "VFX & Animation"]
+                        "features": [
+                            "Professional Editing",
+                            "Color Grading",
+                            "VFX & Animation"
+                        ]
                     },
                     "audioProduction": {
                         "title": "Audio Production",
                         "description": "Professional audio recording, mixing, and sound design for pristine audio quality in all productions.",
-                        "features": ["Voice-Over Recording", "Sound Mixing", "Music Composition"]
+                        "features": [
+                            "Voice-Over Recording",
+                            "Sound Mixing",
+                            "Music Composition"
+                        ]
                     },
                     "liveStreaming": {
                         "title": "Live Streaming",
                         "description": "Professional live streaming services for events, webinars, and broadcasts with multi-camera setups.",
-                        "features": ["Multi-Platform Streaming", "Live Switching", "Graphics Overlay"]
+                        "features": [
+                            "Multi-Platform Streaming",
+                            "Live Switching",
+                            "Graphics Overlay"
+                        ]
                     },
                     "creativeDirection": {
                         "title": "Creative Direction",
                         "description": "Concept development, storyboarding, and creative strategy to ensure your vision is perfectly realized.",
-                        "features": ["Concept Development", "Storyboarding", "Art Direction"]
+                        "features": [
+                            "Concept Development",
+                            "Storyboarding",
+                            "Art Direction"
+                        ]
                     }
                 }
             },
@@ -983,7 +1035,16 @@
             "equipment": {
                 "title": "Professional Equipment",
                 "description": "Industry-leading tools and technology for exceptional results",
-                "items": ["Cinema Cameras", "Drones (4K & 8K)", "Professional Lighting", "Gimbal Stabilizers", "Studio Setup", "Audio Equipment", "Editing Suites", "Color Grading Tools"]
+                "items": [
+                    "Cinema Cameras",
+                    "Drones (4K & 8K)",
+                    "Professional Lighting",
+                    "Gimbal Stabilizers",
+                    "Studio Setup",
+                    "Audio Equipment",
+                    "Editing Suites",
+                    "Color Grading Tools"
+                ]
             },
             "cta": {
                 "title": "Ready To Create Something Amazing?",
@@ -1061,7 +1122,20 @@
             "elements": {
                 "title": "Brand Identity Elements",
                 "description": "Everything you need for a complete and cohesive brand presence",
-                "items": ["Logo Design", "Color Palette", "Typography", "Design System", "Business Cards", "Letterhead", "Email Templates", "Social Media Templates", "Packaging", "Merchandise", "Vehicle Wraps", "Signage"]
+                "items": [
+                    "Logo Design",
+                    "Color Palette",
+                    "Typography",
+                    "Design System",
+                    "Business Cards",
+                    "Letterhead",
+                    "Email Templates",
+                    "Social Media Templates",
+                    "Packaging",
+                    "Merchandise",
+                    "Vehicle Wraps",
+                    "Signage"
+                ]
             },
             "stats": {
                 "brandsCreated": "Brands Created",

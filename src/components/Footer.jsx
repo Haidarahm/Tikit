@@ -344,6 +344,10 @@ const Footer = ({ className }) => {
                 {t("footer.terms.privacyPolicy")}
               </Link>
               <span className="hidden md:inline">•</span>
+              <Link to="/terms-of-service" className="hover:text-[var(--secondary)] transition-colors">
+                {t("footer.terms.termsOfService", "Terms of Service")}
+              </Link>
+              <span className="hidden md:inline">•</span>
               <Link to="/about-us" className="hover:text-[var(--secondary)] transition-colors">
                 {t("footer.terms.aboutUs")}
               </Link>

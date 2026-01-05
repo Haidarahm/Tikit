@@ -109,10 +109,22 @@
             "mainWord": "Succès",
             "subheadline": "Des clients qui reviennent. La plupart restent longtemps après le premier projet.",
             "items": {
-                "happyClients": { "text1": "Clients", "text2": "Heureux" },
-                "years": { "text1": "Années", "text2": "d'expérience" },
-                "projects": { "text1": "Projets", "text2": "Réalisés" },
-                "awards": { "text1": "Prix", "text2": "et Distinctions" }
+                "happyClients": {
+                    "text1": "Clients",
+                    "text2": "Heureux"
+                },
+                "years": {
+                    "text1": "Années",
+                    "text2": "d'expérience"
+                },
+                "projects": {
+                    "text1": "Projets",
+                    "text2": "Réalisés"
+                },
+                "awards": {
+                    "text1": "Prix",
+                    "text2": "et Distinctions"
+                }
             }
         },
         "goals": {
@@ -194,9 +206,15 @@
             "description": "De Dubaï à Londres, nous connectons les marques avec des audiences du monde entier. Nos emplacements stratégiques nous permettent de proposer des campagnes culturellement pertinentes qui résonnent avec des marchés diversifiés.",
             "hoverHint": "Survolez les épingles pour explorer nos emplacements",
             "stats": [
-                { "text": "5+ Bureaux Mondiaux" },
-                { "text": "20+ Pays Servis" },
-                { "text": "500M+ Portée d'Audience" }
+                {
+                    "text": "5+ Bureaux Mondiaux"
+                },
+                {
+                    "text": "20+ Pays Servis"
+                },
+                {
+                    "text": "500M+ Portée d'Audience"
+                }
             ],
             "locations": [
                 {
@@ -581,6 +599,7 @@
         },
         "terms": {
             "privacyPolicy": "Politique de Confidentialité",
+            "termsOfService": "Conditions d'utilisation",
             "aboutUs": "À propos",
             "cookieSettings": "Paramètres des Cookies"
         },
@@ -722,9 +741,18 @@
         "title": "Résultats de la campagne d'influence",
         "subtitle": "Département du Développement Économique",
         "metrics": {
-            "reach": { "line1": "Portée", "line2": "Totale" },
-            "views": { "line1": "Vues", "line2": "Totales" },
-            "engagement": { "line1": "Taux", "line2": "d'engagement" }
+            "reach": {
+                "line1": "Portée",
+                "line2": "Totale"
+            },
+            "views": {
+                "line1": "Vues",
+                "line2": "Totales"
+            },
+            "engagement": {
+                "line1": "Taux",
+                "line2": "d'engagement"
+            }
         }
     },
     "caseStudy": {
@@ -910,32 +938,56 @@
                     "videoProduction": {
                         "title": "Production Vidéo",
                         "description": "Vidéos commerciales, films d'entreprise, documentaires et contenu de marque produit avec une qualité cinématographique.",
-                        "features": ["Résolution 4K et 8K", "Cinématographie par Drone", "Équipe Professionnelle"]
+                        "features": [
+                            "Résolution 4K et 8K",
+                            "Cinématographie par Drone",
+                            "Équipe Professionnelle"
+                        ]
                     },
                     "photography": {
                         "title": "Photographie",
                         "description": "Photographie professionnelle pour produits, événements, portraits et contenu lifestyle qui capture des moments parfaits.",
-                        "features": ["Studio et Sur Site", "Photographie Produit", "Couverture d'Événements"]
+                        "features": [
+                            "Studio et Sur Site",
+                            "Photographie Produit",
+                            "Couverture d'Événements"
+                        ]
                     },
                     "postProduction": {
                         "title": "Post-Production",
                         "description": "Montage expert, étalonnage des couleurs, graphiques animés et effets visuels pour polir votre contenu à la perfection.",
-                        "features": ["Montage Professionnel", "Étalonnage des Couleurs", "VFX et Animation"]
+                        "features": [
+                            "Montage Professionnel",
+                            "Étalonnage des Couleurs",
+                            "VFX et Animation"
+                        ]
                     },
                     "audioProduction": {
                         "title": "Production Audio",
                         "description": "Enregistrement audio professionnel, mixage et design sonore pour une qualité audio impeccable dans toutes les productions.",
-                        "features": ["Enregistrement Voice-Over", "Mixage Sonore", "Composition Musicale"]
+                        "features": [
+                            "Enregistrement Voice-Over",
+                            "Mixage Sonore",
+                            "Composition Musicale"
+                        ]
                     },
                     "liveStreaming": {
                         "title": "Diffusion en Direct",
                         "description": "Services de diffusion en direct professionnels pour événements, webinaires et diffusions avec configurations multi-caméras.",
-                        "features": ["Diffusion Multi-Plateforme", "Commutateur en Direct", "Superposition Graphique"]
+                        "features": [
+                            "Diffusion Multi-Plateforme",
+                            "Commutateur en Direct",
+                            "Superposition Graphique"
+                        ]
                     },
                     "creativeDirection": {
                         "title": "Direction Créative",
                         "description": "Développement de concept, storyboard et stratégie créative pour garantir que votre vision soit parfaitement réalisée.",
-                        "features": ["Développement de Concept", "Storyboard", "Direction Artistique"]
+                        "features": [
+                            "Développement de Concept",
+                            "Storyboard",
+                            "Direction Artistique"
+                        ]
                     }
                 }
             },
@@ -968,7 +1020,16 @@
             "equipment": {
                 "title": "Équipement Professionnel",
                 "description": "Outils et technologies de pointe pour des résultats exceptionnels",
-                "items": ["Caméras Cinéma", "Drones (4K et 8K)", "Éclairage Professionnel", "Stabilisateurs Gimbal", "Configuration Studio", "Équipement Audio", "Suites de Montage", "Outils d'Étalonnage des Couleurs"]
+                "items": [
+                    "Caméras Cinéma",
+                    "Drones (4K et 8K)",
+                    "Éclairage Professionnel",
+                    "Stabilisateurs Gimbal",
+                    "Configuration Studio",
+                    "Équipement Audio",
+                    "Suites de Montage",
+                    "Outils d'Étalonnage des Couleurs"
+                ]
             },
             "cta": {
                 "title": "Prêt à Créer Quelque Chose d'Extraordinaire ?",
@@ -1046,7 +1107,20 @@
             "elements": {
                 "title": "Éléments d'Identité de Marque",
                 "description": "Tout ce dont vous avez besoin pour une présence de marque complète et cohérente",
-                "items": ["Conception de Logo", "Palette de Couleurs", "Typographie", "Système de Design", "Cartes de Visite", "En-tête de Lettre", "Modèles d'Email", "Modèles de Médias Sociaux", "Emballage", "Marchandise", "Enveloppes de Véhicules", "Signalisation"]
+                "items": [
+                    "Conception de Logo",
+                    "Palette de Couleurs",
+                    "Typographie",
+                    "Système de Design",
+                    "Cartes de Visite",
+                    "En-tête de Lettre",
+                    "Modèles d'Email",
+                    "Modèles de Médias Sociaux",
+                    "Emballage",
+                    "Marchandise",
+                    "Enveloppes de Véhicules",
+                    "Signalisation"
+                ]
             },
             "stats": {
                 "brandsCreated": "Marques Créées",

@@ -76,6 +76,7 @@ const InfluencerMarketingSaudiArabia = lazy(() =>
 
 // Legal Pages
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy.jsx"));
+const TermsOfService = lazy(() => import("./pages/TermsOfService.jsx"));
 const Unsubscribe = lazy(() => import("./pages/Unsubscribe.jsx"));
 const FAQ = lazy(() => import("./pages/faq/FAQ.jsx"));
 const Careers = lazy(() => import("./pages/career/Careers.jsx"));
@@ -137,6 +138,7 @@ function App() {
               <Route path="/influencer-marketing-saudi-arabia" element={<InfluencerMarketingSaudiArabia />} />
               {/* Legal Pages */}
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="/terms-of-service" element={<TermsOfService />} />
               <Route path="/unsubscribe/:token" element={<Unsubscribe />} />
               <Route path="/faq" element={<FAQ />} />
               <Route path="/careers" element={<Careers />} />
