@@ -404,9 +404,6 @@ const CaseStudy = ({ caseData, videos: videosFromProps }) => {
                                 {/* Gradient overlay */}
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                               </div>
-                              <p className="mt-3 text-sm text-[var(--foreground)]/60 font-medium">
-                                {video.title}
-                              </p>
                             </div>
                           ))}
                         </div>

@@ -419,14 +419,7 @@ const Branding = () => {
                 {t("serviceSections.branding.stats.industryAwards")}
               </p>
             </div>
-            <div className="text-center p-6 rounded-2xl bg-[var(--foreground)]/5 backdrop-blur-sm border border-[var(--foreground)]/10">
-              <h3 className="text-4xl md:text-5xl font-bold text-[#52C3C5] mb-2">
-                98%
-              </h3>
-              <p className="text-[var(--foreground)]/70 text-sm md:text-base">
-                {t("serviceSections.branding.stats.clientSatisfaction")}
-              </p>
-            </div>
+         
           </div>
         </div>
       </section>

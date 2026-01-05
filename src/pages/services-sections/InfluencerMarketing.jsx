@@ -173,7 +173,7 @@ const InfluencerMarketing = () => {
       {/* Stats Section */}
       <section ref={statsRef} className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
             <div className="stat-card text-center p-6 rounded-2xl bg-[var(--foreground)]/5 backdrop-blur-sm border border-[var(--foreground)]/10">
               <h3 className="text-4xl md:text-5xl font-bold text-[#52C3C5] mb-2">
                 500+
@@ -196,14 +196,6 @@ const InfluencerMarketing = () => {
               </h3>
               <p className="text-[var(--foreground)]/70 text-sm md:text-base">
                 {t("serviceSections.influencerMarketing.stats.totalReach")}
-              </p>
-            </div>
-            <div className="stat-card text-center p-6 rounded-2xl bg-[var(--foreground)]/5 backdrop-blur-sm border border-[var(--foreground)]/10">
-              <h3 className="text-4xl md:text-5xl font-bold text-[#52C3C5] mb-2">
-                95%
-              </h3>
-              <p className="text-[var(--foreground)]/70 text-sm md:text-base">
-                {t("serviceSections.influencerMarketing.stats.clientSatisfaction")}
               </p>
             </div>
           </div>
