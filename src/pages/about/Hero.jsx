@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../store/I18nLanguageContext";
 import { useAboutBannersStore } from "../../store/aboutBannersStore";
 import TikitTitle from "../../components/TikitTitle";
+import coverImage from "../../assets/covers/showcase-cover.webp"
 gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
@@ -95,7 +96,7 @@ const Hero = () => {
               <video
                 src={banner.media}
                 muted
-                poster="/showcase-cover.webp"
+                poster={coverImage}
                 loop
                 autoPlay
                 playsInline

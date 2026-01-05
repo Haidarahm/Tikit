@@ -358,8 +358,40 @@ const ScrollStack = ({
     // Initialize positions
     updatePositions();
 
-    // Initial render
-    updateCardTransforms();
+    // Initial render - use setTimeout to ensure browser has restored scroll position on refresh
+    // This handles the case where browser restores scroll position after React mounts
+    const initialUpdate = () => {
+      updateCardTransforms();
+    };
+    
+    // Immediate update
+    initialUpdate();
+    
+    // Delayed update to catch browser scroll restoration (happens after page load)
+    const timeoutId = setTimeout(() => {
+      updatePositions();
+      updateCardTransforms();
+    }, 100);
+
+    // Handle scroll restoration after page fully loads
+    const handleLoad = () => {
+      // Use requestAnimationFrame to ensure DOM is fully ready
+      requestAnimationFrame(() => {
+        updatePositions();
+        updateCardTransforms();
+      });
+    };
+
+    // Handle pageshow event (fires even when page is loaded from bfcache)
+    const handlePageShow = (event) => {
+      // If page was restored from cache, update transforms
+      if (event.persisted) {
+        requestAnimationFrame(() => {
+          updatePositions();
+          updateCardTransforms();
+        });
+      }
+    };
 
     // Add scroll event listeners
     const scrollElement = useWindowScroll ? window : scroller;
@@ -368,7 +400,24 @@ const ScrollStack = ({
     // Add debounced resize listener
     window.addEventListener("resize", debouncedHandleResize, { passive: true });
 
+    // Listen for page load to handle scroll restoration
+    if (useWindowScroll) {
+      if (document.readyState === "complete") {
+        // Page already loaded, update immediately
+        handleLoad();
+      } else {
+        window.addEventListener("load", handleLoad, { once: true });
+      }
+      // Listen for pageshow to handle back/forward cache navigation
+      window.addEventListener("pageshow", handlePageShow);
+    }
+
     return () => {
+      clearTimeout(timeoutId);
+      if (useWindowScroll) {
+        window.removeEventListener("load", handleLoad);
+        window.removeEventListener("pageshow", handlePageShow);
+      }
       scrollElement.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", debouncedHandleResize);
       // Clear any pending animation frames

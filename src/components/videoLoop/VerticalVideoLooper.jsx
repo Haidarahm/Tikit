@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback, memo } from "react";
 import "./VerticalVideoLooper.css";
-
+import coverImage from "../../assets/covers/cover-image.png"
 const VerticalVideoLooper = memo(
   ({ videos = [], speed = 10, direction = "up" }) => {
     const [instances, setInstances] = useState(2);
@@ -83,7 +83,7 @@ const VerticalVideoLooper = memo(
                     loop
                     autoPlay
                     playsInline
-                    poster={'/cover-image.png'}
+                    poster={coverImage}
                     webkit-playsinline="true"
                     preload="metadata"
                     decoding="async"
