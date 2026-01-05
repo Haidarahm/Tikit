@@ -6,9 +6,9 @@ import {
   FaEnvelope,
   FaMapMarkerAlt,
   FaTiktok,
+  FaWhatsapp,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import FloatingInput from "./ui/FloatingInput";
 import SVGComponent from "../assets/logo";
 import { useTheme } from "../store/ThemeContext.jsx";
 import { useSubscriptionStore } from "../store/subscriptionStore";
@@ -273,6 +273,30 @@ const Footer = ({ className }) => {
                     <FaPhone size={12} />
                   </span>
                   <span className="text-sm">+971 4 577 4042</span>
+                </a>
+                
+                {/* WhatsApp */}
+                <a
+                  href="https://wa.me/971568881133"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className={`flex items-center gap-3 transition-colors group ${
+                    theme === "dark"
+                      ? "text-gray-200 hover:text-[var(--secondary)]"
+                      : "text-gray-600 hover:text-[var(--secondary)]"
+                  }`}
+                  aria-label="Contact us on WhatsApp at 056 888 1133"
+                >
+                  <span
+                    className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${
+                      theme === "dark"
+                        ? "bg-white/10 text-white group-hover:bg-[var(--secondary)] group-hover:text-black"
+                        : "bg-[var(--secondary)]/15 text-[var(--secondary)] group-hover:bg-[var(--secondary)] group-hover:text-white"
+                    }`}
+                  >
+                    <FaWhatsapp size={16} />
+                  </span>
+                  <span className="text-sm">{t("footer.whatsapp", "056 888 1133")}</span>
                 </a>
                 
                 {/* Email */}

@@ -197,7 +197,7 @@
             "name": "Nom",
             "email": "Email",
             "button": "Contactez-nous",
-            "brandsTrust": "20+ marques nous font confiance"
+            "brandsTrust": "200+ marques nous font confiance"
         },
         "map": {
             "badge": "Présence Mondiale",
@@ -577,6 +577,7 @@
         "contactText": "Si vous souhaitez travailler avec nous ou simplement prendre contact, nous serions ravis de vous entendre !",
         "contactTitle": "Contact –",
         "contactSubtitle": "pour Client ou Influenceur partout",
+        "whatsapp": "056 888 1133",
         "copyright": "© Copyright 2025 | Tous droits réservés par Tikit",
         "locations": {
             "uae": "EAU - Marasi Drive, Dubaï",

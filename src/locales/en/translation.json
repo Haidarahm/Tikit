@@ -381,7 +381,7 @@
             "name": "Name",
             "email": "Email",
             "button": "Holla at us",
-            "brandsTrust": "20+ Brands Trust Us"
+            "brandsTrust": "200+ Brands Trust Us"
         },
         "animatedText": {
             "line1": {
@@ -591,6 +591,7 @@
         "contactTitle": "Contact –",
         "contactSubtitle": "for Client or Influencer throughout",
         "phone": "+971 4 577 4042",
+        "whatsapp": "056 888 1133",
         "email": "Holla@tikit.ae",
         "copyright": "© Copyright 2025 | All rights reserved by Tikit Agency",
         "locations": {
