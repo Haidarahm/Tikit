@@ -8,13 +8,16 @@ export function asyncCSS() {
     name: 'async-css',
     enforce: 'post',
     transformIndexHtml(html) {
-      // Ensure main CSS bundle has preload hint for faster discovery
-      // But keep it synchronous since it's critical CSS
+      // Optimize CSS loading with preload hints
       return html.replace(
         /<link([^>]*?)rel="stylesheet"([^>]*?)href="([^"]*\/assets\/[^"]*\.css)"([^>]*?)>/g,
         (match, before, _between, href) => {
-          // Add preload hint before the stylesheet link for faster discovery
-          if (!match.includes('preload')) {
+          // Add preload hint and make it non-blocking for performance
+          if (!match.includes('preload') && !match.includes('index-')) {
+            return `<link rel="preload" href="${href}" as="style" onload="this.onload=null;this.rel='stylesheet'">`;
+          }
+          // Keep main CSS synchronous but add preload for faster discovery
+          if (match.includes('index-') && !match.includes('preload')) {
             return `<link rel="preload" href="${href}" as="style">${match}`;
           }
           return match;
