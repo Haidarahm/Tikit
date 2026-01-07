@@ -37,6 +37,9 @@ const ScrollStack = ({
   const positionsRef = useRef([]); // ← Cache positions
   const isResizingRef = useRef(false); // ← Track resize state
   const resizeTimeoutRef = useRef(null); // ← For resize setTimeout cleanup
+  const resizeObserverRef = useRef(null); // ← ResizeObserver instance
+  const imageUnloadCbsRef = useRef([]); // ← To clean image 'load' listeners
+  const isActiveRef = useRef(false); // ← Only update when visible
 
   // Memoize config to prevent unnecessary re-init
   const scrollConfig = useMemo(
@@ -117,11 +120,7 @@ const ScrollStack = ({
     const scroller = scrollerRef.current;
     if (!scroller) return;
 
-    const cards = Array.from(
-      useWindowScroll
-        ? document.querySelectorAll(".scroll-stack-card")
-        : scroller.querySelectorAll(".scroll-stack-card")
-    );
+    const cards = Array.from(scroller.querySelectorAll(".scroll-stack-card"));
 
     // Update cards reference if needed
     if (cards.length > 0) {
@@ -135,9 +134,7 @@ const ScrollStack = ({
       containerHeight
     );
 
-    const endElement = useWindowScroll
-      ? document.querySelector(".scroll-stack-end")
-      : scroller?.querySelector(".scroll-stack-end");
+    const endElement = scroller?.querySelector(".scroll-stack-end");
 
     // Batch all getBoundingClientRect calls to avoid forced reflow
     const endElementTop = endElement ? getElementOffset(endElement) : 0;
@@ -174,7 +171,8 @@ const ScrollStack = ({
     if (
       !cardsRef.current.length ||
       isUpdatingRef.current ||
-      isResizingRef.current
+      isResizingRef.current ||
+      !isActiveRef.current // Do not update when section is not visible
     )
       return;
 
@@ -328,16 +326,20 @@ const ScrollStack = ({
     [handleResize]
   );
 
+  const refreshNow = useCallback(() => {
+    // Recompute layout and update transforms in next frame
+    requestAnimationFrame(() => {
+      updatePositions();
+      updateCardTransforms();
+    });
+  }, [updatePositions, updateCardTransforms]);
+
   useLayoutEffect(() => {
     const scroller = scrollerRef.current;
     if (!scroller) return;
 
     // ✅ Use forwarded ref to collect cards
-    const cards = Array.from(
-      useWindowScroll
-        ? document.querySelectorAll(".scroll-stack-card")
-        : scroller.querySelectorAll(".scroll-stack-card")
-    );
+    const cards = Array.from(scroller.querySelectorAll(".scroll-stack-card"));
 
     cardsRef.current = cards;
     const transformsCache = lastTransformsRef.current;
@@ -393,6 +395,13 @@ const ScrollStack = ({
       }
     };
 
+    // Recompute when tab becomes visible again (route switches or tab changes)
+    const handleVisibility = () => {
+      if (document.visibilityState === "visible") {
+        refreshNow();
+      }
+    };
+
     // Add scroll event listeners
     const scrollElement = useWindowScroll ? window : scroller;
     scrollElement.addEventListener("scroll", handleScroll, { passive: true });
@@ -412,6 +421,50 @@ const ScrollStack = ({
       window.addEventListener("pageshow", handlePageShow);
     }
 
+    // Observe visibility of this section; only update when visible
+    let io;
+    try {
+      io = new IntersectionObserver(
+        (entries) => {
+          const entry = entries[0];
+          const wasActive = isActiveRef.current;
+          isActiveRef.current = !!entry?.isIntersecting;
+          if (isActiveRef.current && !wasActive) {
+            // Became visible → refresh layout
+            refreshNow();
+          }
+        },
+        {
+          root: null,
+          threshold: 0, // any intersection
+        }
+      );
+      io.observe(scroller);
+    } catch {}
+
+    // Observe size changes to scroller and cards
+    try {
+      resizeObserverRef.current = new ResizeObserver(() => {
+        refreshNow();
+      });
+      resizeObserverRef.current.observe(scroller);
+      cardsRef.current.forEach((card) => {
+        if (card) resizeObserverRef.current.observe(card);
+      });
+    } catch {}
+
+    // Listen for image 'load' events inside this instance
+    imageUnloadCbsRef.current = [];
+    const imgs = Array.from(scroller.querySelectorAll("img"));
+    imgs.forEach((img) => {
+      if (img.complete) return;
+      const onLoad = () => refreshNow();
+      img.addEventListener("load", onLoad, { once: true });
+      imageUnloadCbsRef.current.push(() => img.removeEventListener("load", onLoad));
+    });
+
+    document.addEventListener("visibilitychange", handleVisibility);
+
     return () => {
       clearTimeout(timeoutId);
       if (useWindowScroll) {
@@ -420,6 +473,10 @@ const ScrollStack = ({
       }
       scrollElement.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", debouncedHandleResize);
+      document.removeEventListener("visibilitychange", handleVisibility);
+      try {
+        io?.disconnect();
+      } catch {}
       // Clear any pending animation frames
       if (frameRef.current) {
         cancelAnimationFrame(frameRef.current);
@@ -430,7 +487,31 @@ const ScrollStack = ({
         clearTimeout(resizeTimeoutRef.current);
         resizeTimeoutRef.current = null;
       }
+      // Disconnect ResizeObserver
+      try {
+        resizeObserverRef.current?.disconnect();
+      } catch {}
+      resizeObserverRef.current = null;
+      // Remove image load listeners
+      imageUnloadCbsRef.current.forEach((off) => {
+        try { off?.(); } catch {}
+      });
+      imageUnloadCbsRef.current = [];
       stackCompletedRef.current = false;
+      // Reset inline styles on cards to avoid stale transforms after navigation
+      const cachedCards = cardsRef.current.slice();
+      cachedCards.forEach((card) => {
+        if (!card) return;
+        card.style.transform = "";
+        card.style.filter = "";
+        card.style.marginBottom = "";
+        card.style.willChange = "";
+        card.style.transformOrigin = "";
+        card.style.backfaceVisibility = "";
+        card.style.webkitTransform = "";
+        card.style.perspective = "";
+        card.style.webkitPerspective = "";
+      });
       cardsRef.current = [];
       transformsCache.clear();
       isUpdatingRef.current = false;
@@ -444,6 +525,7 @@ const ScrollStack = ({
     useWindowScroll,
     handleScroll,
     debouncedHandleResize,
+    refreshNow,
   ]);
 
   const containerStyles = useWindowScroll

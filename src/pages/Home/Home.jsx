@@ -4,17 +4,17 @@ import Hero from "./Hero";
 import SEOHead from "../../components/SEOHead";
 import Blogs from "./Blogs";
 
-// Lazy-load all below-the-fold components to keep them off the critical path
-const Numbers = React.lazy(() => import("./Numbers"));
-const Goals = React.lazy(() => import("./Goals"));
-const Services = React.lazy(() => import("./Services"));
-const WorkSection = React.lazy(() => import("./WorkSection"));
-const Connections = React.lazy(() => import("./Connections"));
-const Footer = React.lazy(() => import("../../components/Footer"));
-const Influencers = React.lazy(() => import("./influencers/Influencers"));
-const ShowCase = React.lazy(() => import("./ShowCase"));
-const Map = React.lazy(() => import("./map/Map"));
-const ContactUs = React.lazy(() => import("./ContactUs"));
+// Below-the-fold components (now imported normally)
+import Numbers from "./Numbers";
+import Goals from "./Goals";
+import Services from "./Services";
+import WorkSection from "./WorkSection";
+import Connections from "./Connections";
+import Footer from "../../components/Footer";
+import Influencers from "./influencers/Influencers";
+import ShowCase from "./ShowCase";
+import Map from "./map/Map";
+import ContactUs from "./ContactUs";
 
 // Generic lazy component wrapper with IntersectionObserver
 const LazyComponent = ({ 
@@ -187,34 +187,16 @@ function Home() {
 
       <Hero />
       <LazyShowCaseSection />
-      <React.Suspense fallback={null}>
-        <Numbers />
-      </React.Suspense>
-      <React.Suspense fallback={null}>
-        <Goals />
-      </React.Suspense>
-      <React.Suspense fallback={null}>
-        <Influencers />
-      </React.Suspense>
-      <React.Suspense fallback={null}>
-        <Services />
-      </React.Suspense>
-      <React.Suspense fallback={null}>
-        <Blogs />
-      </React.Suspense>
-      <React.Suspense fallback={null}>
-        <Connections />
-      </React.Suspense>
-      <React.Suspense fallback={null}>
-        <WorkSection />
-      </React.Suspense>
-      <React.Suspense fallback={null}>
-        <Map />
-      </React.Suspense>
+      <Numbers />
+      <Goals />
+      <Influencers />
+      <Services />
+      <Blogs />
+      <Connections />
+      <WorkSection />
+      <Map />
       <LazyContactSection />
-      <React.Suspense fallback={null}>
-        <Footer />
-      </React.Suspense>
+      <Footer />
     </div>
   );
 }
