@@ -20,26 +20,112 @@ export default defineConfig({
     assetsDir: "assets",
     target: "es2018",
     sourcemap: true,
-    chunkSizeWarningLimit: 500,
+    chunkSizeWarningLimit: 1500,
     minify: "esbuild",
     emptyOutDir: true,
+    // Optimize for better chunking
+    cssCodeSplit: true,
+    // Reduce initial bundle size
+    modulePreload: {
+      polyfill: false,
+    },
     rollupOptions: {
       output: {
-        manualChunks: {
-          // Vendor chunks
-          'vendor-react': ['react', 'react-dom', 'react-router-dom'],
-          'vendor-ui': ['antd', '@radix-ui/react-avatar', '@radix-ui/react-slot'],
-          'vendor-animations': ['gsap', 'motion', 'framer-motion'],
-          'vendor-utils': ['axios', 'clsx', 'tailwind-merge'],
-          'vendor-icons': ['lucide-react', 'react-icons'],
-          'vendor-i18n': ['react-i18next', 'i18next'],
-          'vendor-animations-lib': ['aos', 'ogl', 'lenis'],
-          'vendor-forms': ['prop-types', 'styled-components'],
+        manualChunks: (id) => {
+          // Keep React + Scheduler together (prevents production init-order issues)
+          if (
+            id.includes("node_modules/react/") ||
+            id.includes("node_modules/react-dom/") ||
+            id.includes("node_modules/scheduler/") ||
+            id.includes("node_modules/use-sync-external-store/") ||
+            id.includes("node_modules/react-is/")
+          ) {
+            return "vendor-react";
+          }
+          if (id.includes('react-router')) {
+            return 'vendor-react-router';
+          }
+          
+          // Split UI libraries
+          if (id.includes('antd')) {
+            return 'vendor-antd';
+          }
+          if (id.includes('@radix-ui')) {
+            return 'vendor-radix';
+          }
+          
+          // Split animation libraries
+          if (id.includes('gsap')) {
+            return 'vendor-gsap';
+          }
+          if (id.includes('framer-motion')) {
+            return 'vendor-framer-motion';
+          }
+          if (id.includes('motion') && !id.includes('framer-motion')) {
+            return 'vendor-motion';
+          }
+          if (id.includes('ogl') || id.includes('lenis') || id.includes('aos')) {
+            return 'vendor-animations-extra';
+          }
+          
+          // Split icons
+          if (id.includes('lucide-react')) {
+            return 'vendor-lucide';
+          }
+          if (id.includes('react-icons')) {
+            return 'vendor-react-icons';
+          }
+          
+          // Split utilities
+          if (id.includes('axios') || id.includes('clsx') || id.includes('tailwind-merge')) {
+            return 'vendor-utils';
+          }
+          
+          // Split i18n
+          if (id.includes('i18next')) {
+            return 'vendor-i18n';
+          }
+          
+          // Split forms and styling
+          if (id.includes('styled-components') || id.includes('prop-types')) {
+            return 'vendor-forms';
+          }
+          
+          // Split other large dependencies
+          if (id.includes('swiper')) {
+            return 'vendor-swiper';
+          }
+          if (id.includes('zustand')) {
+            return 'vendor-state';
+          }
+          if (id.includes('react-scroll')) {
+            return 'vendor-scroll';
+          }
+          if (id.includes('react-window')) {
+            return 'vendor-window';
+          }
+          if (id.includes('react-country-flag')) {
+            return 'vendor-flags';
+          }
+          
+          // Node modules chunk for smaller libraries
+          if (id.includes('node_modules')) {
+            return 'vendor-misc';
+          }
+          
+          // Static assets chunks (like XML files)
+          if (id.includes('.xml?raw')) {
+            return 'assets-xml';
+          }
+          if (id.includes('.webp')) {
+            return 'assets-images';
+          }
         },
-        chunkFileNames: (chunkInfo) => {
-          const facadeModuleId = chunkInfo.facadeModuleId ? chunkInfo.facadeModuleId.split('/').pop() : 'chunk';
+        chunkFileNames: () => {
           return `js/[name]-[hash].js`;
         },
+        // Optimize chunk splitting
+        experimentalMinChunkSize: 10000,
         assetFileNames: (assetInfo) => {
           const info = assetInfo.name.split('.');
           const ext = info[info.length - 1];

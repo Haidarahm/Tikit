@@ -12,6 +12,9 @@ const toCssLength = (value) =>
 
 const cx = (...parts) => parts.filter(Boolean).join(" ");
 
+const isNonEmptyString = (value) =>
+  typeof value === "string" && value.trim().length > 0;
+
 const useResizeObserver = (callback, elements, dependencies) => {
   useEffect(() => {
     if (!window.ResizeObserver) {
@@ -190,6 +193,16 @@ export const LogoLoop = memo(
     // Use conditional height: 25px for mobile, logoHeight for desktop
     const effectiveLogoHeight = isMobile ? 60 : logoHeight;
 
+    // Guard against empty src strings (causes browser warning + potential refetch)
+    const normalizedLogos = useMemo(() => {
+      const list = Array.isArray(logos) ? logos : [];
+      return list.filter((item) => {
+        if (!item) return false;
+        if ("node" in item) return !!item.node;
+        return isNonEmptyString(item.src);
+      });
+    }, [logos]);
+
     const targetVelocity = useMemo(() => {
       const magnitude = Math.abs(speed);
       // For RTL, we need to reverse the direction to maintain proper looping
@@ -219,10 +232,14 @@ export const LogoLoop = memo(
     useResizeObserver(
       updateDimensions,
       [containerRef, seqRef],
-      [logos, gap, effectiveLogoHeight]
+      [normalizedLogos, gap, effectiveLogoHeight]
     );
 
-    useImageLoader(seqRef, updateDimensions, [logos, gap, effectiveLogoHeight]);
+    useImageLoader(seqRef, updateDimensions, [
+      normalizedLogos,
+      gap,
+      effectiveLogoHeight,
+    ]);
 
     useAnimationLoop(
       trackRef,
@@ -267,6 +284,8 @@ export const LogoLoop = memo(
     const renderLogoItem = useCallback(
       (item, key) => {
         const isNodeItem = "node" in item;
+        // Safety: never render <img src=""> (can trigger full page refetch)
+        if (!isNodeItem && !isNonEmptyString(item?.src)) return null;
 
         const content = isNodeItem ? (
           <span
@@ -339,7 +358,7 @@ export const LogoLoop = memo(
           </li>
         );
       },
-      [scaleOnHover]
+      [scaleOnHover, effectiveLogoHeight]
     );
 
     const logoLists = useMemo(
@@ -352,12 +371,12 @@ export const LogoLoop = memo(
             aria-hidden={copyIndex > 0}
             ref={copyIndex === 0 ? seqRef : undefined}
           >
-            {logos.map((item, itemIndex) =>
+            {normalizedLogos.map((item, itemIndex) =>
               renderLogoItem(item, `${copyIndex}-${itemIndex}`)
             )}
           </ul>
         )),
-      [copyCount, logos, renderLogoItem]
+      [copyCount, normalizedLogos, renderLogoItem]
     );
 
     const containerStyle = useMemo(

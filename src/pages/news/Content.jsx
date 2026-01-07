@@ -16,6 +16,7 @@ const ITEMS_PER_PAGE = 6;
 // ======================
 const Card = ({ item }) => {
   const navigate = useNavigate();
+  const imgSrc = item?.images || item?.image || null;
 
   const handleCardClick = () => {
     if (item.id) {
@@ -38,15 +39,17 @@ const Card = ({ item }) => {
       }}
     >
       <figure className="card-cover-container">
-        <img
-          data-parallax-image
-          src={item.images || item.image || ""}
-          alt={item.title || "News item"}
-          width={600}
-          height={400}
-          className="card-cover"
-          loading="lazy"
-        />
+        {imgSrc ? (
+          <img
+            data-parallax-image
+            src={imgSrc}
+            alt={item.title || "News item"}
+            width={600}
+            height={400}
+            className="card-cover"
+            loading="lazy"
+          />
+        ) : null}
       </figure>
       <div className="card-content">
         <span className="card-subtitle">{item.subtitle}</span>

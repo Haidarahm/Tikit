@@ -1,63 +1,10 @@
-import React, { useEffect, useState, useMemo, useRef, memo } from "react";
+import React, { useEffect, useState, useRef, memo } from "react";
 import FloatingInput from "../../components/ui/FloatingInput";
 import LogoLoop from "../../components/LogoLoop";
 import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
 import { useContactStore } from "../../store/contactStore";
 import { useToastStore } from "../../store/toastStore";
-// Import dark mode brand images
-import dark1 from "../../assets/brands/dark/1.webp";
-import dark2 from "../../assets/brands/dark/2.webp";
-import dark3 from "../../assets/brands/dark/3.webp";
-import dark4 from "../../assets/brands/dark/4.webp";
-import dark5 from "../../assets/brands/dark/5.webp";
-import dark6 from "../../assets/brands/dark/6.webp";
-import dark7 from "../../assets/brands/dark/7.webp";
-import dark8 from "../../assets/brands/dark/8.webp";
-import dark9 from "../../assets/brands/dark/9.webp";
-import dark10 from "../../assets/brands/dark/10.webp";
-import dark11 from "../../assets/brands/dark/11.webp";
-import dark12 from "../../assets/brands/dark/12.webp";
-import dark13 from "../../assets/brands/dark/13.webp";
-import dark14 from "../../assets/brands/dark/14.webp";
-import dark15 from "../../assets/brands/dark/15.webp";
-import dark16 from "../../assets/brands/dark/16.webp";
-import dark17 from "../../assets/brands/dark/17.webp";
-import dark18 from "../../assets/brands/dark/18.webp";
-import dark19 from "../../assets/brands/dark/19.webp";
-import dark20 from "../../assets/brands/dark/20.webp";
-import dark21 from "../../assets/brands/dark/21.webp";
-import dark22 from "../../assets/brands/dark/22.webp";
-import dark23 from "../../assets/brands/dark/23.webp";
-import dark24 from "../../assets/brands/dark/24.webp";
-import dark25 from "../../assets/brands/dark/25.webp";
-
-// Import light mode brand images
-import light1 from "../../assets/brands/light/1.webp";
-import light2 from "../../assets/brands/light/2.webp";
-import light3 from "../../assets/brands/light/3.webp";
-import light4 from "../../assets/brands/light/4.webp";
-import light5 from "../../assets/brands/light/5.webp";
-import light6 from "../../assets/brands/light/6.webp";
-import light7 from "../../assets/brands/light/7.webp";
-import light8 from "../../assets/brands/light/8.webp";
-import light9 from "../../assets/brands/light/9.webp";
-import light10 from "../../assets/brands/light/10.webp";
-import light11 from "../../assets/brands/light/11.webp";
-import light12 from "../../assets/brands/light/12.webp";
-import light13 from "../../assets/brands/light/13.webp";
-import light14 from "../../assets/brands/light/14.webp";
-import light15 from "../../assets/brands/light/15.webp";
-import light16 from "../../assets/brands/light/16.webp";
-import light17 from "../../assets/brands/light/17.webp";
-import light18 from "../../assets/brands/light/18.webp";
-import light19 from "../../assets/brands/light/19.webp";
-import light20 from "../../assets/brands/light/20.webp";
-import light21 from "../../assets/brands/light/21.webp";
-import light22 from "../../assets/brands/light/22.webp";
-import light23 from "../../assets/brands/light/23.webp";
-import light24 from "../../assets/brands/light/24.webp";
-import light25 from "../../assets/brands/light/25.webp";
 import { useTheme } from "../../store/ThemeContext";
 import {
   FaInstagram,
@@ -71,6 +18,69 @@ import {
 } from "react-icons/fa";
 import TikitTitle2 from "../../components/TikitTitle2.jsx";
 
+// Dynamic brand image loading to reduce initial bundle size
+const getBrandImages = async (theme) => {
+  if (theme === "light") {
+    const images = await Promise.all([
+      import("../../assets/brands/light/1.webp"),
+      import("../../assets/brands/light/2.webp"),
+      import("../../assets/brands/light/3.webp"),
+      import("../../assets/brands/light/4.webp"),
+      import("../../assets/brands/light/5.webp"),
+      import("../../assets/brands/light/6.webp"),
+      import("../../assets/brands/light/7.webp"),
+      import("../../assets/brands/light/8.webp"),
+      import("../../assets/brands/light/9.webp"),
+      import("../../assets/brands/light/10.webp"),
+      import("../../assets/brands/light/11.webp"),
+      import("../../assets/brands/light/12.webp"),
+      import("../../assets/brands/light/13.webp"),
+      import("../../assets/brands/light/14.webp"),
+      import("../../assets/brands/light/15.webp"),
+      import("../../assets/brands/light/16.webp"),
+      import("../../assets/brands/light/17.webp"),
+      import("../../assets/brands/light/18.webp"),
+      import("../../assets/brands/light/19.webp"),
+      import("../../assets/brands/light/20.webp"),
+      import("../../assets/brands/light/21.webp"),
+      import("../../assets/brands/light/22.webp"),
+      import("../../assets/brands/light/23.webp"),
+      import("../../assets/brands/light/24.webp"),
+      import("../../assets/brands/light/25.webp"),
+    ]);
+    return images.map(img => img.default);
+  } else {
+    const images = await Promise.all([
+      import("../../assets/brands/dark/1.webp"),
+      import("../../assets/brands/dark/2.webp"),
+      import("../../assets/brands/dark/3.webp"),
+      import("../../assets/brands/dark/4.webp"),
+      import("../../assets/brands/dark/5.webp"),
+      import("../../assets/brands/dark/6.webp"),
+      import("../../assets/brands/dark/7.webp"),
+      import("../../assets/brands/dark/8.webp"),
+      import("../../assets/brands/dark/9.webp"),
+      import("../../assets/brands/dark/10.webp"),
+      import("../../assets/brands/dark/11.webp"),
+      import("../../assets/brands/dark/12.webp"),
+      import("../../assets/brands/dark/13.webp"),
+      import("../../assets/brands/dark/14.webp"),
+      import("../../assets/brands/dark/15.webp"),
+      import("../../assets/brands/dark/16.webp"),
+      import("../../assets/brands/dark/17.webp"),
+      import("../../assets/brands/dark/18.webp"),
+      import("../../assets/brands/dark/19.webp"),
+      import("../../assets/brands/dark/20.webp"),
+      import("../../assets/brands/dark/21.webp"),
+      import("../../assets/brands/dark/22.webp"),
+      import("../../assets/brands/dark/23.webp"),
+      import("../../assets/brands/dark/24.webp"),
+      import("../../assets/brands/dark/25.webp"),
+    ]);
+    return images.map(img => img.default);
+  }
+};
+
 // Social media platforms with icons
 const SOCIAL_PLATFORMS = [
   { value: "instagram", label: "Instagram", icon: FaInstagram },
@@ -83,21 +93,8 @@ const SOCIAL_PLATFORMS = [
   { value: "other", label: "Other", icon: FaLink },
 ];
 
-// Brand logo arrays
-const DARK_LOGOS = [
-  dark1, dark2, dark3, dark4, dark5, dark6, dark7, dark8, dark9, dark10,
-  dark11, dark12, dark13, dark14, dark15, dark16, dark17, dark18, dark19, dark20,
-  dark21, dark22, dark23, dark24, dark25
-];
-
-const LIGHT_LOGOS = [
-  light1, light2, light3, light4, light5, light6, light7, light8, light9, light10,
-  light11, light12, light13, light14, light15, light16, light17, light18, light19, light20,
-  light21, light22, light23, light24, light25
-];
-
 // Social Platform Dropdown
-const SocialPlatformDropdown = ({ id, value, onChange, isRtl, t }) => {
+const SocialPlatformDropdown = ({ value, onChange, isRtl, t }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
 
@@ -135,7 +132,7 @@ const SocialPlatformDropdown = ({ id, value, onChange, isRtl, t }) => {
           className="text-[var(--foreground)] opacity-70 flex-shrink-0"
           size={18}
         />
-        <span className="flex-1 truncate  text-sm">
+        <span className="flex-1 truncate text-sm">
           {getTranslatedLabel(value) || t("contact.action.selectPlatform")}
         </span>
         <svg
@@ -188,7 +185,6 @@ const SocialPlatformDropdown = ({ id, value, onChange, isRtl, t }) => {
 };
 
 const SocialLinkInput = ({
-  id,
   index,
   platform,
   link,
@@ -208,7 +204,6 @@ const SocialLinkInput = ({
     >
       <div className="relative flex-none w-32">
         <SocialPlatformDropdown
-          id={`${id}-platform`}
           value={platform}
           onChange={(value) => onPlatformChange(index, value)}
           isRtl={isRtl}
@@ -218,7 +213,6 @@ const SocialLinkInput = ({
       <div className="relative flex-1">
         <input
           type="url"
-          id={`${id}-link`}
           value={link}
           onChange={(e) => onLinkChange(index, e.target.value)}
           className={`w-full px-3 py-2 bg-transparent border border-[#363737] dark:border-white/30 rounded-lg text-[var(--foreground)] text-sm placeholder-transparent focus:border-[var(--foreground)] focus:outline-none peer social-link-input ${
@@ -227,7 +221,6 @@ const SocialLinkInput = ({
           placeholder="Enter link"
         />
         <label
-          htmlFor={`${id}-link`}
           className={`absolute ${
             isRtl ? "right-3" : "left-3"
           } -top-2.5 bg-[#F5F7FB] dark:bg-[#000] px-1 text-[var(--foreground)] text-xs transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-2 peer-focus:-top-2.5 peer-focus:text-xs`}
@@ -367,35 +360,54 @@ const ContactUs = memo(({ className = "" }) => {
   const { t } = useTranslation();
   const { isRtl } = useI18nLanguage();
 
-  const imageLogos = useMemo(
-    () => {
-      const logos = theme === "light" ? LIGHT_LOGOS : DARK_LOGOS;
-      return logos.map((src, index) => ({
-        src,
+  const [brandImages, setBrandImages] = React.useState([]);
+  const [imagesLoading, setImagesLoading] = React.useState(true);
+
+  // Load brand images dynamically when component mounts or theme changes
+  React.useEffect(() => {
+    let isMounted = true;
+    setImagesLoading(true);
+    
+    getBrandImages(theme).then(images => {
+      if (isMounted) {
+        setBrandImages(images);
+        setImagesLoading(false);
+      }
+    });
+
+    return () => { isMounted = false; };
+  }, [theme]);
+
+  const imageLogos = React.useMemo(() => {
+    if (imagesLoading || brandImages.length === 0) {
+      // Return placeholder logos while loading
+      return Array.from({ length: 25 }, (_, index) => ({
+        src: '',
         alt: `Brand ${index + 1}`,
+        isLoading: true,
       }));
-    },
-    [theme]
-  );
-  // "bg-[#F5F7FB] text-[var(--foreground)] border border-black/5"
+    }
+    
+    return brandImages.map((src, index) => ({
+      src,
+      alt: `Brand ${index + 1}`,
+    }));
+  }, [brandImages, imagesLoading]);
+
   return (
     <div
-      className={`relative  my-5 md:my-10 gap-3.5  overflow-hidden text-[var(--foreground)] ${
+      className={`relative my-5 md:my-10 gap-3.5 overflow-hidden text-[var(--foreground)] ${
         isRtl ? "font-cairo" : "font-hero-light"
-      } rounded-[25px] flex flex-col mx-auto py-[40px] md:py-[60px] px-[40px] md:px-[50px]  w-[95vw]   dark:bg-black ${className}`}
+      } rounded-[25px] flex flex-col mx-auto py-[40px] md:py-[60px] px-[40px] md:px-[50px] w-[95vw] dark:bg-black ${className}`}
       dir={isRtl ? "rtl" : "ltr"}
     >
-      <div className="email  w-full flex flex-col md:flex-row h-2/3 justify-between items-center md:items-stretch relative z-10 ">
-        <div className="texts flex  flex-col relative   ">
+      <div className="email w-full flex flex-col md:flex-row h-2/3 justify-between items-center md:items-stretch relative z-10">
+        <div className="texts flex flex-col relative">
           <h3 className="subtitle text-center md:text-start text-[16px] md:text-[50px]">
             {t("home.contactUs.subtitle")}
           </h3>
-          {/* <TikitTitle2
-            title={t("home.contactUs.title")}
-            mainWord={t("home.contactUs.mainWord")}
-          /> */}
 
-          <p className="description  hidden md:block text-[16px] md:text-[24px] font-light w-full">
+          <p className="description hidden md:block text-[16px] md:text-[24px] font-light w-full">
             {t("home.contactUs.description")} <br className="hidden md:block" />{" "}
             {t("home.contactUs.description2")}
           </p>
@@ -405,15 +417,15 @@ const ContactUs = memo(({ className = "" }) => {
             {t("home.contactUs.helpText")}
           </div>
           <div
-            className={`swiper-wrapper-contact shadow-xl shadow-[#000]/15  justify-center items-center  w-full border flex relative border-[var(--secondary)]  h-[50px] rounded-full`}
+            className={`swiper-wrapper-contact shadow-xl shadow-[#000]/15 justify-center items-center w-full border flex relative border-[var(--secondary)] h-[50px] rounded-full`}
           >
             <div
-              className={`contact-swiper-wrapper relative h-[calc(100%-3px)] w-[calc(100%-3px)] flex items-center justify-center  ${
+              className={`contact-swiper-wrapper relative h-[calc(100%-3px)] w-[calc(100%-3px)] flex items-center justify-center ${
                 isRtl ? "flex-row-reverse" : ""
               }`}
             >
               <div
-                className={`move-item absolute  w-1/2 h-full bg-[var(--secondary)] rounded-full transition-all duration-300 ease-in-out ${
+                className={`move-item absolute w-1/2 h-full bg-[var(--secondary)] rounded-full transition-all duration-300 ease-in-out ${
                   isSecondSlide
                     ? isRtl
                       ? "right-0"
@@ -520,7 +532,6 @@ const ContactUs = memo(({ className = "" }) => {
                 {socialLinks.map((social, index) => (
                   <SocialLinkInput
                     key={index}
-                    id={`social-${index}`}
                     index={index}
                     platform={social.platform}
                     link={social.link}
@@ -593,8 +604,8 @@ const ContactUs = memo(({ className = "" }) => {
               loading ? "opacity-50 cursor-not-allowed" : ""
             }`}
           >
-            <span className="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out rounded-full transform translate-y-0 bg-[var(--secondary)]  group-hover:h-full opacity-90"></span>
-            <span className="relative uppercase group-hover:text-[var(--background)]  text-sm md:text-base font-semibold flex items-center gap-2">
+            <span className="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out rounded-full transform translate-y-0 bg-[var(--secondary)] group-hover:h-full opacity-90"></span>
+            <span className="relative uppercase group-hover:text-[var(--background)] text-sm md:text-base font-semibold flex items-center gap-2">
               {loading && (
                 <svg
                   className="animate-spin h-4 w-4 md:h-5 md:w-5"

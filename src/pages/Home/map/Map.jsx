@@ -1,9 +1,8 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useTranslation } from 'react-i18next'
 import { useI18nLanguage } from '../../../store/I18nLanguageContext'
-import mapXml from './map.xml?raw'
 import { useTheme } from '../../../store/ThemeContext'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -17,9 +16,44 @@ const Map = () => {
   const sectionRef = useRef(null)
   const mapContainerRef = useRef(null)
   const animationRef = useRef(null)
+  const [mapXml, setMapXml] = useState('')
+  const [isLoading, setIsLoading] = useState(true)
+
+  // Load map XML dynamically when component is about to be visible
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      async (entries) => {
+        entries.forEach(async (entry) => {
+          if (entry.isIntersecting && !mapXml) {
+            try {
+              setIsLoading(true)
+              const response = await import('./map.xml?raw')
+              setMapXml(response.default)
+              setIsLoading(false)
+              observer.disconnect()
+            } catch (error) {
+              console.error('Failed to load map:', error)
+              setIsLoading(false)
+              observer.disconnect()
+            }
+          }
+        })
+      },
+      {
+        rootMargin: '400px', // Start loading 400px before component is visible
+        threshold: 0.01
+      }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => observer.disconnect()
+  }, [mapXml])
 
   useEffect(() => {
-    if (!mapContainerRef.current) return
+    if (!mapContainerRef.current || !mapXml) return
 
     const container = mapContainerRef.current
     const svg = container.querySelector('svg')
@@ -84,7 +118,7 @@ const Map = () => {
       }
     })
 
-    // Create the main timeline
+    // Create main timeline
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: sectionRef.current,
@@ -116,7 +150,7 @@ const Map = () => {
       }
     }, '-=0.6')
 
-    // Phase 3: Small route markers pop in along the paths
+    // Phase 3: Small route markers pop in along paths
     .to(smallMarkers, {
       opacity: 1,
       visibility: 'visible',
@@ -155,7 +189,7 @@ const Map = () => {
       }
     }, '-=0.1')
 
-    // Phase 6: Text labels fade in smoothly at the end
+    // Phase 6: Text labels fade in smoothly at end
     .to(textLabels, {
       opacity: 1,
       visibility: 'visible',
@@ -173,13 +207,14 @@ const Map = () => {
       if (animationRef.current) {
         animationRef.current.kill()
       }
+      const currentSection = sectionRef.current
       ScrollTrigger.getAll().forEach(trigger => {
-        if (trigger.vars?.trigger === sectionRef.current) {
+        if (trigger.vars?.trigger === currentSection) {
           trigger.kill()
         }
       })
     }
-  }, [])
+  }, [mapXml])
 
   // Update stroke colors when theme changes
   useEffect(() => {
@@ -277,11 +312,17 @@ const Map = () => {
 
           {/* Right Section - Map */}
           <div className='w-full lg:w-3/5 relative'>
-            <div 
-              ref={mapContainerRef}
-              className='tikit-map-container w-full h-full'
-              dangerouslySetInnerHTML={{ __html: mapXml }}
-            />
+            {isLoading ? (
+              <div className='w-full h-96 bg-gray-200/20 dark:bg-gray-800/20 rounded-lg animate-pulse flex items-center justify-center'>
+                <div className='text-gray-500'>Loading map...</div>
+              </div>
+            ) : (
+              <div 
+                ref={mapContainerRef}
+                className='tikit-map-container w-full h-full'
+                dangerouslySetInnerHTML={{ __html: mapXml }}
+              />
+            )}
           </div>
         </div>
       </div>
