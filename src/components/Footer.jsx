@@ -149,7 +149,7 @@ const Footer = ({ className }) => {
               
               {/* Social Icons */}
               <div className="flex items-center gap-3">
-                {social.map(({ href, labelKey, Icon, comingSoon }) => {
+                {social.map(({ href, labelKey, Icon: IconComponent, comingSoon }) => {
                   const base =
                     "group relative w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300";
                   const themeClasses =
@@ -165,7 +165,7 @@ const Footer = ({ className }) => {
                       aria-label={`${t(`footer.social.${labelKey}`)} - ${t("footer.social.comingSoon")}`}
                       tabIndex={0}
                     >
-                      <Icon
+                      <IconComponent
                         size={16}
                         className="group-hover:scale-110 transition-transform"
                         aria-hidden="true"
@@ -184,7 +184,7 @@ const Footer = ({ className }) => {
                       aria-label={t(`footer.social.${labelKey}`)}
                       className={`${base} ${themeClasses}`}
                     >
-                      <Icon
+                      <IconComponent
                         size={16}
                         className="group-hover:scale-110 transition-transform"
                         aria-hidden="true"

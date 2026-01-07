@@ -25,7 +25,7 @@ const SEOHead = ({
   articleData,
 }) => {
   const { t } = useTranslation();
-  const { isRtl, language } = useI18nLanguage();
+  const { isRtl } = useI18nLanguage();
 
   const siteName = "Tikit Agency";
   const baseUrl = "https://tikit.ae";

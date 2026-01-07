@@ -8,7 +8,7 @@ import TikitButton from "../TikitButton.jsx";
 
 export default function ContactDropdown({ isMobile = false, onClose }) {
   const { t } = useTranslation();
-  const { theme } = useTheme();
+  useTheme();
   const { setClientType } = useClient();
   const { isRtl } = useI18nLanguage();
   const navigate = useNavigate();

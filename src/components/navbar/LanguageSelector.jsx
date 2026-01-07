@@ -8,8 +8,8 @@ export default function LanguageSelector({
   isMobile = false,
   onLanguageChange,
 }) {
-  const { language, setLanguage, isRtl } = useI18nLanguage();
-  const { theme } = useTheme();
+  const { language, setLanguage } = useI18nLanguage();
+  useTheme();
   const [isLangOpen, setIsLangOpen] = useState(false);
   const langMenuRef = useRef(null);
   const navColor = useNavColor();

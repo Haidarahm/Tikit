@@ -3,7 +3,7 @@ import SVGComponent from "../../assets/logo.jsx";
 import { useTheme } from "../../store/ThemeContext.jsx";
 import { useNavColor } from "./hooks/useNavColor";
 
-export default function NavLogo({ logoRef, language }) {
+export default function NavLogo({ logoRef }) {
   const navigate = useNavigate();
   const { theme } = useTheme();
   const navColor = useNavColor();

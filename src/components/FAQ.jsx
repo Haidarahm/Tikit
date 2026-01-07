@@ -10,7 +10,6 @@ import { useI18nLanguage } from "../store/I18nLanguageContext";
  * <FAQ items={[{ question: "...", answer: "..." }]} />
  */
 const FAQ = ({ items = [], title, className = "" }) => {
-  const { t } = useTranslation();
   const { isRtl } = useI18nLanguage();
   const [openIndex, setOpenIndex] = useState(null);
 
@@ -143,20 +142,7 @@ export const getHomeFAQItems = (t) => [
   }
 ];
 
-export const getServicesFAQItems = (t) => [
-  {
-    question: t("faq.services.q1", "What makes Tikit different from other influencer agencies?"),
-    answer: t("faq.services.a1", "Tikit Agency combines data-driven matchmaking with authentic creator relationships. Unlike traditional agencies, we focus on ROI and measurable results. Our team of 50+ experts, presence in Dubai and Saudi Arabia, and track record of 300+ happy clients make us a trusted partner for brands seeking real impact in the GCC market.")
-  },
-  {
-    question: t("faq.services.q2", "How does influencer marketing work with Tikit?"),
-    answer: t("faq.services.a2", "Our influencer marketing process includes: 1) Understanding your brand goals, 2) Data-backed influencer matching, 3) Campaign strategy development, 4) Content creation and approval, 5) Campaign execution across platforms, 6) Real-time analytics and reporting. We handle everything from nano-influencers to celebrity partnerships.")
-  },
-  {
-    question: t("faq.services.q3", "What platforms does Tikit cover?"),
-    answer: t("faq.services.a3", "Tikit Agency manages influencer campaigns across all major platforms including Instagram, TikTok, YouTube, Snapchat, Twitter/X, LinkedIn, and Facebook. We specialize in platforms popular in the MENA region and can customize campaigns for specific audience segments.")
-  }
-];
+export { getHomeFAQItems, getServicesFAQItems } from "../utils/faqUtils.js";
 
 export default FAQ;
 

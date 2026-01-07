@@ -7,6 +7,10 @@ function ScrollToTop() {
   const { pathname, state } = location;
   const previousPathnameRef = useRef(pathname);
 
+  // Check if a path is a work detail route
+  const isWorkDetailRoute = (path) => 
+    path.match(/^\/work\/(influence|social|creative|event)\/\d+$/);
+
   const scrollToTop = () => {
     window.scrollTo(0, 0);
     document.documentElement.scrollTop = 0;
@@ -23,7 +27,7 @@ function ScrollToTop() {
       if (ScrollTrigger && typeof ScrollTrigger.refresh === 'function') {
         ScrollTrigger.update();
       }
-    } catch (error) {
+    } catch {
       // Silently handle scope errors
     }
   };
@@ -31,29 +35,15 @@ function ScrollToTop() {
   useLayoutEffect(() => {
     const currentPathname = pathname;
     const previousPathname = previousPathnameRef.current;
+    
+    const isNavigatingToWorkDetail = isWorkDetailRoute(currentPathname);
+    isWorkDetailRoute(previousPathname);
 
-    // Skip scroll-to-top on contact page
-    if (currentPathname.startsWith("/contact-us")) {
-      return;
-    }
-
-    // Check if navigation state explicitly requests preserving scroll
-    if (state?.preserveScroll) {
-      return; // Don't scroll
-    }
-
-    // Check if we're navigating between work sections (same base route, different workId)
+    // Check if we're navigating between work sections
     const isNavigatingBetweenWorkSections =
       previousPathname.startsWith("/work/") &&
       currentPathname.startsWith("/work/") &&
       previousPathname !== currentPathname;
-
-    // Check if we're navigating to/from work detail pages (influence, social, creative, event)
-    const isWorkDetailRoute = (path) => 
-      path.match(/^\/work\/(influence|social|creative|event)\/\d+$/);
-    
-    const isNavigatingToWorkDetail = isWorkDetailRoute(currentPathname);
-    const isNavigatingFromWorkDetail = isWorkDetailRoute(previousPathname);
 
     // Only scroll to top if we're not navigating between work sections
     // Always scroll when navigating TO a work detail page (from any other page)
@@ -90,7 +80,7 @@ function ScrollToTop() {
       path.match(/^\/work\/(influence|social|creative|event)\/\d+$/);
     
     const isNavigatingToWorkDetail = isWorkDetailRoute(currentPathname);
-    const isNavigatingFromWorkDetail = isWorkDetailRoute(previousPathname);
+    isWorkDetailRoute(previousPathname);
 
     // Only scroll to top if we're not navigating between work sections
     // Always scroll when navigating TO a work detail page (from any other page)
@@ -113,8 +103,8 @@ function ScrollToTop() {
                 ScrollTrigger.refresh();
               });
             }
-          } catch (error) {
-            // Silently handle scope errors
+          } catch {
+            // Ignore cleanup errors
           }
         }, 500),
       ];

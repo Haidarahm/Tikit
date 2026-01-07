@@ -1,5 +1,4 @@
-import React, { useEffect, useRef } from "react";
-import { gsap } from "gsap";
+import React from "react";
 import { useTheme } from "../store/ThemeContext";
 import SVGComponent from "../assets/logo";
 

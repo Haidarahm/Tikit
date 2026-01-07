@@ -11,7 +11,7 @@ import { X } from "lucide-react";
 const NewsletterPopup = () => {
   const { t } = useTranslation();
   const { isRtl } = useI18nLanguage();
-  const { theme } = useTheme();
+  useTheme();
   const { subscribe } = useSubscriptionStore();
   const location = useLocation();
   const popupRef = useRef(null);
