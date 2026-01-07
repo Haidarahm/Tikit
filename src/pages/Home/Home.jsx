@@ -2,6 +2,7 @@ import React from "react";
 // Critical above-the-fold components - load immediately
 import Hero from "./Hero";
 import SEOHead from "../../components/SEOHead";
+import Blogs from "./Blogs";
 
 // Lazy-load all below-the-fold components to keep them off the critical path
 const Numbers = React.lazy(() => import("./Numbers"));
@@ -197,6 +198,9 @@ function Home() {
       </React.Suspense>
       <React.Suspense fallback={null}>
         <Services />
+      </React.Suspense>
+      <React.Suspense fallback={null}>
+        <Blogs />
       </React.Suspense>
       <React.Suspense fallback={null}>
         <Connections />
