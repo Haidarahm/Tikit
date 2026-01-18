@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState, memo } from "react";
 import gsap from "gsap";
 import { useTranslation } from "react-i18next";
 import AvatarGroupDemo from "../../components/ui/AvatarGroupDemo";
-import coverImage from "../../assets/covers/showcase-cover.webp"
 const Hero = memo(() => {
   const sectionRef = useRef(null);
   const contentRef = useRef(null);
@@ -69,7 +68,7 @@ const Hero = memo(() => {
           autoPlay
           loop
           muted
-          poster={coverImage}
+          poster="/showcase-cover.webp"
           playsInline
           preload="metadata"
           fetchPriority="high"

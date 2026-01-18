@@ -9,11 +9,12 @@ import AOSRefresher from "./components/AOSRefresher";
 import ScrollToHash from "./components/ScrollToHash";
 import LogoIntro from "./components/LogoIntro";
 import Loader from "./components/Loader.jsx";
-import NewsletterPopup from "./components/NewsletterPopup";
+
 
 import { ToastContainer } from "./components/ui/Toast";
 
 // Lazy load components
+const NewsletterPopup = lazy(() => import("./components/NewsletterPopup"));
 const Home = lazy(() => import("./pages/Home/Home"));
 const CaseDetails = lazy(() => import("./pages/showcase/CaseDetails.jsx"));
 const Work = lazy(() => import("./pages/Work/Work"));
@@ -147,7 +148,9 @@ function App() {
             </Route>
           </Routes>
         </Suspense>
-        <NewsletterPopup />
+        <Suspense fallback={null}>
+          <NewsletterPopup />
+        </Suspense>
       </ClientProvider>
     </ThemeProvider>
   );
