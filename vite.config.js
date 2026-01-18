@@ -31,24 +31,6 @@ export default defineConfig({
     },
     rollupOptions: {
       output: {
-        manualChunks: (id) => {
-          if (id.includes('node_modules')) {
-            // Core React
-            if (id.includes('/react/') || id.includes('/react-dom/') || id.includes('/react-router/')) {
-              return 'react-vendor';
-            }
-            // UI Libraries
-            if (id.includes('antd') || id.includes('@radix-ui') || id.includes('lucide-react') || id.includes('react-icons')) {
-              return 'ui-vendor';
-            }
-            // Animation
-            if (id.includes('gsap') || id.includes('framer-motion')) {
-              return 'animation-vendor';
-            }
-            // Everything else
-            return 'vendor';
-          }
-        },
         chunkFileNames: 'js/[name]-[hash].js',
         entryFileNames: 'js/[name]-[hash].js',
         assetFileNames: (assetInfo) => {
