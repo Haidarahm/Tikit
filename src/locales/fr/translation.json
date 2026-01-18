@@ -267,6 +267,10 @@
                     "text": "L'interface est si intuitive. En quelques minutes, mon équipe effectuait des paiements internationaux sans aucune formation requise."
                 }
             ]
+        },
+        "blogs": {
+            "title": "Dernières",
+            "mainWord": "Perspectives"
         }
     },
     "work": {

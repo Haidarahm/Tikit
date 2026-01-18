@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useNewsStore } from "../../store/newsStore";
 import { ArrowRight, Calendar, Clock } from "lucide-react";
+import TikitTitle from "../../components/TikitTitle";
+import { t } from "i18next";
 
 const Blogs = () => {
   const navigate = useNavigate();
@@ -83,9 +85,11 @@ const Blogs = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-12 md:mb-16 text-center">
-          <h2 className="tikit-title mb-4">
-            Latest <span className="tikit-gradient">Insights</span>
-          </h2>
+          <TikitTitle
+            title={t("home.blogs.title",)}
+            mainWord={t("home.blogs.mainWord")}
+          />
+        
           <p className="text-lg md:text-xl text-[var(--foreground)] opacity-70 max-w-2xl mx-auto">
             Stay updated with the latest trends, tips, and success stories from
             the world of influencer marketing
