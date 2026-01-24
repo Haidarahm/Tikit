@@ -109,7 +109,7 @@ const InfluencersRegister = () => {
         />
           
       </div>
-      <div className="main-content px-[12px] md:px-[75px] w-full">
+      <div className="main-content flex justify-center px-[12px] md:px-[75px] w-full">
         <div className="container py-[15px] md:py-[45px] flex flex-col items-center w-full rounded-[25px] border border-gray-200 dark:border-gray-700 bg-white dark:bg-[var(--container-bg)] shadow-sm dark:shadow-none">
           <div
             style={{
