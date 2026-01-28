@@ -96,8 +96,8 @@ const Images = memo(({ images = [], columns = 3 }) => {
   const skeletonCount = items.length > 0 ? items.length : 6;
 
   return (
-    <section data-nav-color="white" className="py-10 md:py-16 h-[180vh] md:h-screen">
-      <div className="container h-full w-full mx-auto px-4">
+    <section data-nav-color="white" className="py-4 md:py-16 h-[180vh] md:h-screen">
+      <div className=" h-full w-full mx-auto px-4 md:px-12">
         <div
           ref={containerRef}
           className={`grid ${colsClass} gap-4 md:gap-6 h-full w-full`}

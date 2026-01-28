@@ -52,7 +52,7 @@ const CaseNumbers = memo(({ caseData }) => {
   ];
 
   return (
-    <div className="min-h-[80vh]  flex items-center overflow-hidden">
+    <div className="md:min-h-[80vh]  flex items-center overflow-hidden">
       <div className="container mt-4 md:mt-0 mx-auto px-4">
         <div className="text-center flex flex-col md:gap-4 mb-8 md:mb-10 lg:mb-14">
           <h1 style={{fontFamily: isRtl ? "Cairo" : "Antonio"}} className="text-2xl sm:text-3xl md:text-5xl font-bold text-[var(--foreground)]">
