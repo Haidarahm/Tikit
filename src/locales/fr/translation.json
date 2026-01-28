@@ -505,6 +505,7 @@
                 "name": "Nom",
                 "email": "Email",
                 "phone": "Téléphone",
+                "countryCode": "Pays",
                 "subject": "Sujet",
                 "message": "Message",
                 "link": "Lien",
