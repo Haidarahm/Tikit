@@ -25,6 +25,7 @@ const CaseDetails = () => {
 
   return (
     <section data-nav-color="black" className="min-h-screen">
+    {console.log(caseData)}
       <Hero caseData={caseData} loading={loading} />
       <CaseNumbers caseData={caseData} loading={loading} />
       <Images images={caseData?.images} />

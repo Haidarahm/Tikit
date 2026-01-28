@@ -12,10 +12,8 @@ const Hero = ({ caseData, loading }) => {
     const heroRef = useRef(null);
     const [imageLoaded, setImageLoaded] = useState(false);
     
-    // Get first image from images array
-    const firstImage = caseData?.images && Array.isArray(caseData.images) && caseData.images.length > 0
-      ? caseData.images[0]
-      : null;
+    // Use showcase logo as hero image (fallback to null if missing)
+    const heroImage = caseData?.logo || null;
 
     // Prefer a meaningful badge label if present
     const heroBadge = caseData?.category || caseData?.client || "Featured project";
@@ -39,7 +37,7 @@ const Hero = ({ caseData, loading }) => {
 
     // Handle image loading (including cached images)
     useEffect(() => {
-      if (!firstImage) {
+      if (!heroImage) {
         setImageLoaded(false);
         return;
       }
@@ -55,7 +53,7 @@ const Hero = ({ caseData, loading }) => {
       };
       
       requestAnimationFrame(checkImage);
-    }, [firstImage]);
+    }, [heroImage]);
 
     // Enhanced fade-in animation with stagger
     useEffect(() => {
@@ -120,19 +118,19 @@ const Hero = ({ caseData, loading }) => {
       {/* Skeleton background */}
       <div
         className={`absolute inset-0 z-0 bg-gradient-to-br from-gray-800 via-gray-700 to-gray-900 animate-pulse transition-opacity duration-700 ${
-          imageLoaded && firstImage ? "opacity-0" : "opacity-100"
+          imageLoaded && heroImage ? "opacity-0" : "opacity-100"
         }`}
       />
 
       {/* Actual image with parallax effect */}
-      {firstImage && (
+      {heroImage && (
         <img
           ref={imgRef}
           className={`absolute inset-0 w-full h-full object-cover z-0 transition-opacity duration-700 scale-105 ${
             imageLoaded ? "opacity-100" : "opacity-0"
           }`}
-          src={firstImage}
-          alt={title || "Project hero"}
+          src={heroImage}
+          alt={title || "Project logo"}
           width={1920}
           height={1080}
           onLoad={() => setImageLoaded(true)}
