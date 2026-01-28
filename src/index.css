@@ -229,6 +229,7 @@ body {
   /* Light theme: only required colors */
   --background: #f7f9fa;
   --foreground: #363737;
+  --border: var(--foreground);
   --primary: #fff;
   --secondary: #52c3c5;
   --base: #52c3c5;
@@ -243,6 +244,7 @@ body {
   --background: #000000;
   --container-bg: #101b22;
   --foreground: #ffffff;
+  --border: var(--foreground);
   --contact: #000;
   --base: #000;
   --secondary: #ffffff;

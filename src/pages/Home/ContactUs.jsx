@@ -614,11 +614,11 @@ const ContactUs = memo(({ className = "" }) => {
             onSubmit={handleSubmit}
             className="inputs-wrapper flex flex-col gap-4 mt-3"
           >
-            <div className="inputs flex justify-between gap-[20px]">
+            <div className="inputs flex flex-col md:flex-row justify-between gap-3 md:gap-[20px]">
               <FloatingInput
                 id="name"
                 label={t("home.contactUs.name")}
-                containerClassName="flex-1 hidden md:block"
+                containerClassName="flex-1"
                 inputProps={{
                   value: formData.name,
                   onChange: (e) => handleInputChange("name", e.target.value),
@@ -636,8 +636,8 @@ const ContactUs = memo(({ className = "" }) => {
               />
             </div>
 
-            <div className="w-full flex gap-3">
-              <div className="w-28">
+            <div className="w-full flex flex-col sm:flex-row gap-3">
+              <div className="w-full sm:w-32">
                 <CountryCodeDropdown
                   value={phoneCountryCode}
                   onChange={setPhoneCountryCode}
