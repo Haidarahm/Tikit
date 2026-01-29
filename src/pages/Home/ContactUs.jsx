@@ -171,6 +171,8 @@ const CountryCodeDropdown = ({ value, onChange, isRtl, t }) => {
           {/* Search input */}
           <div className="p-2 border-b border-[#363737] dark:border-white/20 sticky top-0 bg-[var(--background)] z-10">
             <input
+              id="contact-country-search"
+              name="contact_country_search"
               type="text"
               placeholder="Search..."
               value={searchTerm}
@@ -339,6 +341,8 @@ const SocialLinkInput = ({
   removingIndex,
   t,
 }) => {
+  const inputId = `social-link-${index}`;
+
   return (
     <div
       className={`col-span-1 flex gap-2 social-link-container ${
@@ -356,6 +360,8 @@ const SocialLinkInput = ({
       <div className="relative flex-1">
         <input
           type="url"
+          id={inputId}
+          name={`social_link_${index}`}
           value={link}
           onChange={(e) => onLinkChange(index, e.target.value)}
           className={`w-full px-3 py-2 bg-transparent border border-[#363737] dark:border-white/30 rounded-lg text-[var(--foreground)] text-sm placeholder-transparent focus:border-[var(--foreground)] focus:outline-none peer social-link-input ${
@@ -364,6 +370,7 @@ const SocialLinkInput = ({
           placeholder="Enter link"
         />
         <label
+          htmlFor={inputId}
           className={`absolute ${
             isRtl ? "right-3" : "left-3"
           } -top-2.5 bg-[#F5F7FB] dark:bg-[#000] px-1 text-[var(--foreground)] text-xs transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-2 peer-focus:-top-2.5 peer-focus:text-xs`}

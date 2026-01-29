@@ -227,6 +227,8 @@ const CountryCodeDropdown = ({ value, onChange, isRtl, t }) => {
           {/* Search input */}
           <div className="p-2 border-b border-[#363737] dark:border-white/20 sticky top-0 bg-[var(--background)] z-10">
             <input
+              id="action-country-search"
+              name="action_country_search"
               type="text"
               placeholder="Search..."
               value={searchTerm}

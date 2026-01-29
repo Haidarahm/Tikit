@@ -267,6 +267,8 @@ const SocialLinkCard = ({
             <FaLink className="w-4 h-4" />
           </div>
           <input
+            id={`social-link-${linkIndex}`}
+            name={`social_link_${linkIndex}`}
             type="url"
             value={socialLink.link || ""}
             onChange={(e) =>

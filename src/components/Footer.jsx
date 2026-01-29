@@ -99,6 +99,8 @@ const Footer = ({ className }) => {
             </div>
             <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
               <input
+                id="newsletter-name"
+                name="newsletter_name"
                 type="text"
                 placeholder={t("newsletter.name")}
                 value={formData.name}
@@ -106,6 +108,8 @@ const Footer = ({ className }) => {
                 className="px-4 py-3 rounded-full bg-white/10 border border-white/30 text-white placeholder:text-white/70 focus:outline-none focus:border-white/60 min-w-[150px]"
               />
               <input
+                id="newsletter-email"
+                name="newsletter_email"
                 type="email"
                 placeholder={t("newsletter.email")}
                 value={formData.email}
