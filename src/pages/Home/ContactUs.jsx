@@ -130,9 +130,7 @@ const CountryCodeDropdown = ({ value, onChange, isRtl, t }) => {
 
   return (
     <div className="relative" ref={dropdownRef}>
-      <label className="block text-xs mb-1 text-[var(--foreground)]">
-        {t("contact.action.form.countryCode")}
-      </label>
+      
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
