@@ -17,6 +17,8 @@ import {
 } from "react-icons/fa";
 import "./contact.css";
 import TikitTitle from "../../components/TikitTitle";
+import ReactCountryFlag from "react-country-flag";
+import CountryList from "country-list-with-dial-code-and-flag";
 
 // Social media platforms with icons
 const SOCIAL_PLATFORMS = [
@@ -29,6 +31,9 @@ const SOCIAL_PLATFORMS = [
   { value: "snapchat", label: "Snapchat", icon: FaSnapchat },
   { value: "other", label: "Other", icon: FaLink },
 ];
+
+// Get all countries from the library
+const ALL_COUNTRIES = CountryList.getAll();
 
 // FloatingInput Component (placeholder - replace with your actual component)
 const FloatingInput = ({ id, label, containerClassName, inputProps = {} }) => {
@@ -150,6 +155,143 @@ const SocialPlatformDropdown = ({ id, value, onChange, isRtl, t }) => {
   );
 };
 
+// Country Code Dropdown with flags
+const CountryCodeDropdown = ({ value, onChange, isRtl, t }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const dropdownRef = useRef(null);
+  const listRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+        setSearchTerm("");
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  // Filter countries based on search term
+  const filteredCountries = searchTerm
+    ? ALL_COUNTRIES.filter(
+        (c) =>
+          c.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          c.dial_code.includes(searchTerm)
+      )
+    : ALL_COUNTRIES;
+
+  const selectedCountry = ALL_COUNTRIES.find((c) => c.dial_code === value) || ALL_COUNTRIES[0];
+
+  return (
+    <div className="relative h-full" ref={dropdownRef}>
+      <button
+        type="button"
+        onClick={() => setIsOpen(!isOpen)}
+        className={`w-full px-2 h-full py-2 bg-transparent border border-[#363737] dark:border-white/30 rounded-lg text-[var(--foreground)] focus:border-[var(--foreground)] focus:outline-none flex items-center gap-2 ${
+          isRtl ? "text-right flex-row-reverse" : "text-left"
+        } ${isOpen ? "border-[var(--secondary)]" : ""}`}
+      >
+        <ReactCountryFlag
+          countryCode={selectedCountry.code}
+          svg
+          style={{ width: "1.4em", height: "1.4em" }}
+        />
+        <span className="flex-1 truncate text-sm font-medium">
+          {selectedCountry.dial_code}
+        </span>
+        <svg
+          className={`w-3 h-3 text-[var(--foreground)] transition-transform duration-200 ${
+            isOpen ? "rotate-180" : ""
+          }`}
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M19 9l-7 7-7-7"
+          />
+        </svg>
+      </button>
+
+      {isOpen && (
+        <div 
+          className="absolute z-50 overflow-hidden mt-1 w-64 bg-[var(--background)] border border-[#363737] dark:border-white/30 rounded-lg shadow-xl"
+          style={{ maxHeight: "300px" }}
+        >
+          {/* Search input */}
+          <div className="p-2 border-b border-[#363737] dark:border-white/20 sticky top-0 bg-[var(--background)] z-10">
+            <input
+              type="text"
+              placeholder="Search..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full px-3 py-1.5 bg-transparent border border-[#363737] dark:border-white/30 rounded-md text-[var(--foreground)] text-sm focus:outline-none focus:border-[var(--secondary)]"
+              onClick={(e) => e.stopPropagation()}
+            />
+          </div>
+          
+          {/* Scrollable list */}
+          <div 
+            ref={listRef}
+            data-lenis-prevent
+            className="overflow-y-auto overscroll-contain"
+            style={{ maxHeight: "240px" }}
+            onWheelCapture={(e) => {
+              // Ensure the wheel scrolls this list instead of the page
+              const target = e.currentTarget;
+              const atTop = target.scrollTop === 0 && e.deltaY < 0;
+              const atBottom =
+                target.scrollTop + target.clientHeight >= target.scrollHeight &&
+                e.deltaY > 0;
+
+              if (!atTop && !atBottom) {
+                e.stopPropagation();
+              }
+            }}
+          >
+            {filteredCountries.length === 0 ? (
+              <div className="px-3 py-4 text-center text-sm text-[var(--foreground)]/60">
+                No countries found
+              </div>
+            ) : (
+              filteredCountries.map((country) => (
+                <button
+                  key={country.code}
+                  type="button"
+                  onClick={() => {
+                    onChange(country.dial_code);
+                    setIsOpen(false);
+                    setSearchTerm("");
+                  }}
+                  className={`w-full px-3 py-2.5 flex items-center gap-3 hover:bg-[var(--secondary)]/10 transition-colors ${
+                    value === country.dial_code ? "bg-[var(--secondary)]/20" : ""
+                  } ${isRtl ? "flex-row-reverse text-right" : "text-left"}`}
+                >
+                  <ReactCountryFlag
+                    countryCode={country.code}
+                    svg
+                    style={{ width: "1.5em", height: "1.5em" }}
+                  />
+                  <span className="text-sm text-[var(--foreground)] truncate flex-1">{country.name}</span>
+                  <span className="text-xs text-[var(--foreground)]/60 flex-shrink-0">
+                    {country.dial_code}
+                  </span>
+                </button>
+              ))
+            )}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
 const SocialLinkInput = ({
   id,
   index,
@@ -242,6 +384,7 @@ const Action = () => {
   ]);
   const [removingIndex, setRemovingIndex] = useState(null);
   const [showMessage, setShowMessage] = useState(false);
+  const [phoneCountryCode, setPhoneCountryCode] = useState("+963");
 
   // Check session storage on mount and set the swiper to influencer if needed
   useEffect(() => {
@@ -343,11 +486,17 @@ const Action = () => {
         setShowMessage(false);
       }
     } else {
-      // Regular contact form
+      // Regular contact form - combine country code with phone
+      const cleanedLocalPhone = formData.phone.replace(/\s+/g, "");
+      const combinedPhone =
+        cleanedLocalPhone && phoneCountryCode
+          ? `${phoneCountryCode}${cleanedLocalPhone}`
+          : "";
+      
       const emailData = {
         name: formData.name,
         email: formData.email,
-        phone: formData.phone,
+        phone: combinedPhone,
         subject: formData.subject || "Contact Form",
         message: formData.message,
       };
@@ -363,6 +512,7 @@ const Action = () => {
           message: "",
         });
         setSocialLinks([{ platform: "instagram", link: "" }]);
+        setPhoneCountryCode("+963");
       }
     }
   };
@@ -448,15 +598,45 @@ const Action = () => {
               type: "email",
             }}
           />
-          <FloatingInput
-            id="contact-phone"
-            label={t("contact.action.form.phone")}
-            containerClassName="col-span-1"
-            inputProps={{
-              value: formData.phone,
-              onChange: (e) => handleInputChange("phone", e.target.value),
-            }}
-          />
+          {!isSecondSlide ? (
+            <>
+              {/* Client form - with country code dropdown */}
+              <div className="col-span-1 flex flex-col sm:flex-row gap-3">
+                <div className="w-full sm:w-32">
+                  <CountryCodeDropdown
+                    value={phoneCountryCode}
+                    onChange={setPhoneCountryCode}
+                    isRtl={isRtl}
+                    t={t}
+                  />
+                </div>
+                <FloatingInput
+                  id="contact-phone"
+                  label={t("contact.action.form.phone")}
+                  containerClassName="flex-1"
+                  inputProps={{
+                    value: formData.phone,
+                    onChange: (e) => handleInputChange("phone", e.target.value),
+                    type: "tel",
+                  }}
+                />
+              </div>
+            </>
+          ) : (
+            <>
+              {/* Influencer form - simple phone input without country code */}
+              <FloatingInput
+                id="contact-phone"
+                label={t("contact.action.form.phone")}
+                containerClassName="col-span-1"
+                inputProps={{
+                  value: formData.phone,
+                  onChange: (e) => handleInputChange("phone", e.target.value),
+                  type: "tel",
+                }}
+              />
+            </>
+          )}
           {!isSecondSlide ? (
             <>
               <FloatingInput
