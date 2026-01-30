@@ -434,10 +434,14 @@ export const Influencer = () => {
   return (
     <div className="influencers-section w-full">
       <SEOHead
-        title="Influencer Network"
-        description="Discover Tikit Agency's network of talented influencers and content creators. Connect with top influencers across various niches including lifestyle, beauty, tech, and travel."
-        keywords="influencer network, content creators, social media influencers, influencer marketing, brand partnerships, influencer collaboration, UAE influencers"
+        title="UAE Influencer Network | 500+ Creators - Tikit Agency Dubai"
+        description="Discover Tikit Agency's network of 500+ UAE influencers. Fashion, beauty, lifestyle, tech & travel creators in Dubai, Abu Dhabi & Saudi Arabia."
+        keywords="UAE influencers, Dubai content creators, Saudi Arabia influencers, Instagram influencers UAE, TikTok creators Dubai, influencer partnerships GCC"
         canonicalUrl="/influencer"
+        breadcrumbs={[
+          { name: "Home", url: "/" },
+          { name: "Influencer Network", url: "/influencer" }
+        ]}
       />
       <Hero />
       <div className="w-full px-6 mx-auto ">

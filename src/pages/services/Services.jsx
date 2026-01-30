@@ -239,10 +239,14 @@ const Services = () => {
   return (
     <>
       <SEOHead
-        title="Services - Social Media & Influencer Marketing | Tikit"
-        description="Explore Tikit's services: social media management, influencer marketing, branding & production. Serving Dubai, Abu Dhabi, Riyadh & Saudi Arabia."
-        keywords="social media services, influencer marketing, branding services, production, UAE, Dubai, Saudi Arabia"
+        title="Marketing Services Dubai | Influencer, Social Media & Branding"
+        description="Tikit Agency services: influencer marketing, social media management, branding & production in Dubai & UAE. Full-service marketing solutions."
+        keywords="marketing services Dubai, influencer marketing UAE, social media management Dubai, branding services UAE, video production Dubai, digital marketing agency"
         canonicalUrl="/services"
+        breadcrumbs={[
+          { name: "Home", url: "/" },
+          { name: "Services", url: "/services" }
+        ]}
       />
       
       <div

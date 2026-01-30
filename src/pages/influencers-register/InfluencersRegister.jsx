@@ -12,6 +12,7 @@ import SocialLinksInput from "./SocialLinksInput";
 import { useI18nLanguage } from "../../store/I18nLanguageContext";
 import { useInfluencerRegistrationStore } from "../../store/influencerRegistrationStore";
 import TikitTitle from "../../components/TikitTitle";
+import SEOHead from "../../components/SEOHead";
 
 const InfluencersRegister = () => {
   const { t } = useTranslation();
@@ -102,6 +103,17 @@ const InfluencersRegister = () => {
       data-nav-color="black"
       className="w-full min-h-screen flex flex-col items-center mt-[104px]"
     >
+      <SEOHead
+        title="Join Tikit Agency | Influencer Registration Dubai & UAE"
+        description="Register as an influencer with Tikit Agency. Join 500+ creators. Get brand deals, contract support & dedicated account management in Dubai & UAE."
+        keywords="influencer registration Dubai, join influencer agency UAE, content creator management, become managed influencer, influencer signup GCC"
+        canonicalUrl="/influencer-register"
+        breadcrumbs={[
+          { name: "Home", url: "/" },
+          { name: "Influencer Network", url: "/influencer" },
+          { name: "Register", url: "/influencer-register" }
+        ]}
+      />
       <div className="title py-[40px] md:py-[100px]">
         <TikitTitle
           title={t("influencerRegister.title")}

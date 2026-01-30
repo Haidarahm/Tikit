@@ -204,10 +204,14 @@ const Work = () => {
       }`}
     >
       <SEOHead
-        title="Our Work"
-        description="Explore Tikit Agency's portfolio of successful projects and case studies. See how we've helped brands achieve their marketing goals through creative strategy and exceptional execution."
-        keywords="portfolio, case studies, marketing projects, creative work, brand campaigns, digital marketing examples, UAE agency work"
+        title="Case Studies & Portfolio | Tikit Agency Dubai - 300+ Projects"
+        description="Explore Tikit Agency's 300+ successful campaigns. Case studies in influencer marketing, social media & branding for brands across UAE & Saudi Arabia."
+        keywords="marketing case studies Dubai, influencer campaign portfolio, social media project examples, UAE brand campaigns, Dubai agency portfolio, marketing ROI examples"
         canonicalUrl="/work"
+        breadcrumbs={[
+          { name: "Home", url: "/" },
+          { name: "Case Studies", url: "/work" }
+        ]}
       />
       <WorkHero  t={t} isRtl={isRtl} />
 

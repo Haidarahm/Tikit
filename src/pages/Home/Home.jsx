@@ -18,6 +18,70 @@ const ContactUs = React.lazy(() => import("./ContactUs"));
 
 
 
+// Homepage LocalBusiness schema with complete business information
+const homepageSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://tikit.ae/#organization",
+  "name": "Tikit Agency",
+  "alternateName": ["Tikit", "Tikit Marketing Agency", "Tikit Influencer Agency"],
+  "url": "https://tikit.ae",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://tikit.ae/logo-light.png",
+    "width": 200,
+    "height": 60
+  },
+  "image": "https://tikit.ae/cover-image.png",
+  "description": "Tikit Agency is the leading influencer marketing and social media management company in UAE and Saudi Arabia. We connect brands with authentic creators to drive real engagement and measurable ROI.",
+  "telephone": "+971 4 577 4042",
+  "email": "Holla@tikit.ae",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "The Burlington Tower, Marasi Drive, Office 309",
+    "addressLocality": "Dubai",
+    "addressRegion": "Dubai",
+    "addressCountry": "AE"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 25.2048,
+    "longitude": 55.2708
+  },
+  "areaServed": [
+    { "@type": "Country", "name": "United Arab Emirates" },
+    { "@type": "Country", "name": "Saudi Arabia" },
+    { "@type": "City", "name": "Dubai" },
+    { "@type": "City", "name": "Abu Dhabi" },
+    { "@type": "City", "name": "Riyadh" },
+    { "@type": "City", "name": "Jeddah" }
+  ],
+  "priceRange": "$$$",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "09:00",
+      "closes": "18:00"
+    }
+  ],
+  "sameAs": [
+    "https://www.instagram.com/tikit.ae/"
+  ],
+  "foundingDate": "2020",
+  "numberOfEmployees": {
+    "@type": "QuantitativeValue",
+    "minValue": 50,
+    "maxValue": 100
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "300",
+    "bestRating": "5"
+  }
+};
+
 function Home() {
   return (
     <div
@@ -25,10 +89,11 @@ function Home() {
       className="sections overflow-hidden relative w-full home-scroll-trigger"
     >
       <SEOHead
-        title="Best Influencer Marketing Agency in Emirates & Social Media Agency UAE"
-        description="Leading influencer marketing agency in Emirates (UAE). Top social media management & influencer marketing agency in UAE and Saudi Arabia. 300+ clients, 50+ experts. Dubai, Riyadh & Jeddah offices."
-        keywords="influencer marketing agency in emirates, influencer marketing agency emirates, best influencer marketing agency in emirates, influencer marketing agency UAE, social media agency UAE, influencer marketing Dubai, social media management Saudi Arabia, branding agency UAE, social media agency Dubai, influencer marketing Riyadh, social media management company UAE"
-        canonicalUrl="/home"
+        title="Tikit Agency | Influencer Marketing Agency Dubai & UAE"
+        description="Leading influencer marketing agency in Dubai & UAE. Social media management, branding & production. 300+ clients, 50+ experts. Call +971 4 577 4042."
+        keywords="influencer marketing agency Dubai, social media agency UAE, influencer marketing Emirates, best social media company Dubai, branding agency UAE, social media management Saudi Arabia"
+        canonicalUrl="/"
+        structuredData={homepageSchema}
       />
 
       {/* SEO H1 - Visible to search engines and screen readers */}

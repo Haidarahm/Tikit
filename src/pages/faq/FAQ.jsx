@@ -75,10 +75,18 @@ const FAQ = () => {
       dir={isRtl ? "rtl" : "ltr"}
     >
       <SEOHead
-        title="FAQ - Social Media Agency Dubai & Saudi Arabia | Tikit"
-        description="Common questions about Tikit Agency's social media, influencer marketing & branding services in UAE and Saudi Arabia. Learn about our process."
-        keywords="FAQ, Tikit Agency, social media agency questions, influencer marketing FAQ, how we work, team, Dubai office, Saudi Arabia"
+        title="FAQ | Tikit Agency Dubai - Influencer Marketing Questions"
+        description="Frequently asked questions about Tikit Agency. Learn about our influencer marketing process, pricing, team & services in Dubai and Saudi Arabia."
+        keywords="Tikit Agency FAQ, influencer marketing questions, social media agency FAQ, Dubai marketing agency questions, how influencer marketing works"
         canonicalUrl="/faq"
+        faqItems={[
+          { question: "How does Tikit Agency work?", answer: "Our process includes strategy development, creator matching, content creation, campaign execution, and detailed analytics reporting." },
+          { question: "What is your production process?", answer: "Our production workflow has four phases: Pre-Production, Production, Post-Production, and Delivery with professional equipment." },
+          { question: "Who is on the Tikit team?", answer: "Our team consists of 50+ creative professionals including strategists, content creators, social media managers, and designers." },
+          { question: "Where are Tikit's offices located?", answer: "Our headquarters is in Dubai at The Burlington Tower, Marasi Drive, Office 309. We also have offices in Saudi Arabia and Turkey." },
+          { question: "How long does a typical campaign take?", answer: "Quick activations can launch in 1-2 weeks. Comprehensive campaigns take 4-8 weeks. Full-scale productions may require 6-12 weeks." },
+          { question: "What platforms do you specialize in?", answer: "We manage campaigns across Instagram, TikTok, YouTube, Snapchat, Twitter/X, LinkedIn, and Facebook." }
+        ]}
       />
 
       {/* Hero Section with Gradient */}
