@@ -99,7 +99,8 @@ const Footer = ({ className }) => {
             </div>
             <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
               <input
-                id="newsletter-name"
+              
+                id="newsletterf-name"
                 name="newsletter_name"
                 type="text"
                 placeholder={t("newsletter.name")}
