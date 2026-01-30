@@ -45,34 +45,82 @@ const Services = memo(() => {
     };
   }, [language, loadServices, isClient]);
 
-  // Map service titles to their specific routes
-  const getServiceRoute = (title) => {
-    const titleLower = (title || "").toLowerCase();
-    
-    if (titleLower.includes("influencer marketing") || titleLower.includes("تسويق المؤثرين") || titleLower.includes("marketing d'influence")) {
-      return "/services/influencer-marketing";
+  // Language-independent route slugs (used when API provides slug, or for index fallback)
+  const SERVICE_ROUTE_SLUGS = [
+    "influencer-marketing",
+    "social-media-management",
+    "production",
+    "branding",
+  ];
+
+  // Map service title (any language) or index to route – never use raw title in URL
+  const getServiceRoute = (title, index = 0) => {
+    const raw = (title || "").trim();
+    const titleLower = raw.toLowerCase();
+    // Normalize for Latin scripts (strip diacritics for French: é → e, etc.)
+    const normalized =
+      typeof titleLower.normalize === "function"
+        ? titleLower.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+        : titleLower;
+
+    // Influencer Marketing – EN, AR, FR
+    if (
+      titleLower.includes("influencer marketing") ||
+      titleLower.includes("تسويق المؤثرين") ||
+      titleLower.includes("تسويق المؤثر") ||
+      normalized.includes("marketing dinfluence") ||
+      normalized.includes("marketing d'influence")
+    ) {
+      return `/services/${SERVICE_ROUTE_SLUGS[0]}`;
     }
-    if (titleLower.includes("social media management") || titleLower.includes("إدارة وسائل التواصل") || titleLower.includes("gestion des médias sociaux")) {
-      return "/services/social-media-management";
+    // Social Media Management – EN, AR, FR
+    if (
+      titleLower.includes("social media management") ||
+      titleLower.includes("social media marketing") ||
+      titleLower.includes("إدارة وسائل التواصل") ||
+      titleLower.includes("وسائل التواصل") ||
+      normalized.includes("gestion des medias sociaux") ||
+      normalized.includes("gestion des médias sociaux")
+    ) {
+      return `/services/${SERVICE_ROUTE_SLUGS[1]}`;
     }
-    if (titleLower.includes("production") || titleLower.includes("الإنتاج") || titleLower.includes("production")) {
-      return "/services/production";
+    // Production – EN, AR, FR
+    if (
+      titleLower.includes("production") ||
+      titleLower.includes("الإنتاج") ||
+      titleLower.includes("إنتاج")
+    ) {
+      return `/services/${SERVICE_ROUTE_SLUGS[2]}`;
     }
-    if (titleLower.includes("branding") || titleLower.includes("العلامة التجارية") || titleLower.includes("identité de marque")) {
-      return "/services/branding";
+    // Branding – EN, AR, FR
+    if (
+      titleLower.includes("branding") ||
+      titleLower.includes("العلامة التجارية") ||
+      titleLower.includes("الهوية التجارية") ||
+      normalized.includes("identite de marque") ||
+      normalized.includes("identité de marque")
+    ) {
+      return `/services/${SERVICE_ROUTE_SLUGS[3]}`;
     }
-    
-    // Fallback to original route if no match
-    return `service-details/${title}`;
+
+    // Index-based fallback when title doesn't match (e.g. new translation or API wording)
+    const safeIndex = Math.min(Math.max(0, index), SERVICE_ROUTE_SLUGS.length - 1);
+    return `/services/${SERVICE_ROUTE_SLUGS[safeIndex]}`;
   };
 
   const items = useMemo(
     () =>
-      (services || []).map((s) => ({
-        link: getServiceRoute(s?.title),
-        text: s?.title,
-        image: s?.media,
-      })),
+      (services || []).map((s, index) => {
+        // Prefer API slug when available (language-independent)
+        const link = s?.slug
+          ? `/services/${s.slug}`
+          : getServiceRoute(s?.title, index);
+        return {
+          link,
+          text: s?.title,
+          image: s?.media,
+        };
+      }),
     [services]
   );
 
