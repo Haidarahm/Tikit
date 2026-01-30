@@ -870,7 +870,49 @@
                 "title": "Ready to Amplify Your Brand?",
                 "description": "Let's create an influencer marketing campaign that drives real results",
                 "button": "Get Started"
-            }
+            },
+            "definition": {
+                "whatIsTitle": "What is Influencer Marketing?",
+                "paragraph": "Influencer marketing is a strategic approach that connects brands with content creators who have engaged audiences on social media platforms. This service involves identifying, vetting, and partnering with influencers to create authentic content that promotes products or services to targeted demographics across Instagram, TikTok, YouTube, Snapchat, and other platforms.",
+                "benefitsTitle": "Key Benefits of Influencer Marketing",
+                "benefitsList": [
+                    "Authentic brand endorsements from trusted voices that resonate with target audiences",
+                    "Higher engagement rates compared to traditional advertising methods",
+                    "Access to niche communities and targeted demographics across multiple platforms",
+                    "Measurable ROI through tracking impressions, engagement, and conversions",
+                    "User-generated content that can be repurposed across marketing channels"
+                ],
+                "processTitle": "How Influencer Marketing Works",
+                "processSteps": [
+                    "Define campaign objectives, target audience, and key performance indicators",
+                    "Identify and vet influencers based on audience alignment and engagement metrics",
+                    "Negotiate partnerships and establish content guidelines and deliverables",
+                    "Execute campaign with content creation, approval, and scheduled posting",
+                    "Measure performance and provide detailed analytics and optimization recommendations"
+                ]
+            },
+            "trust": {
+                "title": "Why Trust Tikit Agency",
+                "subtitle": "Our experience and track record in influencer marketing across the UAE and GCC region",
+                "card1Title": "5+ Years Experience",
+                "card1Desc": "Operating since 2020 with consistent growth and proven results in the MENA market.",
+                "card2Title": "Regional Presence",
+                "card2Desc": "Offices in Dubai, Saudi Arabia, and Turkey serving clients across the GCC and MENA region.",
+                "card3Title": "Diverse Client Portfolio",
+                "card3Desc": "Served 300+ clients including startups, SMEs, and enterprise brands across multiple industries.",
+                "card4Title": "Data-Driven Results",
+                "card4Desc": "Every campaign includes detailed analytics and ROI tracking with transparent reporting.",
+                "paragraph": "Tikit Agency has executed 200+ successful influencer campaigns across industries including fashion, beauty, food and beverage, technology, automotive, real estate, and hospitality. Our team of 50+ professionals includes strategists, content creators, and analytics specialists dedicated to delivering measurable results."
+            },
+            "faqTitle": "Frequently Asked Questions About Influencer Marketing",
+            "faqItems": [
+                { "question": "What is influencer marketing and how does it work?", "answer": "Influencer marketing is a form of social media marketing that uses endorsements and product mentions from individuals who have a dedicated social following. Brands partner with influencers to reach their target audience through authentic, trusted voices. The process typically involves identifying relevant influencers, negotiating partnerships, creating content, and measuring campaign performance." },
+                { "question": "How much does influencer marketing cost in the UAE?", "answer": "Influencer marketing costs in the UAE vary based on factors such as influencer tier (nano, micro, macro, or celebrity), platform, content type, and campaign duration. Nano-influencers (1K-10K followers) may charge AED 500-2,000 per post, while celebrity influencers can command AED 50,000+ per campaign. Tikit Agency provides customized quotes based on your specific goals and budget." },
+                { "question": "Which social media platforms are best for influencer marketing?", "answer": "The best platforms depend on your target audience and goals. Instagram remains the most popular for lifestyle, fashion, and beauty brands. TikTok excels for reaching younger demographics with viral content. YouTube is ideal for in-depth product reviews and tutorials. Snapchat is particularly effective in the UAE and GCC markets. LinkedIn works well for B2B influencer campaigns." },
+                { "question": "How do you measure influencer marketing ROI?", "answer": "We measure influencer marketing ROI through multiple metrics: reach and impressions, engagement rate (likes, comments, shares), click-through rates, conversion tracking, brand mention monitoring, and audience growth. Our team provides detailed analytics reports showing campaign performance, cost per engagement, and recommendations for optimization." },
+                { "question": "How long does an influencer marketing campaign take?", "answer": "Campaign timelines vary based on scope and objectives. A quick influencer activation can launch in 1-2 weeks. Standard campaigns typically take 4-6 weeks from strategy to execution. Comprehensive brand ambassador programs may span 3-12 months. During consultation, we provide a detailed timeline tailored to your project requirements." },
+                { "question": "Does Tikit Agency work with local UAE influencers?", "answer": "Yes. Tikit Agency has an extensive network of influencers across the UAE, Saudi Arabia, and the broader GCC region. We work with Arabic and English-speaking creators across all niches including fashion, beauty, lifestyle, tech, food, travel, fitness, and more. Our local presence in Dubai allows us to build strong, authentic relationships with regional influencers." }
+            ]
         },
         "socialMediaManagement": {
             "badge": "Social Media Management",
@@ -943,7 +985,49 @@
                 "title": "Let's Grow Your Social Media Together",
                 "description": "Partner with us to transform your social media into a powerful business asset",
                 "button": "Start Now"
-            }
+            },
+            "definition": {
+                "whatIsTitle": "What is Social Media Management?",
+                "paragraph": "Social media management is the ongoing process of creating and publishing content, monitoring engagement, and growing an audience across social media platforms. This service includes content strategy, post creation, community management, analytics tracking, and paid social advertising to build brand presence, increase engagement, and drive measurable business results.",
+                "benefitsTitle": "Key Benefits of Professional Social Media Management",
+                "benefitsList": [
+                    "Consistent brand presence across all social media platforms with cohesive messaging",
+                    "Professional content creation including graphics, videos, and copywriting",
+                    "Active community engagement that builds loyal audiences and brand advocates",
+                    "Data-driven insights with regular performance reporting and optimization",
+                    "Time savings allowing you to focus on core business operations"
+                ],
+                "processTitle": "Our Social Media Management Process",
+                "processSteps": [
+                    "Audit your current social presence and analyze competitors and industry benchmarks",
+                    "Develop a content strategy aligned with your brand voice and business objectives",
+                    "Create monthly content calendars with approved posts scheduled in advance",
+                    "Manage daily community engagement including comments, messages, and mentions",
+                    "Provide monthly analytics reports with insights and recommendations for improvement"
+                ]
+            },
+            "trust": {
+                "title": "Why Trust Tikit Agency",
+                "subtitle": "Our experience and credentials in social media management across the UAE and GCC region",
+                "card1Title": "5+ Years Experience",
+                "card1Desc": "Managing social media for brands since 2020 with proven growth strategies.",
+                "card2Title": "Multi-Platform Experts",
+                "card2Desc": "Certified specialists across Instagram, TikTok, Facebook, LinkedIn, and more.",
+                "card3Title": "300+ Clients Served",
+                "card3Desc": "Trusted by startups, SMEs, and enterprise brands across multiple industries.",
+                "card4Title": "Transparent Reporting",
+                "card4Desc": "Monthly analytics reports with clear metrics and actionable recommendations.",
+                "paragraph": "Tikit Agency manages social media presence for clients across industries including fashion, beauty, F&B, technology, automotive, real estate, and hospitality. Our team of 50+ professionals includes content creators, community managers, and paid media specialists fluent in Arabic and English."
+            },
+            "faqTitle": "Frequently Asked Questions About Social Media Management",
+            "faqItems": [
+                { "question": "What does social media management include?", "answer": "Social media management includes content strategy and planning, post creation (graphics, videos, copy), content scheduling and publishing, community management (comments, messages, mentions), analytics and performance reporting, paid social advertising, and crisis management. We tailor the scope to your goals and budget." },
+                { "question": "How much does social media management cost in the UAE?", "answer": "Costs vary based on number of platforms, posting frequency, and scope (organic only vs. organic + paid). Monthly retainers typically range from AED 5,000 to AED 25,000+ for full-service management. Tikit Agency provides customized proposals based on your specific needs." },
+                { "question": "Which platforms do you manage?", "answer": "We manage campaigns across Instagram, TikTok, YouTube, Snapchat, Facebook, Twitter/X, and LinkedIn. We recommend platforms based on your target audience and business objectives. Many UAE and GCC brands focus on Instagram, TikTok, and Snapchat for maximum regional reach." },
+                { "question": "How do you measure social media success?", "answer": "We track reach, impressions, engagement rate, follower growth, click-through rate, conversions, and ROI. You receive regular reports with clear metrics and actionable recommendations. Goals are set during onboarding and reviewed in monthly strategy calls." },
+                { "question": "How long until we see results?", "answer": "Community growth and engagement often show improvement within 2-3 months. Significant brand awareness and conversion impact typically build over 6-12 months with consistent strategy and content. We set realistic benchmarks during the initial consultation." },
+                { "question": "Do you work with Arabic and English content?", "answer": "Yes. Our team creates content in Arabic, English, and bilingual formats. We understand cultural nuances across the UAE and GCC and tailor messaging and creative to resonate with your target audience." }
+            ]
         },
         "production": {
             "badge": "Production Services",
@@ -1056,7 +1140,49 @@
                 "title": "Ready To Create Something Amazing?",
                 "description": "Let's bring your creative vision to life with professional production",
                 "button": "Start Your Project"
-            }
+            },
+            "definition": {
+                "whatIsTitle": "What is Video Production?",
+                "paragraph": "Video production is the process of creating video content from initial concept through final delivery. It encompasses pre-production planning, on-set filming with professional cameras and equipment, and post-production editing including color grading, sound design, and visual effects to produce polished content for commercials, social media, corporate communications, and brand storytelling.",
+                "benefitsTitle": "Key Benefits of Professional Video Production",
+                "benefitsList": [
+                    "Higher engagement rates compared to static images and text content",
+                    "Professional quality that builds brand credibility and trust",
+                    "Versatile content that can be repurposed across multiple platforms",
+                    "Effective storytelling that conveys complex messages clearly",
+                    "Improved SEO and social media algorithm performance with video"
+                ],
+                "processTitle": "The Video Production Process",
+                "processSteps": [
+                    "Pre-production: concept development, scriptwriting, storyboarding, and planning",
+                    "Production: filming with professional crew, cameras, lighting, and audio equipment",
+                    "Post-production: editing, color grading, motion graphics, and sound design",
+                    "Review and revision cycles with client feedback integration",
+                    "Final delivery in optimized formats for all required platforms"
+                ]
+            },
+            "trust": {
+                "title": "Why Trust Tikit Agency",
+                "subtitle": "Our experience and capabilities in video production across the UAE and GCC region",
+                "card1Title": "Professional Equipment",
+                "card1Desc": "4K/8K cinema cameras, drones, professional lighting, and industry-standard editing suites.",
+                "card2Title": "Regional Experience",
+                "card2Desc": "Production experience across UAE, Saudi Arabia, and the GCC with local permits and locations.",
+                "card3Title": "Expert Crew",
+                "card3Desc": "Experienced directors, cinematographers, editors, and sound engineers on every project.",
+                "card4Title": "300+ Projects Delivered",
+                "card4Desc": "Commercials, corporate videos, social content, and brand films for clients across industries.",
+                "paragraph": "Tikit Agency has produced video content for clients across industries including hospitality, real estate, F&B, technology, fashion, automotive, and entertainment. Our production team combines creative vision with technical expertise to deliver content that captures attention and drives results."
+            },
+            "faqTitle": "Frequently Asked Questions About Video Production",
+            "faqItems": [
+                { "question": "What is included in video production?", "answer": "Video production includes pre-production (concept, script, storyboard, planning), production (filming with professional crew and equipment), and post-production (editing, color grading, sound design, VFX). Deliverables are provided in formats optimized for your chosen platforms." },
+                { "question": "How much does video production cost in the UAE?", "answer": "Costs vary by project scope, length, and complexity. Social content and short-form videos may start from AED 10,000-30,000. Commercials and full-scale productions typically range from AED 50,000 to AED 200,000+. We provide detailed quotes after understanding your brief and deliverables." },
+                { "question": "How long does a video project take?", "answer": "Simple social content can be delivered in 1-2 weeks. Standard commercials and brand films typically take 4-8 weeks from concept to delivery. Larger productions with multiple locations or complex post-production may require 8-16 weeks. We provide a timeline in the project proposal." },
+                { "question": "Do you provide photography as well?", "answer": "Yes. We offer professional photography including product photography, event coverage, portraits, and lifestyle content. Many clients bundle video and photography for campaigns and content libraries." },
+                { "question": "What equipment do you use?", "answer": "We use cinema cameras (4K and 8K), drones, professional lighting, gimbals, and industry-standard editing and color grading tools. Equipment is selected per project to match creative and delivery requirements." },
+                { "question": "Can you shoot in multiple locations?", "answer": "Yes. We have experience shooting across the UAE, Saudi Arabia, and the GCC. We handle permits and logistics and work with local crews when needed for larger regional productions." }
+            ]
         },
         "branding": {
             "badge": "Branding & Identity",
@@ -1153,7 +1279,49 @@
                 "title": "Ready To Build Your Brand?",
                 "description": "Let's create a brand identity that makes a lasting impression",
                 "button": "Let's Talk"
-            }
+            },
+            "definition": {
+                "whatIsTitle": "What is Branding?",
+                "paragraph": "Branding is the strategic process of creating a unique identity for a business or product. It encompasses visual elements such as logo design, color palette, typography, and imagery, combined with brand messaging, voice, and values to create a cohesive identity that resonates with target audiences and differentiates the business from competitors in the marketplace.",
+                "benefitsTitle": "Key Benefits of Professional Branding",
+                "benefitsList": [
+                    "Increased brand recognition and recall among target audiences",
+                    "Clear differentiation from competitors in crowded markets",
+                    "Builds trust and credibility with customers and stakeholders",
+                    "Consistent visual and verbal identity across all touchpoints",
+                    "Supports premium pricing and customer loyalty over time"
+                ],
+                "processTitle": "The Branding Process",
+                "processSteps": [
+                    "Discovery and research phase to understand business, competitors, and target audience",
+                    "Strategy development defining brand positioning, personality, and messaging",
+                    "Visual exploration creating multiple design directions and concepts",
+                    "Refinement and finalization of chosen direction with detailed execution",
+                    "Brand system creation and comprehensive guidelines documentation"
+                ]
+            },
+            "trust": {
+                "title": "Why Trust Tikit Agency",
+                "subtitle": "Our experience and credentials in branding and identity design across the UAE and GCC region",
+                "card1Title": "15+ Years Combined Experience",
+                "card1Desc": "Our design team brings extensive experience in brand identity creation.",
+                "card2Title": "Regional Understanding",
+                "card2Desc": "Deep knowledge of UAE and GCC market aesthetics and cultural nuances.",
+                "card3Title": "300+ Brands Created",
+                "card3Desc": "Served startups, SMEs, and enterprises across multiple industries.",
+                "card4Title": "25+ Industry Awards",
+                "card4Desc": "Recognized for creative excellence and innovative design solutions.",
+                "paragraph": "Tikit Agency has created brand identities for clients across industries including hospitality, real estate, technology, F&B, fashion, healthcare, and financial services. Our design team combines strategic thinking with creative execution to deliver brands that stand out and drive business results."
+            },
+            "faqTitle": "Frequently Asked Questions About Branding",
+            "faqItems": [
+                { "question": "What is branding and why is it important?", "answer": "Branding is the process of creating a distinctive identity for a business that includes visual elements (logo, colors, typography), messaging, and the overall perception customers have of your company. Strong branding builds recognition, trust, and loyalty, differentiating your business from competitors and creating lasting connections with your target audience." },
+                { "question": "What does a branding agency do?", "answer": "A branding agency helps businesses develop and maintain their brand identity. Services include brand strategy development, logo design, visual identity creation, brand guidelines documentation, packaging design, and brand refresh projects. We work to ensure your brand communicates the right message and resonates with your target audience across all touchpoints." },
+                { "question": "How much does branding cost in the UAE?", "answer": "Branding costs vary based on scope and complexity. Basic logo design packages start from AED 5,000-15,000. Complete brand identity packages including logo, visual identity, and guidelines typically range from AED 20,000-75,000. Comprehensive branding projects with strategy, naming, and full collateral can range from AED 100,000+. Tikit Agency provides customized quotes based on your specific requirements." },
+                { "question": "How long does a branding project take?", "answer": "Timelines depend on project scope. A logo design project typically takes 2-4 weeks. A complete brand identity package usually requires 6-10 weeks. Full branding projects including strategy, visual identity, and collateral design can take 12-16 weeks. We provide detailed timelines during initial consultation based on your specific deliverables." },
+                { "question": "What is included in a brand identity package?", "answer": "A comprehensive brand identity package typically includes: logo design (primary, secondary, and icon versions), color palette with specifications, typography system, brand guidelines document, business card and letterhead design, social media templates, and brand application examples. Additional elements like packaging, signage, and website design can be added based on needs." },
+                { "question": "When should a business consider rebranding?", "answer": "Consider rebranding when your current brand no longer reflects your business values or direction, when entering new markets or expanding services, when your brand looks outdated compared to competitors, after a merger or acquisition, or when your target audience has shifted. A brand refresh can modernize your image while maintaining brand equity." }
+            ]
         }
     }
 }

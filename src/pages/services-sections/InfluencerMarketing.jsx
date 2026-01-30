@@ -29,33 +29,8 @@ const InfluencerMarketing = () => {
   // Scroll to top on mount
   useScrollToTop();
 
-  // FAQ items for this service page
-  const faqItems = [
-    {
-      question: "What is influencer marketing and how does it work?",
-      answer: "Influencer marketing is a form of social media marketing that uses endorsements and product mentions from individuals who have a dedicated social following. Brands partner with influencers to reach their target audience through authentic, trusted voices. The process typically involves identifying relevant influencers, negotiating partnerships, creating content, and measuring campaign performance."
-    },
-    {
-      question: "How much does influencer marketing cost in the UAE?",
-      answer: "Influencer marketing costs in the UAE vary based on factors such as influencer tier (nano, micro, macro, or celebrity), platform, content type, and campaign duration. Nano-influencers (1K-10K followers) may charge AED 500-2,000 per post, while celebrity influencers can command AED 50,000+ per campaign. Tikit Agency provides customized quotes based on your specific goals and budget."
-    },
-    {
-      question: "Which social media platforms are best for influencer marketing?",
-      answer: "The best platforms depend on your target audience and goals. Instagram remains the most popular for lifestyle, fashion, and beauty brands. TikTok excels for reaching younger demographics with viral content. YouTube is ideal for in-depth product reviews and tutorials. Snapchat is particularly effective in the UAE and GCC markets. LinkedIn works well for B2B influencer campaigns."
-    },
-    {
-      question: "How do you measure influencer marketing ROI?",
-      answer: "We measure influencer marketing ROI through multiple metrics: reach and impressions, engagement rate (likes, comments, shares), click-through rates, conversion tracking, brand mention monitoring, and audience growth. Our team provides detailed analytics reports showing campaign performance, cost per engagement, and recommendations for optimization."
-    },
-    {
-      question: "How long does an influencer marketing campaign take?",
-      answer: "Campaign timelines vary based on scope and objectives. A quick influencer activation can launch in 1-2 weeks. Standard campaigns typically take 4-6 weeks from strategy to execution. Comprehensive brand ambassador programs may span 3-12 months. During consultation, we provide a detailed timeline tailored to your project requirements."
-    },
-    {
-      question: "Does Tikit Agency work with local UAE influencers?",
-      answer: "Yes. Tikit Agency has an extensive network of influencers across the UAE, Saudi Arabia, and the broader GCC region. We work with Arabic and English-speaking creators across all niches including fashion, beauty, lifestyle, tech, food, travel, fitness, and more. Our local presence in Dubai allows us to build strong, authentic relationships with regional influencers."
-    }
-  ];
+  // FAQ items from translations (for display and schema)
+  const faqItems = t("serviceSections.influencerMarketing.faqItems", { returnObjects: true });
 
   // Structured data for this service page
   const serviceSchema = {
@@ -259,67 +234,39 @@ const InfluencerMarketing = () => {
       <section ref={definitionRef} className="py-16 px-6">
         <div className="max-w-4xl mx-auto">
           <h2 className={`text-2xl md:text-3xl font-bold text-[var(--foreground)] mb-6 ${language === "ar" ? "font-cairo" : "font-antonio"}`}>
-            What is Influencer Marketing?
+            {t("serviceSections.influencerMarketing.definition.whatIsTitle")}
           </h2>
           <p className="text-lg text-[var(--foreground)]/80 leading-relaxed mb-8">
-            Influencer marketing is a strategic approach that connects brands with content creators who have engaged audiences on social media platforms. This service involves identifying, vetting, and partnering with influencers to create authentic content that promotes products or services to targeted demographics across Instagram, TikTok, YouTube, Snapchat, and other platforms.
+            {t("serviceSections.influencerMarketing.definition.paragraph")}
           </p>
 
           {/* Key Benefits - Bullet List */}
           <div className="mb-8">
             <h3 className={`text-xl font-bold text-[var(--foreground)] mb-4 ${language === "ar" ? "font-cairo" : "font-antonio"}`}>
-              Key Benefits of Influencer Marketing
+              {t("serviceSections.influencerMarketing.definition.benefitsTitle")}
             </h3>
             <ul className="space-y-3">
-              <li className="flex items-start gap-3">
-                <HiCheckCircle className="w-6 h-6 text-[#52C3C5] flex-shrink-0 mt-0.5" />
-                <span className="text-[var(--foreground)]/80">Authentic brand endorsements from trusted voices that resonate with target audiences</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <HiCheckCircle className="w-6 h-6 text-[#52C3C5] flex-shrink-0 mt-0.5" />
-                <span className="text-[var(--foreground)]/80">Higher engagement rates compared to traditional advertising methods</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <HiCheckCircle className="w-6 h-6 text-[#52C3C5] flex-shrink-0 mt-0.5" />
-                <span className="text-[var(--foreground)]/80">Access to niche communities and targeted demographics across multiple platforms</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <HiCheckCircle className="w-6 h-6 text-[#52C3C5] flex-shrink-0 mt-0.5" />
-                <span className="text-[var(--foreground)]/80">Measurable ROI through tracking impressions, engagement, and conversions</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <HiCheckCircle className="w-6 h-6 text-[#52C3C5] flex-shrink-0 mt-0.5" />
-                <span className="text-[var(--foreground)]/80">User-generated content that can be repurposed across marketing channels</span>
-              </li>
+              {t("serviceSections.influencerMarketing.definition.benefitsList", { returnObjects: true }).map((item, idx) => (
+                <li key={idx} className="flex items-start gap-3">
+                  <HiCheckCircle className="w-6 h-6 text-[#52C3C5] flex-shrink-0 mt-0.5" />
+                  <span className="text-[var(--foreground)]/80">{item}</span>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* How It Works - Numbered List */}
           <div>
             <h3 className={`text-xl font-bold text-[var(--foreground)] mb-4 ${language === "ar" ? "font-cairo" : "font-antonio"}`}>
-              How Influencer Marketing Works
+              {t("serviceSections.influencerMarketing.definition.processTitle")}
             </h3>
             <ol className="space-y-3">
-              <li className="flex items-start gap-3">
-                <span className="w-6 h-6 rounded-full bg-[#52C3C5] text-white text-sm flex items-center justify-center flex-shrink-0 mt-0.5">1</span>
-                <span className="text-[var(--foreground)]/80">Define campaign objectives, target audience, and key performance indicators</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="w-6 h-6 rounded-full bg-[#52C3C5] text-white text-sm flex items-center justify-center flex-shrink-0 mt-0.5">2</span>
-                <span className="text-[var(--foreground)]/80">Identify and vet influencers based on audience alignment and engagement metrics</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="w-6 h-6 rounded-full bg-[#52C3C5] text-white text-sm flex items-center justify-center flex-shrink-0 mt-0.5">3</span>
-                <span className="text-[var(--foreground)]/80">Negotiate partnerships and establish content guidelines and deliverables</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="w-6 h-6 rounded-full bg-[#52C3C5] text-white text-sm flex items-center justify-center flex-shrink-0 mt-0.5">4</span>
-                <span className="text-[var(--foreground)]/80">Execute campaign with content creation, approval, and scheduled posting</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="w-6 h-6 rounded-full bg-[#52C3C5] text-white text-sm flex items-center justify-center flex-shrink-0 mt-0.5">5</span>
-                <span className="text-[var(--foreground)]/80">Measure performance and provide detailed analytics and optimization recommendations</span>
-              </li>
+              {t("serviceSections.influencerMarketing.definition.processSteps", { returnObjects: true }).map((step, idx) => (
+                <li key={idx} className="flex items-start gap-3">
+                  <span className="w-6 h-6 rounded-full bg-[#52C3C5] text-white text-sm flex items-center justify-center flex-shrink-0 mt-0.5">{idx + 1}</span>
+                  <span className="text-[var(--foreground)]/80">{step}</span>
+                </li>
+              ))}
             </ol>
           </div>
         </div>
@@ -491,10 +438,10 @@ const InfluencerMarketing = () => {
       <section ref={trustRef} className="py-20 px-6 bg-[var(--foreground)]/5">
         <div className="max-w-6xl mx-auto">
           <h2 className={`text-3xl md:text-4xl font-bold text-[var(--foreground)] text-center mb-4 ${language === "ar" ? "font-cairo" : "font-antonio"}`}>
-            Why Trust Tikit Agency
+            {t("serviceSections.influencerMarketing.trust.title")}
           </h2>
           <p className="text-[var(--foreground)]/60 text-center mb-12 max-w-2xl mx-auto">
-            Our experience and track record in influencer marketing across the UAE and GCC region
+            {t("serviceSections.influencerMarketing.trust.subtitle")}
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -502,38 +449,38 @@ const InfluencerMarketing = () => {
               <div className="w-12 h-12 rounded-full bg-[#52C3C5]/10 flex items-center justify-center mb-4">
                 <HiBadgeCheck className="w-6 h-6 text-[#52C3C5]" />
               </div>
-              <h3 className="text-lg font-bold text-[var(--foreground)] mb-2">5+ Years Experience</h3>
-              <p className="text-[var(--foreground)]/70 text-sm">Operating since 2020 with consistent growth and proven results in the MENA market.</p>
+              <h3 className="text-lg font-bold text-[var(--foreground)] mb-2">{t("serviceSections.influencerMarketing.trust.card1Title")}</h3>
+              <p className="text-[var(--foreground)]/70 text-sm">{t("serviceSections.influencerMarketing.trust.card1Desc")}</p>
             </div>
 
             <div className="p-6 rounded-2xl bg-[var(--background)] border border-[var(--foreground)]/10">
               <div className="w-12 h-12 rounded-full bg-[#52C3C5]/10 flex items-center justify-center mb-4">
                 <HiGlobe className="w-6 h-6 text-[#52C3C5]" />
               </div>
-              <h3 className="text-lg font-bold text-[var(--foreground)] mb-2">Regional Presence</h3>
-              <p className="text-[var(--foreground)]/70 text-sm">Offices in Dubai, Saudi Arabia, and Turkey serving clients across the GCC and MENA region.</p>
+              <h3 className="text-lg font-bold text-[var(--foreground)] mb-2">{t("serviceSections.influencerMarketing.trust.card2Title")}</h3>
+              <p className="text-[var(--foreground)]/70 text-sm">{t("serviceSections.influencerMarketing.trust.card2Desc")}</p>
             </div>
 
             <div className="p-6 rounded-2xl bg-[var(--background)] border border-[var(--foreground)]/10">
               <div className="w-12 h-12 rounded-full bg-[#52C3C5]/10 flex items-center justify-center mb-4">
                 <HiUserGroup className="w-6 h-6 text-[#52C3C5]" />
               </div>
-              <h3 className="text-lg font-bold text-[var(--foreground)] mb-2">Diverse Client Portfolio</h3>
-              <p className="text-[var(--foreground)]/70 text-sm">Served 300+ clients including startups, SMEs, and enterprise brands across multiple industries.</p>
+              <h3 className="text-lg font-bold text-[var(--foreground)] mb-2">{t("serviceSections.influencerMarketing.trust.card3Title")}</h3>
+              <p className="text-[var(--foreground)]/70 text-sm">{t("serviceSections.influencerMarketing.trust.card3Desc")}</p>
             </div>
 
             <div className="p-6 rounded-2xl bg-[var(--background)] border border-[var(--foreground)]/10">
               <div className="w-12 h-12 rounded-full bg-[#52C3C5]/10 flex items-center justify-center mb-4">
                 <HiChartBar className="w-6 h-6 text-[#52C3C5]" />
               </div>
-              <h3 className="text-lg font-bold text-[var(--foreground)] mb-2">Data-Driven Results</h3>
-              <p className="text-[var(--foreground)]/70 text-sm">Every campaign includes detailed analytics and ROI tracking with transparent reporting.</p>
+              <h3 className="text-lg font-bold text-[var(--foreground)] mb-2">{t("serviceSections.influencerMarketing.trust.card4Title")}</h3>
+              <p className="text-[var(--foreground)]/70 text-sm">{t("serviceSections.influencerMarketing.trust.card4Desc")}</p>
             </div>
           </div>
 
           <div className="mt-12 text-center">
             <p className="text-[var(--foreground)]/70 max-w-3xl mx-auto">
-              Tikit Agency has executed 200+ successful influencer campaigns across industries including fashion, beauty, food and beverage, technology, automotive, real estate, and hospitality. Our team of 50+ professionals includes strategists, content creators, and analytics specialists dedicated to delivering measurable results.
+              {t("serviceSections.influencerMarketing.trust.paragraph")}
             </p>
           </div>
         </div>
@@ -546,8 +493,8 @@ const InfluencerMarketing = () => {
 
       {/* FAQ Section */}
       <FAQ 
-        items={faqItems} 
-        title="Frequently Asked Questions About Influencer Marketing"
+        items={Array.isArray(faqItems) ? faqItems : []} 
+        title={t("serviceSections.influencerMarketing.faqTitle")}
       />
 
       {/* CTA Section */}

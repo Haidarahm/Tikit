@@ -46,33 +46,8 @@ const Production = () => {
   // Scroll to top on mount
   useScrollToTop();
 
-  // FAQ items for this service page
-  const faqItems = [
-    {
-      question: "What is video production and what does it include?",
-      answer: "Video production is the process of creating video content from concept to final delivery. It includes three main phases: pre-production (planning, scripting, storyboarding, casting), production (filming with cameras, lighting, and audio equipment), and post-production (editing, color grading, sound design, visual effects). The result is polished video content for commercials, social media, corporate communications, or other purposes."
-    },
-    {
-      question: "How much does video production cost in the UAE?",
-      answer: "Video production costs in the UAE vary based on scope, duration, and complexity. Simple social media videos may start from AED 5,000-15,000. Corporate videos and product films typically range from AED 20,000-50,000. Full commercial productions with talent, locations, and extensive post-production can range from AED 75,000-300,000+. Tikit Agency provides detailed quotes based on your specific requirements."
-    },
-    {
-      question: "What equipment do you use for video production?",
-      answer: "We use professional cinema cameras including RED and Blackmagic systems capable of 4K and 8K resolution. Our equipment inventory includes DJI drones for aerial cinematography, professional lighting kits, gimbal stabilizers for smooth motion, wireless audio systems, and industry-standard editing suites with DaVinci Resolve and Adobe Premiere Pro for post-production."
-    },
-    {
-      question: "How long does a video production project take?",
-      answer: "Project timelines depend on complexity. A simple social media video can be completed in 1-2 weeks. Standard corporate videos typically take 3-4 weeks. Complex commercial productions requiring extensive pre-production, multiple shoot days, and detailed post-production may take 6-10 weeks. We provide detailed timelines during initial consultation."
-    },
-    {
-      question: "Do you offer photography services as well?",
-      answer: "Yes. Our production services include professional photography for products, events, portraits, lifestyle content, and commercial campaigns. We offer both studio and on-location photography with professional lighting and equipment. Post-production includes retouching, color correction, and delivery in multiple formats."
-    },
-    {
-      question: "Can you handle live streaming and virtual events?",
-      answer: "Yes. We provide professional live streaming services for events, webinars, product launches, and corporate broadcasts. Our services include multi-camera setups, live switching, graphics overlay, real-time encoding, and simultaneous streaming to multiple platforms including YouTube, Facebook, LinkedIn, and custom RTMP destinations."
-    }
-  ];
+  // FAQ items from translations (for display and schema)
+  const faqItems = t("serviceSections.production.faqItems", { returnObjects: true });
 
   // Structured data for this service page
   const serviceSchema = {
@@ -269,67 +244,39 @@ const Production = () => {
       <section ref={definitionRef} className="py-16 px-6">
         <div className="max-w-4xl mx-auto">
           <h2 className={`text-2xl md:text-3xl font-bold text-[var(--foreground)] mb-6 ${language === "ar" ? "font-cairo" : "font-antonio"}`}>
-            What is Video Production?
+            {t("serviceSections.production.definition.whatIsTitle")}
           </h2>
           <p className="text-lg text-[var(--foreground)]/80 leading-relaxed mb-8">
-            Video production is the process of creating video content from initial concept through final delivery. It encompasses pre-production planning, on-set filming with professional cameras and equipment, and post-production editing including color grading, sound design, and visual effects to produce polished content for commercials, social media, corporate communications, and brand storytelling.
+            {t("serviceSections.production.definition.paragraph")}
           </p>
 
           {/* Key Benefits - Bullet List */}
           <div className="mb-8">
             <h3 className={`text-xl font-bold text-[var(--foreground)] mb-4 ${language === "ar" ? "font-cairo" : "font-antonio"}`}>
-              Key Benefits of Professional Video Production
+              {t("serviceSections.production.definition.benefitsTitle")}
             </h3>
             <ul className="space-y-3">
-              <li className="flex items-start gap-3">
-                <HiCheckCircle className="w-6 h-6 text-[#52C3C5] flex-shrink-0 mt-0.5" />
-                <span className="text-[var(--foreground)]/80">Higher engagement rates compared to static images and text content</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <HiCheckCircle className="w-6 h-6 text-[#52C3C5] flex-shrink-0 mt-0.5" />
-                <span className="text-[var(--foreground)]/80">Professional quality that builds brand credibility and trust</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <HiCheckCircle className="w-6 h-6 text-[#52C3C5] flex-shrink-0 mt-0.5" />
-                <span className="text-[var(--foreground)]/80">Versatile content that can be repurposed across multiple platforms</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <HiCheckCircle className="w-6 h-6 text-[#52C3C5] flex-shrink-0 mt-0.5" />
-                <span className="text-[var(--foreground)]/80">Effective storytelling that conveys complex messages clearly</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <HiCheckCircle className="w-6 h-6 text-[#52C3C5] flex-shrink-0 mt-0.5" />
-                <span className="text-[var(--foreground)]/80">Improved SEO and social media algorithm performance with video</span>
-              </li>
+              {t("serviceSections.production.definition.benefitsList", { returnObjects: true }).map((item, idx) => (
+                <li key={idx} className="flex items-start gap-3">
+                  <HiCheckCircle className="w-6 h-6 text-[#52C3C5] flex-shrink-0 mt-0.5" />
+                  <span className="text-[var(--foreground)]/80">{item}</span>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* How It Works - Numbered List */}
           <div>
             <h3 className={`text-xl font-bold text-[var(--foreground)] mb-4 ${language === "ar" ? "font-cairo" : "font-antonio"}`}>
-              The Video Production Process
+              {t("serviceSections.production.definition.processTitle")}
             </h3>
             <ol className="space-y-3">
-              <li className="flex items-start gap-3">
-                <span className="w-6 h-6 rounded-full bg-[#52C3C5] text-white text-sm flex items-center justify-center flex-shrink-0 mt-0.5">1</span>
-                <span className="text-[var(--foreground)]/80">Pre-production: concept development, scriptwriting, storyboarding, and planning</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="w-6 h-6 rounded-full bg-[#52C3C5] text-white text-sm flex items-center justify-center flex-shrink-0 mt-0.5">2</span>
-                <span className="text-[var(--foreground)]/80">Production: filming with professional crew, cameras, lighting, and audio equipment</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="w-6 h-6 rounded-full bg-[#52C3C5] text-white text-sm flex items-center justify-center flex-shrink-0 mt-0.5">3</span>
-                <span className="text-[var(--foreground)]/80">Post-production: editing, color grading, motion graphics, and sound design</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="w-6 h-6 rounded-full bg-[#52C3C5] text-white text-sm flex items-center justify-center flex-shrink-0 mt-0.5">4</span>
-                <span className="text-[var(--foreground)]/80">Review and revision cycles with client feedback integration</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="w-6 h-6 rounded-full bg-[#52C3C5] text-white text-sm flex items-center justify-center flex-shrink-0 mt-0.5">5</span>
-                <span className="text-[var(--foreground)]/80">Final delivery in optimized formats for all required platforms</span>
-              </li>
+              {t("serviceSections.production.definition.processSteps", { returnObjects: true }).map((step, idx) => (
+                <li key={idx} className="flex items-start gap-3">
+                  <span className="w-6 h-6 rounded-full bg-[#52C3C5] text-white text-sm flex items-center justify-center flex-shrink-0 mt-0.5">{idx + 1}</span>
+                  <span className="text-[var(--foreground)]/80">{step}</span>
+                </li>
+              ))}
             </ol>
           </div>
         </div>
@@ -611,10 +558,10 @@ const Production = () => {
       <section ref={trustRef} className="py-20 px-6 bg-[var(--foreground)]/5">
         <div className="max-w-6xl mx-auto">
           <h2 className={`text-3xl md:text-4xl font-bold text-[var(--foreground)] text-center mb-4 ${language === "ar" ? "font-cairo" : "font-antonio"}`}>
-            Why Trust Tikit Agency
+            {t("serviceSections.production.trust.title")}
           </h2>
           <p className="text-[var(--foreground)]/60 text-center mb-12 max-w-2xl mx-auto">
-            Our experience and capabilities in video production across the UAE and GCC region
+            {t("serviceSections.production.trust.subtitle")}
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -622,38 +569,38 @@ const Production = () => {
               <div className="w-12 h-12 rounded-full bg-[#52C3C5]/10 flex items-center justify-center mb-4">
                 <HiBadgeCheck className="w-6 h-6 text-[#52C3C5]" />
               </div>
-              <h3 className="text-lg font-bold text-[var(--foreground)] mb-2">Professional Equipment</h3>
-              <p className="text-[var(--foreground)]/70 text-sm">4K/8K cinema cameras, drones, professional lighting, and industry-standard editing suites.</p>
+              <h3 className="text-lg font-bold text-[var(--foreground)] mb-2">{t("serviceSections.production.trust.card1Title")}</h3>
+              <p className="text-[var(--foreground)]/70 text-sm">{t("serviceSections.production.trust.card1Desc")}</p>
             </div>
 
             <div className="p-6 rounded-2xl bg-[var(--background)] border border-[var(--foreground)]/10">
               <div className="w-12 h-12 rounded-full bg-[#52C3C5]/10 flex items-center justify-center mb-4">
                 <HiGlobe className="w-6 h-6 text-[#52C3C5]" />
               </div>
-              <h3 className="text-lg font-bold text-[var(--foreground)] mb-2">Regional Experience</h3>
-              <p className="text-[var(--foreground)]/70 text-sm">Production experience across UAE, Saudi Arabia, and the GCC with local permits and locations.</p>
+              <h3 className="text-lg font-bold text-[var(--foreground)] mb-2">{t("serviceSections.production.trust.card2Title")}</h3>
+              <p className="text-[var(--foreground)]/70 text-sm">{t("serviceSections.production.trust.card2Desc")}</p>
             </div>
 
             <div className="p-6 rounded-2xl bg-[var(--background)] border border-[var(--foreground)]/10">
               <div className="w-12 h-12 rounded-full bg-[#52C3C5]/10 flex items-center justify-center mb-4">
                 <HiUserGroup className="w-6 h-6 text-[#52C3C5]" />
               </div>
-              <h3 className="text-lg font-bold text-[var(--foreground)] mb-2">Expert Crew</h3>
-              <p className="text-[var(--foreground)]/70 text-sm">Experienced directors, cinematographers, editors, and sound engineers on every project.</p>
+              <h3 className="text-lg font-bold text-[var(--foreground)] mb-2">{t("serviceSections.production.trust.card3Title")}</h3>
+              <p className="text-[var(--foreground)]/70 text-sm">{t("serviceSections.production.trust.card3Desc")}</p>
             </div>
 
             <div className="p-6 rounded-2xl bg-[var(--background)] border border-[var(--foreground)]/10">
               <div className="w-12 h-12 rounded-full bg-[#52C3C5]/10 flex items-center justify-center mb-4">
                 <HiChartBar className="w-6 h-6 text-[#52C3C5]" />
               </div>
-              <h3 className="text-lg font-bold text-[var(--foreground)] mb-2">300+ Projects Delivered</h3>
-              <p className="text-[var(--foreground)]/70 text-sm">Commercials, corporate videos, social content, and brand films for clients across industries.</p>
+              <h3 className="text-lg font-bold text-[var(--foreground)] mb-2">{t("serviceSections.production.trust.card4Title")}</h3>
+              <p className="text-[var(--foreground)]/70 text-sm">{t("serviceSections.production.trust.card4Desc")}</p>
             </div>
           </div>
 
           <div className="mt-12 text-center">
             <p className="text-[var(--foreground)]/70 max-w-3xl mx-auto">
-              Tikit Agency has produced video content for clients across industries including hospitality, real estate, F&B, technology, fashion, automotive, and entertainment. Our production team combines creative vision with technical expertise to deliver content that captures attention and drives results.
+              {t("serviceSections.production.trust.paragraph")}
             </p>
           </div>
         </div>
@@ -666,8 +613,8 @@ const Production = () => {
 
       {/* FAQ Section */}
       <FAQ 
-        items={faqItems} 
-        title="Frequently Asked Questions About Video Production"
+        items={Array.isArray(faqItems) ? faqItems : []} 
+        title={t("serviceSections.production.faqTitle")}
       />
 
       {/* CTA Section */}
