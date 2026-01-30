@@ -10,6 +10,9 @@ import influencer2 from "../../assets/influencers/hessa alfalasi.webp";
 import influencer3 from "../../assets/influencers/amira mohamed.webp";
 import influencer4 from "../../assets/influencers/Sultan Alsuwaidi.webp";
 import TikitTitle from "../../components/TikitTitle";
+import SEOHead from "../../components/SEOHead";
+import FAQ from "../../components/FAQ";
+import { HiCheckCircle, HiBadgeCheck, HiGlobe, HiUserGroup, HiChartBar } from "react-icons/hi";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -20,9 +23,76 @@ const InfluencerMarketing = () => {
   const statsRef = useRef(null);
   const processRef = useRef(null);
   const showcaseRef = useRef(null);
+  const definitionRef = useRef(null);
+  const trustRef = useRef(null);
 
   // Scroll to top on mount
   useScrollToTop();
+
+  // FAQ items for this service page
+  const faqItems = [
+    {
+      question: "What is influencer marketing and how does it work?",
+      answer: "Influencer marketing is a form of social media marketing that uses endorsements and product mentions from individuals who have a dedicated social following. Brands partner with influencers to reach their target audience through authentic, trusted voices. The process typically involves identifying relevant influencers, negotiating partnerships, creating content, and measuring campaign performance."
+    },
+    {
+      question: "How much does influencer marketing cost in the UAE?",
+      answer: "Influencer marketing costs in the UAE vary based on factors such as influencer tier (nano, micro, macro, or celebrity), platform, content type, and campaign duration. Nano-influencers (1K-10K followers) may charge AED 500-2,000 per post, while celebrity influencers can command AED 50,000+ per campaign. Tikit Agency provides customized quotes based on your specific goals and budget."
+    },
+    {
+      question: "Which social media platforms are best for influencer marketing?",
+      answer: "The best platforms depend on your target audience and goals. Instagram remains the most popular for lifestyle, fashion, and beauty brands. TikTok excels for reaching younger demographics with viral content. YouTube is ideal for in-depth product reviews and tutorials. Snapchat is particularly effective in the UAE and GCC markets. LinkedIn works well for B2B influencer campaigns."
+    },
+    {
+      question: "How do you measure influencer marketing ROI?",
+      answer: "We measure influencer marketing ROI through multiple metrics: reach and impressions, engagement rate (likes, comments, shares), click-through rates, conversion tracking, brand mention monitoring, and audience growth. Our team provides detailed analytics reports showing campaign performance, cost per engagement, and recommendations for optimization."
+    },
+    {
+      question: "How long does an influencer marketing campaign take?",
+      answer: "Campaign timelines vary based on scope and objectives. A quick influencer activation can launch in 1-2 weeks. Standard campaigns typically take 4-6 weeks from strategy to execution. Comprehensive brand ambassador programs may span 3-12 months. During consultation, we provide a detailed timeline tailored to your project requirements."
+    },
+    {
+      question: "Does Tikit Agency work with local UAE influencers?",
+      answer: "Yes. Tikit Agency has an extensive network of influencers across the UAE, Saudi Arabia, and the broader GCC region. We work with Arabic and English-speaking creators across all niches including fashion, beauty, lifestyle, tech, food, travel, fitness, and more. Our local presence in Dubai allows us to build strong, authentic relationships with regional influencers."
+    }
+  ];
+
+  // Structured data for this service page
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": "https://tikit.ae/services/influencer-marketing#service",
+    "name": "Influencer Marketing Services",
+    "description": "Influencer marketing is a strategic approach that connects brands with content creators who have engaged audiences on social media platforms. This service involves identifying, vetting, and partnering with influencers to create authentic content that promotes products or services to targeted demographics across Instagram, TikTok, YouTube, and other platforms.",
+    "provider": {
+      "@type": "Organization",
+      "name": "Tikit Agency",
+      "url": "https://tikit.ae",
+      "telephone": "+971 4 577 4042",
+      "email": "Holla@tikit.ae",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "The Burlington Tower, Marasi Drive, Office 309",
+        "addressLocality": "Dubai",
+        "addressCountry": "AE"
+      }
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "United Arab Emirates"
+    },
+    "serviceType": "Influencer Marketing",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Influencer Marketing Services",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Influencer Campaign Management" }},
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Talent Sourcing and Vetting" }},
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Content Strategy and Creation" }},
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Campaign Analytics and Reporting" }}
+      ]
+    }
+  };
 
   useEffect(() => {
     let ctx;
@@ -137,6 +207,21 @@ const InfluencerMarketing = () => {
       }`}
       dir={isRtl ? "rtl" : "ltr"}
     >
+      <SEOHead
+        title="Influencer Marketing Services UAE | Connect with Top Creators"
+        description="Influencer marketing services in UAE connecting brands with authentic creators. Our agency matches brands with influencers across Instagram, TikTok, YouTube to drive engagement and measurable ROI. 500+ influencer network, 200+ campaigns."
+        keywords="influencer marketing UAE, influencer agency Dubai, influencer marketing services, social media influencers UAE, Instagram marketing Dubai, TikTok influencers, YouTube influencer marketing, creator partnerships UAE"
+        canonicalUrl="/services/influencer-marketing"
+        serviceType="Influencer Marketing"
+        structuredData={serviceSchema}
+        faqItems={faqItems}
+        breadcrumbs={[
+          { name: "Home", url: "/" },
+          { name: "Services", url: "/services" },
+          { name: "Influencer Marketing", url: "/services/influencer-marketing" }
+        ]}
+      />
+
       {/* Hero Section */}
       <section
         ref={heroRef}
@@ -162,6 +247,81 @@ const InfluencerMarketing = () => {
           <p className="hero-animate text-lg md:text-xl text-[var(--foreground)]/70 max-w-3xl mx-auto leading-relaxed">
             {t("serviceSections.influencerMarketing.hero.description")}
           </p>
+        </div>
+      </section>
+
+      {/* Divider */}
+      <div className="container mx-auto px-6">
+        <div className="h-px bg-gradient-to-r from-transparent via-[var(--foreground)]/20 to-transparent" />
+      </div>
+
+      {/* Service Definition Section - SEO Optimized */}
+      <section ref={definitionRef} className="py-16 px-6">
+        <div className="max-w-4xl mx-auto">
+          <h2 className={`text-2xl md:text-3xl font-bold text-[var(--foreground)] mb-6 ${language === "ar" ? "font-cairo" : "font-antonio"}`}>
+            What is Influencer Marketing?
+          </h2>
+          <p className="text-lg text-[var(--foreground)]/80 leading-relaxed mb-8">
+            Influencer marketing is a strategic approach that connects brands with content creators who have engaged audiences on social media platforms. This service involves identifying, vetting, and partnering with influencers to create authentic content that promotes products or services to targeted demographics across Instagram, TikTok, YouTube, Snapchat, and other platforms.
+          </p>
+
+          {/* Key Benefits - Bullet List */}
+          <div className="mb-8">
+            <h3 className={`text-xl font-bold text-[var(--foreground)] mb-4 ${language === "ar" ? "font-cairo" : "font-antonio"}`}>
+              Key Benefits of Influencer Marketing
+            </h3>
+            <ul className="space-y-3">
+              <li className="flex items-start gap-3">
+                <HiCheckCircle className="w-6 h-6 text-[#52C3C5] flex-shrink-0 mt-0.5" />
+                <span className="text-[var(--foreground)]/80">Authentic brand endorsements from trusted voices that resonate with target audiences</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <HiCheckCircle className="w-6 h-6 text-[#52C3C5] flex-shrink-0 mt-0.5" />
+                <span className="text-[var(--foreground)]/80">Higher engagement rates compared to traditional advertising methods</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <HiCheckCircle className="w-6 h-6 text-[#52C3C5] flex-shrink-0 mt-0.5" />
+                <span className="text-[var(--foreground)]/80">Access to niche communities and targeted demographics across multiple platforms</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <HiCheckCircle className="w-6 h-6 text-[#52C3C5] flex-shrink-0 mt-0.5" />
+                <span className="text-[var(--foreground)]/80">Measurable ROI through tracking impressions, engagement, and conversions</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <HiCheckCircle className="w-6 h-6 text-[#52C3C5] flex-shrink-0 mt-0.5" />
+                <span className="text-[var(--foreground)]/80">User-generated content that can be repurposed across marketing channels</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* How It Works - Numbered List */}
+          <div>
+            <h3 className={`text-xl font-bold text-[var(--foreground)] mb-4 ${language === "ar" ? "font-cairo" : "font-antonio"}`}>
+              How Influencer Marketing Works
+            </h3>
+            <ol className="space-y-3">
+              <li className="flex items-start gap-3">
+                <span className="w-6 h-6 rounded-full bg-[#52C3C5] text-white text-sm flex items-center justify-center flex-shrink-0 mt-0.5">1</span>
+                <span className="text-[var(--foreground)]/80">Define campaign objectives, target audience, and key performance indicators</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="w-6 h-6 rounded-full bg-[#52C3C5] text-white text-sm flex items-center justify-center flex-shrink-0 mt-0.5">2</span>
+                <span className="text-[var(--foreground)]/80">Identify and vet influencers based on audience alignment and engagement metrics</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="w-6 h-6 rounded-full bg-[#52C3C5] text-white text-sm flex items-center justify-center flex-shrink-0 mt-0.5">3</span>
+                <span className="text-[var(--foreground)]/80">Negotiate partnerships and establish content guidelines and deliverables</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="w-6 h-6 rounded-full bg-[#52C3C5] text-white text-sm flex items-center justify-center flex-shrink-0 mt-0.5">4</span>
+                <span className="text-[var(--foreground)]/80">Execute campaign with content creation, approval, and scheduled posting</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="w-6 h-6 rounded-full bg-[#52C3C5] text-white text-sm flex items-center justify-center flex-shrink-0 mt-0.5">5</span>
+                <span className="text-[var(--foreground)]/80">Measure performance and provide detailed analytics and optimization recommendations</span>
+              </li>
+            </ol>
+          </div>
         </div>
       </section>
 
@@ -326,6 +486,69 @@ const InfluencerMarketing = () => {
           </div>
         </div>
       </section>
+
+      {/* Why Trust Us Section - Entity & Trust Signals */}
+      <section ref={trustRef} className="py-20 px-6 bg-[var(--foreground)]/5">
+        <div className="max-w-6xl mx-auto">
+          <h2 className={`text-3xl md:text-4xl font-bold text-[var(--foreground)] text-center mb-4 ${language === "ar" ? "font-cairo" : "font-antonio"}`}>
+            Why Trust Tikit Agency
+          </h2>
+          <p className="text-[var(--foreground)]/60 text-center mb-12 max-w-2xl mx-auto">
+            Our experience and track record in influencer marketing across the UAE and GCC region
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="p-6 rounded-2xl bg-[var(--background)] border border-[var(--foreground)]/10">
+              <div className="w-12 h-12 rounded-full bg-[#52C3C5]/10 flex items-center justify-center mb-4">
+                <HiBadgeCheck className="w-6 h-6 text-[#52C3C5]" />
+              </div>
+              <h3 className="text-lg font-bold text-[var(--foreground)] mb-2">5+ Years Experience</h3>
+              <p className="text-[var(--foreground)]/70 text-sm">Operating since 2020 with consistent growth and proven results in the MENA market.</p>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-[var(--background)] border border-[var(--foreground)]/10">
+              <div className="w-12 h-12 rounded-full bg-[#52C3C5]/10 flex items-center justify-center mb-4">
+                <HiGlobe className="w-6 h-6 text-[#52C3C5]" />
+              </div>
+              <h3 className="text-lg font-bold text-[var(--foreground)] mb-2">Regional Presence</h3>
+              <p className="text-[var(--foreground)]/70 text-sm">Offices in Dubai, Saudi Arabia, and Turkey serving clients across the GCC and MENA region.</p>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-[var(--background)] border border-[var(--foreground)]/10">
+              <div className="w-12 h-12 rounded-full bg-[#52C3C5]/10 flex items-center justify-center mb-4">
+                <HiUserGroup className="w-6 h-6 text-[#52C3C5]" />
+              </div>
+              <h3 className="text-lg font-bold text-[var(--foreground)] mb-2">Diverse Client Portfolio</h3>
+              <p className="text-[var(--foreground)]/70 text-sm">Served 300+ clients including startups, SMEs, and enterprise brands across multiple industries.</p>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-[var(--background)] border border-[var(--foreground)]/10">
+              <div className="w-12 h-12 rounded-full bg-[#52C3C5]/10 flex items-center justify-center mb-4">
+                <HiChartBar className="w-6 h-6 text-[#52C3C5]" />
+              </div>
+              <h3 className="text-lg font-bold text-[var(--foreground)] mb-2">Data-Driven Results</h3>
+              <p className="text-[var(--foreground)]/70 text-sm">Every campaign includes detailed analytics and ROI tracking with transparent reporting.</p>
+            </div>
+          </div>
+
+          <div className="mt-12 text-center">
+            <p className="text-[var(--foreground)]/70 max-w-3xl mx-auto">
+              Tikit Agency has executed 200+ successful influencer campaigns across industries including fashion, beauty, food and beverage, technology, automotive, real estate, and hospitality. Our team of 50+ professionals includes strategists, content creators, and analytics specialists dedicated to delivering measurable results.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Divider */}
+      <div className="container mx-auto px-6">
+        <div className="h-px bg-gradient-to-r from-transparent via-[var(--foreground)]/20 to-transparent" />
+      </div>
+
+      {/* FAQ Section */}
+      <FAQ 
+        items={faqItems} 
+        title="Frequently Asked Questions About Influencer Marketing"
+      />
 
       {/* CTA Section */}
       <section className="py-20 px-6">

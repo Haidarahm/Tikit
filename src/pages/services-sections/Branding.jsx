@@ -11,6 +11,11 @@ import {
   HiBookOpen,
   HiCube,
   HiRefresh,
+  HiCheckCircle,
+  HiBadgeCheck,
+  HiGlobe,
+  HiUserGroup,
+  HiChartBar,
 } from "react-icons/hi";
 import {
   MdBrush,
@@ -27,6 +32,8 @@ import {
   MdStorefront,
 } from "react-icons/md";
 import TikitTitle from "../../components/TikitTitle";
+import SEOHead from "../../components/SEOHead";
+import FAQ from "../../components/FAQ";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -37,9 +44,77 @@ const Branding = () => {
   const servicesRef = useRef(null);
   const processRef = useRef(null);
   const elementsRef = useRef(null);
+  const definitionRef = useRef(null);
+  const trustRef = useRef(null);
 
   // Scroll to top on mount
   useScrollToTop();
+
+  // FAQ items for this service page
+  const faqItems = [
+    {
+      question: "What is branding and why is it important?",
+      answer: "Branding is the process of creating a distinctive identity for a business that includes visual elements (logo, colors, typography), messaging, and the overall perception customers have of your company. Strong branding builds recognition, trust, and loyalty, differentiating your business from competitors and creating lasting connections with your target audience."
+    },
+    {
+      question: "What does a branding agency do?",
+      answer: "A branding agency helps businesses develop and maintain their brand identity. Services include brand strategy development, logo design, visual identity creation, brand guidelines documentation, packaging design, and brand refresh projects. We work to ensure your brand communicates the right message and resonates with your target audience across all touchpoints."
+    },
+    {
+      question: "How much does branding cost in the UAE?",
+      answer: "Branding costs vary based on scope and complexity. Basic logo design packages start from AED 5,000-15,000. Complete brand identity packages including logo, visual identity, and guidelines typically range from AED 20,000-75,000. Comprehensive branding projects with strategy, naming, and full collateral can range from AED 100,000+. Tikit Agency provides customized quotes based on your specific requirements."
+    },
+    {
+      question: "How long does a branding project take?",
+      answer: "Timelines depend on project scope. A logo design project typically takes 2-4 weeks. A complete brand identity package usually requires 6-10 weeks. Full branding projects including strategy, visual identity, and collateral design can take 12-16 weeks. We provide detailed timelines during initial consultation based on your specific deliverables."
+    },
+    {
+      question: "What is included in a brand identity package?",
+      answer: "A comprehensive brand identity package typically includes: logo design (primary, secondary, and icon versions), color palette with specifications, typography system, brand guidelines document, business card and letterhead design, social media templates, and brand application examples. Additional elements like packaging, signage, and website design can be added based on needs."
+    },
+    {
+      question: "When should a business consider rebranding?",
+      answer: "Consider rebranding when your current brand no longer reflects your business values or direction, when entering new markets or expanding services, when your brand looks outdated compared to competitors, after a merger or acquisition, or when your target audience has shifted. A brand refresh can modernize your image while maintaining brand equity."
+    }
+  ];
+
+  // Structured data for this service page
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": "https://tikit.ae/services/branding#service",
+    "name": "Branding and Identity Design Services",
+    "description": "Branding is the strategic process of creating a unique identity for a business or product. It encompasses visual elements such as logo design, color palette, typography, and imagery, combined with brand messaging, voice, and values to create a cohesive identity that resonates with target audiences and differentiates the business from competitors.",
+    "provider": {
+      "@type": "Organization",
+      "name": "Tikit Agency",
+      "url": "https://tikit.ae",
+      "telephone": "+971 4 577 4042",
+      "email": "Holla@tikit.ae",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "The Burlington Tower, Marasi Drive, Office 309",
+        "addressLocality": "Dubai",
+        "addressCountry": "AE"
+      }
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "United Arab Emirates"
+    },
+    "serviceType": "Branding and Identity Design",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Branding Services",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Brand Strategy Development" }},
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Logo Design" }},
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Visual Identity Systems" }},
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Brand Guidelines" }},
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Packaging Design" }}
+      ]
+    }
+  };
 
   useEffect(() => {
     let ctx;
@@ -155,6 +230,21 @@ const Branding = () => {
       }`}
       dir={isRtl ? "rtl" : "ltr"}
     >
+      <SEOHead
+        title="Branding Services UAE | Brand Identity Design Agency Dubai"
+        description="Professional branding services in UAE. We create distinctive brand identities including logo design, visual identity systems, brand strategy, and guidelines. 300+ brands created with 15+ years of experience."
+        keywords="branding agency UAE, brand identity design Dubai, logo design UAE, branding company Dubai, visual identity, brand guidelines, packaging design UAE, corporate branding Dubai"
+        canonicalUrl="/services/branding"
+        serviceType="Branding and Identity Design"
+        structuredData={serviceSchema}
+        faqItems={faqItems}
+        breadcrumbs={[
+          { name: "Home", url: "/" },
+          { name: "Services", url: "/services" },
+          { name: "Branding", url: "/services/branding" }
+        ]}
+      />
+
       {/* Hero Section */}
       <section
         ref={heroRef}
@@ -174,6 +264,81 @@ const Branding = () => {
           <p className="hero-animate text-lg md:text-xl text-[var(--foreground)]/70 max-w-3xl mx-auto leading-relaxed">
             {t("serviceSections.branding.hero.description")}
           </p>
+        </div>
+      </section>
+
+      {/* Divider */}
+      <div className="container mx-auto px-6">
+        <div className="h-px bg-gradient-to-r from-transparent via-[var(--foreground)]/20 to-transparent" />
+      </div>
+
+      {/* Service Definition Section - SEO Optimized */}
+      <section ref={definitionRef} className="py-16 px-6">
+        <div className="max-w-4xl mx-auto">
+          <h2 className={`text-2xl md:text-3xl font-bold text-[var(--foreground)] mb-6 ${language === "ar" ? "font-cairo" : "font-antonio"}`}>
+            What is Branding?
+          </h2>
+          <p className="text-lg text-[var(--foreground)]/80 leading-relaxed mb-8">
+            Branding is the strategic process of creating a unique identity for a business or product. It encompasses visual elements such as logo design, color palette, typography, and imagery, combined with brand messaging, voice, and values to create a cohesive identity that resonates with target audiences and differentiates the business from competitors in the marketplace.
+          </p>
+
+          {/* Key Benefits - Bullet List */}
+          <div className="mb-8">
+            <h3 className={`text-xl font-bold text-[var(--foreground)] mb-4 ${language === "ar" ? "font-cairo" : "font-antonio"}`}>
+              Key Benefits of Professional Branding
+            </h3>
+            <ul className="space-y-3">
+              <li className="flex items-start gap-3">
+                <HiCheckCircle className="w-6 h-6 text-[#52C3C5] flex-shrink-0 mt-0.5" />
+                <span className="text-[var(--foreground)]/80">Increased brand recognition and recall among target audiences</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <HiCheckCircle className="w-6 h-6 text-[#52C3C5] flex-shrink-0 mt-0.5" />
+                <span className="text-[var(--foreground)]/80">Clear differentiation from competitors in crowded markets</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <HiCheckCircle className="w-6 h-6 text-[#52C3C5] flex-shrink-0 mt-0.5" />
+                <span className="text-[var(--foreground)]/80">Builds trust and credibility with customers and stakeholders</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <HiCheckCircle className="w-6 h-6 text-[#52C3C5] flex-shrink-0 mt-0.5" />
+                <span className="text-[var(--foreground)]/80">Consistent visual and verbal identity across all touchpoints</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <HiCheckCircle className="w-6 h-6 text-[#52C3C5] flex-shrink-0 mt-0.5" />
+                <span className="text-[var(--foreground)]/80">Supports premium pricing and customer loyalty over time</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* How It Works - Numbered List */}
+          <div>
+            <h3 className={`text-xl font-bold text-[var(--foreground)] mb-4 ${language === "ar" ? "font-cairo" : "font-antonio"}`}>
+              The Branding Process
+            </h3>
+            <ol className="space-y-3">
+              <li className="flex items-start gap-3">
+                <span className="w-6 h-6 rounded-full bg-[#52C3C5] text-white text-sm flex items-center justify-center flex-shrink-0 mt-0.5">1</span>
+                <span className="text-[var(--foreground)]/80">Discovery and research phase to understand business, competitors, and target audience</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="w-6 h-6 rounded-full bg-[#52C3C5] text-white text-sm flex items-center justify-center flex-shrink-0 mt-0.5">2</span>
+                <span className="text-[var(--foreground)]/80">Strategy development defining brand positioning, personality, and messaging</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="w-6 h-6 rounded-full bg-[#52C3C5] text-white text-sm flex items-center justify-center flex-shrink-0 mt-0.5">3</span>
+                <span className="text-[var(--foreground)]/80">Visual exploration creating multiple design directions and concepts</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="w-6 h-6 rounded-full bg-[#52C3C5] text-white text-sm flex items-center justify-center flex-shrink-0 mt-0.5">4</span>
+                <span className="text-[var(--foreground)]/80">Refinement and finalization of chosen direction with detailed execution</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="w-6 h-6 rounded-full bg-[#52C3C5] text-white text-sm flex items-center justify-center flex-shrink-0 mt-0.5">5</span>
+                <span className="text-[var(--foreground)]/80">Brand system creation and comprehensive guidelines documentation</span>
+              </li>
+            </ol>
+          </div>
         </div>
       </section>
 
@@ -423,6 +588,69 @@ const Branding = () => {
           </div>
         </div>
       </section>
+
+      {/* Why Trust Us Section - Entity & Trust Signals */}
+      <section ref={trustRef} className="py-20 px-6 bg-[var(--foreground)]/5">
+        <div className="max-w-6xl mx-auto">
+          <h2 className={`text-3xl md:text-4xl font-bold text-[var(--foreground)] text-center mb-4 ${language === "ar" ? "font-cairo" : "font-antonio"}`}>
+            Why Trust Tikit Agency
+          </h2>
+          <p className="text-[var(--foreground)]/60 text-center mb-12 max-w-2xl mx-auto">
+            Our experience and credentials in branding and identity design across the UAE and GCC region
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="p-6 rounded-2xl bg-[var(--background)] border border-[var(--foreground)]/10">
+              <div className="w-12 h-12 rounded-full bg-[#52C3C5]/10 flex items-center justify-center mb-4">
+                <HiBadgeCheck className="w-6 h-6 text-[#52C3C5]" />
+              </div>
+              <h3 className="text-lg font-bold text-[var(--foreground)] mb-2">15+ Years Combined Experience</h3>
+              <p className="text-[var(--foreground)]/70 text-sm">Our design team brings extensive experience in brand identity creation.</p>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-[var(--background)] border border-[var(--foreground)]/10">
+              <div className="w-12 h-12 rounded-full bg-[#52C3C5]/10 flex items-center justify-center mb-4">
+                <HiGlobe className="w-6 h-6 text-[#52C3C5]" />
+              </div>
+              <h3 className="text-lg font-bold text-[var(--foreground)] mb-2">Regional Understanding</h3>
+              <p className="text-[var(--foreground)]/70 text-sm">Deep knowledge of UAE and GCC market aesthetics and cultural nuances.</p>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-[var(--background)] border border-[var(--foreground)]/10">
+              <div className="w-12 h-12 rounded-full bg-[#52C3C5]/10 flex items-center justify-center mb-4">
+                <HiUserGroup className="w-6 h-6 text-[#52C3C5]" />
+              </div>
+              <h3 className="text-lg font-bold text-[var(--foreground)] mb-2">300+ Brands Created</h3>
+              <p className="text-[var(--foreground)]/70 text-sm">Served startups, SMEs, and enterprises across multiple industries.</p>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-[var(--background)] border border-[var(--foreground)]/10">
+              <div className="w-12 h-12 rounded-full bg-[#52C3C5]/10 flex items-center justify-center mb-4">
+                <HiChartBar className="w-6 h-6 text-[#52C3C5]" />
+              </div>
+              <h3 className="text-lg font-bold text-[var(--foreground)] mb-2">25+ Industry Awards</h3>
+              <p className="text-[var(--foreground)]/70 text-sm">Recognized for creative excellence and innovative design solutions.</p>
+            </div>
+          </div>
+
+          <div className="mt-12 text-center">
+            <p className="text-[var(--foreground)]/70 max-w-3xl mx-auto">
+              Tikit Agency has created brand identities for clients across industries including hospitality, real estate, technology, F&B, fashion, healthcare, and financial services. Our design team combines strategic thinking with creative execution to deliver brands that stand out and drive business results.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Divider */}
+      <div className="container mx-auto px-6">
+        <div className="h-px bg-gradient-to-r from-transparent via-[var(--foreground)]/20 to-transparent" />
+      </div>
+
+      {/* FAQ Section */}
+      <FAQ 
+        items={faqItems} 
+        title="Frequently Asked Questions About Branding"
+      />
 
       {/* CTA Section */}
       <section className="py-20 px-6">
