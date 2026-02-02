@@ -1,6 +1,5 @@
 import React from "react";
 import Hero from "./Hero";
-import AnimatedLines from "./AnimatedLines";
 import Action from "./Action";
 import "./contact.css";
 import Footer from "../../components/Footer";
