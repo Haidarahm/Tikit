@@ -99,9 +99,9 @@ const ElasticGridScroll = () => {
       columnsMeta.forEach(({ element, lag }) => {
         gsap.fromTo(
           element,
-          { yPercent: -yOffset },
+          { yPercent: yOffset },
           {
-            yPercent: yOffset,
+            yPercent: -yOffset,
             ease: "none",
             scrollTrigger: {
               trigger: triggerEl,
@@ -173,22 +173,7 @@ const ElasticGridScroll = () => {
   return (
     <section className="elastic-grid-section w-full py-16 md:py-24 px-4 md:px-8">
       <div id="smooth-content" className="max-w-6xl mx-auto">
-        <header className="demo-3__header mb-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-          <div>
-            <h2 className="text-2xl md:text-3xl font-semibold text-[var(--foreground)]">
-              Elastic Grid Scroll Demo
-            </h2>
-            <p className="text-sm md:text-base text-[var(--muted-foreground)] mt-1">
-              A GSAP-powered, stair-like lag grid using assets from the elastic
-              folder.
-            </p>
-          </div>
-          <nav className="flex gap-4 text-xs md:text-sm uppercase tracking-wide text-[var(--muted-foreground)]">
-            <span>All</span>
-            <span>Brand</span>
-            <span>Social</span>
-          </nav>
-        </header>
+        
 
         <div ref={gridRef} className="grid">
           {images.map((img, index) => (

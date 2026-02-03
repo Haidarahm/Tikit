@@ -167,22 +167,7 @@ const ElasticGridSection = () => {
   return (
     <section className="elastic-grid-section w-full py-16 md:py-24 px-4 md:px-8">
       <div id="smooth-content" className="max-w-6xl mx-auto">
-        <header className="demo-3__header mb-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-          <div>
-            <h2 className="text-2xl md:text-3xl font-semibold text-[var(--foreground)]">
-              Elastic Case Studies Grid
-            </h2>
-            <p className="text-sm md:text-base text-[var(--muted-foreground)] mt-1">
-              Scroll to see our work cards move in a staggered, stair-like
-              pattern.
-            </p>
-          </div>
-          <nav className="flex gap-4 text-xs md:text-sm uppercase tracking-wide text-[var(--muted-foreground)]">
-            <span>Featured</span>
-            <span>Social</span>
-            <span>Production</span>
-          </nav>
-        </header>
+        
 
         <div ref={gridRef} className="grid">
           {IMAGES.map((img, index) => (

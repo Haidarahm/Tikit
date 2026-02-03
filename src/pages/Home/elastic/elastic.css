@@ -63,31 +63,15 @@ body.demo-3.loading::after {
 }
 
 /* Header links inside elastic section */
-.demo-3__header a {
-  color: var(--color-link);
-  text-decoration: none;
-}
 
-.demo-3__header a:hover {
-  color: var(--color-link-hover);
-}
+
 
 .elastic-grid-section{
     overflow: hidden;
-    padding-top: 400px;
+    /* padding-top: 100px; */
 }
-@media (min-width: 876px) {
-    .elastic-grid-section {
-      height: 2000px;
-    }
-    
-  }
-  @media (min-width: 1025px) {
-    .elastic-grid-section {
-      height: 2900px;
-    }
-    
-  }
+
+ 
 
 
 /* Grid layout - scoped when inside .elastic-grid-section to avoid conflicts */
