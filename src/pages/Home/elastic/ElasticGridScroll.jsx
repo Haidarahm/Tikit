@@ -99,13 +99,13 @@ const ElasticGridScroll = () => {
       columnsMeta.forEach(({ element, lag }) => {
         gsap.fromTo(
           element,
-          { yPercent: yOffset },
+          { yPercent: 10  },
           {
-            yPercent: -yOffset,
+            yPercent: -yOffset * 2,
             ease: "none",
             scrollTrigger: {
               trigger: triggerEl,
-              start: "top bottom",
+              start: "top top",
               end: "bottom top",
               scrub: lag,
             },
@@ -173,7 +173,11 @@ const ElasticGridScroll = () => {
   return (
     <section className="elastic-grid-section w-full px-4 md:px-8">
       <div id="smooth-content" className="max-w-6xl mx-auto">
-        
+        <div className="flex items-center justify-between mb-4">
+          <p className="text-xs tracking-[0.3em] uppercase text-[var(--muted-foreground,#a0a0a0)]">
+            Reels
+          </p>
+        </div>
 
         <div ref={gridRef} className="grid">
           {images.map((img, index) => (

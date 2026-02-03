@@ -68,12 +68,13 @@ body.demo-3.loading::after {
 
 .elastic-grid-section{
     overflow: hidden;
-    height: 1680px;
+    padding-top: 0;
 }
 
 /* Grid layout - scoped when inside .elastic-grid-section to avoid conflicts */
 .elastic-grid-section .grid {
   display: grid;
+  padding: 0 var(--page-padding) clamp(0.5rem, 1.2vw, 0.85rem);
   margin: 0 auto;
   grid-template-columns: repeat(
     var(--column-count),
@@ -87,6 +88,7 @@ body.demo-3.loading::after {
   display: flex;
   flex-direction: column;
   gap: var(--r-gap);
+  align-self: flex-start;
 }
 
 .elastic-grid-section .grid__item {
