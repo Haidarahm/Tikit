@@ -171,7 +171,7 @@ const ElasticGridScroll = () => {
   }, []);
 
   return (
-    <section className="elastic-grid-section w-full py-16 md:py-24 px-4 md:px-8">
+    <section className="elastic-grid-section w-full px-4 md:px-8">
       <div id="smooth-content" className="max-w-6xl mx-auto">
         
 
