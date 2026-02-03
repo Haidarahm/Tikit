@@ -1,0 +1,119 @@
+/* -------------------------------------------------------
+   Elastic Grid Demo (.demo-3)
+   Used by ElasticGridScroll.jsx
+-------------------------------------------------------- */
+
+body.demo-3 {
+  --page-padding: 4vw;
+  --c-gap: 1.5rem;
+  --r-gap: 1.5rem;
+  --column-size: 220px;
+  --column-count: 4;
+  --color-text: #ffffff;
+  --color-bg: #5e5d59;
+  --color-link: #040404;
+  --color-link-hover: #d63937;
+}
+
+@media (min-width: 1024px) {
+  body.demo-3 {
+    --column-count: 5;
+    --c-gap: 0.5rem;
+  }
+}
+
+body.demo-3.loading::before,
+body.demo-3.loading::after {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 40;
+}
+
+body.demo-3.loading::before {
+  content: "";
+  background: var(--color-bg);
+}
+
+body.demo-3.loading::after {
+  content: "";
+  width: 40%;
+  max-width: 320px;
+  height: 4px;
+  margin: auto;
+  border-radius: 999px;
+  background: var(--color-link-hover);
+  transform-origin: left center;
+  animation: demo3-loading-bar 1.4s ease-in-out infinite;
+}
+
+@keyframes demo3-loading-bar {
+  0% {
+    transform: scaleX(0);
+    opacity: 0.4;
+  }
+  40% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scaleX(0);
+    opacity: 0.4;
+  }
+}
+
+/* Header links inside elastic section */
+.demo-3__header a {
+  color: var(--color-link);
+  text-decoration: none;
+}
+
+.demo-3__header a:hover {
+  color: var(--color-link-hover);
+}
+
+/* Grid layout - scoped when inside .elastic-grid-section to avoid conflicts */
+.elastic-grid-section .grid {
+  display: grid;
+  padding: 4rem var(--page-padding);
+  margin: 0 auto;
+  grid-template-columns: repeat(
+    var(--column-count),
+    minmax(var(--column-size), 1fr)
+  );
+  grid-column-gap: var(--c-gap);
+  grid-row-gap: var(--r-gap);
+}
+
+.elastic-grid-section .grid__column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--r-gap);
+}
+
+.elastic-grid-section .grid__item {
+  display: flex;
+  flex-direction: column;
+  color: var(--color-text, #ffffff);
+}
+
+.elastic-grid-section .grid__item-img {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 128 / 160;
+  min-height: 200px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 0.75rem;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+.elastic-grid-section .grid__item-caption {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 0.4rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.92);
+}

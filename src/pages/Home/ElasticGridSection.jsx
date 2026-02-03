@@ -1,54 +1,55 @@
-import React, { useEffect, useRef, useMemo } from "react";
+import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { preloadImages } from "../../../utils/preloadImages";
-import "./elastic.css";
+import { preloadImages } from "../../utils/preloadImages";
+import "./elastic/elastic.css";
+
+import img1 from "../../assets/images/goal-image-1.webp";
+import img2 from "../../assets/images/goal-image-2.webp";
+import img3 from "../../assets/images/goal-image-3.webp";
+import img4 from "../../assets/images/goal-image-4.webp";
+import work1 from "../../assets/work/hidden.webp";
+import work2 from "../../assets/work/porsche.webp";
+import work3 from "../../assets/work/the-reve.webp";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const ElasticGridScroll = () => {
+const IMAGES = [
+  { src: img1, label: "Creator partnerships" },
+  { src: img2, label: "Campaign analytics" },
+  { src: img3, label: "Content production" },
+  { src: img4, label: "Brand strategy" },
+  { src: work1, label: "Hidden project" },
+  { src: work2, label: "Porsche campaign" },
+  { src: work3, label: "The Reve launch" },
+  { src: img2, label: "Community growth" },
+  { src: img3, label: "Storytelling" },
+  { src: img4, label: "Engagement" },
+];
+
+const ElasticGridSection = () => {
   const gridRef = useRef(null);
   const originalItemsRef = useRef([]);
   const currentColumnCountRef = useRef(0);
 
-  // Load all images from assets/elastic (1.webp, 2.webp, ...)
-  const images = useMemo(() => {
-    const modules = import.meta.glob("../../../assets/elastic/*.webp", {
-      eager: true,
-    });
-
-    return Object.keys(modules)
-      .sort((a, b) => {
-        const numA = parseInt(a.replace(/\D/g, ""), 10) || 0;
-        const numB = parseInt(b.replace(/\D/g, ""), 10) || 0;
-        return numA - numB;
-      })
-      .map((key) => {
-        const fileName = key.split("/").pop() || "";
-        const base = fileName.replace(".webp", "");
-        return {
-          src: modules[key].default,
-          label: `Elastic ${base}`,
-        };
-      });
-  }, []);
-
   useEffect(() => {
-    const grid = gridRef.current;
-    if (!grid) return;
-
     const body = document.body;
     body.classList.add("demo-3", "loading");
+
+    const grid = gridRef.current;
+    if (!grid) return;
 
     const originalItems = Array.from(grid.querySelectorAll(".grid__item"));
     originalItemsRef.current = originalItems;
 
     const clearGrid = () => {
+      // Remove existing column wrappers if any
       const existingColumns = Array.from(
         grid.querySelectorAll(".grid__column")
       );
       existingColumns.forEach((col) => col.remove());
 
+      // Re-append original items in initial order
       originalItemsRef.current.forEach((item) => {
         if (!grid.contains(item)) {
           grid.appendChild(item);
@@ -67,12 +68,17 @@ const ElasticGridScroll = () => {
         const column = document.createElement("div");
         column.className = "grid__column";
 
-        items.forEach((item) => column.appendChild(item));
+        items.forEach((item) => {
+          column.appendChild(item);
+        });
 
         fragment.appendChild(column);
 
         const lag = baseLag + (index + 1) * lagScale;
-        columnMeta.push({ element: column, lag });
+        columnMeta.push({
+          element: column,
+          lag,
+        });
       });
 
       grid.innerHTML = "";
@@ -82,35 +88,26 @@ const ElasticGridScroll = () => {
     };
 
     const applyColumnEffects = (columnsMeta) => {
-      // Kill previous ScrollTriggers for this grid only
+      // Clear previous triggers for this grid
       ScrollTrigger.getAll().forEach((st) => {
         if (st.vars && st.vars.trigger && grid.contains(st.vars.trigger)) {
           st.kill();
         }
       });
 
-      // Single scroll range: use the grid's section (parent) so all columns share the same progress
-      const section = grid.closest("section");
-      const triggerEl = section || grid;
+      columnsMeta.forEach((colMeta, index) => {
+        const { element, lag } = colMeta;
 
-      // Stair-like lag: each column moves vertically with scroll; higher scrub = more lag (trails behind)
-      const yOffset = 20; // percent movement so the lag is clearly visible
-
-      columnsMeta.forEach(({ element, lag }) => {
-        gsap.fromTo(
-          element,
-          { yPercent: -yOffset },
-          {
-            yPercent: yOffset,
-            ease: "none",
-            scrollTrigger: {
-              trigger: triggerEl,
-              start: "top bottom",
-              end: "bottom top",
-              scrub: lag,
-            },
-          }
-        );
+        gsap.to(element, {
+          yPercent: 0,
+          ease: "none",
+          scrollTrigger: {
+            trigger: element,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: lag,
+          },
+        });
       });
     };
 
@@ -153,9 +150,6 @@ const ElasticGridScroll = () => {
     preloadImages(".grid__item-img").then(() => {
       body.classList.remove("loading");
       init();
-      requestAnimationFrame(() => {
-        ScrollTrigger.refresh();
-      });
       window.addEventListener("resize", handleResize);
     });
 
@@ -176,26 +170,28 @@ const ElasticGridScroll = () => {
         <header className="demo-3__header mb-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div>
             <h2 className="text-2xl md:text-3xl font-semibold text-[var(--foreground)]">
-              Elastic Grid Scroll Demo
+              Elastic Case Studies Grid
             </h2>
             <p className="text-sm md:text-base text-[var(--muted-foreground)] mt-1">
-              A GSAP-powered, stair-like lag grid using assets from the elastic
-              folder.
+              Scroll to see our work cards move in a staggered, stair-like
+              pattern.
             </p>
           </div>
           <nav className="flex gap-4 text-xs md:text-sm uppercase tracking-wide text-[var(--muted-foreground)]">
-            <span>All</span>
-            <span>Brand</span>
+            <span>Featured</span>
             <span>Social</span>
+            <span>Production</span>
           </nav>
         </header>
 
         <div ref={gridRef} className="grid">
-          {images.map((img, index) => (
+          {IMAGES.map((img, index) => (
             <figure className="grid__item" key={index}>
               <div
                 className="grid__item-img"
-                style={{ backgroundImage: `url(${img.src})` }}
+                style={{
+                  backgroundImage: `url(${img.src})`,
+                }}
               />
               <figcaption className="grid__item-caption">
                 {img.label}
@@ -208,4 +204,5 @@ const ElasticGridScroll = () => {
   );
 };
 
-export default ElasticGridScroll;
+export default ElasticGridSection;
+

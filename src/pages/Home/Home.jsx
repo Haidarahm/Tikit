@@ -3,6 +3,7 @@ import React from "react";
 import Hero from "./Hero";
 import SEOHead from "../../components/SEOHead";
 import Blogs from "./Blogs";
+import ElasticGridScroll from "./elastic/ElasticGridScroll";
 
 // Dynamic imports for below-the-fold components
 const Numbers = React.lazy(() => import("./Numbers"));
@@ -193,7 +194,7 @@ function Home() {
         <Goals />
       </React.Suspense>
       <React.Suspense fallback={<div className="h-40 animate-pulse bg-gray-200/20 rounded" />}>
-        <Goals />
+        <ElasticGridScroll />
       </React.Suspense>
 
       <React.Suspense fallback={<div className="h-60 animate-pulse bg-gray-200/20 rounded" />}>
