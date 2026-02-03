@@ -111,11 +111,6 @@ const EventDetails = () => {
     return () => ctx.revert();
   }, [item?.id, media.length]);
 
-  // Scroll to top on mount
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "instant" });
-  }, [id]);
-
   useEffect(() => {
     if (!id) return;
 

@@ -57,15 +57,10 @@ const Work = () => {
   const [activeType, setActiveType] = useState(null);
   const lenisCleanupTimeout = useRef(null);
 
-  // Only scroll to top on initial mount (when coming from another page)
-  // Don't scroll if we're just changing work sections
   useEffect(() => {
-    // Check if we're navigating from a non-work page
-    const isFromOtherPage = !document.referrer.includes('/work/');
-    if (isFromOtherPage || workId === undefined) {
-      window.scrollTo(0, 0);
-    }
-    gsap.ticker.add(() => ScrollTrigger.update());
+    const ticker = () => ScrollTrigger.update();
+    gsap.ticker.add(ticker);
+    return () => gsap.ticker.remove(ticker);
   }, []);
 
   useEffect(() => {
@@ -222,7 +217,7 @@ const Work = () => {
         activeSectionId={activeSectionId}
         onSelect={(section) => {
           if (section.id === activeSectionId) return;
-          // Navigate with preserveScroll flag to prevent ScrollToTop from triggering
+          // Navigate with preserveScroll flag to prevent scroll-to-top from triggering
           navigate(`/work/${section.id}`, { 
             state: { preserveScroll: true }
           });

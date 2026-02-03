@@ -3,7 +3,6 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../store/I18nLanguageContext";
-import { useScrollToTop } from "../../hooks/useScrollToTop";
 import influencerHero from "../../assets/services/Influencer-Marketing.webp";
 import influencer1 from "../../assets/influencers/Ahmed ben chaibah.webp";
 import influencer2 from "../../assets/influencers/hessa alfalasi.webp";
@@ -25,9 +24,6 @@ const InfluencerMarketing = () => {
   const showcaseRef = useRef(null);
   const definitionRef = useRef(null);
   const trustRef = useRef(null);
-
-  // Scroll to top on mount
-  useScrollToTop();
 
   // FAQ items from translations (for display and schema)
   const faqItems = t("serviceSections.influencerMarketing.faqItems", { returnObjects: true });

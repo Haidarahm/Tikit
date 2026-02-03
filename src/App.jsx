@@ -4,7 +4,7 @@ import { ThemeProvider } from "./store/ThemeContext.jsx";
 import { ClientProvider } from "./store/ClientContext.jsx";
 import Navbar from "./components/navbar/Navbar.jsx";
 import { Outlet } from "react-router-dom";
-import ScrollToTop from "./components/ScrollToTop";
+import { useScrollToTopOnRouteChange } from "./hooks/useScrollToTopOnRouteChange";
 import AOSRefresher from "./components/AOSRefresher";
 import ScrollToHash from "./components/ScrollToHash";
 import LogoIntro from "./components/LogoIntro";
@@ -86,10 +86,11 @@ const NotFound = lazy(() => import("./pages/NotFound.jsx"));
 // Loading component
 const LoadingSpinner = () => <Loader />;
 
-const Layout = () => (
-  <>
-    <ScrollToTop />
-    <ScrollToHash />
+const Layout = () => {
+  useScrollToTopOnRouteChange();
+  return (
+    <>
+      <ScrollToHash />
     <AOSRefresher />
     <div className="relative w-full min-h-full">
       <Navbar />
@@ -98,7 +99,8 @@ const Layout = () => (
       </main>
     </div>
   </>
-);
+  );
+};
 
 function App() {
   return (

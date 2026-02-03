@@ -24,7 +24,6 @@ export const News = () => {
     const htmlEl = document.documentElement;
     htmlEl.classList.remove("has-scroll-smooth", "has-scroll-init");
     document.body.style.removeProperty("overflow");
-    window.scrollTo(0, 0);
   }, [isReady]);
 
   // Don't render until theme is loaded

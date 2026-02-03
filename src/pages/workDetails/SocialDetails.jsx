@@ -59,11 +59,6 @@ const SocialDetails = () => {
   const mediaRef = useRef(null);
   const textRef = useRef(null);
 
-  // Scroll to top on mount
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "instant" });
-  }, [id]);
-
   useEffect(() => {
     if (!id) return;
 
