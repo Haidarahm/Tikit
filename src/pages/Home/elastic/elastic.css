@@ -81,10 +81,14 @@ body.demo-3.loading::after {
 }
 @media (min-width: 1024px) {
     .elastic-grid-section {
-      height: 1370px;
+      height: 1450px;
     }
   }
-
+  @media (min-width: 1280px) {
+    .elastic-grid-section {
+      height: 1520px;
+    }
+  }
 .elastic-grid-section {
   overflow: hidden;
   padding-top: 0;
@@ -124,8 +128,8 @@ body.demo-3.loading::after {
 .elastic-grid-section .grid__item-img {
   position: relative;
   width: 100%;
-  aspect-ratio: 128 / 160;
-  min-height: 140px;
+  aspect-ratio: 128 / 200;
+  min-height: 180px;
   background-size: cover;
   background-position: center;
   border-radius: 0.75rem;
@@ -135,7 +139,8 @@ body.demo-3.loading::after {
 
 @media (min-width: 1024px) {
   .elastic-grid-section .grid__item-img {
-    min-height: 200px;
+    aspect-ratio: 128 / 220;
+    min-height: 250px;
   }
 }
 
