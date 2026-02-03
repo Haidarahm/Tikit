@@ -173,7 +173,7 @@ const ElasticGridScroll = () => {
   return (
     <section className="elastic-grid-section w-full px-4 md:px-8">
       <div id="smooth-content" className="max-w-6xl mx-auto">
-        <div className="flex items-center justify-between mb-4">
+        <div className="elastic-grid-section__header flex items-center justify-between mb-2">
           <p className="text-xs tracking-[0.3em] uppercase text-[var(--muted-foreground,#a0a0a0)]">
             Reels
           </p>

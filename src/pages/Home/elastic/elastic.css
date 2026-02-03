@@ -66,9 +66,13 @@ body.demo-3.loading::after {
 
 
 
-.elastic-grid-section{
-    overflow: hidden;
-    padding-top: 0;
+.elastic-grid-section {
+  overflow: hidden;
+  padding-top: 0;
+  padding-bottom: 0;
+  height: 1450px;
+  min-height: 0;
+  display: flow-root;
 }
 
 /* Grid layout - scoped when inside .elastic-grid-section to avoid conflicts */
@@ -76,6 +80,7 @@ body.demo-3.loading::after {
   display: grid;
   padding: 0 var(--page-padding) clamp(0.5rem, 1.2vw, 0.85rem);
   margin: 0 auto;
+  align-content: start;
   grid-template-columns: repeat(
     var(--column-count),
     minmax(var(--column-size), 1fr)
