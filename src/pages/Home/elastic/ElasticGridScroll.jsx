@@ -94,7 +94,7 @@ const ElasticGridScroll = () => {
       const triggerEl = section || grid;
 
       // Stair-like lag: each column moves vertically with scroll; higher scrub = more lag (trails behind)
-      const yOffset = 20; // percent movement so the lag is clearly visible
+      const yOffset = 35; // percent movement — larger value = more distance the cards travel
 
       columnsMeta.forEach(({ element, lag }) => {
         gsap.fromTo(
