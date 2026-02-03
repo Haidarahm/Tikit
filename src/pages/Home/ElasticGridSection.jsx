@@ -166,7 +166,7 @@ const ElasticGridSection = () => {
 
   return (
     <section className="elastic-grid-section w-full px-4 md:px-8">
-      <div id="smooth-content" className="max-w-6xl mx-auto">
+      <div id="smooth-content" className="max-w-6xl mx-auto h-full">
         
 
         <div ref={gridRef} className="grid">

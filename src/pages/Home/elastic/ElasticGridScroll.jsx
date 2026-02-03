@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useMemo } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { preloadImages } from "../../../utils/preloadImages";
 import "./elastic.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -11,26 +10,110 @@ const ElasticGridScroll = () => {
   const originalItemsRef = useRef([]);
   const currentColumnCountRef = useRef(0);
 
-  // Load all images from assets/elastic (1.webp, 2.webp, ...)
-  const images = useMemo(() => {
-    const modules = import.meta.glob("../../../assets/elastic/*.webp", {
-      eager: true,
-    });
-
-    return Object.keys(modules)
-      .sort((a, b) => {
-        const numA = parseInt(a.replace(/\D/g, ""), 10) || 0;
-        const numB = parseInt(b.replace(/\D/g, ""), 10) || 0;
-        return numA - numB;
-      })
-      .map((key) => {
-        const fileName = key.split("/").pop() || "";
-        const base = fileName.replace(".webp", "");
-        return {
-          src: modules[key].default,
-          label: `Elastic ${base}`,
-        };
-      });
+  // Sample video URLs for testing
+  const videos = useMemo(() => {
+    return [
+      {
+        src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+        label: "Big Buck Bunny",
+        type: "video/mp4",
+      },
+      {
+        src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+        label: "Elephants Dream",
+        type: "video/mp4",
+      },
+      {
+        src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+        label: "For Bigger Blazes",
+        type: "video/mp4",
+      },
+      {
+        src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+        label: "For Bigger Escapes",
+        type: "video/mp4",
+      },
+      {
+        src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+        label: "For Bigger Fun",
+        type: "video/mp4",
+      },
+      {
+        src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
+        label: "For Bigger Joyrides",
+        type: "video/mp4",
+      },
+      {
+        src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4",
+        label: "For Bigger Meltdowns",
+        type: "video/mp4",
+      },
+      {
+        src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4",
+        label: "Sintel",
+        type: "video/mp4",
+      },
+      {
+        src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4",
+        label: "Subaru Outback",
+        type: "video/mp4",
+      },
+      {
+        src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
+        label: "Tears of Steel",
+        type: "video/mp4",
+      },
+      {
+        src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/VolkswagenGTIReview.mp4",
+        label: "Volkswagen GTI",
+        type: "video/mp4",
+      },
+      {
+        src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WhatCarCanYouGetForAGrand.mp4",
+        label: "What Car Can You Get",
+        type: "video/mp4",
+      },
+      {
+        src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4",
+        label: "We Are Going On Bullrun",
+        type: "video/mp4",
+      },
+      {
+        src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TheLastNapkin.mp4",
+        label: "The Last Napkin",
+        type: "video/mp4",
+      },
+      {
+        src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJetblasts.mp4",
+        label: "For Bigger Jetblasts",
+        type: "video/mp4",
+      },
+      {
+        src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMobisodes.mp4",
+        label: "For Bigger Mobisodes",
+        type: "video/mp4",
+      },
+      {
+        src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerExplosions.mp4",
+        label: "For Bigger Explosions",
+        type: "video/mp4",
+      },
+      {
+        src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerStreamers.mp4",
+        label: "For Bigger Streamers",
+        type: "video/mp4",
+      },
+      {
+        src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerSurprises.mp4",
+        label: "For Bigger Surprises",
+        type: "video/mp4",
+      },
+      {
+        src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerTrips.mp4",
+        label: "For Bigger Trips",
+        type: "video/mp4",
+      },
+    ];
   }, []);
 
   useEffect(() => {
@@ -39,6 +122,28 @@ const ElasticGridScroll = () => {
 
     const body = document.body;
     body.classList.add("demo-3", "loading");
+
+    // Setup video autoplay on intersection
+    const videoObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const video = entry.target;
+          if (entry.isIntersecting) {
+            video.play().catch((err) => {
+              console.log("Video autoplay prevented:", err);
+            });
+          } else {
+            video.pause();
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    const observeVideos = () => {
+      const videos = grid.querySelectorAll(".grid__item-video");
+      videos.forEach((video) => videoObserver.observe(video));
+    };
 
     const originalItems = Array.from(grid.querySelectorAll(".grid__item"));
     originalItemsRef.current = originalItems;
@@ -134,6 +239,7 @@ const ElasticGridScroll = () => {
 
       const columnsMeta = buildGrid(columns);
       applyColumnEffects(columnsMeta);
+      observeVideos();
     };
 
     const handleResize = () => {
@@ -150,18 +256,18 @@ const ElasticGridScroll = () => {
       }
     };
 
-    preloadImages(".grid__item-img").then(() => {
-      body.classList.remove("loading");
-      init();
-      requestAnimationFrame(() => {
-        ScrollTrigger.refresh();
-      });
-      window.addEventListener("resize", handleResize);
+    // Remove loading class and initialize
+    body.classList.remove("loading");
+    init();
+    requestAnimationFrame(() => {
+      ScrollTrigger.refresh();
     });
+    window.addEventListener("resize", handleResize);
 
     return () => {
       body.classList.remove("demo-3", "loading");
       window.removeEventListener("resize", handleResize);
+      videoObserver.disconnect();
       ScrollTrigger.getAll().forEach((st) => {
         if (st.vars && st.vars.trigger && grid.contains(st.vars.trigger)) {
           st.kill();
@@ -172,7 +278,7 @@ const ElasticGridScroll = () => {
 
   return (
     <section className="elastic-grid-section w-full px-4 md:px-8">
-      <div id="smooth-content" className="max-w-6xl mx-auto">
+      <div id="smooth-content" className="max-w-6xl mx-auto h-full">
         <div className="elastic-grid-section__header flex items-center justify-between mb-2">
           <p className="text-xs tracking-[0.3em] uppercase text-[var(--muted-foreground,#a0a0a0)]">
             Reels
@@ -180,14 +286,21 @@ const ElasticGridScroll = () => {
         </div>
 
         <div ref={gridRef} className="grid">
-          {images.map((img, index) => (
+          {videos.map((video, index) => (
             <figure className="grid__item" key={index}>
-              <div
-                className="grid__item-img"
-                style={{ backgroundImage: `url(${img.src})` }}
-              />
+              <div className="grid__item-img">
+                <video
+                  className="grid__item-video"
+                  src={video.src}
+                  type={video.type}
+                  loop
+                  muted
+                  playsInline
+                  preload="metadata"
+                />
+              </div>
               <figcaption className="grid__item-caption">
-                {img.label}
+                {video.label}
               </figcaption>
             </figure>
           ))}
