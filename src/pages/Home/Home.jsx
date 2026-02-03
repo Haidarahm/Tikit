@@ -192,6 +192,10 @@ function Home() {
       <React.Suspense fallback={<div className="h-40 animate-pulse bg-gray-200/20 rounded" />}>
         <Goals />
       </React.Suspense>
+      <React.Suspense fallback={<div className="h-40 animate-pulse bg-gray-200/20 rounded" />}>
+        <Goals />
+      </React.Suspense>
+
       <React.Suspense fallback={<div className="h-60 animate-pulse bg-gray-200/20 rounded" />}>
         <Influencers />
       </React.Suspense>
