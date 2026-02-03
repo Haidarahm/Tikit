@@ -68,16 +68,12 @@ body.demo-3.loading::after {
 
 .elastic-grid-section{
     overflow: hidden;
-    /* padding-top: 100px; */
 }
-
- 
-
 
 /* Grid layout - scoped when inside .elastic-grid-section to avoid conflicts */
 .elastic-grid-section .grid {
   display: grid;
-  padding: 4rem var(--page-padding);
+  padding: clamp(1rem, 2.5vw, 2rem) var(--page-padding);
   margin: 0 auto;
   grid-template-columns: repeat(
     var(--column-count),
