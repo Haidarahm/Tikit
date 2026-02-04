@@ -7,7 +7,6 @@ gsap.registerPlugin(Observer);
 export default function InfiniteScroll({
   width = "30rem",
   maxHeight = "100%",
-  negativeMargin = "-2em",
   items = [],
   itemMinHeight = 150,
   isTilted = false,
@@ -15,9 +14,7 @@ export default function InfiniteScroll({
   autoplay = false,
   autoplaySpeed = 0.5,
   autoplayDirection = "down",
-  pauseOnHover = false,
 }) {
-  const wrapperRef = useRef(null);
   const containerRef = useRef(null);
 
   const getTiltTransform = () => {
@@ -29,145 +26,109 @@ export default function InfiniteScroll({
 
   useEffect(() => {
     const container = containerRef.current;
-    if (!container) return;
-    if (items.length === 0) return;
+    if (!container || items.length === 0) return;
 
-    const divItems = gsap.utils.toArray(container.children);
-    if (!divItems.length) return;
+    const cards = gsap.utils.toArray(container.children);
+    if (!cards.length) return;
 
-    // Batch all layout reads together to avoid forced reflow
     let observer;
     let rafId;
-    let cleanupFn;
+    let isMounted = true;
+    let isUserInteracting = false;
 
     requestAnimationFrame(() => {
-      const firstItem = divItems[0];
-      // Batch getComputedStyle and offsetHeight reads
-      const itemStyle = getComputedStyle(firstItem);
-      const itemHeight = firstItem.offsetHeight;
-      const itemMarginTop = parseFloat(itemStyle.marginTop) || 0;
-      const totalItemHeight = itemHeight + itemMarginTop;
-      const totalHeight =
-        itemHeight * items.length + itemMarginTop * (items.length - 1);
+      if (!isMounted) return;
 
-      const wrapFn = gsap.utils.wrap(-totalHeight, totalHeight);
+      const itemHeight = cards[0].offsetHeight;
+      const totalItems = cards.length;
+      const halfHeight = itemHeight * (totalItems / 2);
 
-      divItems.forEach((child, i) => {
-        const y = i * totalItemHeight;
-        gsap.set(child, { y });
+      // wrap exactly at half
+      const wrapY = gsap.utils.wrap(0, halfHeight);
+
+      // position items evenly
+      cards.forEach((card, i) => {
+        gsap.set(card, { y: i * itemHeight });
       });
+
+      const move = (delta) => {
+        cards.forEach((card) => {
+          const y = parseFloat(gsap.getProperty(card, "y")) || 0;
+          gsap.set(card, { y: wrapY(y + delta), immediateRender: true });
+        });
+      };
 
       observer = Observer.create({
         target: container,
         type: "wheel,touch,pointer",
-        preventDefault: true,
-        onPress: ({ target }) => {
-          target.style.cursor = "grabbing";
+        preventDefault: false,
+        onPress: () => {
+          isUserInteracting = true;
+          if (rafId) cancelAnimationFrame(rafId);
         },
-        onRelease: ({ target }) => {
-          target.style.cursor = "grab";
+        onRelease: () => {
+          isUserInteracting = false;
+          if (autoplay) startAutoplay();
         },
-        onChange: ({ deltaY, isDragging, event }) => {
-          const d = event.type === "wheel" ? -deltaY : deltaY;
-          const distance = isDragging ? d * 5 : d * 10;
-          divItems.forEach((child) => {
-            gsap.to(child, {
-              duration: 0.5,
-              ease: "expo.out",
-              y: `+=${distance}`,
-              modifiers: {
-                y: gsap.utils.unitize(wrapFn),
-              },
-            });
-          });
+        onChange: ({ deltaY, isDragging }) => {
+          const distance = (isDragging ? deltaY : deltaY * 2) * -1;
+          move(distance);
         },
       });
 
-      if (autoplay) {
-        const directionFactor = autoplayDirection === "down" ? 1 : -1;
-        const speedPerFrame = autoplaySpeed * directionFactor;
+      const startAutoplay = () => {
+        if (rafId) cancelAnimationFrame(rafId);
+
+        const dir = autoplayDirection === "down" ? 1 : -1;
+        const speed = autoplaySpeed * dir;
 
         const tick = () => {
-          divItems.forEach((child) => {
-            gsap.set(child, {
-              y: `+=${speedPerFrame}`,
-              modifiers: {
-                y: gsap.utils.unitize(wrapFn),
-              },
-            });
-          });
+          if (!isMounted || isUserInteracting) return;
+          move(speed);
           rafId = requestAnimationFrame(tick);
         };
 
         rafId = requestAnimationFrame(tick);
+      };
 
-        if (pauseOnHover) {
-          const stopTicker = () => rafId && cancelAnimationFrame(rafId);
-          const startTicker = () => (rafId = requestAnimationFrame(tick));
-
-          container.addEventListener("mouseenter", stopTicker);
-          container.addEventListener("mouseleave", startTicker);
-
-          cleanupFn = () => {
-            if (observer) observer.kill();
-            stopTicker();
-            container.removeEventListener("mouseenter", stopTicker);
-            container.removeEventListener("mouseleave", startTicker);
-          };
-        } else {
-          cleanupFn = () => {
-            if (observer) observer.kill();
-            if (rafId) cancelAnimationFrame(rafId);
-          };
-        }
-      } else {
-        cleanupFn = () => {
-          if (observer) observer.kill();
-          if (rafId) cancelAnimationFrame(rafId);
-        };
-      }
+      if (autoplay) startAutoplay();
     });
 
-    return cleanupFn || (() => {
+    return () => {
+      isMounted = false;
       if (observer) observer.kill();
       if (rafId) cancelAnimationFrame(rafId);
-    });
+      cards.forEach((card) => gsap.killTweensOf(card));
+    };
   }, [
     items,
     autoplay,
     autoplaySpeed,
     autoplayDirection,
-    pauseOnHover,
     isTilted,
     tiltDirection,
-    negativeMargin,
   ]);
 
   return (
     <div
-      className="relative  z-10 flex text-[var(--foreground)] font-hero-light items-center justify-end w-full overflow-hidden overscroll-none border-t-2 border-b-2 border-t-dotted border-b-dotted border-transparent"
-      ref={wrapperRef}
+      className="relative flex items-center justify-end w-full overflow-hidden"
       style={{ maxHeight }}
     >
-      <div className=" absolute top-0 left-0 w-full h-1/4 bg-gradient-to-b from-[var(--background)] to-transparent z-10 pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 w-full h-1/4 bg-gradient-to-t from-[var(--background)] to-transparent z-10 pointer-events-none"></div>
-
       <div
-        className="flex flex-col  overscroll-contain px-4 cursor-grab origin-center"
         ref={containerRef}
+        className="flex flex-col px-4 cursor-grab origin-center"
         style={{
           width,
           transform: getTiltTransform(),
         }}
       >
-        {items.map((item, i) => (
+        {[...items, ...items].map((item, i) => (
           <div
-            className="flex items-center  justify-center  text-xl font-semibold text-center border-2 border-[var(--foreground)] rounded-[15px] select-none box-border relative"
             key={i}
-            style={{
-              height: `${itemMinHeight}px`,
-              marginTop: negativeMargin,
-            }}
+            className="flex items-center justify-center text-xl font-semibold
+                       text-center border-2 border-[var(--foreground)]
+                       rounded-[15px] select-none box-border"
+            style={{ height: itemMinHeight }}
           >
             {item.content}
           </div>
