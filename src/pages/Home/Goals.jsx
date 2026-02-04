@@ -74,7 +74,7 @@ const Goals = memo(() => {
       <ScrollStack
         useWindowScroll={true}
         itemDistance={0}
-        itemStackDistance={50}
+        itemStackDistance={10}
         stackPosition="0%"
         scaleEndPosition="40%"
         className="hidden md:block"

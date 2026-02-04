@@ -22,9 +22,70 @@ const Footer = ({ className }) => {
   const { t } = useTranslation();
   const { isRtl } = useI18nLanguage();
   const [formData, setFormData] = useState({ name: "", email: "" });
+  const [emailError, setEmailError] = useState("");
+
+  const validateEmail = (email) => {
+    // Check if email is empty
+    if (!email || email.trim() === "") {
+      return t("newsletter.errors.emailRequired", "Email is required");
+    }
+
+    // Check for @ symbol
+    if (!email.includes("@")) {
+      return t("newsletter.errors.missingAt", "Email must contain @ symbol");
+    }
+
+    const [localPart, domainPart] = email.split("@");
+
+    // Check mailbox/user name (local part)
+    if (!localPart || localPart.trim() === "") {
+      return t("newsletter.errors.missingUsername", "Email must have a username before @");
+    }
+
+    // Check domain part
+    if (!domainPart || domainPart.trim() === "") {
+      return t("newsletter.errors.missingDomain", "Email must have a domain after @");
+    }
+
+    // Check domain has at least one dot (e.g., domain.com)
+    if (!domainPart.includes(".")) {
+      return t("newsletter.errors.invalidDomain", "Domain must include a dot (e.g., example.com)");
+    }
+
+    // Check domain parts
+    const domainParts = domainPart.split(".");
+    if (domainParts.some((part) => part.trim() === "")) {
+      return t("newsletter.errors.invalidDomain", "Invalid domain format");
+    }
+
+    // Full regex validation for standard email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return t("newsletter.errors.invalidEmail", "Please enter a valid email address");
+    }
+
+    return "";
+  };
+
+  const handleEmailChange = (e) => {
+    const email = e.target.value;
+    setFormData({ ...formData, email });
+    // Clear error when user starts typing
+    if (emailError) {
+      setEmailError("");
+    }
+  };
 
   const handleSubscribe = async () => {
-    if (!formData.name || !formData.email) return;
+    if (!formData.name) return;
+
+    const error = validateEmail(formData.email);
+    if (error) {
+      setEmailError(error);
+      return;
+    }
+
+    setEmailError("");
     await subscribe(formData);
     setFormData({ name: "", email: "" });
   };
@@ -97,37 +158,47 @@ const Footer = ({ className }) => {
                 {t("newsletter.description", "Subscribe to our newsletter for the latest updates")}
               </p>
             </div>
-            <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
-              <input
-              
-                id="newsletter-name"
-                name="newsletter_name"
-                type="text"
-                placeholder={t("newsletter.name")}
-                value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="px-4 py-3 rounded-full bg-white/10 border border-white/30 text-white placeholder:text-white/70 focus:outline-none focus:border-white/60 min-w-[150px]"
-              />
-              <input
-                id="newsletter-email"
-                name="newsletter_email"
-                type="email"
-                placeholder={t("newsletter.email")}
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="px-4 py-3 rounded-full bg-white/10 border border-white/30 text-white placeholder:text-white/70 focus:outline-none focus:border-white/60 min-w-[200px]"
-              />
-              <button
-                onClick={handleSubscribe}
-                disabled={loading}
-                className={`px-6 py-3 font-semibold rounded-full transition-all duration-300 whitespace-nowrap ${
-                  theme === "dark"
-                    ? "bg-[var(--secondary)] text-[var(--background)] hover:bg-[var(--secondary)]/90"
-                    : "bg-white text-[var(--secondary)] hover:bg-white/90"
-                } ${loading ? "opacity-50 cursor-not-allowed" : ""}`}
-              >
-                {loading ? "..." : t("newsletter.subscribe")}
-              </button>
+            <div className="flex flex-col gap-3 w-full md:w-auto">
+              <div className="flex flex-col sm:flex-row gap-3">
+                <input
+                  id="newsletter-name"
+                  name="newsletter_name"
+                  type="text"
+                  placeholder={t("newsletter.name")}
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  className="px-4 py-3 rounded-full bg-white/10 border border-white/30 text-white placeholder:text-white/70 focus:outline-none focus:border-white/60 min-w-[150px]"
+                />
+                <input
+                  id="newsletter-email"
+                  name="newsletter_email"
+                  type="email"
+                  placeholder={t("newsletter.email")}
+                  value={formData.email}
+                  onChange={handleEmailChange}
+                  className={`px-4 py-3 rounded-full bg-white/10 border text-white placeholder:text-white/70 focus:outline-none min-w-[200px] ${
+                    emailError
+                      ? "border-red-400 focus:border-red-400"
+                      : "border-white/30 focus:border-white/60"
+                  }`}
+                />
+                <button
+                  onClick={handleSubscribe}
+                  disabled={loading}
+                  className={`px-6 py-3 font-semibold rounded-full transition-all duration-300 whitespace-nowrap ${
+                    theme === "dark"
+                      ? "bg-[var(--secondary)] text-[var(--background)] hover:bg-[var(--secondary)]/90"
+                      : "bg-white text-[var(--secondary)] hover:bg-white/90"
+                  } ${loading ? "opacity-50 cursor-not-allowed" : ""}`}
+                >
+                  {loading ? "..." : t("newsletter.subscribe")}
+                </button>
+              </div>
+              {emailError && (
+                <p className="text-red-300 text-sm text-center sm:text-start">
+                  {emailError}
+                </p>
+              )}
             </div>
           </div>
         </div>
