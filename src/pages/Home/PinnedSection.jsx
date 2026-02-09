@@ -160,15 +160,10 @@ const PinnedSection = () => {
   return (
     <section 
       ref={sectionRef}
-      className="relative w-full bg-black text-white overflow-hidden"
+      className="relative w-full  overflow-hidden"
       style={{ minHeight: "100vh" }}
     >
       <div className="sticky top-0 flex items-center justify-center h-screen">
-        <div className="absolute top-4 left-4 z-10">
-          <p className="text-sm tracking-[0.3em] uppercase text-gray-400">
-            Vertical Videos
-          </p>
-        </div>
         
         <div 
           ref={containerRef}
