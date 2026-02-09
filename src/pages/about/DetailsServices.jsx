@@ -7,12 +7,12 @@ import { useI18nLanguage } from "../../store/I18nLanguageContext";
 gsap.registerPlugin(ScrollTrigger);
 
 const serviceKeys = [
+  "influencerMarketing",
   "brandStrategy",
   "digitalMarketing",
   "socialMedia",
   "creativeDesign",
   "contentCreation",
-  "influencerMarketing",
 ];
 
 const DetailsServices = () => {

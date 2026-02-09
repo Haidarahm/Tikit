@@ -115,8 +115,8 @@ function App() {
               <Route path="/work/:workId?" element={<Work />} />
               <Route path="/about-us" element={<AboutUs />} />
               <Route path="/services" element={<Services />} />
-              <Route path="/news" element={<News />} />
-              <Route path="/news/:id" element={<NewsDetails />} />
+              <Route path="/blogs" element={<News />} />
+              <Route path="/blogs/:id" element={<NewsDetails />} />
             <Route path="/contact-us/:contact?" element={<Contact />} />
               <Route path="/influencer" element={<Influencer />} />
               <Route

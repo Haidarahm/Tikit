@@ -97,9 +97,9 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- News Page -->
+  <!-- Blogs Page -->
   <url>
-    <loc>https://tikit.ae/news</loc>
+    <loc>https://tikit.ae/blogs</loc>
     <lastmod>2025-01-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>

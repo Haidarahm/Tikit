@@ -169,7 +169,7 @@ const Strategy = () => {
           </h1>
         </div>
       </div>
-      <div className="container-cards grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6 md:mt-10 px-4 md:px-6">
+      {/* <div className="container-cards grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6 md:mt-10 px-4 md:px-6">
         {cards.map((card, i) => (
           <div
             key={String(i)}
@@ -179,7 +179,6 @@ const Strategy = () => {
               background: `radial-gradient(circle at center, #D9D9D966, #${card.lightColor}66)`,
             }}
           >
-            {/* Radial gradient background with subtle blur from card color to white */}
             <div className="pointer-events-none absolute inset-0 z-0 blur-[24px] opacity-70" />
             <div className="p-4 md:px-4 md:py-8 relative z-10">
               <div className="card-title text-[22px] font-antonio text-[var(--foreground)] sm:text-[28px] md:text-[36px] font-semibold mb-2 loco-text-up">
@@ -195,7 +194,7 @@ const Strategy = () => {
             </div>
           </div>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };

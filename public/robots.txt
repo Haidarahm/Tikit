@@ -23,7 +23,7 @@ Allow: /services
 Allow: /work
 Allow: /influencer
 Allow: /contact-us
-Allow: /news
+Allow: /blogs
 Allow: /faq
 
 # Google Bard / Gemini
@@ -90,7 +90,7 @@ Allow: /home
 Allow: /about-us
 Allow: /services
 Allow: /work
-Allow: /news
+Allow: /blogs
 Allow: /influencer
 Allow: /influencer-register
 Allow: /contact-us
