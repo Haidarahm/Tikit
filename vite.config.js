@@ -3,11 +3,34 @@ import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import { fileURLToPath, URL } from 'node:url';
 import { asyncCSS } from "./vite-plugin-async-css.js";
+import viteCompression from 'vite-plugin-compression';
 
 export default defineConfig({
   base: "/",
 
-  plugins: [react(), tailwindcss(), asyncCSS()],
+  plugins: [
+    react(), 
+    tailwindcss(), 
+    asyncCSS(),
+    // Gzip compression for production builds
+    viteCompression({
+      algorithm: 'gzip',
+      ext: '.gz',
+      threshold: 1024, // Only compress files larger than 1KB
+      deleteOriginFile: false, // Keep original files
+      verbose: true,
+      disable: false,
+    }),
+    // Brotli compression for better compression ratio
+    viteCompression({
+      algorithm: 'brotliCompress',
+      ext: '.br',
+      threshold: 1024, // Only compress files larger than 1KB
+      deleteOriginFile: false, // Keep original files
+      verbose: true,
+      disable: false,
+    }),
+  ],
 
   resolve: {
     alias: {

@@ -1,5 +1,52 @@
 RewriteEngine On
 
+# Enable Compression (Gzip and Brotli)
+<IfModule mod_deflate.c>
+  # Compress HTML, CSS, JavaScript, Text, XML and fonts
+  AddOutputFilterByType DEFLATE text/html
+  AddOutputFilterByType DEFLATE text/css
+  AddOutputFilterByType DEFLATE text/javascript
+  AddOutputFilterByType DEFLATE text/xml
+  AddOutputFilterByType DEFLATE text/plain
+  AddOutputFilterByType DEFLATE application/javascript
+  AddOutputFilterByType DEFLATE application/x-javascript
+  AddOutputFilterByType DEFLATE application/json
+  AddOutputFilterByType DEFLATE application/xml
+  AddOutputFilterByType DEFLATE application/xhtml+xml
+  AddOutputFilterByType DEFLATE application/rss+xml
+  AddOutputFilterByType DEFLATE application/atom+xml
+  AddOutputFilterByType DEFLATE image/svg+xml
+  AddOutputFilterByType DEFLATE font/woff
+  AddOutputFilterByType DEFLATE font/woff2
+  AddOutputFilterByType DEFLATE font/ttf
+  AddOutputFilterByType DEFLATE font/otf
+  
+  # Remove browser bugs (only needed for really old browsers)
+  BrowserMatch ^Mozilla/4 gzip-only-text/html
+  BrowserMatch ^Mozilla/4\.0[678] no-gzip
+  BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+  Header append Vary User-Agent
+</IfModule>
+
+
+# Set proper Content-Encoding headers for compressed files
+<IfModule mod_headers.c>
+  <FilesMatch "\.(js|css|html|svg|json|xml|txt)\.gz$">
+    Header set Content-Encoding gzip
+    Header append Vary Accept-Encoding
+    Header set Cache-Control "max-age=31536000, public, immutable"
+    Header unset ETag
+    FileETag None
+  </FilesMatch>
+  <FilesMatch "\.(js|css|html|svg|json|xml|txt)\.br$">
+    Header set Content-Encoding br
+    Header append Vary Accept-Encoding
+    Header set Cache-Control "max-age=31536000, public, immutable"
+    Header unset ETag
+    FileETag None
+  </FilesMatch>
+</IfModule>
+
 # Set proper MIME types for JavaScript modules and fonts (critical for ES modules and font loading)
 <IfModule mod_mime.c>
   AddType application/javascript .js
@@ -16,13 +63,28 @@ RewriteEngine On
   AddType application/font-ttf .ttf
   AddType application/font-otf .otf
   AddType application/vnd.ms-fontobject .eot
+  # Compressed file MIME types (keep original content type)
+  AddType application/javascript .js.gz
+  AddType application/javascript .js.br
+  AddType text/css .css.gz
+  AddType text/css .css.br
+  AddType text/html .html.gz
+  AddType text/html .html.br
+  AddType image/svg+xml .svg.gz
+  AddType image/svg+xml .svg.br
+  AddType application/json .json.gz
+  AddType application/json .json.br
+  AddType application/xml .xml.gz
+  AddType application/xml .xml.br
+  AddType text/plain .txt.gz
+  AddType text/plain .txt.br
 </IfModule>
 
 # Cache Control Headers for Static Assets
 <IfModule mod_expires.c>
   ExpiresActive On
   
-  # Images - 1 year
+  # Images - 1 year (31536000 seconds)
   ExpiresByType image/jpeg "access plus 1 year"
   ExpiresByType image/jpg "access plus 1 year"
   ExpiresByType image/png "access plus 1 year"
@@ -31,6 +93,7 @@ RewriteEngine On
   ExpiresByType image/svg+xml "access plus 1 year"
   ExpiresByType image/x-icon "access plus 1 year"
   ExpiresByType image/ico "access plus 1 year"
+  ExpiresByType image/avif "access plus 1 year"
   
   # Fonts - 1 year (all possible MIME types)
   ExpiresByType font/woff "access plus 1 year"
@@ -48,20 +111,41 @@ RewriteEngine On
   ExpiresByType text/css "access plus 1 year"
   ExpiresByType application/javascript "access plus 1 year"
   ExpiresByType text/javascript "access plus 1 year"
+  ExpiresByType application/x-javascript "access plus 1 year"
+  
+  # JSON, XML, TXT - 1 year (static data files)
+  ExpiresByType application/json "access plus 1 year"
+  ExpiresByType application/xml "access plus 1 year"
+  ExpiresByType text/xml "access plus 1 year"
+  ExpiresByType text/plain "access plus 1 year"
+  
+  # HTML - 1 hour (for index.html, can be longer if using hash-based versioning)
+  ExpiresByType text/html "access plus 1 hour"
+  ExpiresByType application/xhtml+xml "access plus 1 hour"
   
   # Video - 1 month
   ExpiresByType video/mp4 "access plus 1 month"
   ExpiresByType video/webm "access plus 1 month"
+  ExpiresByType video/ogg "access plus 1 month"
   
-  # Default - 1 week for other static files
-  ExpiresDefault "access plus 1 week"
+  # Audio - 1 month
+  ExpiresByType audio/mpeg "access plus 1 month"
+  ExpiresByType audio/ogg "access plus 1 month"
+  ExpiresByType audio/wav "access plus 1 month"
+  
+  # Compressed files - same as original file type
+  ExpiresByType application/gzip "access plus 1 year"
+  ExpiresByType application/x-gzip "access plus 1 year"
+  
+  # Default - 1 month for other static files
+  ExpiresDefault "access plus 1 month"
 </IfModule>
 
 # Cache-Control Headers (fallback if mod_expires is not available)
 # IMPORTANT: These headers must be set BEFORE rewrite rules to ensure they apply
 <IfModule mod_headers.c>
-  # Images - 1 year
-  <FilesMatch "\.(jpg|jpeg|png|gif|webp|svg|ico)$">
+  # Images - 1 year (31536000 seconds)
+  <FilesMatch "\.(jpg|jpeg|png|gif|webp|svg|ico|avif)$">
     Header set Cache-Control "max-age=31536000, public, immutable"
     Header unset ETag
     FileETag None
@@ -81,16 +165,53 @@ RewriteEngine On
     FileETag None
   </FilesMatch>
   
-  # Video - 1 month
-  <FilesMatch "\.(mp4|webm)$">
+  # JSON, XML, TXT - 1 year (static data files)
+  <FilesMatch "\.(json|xml|txt)$">
+    Header set Cache-Control "max-age=31536000, public, immutable"
+    Header unset ETag
+    FileETag None
+  </FilesMatch>
+  
+  # HTML - 1 hour (for index.html, can be longer if using hash-based versioning)
+  <FilesMatch "\.(html|htm)$">
+    Header set Cache-Control "max-age=3600, public, must-revalidate"
+    Header unset ETag
+    FileETag None
+  </FilesMatch>
+  
+  # Video - 1 month (2592000 seconds)
+  <FilesMatch "\.(mp4|webm|ogg)$">
     Header set Cache-Control "max-age=2592000, public"
+    Header unset ETag
+    FileETag None
+  </FilesMatch>
+  
+  # Audio - 1 month
+  <FilesMatch "\.(mp3|ogg|wav)$">
+    Header set Cache-Control "max-age=2592000, public"
+    Header unset ETag
+    FileETag None
+  </FilesMatch>
+  
+  # Compressed files (.gz, .br) - same cache as original files
+  <FilesMatch "\.(gz|br)$">
+    Header set Cache-Control "max-age=31536000, public, immutable"
+    Header unset ETag
+    FileETag None
   </FilesMatch>
   
 </IfModule>
 
 # Additional cache headers for assets directory (using LocationMatch for better compatibility)
 <IfModule mod_headers.c>
-  <LocationMatch "^/assets/.*\.(woff|woff2|ttf|otf|eot|css|js|mjs|jpg|jpeg|png|gif|webp|svg|ico)$">
+  <LocationMatch "^/(assets|js|images|fonts)/.*\.(woff|woff2|ttf|otf|eot|css|js|mjs|jpg|jpeg|png|gif|webp|svg|ico|json|xml|txt|gz|br)$">
+    Header set Cache-Control "max-age=31536000, public, immutable"
+    Header unset ETag
+    FileETag None
+  </LocationMatch>
+  
+  # Cache headers for all static file extensions in root and subdirectories
+  <LocationMatch "\.(jpg|jpeg|png|gif|webp|svg|ico|avif|woff|woff2|ttf|otf|eot|css|js|mjs|json|xml|txt|gz|br)$">
     Header set Cache-Control "max-age=31536000, public, immutable"
     Header unset ETag
     FileETag None
@@ -106,7 +227,18 @@ RewriteRule ^ https://tikit.ae%{REQUEST_URI} [L,R=301]
 
 RewriteBase /
 
-# CRITICAL: Serve JavaScript files directly - MUST come first
+# CRITICAL: Check for pre-compressed files FIRST (before serving regular files)
+# Serve Brotli compressed files if available and browser supports it
+RewriteCond %{HTTP:Accept-Encoding} br
+RewriteCond %{REQUEST_FILENAME}\.br -f
+RewriteRule ^(.+)$ $1.br [L]
+
+# Serve Gzip compressed files if available and browser supports it
+RewriteCond %{HTTP:Accept-Encoding} gzip
+RewriteCond %{REQUEST_FILENAME}\.gz -f
+RewriteRule ^(.+)$ $1.gz [L]
+
+# CRITICAL: Serve JavaScript files directly - MUST come after compression checks
 # If it's a .js or .mjs file that exists, serve it immediately
 RewriteCond %{REQUEST_FILENAME} -f
 RewriteCond %{REQUEST_URI} \.(js|mjs)$ [NC]

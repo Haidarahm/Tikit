@@ -54,165 +54,205 @@ const Map = () => {
 
   useEffect(() => {
     if (!mapContainerRef.current || !mapXml) return
+    if (!sectionRef.current) return
 
+    const section = sectionRef.current
     const container = mapContainerRef.current
+    
+    // Check if elements are still connected to DOM
+    if (!section.isConnected || !container.isConnected) return
+
     const svg = container.querySelector('svg')
     if (!svg) return
 
-    // Get all elements by their classes
-    const mapStrokes = Array.from(svg.querySelectorAll('.cls-6')) // Main map outline
-    const destinationLines = Array.from(svg.querySelectorAll('.cls-3, .cls-4, .cls-5')) // Route lines
-    const smallMarkers = Array.from(svg.querySelectorAll('.cls-1')) // Small ellipse markers
-    const largeMarkers = Array.from(svg.querySelectorAll('.cls-7')) // Large ellipse markers
-    const pins = Array.from(svg.querySelectorAll('.cls-11')) // Location pin shapes
-    const textLabels = Array.from(svg.querySelectorAll('.cls-9')) // Text labels
-
-    // Initial state - hide everything
-    gsap.set([...mapStrokes, ...destinationLines, ...textLabels], { 
-      opacity: 0,
-      visibility: 'hidden'
-    })
-    
-    // Set markers and pins with scale 0 for bounce effect
-    gsap.set([...smallMarkers, ...largeMarkers, ...pins], { 
-      opacity: 0,
-      visibility: 'hidden',
-      scale: 0
-    })
-
-    // Prepare map stroke paths for draw animation
-    mapStrokes.forEach((path) => {
-      try {
-        if (path.getTotalLength) {
-          const length = path.getTotalLength()
-          gsap.set(path, {
-            strokeDasharray: length,
-            strokeDashoffset: length,
-            opacity: 1,
-            visibility: 'visible'
-          })
-        }
-      } catch (e) {
-        // For non-path elements like polygons
-        gsap.set(path, { opacity: 0, visibility: 'hidden' })
+    // Clean up any existing ScrollTrigger instances for this element BEFORE creating new ones
+    ScrollTrigger.getAll().forEach((trigger) => {
+      if (trigger.trigger === section) {
+        trigger.kill()
       }
     })
 
-    // Prepare destination lines for draw animation
-    destinationLines.forEach((path) => {
-      try {
-        if (path.getTotalLength) {
-          const length = path.getTotalLength()
-          // Clear any existing stroke-dasharray from original SVG before animating
-          path.style.strokeDasharray = length
-          path.style.strokeDashoffset = length
-          gsap.set(path, {
-            strokeDasharray: length,
-            strokeDashoffset: length,
-            opacity: 1,
-            visibility: 'visible'
-          })
-        }
-      } catch (e) {
-        gsap.set(path, { opacity: 0, visibility: 'hidden' })
-      }
-    })
+    // Use gsap.context for proper cleanup
+    const ctx = gsap.context(() => {
+      // Get all elements by their classes
+      const mapStrokes = Array.from(svg.querySelectorAll('.cls-6')) // Main map outline
+      const destinationLines = Array.from(svg.querySelectorAll('.cls-3, .cls-4, .cls-5')) // Route lines
+      const smallMarkers = Array.from(svg.querySelectorAll('.cls-1')) // Small ellipse markers
+      const largeMarkers = Array.from(svg.querySelectorAll('.cls-7')) // Large ellipse markers
+      const pins = Array.from(svg.querySelectorAll('.cls-11')) // Location pin shapes
+      const textLabels = Array.from(svg.querySelectorAll('.cls-9')) // Text labels
 
-    // Create main timeline
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: 'top 70%',
-        toggleActions: 'play none none none',
-        once: true
-      }
-    })
+      // Initial state - hide everything
+      gsap.set([...mapStrokes, ...destinationLines, ...textLabels], { 
+        opacity: 0,
+        visibility: 'hidden'
+      })
+      
+      // Set markers and pins with scale 0 for bounce effect
+      gsap.set([...smallMarkers, ...largeMarkers, ...pins], { 
+        opacity: 0,
+        visibility: 'hidden',
+        scale: 0
+      })
 
-    // Phase 1: Draw map strokes smoothly
-    tl.to(mapStrokes, {
-      strokeDashoffset: 0,
-      duration: 1.8,
-      ease: 'power2.inOut',
-      stagger: {
-        each: 0.015,
-        from: 'start'
-      }
-    })
-
-    // Phase 2: Draw destination lines with stagger - starts when map is 70% done
-    .to(destinationLines, {
-      strokeDashoffset: 0,
-      duration: 1.2,
-      ease: 'power2.out',
-      stagger: {
-        each: 0.2,
-        from: 'start'
-      }
-    }, '-=0.6')
-
-    // Phase 3: Small route markers pop in along paths
-    .to(smallMarkers, {
-      opacity: 1,
-      visibility: 'visible',
-      scale: 1,
-      duration: 0.35,
-      ease: 'back.out(2)',
-      stagger: {
-        each: 0.08,
-        from: 'start'
-      }
-    }, '-=0.4')
-
-    // Phase 4: Large endpoint markers appear
-    .to(largeMarkers, {
-      opacity: 1,
-      visibility: 'visible',
-      scale: 1,
-      duration: 0.4,
-      ease: 'back.out(2)',
-      stagger: {
-        each: 0.1,
-        from: 'start'
-      }
-    }, '-=0.15')
-
-    // Phase 5: Location pins drop in with elastic bounce
-    .to(pins, {
-      opacity: 1,
-      visibility: 'visible',
-      scale: 1,
-      duration: 0.7,
-      ease: 'elastic.out(1, 0.4)',
-      stagger: {
-        each: 0.12,
-        from: 'start'
-      }
-    }, '-=0.1')
-
-    // Phase 6: Text labels fade in smoothly at end
-    .to(textLabels, {
-      opacity: 1,
-      visibility: 'visible',
-      duration: 0.4,
-      ease: 'power3.out',
-      stagger: {
-        each: 0.04,
-        from: 'start'
-      }
-    }, '-=0.35')
-
-    animationRef.current = tl
-
-    return () => {
-      if (animationRef.current) {
-        animationRef.current.kill()
-      }
-      const currentSection = sectionRef.current
-      ScrollTrigger.getAll().forEach(trigger => {
-        if (trigger.vars?.trigger === currentSection) {
-          trigger.kill()
+      // Prepare map stroke paths for draw animation
+      mapStrokes.forEach((path) => {
+        try {
+          if (path.getTotalLength && path.isConnected) {
+            const length = path.getTotalLength()
+            gsap.set(path, {
+              strokeDasharray: length,
+              strokeDashoffset: length,
+              opacity: 1,
+              visibility: 'visible'
+            })
+          }
+        } catch (e) {
+          // For non-path elements like polygons
+          if (path.isConnected) {
+            gsap.set(path, { opacity: 0, visibility: 'hidden' })
+          }
         }
       })
+
+      // Prepare destination lines for draw animation
+      destinationLines.forEach((path) => {
+        try {
+          if (path.getTotalLength && path.isConnected) {
+            const length = path.getTotalLength()
+            // Clear any existing stroke-dasharray from original SVG before animating
+            path.style.strokeDasharray = length
+            path.style.strokeDashoffset = length
+            gsap.set(path, {
+              strokeDasharray: length,
+              strokeDashoffset: length,
+              opacity: 1,
+              visibility: 'visible'
+            })
+          }
+        } catch (e) {
+          if (path.isConnected) {
+            gsap.set(path, { opacity: 0, visibility: 'hidden' })
+          }
+        }
+      })
+
+      // Create main timeline
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: 'top 70%',
+          toggleActions: 'play none none none',
+          once: true
+        }
+      })
+
+      // Phase 1: Draw map strokes smoothly
+      tl.to(mapStrokes, {
+        strokeDashoffset: 0,
+        duration: 1.8,
+        ease: 'power2.inOut',
+        stagger: {
+          each: 0.015,
+          from: 'start'
+        }
+      })
+
+      // Phase 2: Draw destination lines with stagger - starts when map is 70% done
+      .to(destinationLines, {
+        strokeDashoffset: 0,
+        duration: 1.2,
+        ease: 'power2.out',
+        stagger: {
+          each: 0.2,
+          from: 'start'
+        }
+      }, '-=0.6')
+
+      // Phase 3: Small route markers pop in along paths
+      .to(smallMarkers, {
+        opacity: 1,
+        visibility: 'visible',
+        scale: 1,
+        duration: 0.35,
+        ease: 'back.out(2)',
+        stagger: {
+          each: 0.08,
+          from: 'start'
+        }
+      }, '-=0.4')
+
+      // Phase 4: Large endpoint markers appear
+      .to(largeMarkers, {
+        opacity: 1,
+        visibility: 'visible',
+        scale: 1,
+        duration: 0.4,
+        ease: 'back.out(2)',
+        stagger: {
+          each: 0.1,
+          from: 'start'
+        }
+      }, '-=0.15')
+
+      // Phase 5: Location pins drop in with elastic bounce
+      .to(pins, {
+        opacity: 1,
+        visibility: 'visible',
+        scale: 1,
+        duration: 0.7,
+        ease: 'elastic.out(1, 0.4)',
+        stagger: {
+          each: 0.12,
+          from: 'start'
+        }
+      }, '-=0.1')
+
+      // Phase 6: Text labels fade in smoothly at end
+      .to(textLabels, {
+        opacity: 1,
+        visibility: 'visible',
+        duration: 0.4,
+        ease: 'power3.out',
+        stagger: {
+          each: 0.04,
+          from: 'start'
+        }
+      }, '-=0.35')
+
+      animationRef.current = tl
+    }, sectionRef)
+
+    return () => {
+      // Kill timeline first
+      if (animationRef.current) {
+        try {
+          animationRef.current.kill()
+        } catch (e) {
+          // Ignore errors during cleanup
+        }
+        animationRef.current = null
+      }
+      
+      // Kill ScrollTrigger instances
+      ScrollTrigger.getAll().forEach((trigger) => {
+        if (trigger.trigger === section) {
+          try {
+            trigger.kill()
+          } catch (e) {
+            // Ignore errors during cleanup
+          }
+        }
+      })
+      
+      // Revert context to restore DOM
+      if (ctx) {
+        try {
+          ctx.revert()
+        } catch (e) {
+          // Ignore errors during cleanup - DOM may have already changed
+        }
+      }
     }
   }, [mapXml])
 
