@@ -64,11 +64,32 @@ const Connections = memo(() => {
       },
     });
 
-    ScrollTrigger.refresh();
+    // Only refresh if triggers are still active
+    try {
+      const hasActiveTriggers = element1Tween?.scrollTrigger || element2Tween?.scrollTrigger;
+      if (hasActiveTriggers) {
+        ScrollTrigger.refresh();
+      }
+    } catch (e) {
+      // Ignore refresh errors
+    }
 
     return () => {
-      element1Tween?.scrollTrigger?.kill();
-      element2Tween?.scrollTrigger?.kill();
+      // Kill ScrollTrigger instances FIRST
+      if (element1Tween?.scrollTrigger) {
+        try {
+          element1Tween.scrollTrigger.kill();
+        } catch (e) {
+          // Ignore errors during cleanup
+        }
+      }
+      if (element2Tween?.scrollTrigger) {
+        try {
+          element2Tween.scrollTrigger.kill();
+        } catch (e) {
+          // Ignore errors during cleanup
+        }
+      }
     };
   }, []);
 

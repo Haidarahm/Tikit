@@ -114,20 +114,41 @@ export const Influencer = () => {
   }, [sections]);
 
   useEffect(() => {
-    const debouncedRefresh = debounce(() => {
-      ScrollTrigger.refresh();
-    }, 150);
+    let isMounted = true;
+    
+    const safeRefresh = () => {
+      if (!isMounted) return;
+      try {
+        const activeTriggers = ScrollTrigger.getAll().filter(t => 
+          t.vars && t.vars.trigger && t.vars.trigger.isConnected
+        );
+        if (activeTriggers.length > 0) {
+          ScrollTrigger.refresh();
+        }
+      } catch (e) {
+        // Ignore refresh errors
+      }
+    };
+
+    const debouncedRefresh = debounce(safeRefresh, 150);
 
     window.addEventListener("resize", debouncedRefresh, { passive: true });
 
-    const refreshTimeout = setTimeout(() => {
-      ScrollTrigger.refresh();
-    }, 100);
+    const refreshTimeout = setTimeout(safeRefresh, 100);
 
     return () => {
+      isMounted = false;
       window.removeEventListener("resize", debouncedRefresh);
       clearTimeout(refreshTimeout);
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      
+      // Kill ScrollTrigger instances FIRST
+      ScrollTrigger.getAll().forEach((trigger) => {
+        try {
+          trigger.kill();
+        } catch (e) {
+          // Ignore errors during cleanup
+        }
+      });
     };
   }, []);
 
@@ -223,8 +244,19 @@ export const Influencer = () => {
     // Wait for layout using double requestAnimationFrame
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
-        // Refresh ScrollTrigger to ensure accurate positions
-        ScrollTrigger.refresh(true);
+        // Refresh ScrollTrigger to ensure accurate positions (only if element is connected)
+        try {
+          if (targetElement && targetElement.isConnected) {
+            const activeTriggers = ScrollTrigger.getAll().filter(t => 
+              t.vars && t.vars.trigger && t.vars.trigger.isConnected
+            );
+            if (activeTriggers.length > 0) {
+              ScrollTrigger.refresh(true);
+            }
+          }
+        } catch (e) {
+          // Ignore refresh errors
+        }
 
         // Batch all layout reads together to avoid forced reflow
         const elementTop = targetElement.getBoundingClientRect().top;
@@ -244,7 +276,18 @@ export const Influencer = () => {
         // Clear flag after scroll animation completes
         setTimeout(() => {
           isProgrammaticScrollRef.current = false;
-          ScrollTrigger.refresh();
+          try {
+            if (targetElement && targetElement.isConnected) {
+              const activeTriggers = ScrollTrigger.getAll().filter(t => 
+                t.vars && t.vars.trigger && t.vars.trigger.isConnected
+              );
+              if (activeTriggers.length > 0) {
+                ScrollTrigger.refresh();
+              }
+            }
+          } catch (e) {
+            // Ignore refresh errors
+          }
         }, 800);
       });
     });
@@ -291,9 +334,23 @@ export const Influencer = () => {
     const asideEl = asidePinRef.current;
     const contentEl = mainContentRef.current;
     if (!asideEl || !contentEl) return;
+    
+    // Check if elements are still connected to DOM
+    if (!asideEl.isConnected || !contentEl.isConnected) return;
   
     const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
     if (!isDesktop) return;
+    
+    // Clean up any existing ScrollTrigger instances for this element BEFORE creating new ones
+    ScrollTrigger.getAll().forEach((trigger) => {
+      if (trigger.id === "influencer-aside-pin" || trigger.trigger === contentEl) {
+        try {
+          trigger.kill();
+        } catch (e) {
+          // Ignore errors during cleanup
+        }
+      }
+    });
   
     const ctx = gsap.context(() => {
       ScrollTrigger.create({
@@ -309,7 +366,25 @@ export const Influencer = () => {
       });
     }, contentEl);
   
-    return () => ctx.revert();
+    return () => {
+      // Kill ScrollTrigger instances FIRST
+      ScrollTrigger.getAll().forEach((trigger) => {
+        if (trigger.id === "influencer-aside-pin" || trigger.trigger === contentEl) {
+          try {
+            trigger.kill();
+          } catch (e) {
+            // Ignore errors during cleanup
+          }
+        }
+      });
+      
+      // Revert context AFTER ScrollTrigger is killed
+      try {
+        ctx.revert();
+      } catch (e) {
+        // Ignore errors during cleanup - DOM may have already changed
+      }
+    };
   }, [normalizedSections.length]);
   
   useEffect(() => {

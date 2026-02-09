@@ -259,18 +259,45 @@ const ElasticGridScroll = () => {
     // Remove loading class and initialize
     body.classList.remove("loading");
     init();
+    
+    // Only refresh if grid is still connected and has active triggers
     requestAnimationFrame(() => {
-      ScrollTrigger.refresh();
+      try {
+        if (grid && grid.isConnected) {
+          const hasActiveTriggers = ScrollTrigger.getAll().some((st) => 
+            st.vars && st.vars.trigger && grid.contains(st.vars.trigger)
+          );
+          if (hasActiveTriggers) {
+            ScrollTrigger.refresh();
+          }
+        }
+      } catch (e) {
+        // Ignore refresh errors
+      }
     });
+    
     window.addEventListener("resize", handleResize);
 
     return () => {
       body.classList.remove("demo-3", "loading");
       window.removeEventListener("resize", handleResize);
-      videoObserver.disconnect();
+      
+      if (videoObserver) {
+        try {
+          videoObserver.disconnect();
+        } catch (e) {
+          // Ignore errors during cleanup
+        }
+      }
+      
+      // Kill ScrollTrigger instances FIRST
       ScrollTrigger.getAll().forEach((st) => {
-        if (st.vars && st.vars.trigger && grid.contains(st.vars.trigger)) {
-          st.kill();
+        if (st.vars && st.vars.trigger && grid && grid.contains(st.vars.trigger)) {
+          try {
+            st.kill();
+          } catch (e) {
+            // Ignore errors during cleanup
+          }
         }
       });
     };

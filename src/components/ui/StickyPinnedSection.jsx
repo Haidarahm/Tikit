@@ -32,11 +32,18 @@ export default function StickyPinnedSection({
   useLayoutEffect(() => {
     const el = sectionRef.current;
     if (!el || !count) return;
+    
+    // Check if element is still connected to DOM
+    if (!el.isConnected) return;
 
-    // Clean up any existing ScrollTrigger instances for this element
+    // Clean up any existing ScrollTrigger instances for this element BEFORE creating new ones
     ScrollTrigger.getAll().forEach((trigger) => {
       if (trigger.trigger === el) {
-        trigger.kill();
+        try {
+          trigger.kill();
+        } catch (e) {
+          // Ignore errors during cleanup
+        }
       }
     });
 
@@ -340,13 +347,23 @@ export default function StickyPinnedSection({
     });
 
     return () => {
-      ctx.revert();
-      // Additional cleanup for ScrollTrigger instances
+      // Kill ScrollTrigger instances FIRST to prevent DOM manipulation conflicts
       ScrollTrigger.getAll().forEach((trigger) => {
         if (trigger.trigger === el) {
-          trigger.kill();
+          try {
+            trigger.kill();
+          } catch (e) {
+            // Ignore errors during cleanup
+          }
         }
       });
+      
+      // Revert context AFTER ScrollTrigger is killed to restore DOM
+      try {
+        ctx.revert();
+      } catch (e) {
+        // Ignore errors during cleanup - DOM may have already changed
+      }
     };
   }, [count, heightPerItemVh, isRtl]);
 

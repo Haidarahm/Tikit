@@ -168,6 +168,20 @@ const CaseStudy = ({ caseData, videos: videosFromProps }) => {
     const asideEl = asideRef.current;
     const contentEl = contentAreaRef.current;
     if (!asideEl || !contentEl) return;
+    
+    // Check if elements are still connected to DOM
+    if (!asideEl.isConnected || !contentEl.isConnected) return;
+
+    // Clean up any existing ScrollTrigger instances for this element BEFORE creating new ones
+    ScrollTrigger.getAll().forEach((trigger) => {
+      if (trigger.trigger === contentEl || trigger.trigger === asideEl) {
+        try {
+          trigger.kill();
+        } catch (e) {
+          // Ignore errors during cleanup
+        }
+      }
+    });
 
     const ctx = gsap.context(() => {
       ScrollTrigger.matchMedia({
@@ -181,12 +195,36 @@ const CaseStudy = ({ caseData, videos: videosFromProps }) => {
             invalidateOnRefresh: true,
             anticipatePin: 1,
           });
-          return () => trigger.kill();
+          return () => {
+            try {
+              trigger.kill();
+            } catch (e) {
+              // Ignore errors during cleanup
+            }
+          };
         },
       });
     }, containerRef);
 
-    return () => ctx.revert();
+    return () => {
+      // Kill ScrollTrigger instances FIRST
+      ScrollTrigger.getAll().forEach((trigger) => {
+        if (trigger.trigger === contentEl || trigger.trigger === asideEl) {
+          try {
+            trigger.kill();
+          } catch (e) {
+            // Ignore errors during cleanup
+          }
+        }
+      });
+      
+      // Revert context AFTER ScrollTrigger is killed
+      try {
+        ctx.revert();
+      } catch (e) {
+        // Ignore errors during cleanup - DOM may have already changed
+      }
+    };
   }, []);
 
   // GSAP Header Animation

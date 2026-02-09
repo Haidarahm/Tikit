@@ -138,11 +138,40 @@ const ShowCase = () => {
           );
       });
 
-
-      ScrollTrigger.refresh(true);
+      // Only refresh if triggers are still active and connected
+      try {
+        const activeTriggers = ScrollTrigger.getAll().filter(t => 
+          t.vars && t.vars.trigger && t.vars.trigger.isConnected
+        );
+        if (activeTriggers.length > 0) {
+          ScrollTrigger.refresh(true);
+        }
+      } catch (e) {
+        // Ignore refresh errors
+      }
     }, sectionRef);
 
-    return () => ctx.revert();
+    return () => {
+      // Kill ScrollTrigger instances FIRST
+      ScrollTrigger.getAll().forEach((trigger) => {
+        const triggerElement = trigger.vars?.trigger;
+        if (triggerElement && sectionRef.current && 
+            (triggerElement === sectionRef.current || sectionRef.current.contains(triggerElement))) {
+          try {
+            trigger.kill();
+          } catch (e) {
+            // Ignore errors during cleanup
+          }
+        }
+      });
+      
+      // Revert context AFTER ScrollTrigger is killed
+      try {
+        ctx.revert();
+      } catch (e) {
+        // Ignore errors during cleanup
+      }
+    };
   }, [loading, showcaseData.length]);
 
   /* =====================

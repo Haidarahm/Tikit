@@ -62,11 +62,18 @@ const PinnedSection = () => {
 
     const section = sectionRef.current;
     const container = containerRef.current;
+    
+    // Check if elements are still connected to DOM
+    if (!section.isConnected || !container.isConnected) return;
 
-    // Clean up any existing ScrollTrigger instances for this section
+    // Clean up any existing ScrollTrigger instances for this section BEFORE creating new ones
     ScrollTrigger.getAll().forEach((trigger) => {
       if (trigger.trigger === section) {
-        trigger.kill();
+        try {
+          trigger.kill();
+        } catch (e) {
+          // Ignore errors during cleanup
+        }
       }
     });
 
@@ -128,7 +135,10 @@ const PinnedSection = () => {
         videoObserverRef.current = null;
       }
 
-      // Kill this section's ScrollTrigger
+      // Get current section reference (may have changed)
+      const currentSection = sectionRef.current;
+
+      // Kill this section's ScrollTrigger FIRST
       if (scrollTriggerRef.current) {
         try {
           scrollTriggerRef.current.kill();
@@ -137,15 +147,17 @@ const PinnedSection = () => {
       }
 
       // As an extra safety, kill any remaining triggers for this section
+      // Use both the captured section and current ref to catch all instances
       ScrollTrigger.getAll().forEach((trigger) => {
-        if (trigger.trigger === section) {
+        const triggerElement = trigger.trigger;
+        if (triggerElement === section || triggerElement === currentSection) {
           try {
             trigger.kill();
           } catch {}
         }
       });
 
-      // Revert GSAP context to restore DOM to React-owned state
+      // Revert GSAP context AFTER ScrollTrigger is killed to restore DOM
       if (contextRef.current) {
         try {
           contextRef.current.revert();

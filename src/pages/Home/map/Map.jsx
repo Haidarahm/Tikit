@@ -68,7 +68,11 @@ const Map = () => {
     // Clean up any existing ScrollTrigger instances for this element BEFORE creating new ones
     ScrollTrigger.getAll().forEach((trigger) => {
       if (trigger.trigger === section) {
-        trigger.kill()
+        try {
+          trigger.kill()
+        } catch (e) {
+          // Ignore errors during cleanup
+        }
       }
     })
 
@@ -234,9 +238,14 @@ const Map = () => {
         animationRef.current = null
       }
       
-      // Kill ScrollTrigger instances
+      // Get current section reference (may have changed)
+      const currentSection = sectionRef.current
+      
+      // Kill ScrollTrigger instances FIRST
+      // Use both the captured section and current ref to catch all instances
       ScrollTrigger.getAll().forEach((trigger) => {
-        if (trigger.trigger === section) {
+        const triggerElement = trigger.trigger
+        if (triggerElement === section || triggerElement === currentSection) {
           try {
             trigger.kill()
           } catch (e) {
@@ -245,7 +254,7 @@ const Map = () => {
         }
       })
       
-      // Revert context to restore DOM
+      // Revert context AFTER ScrollTrigger is killed to restore DOM
       if (ctx) {
         try {
           ctx.revert()

@@ -91,7 +91,17 @@ export function useScrollToTopOnRouteChange() {
         scrollToTop();
         try {
           if (ScrollTrigger && typeof ScrollTrigger.refresh === "function") {
-            requestAnimationFrame(() => ScrollTrigger.refresh());
+            // Only refresh if there are active triggers and DOM is stable
+            const activeTriggers = ScrollTrigger.getAll().filter(t => t.vars && t.vars.trigger && t.vars.trigger.isConnected);
+            if (activeTriggers.length > 0) {
+              requestAnimationFrame(() => {
+                try {
+                  ScrollTrigger.refresh();
+                } catch (e) {
+                  // Ignore refresh errors - triggers may have been cleaned up
+                }
+              });
+            }
           }
         } catch {
           // Ignore cleanup errors

@@ -68,19 +68,42 @@ const Work = () => {
     htmlEl.classList.remove("has-scroll-smooth", "has-scroll-init");
     document.body.style.removeProperty("overflow");
 
-    const timer = setTimeout(() => {
-      ScrollTrigger.refresh();
-    }, 100);
+    let isMounted = true;
+    
+    const safeRefresh = () => {
+      if (!isMounted) return;
+      try {
+        const activeTriggers = ScrollTrigger.getAll().filter(t => 
+          t.vars && t.vars.trigger && t.vars.trigger.isConnected
+        );
+        if (activeTriggers.length > 0) {
+          ScrollTrigger.refresh();
+        }
+      } catch (e) {
+        // Ignore refresh errors
+      }
+    };
+
+    const timer = setTimeout(safeRefresh, 100);
 
     const handleResize = () => {
-      ScrollTrigger.refresh();
+      safeRefresh();
     };
     window.addEventListener("resize", handleResize);
 
     return () => {
+      isMounted = false;
       clearTimeout(timer);
       window.removeEventListener("resize", handleResize);
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      
+      // Kill ScrollTrigger instances FIRST
+      ScrollTrigger.getAll().forEach((trigger) => {
+        try {
+          trigger.kill();
+        } catch (e) {
+          // Ignore errors during cleanup
+        }
+      });
     };
   }, []);
 

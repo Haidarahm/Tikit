@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { useLocation } from "react-router-dom";
 import { useI18nLanguage } from "../store/I18nLanguageContext";
 
 /**
@@ -26,6 +27,7 @@ const SEOHead = ({
 }) => {
   const { t } = useTranslation();
   const { isRtl } = useI18nLanguage();
+  const location = useLocation();
 
   const siteName = "Tikit Agency";
   const baseUrl = "https://tikit.ae";
@@ -54,7 +56,35 @@ const SEOHead = ({
       "seo.defaultKeywords",
       "influencer marketing agency in emirates, influencer marketing agency emirates, best influencer marketing agency in emirates, influencer marketing agency UAE, best social media management company Emirates, best social media management company Saudi Arabia, best social media management company UAE, influencer marketing Emirates, influencer marketing Saudi Arabia, branding company Emirates, branding company Saudi Arabia, social media agency Dubai, influencer marketing agency Dubai, branding agency Dubai, social media management Dubai, influencer marketing or branding, best influencer marketing company Emirates"
     );
-  const fullCanonicalUrl = canonicalUrl ? `${baseUrl}${canonicalUrl}` : baseUrl;
+  
+  // Use provided canonicalUrl, or fallback to current location pathname
+  // Remove trailing slashes and ensure it starts with /
+  const getCanonicalPath = () => {
+    const currentPath = location.pathname;
+    const normalizedCurrentPath = currentPath === '/' ? '/' : currentPath.replace(/\/$/, '');
+    
+    // Homepage routes that should canonicalize to /
+    const homepageRoutes = ['/', '/home'];
+    const isHomepageRoute = homepageRoutes.includes(normalizedCurrentPath);
+    
+    // If canonicalUrl is explicitly provided
+    if (canonicalUrl !== undefined && canonicalUrl !== null) {
+      const normalizedCanonical = canonicalUrl.startsWith('/') ? canonicalUrl : `/${canonicalUrl}`;
+      
+      // If canonicalUrl is "/" but we're not on a homepage route, use current path instead
+      if (normalizedCanonical === '/' && !isHomepageRoute) {
+        return normalizedCurrentPath;
+      }
+      
+      return normalizedCanonical;
+    }
+    
+    // No canonicalUrl provided - use current pathname
+    // For homepage routes, use "/", otherwise use the actual path
+    return isHomepageRoute ? '/' : normalizedCurrentPath;
+  };
+  
+  const fullCanonicalUrl = `${baseUrl}${getCanonicalPath()}`;
   const fullOgImage = ogImage || defaultImage;
 
   // Generate Service Schema if serviceType is provided
@@ -178,7 +208,8 @@ const SEOHead = ({
       ["viewport", "width=device-width, initial-scale=1.0"],
       ["theme-color", "#52C3C5"],
       ["msapplication-TileColor", "#52C3C5"],
-      ["apple-mobile-web-app-capable", "yes"],
+      ["mobile-web-app-capable", "yes"], // Standard meta tag
+      ["apple-mobile-web-app-capable", "yes"], // Keep for backward compatibility with older iOS
       ["apple-mobile-web-app-status-bar-style", "default"],
     ];
 
@@ -374,6 +405,8 @@ const SEOHead = ({
     siteName,
     isRtl,
     structuredData,
+    location.pathname,
+    canonicalUrl,
   ]);
 
   return null;

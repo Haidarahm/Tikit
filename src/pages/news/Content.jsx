@@ -196,29 +196,73 @@ const Content = () => {
         });
       });
       
-      // Defer refresh to next frame for better performance
+      // Defer refresh to next frame for better performance (only if triggers are active)
       requestAnimationFrame(() => {
-        ScrollTrigger.refresh();
+        try {
+          const activeTriggers = ScrollTrigger.getAll().filter(t => 
+            t.vars && t.vars.trigger && t.vars.trigger.isConnected
+          );
+          if (activeTriggers.length > 0) {
+            ScrollTrigger.refresh();
+          }
+        } catch (e) {
+          // Ignore refresh errors
+        }
       });
     }, containerRef);
 
-    return () => ctx.revert();
+    return () => {
+      // Kill ScrollTrigger instances FIRST
+      ScrollTrigger.getAll().forEach((trigger) => {
+        const triggerElement = trigger.vars?.trigger;
+        if (triggerElement && containerRef.current && 
+            (triggerElement === containerRef.current || containerRef.current.contains(triggerElement))) {
+          try {
+            trigger.kill();
+          } catch (e) {
+            // Ignore errors during cleanup
+          }
+        }
+      });
+      
+      // Revert context AFTER ScrollTrigger is killed
+      try {
+        ctx.revert();
+      } catch (e) {
+        // Ignore errors during cleanup
+      }
+    };
   }, [newsItems, loading]);
 
   // Refresh ScrollTrigger on window resize (debounced)
   useEffect(() => {
+    let isMounted = true;
     let resizeTimeout;
+    
+    const safeRefresh = () => {
+      if (!isMounted) return;
+      try {
+        const activeTriggers = ScrollTrigger.getAll().filter(t => 
+          t.vars && t.vars.trigger && t.vars.trigger.isConnected
+        );
+        if (activeTriggers.length > 0) {
+          ScrollTrigger.refresh();
+        }
+      } catch (e) {
+        // Ignore refresh errors
+      }
+    };
+    
     const handleResize = () => {
       clearTimeout(resizeTimeout);
       resizeTimeout = setTimeout(() => {
-        requestAnimationFrame(() => {
-          ScrollTrigger.refresh();
-        });
+        requestAnimationFrame(safeRefresh);
       }, 150);
     };
     
     window.addEventListener("resize", handleResize, { passive: true });
     return () => {
+      isMounted = false;
       clearTimeout(resizeTimeout);
       window.removeEventListener("resize", handleResize);
     };

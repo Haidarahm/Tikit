@@ -4,6 +4,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useI18nLanguage } from '../../store/I18nLanguageContext'
 import { useNewsStore } from '../../store/newsStore'
+import SEOHead from '../../components/SEOHead'
 import NewsDetailsHeader from './NewsDetailsHeader'
 import Footer from '../../components/Footer'
 gsap.registerPlugin(ScrollTrigger)
@@ -167,6 +168,12 @@ const NewsDetails = () => {
   }, [paragraphes, isLoading])
 
   return (
+    <>
+      <SEOHead
+        title={paragraphes[0]?.title ? `${paragraphes[0].title} | Tikit Agency` : "News | Tikit Agency"}
+        description={paragraphes[0]?.description || "Latest news and updates from Tikit Agency."}
+        canonicalUrl={`/news/${id}`}
+      />
     <div data-nav-color="black" ref={sectionRef} className="news-details w-full overflow-hidden   ">
       {/* Header Section */}
       <NewsDetailsHeader />
@@ -286,6 +293,7 @@ const NewsDetails = () => {
       </div>
       <Footer/>
     </div>
+    </>
   )
 }
 
