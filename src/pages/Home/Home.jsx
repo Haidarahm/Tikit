@@ -178,19 +178,9 @@ function Home() {
       </section>
 
       <Hero />
-      <React.Suspense fallback={
-        <div className="relative flex flex-col w-[98vw] mt-[30px] sm:w-[96vw] md:w-[95vw] gap-4 md:gap-8 overflow-hidden h-auto md:h-[1400px] mx-auto">
-          <div className="flex flex-col w-full items-center min-h-[200px] px-4 text-center gap-4">
-            <div className="h-12 w-64 bg-gray-200 animate-pulse rounded mx-auto" />
-            <div className="h-6 w-96 bg-gray-200 animate-pulse rounded mx-auto" />
-          </div>
-        </div>
-      }>
+     
         <ShowCase />
-      </React.Suspense>
-      <React.Suspense fallback={<div className="h-20 animate-pulse bg-gray-200/20 rounded" />}>
         <Numbers />
-      </React.Suspense>
       <React.Suspense fallback={<div className="h-40 animate-pulse bg-gray-200/20 rounded" />}>
         <Goals />
       </React.Suspense>
@@ -202,9 +192,7 @@ function Home() {
       <React.Suspense fallback={<div className="h-40 animate-pulse bg-gray-200/20 rounded" />}>
         <Services />
       </React.Suspense>
-      <React.Suspense fallback={<div className="h-40 animate-pulse bg-gray-200/20 rounded" />}>
-        <PinnedSection />
-      </React.Suspense>
+      
       {/* <React.Suspense fallback={<div className="h-40 animate-pulse bg-gray-200/20 rounded" />}>
         <ElasticGridScroll />
       </React.Suspense> */}
@@ -218,6 +206,7 @@ function Home() {
       <React.Suspense fallback={<div className="h-60 animate-pulse bg-gray-200/20 rounded" />}>
         <Map />
       </React.Suspense>
+        <PinnedSection />
       <React.Suspense fallback={<div className="h-80 animate-pulse bg-gray-200/20 rounded" />}>
         <ContactUs />
       </React.Suspense>

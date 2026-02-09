@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useMemo } from "react";
+import React, { useLayoutEffect , useRef, useMemo } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -56,46 +56,24 @@ const PinnedSection = () => {
     ];
   }, []);
 
-  useEffect(() => {
-    const section = sectionRef.current;
-    const container = containerRef.current;
-    
-    if (!section || !container) return;
-
-    // Add a small delay to ensure DOM is fully rendered
-    const timer = setTimeout(() => {
-      // Video autoplay observer
-      videoObserverRef.current = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            const video = entry.target;
-            if (entry.isIntersecting) {
-              video.play().catch((err) => {
-                console.log("Video autoplay prevented:", err);
-              });
-            } else {
-              video.pause();
-            }
-          });
-        },
-        { threshold: 0.5 }
-      );
-
-      // Calculate total width needed for horizontal scroll
+  useLayoutEffect(() => {
+    if (!sectionRef.current || !containerRef.current) return;
+  
+    const ctx = gsap.context(() => {
+      const container = containerRef.current;
+      const section = sectionRef.current;
+  
       const containerWidth = container.scrollWidth;
       const viewportWidth = window.innerWidth;
       const totalDistance = containerWidth - viewportWidth;
-
-      // Only create ScrollTrigger if there's actual scroll distance
+  
       if (totalDistance <= 0) return;
-
-      // Create horizontal scroll animation
+  
       const tween = gsap.to(container, {
         x: -totalDistance,
         ease: "none",
       });
-
-      // Create ScrollTrigger instance
+  
       scrollTriggerRef.current = ScrollTrigger.create({
         trigger: section,
         start: "top top",
@@ -106,63 +84,30 @@ const PinnedSection = () => {
         animation: tween,
         invalidateOnRefresh: true,
         pinSpacing: true,
-        markers: false, // Set to true for debugging
-        onUpdate: (self) => {
-          // Ensure smooth animation progress
-          if (self.progress >= 1) {
-            gsap.set(container, { x: -totalDistance });
-          }
+      });
+  
+      videoObserverRef.current = new IntersectionObserver(
+        entries => {
+          entries.forEach(entry => {
+            const video = entry.target;
+            entry.isIntersecting ? video.play().catch(() => {}) : video.pause();
+          });
         },
+        { threshold: 0.5 }
+      );
+  
+      container.querySelectorAll("video").forEach(video => {
+        videoObserverRef.current.observe(video);
       });
-
-      // Observe videos for autoplay
-      const videos = container.querySelectorAll("video");
-      videos.forEach((video) => {
-        if (videoObserverRef.current) {
-          videoObserverRef.current.observe(video);
-        }
-      });
-    }, 100);
-
-    // Handle resize with debouncing
-    let resizeTimer;
-    const handleResize = () => {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(() => {
-        if (scrollTriggerRef.current) {
-          ScrollTrigger.refresh();
-        }
-      }, 250);
-    };
-
-    window.addEventListener("resize", handleResize);
-
+    }, sectionRef);
+  
     return () => {
-      clearTimeout(timer);
-      clearTimeout(resizeTimer);
-      window.removeEventListener("resize", handleResize);
-      
-      // Clean up video observer first
-      if (videoObserverRef.current) {
-        videoObserverRef.current.disconnect();
-        videoObserverRef.current = null;
-      }
-
-      // Kill GSAP animations before ScrollTrigger
-      if (container) {
-        gsap.killTweensOf(container);
-      }
-      
-      // Clean up ScrollTrigger
-      if (scrollTriggerRef.current) {
-        scrollTriggerRef.current.kill(true);
-        scrollTriggerRef.current = null;
-      }
-      
-      // Final cleanup
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill(true));
+      videoObserverRef.current?.disconnect();
+      scrollTriggerRef.current?.kill();
+      ctx.revert(); // 🔥 restores DOM exactly as React expects
     };
-  }, [videos]);
+  }, []);
+  
 
   return (
     <section 
