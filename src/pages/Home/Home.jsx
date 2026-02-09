@@ -4,6 +4,7 @@ import Hero from "./Hero";
 import SEOHead from "../../components/SEOHead";
 import Blogs from "./Blogs";
 import ElasticGridScroll from "./elastic/ElasticGridScroll";
+import PinnedSection from "./PinnedSection";
 
 // Dynamic imports for below-the-fold components
 const Numbers = React.lazy(() => import("./Numbers"));
@@ -202,8 +203,11 @@ function Home() {
         <Services />
       </React.Suspense>
       <React.Suspense fallback={<div className="h-40 animate-pulse bg-gray-200/20 rounded" />}>
-        <ElasticGridScroll />
+        <PinnedSection />
       </React.Suspense>
+      {/* <React.Suspense fallback={<div className="h-40 animate-pulse bg-gray-200/20 rounded" />}>
+        <ElasticGridScroll />
+      </React.Suspense> */}
       <Blogs />
       <React.Suspense fallback={<div className="h-20 animate-pulse bg-gray-200/20 rounded" />}>
         <Connections />
