@@ -42,7 +42,9 @@ export function I18nLanguageProvider({ children }) {
     setLanguageState(lang);
     try {
       localStorage.setItem("language", lang);
-    } catch {}
+    } catch {
+      // Intentionally empty
+    }
     i18n.changeLanguage(lang);
 
     // Refresh the page after a short delay to ensure language change is applied

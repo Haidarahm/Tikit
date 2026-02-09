@@ -35,9 +35,13 @@ export default function ContactDropdown({ isMobile = false, onClose }) {
     };
   }, [isContactDropdownOpen]);
 
-  const handleClientClick = () => {
+const handleClientClick = () => {
     setClientType("client");
-    sessionStorage.setItem("shouldScrollToAction", "true");
+    try {
+      sessionStorage.setItem("shouldScrollToAction", "true");
+    } catch (error) {
+      console.warn("Failed to write shouldScrollToAction to sessionStorage:", error);
+    }
     navigate("/contact-us", { state: { preserveScroll: true } });
     setIsContactDropdownOpen(false);
     if (onClose) onClose();
@@ -45,7 +49,11 @@ export default function ContactDropdown({ isMobile = false, onClose }) {
 
   const handleInfluencerClick = () => {
     setClientType("influencer");
-    sessionStorage.setItem("shouldScrollToAction", "true");
+    try {
+      sessionStorage.setItem("shouldScrollToAction", "true");
+    } catch (error) {
+      console.warn("Failed to write shouldScrollToAction to sessionStorage:", error);
+    }
     navigate("/contact-us", { state: { preserveScroll: true } });
     setIsContactDropdownOpen(false);
     if (onClose) onClose();

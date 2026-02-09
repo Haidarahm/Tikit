@@ -29,7 +29,7 @@ const ImageWithSkeleton = ({ src, alt, className, ...props }) => {
   };
 
   return (
-    <div className="relative w-full h-full">
+    <div className="relative w-full h-full uhjtryu">
       {imageLoading && (
         <div className="absolute inset-0 bg-gradient-to-r from-[var(--foreground)]/10 via-[var(--foreground)]/20 to-[var(--foreground)]/10 animate-pulse rounded-[20px]" />
       )}

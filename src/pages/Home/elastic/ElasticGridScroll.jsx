@@ -129,8 +129,8 @@ const ElasticGridScroll = () => {
         entries.forEach((entry) => {
           const video = entry.target;
           if (entry.isIntersecting) {
-            video.play().catch((err) => {
-              console.log("Video autoplay prevented:", err);
+            video.play().catch(() => {
+              // Video autoplay prevented - this is normal behavior in some browsers
             });
           } else {
             video.pause();

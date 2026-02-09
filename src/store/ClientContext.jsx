@@ -17,14 +17,18 @@ export function ClientProvider({ children }) {
     try {
       const stored = sessionStorage.getItem("client");
       if (stored === "client" || stored === "influencer") return stored;
-    } catch {}
+    } catch {
+      // Intentionally empty
+    }
     return "client";
   });
 
   useEffect(() => {
     try {
       sessionStorage.setItem("client", clientType);
-    } catch {}
+    } catch {
+      // Intentionally empty
+    }
   }, [clientType]);
 
   const setClientType = useCallback((type) => {
@@ -32,7 +36,9 @@ export function ClientProvider({ children }) {
       setClientTypeState(type);
       try {
         sessionStorage.setItem("client", type);
-      } catch {}
+      } catch {
+      // Intentionally empty
+    }
     }
   }, []);
 

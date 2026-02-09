@@ -440,7 +440,9 @@ const ScrollStack = ({
         }
       );
       io.observe(scroller);
-    } catch {}
+    } catch {
+        // Intentionally empty
+      }
 
     // Observe size changes to scroller and cards
     try {
@@ -451,7 +453,9 @@ const ScrollStack = ({
       cardsRef.current.forEach((card) => {
         if (card) resizeObserverRef.current.observe(card);
       });
-    } catch {}
+    } catch {
+        // Intentionally empty
+      }
 
     // Listen for image 'load' events inside this instance
     imageUnloadCbsRef.current = [];
@@ -476,7 +480,9 @@ const ScrollStack = ({
       document.removeEventListener("visibilitychange", handleVisibility);
       try {
         io?.disconnect();
-      } catch {}
+      } catch {
+        // Intentionally empty
+      }
       // Clear any pending animation frames
       if (frameRef.current) {
         cancelAnimationFrame(frameRef.current);
@@ -490,11 +496,15 @@ const ScrollStack = ({
       // Disconnect ResizeObserver
       try {
         resizeObserverRef.current?.disconnect();
-      } catch {}
+      } catch {
+        // Intentionally empty
+      }
       resizeObserverRef.current = null;
       // Remove image load listeners
       imageUnloadCbsRef.current.forEach((off) => {
-        try { off?.(); } catch {}
+        try { off?.(); } catch {
+        // Intentionally empty
+      }
       });
       imageUnloadCbsRef.current = [];
       stackCompletedRef.current = false;

@@ -29,22 +29,34 @@ const NewsletterPopup = () => {
       return;
     }
 
-    // Check if user has already subscribed
-    const userSigned = localStorage.getItem("userSigned");
-    if (userSigned === "true") {
-      return;
+// Check if user has already subscribed
+    try {
+      const userSigned = localStorage.getItem("userSigned");
+      if (userSigned === "true") {
+        return;
+      }
+    } catch (error) {
+      console.warn("Failed to read userSigned from localStorage:", error);
     }
 
     // Check if popup has already been shown in this session
-    const sessionShown = sessionStorage.getItem("newsletterShownSession");
-    if (sessionShown === "true") {
-      return;
+    try {
+      const sessionShown = sessionStorage.getItem("newsletterShownSession");
+      if (sessionShown === "true") {
+        return;
+      }
+    } catch (error) {
+      console.warn("Failed to read newsletterShownSession from sessionStorage:", error);
     }
 
     // Show popup after a short delay for better UX
     const timer = setTimeout(() => {
       setIsVisible(true);
-      sessionStorage.setItem("newsletterShownSession", "true");
+      try {
+        sessionStorage.setItem("newsletterShownSession", "true");
+      } catch (error) {
+        console.warn("Failed to write newsletterShownSession to sessionStorage:", error);
+      }
     }, 1500);
 
     return () => clearTimeout(timer);
@@ -151,9 +163,13 @@ const NewsletterPopup = () => {
     try {
       const success = await subscribe({ name, email }, true);
 
-      if (success) {
+if (success) {
         // Store in localStorage
-        localStorage.setItem("userSigned", "true");
+        try {
+          localStorage.setItem("userSigned", "true");
+        } catch (error) {
+          console.warn("Failed to write userSigned to localStorage:", error);
+        }
 
         setIsSubmitted(true);
 

@@ -390,26 +390,34 @@ const Action = () => {
 
   // Check session storage on mount and set the swiper to influencer if needed
   useEffect(() => {
-    const storedClientType = sessionStorage.getItem("client");
-    if (storedClientType === "influencer") {
-      setIsSecondSlide(true);
+    try {
+      const storedClientType = sessionStorage.getItem("client");
+      if (storedClientType === "influencer") {
+        setIsSecondSlide(true);
+      }
+    } catch (error) {
+      console.warn("Failed to read client from sessionStorage:", error);
     }
   }, []);
 
   // Scroll to action section on mount if flagged
   useEffect(() => {
-    const shouldScroll = sessionStorage.getItem("shouldScrollToAction");
-    if (shouldScroll === "true" && actionRef.current) {
-      // Clear the flag
-      sessionStorage.removeItem("shouldScrollToAction");
+    try {
+      const shouldScroll = sessionStorage.getItem("shouldScrollToAction");
+      if (shouldScroll === "true" && actionRef.current) {
+        // Clear the flag
+        sessionStorage.removeItem("shouldScrollToAction");
 
-      // Scroll to the action section
-      setTimeout(() => {
-        actionRef.current?.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-      }, 300);
+        // Scroll to the action section
+        setTimeout(() => {
+          actionRef.current?.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        }, 300);
+      }
+    } catch (error) {
+      console.warn("Failed to read shouldScrollToAction from sessionStorage:", error);
     }
   }, []);
 

@@ -9,6 +9,7 @@ const PinnedSection = () => {
   const containerRef = useRef(null);
   const scrollTriggerRef = useRef(null);
   const videoObserverRef = useRef(null);
+  const contextRef = useRef(null);
 
   // Sample video data - replace with actual video URLs
   const videos = useMemo(() => {
@@ -59,52 +60,116 @@ const PinnedSection = () => {
   useLayoutEffect(() => {
     if (!sectionRef.current || !containerRef.current) return;
   
-    const ctx = gsap.context(() => {
-      const container = containerRef.current;
-      const section = sectionRef.current;
+    const section = sectionRef.current;
+    const container = containerRef.current;
+
+    // Clean up any existing ScrollTrigger instances for this element BEFORE creating new ones
+    ScrollTrigger.getAll().forEach((trigger) => {
+      if (trigger.trigger === section) {
+        trigger.kill();
+      }
+    });
+
+    // Use requestAnimationFrame to ensure DOM is stable before ScrollTrigger manipulation
+    let rafId = requestAnimationFrame(() => {
+      // Double-check elements still exist and are connected
+      if (!sectionRef.current || !containerRef.current) return;
+      if (!section.isConnected || !container.isConnected) return;
   
-      const containerWidth = container.scrollWidth;
-      const viewportWidth = window.innerWidth;
-      const totalDistance = containerWidth - viewportWidth;
+      const ctx = gsap.context(() => {
+        const containerWidth = container.scrollWidth;
+        const viewportWidth = window.innerWidth;
+        const totalDistance = containerWidth - viewportWidth;
   
-      if (totalDistance <= 0) return;
+        if (totalDistance <= 0) return;
   
-      const tween = gsap.to(container, {
-        x: -totalDistance,
-        ease: "none",
-      });
+        const tween = gsap.to(container, {
+          x: -totalDistance,
+          ease: "none",
+        });
   
-      scrollTriggerRef.current = ScrollTrigger.create({
-        trigger: section,
-        start: "top top",
-        end: `+=${totalDistance}`,
-        pin: true,
-        scrub: 1,
-        anticipatePin: 1,
-        animation: tween,
-        invalidateOnRefresh: true,
-        pinSpacing: true,
-      });
+        scrollTriggerRef.current = ScrollTrigger.create({
+          trigger: section,
+          start: "top top",
+          end: `+=${totalDistance}`,
+          pin: true,
+          scrub: 1,
+          anticipatePin: 1,
+          animation: tween,
+          invalidateOnRefresh: true,
+          pinSpacing: true,
+        });
   
-      videoObserverRef.current = new IntersectionObserver(
-        entries => {
-          entries.forEach(entry => {
-            const video = entry.target;
-            entry.isIntersecting ? video.play().catch(() => {}) : video.pause();
-          });
-        },
-        { threshold: 0.5 }
-      );
+        videoObserverRef.current = new IntersectionObserver(
+          entries => {
+            entries.forEach(entry => {
+              const video = entry.target;
+              entry.isIntersecting ? video.play().catch(() => {}) : video.pause();
+            });
+          },
+          { threshold: 0.5 }
+        );
   
-      container.querySelectorAll("video").forEach(video => {
-        videoObserverRef.current.observe(video);
-      });
-    }, sectionRef);
+        container.querySelectorAll("video").forEach(video => {
+          videoObserverRef.current.observe(video);
+        });
+      }, sectionRef);
+  
+      // Store context for cleanup
+      contextRef.current = ctx;
+    });
   
     return () => {
-      videoObserverRef.current?.disconnect();
-      scrollTriggerRef.current?.kill();
-      ctx.revert(); // 🔥 restores DOM exactly as React expects
+      // Cancel any pending animation frame
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+        rafId = null;
+      }
+      
+      // Disconnect observer first
+      if (videoObserverRef.current) {
+        videoObserverRef.current.disconnect();
+        videoObserverRef.current = null;
+      }
+      
+      // Kill ScrollTrigger instances FIRST to prevent DOM manipulation conflicts
+      // This must happen before context.revert() to avoid insertBefore errors
+      if (scrollTriggerRef.current) {
+        try {
+          scrollTriggerRef.current.kill();
+        } catch (e) {
+          // Ignore errors during cleanup
+        }
+        scrollTriggerRef.current = null;
+      }
+      
+      // Kill any remaining ScrollTrigger instances for this section
+      ScrollTrigger.getAll().forEach((trigger) => {
+        if (trigger.trigger === section) {
+          try {
+            trigger.kill();
+          } catch (e) {
+            // Ignore errors during cleanup
+          }
+        }
+      });
+      
+      // Revert context last to restore DOM after ScrollTrigger is killed
+      if (contextRef.current) {
+        try {
+          contextRef.current.revert();
+        } catch (e) {
+          // Ignore errors during cleanup - DOM may have already changed
+        }
+        contextRef.current = null;
+      }
+      
+      // Refresh ScrollTrigger to ensure all instances are properly cleaned up
+      try {
+        ScrollTrigger.refresh();
+      } catch (e) {
+        // Ignore errors during cleanup
+      }
     };
   }, []);
   

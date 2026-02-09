@@ -448,7 +448,9 @@ export default function StickyPinnedSection({
                       if (id != null) {
                         navigate(`/work/${encodeURIComponent(id)}`);
                       }
-                    } catch (_) {}
+                    } catch (_) {
+                        // Intentionally empty
+                      }
                   }}
                 >
                   {isRtl ? (

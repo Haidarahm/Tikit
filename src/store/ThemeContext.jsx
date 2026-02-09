@@ -13,7 +13,9 @@ export function ThemeProvider({ children }) {
     try {
       const stored = localStorage.getItem("theme");
       if (stored === "light" || stored === "dark") return stored;
-    } catch {}
+    } catch {
+      // Intentionally empty
+    }
     if (typeof window !== "undefined" && window.matchMedia) {
       return window.matchMedia("(prefers-color-scheme: dark)").matches
         ? "dark"
@@ -25,7 +27,9 @@ export function ThemeProvider({ children }) {
   useEffect(() => {
     try {
       localStorage.setItem("theme", theme);
-    } catch {}
+    } catch {
+      // Intentionally empty
+    }
     const root = document.documentElement;
     if (theme === "dark") {
       root.classList.add("dark");
