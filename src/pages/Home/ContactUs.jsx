@@ -398,7 +398,7 @@ const ContactUs = memo(({ className = "" }) => {
   ]);
   const [removingIndex, setRemovingIndex] = useState(null);
   const [showMessage, setShowMessage] = useState(false);
-  const [phoneCountryCode, setPhoneCountryCode] = useState("+963");
+  const [phoneCountryCode, setPhoneCountryCode] = useState("+971");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -509,7 +509,7 @@ const ContactUs = memo(({ className = "" }) => {
           message: "",
         });
         setSocialLinks([{ platform: "instagram", link: "" }]);
-        setPhoneCountryCode("+963");
+        setPhoneCountryCode("+971");
       }
     }
   };

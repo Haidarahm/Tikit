@@ -386,7 +386,7 @@ const Action = () => {
   ]);
   const [removingIndex, setRemovingIndex] = useState(null);
   const [showMessage, setShowMessage] = useState(false);
-  const [phoneCountryCode, setPhoneCountryCode] = useState("+963");
+  const [phoneCountryCode, setPhoneCountryCode] = useState("+971");
 
   // Check session storage on mount and set the swiper to influencer if needed
   useEffect(() => {
@@ -514,7 +514,7 @@ const Action = () => {
           message: "",
         });
         setSocialLinks([{ platform: "instagram", link: "" }]);
-        setPhoneCountryCode("+963");
+        setPhoneCountryCode("+971");
       }
     }
   };
