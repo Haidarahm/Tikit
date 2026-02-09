@@ -3,7 +3,7 @@ import React from "react";
 import Hero from "./Hero";
 import SEOHead from "../../components/SEOHead";
 import Blogs from "./Blogs";
-import ElasticGridScroll from "./elastic/ElasticGridScroll";
+// import ElasticGridScroll from "./elastic/ElasticGridScroll";
 import PinnedSection from "./PinnedSection";
 
 // Dynamic imports for below-the-fold components

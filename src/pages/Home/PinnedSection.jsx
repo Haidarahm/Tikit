@@ -62,28 +62,24 @@ const PinnedSection = () => {
     
     if (!section || !container) return;
 
-    // Video autoplay observer
-    videoObserverRef.current = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const video = entry.target;
-          if (entry.isIntersecting) {
-            video.play().catch((err) => {
-              console.log("Video autoplay prevented:", err);
-            });
-          } else {
-            video.pause();
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
-
-    const initScrollTrigger = () => {
-      // Clean up existing ScrollTrigger
-      if (scrollTriggerRef.current) {
-        scrollTriggerRef.current.kill();
-      }
+    // Add a small delay to ensure DOM is fully rendered
+    const timer = setTimeout(() => {
+      // Video autoplay observer
+      videoObserverRef.current = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            const video = entry.target;
+            if (entry.isIntersecting) {
+              video.play().catch((err) => {
+                console.log("Video autoplay prevented:", err);
+              });
+            } else {
+              video.pause();
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
 
       // Calculate total width needed for horizontal scroll
       const containerWidth = container.scrollWidth;
@@ -109,6 +105,8 @@ const PinnedSection = () => {
         anticipatePin: 1,
         animation: tween,
         invalidateOnRefresh: true,
+        pinSpacing: true,
+        markers: false, // Set to true for debugging
         onUpdate: (self) => {
           // Ensure smooth animation progress
           if (self.progress >= 1) {
@@ -119,52 +117,60 @@ const PinnedSection = () => {
 
       // Observe videos for autoplay
       const videos = container.querySelectorAll("video");
-      videos.forEach((video) => videoObserverRef.current.observe(video));
-    };
-
-    // Initialize
-    initScrollTrigger();
-
-    // Handle resize
-    const handleResize = () => {
-      ScrollTrigger.refresh();
-      initScrollTrigger();
-    };
-
-    const debouncedResize = setTimeout(() => {
-      window.addEventListener("resize", handleResize);
+      videos.forEach((video) => {
+        if (videoObserverRef.current) {
+          videoObserverRef.current.observe(video);
+        }
+      });
     }, 100);
 
+    // Handle resize with debouncing
+    let resizeTimer;
+    const handleResize = () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        if (scrollTriggerRef.current) {
+          ScrollTrigger.refresh();
+        }
+      }, 250);
+    };
+
+    window.addEventListener("resize", handleResize);
+
     return () => {
-      clearTimeout(debouncedResize);
+      clearTimeout(timer);
+      clearTimeout(resizeTimer);
       window.removeEventListener("resize", handleResize);
+      
+      // Clean up video observer first
+      if (videoObserverRef.current) {
+        videoObserverRef.current.disconnect();
+        videoObserverRef.current = null;
+      }
+
+      // Kill GSAP animations before ScrollTrigger
+      if (container) {
+        gsap.killTweensOf(container);
+      }
       
       // Clean up ScrollTrigger
       if (scrollTriggerRef.current) {
-        scrollTriggerRef.current.kill();
+        scrollTriggerRef.current.kill(true);
+        scrollTriggerRef.current = null;
       }
       
-      // Clean up video observer
-      if (videoObserverRef.current) {
-        videoObserverRef.current.disconnect();
-      }
-
-      // Clean up GSAP animations
-      gsap.killTweensOf(container);
-      
-      // Refresh ScrollTrigger to ensure proper cleanup
-      ScrollTrigger.refresh();
+      // Final cleanup
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill(true));
     };
-  }, []);
+  }, [videos]);
 
   return (
     <section 
       ref={sectionRef}
-      className="relative w-full  overflow-hidden"
+      className="relative w-full overflow-hidden"
       style={{ minHeight: "100vh" }}
     >
       <div className="sticky top-0 flex items-center justify-center h-screen">
-        
         <div 
           ref={containerRef}
           className="flex items-center h-full gap-4 md:gap-6 px-4 md:px-8"
