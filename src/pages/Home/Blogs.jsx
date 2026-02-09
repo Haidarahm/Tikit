@@ -43,7 +43,7 @@ const Blogs = () => {
   }, [newsItems]);
 
   const handleCardClick = (id) => {
-    navigate(`/news/${id}`);
+    navigate(`/blogs/${id}`);
   };
 
   const formatDate = (dateString) => {

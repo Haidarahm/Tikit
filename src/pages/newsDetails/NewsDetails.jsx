@@ -172,7 +172,7 @@ const NewsDetails = () => {
       <SEOHead
         title={paragraphes[0]?.title ? `${paragraphes[0].title} | Tikit Agency` : "News | Tikit Agency"}
         description={paragraphes[0]?.description || "Latest news and updates from Tikit Agency."}
-        canonicalUrl={`/news/${id}`}
+        canonicalUrl={`/blogs/${id}`}
       />
     <div data-nav-color="black" ref={sectionRef} className="news-details w-full overflow-hidden   ">
       {/* Header Section */}

@@ -20,7 +20,7 @@ const Card = ({ item }) => {
 
   const handleCardClick = () => {
     if (item.id) {
-      navigate(`/news/${item.id}`);
+      navigate(`/blogs/${item.id}`);
     }
   };
 
