@@ -508,7 +508,9 @@ export default function StickyPinnedSection({
                   } catch {}
                 }}
               >
-                {it.media ?? null}
+                {it.media ?? (
+                  <div className="w-full h-full bg-gradient-to-r from-[var(--foreground)]/10 via-[var(--foreground)]/20 to-[var(--foreground)]/10 animate-pulse rounded-xl" />
+                )}
               </div>
             ))}
           </div>
