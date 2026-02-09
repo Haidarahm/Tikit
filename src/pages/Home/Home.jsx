@@ -146,7 +146,7 @@ function Home() {
         <h3>Multilingual Expertise</h3>
         <p>
           Our team speaks English, Arabic, French, and Turkish, enabling us to create campaigns for 
-          diverse audiences across the GCC and MENA region. We understand cultural nuances and create 
+          diverse audiences across the global region. We understand cultural nuances and create 
           content that resonates locally.
         </p>
         <h3>Data-Driven Results</h3>

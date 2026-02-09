@@ -6,7 +6,7 @@
 export const getHomeFAQItems = (t) => [
   {
     question: t("faq.home.q1", "What is Tikit Agency?"),
-    answer: t("faq.home.a1", "Tikit Agency is a leading influencer marketing and talent management agency based in Dubai, UAE, with offices in Saudi Arabia, Istanbul (Turkey), and Syria. We connect brands with authentic creators to drive real engagement and measurable ROI across the GCC and MENA region. With 300+ happy clients and 50+ team members, we're one of the top influencer marketing agencies in the Middle East.")
+    answer: t("faq.home.a1", "Tikit Agency is a leading influencer marketing and talent management agency based in Dubai, UAE, with offices in Saudi Arabia, Istanbul (Turkey), and Syria. We connect brands with authentic creators to drive real engagement and measurable ROI across the global region. With 300+ happy clients and 50+ team members, we're one of the top influencer marketing agencies in the Middle East.")
   },
   {
     question: t("faq.home.q2", "What services does Tikit Agency offer?"),

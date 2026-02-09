@@ -202,7 +202,7 @@
             "name": "Name",
             "email": "Email",
             "button": "Holla at us",
-            "brandsTrust": "20+ Brands Trust Us"
+            "brandsTrust": "200+ Brands Trust Us"
         },
         "map": {
             "badge": "Global Presence",
@@ -215,7 +215,7 @@
                     "text": "5+ Global Offices"
                 },
                 {
-                    "text": "20+ Countries Served"
+                    "text": "200+ Countries Served"
                 },
                 {
                     "text": "500M+ Audience Reach"
@@ -327,7 +327,7 @@
             "mainWord": "Tikit!",
             "title2": "Driven by insight, powered by creativity",
             "sectionTitle": "About us",
-            "description": "Driven by insight and creativity: the story behind \"Tikit\" — a regional agency powering brands, building trust, and delivering results."
+            "description": "Driven by insight and creativity: the story behind \"Tikit\" — a global agency powering brands, building trust, and delivering results."
         },
         "images": {
             "clients": "We have +300 satisfied clients",
@@ -414,7 +414,7 @@
             "vision": {
                 "title": "Our",
                 "titleHighlight": "Vision",
-                "paragraph1": "We envision a future where brands and creators collaborate seamlessly, driving authentic connections and measurable impact across the GCC and MENA region. Our vision is to be the bridge that transforms influence into meaningful business outcomes.",
+                "paragraph1": "We envision a future where brands and creators collaborate seamlessly, driving authentic connections and measurable impact across the global region. Our vision is to be the bridge that transforms influence into meaningful business outcomes.",
                 "paragraph2": "Through data-driven insights, creative excellence, and strategic partnerships, we empower brands to reach their ideal audiences while helping creators build sustainable, impactful careers."
             },
             "mission": {
@@ -897,7 +897,7 @@
                 "card1Title": "5+ Years Experience",
                 "card1Desc": "Operating since 2020 with consistent growth and proven results in the MENA market.",
                 "card2Title": "Regional Presence",
-                "card2Desc": "Offices in Dubai, Saudi Arabia, and Turkey serving clients across the GCC and MENA region.",
+                "card2Desc": "Offices in Dubai, Saudi Arabia, and Turkey serving clients across the global region.",
                 "card3Title": "Diverse Client Portfolio",
                 "card3Desc": "Served 300+ clients including startups, SMEs, and enterprise brands across multiple industries.",
                 "card4Title": "Data-Driven Results",
