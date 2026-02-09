@@ -112,7 +112,7 @@ const PinnedSection = () => {
   return (
     <section 
       ref={sectionRef}
-      className="relative w-full overflow-hidden"
+      className="relative w-full overflow-hidden hidden md:block"
       style={{ minHeight: "100vh" }}
     >
       <div className="sticky top-0 flex items-center justify-center h-screen">
