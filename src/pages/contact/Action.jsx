@@ -198,6 +198,8 @@ const CountryCodeDropdown = ({ value, onChange, isRtl, t }) => {
           countryCode={selectedCountry.code}
           svg
           style={{ width: "1.4em", height: "1.4em" }}
+          aria-label={`${selectedCountry.name} flag`}
+          alt={`${selectedCountry.name} flag`}
         />
         <span className="flex-1 truncate text-sm font-medium">
           {selectedCountry.dial_code}

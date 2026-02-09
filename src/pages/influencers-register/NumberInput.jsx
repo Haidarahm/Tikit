@@ -363,6 +363,7 @@ const NumberInput = ({
               countryCode={currentCountry.code}
               className="text-xl"
               aria-label={currentCountry.name}
+              alt={`${currentCountry.name} flag`}
             />
             <span className="font-medium">{currentCountry.dialCode}</span>
             <svg

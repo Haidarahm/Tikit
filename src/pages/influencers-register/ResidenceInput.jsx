@@ -359,6 +359,7 @@ const ResidenceInput = ({
                   countryCode={selectedCountry.code}
                   className="text-xl flex-shrink-0"
                   aria-label={selectedCountry.name}
+                  alt={`${selectedCountry.name} flag`}
                 />
                 <span
                   className={`flex-1 truncate ${

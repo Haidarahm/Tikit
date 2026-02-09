@@ -380,6 +380,7 @@ const NationalityInput = ({
               countryCode={selectedCountry.code}
               className={`text-xl flex-shrink-0 ${isRtl ? "ml-3" : "mr-3"}`}
               aria-label={selectedCountry.name}
+              alt={`${selectedCountry.name} flag`}
             />
           ) : (
             <svg
