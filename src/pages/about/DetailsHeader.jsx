@@ -29,10 +29,11 @@ const DetailsHeader = () => {
       gsap.set(marqRef.current, { opacity: 0, y: 20 });
 
       // Create timeline for entrance animations
+      // Trigger when the title reaches the vertical center of the viewport
       const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: headerRef.current,
-          start: "top 85%",
+          trigger: titleRef.current,
+          start: "top center+=200", // title's top hits center of viewport
           once: true,
         },
       });
@@ -41,7 +42,7 @@ const DetailsHeader = () => {
       tl.to(titleRef.current, {
         opacity: 1,
         y: 0,
-        duration: 0.8,
+        duration: 0.4,
         ease: "power3.out",
       })
         .to(
@@ -49,7 +50,7 @@ const DetailsHeader = () => {
           {
             opacity: 1,
             y: 0,
-            duration: 0.6,
+            duration: 0.4,
             ease: "power2.out",
           },
           "-=0.4"
@@ -106,14 +107,17 @@ const DetailsHeader = () => {
     >
       {/* Main Title */}
       <div className="relative z-10 text-center">
-        <h1
-          ref={titleRef}
-          className={`text-5xl md:text-7xl lg:text-[100px] font-bold text-[var(--foreground)] uppercase leading-none ${
-            isRtl ? "font-cairo" : "font-antonio"
-          }`}
-        >
-          {t("about.details.header.title")}
-        </h1>
+        {/* Overflow-hidden wrapper for title animation */}
+        <div className="overflow-hidden inline-block">
+          <h1
+            ref={titleRef}
+            className={`text-5xl md:text-7xl lg:text-[100px] font-bold text-[var(--foreground)] uppercase leading-none ${
+              isRtl ? "font-cairo" : "font-antonio"
+            }`}
+          >
+            {t("about.details.header.title")}
+          </h1>
+        </div>
         <p
           ref={subtitleRef}
           className={`text-xl md:text-2xl text-[var(--foreground)] dark:text-[var(--foreground)]/70 mt-4 font-light ${
