@@ -123,8 +123,8 @@ const Services = () => {
         : splitDescriptionsRef.current[index].chars;
 
     // Stagger settings based on language
-    const headingStagger = isArabic ? 0.08 : 0.02;
-    const descriptionStagger = isArabic ? 0.05 : 0.01;
+    const headingStagger = isArabic ? 0.06 : 0.015;
+    const descriptionStagger = isArabic ? 0.04 : 0.008;
 
     const gotoSection = (index, direction) => {
       index = wrap(index);
@@ -133,7 +133,7 @@ const Services = () => {
       const fromTop = direction === -1;
       const dFactor = fromTop ? -1 : 1;
       const tl = gsap.timeline({
-        defaults: { duration: 1.25, ease: "power1.inOut" },
+        defaults: { duration: 1.05, ease: "power1.inOut" },
         onComplete: () => {
           animatingRef.current = false;
         },
@@ -165,11 +165,11 @@ const Services = () => {
           {
             autoAlpha: 1,
             yPercent: 0,
-            duration: 1,
+            duration: 0.9,
             ease: "power2",
             stagger: { each: headingStagger, from: "random" },
           },
-          0.2
+          0.15
         )
         .fromTo(
           getDescriptionTargets(index),
@@ -177,11 +177,11 @@ const Services = () => {
           {
             autoAlpha: 1,
             yPercent: 0,
-            duration: 0.8,
+            duration: 0.7,
             ease: "power2",
             stagger: { each: descriptionStagger, from: "random" },
           },
-          0.4
+          0.3
         );
 
       currentIndexRef.current = index;
@@ -206,10 +206,10 @@ const Services = () => {
       {
         autoAlpha: 1,
         yPercent: 0,
-        duration: 1,
+        duration: 0.9,
         ease: "power2",
         stagger: { each: headingStagger, from: "random" },
-        delay: 0.3,
+        delay: 0.25,
       }
     );
 
@@ -219,10 +219,10 @@ const Services = () => {
       {
         autoAlpha: 1,
         yPercent: 0,
-        duration: 0.8,
+        duration: 0.7,
         ease: "power2",
         stagger: { each: descriptionStagger, from: "random" },
-        delay: 0.5,
+        delay: 0.4,
       }
     );
 
