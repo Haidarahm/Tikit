@@ -128,7 +128,7 @@ const Goals = memo(() => {
               <div className="text">
                 <h2
                   style={{ fontFamily: isRtl ? "Cairo" : "Antonio" }}
-                  className="tikit-title w-full"
+                  className="font-[700] text-2xl sm:text-6xl md:text-7xl lg:text-[64px] leading-tight text-[var(--foreground)] w-full"
                 >
                   {goal.title}
                 </h2>
