@@ -138,12 +138,14 @@ const Hero = () => {
           <TikitTitle
            title={t("about.hero.title")}
            mainWord={t("about.hero.mainWord")}
+           disableAnimation
           />
            
           
           </div>
           <TikitTitle
            title={t("about.hero.title2")}
+           disableAnimation
           />
         </div>
         <InfiniteScroll

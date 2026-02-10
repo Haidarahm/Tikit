@@ -224,7 +224,12 @@ const Production = () => {
           <span className="hero-animate inline-block px-6 py-2 mb-6 rounded-full bg-[#52C3C5]/10 text-[#52C3C5] text-sm font-semibold uppercase tracking-wider">
             {t("serviceSections.production.badge")}
           </span>
-          <TikitTitle title={t("serviceSections.production.hero.title")} mainWord={t("serviceSections.production.hero.mainWord")} />
+          <TikitTitle
+            className="hero-animate block"
+            title={t("serviceSections.production.hero.title")}
+            mainWord={t("serviceSections.production.hero.mainWord")}
+            disableAnimation
+          />
           <p className="hero-animate text-lg md:text-xl text-[var(--foreground)]/70 max-w-3xl mx-auto leading-relaxed">
             {t("serviceSections.production.hero.description")}
           </p>

@@ -1,12 +1,46 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useI18nLanguage } from "../store/I18nLanguageContext";
 
-const TikitTitle = ({ title, className, mainWord }) => {
+gsap.registerPlugin(ScrollTrigger);
+
+const TikitTitle = ({ title, className, mainWord, disableAnimation }) => {
   const { isRtl } = useI18nLanguage();
+  const titleRef = useRef(null);
+
+  useEffect(() => {
+    if (disableAnimation || !titleRef.current) return;
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        titleRef.current,
+        { opacity: 0, y: 60 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: titleRef.current,
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    });
+
+    return () => ctx.revert();
+  }, [disableAnimation]);
+
   return (
-    <h1 dir={isRtl ? "rtl" : "ltr"} className={`${className} ${
-      isRtl ? " font-cairo " : "font-antonio"
-    } tikit-title`}>
+    <h1
+      ref={titleRef}
+      dir={isRtl ? "rtl" : "ltr"}
+      className={`${className} ${
+        isRtl ? " font-cairo " : "font-antonio"
+      } tikit-title`}
+    >
       {title}
       {mainWord ? (
         <>

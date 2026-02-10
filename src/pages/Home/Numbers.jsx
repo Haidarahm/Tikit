@@ -54,12 +54,10 @@ const Numbers = memo(() => {
       } my-10 md:my-0 flex flex-col mx-auto md:h-screen z-10 w-[98%] sm:w-[95%] md:w-6/7 justify-center px-4 md:px-0`}
     >
       <div className="texts text-center ">
-        <div data-aos="fade-up" data-aos-delay="50">
-          <TikitTitle
-            title={t("home.numbers.headline")}
-            mainWord={t("home.numbers.mainWord")}
-          />
-        </div>
+        <TikitTitle
+          title={t("home.numbers.headline")}
+          mainWord={t("home.numbers.mainWord")}
+        />
         <h2
           className="text-sm sm:text-base md:text-lg lg:text-[25px] font-light px-4 md:px-0 max-w-4xl mx-auto text-[var(--foreground)]"
           data-aos="fade-up"

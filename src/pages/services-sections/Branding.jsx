@@ -230,8 +230,12 @@ const Branding = () => {
             {t("serviceSections.branding.badge")}
           </span>
 
-
-          <TikitTitle title={t("serviceSections.branding.hero.title")} mainWord={t("serviceSections.branding.hero.mainWord")} />
+          <TikitTitle
+            className="hero-animate block"
+            title={t("serviceSections.branding.hero.title")}
+            mainWord={t("serviceSections.branding.hero.mainWord")}
+            disableAnimation
+          />
           <p className="hero-animate text-lg md:text-xl text-[var(--foreground)]/70 max-w-3xl mx-auto leading-relaxed">
             {t("serviceSections.branding.hero.description")}
           </p>
