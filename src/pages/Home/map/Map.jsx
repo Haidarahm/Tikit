@@ -242,7 +242,6 @@ const Map = () => {
       const currentSection = sectionRef.current
       
       // Kill ScrollTrigger instances FIRST
-      // Use both the captured section and current ref to catch all instances
       ScrollTrigger.getAll().forEach((trigger) => {
         const triggerElement = trigger.trigger
         if (triggerElement === section || triggerElement === currentSection) {
@@ -253,13 +252,12 @@ const Map = () => {
           }
         }
       })
-      
-      // Revert context AFTER ScrollTrigger is killed to restore DOM
-      if (ctx) {
+      // Skip ctx.revert on unmount - section is being removed by React, revert causes insertBefore conflict
+      if (section?.isConnected && ctx) {
         try {
           ctx.revert()
         } catch (e) {
-          // Ignore errors during cleanup - DOM may have already changed
+          // Ignore errors during cleanup
         }
       }
     }

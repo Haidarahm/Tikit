@@ -357,12 +357,13 @@ export default function StickyPinnedSection({
           }
         }
       });
-      
-      // Revert context AFTER ScrollTrigger is killed to restore DOM
-      try {
-        ctx.revert();
-      } catch (e) {
-        // Ignore errors during cleanup - DOM may have already changed
+      // Only revert if element still in DOM (re-run due to deps), skip on unmount to avoid insertBefore conflict
+      if (el.isConnected) {
+        try {
+          ctx.revert();
+        } catch (e) {
+          // Ignore errors during cleanup - DOM may have already changed
+        }
       }
     };
   }, [count, heightPerItemVh, isRtl]);
