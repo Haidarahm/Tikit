@@ -11,6 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const ShowCase = () => {
   const sectionRef = useRef(null);
+  const titleSectionRef = useRef(null);
   const { t } = useTranslation();
   const { language } = useI18nLanguage();
   const { cases, loadCases, loading } = useShowcaseStore();
@@ -64,7 +65,38 @@ const ShowCase = () => {
   }, [cases]);
 
   /* =====================
-     GSAP ANIMATIONS
+     GSAP - Title section staggered appear
+  ====================== */
+  useEffect(() => {
+    if (!titleSectionRef.current) return;
+
+    const ctx = gsap.context(() => {
+      const heroElements = titleSectionRef.current.querySelectorAll(".showcase-hero-animate");
+      if (heroElements.length > 0) {
+        gsap.fromTo(
+          heroElements,
+          { opacity: 0, y: 60 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            stagger: 0.2,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: titleSectionRef.current,
+              start: "top 85%",
+              toggleActions: "play none none none",
+            },
+          }
+        );
+      }
+    }, titleSectionRef.current);
+
+    return () => ctx?.revert();
+  }, []);
+
+  /* =====================
+     GSAP ANIMATIONS - Cards
   ====================== */
   useEffect(() => {
     if (!sectionRef.current || loading || showcaseData.length === 0) return;
@@ -193,14 +225,17 @@ const ShowCase = () => {
     >
       {/* TITLE */}
       <div
+        ref={titleSectionRef}
         data-nav-color="black"
         className="flex flex-col w-full items-center min-h-[200px] px-4 text-center gap-4"
       >
         <TikitTitle
+          className="showcase-hero-animate block"
           title={t("home.showcase.title")}
           mainWord={t("home.showcase.mainWord")}
+          disableAnimation
         />
-        <p className="text-base sm:text-lg md:text-xl lg:text-[24px] max-w-4xl">
+        <p className="showcase-hero-animate text-base sm:text-lg md:text-xl lg:text-[24px] max-w-4xl">
           {t("home.showcase.description")}
         </p>
       </div>
