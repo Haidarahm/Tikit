@@ -26,14 +26,15 @@ function LogoIntro({ onComplete }) {
       const jumpShape = svg?.querySelector(".logo-jump");
       const regularShapes = allShapes.filter((el) => el !== jumpShape);
 
+      // Set initial wrapper state
       gsap.set(".intro-logo", {
         visibility: "visible",
-        opacity: 0,
-        scale: 0.94,
+        opacity: 1,
+        scale: 1,
         transformOrigin: "50% 50%",
       });
 
-      // Set initial styles for all shapes
+      // Set initial styles for all shapes IMMEDIATELY to prevent flash
       allShapes.forEach((el) => {
         let length = 0;
         try {
@@ -57,19 +58,22 @@ function LogoIntro({ onComplete }) {
         });
       });
 
-      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+      const tl = gsap.timeline({ 
+        defaults: { ease: "power3.out" },
+        delay: 0.2 // Small delay to ensure styles are applied
+      });
 
-      tl.to(".intro-logo", { opacity: 1, scale: 1, duration: 0.6 })
-        .to(
+      // Start drawing the strokes
+      tl.to(
           allShapes,
           {
             strokeDashoffset: 0,
             duration: 1.8,
             stagger: 0.02,
             ease: "power2.inOut",
-          },
-          0.05
+          }
         )
+        // Fill the shapes
         .to(
           regularShapes,
           {
@@ -89,15 +93,23 @@ function LogoIntro({ onComplete }) {
           },
           "-=0.6"
         )
+        // Remove strokes
         .to(allShapes, { strokeOpacity: 0, duration: 0.4 }, "+=0.1")
+        // Fade out
         .to(".intro-logo", {
           opacity: 0,
           duration: 0.6,
           ease: "power2.in",
         });
 
-      // Notify parent when animation completes
       tl.eventCallback("onComplete", () => {
+        if (typeof window !== "undefined") {
+          try {
+            sessionStorage.setItem("logoIntroSeen", "true");
+          } catch (_) {
+            // ignore storage failures
+          }
+        }
         if (typeof onComplete === "function") {
           onComplete();
         }
@@ -114,7 +126,7 @@ function LogoIntro({ onComplete }) {
     >
       <div
         className="intro-logo"
-        style={{ opacity: 0, visibility: "hidden" }}
+        style={{ visibility: "hidden" }}
       >
         <SVGComponent
           width={260}

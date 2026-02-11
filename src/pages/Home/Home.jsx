@@ -86,7 +86,10 @@ const homepageSchema = {
 };
 
 function Home() {
-  const [introDone, setIntroDone] = useState(false);
+  const [introDone, setIntroDone] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return sessionStorage.getItem("logoIntroSeen") === "true";
+  });
 
   return (
     <>
