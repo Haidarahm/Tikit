@@ -1,20 +1,55 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useNewsStore } from "../../store/newsStore";
 import { ArrowRight, Calendar, Clock } from "lucide-react";
 import TikitTitle from "../../components/TikitTitle";
-import { t } from "i18next";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Blogs = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [visibleCards, setVisibleCards] = useState([]);
   const cardsRef = useRef([]);
+  const titleSectionRef = useRef(null);
   const { newsItems, loadNewsItems, loading } = useNewsStore();
 
   useEffect(() => {
     // Load first 4 news items
     loadNewsItems({ per_page: 4, page: 1 });
   }, [loadNewsItems]);
+
+  /* GSAP - Title section staggered appear */
+  useEffect(() => {
+    if (!titleSectionRef.current) return;
+
+    const ctx = gsap.context(() => {
+      const heroElements = titleSectionRef.current.querySelectorAll(".blogs-hero-animate");
+      if (heroElements.length > 0) {
+        gsap.fromTo(
+          heroElements,
+          { opacity: 0, y: 60 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            stagger: 0.2,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: titleSectionRef.current,
+              start: "top 85%",
+              toggleActions: "play none none none",
+            },
+          }
+        );
+      }
+    }, titleSectionRef.current);
+
+    return () => ctx?.revert();
+  }, [loading]);
 
   useEffect(() => {
     const observers = [];
@@ -84,15 +119,18 @@ const Blogs = () => {
     <section className="w-full py-16 md:py-24 bg-[var(--background)] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="mb-12 md:mb-16 text-center">
+        <div
+          ref={titleSectionRef}
+          className="mb-12 md:mb-16 text-center"
+        >
           <TikitTitle
-            title={t("home.blogs.title",)}
+            className="blogs-hero-animate block"
+            title={t("home.blogs.title")}
             mainWord={t("home.blogs.mainWord")}
+            disableAnimation
           />
-        
-          <p className="text-lg md:text-xl text-[var(--foreground)] opacity-70 max-w-2xl mx-auto">
-            Stay updated with the latest trends, tips, and success stories from
-            the world of influencer marketing
+          <p className="blogs-hero-animate text-lg md:text-xl text-[var(--foreground)] opacity-70 max-w-2xl mx-auto">
+            {t("home.blogs.description")}
           </p>
         </div>
 

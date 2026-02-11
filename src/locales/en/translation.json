@@ -275,7 +275,8 @@
         },
         "blogs": {
             "title": "Latest",
-            "mainWord": "Insights"
+            "mainWord": "Insights",
+            "description": "Stay updated with the latest trends, tips, and success stories from the world of influencer marketing"
         }
     },
     "work": {

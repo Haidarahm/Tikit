@@ -270,7 +270,8 @@
         },
         "blogs": {
             "title": "Dernières",
-            "mainWord": "Perspectives"
+            "mainWord": "Perspectives",
+            "description": "Restez informé des dernières tendances, conseils et success stories du marketing d'influence"
         }
     },
     "work": {
