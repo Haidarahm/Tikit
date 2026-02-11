@@ -97,7 +97,7 @@ const Hero = () => {
             {t("home.hero.tagline")}
           </h2>
 
-          <h2
+          <h1
             data-hero-animate
             className="font-[700] font-antonio text-[50px] lg:text-6xl xl:text-[96px] leading-tight"
             style={{
@@ -106,7 +106,7 @@ const Hero = () => {
             }}
           >
             ROI REBELS
-          </h2>
+          </h1>
         </div>
 
         {/* Subtitle */}

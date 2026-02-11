@@ -266,7 +266,7 @@ const InfluencerMarketingDubai = () => {
       {/* FAQ Section */}
       <FAQ 
         items={faqItems} 
-        title="Frequently Asked Questions About Influencer Marketing in Dubai" 
+        title="FAQ: Influencer Marketing in Dubai"
       />
 
       <Footer />

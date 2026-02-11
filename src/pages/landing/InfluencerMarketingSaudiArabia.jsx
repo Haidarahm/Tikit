@@ -247,7 +247,7 @@ const InfluencerMarketingSaudiArabia = () => {
       {/* FAQ Section */}
       <FAQ 
         items={faqItems} 
-        title="Frequently Asked Questions About Influencer Marketing in Saudi Arabia" 
+        title="FAQ: Influencer Marketing in Saudi Arabia"
       />
 
       <Footer />
