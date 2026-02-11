@@ -8,13 +8,11 @@ import { useScrollToTopOnRouteChange } from "./hooks/useScrollToTopOnRouteChange
 import AOSRefresher from "./components/AOSRefresher";
 import ScrollToHash from "./components/ScrollToHash";
 import Loader from "./components/Loader.jsx";
-
-
+import Home from "./pages/Home/Home";
 import { ToastContainer } from "./components/ui/Toast";
 
 // Lazy load components
 const NewsletterPopup = lazy(() => import("./components/NewsletterPopup"));
-const Home = lazy(() => import("./pages/Home/Home"));
 const CaseDetails = lazy(() => import("./pages/showcase/CaseDetails.jsx"));
 const Work = lazy(() => import("./pages/Work/Work"));
 const AboutUs = lazy(() => import("./pages/about/AboutUs"));

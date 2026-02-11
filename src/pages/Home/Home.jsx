@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 // Critical above-the-fold components - load immediately
 import Hero from "./Hero";
 import SEOHead from "../../components/SEOHead";
@@ -6,18 +6,16 @@ import Blogs from "./Blogs";
 // import ElasticGridScroll from "./elastic/ElasticGridScroll";
 import PinnedSection from "./PinnedSection";
 import LogoIntro from "../../components/LogoIntro";
-
-// Dynamic imports for below-the-fold components
-const Numbers = React.lazy(() => import("./Numbers"));
-const Goals = React.lazy(() => import("./Goals"));
-const Services = React.lazy(() => import("./Services"));
-const WorkSection = React.lazy(() => import("./WorkSection"));
-const Connections = React.lazy(() => import("./Connections"));
-const Footer = React.lazy(() => import("../../components/Footer"));
-const Influencers = React.lazy(() => import("./influencers/Influencers"));
-const ShowCase = React.lazy(() => import("./ShowCase"));
-const Map = React.lazy(() => import("./map/Map"));
-const ContactUs = React.lazy(() => import("./ContactUs"));
+import Numbers from "./Numbers";
+import Goals from "./Goals";
+import Services from "./Services";
+import WorkSection from "./WorkSection";
+import Connections from "./Connections";
+import Footer from "../../components/Footer";
+import Influencers from "./influencers/Influencers";
+import ShowCase from "./ShowCase";
+import Map from "./map/Map";
+import ContactUs from "./ContactUs";
 
 
 
@@ -195,39 +193,23 @@ function Home() {
          
             <ShowCase />
             <Numbers />
-          <React.Suspense fallback={<div className="h-40 animate-pulse bg-gray-200/20 rounded" />}>
-            <Goals />
-          </React.Suspense>
+          <Goals />
          
 
-          <React.Suspense fallback={<div className="h-60 animate-pulse bg-gray-200/20 rounded" />}>
-            <Influencers />
-          </React.Suspense>
-          <React.Suspense fallback={<div className="h-40 animate-pulse bg-gray-200/20 rounded" />}>
-            <Services />
-          </React.Suspense>
+          <Influencers />
+          <Services />
           
           {/* <React.Suspense fallback={<div className="h-40 animate-pulse bg-gray-200/20 rounded" />}>
             <ElasticGridScroll />
           </React.Suspense> */}
          
           <Blogs />
-          <React.Suspense fallback={<div className="h-20 animate-pulse bg-gray-200/20 rounded" />}>
-            <Connections />
-          </React.Suspense>
-          <React.Suspense fallback={<div className="h-60 animate-pulse bg-gray-200/20 rounded" />}>
-            <WorkSection />
-          </React.Suspense>
-          <React.Suspense fallback={<div className="h-60 animate-pulse bg-gray-200/20 rounded" />}>
-            <Map />
-          </React.Suspense>
+          <Connections />
+          <WorkSection />
+          <Map />
             <PinnedSection />
-          <React.Suspense fallback={<div className="h-80 animate-pulse bg-gray-200/20 rounded" />}>
-            <ContactUs />
-          </React.Suspense>
-          <React.Suspense fallback={<div className="h-40 animate-pulse bg-gray-200/20 rounded" />}>
-            <Footer />
-          </React.Suspense>
+          <ContactUs />
+          <Footer />
         </div>
       )}
     </>
