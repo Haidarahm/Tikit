@@ -196,7 +196,7 @@ function Home() {
       {/* <React.Suspense fallback={<div className="h-40 animate-pulse bg-gray-200/20 rounded" />}>
         <ElasticGridScroll />
       </React.Suspense> */}
-      <Blogs />
+     
       <React.Suspense fallback={<div className="h-20 animate-pulse bg-gray-200/20 rounded" />}>
         <Connections />
       </React.Suspense>
@@ -206,6 +206,7 @@ function Home() {
       <React.Suspense fallback={<div className="h-60 animate-pulse bg-gray-200/20 rounded" />}>
         <Map />
       </React.Suspense>
+      <Blogs />
         <PinnedSection />
       <React.Suspense fallback={<div className="h-80 animate-pulse bg-gray-200/20 rounded" />}>
         <ContactUs />
