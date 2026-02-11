@@ -14,7 +14,7 @@ export default function NavLogo({ logoRef }) {
   return (
     <div className={`h-10 md:h-12 flex items-center justify-center `}>
       <div
-        onClick={() => navigate("/home")}
+        onClick={() => navigate("/")}
         ref={logoRef}
         className="h-10 md:h-12 transform-gpu cursor-pointer"
         role="button"
@@ -23,7 +23,7 @@ export default function NavLogo({ logoRef }) {
         onKeyDown={(e) => {
           if (e.key === "Enter" || e.key === " ") {
             e.preventDefault();
-            navigate("/home");
+            navigate("/");
           }
         }}
       >

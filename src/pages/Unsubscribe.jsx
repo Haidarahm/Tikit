@@ -80,7 +80,7 @@ const Unsubscribe = () => {
                 We're sorry to see you go. If you change your mind, you can always subscribe again anytime.
               </p>
               <button
-                onClick={() => navigate("/home")}
+                onClick={() => navigate("/")}
                 className="inline-flex items-center gap-2 bg-[var(--secondary)] hover:bg-[var(--secondary)]/90 text-[var(--background)] font-semibold px-8 py-3 rounded-full transition-all duration-300 shadow-lg shadow-[var(--secondary)]/30 hover:shadow-[var(--secondary)]/50"
               >
                 <HomeOutlined />
@@ -104,7 +104,7 @@ const Unsubscribe = () => {
                 {error || "Something went wrong. Please try again later."}
               </p>
               <button
-                onClick={() => navigate("/home")}
+                onClick={() => navigate("/")}
                 className="inline-flex items-center gap-2 bg-[var(--secondary)] hover:bg-[var(--secondary)]/90 text-[var(--background)] font-semibold px-8 py-3 rounded-full transition-all duration-300 shadow-lg shadow-[var(--secondary)]/30 hover:shadow-[var(--secondary)]/50"
               >
                 <HomeOutlined />

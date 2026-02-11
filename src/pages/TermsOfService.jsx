@@ -145,7 +145,7 @@ The Burlington Tower, Marasi Drive, Dubai – Office 309
           {/* Back to Home */}
           <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-800 text-center">
             <Link 
-              to="/home" 
+              to="/" 
               className="inline-flex items-center gap-2 text-[var(--secondary)] hover:underline font-medium"
             >
               ← Back to Home

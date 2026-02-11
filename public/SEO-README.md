@@ -13,7 +13,7 @@ The sitemap includes all main pages with proper priority and change frequency se
 **Main Pages:**
 
 - `/` (Homepage) - Priority: 1.0, Weekly updates
-- `/home` - Priority: 0.9, Weekly updates
+- `/` - Priority: 0.9, Weekly updates
 - `/about-us` - Priority: 0.8, Monthly updates
 - `/services` - Priority: 0.8, Monthly updates
 - `/work` - Priority: 0.7, Weekly updates
@@ -151,7 +151,7 @@ const Home = () => {
         title={t("seo.home.title")}
         description={t("seo.home.description")}
         keywords={t("seo.home.keywords")}
-        canonicalUrl="/home"
+        canonicalUrl="/"
       />
       {/* Page content */}
     </>

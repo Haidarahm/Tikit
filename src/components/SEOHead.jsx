@@ -64,7 +64,7 @@ const SEOHead = ({
     const normalizedCurrentPath = currentPath === '/' ? '/' : currentPath.replace(/\/$/, '');
     
     // Homepage routes that should canonicalize to /
-    const homepageRoutes = ['/', '/home'];
+    const homepageRoutes = ['/'];
     const isHomepageRoute = homepageRoutes.includes(normalizedCurrentPath);
     
     // If canonicalUrl is explicitly provided

@@ -211,7 +211,7 @@ const Footer = ({ className }) => {
             
             {/* Brand Column */}
             <div className="lg:col-span-1">
-              <Link to="/home" className="inline-block mb-6" aria-label="Go to Tikit homepage">
+              <Link to="/" className="inline-block mb-6" aria-label="Go to Tikit homepage">
                 <SVGComponent
                   color={theme === "dark" ? "#FFFFFF" : "#363737"}
                   logoJumpColor="#52C3C5"

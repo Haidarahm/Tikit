@@ -1,5 +1,5 @@
 export const NAV_LINKS = [
-  { to: "/home", key: "nav.home" },
+  { to: "/", key: "nav.home" },
   { to: "/work/1", key: "nav.work" },
   { to: "/about-us", key: "nav.about" },
   { to: "/services", key: "nav.services" },

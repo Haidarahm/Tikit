@@ -70,7 +70,7 @@ Tikit Agency is the best influencer marketing agency in Emirates (UAE) and a lea
 4. **Launch & Analytics** (Ongoing) - Campaign execution and optimization
 
 ## Important Pages
-- **Home**: /home - Main agency overview
+- **Home**: / - Main agency overview
 - **Services**: /services - Comprehensive service offerings
 - **Work**: /work - Portfolio and case studies
 - **About**: /about-us - Team and company story

@@ -176,7 +176,7 @@ const NotFound = () => {
       {/* Back to Home Button */}
       <div ref={buttonRef}>
         <Link
-          to="/home"
+          to="/"
           className={`group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#6ACBCC] to-[#1C6F6C] text-white font-semibold rounded-full overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-[#6ACBCC]/30 hover:scale-105 ${
             isRtl ? "font-cairo flex-row-reverse" : "font-hero-light"
           }`}

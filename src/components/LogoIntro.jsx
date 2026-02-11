@@ -1,24 +1,17 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import { useNavigate } from "react-router-dom";
 import { useTheme } from "../store/ThemeContext";
 import SVGComponent from "../assets/logo";
 
-function LogoIntro() {
+function LogoIntro({ onComplete }) {
   const wrapperRef = useRef(null);
-  const navigate = useNavigate();
   const { theme } = useTheme();
-  const homePreloadRef = useRef(null);
 
   const logoColor = theme === "light" ? "#363737" : "#ffffff";
   const logoJumpColor = "#52C3C5";
 
   useEffect(() => {
     if (!wrapperRef.current) return;
-
-    // Start preloading Home component early (while animation plays)
-    // This ensures the component is ready by the time navigation happens
-    homePreloadRef.current = import("../pages/Home/Home");
 
     const ctx = gsap.context(() => {
       const svg = document.querySelector(".intro-logo svg");
@@ -98,29 +91,21 @@ function LogoIntro() {
         )
         .to(allShapes, { strokeOpacity: 0, duration: 0.4 }, "+=0.1")
         .to(".intro-logo", {
-          scale: 0,
           opacity: 0,
-          duration: 0.8,
-          ease: "power4.in",
+          duration: 0.6,
+          ease: "power2.in",
         });
 
-      // Wait for both animation completion AND Home component preload
-      tl.eventCallback("onComplete", async () => {
-        try {
-          // Ensure Home component is loaded before navigating
-          // If already loaded, this will resolve immediately
-          await homePreloadRef.current;
-          navigate("/home");
-        } catch (error) {
-          console.error("Failed to preload Home component:", error);
-          // Navigate anyway if preload fails
-          navigate("/home");
+      // Notify parent when animation completes
+      tl.eventCallback("onComplete", () => {
+        if (typeof onComplete === "function") {
+          onComplete();
         }
       });
     }, wrapperRef);
 
     return () => ctx.revert();
-  }, [navigate, theme, logoColor, logoJumpColor]);
+  }, [theme, logoColor, logoJumpColor, onComplete]);
 
   return (
     <div

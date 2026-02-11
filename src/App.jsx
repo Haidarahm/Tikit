@@ -7,7 +7,6 @@ import { Outlet } from "react-router-dom";
 import { useScrollToTopOnRouteChange } from "./hooks/useScrollToTopOnRouteChange";
 import AOSRefresher from "./components/AOSRefresher";
 import ScrollToHash from "./components/ScrollToHash";
-import LogoIntro from "./components/LogoIntro";
 import Loader from "./components/Loader.jsx";
 
 
@@ -109,9 +108,8 @@ function App() {
         <ToastContainer />
         <Suspense fallback={<LoadingSpinner />}>
           <Routes>
-            <Route path="/" element={<LogoIntro />} />
             <Route element={<Layout />}>
-              <Route path="/home" element={<Home />} />
+              <Route index element={<Home />} />
               <Route path="/work/:workId?" element={<Work />} />
               <Route path="/about-us" element={<AboutUs />} />
               <Route path="/services" element={<Services />} />
