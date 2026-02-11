@@ -120,9 +120,9 @@ const Connections = memo(() => {
       />
       <div className="flex items-center flex-col justify-center relative z-10 w-[90vw] md:w-[80vw] mx-auto text-center">
         {isRtl ? (
-          <h1 className="text-[24px] md:h-[55px] md:text-[35px] pointer-events-none max-w-[600px] text-[var(--foreground)] dark:text-white">
+          <h2 className="text-[24px] md:h-[55px] md:text-[35px] pointer-events-none max-w-[600px] text-[var(--foreground)] dark:text-white">
             {t("home.connections.question")}
-          </h1>
+          </h2>
         ) : (
           <ScrollFloat
             animationDuration={1}
