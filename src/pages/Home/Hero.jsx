@@ -56,7 +56,7 @@ const Hero = () => {
     <div
       ref={sectionRef}
       data-nav-color="white"
-      className="section relative h-[80vh] mb-[10vh] md:h-[97vh] md:mb-[3vh] rounded-[15px] md:rounded-[25px] overflow-hidden mx-auto w-[98vw] sm:w-[96vw] md:w-[95vw]"
+      className="section relative h-[80vh] mb-[4vh] md:h-[97vh] md:mb-[3vh] rounded-[15px] md:rounded-[25px] overflow-hidden mx-auto w-[98vw] sm:w-[96vw] md:w-[95vw]"
     >
       {/* Background */}
       <div className="pointer-events-none h-full mt-[8px] md:mt-[16px] w-full mx-auto overflow-hidden bg-[var(--container-bg)] rounded-[15px] md:rounded-[25px] absolute inset-0 z-0">

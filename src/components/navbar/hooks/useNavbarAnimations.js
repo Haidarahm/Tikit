@@ -8,6 +8,9 @@ export function useNavbarAnimations(logoRef, navRef) {
       navRef.current ? navRef.current.querySelectorAll(".nav-item") : [];
 
     const tl = gsap.timeline();
+    const navItems = queryNavItems();
+
+    gsap.set(navItems, { opacity: 0, y: 12 });
     tl.fromTo(
       logoRef.current,
       { scale: 0, opacity: 0 },
@@ -19,7 +22,7 @@ export function useNavbarAnimations(logoRef, navRef) {
         ease: "back.out(1.7)",
       }
     ).fromTo(
-      queryNavItems(),
+      navItems,
       { y: 12, opacity: 0 },
       {
         y: 0,

@@ -116,7 +116,7 @@ const Blogs = () => {
   }
 
   return (
-    <section className="w-full py-16 md:py-24 bg-[var(--background)] overflow-hidden">
+    <section className="w-full py-10 md:py-24 bg-[var(--background)] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div

@@ -24,9 +24,9 @@ export default function DesktopNavLinks({ language }) {
           <Link
             key={to}
             to={to}
-            className={`nav-item ${textColor} uppercase text-sm opacity-0 relative inline-block transition-colors duration-300 ease-in-out`}
+            className={`nav-item ${textColor} uppercase text-sm relative inline-block whitespace-nowrap transition-colors duration-300 ease-in-out`}
           >
-            <span className="relative inline-block">
+            <span className="relative inline-block whitespace-nowrap">
               {t(key)}
               <span
                 className="nav-underline"
