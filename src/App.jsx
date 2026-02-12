@@ -113,7 +113,7 @@ function App() {
               <Route path="/about-us" element={<AboutUs />} />
               <Route path="/services" element={<Services />} />
               <Route path="/blogs" element={<News />} />
-              <Route path="/blogs/:id" element={<NewsDetails />} />
+              <Route path="/blogs/:slug" element={<NewsDetails />} />
             <Route path="/contact-us/:contact?" element={<Contact />} />
               <Route path="/influencer" element={<Influencer />} />
               <Route

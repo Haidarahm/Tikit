@@ -19,8 +19,8 @@ const Card = ({ item }) => {
   const imgSrc = item?.images || item?.image || null;
 
   const handleCardClick = () => {
-    if (item.id) {
-      navigate(`/blogs/${item.id}`);
+    if (item.slug) {
+      navigate(`/blogs/${item.slug}`);
     }
   };
 

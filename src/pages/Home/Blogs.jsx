@@ -77,8 +77,8 @@ const Blogs = () => {
     };
   }, [newsItems]);
 
-  const handleCardClick = (id) => {
-    navigate(`/blogs/${id}`);
+  const handleCardClick = (item) => {
+    if (item.slug) navigate(`/blogs/${item.slug}`);
   };
 
   const formatDate = (dateString) => {
@@ -140,7 +140,7 @@ const Blogs = () => {
             <article
               key={item.id}
               ref={(el) => (cardsRef.current[index] = el)}
-              onClick={() => handleCardClick(item.id)}
+              onClick={() => item.slug && handleCardClick(item)}
               className={`group relative bg-[var(--primary)] dark:bg-[var(--container-bg)] rounded-xl overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500 ${
                 visibleCards.includes(index)
                   ? "opacity-100 translate-y-0"

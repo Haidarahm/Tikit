@@ -8,13 +8,13 @@ import { useNewsStore } from '../../store/newsStore'
 gsap.registerPlugin(ScrollTrigger)
 
 const NewsDetailsHeader = () => {
-  const { id } = useParams()
+  const { slug } = useParams()
   const { isRtl, language } = useI18nLanguage()
   const { loadOneNews, newsDetails, loading } = useNewsStore()
   const [newsData, setNewsData] = useState(null)
   const [imageLoaded, setImageLoaded] = useState(false)
   const loadingRef = useRef(false)
-  const lastFetchedIdRef = useRef(null)
+  const lastFetchedSlugRef = useRef(null)
   
   const headerRef = useRef(null)
   const headerImageRef = useRef(null)
@@ -38,60 +38,60 @@ const NewsDetailsHeader = () => {
 
   // Load news data
   useEffect(() => {
-    if (!id) {
+    if (!slug) {
       setNewsData(null)
       setImageLoaded(false)
       loadingRef.current = false
-      lastFetchedIdRef.current = null
+      lastFetchedSlugRef.current = null
       return
     }
 
-    // If we already fetched this id, don't fetch again
-    if (lastFetchedIdRef.current === id) {
+    // If we already fetched this slug, don't fetch again
+    if (lastFetchedSlugRef.current === slug) {
       // Check if we have data in store or local state
-      const existingData = newsData || newsDetails[id]
-      if (existingData && typeof existingData === 'object' && existingData.id) {
+      const existingData = newsData || newsDetails[slug]
+      if (existingData && typeof existingData === 'object' && (existingData.id || existingData.slug)) {
         return
       }
     }
 
-    // Check if data already exists in store for this id
-    const existingData = newsDetails[id]
-    if (existingData && typeof existingData === 'object' && existingData.id) {
+    // Check if data already exists in store for this slug
+    const existingData = newsDetails[slug]
+    if (existingData && typeof existingData === 'object' && (existingData.id || existingData.slug)) {
       setNewsData(existingData)
       setImageLoaded(false) // Still need to wait for image to load
-      lastFetchedIdRef.current = id
+      lastFetchedSlugRef.current = slug
       loadingRef.current = false
       return
     }
 
-    // Prevent duplicate calls - check if already loading for this specific id
-    if (loadingRef.current === id) {
+    // Prevent duplicate calls - check if already loading for this specific slug
+    if (loadingRef.current === slug) {
       return
     }
 
-    loadingRef.current = id
-    lastFetchedIdRef.current = id
+    loadingRef.current = slug
+    lastFetchedSlugRef.current = slug
     setImageLoaded(false) // Reset image loaded state when fetching new news
 
     let isCancelled = false
 
     const fetchNews = async () => {
       try {
-        const data = await loadOneNews(id, language)
-        // Only update if we're still loading the same id and not cancelled
-        if (!isCancelled && loadingRef.current === id && lastFetchedIdRef.current === id) {
+        const data = await loadOneNews(slug, language)
+        // Only update if we're still loading the same slug and not cancelled
+        if (!isCancelled && loadingRef.current === slug && lastFetchedSlugRef.current === slug) {
           setNewsData(data)
         }
       } catch (error) {
         console.error('Failed to load news:', error)
-        // Only update if we're still loading the same id and not cancelled
-        if (!isCancelled && loadingRef.current === id && lastFetchedIdRef.current === id) {
+        // Only update if we're still loading the same slug and not cancelled
+        if (!isCancelled && loadingRef.current === slug && lastFetchedSlugRef.current === slug) {
           setImageLoaded(true) // Allow skeleton to hide even on error
         }
       } finally {
-        // Only clear if we're still on the same id
-        if (!isCancelled && loadingRef.current === id) {
+        // Only clear if we're still on the same slug
+        if (!isCancelled && loadingRef.current === slug) {
           loadingRef.current = false
         }
       }
@@ -101,15 +101,15 @@ const NewsDetailsHeader = () => {
 
     return () => {
       isCancelled = true
-      // Clear ref if component unmounts or id changes
-      if (loadingRef.current === id) {
+      // Clear ref if component unmounts or slug changes
+      if (loadingRef.current === slug) {
         loadingRef.current = false
       }
     }
-  }, [id, language]) // Only depend on id and language
+  }, [slug, language]) // Only depend on slug and language
 
   // Get news data from store or local state
-  const currentNewsData = newsData || newsDetails[id]
+  const currentNewsData = newsData || newsDetails[slug]
   const isLoading = loading || !currentNewsData || !imageLoaded
 
   useEffect(() => {

@@ -3,8 +3,8 @@ import { getAllNewsItems, getNewsDetails, showOneNews } from "../apis/news";
 
 export const useNewsStore = create((set, get) => ({
   newsItems: [],
-  newsDetails: {}, // key: id -> details object
-  activeNewsId: null,
+  newsDetails: {}, // key: slug -> details object
+  activeNewsSlug: null,
   lang: undefined,
   loading: false,
   error: null,
@@ -61,7 +61,6 @@ export const useNewsStore = create((set, get) => ({
 
       set((state) => ({
         newsDetails: { ...state.newsDetails, [id]: data },
-        activeNewsId: id,
         lang: effectiveLang,
         loading: false,
       }));
@@ -76,15 +75,21 @@ export const useNewsStore = create((set, get) => ({
     }
   },
 
-  // Show single news by id
-  loadOneNews: async (id, lang) => {
-    if (!id) return null;
+  // Show single news by slug
+  loadOneNews: async (slug, lang) => {
+    if (!slug) return null;
+
+    // Return cached data if already loaded
+    const cached = get().newsDetails[slug];
+    if (cached && typeof cached === "object" && (cached.id || cached.slug)) {
+      return cached;
+    }
 
     const effectiveLang = lang ?? get().lang ?? "en";
     set({ loading: true, error: null });
 
     try {
-      const response = await showOneNews(id, { lang: effectiveLang });
+      const response = await showOneNews(slug, { lang: effectiveLang });
       const data = response?.data ?? response ?? null;
 
       if (!data) {
@@ -92,8 +97,8 @@ export const useNewsStore = create((set, get) => ({
       }
 
       set((state) => ({
-        newsDetails: { ...state.newsDetails, [id]: data },
-        activeNewsId: id,
+        newsDetails: { ...state.newsDetails, [slug]: data },
+        activeNewsSlug: slug,
         lang: effectiveLang,
         loading: false,
       }));
