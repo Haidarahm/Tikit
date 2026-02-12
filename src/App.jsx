@@ -10,6 +10,7 @@ import ScrollToHash from "./components/ScrollToHash";
 import Loader from "./components/Loader.jsx";
 import Home from "./pages/Home/Home";
 import { ToastContainer } from "./components/ui/Toast";
+import AIAssistButton from "./components/AIAssistButton";
 
 // Lazy load components
 const NewsletterPopup = lazy(() => import("./components/NewsletterPopup"));
@@ -149,6 +150,7 @@ function App() {
         <Suspense fallback={null}>
           <NewsletterPopup />
         </Suspense>
+        <AIAssistButton />
       </ClientProvider>
     </ThemeProvider>
   );
