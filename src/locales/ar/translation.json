@@ -527,6 +527,7 @@
         "page": {
             "header": "خدماتنا",
             "scrollHint": "مرر للاستكشاف",
+            "discoverButton": "اكتشف",
             "items": [
                 {
                     "title": "تسويق المؤثرين",

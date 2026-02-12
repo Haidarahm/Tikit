@@ -531,6 +531,7 @@
         "page": {
             "header": "Our Services",
             "scrollHint": "Scroll to explore",
+            "discoverButton": "Discover",
             "items": [
                 {
                     "title": "Influencer Marketing",

@@ -3,6 +3,7 @@ import gsap from "gsap";
 import { Observer } from "gsap/Observer";
 import { SplitText } from "gsap/SplitText";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
 import SEOHead from "../../components/SEOHead";
 import influencerMarketing from "../../assets/services/Influencer-Marketing.webp"
@@ -12,12 +13,14 @@ gsap.registerPlugin(Observer, SplitText);
 
 const Services = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const { language, isRtl } = useI18nLanguage();
   const isArabic = language === "ar";
   const sectionsRef = useRef([]);
   const imagesRef = useRef([]);
   const headingsRef = useRef([]);
   const descriptionsRef = useRef([]);
+  const buttonsRef = useRef([]);
   const outerWrappersRef = useRef([]);
   const innerWrappersRef = useRef([]);
   const currentIndexRef = useRef(-1);
@@ -71,9 +74,62 @@ const Services = () => {
   ];
 
   const translatedItems = t("services.page.items", { returnObjects: true });
+  
+  // Function to get route for service based on title
+  const getServiceRoute = (title) => {
+    const titleLower = title.toLowerCase();
+    const normalized = typeof titleLower.normalize === "function"
+      ? titleLower.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+      : titleLower;
+
+    // Influencer Marketing
+    if (
+      titleLower.includes("influencer marketing") ||
+      titleLower.includes("تسويق المؤثرين") ||
+      titleLower.includes("تسويق المؤثر") ||
+      normalized.includes("marketing dinfluence") ||
+      normalized.includes("marketing d'influence")
+    ) {
+      return "/services/influencer-marketing";
+    }
+    // Social Media Marketing/Management
+    if (
+      titleLower.includes("social media management") ||
+      titleLower.includes("social media marketing") ||
+      titleLower.includes("إدارة وسائل التواصل") ||
+      titleLower.includes("التسويق عبر وسائل التواصل") ||
+      titleLower.includes("وسائل التواصل") ||
+      normalized.includes("gestion des medias sociaux") ||
+      normalized.includes("gestion des médias sociaux") ||
+      normalized.includes("marketing des reseaux sociaux")
+    ) {
+      return "/services/social-media-management";
+    }
+    // Branding
+    if (
+      titleLower.includes("branding") ||
+      titleLower.includes("العلامة التجارية") ||
+      titleLower.includes("الهوية التجارية") ||
+      normalized.includes("identite de marque") ||
+      normalized.includes("identité de marque")
+    ) {
+      return "/services/branding";
+    }
+    // Production
+    if (
+      titleLower.includes("production") ||
+      titleLower.includes("الإنتاج") ||
+      titleLower.includes("إنتاج")
+    ) {
+      return "/services/production";
+    }
+    return null; // No route for Web Development and Digital Marketing
+  };
+
   const services = translatedItems.map((item, index) => ({
     title: item.title,
     description: item.description,
+    route: getServiceRoute(item.title),
     ...serviceImages[index],
   }));
 
@@ -184,6 +240,22 @@ const Services = () => {
           0.3
         );
 
+      // Animate button if it exists
+      if (buttonsRef.current[index]) {
+        tl.fromTo(
+          buttonsRef.current[index],
+          { autoAlpha: 0, yPercent: 50 * dFactor, scale: 0.9 },
+          {
+            autoAlpha: 1,
+            yPercent: 0,
+            scale: 1,
+            duration: 0.6,
+            ease: "power2",
+          },
+          0.45
+        );
+      }
+
       currentIndexRef.current = index;
     };
 
@@ -225,6 +297,22 @@ const Services = () => {
         delay: 0.4,
       }
     );
+
+    // Animate first button if it exists
+    if (buttonsRef.current[0]) {
+      gsap.fromTo(
+        buttonsRef.current[0],
+        { autoAlpha: 0, yPercent: 50, scale: 0.9 },
+        {
+          autoAlpha: 1,
+          yPercent: 0,
+          scale: 1,
+          duration: 0.6,
+          ease: "power2",
+          delay: 0.55,
+        }
+      );
+    }
 
     currentIndexRef.current = 0;
 
@@ -298,6 +386,31 @@ const Services = () => {
                 >
                   {service.description}
                 </p>
+                {service.route && (
+                  <button
+                    ref={(el) => (buttonsRef.current[index] = el)}
+                    onClick={() => navigate(service.route)}
+                    style={styles.discoverButton}
+                    onMouseEnter={(e) => {
+                      gsap.to(e.target, {
+                        scale: 1.08,
+                        boxShadow: "0 6px 25px rgba(82, 195, 197, 0.6)",
+                        duration: 0.3,
+                        ease: "power2.out",
+                      });
+                    }}
+                    onMouseLeave={(e) => {
+                      gsap.to(e.target, {
+                        scale: 1,
+                        boxShadow: "0 4px 20px rgba(82, 195, 197, 0.4)",
+                        duration: 0.3,
+                        ease: "power2.in",
+                      });
+                    }}
+                  >
+                    {t("services.page.discoverButton")}
+                  </button>
+                )}
               </div>
             </div>
           </div>
@@ -386,11 +499,29 @@ const styles = {
     lineHeight: 1.6,
     textAlign: "center",
     margin: 0,
+    marginBottom: "1.5rem",
     width: "90vw",
     maxWidth: "800px",
     zIndex: 999,
     textShadow: "1px 1px 10px rgba(0,0,0,0.8)",
     opacity: 0.9,
+  },
+  discoverButton: {
+    padding: "clamp(0.5rem, 1.2vw, 0.875rem) clamp(1.25rem, 3vw, 2rem)",
+    fontSize: "clamp(0.75rem, 1.2vw, 0.9375rem)",
+    fontWeight: 600,
+    color: "#fff",
+    backgroundColor: "#52C3C5",
+    border: "none",
+    borderRadius: "9999px",
+    cursor: "pointer",
+    zIndex: 999,
+    textShadow: "1px 1px 10px rgba(0,0,0,0.5)",
+    boxShadow: "0 4px 20px rgba(82, 195, 197, 0.4)",
+    transition: "all 0.3s ease",
+    opacity: 0,
+    textTransform: "uppercase",
+    letterSpacing: "0.05em",
   },
 };
 

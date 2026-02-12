@@ -526,6 +526,7 @@
         "page": {
             "header": "Nos Services",
             "scrollHint": "Défilez pour explorer",
+            "discoverButton": "Découvrir",
             "items": [
                 {
                     "title": "Marketing d'influence",
