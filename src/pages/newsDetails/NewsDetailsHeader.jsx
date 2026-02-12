@@ -10,10 +10,9 @@ gsap.registerPlugin(ScrollTrigger)
 const NewsDetailsHeader = () => {
   const { slug } = useParams()
   const { isRtl, language } = useI18nLanguage()
-  const { loadOneNews, newsDetails, loading } = useNewsStore()
+  const { newsDetails, loading } = useNewsStore()
   const [newsData, setNewsData] = useState(null)
   const [imageLoaded, setImageLoaded] = useState(false)
-  const loadingRef = useRef(false)
   const lastFetchedSlugRef = useRef(null)
   
   const headerRef = useRef(null)
@@ -36,79 +35,27 @@ const NewsDetailsHeader = () => {
     })
   }
 
-  // Load news data
+  // News data comes from store - fetched by parent NewsDetails to avoid duplicate API calls
   useEffect(() => {
     if (!slug) {
       setNewsData(null)
       setImageLoaded(false)
-      loadingRef.current = false
-      lastFetchedSlugRef.current = null
       return
     }
-
-    // If we already fetched this slug, don't fetch again
-    if (lastFetchedSlugRef.current === slug) {
-      // Check if we have data in store or local state
-      const existingData = newsData || newsDetails[slug]
-      if (existingData && typeof existingData === 'object' && (existingData.id || existingData.slug)) {
-        return
-      }
-    }
-
-    // Check if data already exists in store for this slug
     const existingData = newsDetails[slug]
     if (existingData && typeof existingData === 'object' && (existingData.id || existingData.slug)) {
       setNewsData(existingData)
-      setImageLoaded(false) // Still need to wait for image to load
-      lastFetchedSlugRef.current = slug
-      loadingRef.current = false
-      return
-    }
-
-    // Prevent duplicate calls - check if already loading for this specific slug
-    if (loadingRef.current === slug) {
-      return
-    }
-
-    loadingRef.current = slug
-    lastFetchedSlugRef.current = slug
-    setImageLoaded(false) // Reset image loaded state when fetching new news
-
-    let isCancelled = false
-
-    const fetchNews = async () => {
-      try {
-        const data = await loadOneNews(slug, language)
-        // Only update if we're still loading the same slug and not cancelled
-        if (!isCancelled && loadingRef.current === slug && lastFetchedSlugRef.current === slug) {
-          setNewsData(data)
-        }
-      } catch (error) {
-        console.error('Failed to load news:', error)
-        // Only update if we're still loading the same slug and not cancelled
-        if (!isCancelled && loadingRef.current === slug && lastFetchedSlugRef.current === slug) {
-          setImageLoaded(true) // Allow skeleton to hide even on error
-        }
-      } finally {
-        // Only clear if we're still on the same slug
-        if (!isCancelled && loadingRef.current === slug) {
-          loadingRef.current = false
-        }
+      if (slug !== lastFetchedSlugRef.current) {
+        setImageLoaded(false) // Reset image load state when slug changes
+        lastFetchedSlugRef.current = slug
       }
+    } else {
+      setNewsData(null)
+      lastFetchedSlugRef.current = null
     }
+  }, [slug, newsDetails])
 
-    fetchNews()
-
-    return () => {
-      isCancelled = true
-      // Clear ref if component unmounts or slug changes
-      if (loadingRef.current === slug) {
-        loadingRef.current = false
-      }
-    }
-  }, [slug, language]) // Only depend on slug and language
-
-  // Get news data from store or local state
+  // Get news data from store (populated by NewsDetails)
   const currentNewsData = newsData || newsDetails[slug]
   const isLoading = loading || !currentNewsData || !imageLoaded
 

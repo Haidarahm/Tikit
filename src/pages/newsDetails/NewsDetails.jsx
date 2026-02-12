@@ -67,7 +67,7 @@ const NewsDetails = () => {
     return () => {
       loadingRef.current = false
     }
-  }, [slug, language, newsDetails, loadOneNews, loadNewsDetails])
+  }, [slug, language, loadOneNews, loadNewsDetails])
 
   // Get current details data (details are keyed by id in store)
   const blogData = newsDetails[slug]

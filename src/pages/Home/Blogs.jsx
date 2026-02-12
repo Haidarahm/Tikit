@@ -211,7 +211,7 @@ const Blogs = () => {
         {/* View All Button */}
         <div className="mt-12 md:mt-16 text-center">
           <button
-            onClick={() => navigate("/news")}
+            onClick={() => navigate("/blogs")}
             className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#6ACBCC] to-[#1C6F6C] text-white font-semibold rounded-full hover:shadow-xl hover:scale-105 transition-all duration-300"
           >
             <span className="text-lg">View All Articles</span>
