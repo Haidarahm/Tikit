@@ -1,9 +1,9 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { useTranslation } from "react-i18next";
 import AvatarGroupDemo from "../../components/ui/AvatarGroupDemo";
 
-const Hero = () => {
+const Hero = ({ introDone = true }) => {
   const sectionRef = useRef(null);
   const contentRef = useRef(null);
   const { t } = useTranslation();
@@ -11,46 +11,54 @@ const Hero = () => {
   const isMobile =
     typeof window !== "undefined" && window.innerWidth < 768;
 
-  // Background scale-in animation
-  useEffect(() => {
-    const element = sectionRef.current;
-    if (!element) return;
+  // Set initial state before paint so Hero is ready for animation when intro finishes
+  // (or invisible/ready when returning user loads with introDone=true)
+  useLayoutEffect(() => {
+    const section = sectionRef.current;
+    const content = contentRef.current;
+    if (!section || !content) return;
 
-    gsap.set(element, {
+    gsap.set(section, {
       scale: 0,
       transformOrigin: "center center",
     });
 
-    requestAnimationFrame(() => {
-      gsap.to(element, {
+    const items = gsap.utils.toArray("[data-hero-animate]", content);
+    gsap.set(items, { autoAlpha: 0, y: 40 });
+  }, []);
+
+  // Run entrance animations only when intro is done (so they play when Hero becomes visible)
+  useEffect(() => {
+    if (!introDone) return;
+
+    const section = sectionRef.current;
+    const content = contentRef.current;
+    if (!section || !content) return;
+
+    const ctx = gsap.context(() => {
+      // Background scale-in
+      gsap.to(section, {
         scale: 1,
         duration: 0.8,
         ease: "back.out(1.2)",
       });
-    });
-  }, []);
 
-  // Content stagger animation
-  useEffect(() => {
-    if (!contentRef.current) return;
-
-    const ctx = gsap.context(() => {
-      const items = gsap.utils.toArray("[data-hero-animate]");
-      if (!items.length) return;
-
-      gsap.set(items, { autoAlpha: 0, y: 40 });
-      gsap.to(items, {
-        autoAlpha: 1,
-        y: 0,
-        duration: 1.2,
-        ease: "power3.out",
-        stagger: 0.2,
-        delay: 0.5,
-      });
-    }, contentRef);
+      // Content stagger
+      const items = gsap.utils.toArray("[data-hero-animate]", content);
+      if (items.length) {
+        gsap.to(items, {
+          autoAlpha: 1,
+          y: 0,
+          duration: 1.2,
+          ease: "power3.out",
+          stagger: 0.2,
+          delay: 0.5,
+        });
+      }
+    }, section);
 
     return () => ctx.revert();
-  }, []);
+  }, [introDone]);
 
   return (
     <div

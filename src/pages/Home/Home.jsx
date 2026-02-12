@@ -187,7 +187,7 @@ function Home() {
             </p>
         </section>
 
-        <Hero />
+        <Hero introDone={introDone} />
        
           <ShowCase />
           <Numbers />
