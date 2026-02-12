@@ -85,7 +85,10 @@ const Goals = memo(() => {
             itemClassName={`flex backdrop-blur-lg relative items-center overflow-hidden ${getBackgroundClass(goal)}`}
           >
             <div className="text w-2/3">
-              <TikitTitle title={goal.title} />
+              <h1  dir={isRtl ? "rtl" : "ltr"}
+      className={` ${
+        isRtl ? " font-cairo " : "font-antonio"
+      } tikit-title`}>{goal.title}</h1>
               <p className="font-light text-[var(--foreground)] text-[14px] md:text-[32px] leading-[20px] md:leading-[45px]">
                 {goal.description}
               </p>

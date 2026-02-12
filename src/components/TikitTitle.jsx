@@ -1,9 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useI18nLanguage } from "../store/I18nLanguageContext";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const TikitTitle = ({ title, className, mainWord, disableAnimation }) => {
   const { isRtl } = useI18nLanguage();
@@ -12,25 +9,28 @@ const TikitTitle = ({ title, className, mainWord, disableAnimation }) => {
   useEffect(() => {
     if (disableAnimation || !titleRef.current) return;
 
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        titleRef.current,
-        { opacity: 0, y: 60 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: titleRef.current,
-            start: "top 85%",
-            toggleActions: "play none none none",
-          },
-        }
-      );
-    });
+    const el = titleRef.current;
+    gsap.set(el, { opacity: 0, y: 60 });
 
-    return () => ctx.revert();
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            gsap.to(el, {
+              opacity: 1,
+              y: 0,
+              duration: 1,
+              ease: "power3.out",
+            });
+            observer.unobserve(el);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -15% 0px" }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
   }, [disableAnimation]);
 
   return (
