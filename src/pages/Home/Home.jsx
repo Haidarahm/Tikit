@@ -201,7 +201,6 @@ function Home() {
         <Connections />
         <WorkSection />
         <Map />
-          <PinnedSection />
         <ContactUs />
         <Footer />
       </div>

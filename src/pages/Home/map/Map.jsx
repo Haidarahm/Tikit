@@ -192,7 +192,7 @@ const Map = () => {
         }
       }, '-=0.4')
 
-      // Phase 4: Large endpoint markers fade in from bottom
+      // Phase 3: Large endpoint markers fade in from bottom
       .to(largeMarkers, {
         opacity: 1,
         visibility: 'visible',
@@ -205,7 +205,7 @@ const Map = () => {
         }
       }, '-=0.15')
 
-      // Phase 5: Location pins fade in from bottom
+      // Phase 4: Location pins fade in from bottom
       .to(pins, {
         opacity: 1,
         visibility: 'visible',
@@ -218,7 +218,7 @@ const Map = () => {
         }
       }, '-=0.1')
 
-      // Phase 6: Text labels fade in smoothly at end
+      // Phase 5: Text labels fade in smoothly at end
       .to(textLabels, {
         opacity: 1,
         visibility: 'visible',

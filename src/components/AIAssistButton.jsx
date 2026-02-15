@@ -102,7 +102,7 @@ function AIAssistButton() {
           <motion.button
             type="button"
             onClick={() => setIsOpen(true)}
-            className="fixed bottom-6 right-6 z-[9998] flex h-14 w-14 items-center justify-center rounded-full bg-[var(--secondary)] text-white shadow-lg shadow-[var(--secondary)]/30 transition-shadow hover:shadow-xl hover:shadow-[var(--secondary)]/40 focus:outline-none focus:ring-2 focus:ring-[var(--secondary)] focus:ring-offset-2 focus:ring-offset-[var(--background)]"
+            className="fixed bottom-6 right-6 z-[9998] flex h-14 w-14 items-center justify-center rounded-full bg-[var(--secondary)] text-white dark:text-[var(--background)] shadow-lg shadow-[var(--secondary)]/30 dark:shadow-[var(--foreground)]/20 dark:border dark:border-[var(--foreground)]/20 transition-shadow hover:shadow-xl hover:shadow-[var(--secondary)]/40 dark:hover:shadow-[var(--foreground)]/30 focus:outline-none focus:ring-2 focus:ring-[var(--secondary)] focus:ring-offset-2 focus:ring-offset-[var(--background)]"
             aria-label="Open AI assistant"
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
@@ -125,33 +125,33 @@ function AIAssistButton() {
             transition={{ duration: 0.15 }}
           >
             <div
-              className="absolute inset-0 bg-black/40 backdrop-blur-sm"
+              className="absolute inset-0 bg-black/40 dark:bg-black/60 backdrop-blur-sm"
               onClick={() => setIsOpen(false)}
               aria-hidden="true"
             />
             <motion.div
               data-lenis-prevent
-              className="relative flex h-[480px] w-full max-w-md flex-col overflow-hidden rounded-2xl border border-[var(--foreground)]/10 bg-[var(--background)] shadow-2xl"
+              className="relative flex h-[480px] w-full max-w-md flex-col overflow-hidden rounded-2xl border border-[var(--foreground)]/10 dark:border-[var(--foreground)]/20 bg-[var(--background)] shadow-2xl dark:shadow-[var(--foreground)]/10"
               initial={{ opacity: 0, y: 24, scale: 0.96 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 24, scale: 0.96 }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
             >
               {/* Header */}
-              <div className="flex items-center justify-between border-b border-[var(--foreground)]/10 px-4 py-3">
+              <div className="flex items-center justify-between border-b border-[var(--foreground)]/10 dark:border-[var(--foreground)]/20 px-4 py-3">
                 <div className="flex items-center gap-2">
-                  <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[var(--secondary)]/20">
-                    <MessageCircle className="h-5 w-5 text-[var(--secondary)]" />
+                  <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[var(--secondary)]/20 dark:bg-[var(--foreground)]/15">
+                    <MessageCircle className="h-5 w-5 text-[var(--secondary)] dark:text-[var(--foreground)]" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-[var(--foreground)]">Tikit AI Assist</h3>
-                    <p className="text-xs text-[var(--foreground)]/60">Ask anything about Tikit Agency</p>
+                    <p className="text-xs text-[var(--foreground)]/60 dark:text-[var(--foreground)]/70">Ask anything about Tikit Agency</p>
                   </div>
                 </div>
                 <button
                   type="button"
                   onClick={() => setIsOpen(false)}
-                  className="rounded-full p-2 text-[var(--foreground)]/60 transition-colors hover:bg-[var(--foreground)]/10 hover:text-[var(--foreground)]"
+                  className="rounded-full p-2 text-[var(--foreground)]/60 dark:text-[var(--foreground)]/70 transition-colors hover:bg-[var(--foreground)]/10 dark:hover:bg-[var(--foreground)]/20 hover:text-[var(--foreground)]"
                   aria-label="Close chat"
                 >
                   <X className="h-5 w-5" />
@@ -176,8 +176,8 @@ function AIAssistButton() {
                     <div
                       className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-sm ${
                         msg.role === "user"
-                          ? "bg-[var(--secondary)] text-white"
-                          : "bg-[var(--foreground)]/5 text-[var(--foreground)]"
+                          ? "bg-[var(--secondary)] text-white dark:text-[var(--background)]"
+                          : "bg-[var(--foreground)]/5 dark:bg-[var(--foreground)]/10 text-[var(--foreground)]"
                       }`}
                     >
                       {msg.role === "assistant" ? (
@@ -192,7 +192,7 @@ function AIAssistButton() {
                 ))}
                 {loading && (
                   <div className="flex justify-start">
-                    <div className="rounded-2xl bg-[var(--foreground)]/5 px-4 py-3">
+                    <div className="rounded-2xl bg-[var(--foreground)]/5 dark:bg-[var(--foreground)]/10 px-4 py-3">
                       <TypingDots />
                     </div>
                   </div>
@@ -201,7 +201,7 @@ function AIAssistButton() {
               </div>
 
               {/* Input */}
-              <div className="border-t border-[var(--foreground)]/10 p-3">
+              <div className="border-t border-[var(--foreground)]/10 dark:border-[var(--foreground)]/20 p-3">
                 <div className="flex gap-2">
                   <input
                     ref={inputRef}
@@ -210,14 +210,14 @@ function AIAssistButton() {
                     onChange={(e) => setInput(e.target.value)}
                     onKeyDown={handleKeyDown}
                     placeholder="Ask about services, contact, pricing..."
-                    className="flex-1 rounded-xl border border-[var(--foreground)]/20 bg-transparent px-4 py-2.5 text-sm text-[var(--foreground)] placeholder:text-[var(--foreground)]/40 focus:border-[var(--secondary)] focus:outline-none"
+                    className="flex-1 rounded-xl border border-[var(--foreground)]/20 dark:border-[var(--foreground)]/30 bg-transparent px-4 py-2.5 text-sm text-[var(--foreground)] placeholder:text-[var(--foreground)]/40 dark:placeholder:text-[var(--foreground)]/50 focus:border-[var(--secondary)] focus:outline-none"
                     disabled={loading}
                   />
                   <button
                     type="button"
                     onClick={handleSend}
                     disabled={!input.trim() || loading}
-                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[var(--secondary)] text-white transition-opacity hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[var(--secondary)] text-white dark:text-[var(--background)] transition-opacity hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
                     aria-label="Send message"
                   >
                     <Send className="h-5 w-5" />
