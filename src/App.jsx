@@ -19,7 +19,7 @@ const Work = lazy(() => import("./pages/Work/Work"));
 const AboutUs = lazy(() => import("./pages/about/AboutUs"));
 const Services = lazy(() => import("./pages/services/Services.jsx"));
 const Contact = lazy(() => import("./pages/contact/Contact"));
-const News = lazy(() => import("./pages/news/News"));
+const Blogs = lazy(() => import("./pages/news/Blogs"));
 const NewsDetails = lazy(() => import("./pages/newsDetails/NewsDetails.jsx"));
 const Influencer = lazy(() =>
   import("./pages/influencer/Influencer.jsx").then((module) => ({
@@ -112,7 +112,7 @@ function App() {
               <Route path="/work/:workId?" element={<Work />} />
               <Route path="/about-us" element={<AboutUs />} />
               <Route path="/services" element={<Services />} />
-              <Route path="/blogs" element={<News />} />
+              <Route path="/blogs" element={<Blogs />} />
               <Route path="/blogs/:slug" element={<NewsDetails />} />
             <Route path="/contact-us/:contact?" element={<Contact />} />
               <Route path="/influencer" element={<Influencer />} />

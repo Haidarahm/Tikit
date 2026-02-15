@@ -7,7 +7,7 @@ import { useTheme } from "../../store/ThemeContext.jsx";
 import Footer from "../../components/Footer.jsx";
 import ContactUs from "../Home/ContactUs.jsx";
 
-export const News = () => {
+export const Blogs = () => {
   const { theme } = useTheme();
   const [isReady, setIsReady] = useState(false);
 
@@ -41,10 +41,10 @@ export const News = () => {
       className={`news-page ${theme === "dark" ? "dark-mode" : "light-mode"}`}
     >
       <SEOHead
-        title="News & Insights"
-        description="Stay updated with the latest news, insights, and updates from Tikit Agency. Discover industry trends, marketing tips, and our latest achievements."
-        keywords="marketing news, digital marketing insights, agency updates, marketing trends, industry news, Tikit Agency news"
-        canonicalUrl="/news"
+        title="Blogs & Insights"
+        description="Stay updated with the latest blogs, insights, and updates from Tikit Agency. Discover industry trends, marketing tips, and our latest achievements."
+        keywords="blogs, digital marketing insights, agency updates, marketing trends, industry news, Tikit Agency blogs"
+        canonicalUrl="/blogs"
       />
       <NewsHero />
       <Content />
@@ -54,4 +54,4 @@ export const News = () => {
   );
 };
 
-export default News;
+export default Blogs;
