@@ -7,6 +7,7 @@ import { useNewsStore } from '../../store/newsStore'
 import SEOHead from '../../components/SEOHead'
 import NewsDetailsHeader from './NewsDetailsHeader'
 import Footer from '../../components/Footer'
+import { getBlogSEOProps } from '../news/Content'
 gsap.registerPlugin(ScrollTrigger)
 
 const NewsDetails = () => {
@@ -73,6 +74,7 @@ const NewsDetails = () => {
   const blogData = newsDetails[slug]
   const detailsById = blogData?.id ? newsDetails[blogData.id] : null
   const paragraphes = detailsData || (detailsById && Array.isArray(detailsById) ? detailsById : [])
+  const seoProps = getBlogSEOProps(blogData, slug)
 
   useEffect(() => {
     if (!sectionRef.current || !paragraphes.length || isLoading) return
@@ -177,9 +179,13 @@ const NewsDetails = () => {
   return (
     <>
       <SEOHead
-        title={paragraphes[0]?.title ? `${paragraphes[0].title} | Tikit Agency` : "News | Tikit Agency"}
-        description={paragraphes[0]?.description || "Latest news and updates from Tikit Agency."}
-        canonicalUrl={`/blogs/${slug}`}
+        title={seoProps.title}
+        description={seoProps.description}
+        keywords={seoProps.keywords}
+        canonicalUrl={seoProps.canonicalUrl}
+        ogImage={seoProps.ogImage}
+        ogType="article"
+        articleData={seoProps.articleData}
       />
     <div data-nav-color="black" ref={sectionRef} className="news-details w-full overflow-hidden   ">
       {/* Header Section */}

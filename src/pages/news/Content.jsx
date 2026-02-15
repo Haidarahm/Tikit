@@ -11,6 +11,54 @@ gsap.registerPlugin(ScrollTrigger);
 
 const ITEMS_PER_PAGE = 6;
 
+const DEFAULT_BLOG_KEYWORDS =
+  "blogs, digital marketing insights, agency updates, marketing trends, industry news, Tikit Agency blogs";
+
+/**
+ * Build dynamic SEO props for a single blog post. Use on the blog detail page (e.g. NewsDetails).
+ * @param {Object} blog - Blog item from API (title, description, meta_title?, meta_description?, meta_keywords?, image?, images?, created_at?, updated_at?)
+ * @param {string} slug - URL slug for canonical (e.g. from useParams)
+ * @returns {{ title: string, description: string, keywords: string, canonicalUrl: string, ogImage?: string, articleData?: Object }}
+ */
+export function getBlogSEOProps(blog, slug) {
+  if (!slug) {
+    return {
+      title: "Blogs & Insights | Tikit Agency",
+      description: "Stay updated with the latest blogs, insights, and updates from Tikit Agency.",
+      keywords: DEFAULT_BLOG_KEYWORDS,
+      canonicalUrl: "/blogs",
+    };
+  }
+  const title =
+    blog?.meta_title || blog?.title || "Blog";
+  const description =
+    blog?.meta_description ||
+    blog?.description ||
+    "Latest blogs and insights from Tikit Agency.";
+  const keywords =
+    blog?.meta_keywords || DEFAULT_BLOG_KEYWORDS;
+  // Path only; SEOHead prepends baseUrl to get https://tikit.ae/blogs/{slug}
+  const canonicalUrl = `/blogs/${slug}`;
+  const ogImage = blog?.image || blog?.images || null;
+  const articleData = blog
+    ? {
+        title: blog?.title,
+        description: blog?.description,
+        image: blog?.image || blog?.images,
+        publishDate: blog?.created_at,
+        modifiedDate: blog?.updated_at,
+      }
+    : undefined;
+  return {
+    title,
+    description,
+    keywords,
+    canonicalUrl,
+    ogImage,
+    articleData,
+  };
+}
+
 // ======================
 // Card Component
 // ======================
@@ -93,7 +141,6 @@ const Content = () => {
   // Fetch news (initial load)
   useEffect(() => {
     let isMounted = true;
-
     const fetchNews = async () => {
       setLoading(true);
       setError(null);
