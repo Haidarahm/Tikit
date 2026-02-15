@@ -92,11 +92,17 @@ const Map = () => {
         visibility: 'hidden'
       })
       
-      // Set markers and pins with scale 0 for bounce effect
-      gsap.set([...smallMarkers, ...largeMarkers, ...pins], { 
+      // Small markers: scale 0 for bounce effect
+      gsap.set(smallMarkers, { 
         opacity: 0,
         visibility: 'hidden',
         scale: 0
+      })
+      // Large markers and pins: start below final position for fade-from-bottom
+      gsap.set([...largeMarkers, ...pins], { 
+        opacity: 0,
+        visibility: 'hidden',
+        y: 28
       })
 
       // Prepare map stroke paths for draw animation
@@ -186,26 +192,26 @@ const Map = () => {
         }
       }, '-=0.4')
 
-      // Phase 4: Large endpoint markers appear
+      // Phase 4: Large endpoint markers fade in from bottom
       .to(largeMarkers, {
         opacity: 1,
         visibility: 'visible',
-        scale: 1,
-        duration: 0.4,
-        ease: 'back.out(2)',
+        y: 0,
+        duration: 0.5,
+        ease: 'power2.out',
         stagger: {
           each: 0.1,
           from: 'start'
         }
       }, '-=0.15')
 
-      // Phase 5: Location pins drop in with elastic bounce
+      // Phase 5: Location pins fade in from bottom
       .to(pins, {
         opacity: 1,
         visibility: 'visible',
-        scale: 1,
-        duration: 0.7,
-        ease: 'elastic.out(1, 0.4)',
+        y: 0,
+        duration: 0.5,
+        ease: 'power2.out',
         stagger: {
           each: 0.12,
           from: 'start'
@@ -315,10 +321,10 @@ const Map = () => {
           transform-origin: center center;
           transform-box: fill-box;
         }
-        /* Large ellipse markers */
+        /* Large ellipse markers - center bottom for fade-from-bottom animation */
         .tikit-map-section .tikit-map-container svg .cls-7 {
           fill: #4ec0c3;
-          transform-origin: center center;
+          transform-origin: center bottom;
           transform-box: fill-box;
         }
         /* Location pins */
