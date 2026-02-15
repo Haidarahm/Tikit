@@ -22,12 +22,10 @@ window.addEventListener('error', (e) => {
 });
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
-    <StrictMode>
       <I18nLanguageProvider>
         <SmoothScrollProvider>
           <App />
         </SmoothScrollProvider>
       </I18nLanguageProvider>
-    </StrictMode>
   </BrowserRouter>
 );
