@@ -120,7 +120,7 @@ function App() {
                 path="/influencer-register"
                 element={<InfluencersRegister />}
               />
-              <Route path="/showcase/:id" element={<CaseDetails />} />
+              <Route path="/showcase/:slug" element={<CaseDetails />} />
               <Route
                 path="/work/influence/:id"
                 element={<InfluenceDetails />}

@@ -3,8 +3,8 @@ import { getAllCases, getCase } from "../apis/showcase";
 
 export const useShowcaseStore = create((set, get) => ({
   cases: [],
-  caseDetails: {}, // key: id -> case object
-  activeCaseId: null,
+  caseDetails: {}, // key: slug -> case object
+  activeCaseSlug: null,
   lang: undefined,
   loading: false,
   error: null,
@@ -40,15 +40,15 @@ export const useShowcaseStore = create((set, get) => ({
     }
   },
 
-  // Load single showcase case by id
-  loadCaseById: async (id, lang) => {
-    if (!id) return null;
+  // Load single showcase case by slug
+  loadCaseBySlug: async (slug, lang) => {
+    if (!slug) return null;
 
     const effectiveLang = lang ?? get().lang ?? "en";
     set({ loading: true, error: null });
 
     try {
-      const response = await getCase(id, effectiveLang);
+      const response = await getCase(slug, effectiveLang);
       const data = response?.data ?? response ?? null;
 
       if (!data) {
@@ -56,8 +56,8 @@ export const useShowcaseStore = create((set, get) => ({
       }
 
       set((state) => ({
-        caseDetails: { ...state.caseDetails, [id]: data },
-        activeCaseId: id,
+        caseDetails: { ...state.caseDetails, [slug]: data },
+        activeCaseSlug: slug,
         lang: effectiveLang,
         loading: false,
       }));

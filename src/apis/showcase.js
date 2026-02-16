@@ -8,13 +8,13 @@ export const getAllCases = async (lang = "en") => {
   return response.data;
 };
 
-// GET /showcase-projects/show/{id}?lang={lang}
-export const getCase = async (id, lang = "en") => {
-  if (id == null) {
-    throw new Error("id is required to fetch showcase case details");
+// GET /showcase-projects/show/{slug}?lang={lang}
+export const getCase = async (slug, lang = "en") => {
+  if (slug == null) {
+    throw new Error("slug is required to fetch showcase case details");
   }
 
-  const response = await api.get(`/showcase-projects/show/${id}`, {
+  const response = await api.get(`/showcase-projects/${slug}`, {
     params: { lang },
   });
 

@@ -54,6 +54,7 @@ const ShowCase = () => {
 
     return cases.map((item) => ({
       id: item.id,
+      slug: item.slug,
       img:
         (Array.isArray(item.media) && item.media.length > 0
           ? item.media[0]
@@ -308,9 +309,8 @@ const ShowCase = () => {
                         {item.subtitle}
                       </h3>
                     </div>
-
                     <button
-                      onClick={() => navigate(`/showcase/${item.id}`)}
+                      onClick={() => navigate(`/showcase/${item.slug}`)}
                       className="
                         text-[14px] sm:text-[15px] md:text-[20px]
                         px-[10px] py-[5px]

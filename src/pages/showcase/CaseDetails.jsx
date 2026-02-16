@@ -11,16 +11,16 @@ import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
 import { useShowcaseStore } from "../../store/showcaseStore";
 
 const CaseDetails = () => {
-  const { id } = useParams();
+  const { slug } = useParams();
   const { language } = useI18nLanguage();
-  const { caseDetails, loadCaseById, loading } = useShowcaseStore();
-  const caseData = caseDetails?.[id];
+  const { caseDetails, loadCaseBySlug, loading } = useShowcaseStore();
+  const caseData = caseDetails?.[slug];
 
   useEffect(() => {
-    if (id) {
-      loadCaseById(id, language);
+    if (slug) {
+      loadCaseBySlug(slug, language);
     }
-  }, [id, language, loadCaseById]);
+  }, [slug, language, loadCaseBySlug]);
 
  
 
@@ -29,7 +29,7 @@ return (
       <SEOHead
         title={caseData?.title ? `${caseData.title} | Tikit Agency` : "Case Study | Tikit Agency"}
         description={caseData?.description || "Explore our successful marketing campaigns and case studies."}
-        canonicalUrl={`/showcase/${id}`}
+        canonicalUrl={`/showcase/${slug}`}
       />
       <Hero caseData={caseData} loading={loading} />
       <CaseNumbers caseData={caseData} loading={loading} />
