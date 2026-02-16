@@ -97,6 +97,7 @@ Allow: /influencer
 Allow: /influencer-register
 Allow: /contact-us
 Allow: /faq
+Allow: /showcase
 Allow: /showcase/
 
 # Allow language-specific pages
