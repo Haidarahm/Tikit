@@ -71,29 +71,77 @@ const ShowCase = () => {
   useEffect(() => {
     if (!titleSectionRef.current) return;
 
+    // Clean up any existing ScrollTrigger instances for this section
+    ScrollTrigger.getAll().forEach((trigger) => {
+      const triggerElement = trigger.vars?.trigger;
+      if (triggerElement === titleSectionRef.current || 
+          (titleSectionRef.current && titleSectionRef.current.contains(triggerElement))) {
+        try {
+          trigger.kill();
+        } catch (e) {
+          // Ignore errors during cleanup
+        }
+      }
+    });
+
     const ctx = gsap.context(() => {
       const heroElements = titleSectionRef.current.querySelectorAll(".showcase-hero-animate");
-      if (heroElements.length > 0) {
-        gsap.fromTo(
-          heroElements,
-          { opacity: 0, y: 60 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            stagger: 0.2,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: titleSectionRef.current,
-              start: "top 85%",
-              toggleActions: "play none none none",
-            },
-          }
-        );
+      if (heroElements.length === 0) return;
+
+      // Check if section is already in viewport
+      const rect = titleSectionRef.current.getBoundingClientRect();
+      const isInViewport = rect.top < window.innerHeight * 0.85;
+
+      // Reset initial state
+      gsap.set(heroElements, { opacity: 0, y: 60 });
+
+      // If already in viewport, animate immediately; otherwise wait for scroll
+      if (isInViewport) {
+        gsap.to(heroElements, {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          stagger: 0.2,
+          ease: "power3.out",
+        });
+      } else {
+        gsap.to(heroElements, {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          stagger: 0.2,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: titleSectionRef.current,
+            start: "top 85%",
+            once: true, // Only animate once
+            toggleActions: "play none none none",
+          },
+        });
       }
     }, titleSectionRef.current);
 
-    return () => ctx?.revert();
+    return () => {
+      // Kill ScrollTrigger instances FIRST
+      ScrollTrigger.getAll().forEach((trigger) => {
+        const triggerElement = trigger.vars?.trigger;
+        if (triggerElement === titleSectionRef.current || 
+            (titleSectionRef.current && titleSectionRef.current.contains(triggerElement))) {
+          try {
+            trigger.kill();
+          } catch (e) {
+            // Ignore errors during cleanup
+          }
+        }
+      });
+      
+      // Revert context AFTER ScrollTrigger is killed
+      try {
+        ctx?.revert();
+      } catch (e) {
+        // Ignore errors during cleanup
+      }
+    };
   }, []);
 
   /* =====================
