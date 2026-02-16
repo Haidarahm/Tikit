@@ -1,5 +1,5 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { getAllNewsItems } from "../../apis/news";
@@ -134,27 +134,21 @@ export function getBlogSEOProps(blog, slug) {
 const Card = ({ item }) => {
   const navigate = useNavigate();
   const imgSrc = item?.images || item?.image || null;
+  const blogUrl = item.slug ? `/blogs/${item.slug}` : null;
 
-  const handleCardClick = () => {
-    if (item.slug) {
-      navigate(`/blogs/${item.slug}`);
+  const handleCardClick = (e) => {
+    // Allow Link to handle navigation, but also support programmatic navigation as fallback
+    if (!blogUrl) {
+      e.preventDefault();
+      return;
     }
+    // Optional: You can still use navigate for analytics or other purposes
+    // But the Link component ensures SEO crawlability
   };
 
-  return (
-    <div 
-      className="card cursor-pointer" 
-      data-parallax-card
-      onClick={handleCardClick}
-      role="button"
-      tabIndex={0}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          handleCardClick();
-        }
-      }}
-    >
+  // Use Link for SEO crawlability, wrap the entire card
+  const cardContent = (
+    <>
       <figure className="card-cover-container">
         {imgSrc ? (
           <img
@@ -173,6 +167,27 @@ const Card = ({ item }) => {
         <h2 className="card-title">{item.title}</h2>
         <p className="card-description">{item.description}</p>
       </div>
+    </>
+  );
+
+  // If we have a slug, wrap in Link for SEO; otherwise use div
+  if (blogUrl) {
+    return (
+      <Link
+        to={blogUrl}
+        className="card cursor-pointer"
+        data-parallax-card
+        onClick={handleCardClick}
+        aria-label={`Read ${item.title || 'blog post'}`}
+      >
+        {cardContent}
+      </Link>
+    );
+  }
+
+  return (
+    <div className="card" data-parallax-card>
+      {cardContent}
     </div>
   );
 };
