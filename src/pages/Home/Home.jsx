@@ -92,9 +92,9 @@ function Home() {
   return (
     <>
       <SEOHead
-        title="Tikit Agency | Influencer Marketing Agency Dubai & UAE"
-        description="Leading influencer marketing agency in Dubai & UAE. Social media management, branding & production. 300+ clients, 50+ experts. Call +971 4 577 4042."
-        keywords="influencer marketing agency Dubai, social media agency UAE, influencer marketing Emirates, best social media company Dubai, branding agency UAE, social media management Saudi Arabia"
+        title="Best Influencer Marketing Agency in Emirates | Tikit Agency - Dubai & UAE"
+        description="Tikit Agency is the leading influencer marketing agency in Emirates (UAE) and Saudi Arabia. Best social media management company with 300+ clients, 50+ experts. Services: influencer marketing, social media management, branding & production. Call +971 4 577 4042."
+        keywords="influencer marketing agency in emirates, best influencer marketing agency emirates, influencer marketing agency Dubai, social media agency UAE, influencer marketing Emirates, best social media company Dubai, branding agency UAE, social media management Saudi Arabia, best social media management company Emirates, influencer marketing agency UAE, social media management Dubai"
         canonicalUrl="/"
         structuredData={homepageSchema}
       />
