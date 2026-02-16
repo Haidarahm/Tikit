@@ -15,11 +15,16 @@ const WorkHero = ({  t, isRtl }) => {
   useLayoutEffect(() => {
     if (!titleContainerRef.current || !titleRef.current) return undefined;
     const ctx = gsap.context(() => {
-      gsap.fromTo(
-        titleRef.current,
-        { y: "150%", autoAlpha: 1 },
-        { y: 0, duration: 0.9, ease: "power2.out", delay: 0.1 }
-      );
+      // Set initial state
+      gsap.set(titleRef.current, { y: "150%", autoAlpha: 1 });
+      // Animate to final state
+      gsap.to(titleRef.current, {
+        y: 0,
+        autoAlpha: 1,
+        duration: 0.9,
+        ease: "power2.out",
+        delay: 0.1
+      });
     }, titleContainerRef);
     return () => ctx.revert();
   }, []);
@@ -58,10 +63,11 @@ const WorkHero = ({  t, isRtl }) => {
       <div ref={titleContainerRef} className="overflow-hidden">
         <div
           ref={titleRef}
-          className="title will-change-transform translate-y-full"
+          className="title will-change-transform"
         >
           <TikitTitle
            title={t("work.title")}
+           disableAnimation={true}
           />
         </div>
       </div>

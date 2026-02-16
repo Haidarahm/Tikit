@@ -177,16 +177,16 @@ const NewsDetailsHeader = () => {
   return (
     <header
       ref={headerRef}
-      className="relative w-full  mt-[104px] py-4"
+      className="relative w-full mt-16 sm:mt-20 md:mt-24 lg:mt-[104px] py-4 sm:py-6 md:py-8"
       dir={isRtl ? "rtl" : "ltr"}
     >
-      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-start">
           {/* Image Container - Takes 8 columns on large screens */}
           <div className="lg:col-span-8">
             <div 
               ref={headerImageRef}
-              className="relative w-full h-[450px] md:h-[550px] lg:h-[650px] rounded-3xl overflow-hidden shadow-2xl group"
+              className="relative w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] xl:h-[650px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl group"
             >
               {/* Skeleton Loader */}
               {isLoading && (
@@ -214,16 +214,16 @@ const NewsDetailsHeader = () => {
               
               {/* Badge and Date Overlay */}
               {currentNewsData && imageLoaded && (
-                <div className={`absolute ${isRtl ? 'top-6 right-6 md:top-8 md:right-8' : 'top-6 left-6 md:top-8 md:left-8'} flex flex-col gap-3 z-10`}>
+                <div className={`absolute ${isRtl ? 'top-4 right-4 sm:top-6 sm:right-6 md:top-8 md:right-8' : 'top-4 left-4 sm:top-6 sm:left-6 md:top-8 md:left-8'} flex flex-col gap-2 sm:gap-3 z-10`}>
                   <div
                     ref={badgeRef}
-                    className="inline-flex items-center px-5 py-2.5 rounded-full bg-gradient-to-r from-[#6ACBCC] to-[#1C6F6C] text-white text-sm md:text-base font-semibold backdrop-blur-md shadow-xl border border-white/20"
+                    className="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 md:px-5 md:py-2.5 rounded-full bg-gradient-to-r from-[#6ACBCC] to-[#1C6F6C] text-white text-xs sm:text-sm md:text-base font-semibold backdrop-blur-md shadow-xl border border-white/20"
                   >
                     News
                   </div>
                   <div
                     ref={dateRef}
-                    className="text-white text-sm md:text-base font-medium bg-black/50 backdrop-blur-md px-5 py-2.5 rounded-full border border-white/10 shadow-lg"
+                    className="text-white text-xs sm:text-sm md:text-base font-medium bg-black/50 backdrop-blur-md px-3 py-1.5 sm:px-4 sm:py-2 md:px-5 md:py-2.5 rounded-full border border-white/10 shadow-lg"
                   >
                     {formatDate(currentNewsData.created_at || currentNewsData.updated_at)}
                   </div>
@@ -233,23 +233,23 @@ const NewsDetailsHeader = () => {
           </div>
 
           {/* Content Section - Takes 4 columns on large screens */}
-          <div className="lg:col-span-4 flex flex-col justify-center lg:pt-8">
-            <div className="space-y-6 md:space-y-8">
+          <div className="lg:col-span-4 flex flex-col justify-center pt-4 sm:pt-6 md:pt-8 lg:pt-8">
+            <div className="space-y-4 sm:space-y-6 md:space-y-8">
               {isLoading ? (
                 // Skeleton for content
                 <>
-                  <div className="space-y-4">
-                    <div className="h-8 md:h-10 lg:h-12 w-full bg-gradient-to-r from-[var(--foreground)]/20 via-[var(--foreground)]/10 to-[var(--foreground)]/20 rounded-lg animate-pulse" />
-                    <div className="h-8 md:h-10 w-3/4 bg-gradient-to-r from-[var(--foreground)]/20 via-[var(--foreground)]/10 to-[var(--foreground)]/20 rounded-lg animate-pulse" />
+                  <div className="space-y-3 sm:space-y-4">
+                    <div className="h-6 sm:h-8 md:h-10 lg:h-12 w-full bg-gradient-to-r from-[var(--foreground)]/20 via-[var(--foreground)]/10 to-[var(--foreground)]/20 rounded-lg animate-pulse" />
+                    <div className="h-6 sm:h-8 md:h-10 w-3/4 bg-gradient-to-r from-[var(--foreground)]/20 via-[var(--foreground)]/10 to-[var(--foreground)]/20 rounded-lg animate-pulse" />
                   </div>
-                  <div className="space-y-3">
-                    <div className="h-5 md:h-6 w-full bg-gradient-to-r from-[var(--foreground)]/20 via-[var(--foreground)]/10 to-[var(--foreground)]/20 rounded animate-pulse" />
-                    <div className="h-5 md:h-6 w-5/6 bg-gradient-to-r from-[var(--foreground)]/20 via-[var(--foreground)]/10 to-[var(--foreground)]/20 rounded animate-pulse" />
+                  <div className="space-y-2 sm:space-y-3">
+                    <div className="h-4 sm:h-5 md:h-6 w-full bg-gradient-to-r from-[var(--foreground)]/20 via-[var(--foreground)]/10 to-[var(--foreground)]/20 rounded animate-pulse" />
+                    <div className="h-4 sm:h-5 md:h-6 w-5/6 bg-gradient-to-r from-[var(--foreground)]/20 via-[var(--foreground)]/10 to-[var(--foreground)]/20 rounded animate-pulse" />
                   </div>
                   <div className="space-y-2">
-                    <div className="h-4 md:h-5 w-full bg-gradient-to-r from-[var(--foreground)]/20 via-[var(--foreground)]/10 to-[var(--foreground)]/20 rounded animate-pulse" />
-                    <div className="h-4 md:h-5 w-full bg-gradient-to-r from-[var(--foreground)]/20 via-[var(--foreground)]/10 to-[var(--foreground)]/20 rounded animate-pulse" />
-                    <div className="h-4 md:h-5 w-4/5 bg-gradient-to-r from-[var(--foreground)]/20 via-[var(--foreground)]/10 to-[var(--foreground)]/20 rounded animate-pulse" />
+                    <div className="h-3 sm:h-4 md:h-5 w-full bg-gradient-to-r from-[var(--foreground)]/20 via-[var(--foreground)]/10 to-[var(--foreground)]/20 rounded animate-pulse" />
+                    <div className="h-3 sm:h-4 md:h-5 w-full bg-gradient-to-r from-[var(--foreground)]/20 via-[var(--foreground)]/10 to-[var(--foreground)]/20 rounded animate-pulse" />
+                    <div className="h-3 sm:h-4 md:h-5 w-4/5 bg-gradient-to-r from-[var(--foreground)]/20 via-[var(--foreground)]/10 to-[var(--foreground)]/20 rounded animate-pulse" />
                   </div>
                   <div className="h-0.5 w-full bg-gradient-to-r from-[var(--foreground)]/20 via-[var(--foreground)]/10 to-transparent rounded-full animate-pulse" />
                 </>
@@ -258,7 +258,7 @@ const NewsDetailsHeader = () => {
                   {/* Title */}
                   <h1 
                     ref={headerTitleRef}
-                    className={`text-3xl md:text-4xl lg:text-5xl font-bold text-[var(--foreground)] leading-[1.1] ${isRtl ? "font-cairo" : "font-antonio"}`}
+                    className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[var(--foreground)] leading-[1.1] ${isRtl ? "font-cairo" : "font-antonio"}`}
                   >
                     {currentNewsData?.title || ""}
                   </h1>
@@ -267,7 +267,7 @@ const NewsDetailsHeader = () => {
                   {currentNewsData?.subtitle && (
                     <p 
                       ref={headerSubtitleRef}
-                      className="text-lg md:text-xl lg:text-2xl text-[var(--foreground)]/80 leading-relaxed font-medium"
+                      className="text-base sm:text-lg md:text-xl lg:text-2xl text-[var(--foreground)]/80 leading-relaxed font-medium"
                     >
                       {currentNewsData.subtitle}
                     </p>
@@ -277,7 +277,7 @@ const NewsDetailsHeader = () => {
                   {currentNewsData?.description && (
                     <p 
                       ref={descriptionRef}
-                      className="text-base md:text-lg text-[var(--foreground)]/70 leading-relaxed"
+                      className="text-sm sm:text-base md:text-lg text-[var(--foreground)]/70 leading-relaxed"
                     >
                       {currentNewsData.description}
                     </p>

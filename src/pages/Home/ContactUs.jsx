@@ -563,7 +563,7 @@ const ContactUs = memo(({ className = "" }) => {
     >
       <div className="email w-full flex flex-col md:flex-row h-2/3 justify-between items-center md:items-stretch relative z-10">
         <div className="texts flex flex-col relative">
-          <h3 className="subtitle text-center md:text-start text-[16px] md:text-[50px]">
+          <h3 className="subtitle text-center md:text-start text-[24px] md:text-[50px]">
             {t("home.contactUs.subtitle")}
           </h3>
 

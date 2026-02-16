@@ -121,7 +121,7 @@ const NewsHero = () => {
   return (
     <section
       ref={contentRef}
-      className={`relative w-full h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br`}
+      className={`relative w-full h-[50vh] md:h-screen flex items-end md:items-center justify-center overflow-hidden bg-gradient-to-br`}
       data-scroll
     >
       {/* Conditional Background - Only renders after theme is determined */}
