@@ -186,7 +186,22 @@ const NewsDetails = () => {
         ogImage={seoProps.ogImage}
         ogType="article"
         articleData={seoProps.articleData}
+        breadcrumbs={seoProps.breadcrumbs}
       />
+      
+      {/* Hidden SEO content for better indexing */}
+      {blogData && (
+        <section className="sr-only" aria-hidden="true">
+          <h1>{blogData.title || "Blog Post"}</h1>
+          {blogData.subtitle && <h2>{blogData.subtitle}</h2>}
+          <p>{blogData.description || seoProps.description}</p>
+          <p>
+            Read this article on Tikit Agency blog. {blogData.title && `Learn about ${blogData.title.toLowerCase()}.`} 
+            {`Visit tikit.ae/blogs/${slug || 'blog-post'} for more insights on influencer marketing, social media management, and digital marketing trends.`}
+          </p>
+        </section>
+      )}
+      
     <div data-nav-color="black" ref={sectionRef} className="news-details w-full overflow-hidden   ">
       {/* Header Section */}
       <NewsDetailsHeader />

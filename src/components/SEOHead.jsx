@@ -148,16 +148,24 @@ const SEOHead = ({
       "headline": articleData.title || title,
       "description": articleData.description || fullDescription,
       "image": articleData.image || fullOgImage,
+      "url": articleData.url || fullCanonicalUrl, // Add URL for better indexing
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": articleData.url || fullCanonicalUrl
+      },
       "author": {
         "@type": "Organization",
-        "name": siteName
+        "name": siteName,
+        "url": baseUrl
       },
       "publisher": {
         "@type": "Organization",
         "name": siteName,
         "logo": {
           "@type": "ImageObject",
-          "url": `${baseUrl}/logo-light.png`
+          "url": `${baseUrl}/logo-light.png`,
+          "width": 200,
+          "height": 60
         }
       },
       "datePublished": articleData.publishDate,

@@ -12,43 +12,111 @@ gsap.registerPlugin(ScrollTrigger);
 const ITEMS_PER_PAGE = 6;
 
 const DEFAULT_BLOG_KEYWORDS =
-  "blogs, digital marketing insights, agency updates, marketing trends, industry news, Tikit Agency blogs";
+  "blogs, digital marketing insights, agency updates, marketing trends, industry news, Tikit Agency blogs, influencer marketing, social media management";
+
+const BASE_URL = "https://tikit.ae";
+
+/**
+ * Truncate description to optimal SEO length (150-160 characters)
+ */
+function truncateDescription(text, maxLength = 160) {
+  if (!text) return "";
+  if (text.length <= maxLength) return text;
+  return text.substring(0, maxLength).trim().replace(/[.,;:!?]$/, "") + "...";
+}
+
+/**
+ * Generate keywords from blog content (title, subtitle, description)
+ */
+function generateKeywords(blog, defaultKeywords) {
+  if (blog?.meta_keywords) return blog.meta_keywords;
+  
+  const keywords = [defaultKeywords];
+  
+  // Extract keywords from title
+  if (blog?.title) {
+    const titleWords = blog.title
+      .toLowerCase()
+      .replace(/[^\w\s]/g, " ")
+      .split(/\s+/)
+      .filter(word => word.length > 3)
+      .slice(0, 5);
+    keywords.push(...titleWords);
+  }
+  
+  // Extract keywords from subtitle
+  if (blog?.subtitle) {
+    const subtitleWords = blog.subtitle
+      .toLowerCase()
+      .replace(/[^\w\s]/g, " ")
+      .split(/\s+/)
+      .filter(word => word.length > 3)
+      .slice(0, 3);
+    keywords.push(...subtitleWords);
+  }
+  
+  return [...new Set(keywords)].join(", ");
+}
 
 /**
  * Build dynamic SEO props for a single blog post. Use on the blog detail page (e.g. NewsDetails).
- * @param {Object} blog - Blog item from API (title, description, meta_title?, meta_description?, meta_keywords?, image?, images?, created_at?, updated_at?)
+ * @param {Object} blog - Blog item from API (title, subtitle, description, meta_title?, meta_description?, meta_keywords?, image?, images?, created_at?, updated_at?, slug?)
  * @param {string} slug - URL slug for canonical (e.g. from useParams)
- * @returns {{ title: string, description: string, keywords: string, canonicalUrl: string, ogImage?: string, articleData?: Object }}
+ * @returns {{ title: string, description: string, keywords: string, canonicalUrl: string, ogImage?: string, articleData?: Object, breadcrumbs?: Array }}
  */
 export function getBlogSEOProps(blog, slug) {
   if (!slug) {
     return {
       title: "Blogs & Insights | Tikit Agency",
-      description: "Stay updated with the latest blogs, insights, and updates from Tikit Agency.",
+      description: "Stay updated with the latest blogs, insights, and updates from Tikit Agency. Discover industry trends, marketing tips, and our latest achievements.",
       keywords: DEFAULT_BLOG_KEYWORDS,
       canonicalUrl: "/blogs",
     };
   }
-  const title =
-    blog?.meta_title || blog?.title || "Blog";
-  const description =
-    blog?.meta_description ||
-    blog?.description ||
-    "Latest blogs and insights from Tikit Agency.";
-  const keywords =
-    blog?.meta_keywords || DEFAULT_BLOG_KEYWORDS;
-  // Path only; SEOHead prepends baseUrl to get https://tikit.ae/blogs/{slug}
+  
+  // Title: Use meta_title if available, otherwise use title (SEOHead will add "| Tikit Agency")
+  const blogTitle = blog?.meta_title || blog?.title || "Blog";
+  const title = blogTitle;
+  
+  // Description: Optimize length for SEO (150-160 chars)
+  let description = blog?.meta_description || blog?.description || "";
+  if (!description && blog?.subtitle) {
+    description = blog.subtitle;
+  }
+  if (!description) {
+    description = `Read ${blog?.title || "this article"} on Tikit Agency blog. Discover insights, trends, and updates from the leading influencer marketing agency.`;
+  }
+  description = truncateDescription(description, 160);
+  
+  // Keywords: Generate from content or use meta_keywords
+  const keywords = generateKeywords(blog, DEFAULT_BLOG_KEYWORDS);
+  
+  // Canonical URL: Path only; SEOHead prepends baseUrl
   const canonicalUrl = `/blogs/${slug}`;
+  const fullUrl = `${BASE_URL}${canonicalUrl}`;
+  
+  // OG Image: Use blog image or fallback
   const ogImage = blog?.image || blog?.images || null;
+  
+  // Article Data for structured data
   const articleData = blog
     ? {
-        title: blog?.title,
-        description: blog?.description,
-        image: blog?.image || blog?.images,
+        title: blog?.title || blogTitle,
+        description: description,
+        image: blog?.image || blog?.images || null,
         publishDate: blog?.created_at,
-        modifiedDate: blog?.updated_at,
+        modifiedDate: blog?.updated_at || blog?.created_at,
+        url: fullUrl, // Add URL for Article schema
       }
     : undefined;
+  
+  // Breadcrumbs for better navigation
+  const breadcrumbs = [
+    { name: "Home", url: "/" },
+    { name: "Blogs", url: "/blogs" },
+    { name: blog?.title || "Blog Post", url: canonicalUrl },
+  ];
+  
   return {
     title,
     description,
@@ -56,6 +124,7 @@ export function getBlogSEOProps(blog, slug) {
     canonicalUrl,
     ogImage,
     articleData,
+    breadcrumbs,
   };
 }
 
