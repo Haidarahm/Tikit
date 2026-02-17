@@ -284,7 +284,7 @@ const ShowCase = () => {
           mainWord={t("home.showcase.mainWord")}
           disableAnimation
         />
-        <p className="showcase-hero-animate text-base sm:text-lg md:text-xl lg:text-[24px] max-w-4xl">
+        <p className="showcase-hero-animate text-[var(--foreground)] text-base sm:text-lg md:text-xl lg:text-[24px] max-w-4xl">
           {t("home.showcase.description")}
         </p>
       </div>
