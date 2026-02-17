@@ -182,10 +182,11 @@ function Home() {
         <Influencers />
         <Services />
         
-        <Blogs />
         <Connections />
         <WorkSection />
         <Map />
+        <PinnedSection />
+        <Blogs />
         <ContactUs />
         <Footer />
       </div>
