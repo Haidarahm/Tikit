@@ -150,10 +150,16 @@ For data protection inquiries, please email Holla@tikit.ae with "Privacy" in the
         ]}
       />
 
-      {/* Hero Section */}
+      {/* Hero Section - Optimized for LCP */}
       <section className="pt-32 pb-12 px-6 md:px-10 bg-gradient-to-b from-[var(--secondary)]/5 to-transparent">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-[var(--foreground)] mb-4">
+          <h1 
+            className="text-4xl md:text-5xl font-bold text-[var(--foreground)] mb-4"
+            style={{ 
+              contentVisibility: 'auto',
+              containIntrinsicSize: 'auto 200px'
+            }}
+          >
             Privacy Policy
           </h1>
           <p className="text-lg text-[var(--foreground)]/60">
@@ -182,21 +188,32 @@ For data protection inquiries, please email Holla@tikit.ae with "Privacy" in the
             </div>
           </div>
 
-          {/* Policy Sections */}
+          {/* Policy Sections - Optimized for performance */}
           <div className="space-y-10">
             {sections.map((section, index) => (
               <div 
                 key={index} 
                 id={`section-${index}`}
                 className="scroll-mt-24"
+                style={{
+                  contentVisibility: index > 2 ? 'auto' : 'visible',
+                  containIntrinsicSize: index > 2 ? 'auto 300px' : 'auto'
+                }}
               >
                 <h2 className="text-2xl font-bold text-[var(--foreground)] mb-4">
                   {section.title}
                 </h2>
-                <div className="text-[var(--foreground)]/80 leading-relaxed whitespace-pre-line">
-                  {section.content.split('**').map((part, i) => 
-                    i % 2 === 1 ? <strong key={i}>{part}</strong> : part
-                  )}
+                <div className="text-[var(--foreground)]/80 leading-relaxed">
+                  {section.content.split('\n').map((paragraph, pIdx) => {
+                    if (!paragraph.trim()) return <br key={pIdx} />;
+                    return (
+                      <p key={pIdx} className="mb-4 last:mb-0">
+                        {paragraph.split('**').map((part, i) => 
+                          i % 2 === 1 ? <strong key={i} className="font-semibold">{part}</strong> : part
+                        )}
+                      </p>
+                    );
+                  })}
                 </div>
               </div>
             ))}
