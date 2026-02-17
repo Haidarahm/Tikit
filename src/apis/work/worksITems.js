@@ -34,6 +34,18 @@ const fetchWorkItemById = async (endpoint, id, params = {}) => {
   return response.data;
 };
 
+const fetchWorkItemBySlug = async (endpointBase, slug, params = {}) => {
+  if (slug == null || String(slug).trim() === "") {
+    throw new Error("slug is required to fetch work item details");
+  }
+
+  const response = await api.get(`${endpointBase}/${encodeURIComponent(slug)}/show`, {
+    params: buildParams(params),
+  });
+
+  return response.data;
+};
+
 export const getInfluenceItems = (params = {}) =>
   fetchWorkItemsBySlug("/work-influences", params.slug, params);
 
@@ -49,17 +61,17 @@ export const getDigitalItems = (params = {}) =>
 export const getEventItems = (params = {}) =>
   fetchWorkItemsBySlug("/work-events", params.slug, params);
 
-export const fetchWorkInfluence = (id, params = {}) =>
-  fetchWorkItemById("/work-influences", id, params);
+export const fetchWorkInfluence = (slug, params = {}) =>
+  fetchWorkItemBySlug("/work-influences", slug, params);
 
-export const fetchWorkSocial = (id, params = {}) =>
-  fetchWorkItemById("/work-socials", id, params);
+export const fetchWorkSocial = (slug, params = {}) =>
+  fetchWorkItemBySlug("/work-socials", slug, params);
 
-export const fetchWorkCreative = (id, params = {}) =>
-  fetchWorkItemById("/work-creatives", id, params);
+export const fetchWorkCreative = (slug, params = {}) =>
+  fetchWorkItemBySlug("/work-creatives", slug, params);
 
-export const fetchWorkDigital = (id, params = {}) =>
-  fetchWorkItemById("/work-digitals", id, params);
+export const fetchWorkDigital = (slug, params = {}) =>
+  fetchWorkItemBySlug("/work-digitals", slug, params);
 
-export const fetchWorkEvent = (id, params = {}) =>
-  fetchWorkItemById("/work-events", id, params);
+export const fetchWorkEvent = (slug, params = {}) =>
+  fetchWorkItemBySlug("/work-events", slug, params);

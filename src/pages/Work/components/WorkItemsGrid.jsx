@@ -50,7 +50,7 @@ const normalizeItem = (item, type, fallbackImage) => {
           extractMediaUrl(data?.logo) ??
           fallbackImage ??
           "",
-        detailId: item?.id ?? data?.id ?? data?.work_id ?? null,
+        detailId: item?.slug ?? data?.slug ?? null,
       };
     }
     case "social": {
@@ -63,7 +63,7 @@ const normalizeItem = (item, type, fallbackImage) => {
           extractMediaUrl(data?.logo) ??
           fallbackImage ??
           "",
-        detailId: item?.id ?? data?.id ?? data?.work_id ?? null,
+        detailId: item?.slug ?? data?.slug ?? null,
       };
     }
     case "creative": {
@@ -77,7 +77,7 @@ const normalizeItem = (item, type, fallbackImage) => {
           extractMediaUrl(data?.logo) ??
           fallbackImage ??
           "",
-        detailId: item?.id ?? data?.id ?? data?.work_id ?? null,
+        detailId: item?.slug ?? data?.slug ?? null,
       };
     }
     case "event":
@@ -91,7 +91,7 @@ const normalizeItem = (item, type, fallbackImage) => {
           extractMediaUrl(data?.logo) ??
           fallbackImage ??
           "",
-        detailId: item?.id ?? data?.id ?? data?.work_id ?? null,
+        detailId: item?.slug ?? data?.slug ?? null,
       };
     }
     default:

@@ -122,12 +122,12 @@ function App() {
               />
               <Route path="/showcase/:slug" element={<CaseDetails />} />
               <Route
-                path="/work/influence/:id"
+                path="/work/influence/:slug"
                 element={<InfluenceDetails />}
               />
-              <Route path="/work/social/:id" element={<SocialDetails />} />
-              <Route path="/work/creative/:id" element={<CreativeDetails />} />
-              <Route path="/work/event/:id" element={<EventDetails />} />
+              <Route path="/work/social/:slug" element={<SocialDetails />} />
+              <Route path="/work/creative/:slug" element={<CreativeDetails />} />
+              <Route path="/work/event/:slug" element={<EventDetails />} />
               {/* Service Sections */}
               <Route path="/services/influencer-marketing" element={<InfluencerMarketing />} />
               <Route path="/services/social-media-management" element={<SocialMediaManagement />} />

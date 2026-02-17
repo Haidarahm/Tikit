@@ -14,7 +14,7 @@ import CreativeNoMedia from "./components/CreativeNoMedia.jsx";
 import "./creative.css";
 
 const CreativeDetails = () => {
-  const { id } = useParams();
+  const { slug } = useParams();
   const navigate = useNavigate();
   const { language, isRtl } = useI18nLanguage();
   const { theme } = useTheme();
@@ -26,16 +26,16 @@ const CreativeDetails = () => {
   const resetCategory = useWorkItemDetailsStore((state) => state.resetCategory);
 
   useEffect(() => {
-    if (!id) return;
+    if (!slug) return;
 
-    loadCreativeDetail(id, { lang: language }).catch((error) => {
+    loadCreativeDetail(slug, { lang: language }).catch((error) => {
       console.error("Failed to load creative details", error);
     });
 
     return () => {
       resetCategory("creative");
     };
-  }, [id, language, loadCreativeDetail, resetCategory]);
+  }, [slug, language, loadCreativeDetail, resetCategory]);
 
   const itemData = creative.item;
   const media = creative.media || [];
@@ -76,7 +76,7 @@ const CreativeDetails = () => {
             : t("work.details.creative.title")
         }
         description={title ?? ""}
-        canonicalUrl={`/work/creative/${id}`}
+        canonicalUrl={`/work/creative/${slug}`}
       />
 
       {creative.loading ? (

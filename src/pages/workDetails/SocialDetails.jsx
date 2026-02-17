@@ -42,7 +42,7 @@ const formatNumber = (num) => {
 };
 
 const SocialDetails = () => {
-  const { id } = useParams();
+  const { slug } = useParams();
   const navigate = useNavigate();
   const { language, isRtl } = useI18nLanguage();
   const { theme } = useTheme();
@@ -60,16 +60,16 @@ const SocialDetails = () => {
   const textRef = useRef(null);
 
   useEffect(() => {
-    if (!id) return;
+    if (!slug) return;
 
-    loadSocialDetail(id, { lang: language }).catch((error) => {
+    loadSocialDetail(slug, { lang: language }).catch((error) => {
       console.error("Failed to load social details", error);
     });
 
     return () => {
       resetCategory("social");
     };
-  }, [id, language, loadSocialDetail, resetCategory]);
+  }, [slug, language, loadSocialDetail, resetCategory]);
 
   const itemData = social.item;
   const media = useMemo(() => {
@@ -209,7 +209,7 @@ const SocialDetails = () => {
             : t("work.details.social.title")
         }
         description={objective ?? ""}
-        canonicalUrl={`/work/social/${id}`}
+        canonicalUrl={`/work/social/${slug}`}
       />
 
       {social.loading ? (

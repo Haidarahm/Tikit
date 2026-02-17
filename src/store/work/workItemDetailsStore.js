@@ -102,7 +102,7 @@ const initialState = {
 };
 
 export const useWorkItemDetailsStore = create((set) => {
-  const loadCategory = async (category, id, params = {}) => {
+  const loadCategory = async (category, slug, params = {}) => {
     const config = CATEGORY_CONFIG[category];
     if (!config) throw new Error(`Unknown work category "${category}"`);
 
@@ -116,7 +116,7 @@ export const useWorkItemDetailsStore = create((set) => {
     }));
 
     try {
-      const response = await config.fetcher(id, params);
+      const response = await config.fetcher(slug, params);
       const { item, media, raw, message } = config.transform(response);
 
       set((state) => ({
@@ -162,10 +162,10 @@ export const useWorkItemDetailsStore = create((set) => {
         };
       }),
     resetAll: () => set(() => ({ ...initialState })),
-    loadInfluenceDetail: (id, params) => loadCategory("influence", id, params),
-    loadSocialDetail: (id, params) => loadCategory("social", id, params),
-    loadCreativeDetail: (id, params) => loadCategory("creative", id, params),
-    loadDigitalDetail: (id, params) => loadCategory("digital", id, params),
-    loadEventDetail: (id, params) => loadCategory("events", id, params),
+    loadInfluenceDetail: (slug, params) => loadCategory("influence", slug, params),
+    loadSocialDetail: (slug, params) => loadCategory("social", slug, params),
+    loadCreativeDetail: (slug, params) => loadCategory("creative", slug, params),
+    loadDigitalDetail: (slug, params) => loadCategory("digital", slug, params),
+    loadEventDetail: (slug, params) => loadCategory("events", slug, params),
   };
 });

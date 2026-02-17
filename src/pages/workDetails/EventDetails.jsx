@@ -14,7 +14,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const EventDetails = () => {
-  const { id } = useParams();
+  const { slug } = useParams();
   const navigate = useNavigate();
   const { language, isRtl } = useI18nLanguage();
   const { theme } = useTheme();
@@ -112,16 +112,16 @@ const EventDetails = () => {
   }, [item?.id, media.length]);
 
   useEffect(() => {
-    if (!id) return;
+    if (!slug) return;
 
-    loadEventDetail(id, { lang: language }).catch((error) => {
+    loadEventDetail(slug, { lang: language }).catch((error) => {
       console.error("Failed to load event details", error);
     });
 
     return () => {
       resetCategory("events");
     };
-  }, [id, language, loadEventDetail, resetCategory]);
+  }, [slug, language, loadEventDetail, resetCategory]);
 
   return (
     <div
@@ -136,7 +136,7 @@ const EventDetails = () => {
             : t("work.details.event.title", "Event Details")
         }
         description={objective || title || ""}
-        canonicalUrl={`/work/event/${id}`}
+        canonicalUrl={`/work/event/${slug}`}
       />
 
       {eventState.loading ? (

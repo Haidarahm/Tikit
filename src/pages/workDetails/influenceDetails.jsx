@@ -47,7 +47,7 @@ const formatNumber = (num) => {
 };
 
 const InfluenceDetails = () => {
-  const { id } = useParams();
+  const { slug } = useParams();
   const navigate = useNavigate();
   const { language, isRtl } = useI18nLanguage();
   const { theme } = useTheme();
@@ -59,16 +59,16 @@ const InfluenceDetails = () => {
   const resetCategory = useWorkItemDetailsStore((state) => state.resetCategory);
 
   useEffect(() => {
-    if (!id) return;
+    if (!slug) return;
 
-    loadInfluenceDetail(id, { lang: language }).catch((error) => {
+    loadInfluenceDetail(slug, { lang: language }).catch((error) => {
       console.error("Failed to load influence details", error);
     });
 
     return () => {
       resetCategory("influence");
     };
-  }, [id, language, loadInfluenceDetail, resetCategory]);
+  }, [slug, language, loadInfluenceDetail, resetCategory]);
 
   const itemData = influence.item;
   const media = influence.media || [];
@@ -188,7 +188,7 @@ const InfluenceDetails = () => {
             : t("work.details.influence.title")
         }
         description={objective ?? ""}
-        canonicalUrl={`/work/influence/${id}`}
+        canonicalUrl={`/work/influence/${slug}`}
       />
 
       {influence.loading ? (
