@@ -279,12 +279,12 @@ const ShowCase = () => {
         className="flex flex-col w-full items-center min-h-[200px] px-4 text-center gap-4"
       >
         <TikitTitle
-          className="showcase-hero-animate block"
+          className="block"
           title={t("home.showcase.title")}
           mainWord={t("home.showcase.mainWord")}
           disableAnimation
         />
-        <p className="showcase-hero-animate text-[var(--foreground)] text-base sm:text-lg md:text-xl lg:text-[24px] max-w-4xl">
+        <p className="text-[var(--foreground)] text-base sm:text-lg md:text-xl lg:text-[24px] max-w-4xl">
           {t("home.showcase.description")}
         </p>
       </div>
