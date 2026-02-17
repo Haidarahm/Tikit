@@ -84,10 +84,30 @@ const PinnedSection = () => {
 
       if (totalDistance <= 0) return;
 
-      const tween = gsap.to(container, {
-        x: -totalDistance,
-        ease: "none",
-      });
+      // Get the first card width to calculate initial position
+      const firstCard = container.querySelector('div');
+      const firstCardWidth = firstCard?.offsetWidth || 300;
+      const padding = 32; // Account for px-8 padding (md:px-8 = 32px)
+      
+      // Calculate initial position: start with first card's right edge at viewport's right edge
+      // This makes the first card appear from the right and scroll left
+      const initialX = viewportWidth - firstCardWidth - padding;
+
+      // Set initial position so first card starts visible from right
+      gsap.set(container, { x: initialX });
+
+      // Animate from right to left: 
+      // Start with first card visible at right edge
+      // End at -totalDistance (last cards visible at left)
+      const tween = gsap.fromTo(container, 
+        {
+          x: initialX, // Start with first reel visible from right
+        },
+        {
+          x: -totalDistance, // Scroll left to show all cards, ending at left
+          ease: "none",
+        }
+      );
 
       scrollTriggerRef.current = ScrollTrigger.create({
         trigger: section,
@@ -174,7 +194,7 @@ const PinnedSection = () => {
       className="relative w-full overflow-hidden hidden md:block"
       style={{ minHeight: "100vh" }}
     >
-      <div className="sticky top-0 flex items-center justify-center h-screen">
+      <div className="sticky top-0 flex items-center justify-start h-screen">
         <div 
           ref={containerRef}
           className="flex items-center h-full gap-4 md:gap-6 px-4 md:px-8"
