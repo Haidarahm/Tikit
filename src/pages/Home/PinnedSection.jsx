@@ -119,6 +119,15 @@ const PinnedSection = () => {
         animation: tween,
         invalidateOnRefresh: true,
         pinSpacing: true,
+        refreshPriority: -1, // Lower priority to prevent conflicts with other ScrollTriggers
+      });
+      
+      // Ensure smooth transition by refreshing ScrollTrigger after pin setup
+      // Use requestAnimationFrame for safe DOM updates
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          ScrollTrigger.refresh();
+        });
       });
 
       videoObserverRef.current = new IntersectionObserver(
@@ -192,7 +201,9 @@ const PinnedSection = () => {
     <section 
       ref={sectionRef}
       className="relative w-full overflow-hidden hidden md:block"
-      style={{ minHeight: "100vh" }}
+      style={{ 
+        minHeight: "100vh",
+      }}
     >
       <div className="sticky top-0 flex items-center justify-start h-screen">
         <div 
