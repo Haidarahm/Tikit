@@ -4,7 +4,7 @@ const WorkSectionSelector = ({
   sections,
   loading,
   error,
-  activeSectionId,
+  activeSectionSlug,
   onSelect,
   isRtl,
 }) => {
@@ -79,10 +79,10 @@ const WorkSectionSelector = ({
         ) : null}
 
         {(sections || []).map((section) => {
-          const isActive = section.id === activeSectionId;
+          const isActive = section.slug === activeSectionSlug;
           return (
             <button
-              key={section.id}
+              key={section.slug ?? section.id}
               type="button"
               className={`group relative h-[140px] min-w-[220px] shrink-0 overflow-hidden rounded-3xl border transition-all duration-500 ease-out md:h-[160px] md:min-w-[260px] ${
                 isActive
@@ -98,7 +98,7 @@ const WorkSectionSelector = ({
                 backgroundColor: "var(--muted)",
               }}
               onClick={() => {
-                if (section.id !== activeSectionId) {
+                if (section.slug !== activeSectionSlug) {
                   onSelect(section);
                 }
               }}

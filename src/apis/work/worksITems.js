@@ -1,18 +1,21 @@
 import { api } from "../../config/backend";
 
 const buildParams = (params = {}) => {
-  const { page, per_page, lang, work_id } = params || {};
+  const { page, per_page, lang } = params || {};
 
   return {
     ...(page !== undefined ? { page } : {}),
     ...(per_page !== undefined ? { per_page } : {}),
     ...(lang ? { lang } : {}),
-    ...(work_id !== undefined ? { work_id } : {}),
   };
 };
 
-const fetchWorkItems = async (endpoint, params = {}) => {
-  const response = await api.get(endpoint, {
+const fetchWorkItemsBySlug = async (endpointBase, slug, params = {}) => {
+  if (slug == null || String(slug).trim() === "") {
+    throw new Error("slug is required to fetch work items");
+  }
+
+  const response = await api.get(`${endpointBase}/${encodeURIComponent(slug)}`, {
     params: buildParams(params),
   });
 
@@ -32,19 +35,19 @@ const fetchWorkItemById = async (endpoint, id, params = {}) => {
 };
 
 export const getInfluenceItems = (params = {}) =>
-  fetchWorkItems("/work-influences/get", params);
+  fetchWorkItemsBySlug("/work-influences", params.slug, params);
 
 export const getSocialItems = (params = {}) =>
-  fetchWorkItems("/work-socials/get", params);
+  fetchWorkItemsBySlug("/work-socials", params.slug, params);
 
 export const getCreativeItems = (params = {}) =>
-  fetchWorkItems("/work-creatives/get", params);
+  fetchWorkItemsBySlug("/work-creatives", params.slug, params);
 
 export const getDigitalItems = (params = {}) =>
-  fetchWorkItems("/work-digitals/get", params);
+  fetchWorkItemsBySlug("/work-digitals", params.slug, params);
 
 export const getEventItems = (params = {}) =>
-  fetchWorkItems("/work-events/get", params);
+  fetchWorkItemsBySlug("/work-events", params.slug, params);
 
 export const fetchWorkInfluence = (id, params = {}) =>
   fetchWorkItemById("/work-influences", id, params);

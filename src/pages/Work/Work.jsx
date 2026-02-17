@@ -30,7 +30,7 @@ gsap.registerPlugin(ScrollTrigger);
 const Work = () => {
   const { theme } = useTheme();
   const navigate = useNavigate();
-  const { workId } = useParams();
+  const { workSlug } = useParams();
   const {
     sections,
     loadSections,
@@ -53,7 +53,7 @@ const Work = () => {
   } = useWorkItemsStore();
   const { language, isRtl } = useI18nLanguage();
   const { t } = useTranslation();
-  const [activeSectionId, setActiveSectionId] = useState(null);
+  const [activeSectionSlug, setActiveSectionSlug] = useState(null);
   const [activeType, setActiveType] = useState(null);
   const lenisCleanupTimeout = useRef(null);
 
@@ -122,11 +122,11 @@ const Work = () => {
     if (!sections || sections.length === 0) return;
 
     const matched =
-      sections.find((section) => String(section.id) === String(workId)) ?? null;
+      sections.find((section) => String(section.slug) === String(workSlug)) ?? null;
 
     if (matched) {
-      if (activeSectionId !== matched.id) {
-        setActiveSectionId(matched.id);
+      if (activeSectionSlug !== matched.slug) {
+        setActiveSectionSlug(matched.slug);
       }
       if (activeType !== matched.type) {
         setActiveType(matched.type);
@@ -137,28 +137,28 @@ const Work = () => {
     const fallback = sections[0];
     if (!fallback) return;
 
-    if (workId == null || String(workId) !== String(fallback.id)) {
-      navigate(`/work/${fallback.id}`, { replace: true });
+    if (workSlug == null || String(workSlug).trim() === "" || String(workSlug) !== String(fallback.slug)) {
+      navigate(`/work/${encodeURIComponent(fallback.slug)}`, { replace: true });
     }
 
-    if (activeSectionId !== fallback.id) {
-      setActiveSectionId(fallback.id);
+    if (activeSectionSlug !== fallback.slug) {
+      setActiveSectionSlug(fallback.slug);
     }
     if (activeType !== fallback.type) {
       setActiveType(fallback.type);
     }
-  }, [sections, workId, activeSectionId, activeType, navigate]);
+  }, [sections, workSlug, activeSectionSlug, activeType, navigate]);
 
   useEffect(() => {
-    if (!activeSectionId || !activeType) return;
+    if (!activeSectionSlug || !activeType) return;
 
     const key = TYPE_KEY_MAP[activeType];
     if (!key) return;
     resetCategory(key);
-  }, [activeSectionId, activeType, resetCategory]);
+  }, [activeSectionSlug, activeType, resetCategory]);
 
   useEffect(() => {
-    if (!activeSectionId || !activeType) return;
+    if (!activeSectionSlug || !activeType) return;
 
     const loaderMap = {
       influence: loadInfluenceItems,
@@ -176,10 +176,10 @@ const Work = () => {
       lang: language,
       page: 1,
       per_page: 10,
-      work_id: activeSectionId,
+      slug: activeSectionSlug,
     }).catch(() => {});
   }, [
-    activeSectionId,
+    activeSectionSlug,
     activeType,
     language,
     loadInfluenceItems,
@@ -204,10 +204,10 @@ const Work = () => {
   const itemsError = activeState?.error;
   const isDigitalActive = activeKey === "digital";
   const selectedSection =
-    sections?.find((section) => section.id === activeSectionId) ?? null;
+    sections?.find((section) => section.slug === activeSectionSlug) ?? null;
   const showEmptyState =
     !itemsLoading && !itemsError && currentItems.length === 0;
-  const containerKey = `${activeKey ?? "none"}-${activeSectionId ?? "none"}`;
+  const containerKey = `${activeKey ?? "none"}-${activeSectionSlug ?? "none"}`;
 
   const handleViewDetails = (detailId) => {
     if (detailId == null) return;
@@ -237,11 +237,11 @@ const Work = () => {
         sections={sections}
         loading={sectionsLoading}
         error={sectionsError}
-        activeSectionId={activeSectionId}
+        activeSectionSlug={activeSectionSlug}
         onSelect={(section) => {
-          if (section.id === activeSectionId) return;
+          if (section.slug === activeSectionSlug) return;
           // Navigate with preserveScroll flag to prevent scroll-to-top from triggering
-          navigate(`/work/${section.id}`, { 
+          navigate(`/work/${encodeURIComponent(section.slug)}`, {
             state: { preserveScroll: true }
           });
         }}

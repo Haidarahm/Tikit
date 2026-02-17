@@ -263,8 +263,8 @@ const WorkSection = memo(() => {
                     transition-colors"
                     onClick={() => {
                       try {
-                        if (item.id != null) {
-                          navigate(`/work/${encodeURIComponent(item.id)}`);
+                        if (item.slug != null) {
+                          navigate(`/work/${encodeURIComponent(item.slug)}`);
                         }
                       } catch (_) {}
                     }}

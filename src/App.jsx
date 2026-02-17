@@ -109,7 +109,7 @@ function App() {
           <Routes>
             <Route element={<Layout />}>
               <Route index element={<Home />} />
-              <Route path="/work/:workId?" element={<Work />} />
+              <Route path="/work/:workSlug?" element={<Work />} />
               <Route path="/about-us" element={<AboutUs />} />
               <Route path="/services" element={<Services />} />
               <Route path="/blogs" element={<Blogs />} />

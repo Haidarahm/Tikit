@@ -37,7 +37,7 @@ const createCategoryState = () => ({
   loading: false,
   error: null,
   requestId: null,
-  activeWorkId: null,
+  activeWorkSlug: null,
 });
 
 const createInitialState = () => ({
@@ -55,7 +55,7 @@ export const useWorkItemsStore = create((set, get) => {
 
     // unique request ID to prevent overwrites
     const requestId = `${Date.now()}-${Math.random().toString(36).slice(2)}`;
-    const incomingWorkId = params?.work_id ?? null;
+    const incomingWorkSlug = params?.slug ?? null;
 
     // start loading
     set((state) => ({
@@ -65,7 +65,7 @@ export const useWorkItemsStore = create((set, get) => {
         loading: true,
         error: null,
         requestId,
-        activeWorkId: incomingWorkId,
+        activeWorkSlug: incomingWorkSlug,
       },
     }));
 
