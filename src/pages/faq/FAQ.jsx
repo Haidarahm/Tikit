@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Collapse } from "antd";
 import { 
   FaQuestionCircle, 
   FaCogs, 
@@ -14,6 +13,7 @@ import {
 } from "react-icons/fa";
 import SEOHead from "../../components/SEOHead";
 import Footer from "../../components/Footer";
+import Accordion from "../../components/ui/Accordion";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
@@ -22,7 +22,6 @@ const FAQ = () => {
   const { isRtl, language } = useI18nLanguage();
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const [activeKeys, setActiveKeys] = useState([]);
 
   // Icons for each question
   const icons = [
@@ -64,9 +63,6 @@ const FAQ = () => {
     ),
   }));
 
-  const handleCollapseChange = (keys) => {
-    setActiveKeys(keys);
-  };
 
   return (
     <div
@@ -123,18 +119,13 @@ const FAQ = () => {
         </div>
       </section>
 
-      {/* FAQ Section with Ant Design Collapse */}
+      {/* FAQ Section with Custom Lightweight Accordion */}
       <section className="py-12 md:py-20 px-6 md:px-10">
         <div className="max-w-5xl mx-auto">
-          <Collapse
+          <Accordion
             accordion={false}
-            activeKey={activeKeys}
-            onChange={handleCollapseChange}
-            bordered={false}
             expandIconPosition={isRtl ? "start" : "end"}
-            className="faq-collapse"
             items={faqItems}
-            size="large"
           />
         </div>
       </section>
@@ -187,83 +178,6 @@ const FAQ = () => {
       </section>
 
       <Footer />
-
-      {/* Custom Ant Design Collapse Styles */}
-      <style jsx global>{`
-        .faq-collapse .ant-collapse-item {
-          background: var(--container-bg);
-          border: 1px solid rgba(var(--foreground-rgb, 54, 55, 55), 0.1);
-          border-radius: 16px !important;
-          margin-bottom: 16px;
-          overflow: hidden;
-          transition: all 0.3s ease;
-        }
-        
-        .dark .faq-collapse .ant-collapse-item {
-          border-color: rgba(255, 255, 255, 0.2);
-        }
-        
-        .faq-collapse .ant-collapse-item:hover {
-          border-color: var(--secondary);
-          box-shadow: 0 4px 12px rgba(82, 195, 197, 0.15);
-        }
-        
-        .faq-collapse .ant-collapse-item-active {
-          border-color: var(--secondary) !important;
-          box-shadow: 0 8px 24px rgba(82, 195, 197, 0.2);
-        }
-        
-        .faq-collapse .ant-collapse-header {
-          padding: 20px 24px !important;
-          background: transparent;
-          align-items: center !important;
-        }
-        
-        .faq-collapse .ant-collapse-content {
-          background: transparent;
-          border-top: 1px solid rgba(var(--foreground-rgb, 54, 55, 55), 0.1);
-        }
-        
-        .dark .faq-collapse .ant-collapse-content {
-          border-top-color: rgba(255, 255, 255, 0.1);
-        }
-        
-        .faq-collapse .ant-collapse-content-box {
-          padding: 16px 24px;
-        }
-        
-        .faq-collapse .ant-collapse-expand-icon {
-          padding-inline-start: 0 !important;
-        }
-        
-        .faq-collapse .ant-collapse-expand-icon svg {
-          width: 20px;
-          height: 20px;
-          color: var(--secondary);
-          transition: transform 0.3s ease;
-        }
-        
-        .faq-collapse .ant-collapse-item-active .ant-collapse-expand-icon svg {
-          transform: rotate(180deg);
-        }
-        
-        /* Smooth animation */
-        .faq-collapse .ant-motion-collapse {
-          overflow: hidden;
-          transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        /* Mobile responsiveness */
-        @media (max-width: 768px) {
-          .faq-collapse .ant-collapse-header {
-            padding: 16px !important;
-          }
-          
-          .faq-collapse .ant-collapse-content-box {
-            padding: 12px 16px;
-          }
-        }
-      `}</style>
     </div>
   );
 };
