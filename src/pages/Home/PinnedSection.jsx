@@ -15,42 +15,42 @@ const PinnedSection = () => {
   const videos = useMemo(() => {
     return [
       {
-        src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+        src: "/reels/reel-1.mp4",
         label: "Creative Campaign",
         type: "video/mp4",
       },
       {
-        src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+        src: "/reels/reel-2.mp4",
         label: "Brand Storytelling",
         type: "video/mp4",
       },
       {
-        src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+        src: "/reels/reel-3.mp4",
         label: "Social Impact",
         type: "video/mp4",
       },
       {
-        src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+        src: "/reels/reel-4.mp4",
         label: "Digital Innovation",
         type: "video/mp4",
       },
       {
-        src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+        src: "/reels/reel-5.mp4",
         label: "Community Building",
         type: "video/mp4",
       },
       {
-        src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
+        src: "/reels/reel-6.mp4",
         label: "Growth Strategy",
         type: "video/mp4",
       },
       {
-        src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4",
+        src: "/reels/reel-7.mp4",
         label: "Content Creation",
         type: "video/mp4",
       },
       {
-        src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4",
+        src: "/reels/reel-8.mp4",
         label: "Influencer Marketing",
         type: "video/mp4",
       },
