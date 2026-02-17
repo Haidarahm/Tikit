@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 /**
- * Lightweight Accordion Component
+ * Lightweight Accordion Component with Smooth Animations
  * Replaces Ant Design Collapse to improve performance
  * ~2KB vs ~700KB (antd)
+ * Uses Tailwind CSS for smooth transitions
  */
 const Accordion = ({ items = [], accordion = false, expandIconPosition = "end", className = "" }) => {
   const [openKeys, setOpenKeys] = useState([]);
+  const contentRefs = useRef({});
 
   const toggleItem = (key) => {
     if (accordion) {
@@ -20,26 +22,68 @@ const Accordion = ({ items = [], accordion = false, expandIconPosition = "end", 
     }
   };
 
+  // Set max-height dynamically for smooth animation
+  useEffect(() => {
+    Object.keys(contentRefs.current).forEach((key) => {
+      const element = contentRefs.current[key];
+      if (element) {
+        const innerElement = element.querySelector("div");
+        if (openKeys.includes(key)) {
+          // Set max-height to scrollHeight for smooth expansion
+          const height = innerElement?.scrollHeight || 0;
+          element.style.maxHeight = `${height}px`;
+          // Force reflow to ensure transition starts
+          element.offsetHeight;
+        } else {
+          element.style.maxHeight = "0px";
+        }
+      }
+    });
+  }, [openKeys]);
+
   return (
-    <div className={`faq-accordion ${className}`}>
+    <div className={`w-full ${className}`}>
       {items.map((item) => {
         const isOpen = openKeys.includes(item.key);
-        const iconPosition = expandIconPosition === "start" ? "left" : "right";
 
         return (
           <div
             key={item.key}
-            className={`faq-accordion-item ${isOpen ? "faq-accordion-item-active" : ""}`}
+            className={`
+              bg-[var(--container-bg)]
+              border border-[var(--foreground)]/10
+              dark:border-white/20
+              rounded-2xl
+              mb-4
+              overflow-hidden
+              transition-all duration-300 ease-out
+              hover:border-[var(--secondary)]
+              hover:shadow-lg hover:shadow-[var(--secondary)]/15
+              ${isOpen ? "border-[var(--secondary)] shadow-xl shadow-[var(--secondary)]/20" : ""}
+            `}
           >
             <button
               type="button"
               onClick={() => toggleItem(item.key)}
-              className="faq-accordion-header"
+              className={`
+                w-full
+                px-6 py-5
+                md:px-6 md:py-5
+                flex items-center gap-4
+                bg-transparent
+                border-none
+                cursor-pointer
+                text-left
+                transition-all duration-300 ease-out
+                focus:outline-none focus:ring-2 focus:ring-[var(--secondary)] focus:ring-offset-2 focus:ring-offset-[var(--background)]
+                rounded-t-2xl
+                ${isOpen ? "rounded-b-none" : "rounded-b-2xl"}
+              `}
               aria-expanded={isOpen}
               aria-controls={`faq-content-${item.key}`}
             >
               {expandIconPosition === "start" && (
-                <span className="faq-accordion-icon">
+                <span className="flex-shrink-0 w-5 h-5 text-[var(--secondary)]">
                   <svg
                     width="20"
                     height="20"
@@ -49,15 +93,17 @@ const Accordion = ({ items = [], accordion = false, expandIconPosition = "end", 
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className={isOpen ? "rotate-180" : ""}
+                    className={`transition-transform duration-500 ease-out ${
+                      isOpen ? "rotate-180" : "rotate-0"
+                    }`}
                   >
                     <path d="M6 9l6 6 6-6" />
                   </svg>
                 </span>
               )}
-              <div className="faq-accordion-label">{item.label}</div>
+              <div className="flex-1">{item.label}</div>
               {expandIconPosition === "end" && (
-                <span className="faq-accordion-icon">
+                <span className="flex-shrink-0 w-5 h-5 text-[var(--secondary)]">
                   <svg
                     width="20"
                     height="20"
@@ -67,7 +113,9 @@ const Accordion = ({ items = [], accordion = false, expandIconPosition = "end", 
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className={isOpen ? "rotate-180" : ""}
+                    className={`transition-transform duration-500 ease-out ${
+                      isOpen ? "rotate-180" : "rotate-0"
+                    }`}
                   >
                     <path d="M6 9l6 6 6-6" />
                   </svg>
@@ -76,114 +124,31 @@ const Accordion = ({ items = [], accordion = false, expandIconPosition = "end", 
             </button>
             <div
               id={`faq-content-${item.key}`}
-              className={`faq-accordion-content ${isOpen ? "faq-accordion-content-open" : ""}`}
+              ref={(el) => (contentRefs.current[item.key] = el)}
+              className={`
+                overflow-hidden
+                transition-[max-height,opacity] duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]
+                border-t border-[var(--foreground)]/10 dark:border-white/10
+              `}
+              style={{
+                opacity: isOpen ? 1 : 0,
+              }}
               aria-hidden={!isOpen}
             >
-              <div className="faq-accordion-content-inner">{item.children}</div>
+              <div
+                className={`
+                  px-6 py-4
+                  md:px-6 md:py-4
+                  transition-all duration-500 ease-out
+                  ${isOpen ? "translate-y-0 opacity-100 delay-75" : "-translate-y-2 opacity-0"}
+                `}
+              >
+                {item.children}
+              </div>
             </div>
           </div>
         );
       })}
-      <style jsx global>{`
-        .faq-accordion {
-          width: 100%;
-        }
-
-        .faq-accordion-item {
-          background: var(--container-bg);
-          border: 1px solid rgba(var(--foreground-rgb, 54, 55, 55), 0.1);
-          border-radius: 16px;
-          margin-bottom: 16px;
-          overflow: hidden;
-          transition: all 0.3s ease;
-        }
-
-        .dark .faq-accordion-item {
-          border-color: rgba(255, 255, 255, 0.2);
-        }
-
-        .faq-accordion-item:hover {
-          border-color: var(--secondary);
-          box-shadow: 0 4px 12px rgba(82, 195, 197, 0.15);
-        }
-
-        .faq-accordion-item-active {
-          border-color: var(--secondary) !important;
-          box-shadow: 0 8px 24px rgba(82, 195, 197, 0.2);
-        }
-
-        .faq-accordion-header {
-          width: 100%;
-          padding: 20px 24px;
-          background: transparent;
-          border: none;
-          display: flex;
-          align-items: center;
-          gap: 16px;
-          cursor: pointer;
-          text-align: left;
-          transition: all 0.3s ease;
-        }
-
-        .faq-accordion-header:focus {
-          outline: 2px solid var(--secondary);
-          outline-offset: -2px;
-        }
-
-        .faq-accordion-label {
-          flex: 1;
-        }
-
-        .faq-accordion-icon {
-          flex-shrink: 0;
-          width: 20px;
-          height: 20px;
-          color: var(--secondary);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .faq-accordion-icon svg {
-          width: 100%;
-          height: 100%;
-        }
-
-        .faq-accordion-icon.rotate-180 {
-          transform: rotate(180deg);
-        }
-
-        .faq-accordion-content {
-          max-height: 0;
-          overflow: hidden;
-          transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-          border-top: 1px solid rgba(var(--foreground-rgb, 54, 55, 55), 0.1);
-        }
-
-        .dark .faq-accordion-content {
-          border-top-color: rgba(255, 255, 255, 0.1);
-        }
-
-        .faq-accordion-content-open {
-          max-height: 2000px; /* Large enough for content */
-        }
-
-        .faq-accordion-content-inner {
-          padding: 16px 24px;
-        }
-
-        /* Mobile responsiveness */
-        @media (max-width: 768px) {
-          .faq-accordion-header {
-            padding: 16px;
-          }
-
-          .faq-accordion-content-inner {
-            padding: 12px 16px;
-          }
-        }
-      `}</style>
     </div>
   );
 };
