@@ -17,7 +17,6 @@ gsap.registerPlugin(ScrollTrigger);
 export default function StickyPinnedSection({
   items,
   heightPerItemVh = 150,
-  className,
 }) {
   const sectionRef = useRef(null);
   const stickyRef = useRef(null);
@@ -41,7 +40,7 @@ export default function StickyPinnedSection({
       if (trigger.trigger === el) {
         try {
           trigger.kill();
-        } catch (e) {
+        } catch {
           // Ignore errors during cleanup
         }
       }
@@ -352,7 +351,7 @@ export default function StickyPinnedSection({
         if (trigger.trigger === el) {
           try {
             trigger.kill();
-          } catch (e) {
+          } catch {
             // Ignore errors during cleanup
           }
         }
@@ -361,7 +360,7 @@ export default function StickyPinnedSection({
       if (el.isConnected) {
         try {
           ctx.revert();
-        } catch (e) {
+        } catch {
           // Ignore errors during cleanup - DOM may have already changed
         }
       }
@@ -461,14 +460,10 @@ export default function StickyPinnedSection({
                             className="bg-transparent hover:text-[var(--background)] shadow-lg shadow-[#52C3C5]/30 font-bold dark:shadow-[#000]/30 hover:bg-[var(--secondary)] border-[var(--secondary)] text-[var(--secondary)] transition duration-75 ease-in border px-6 h-8 md:h-10 text-[14px] rounded-full uppercase"
 
                   onClick={() => {
-                    try {
-                      const slug = items?.[i]?.slug;
-                      if (slug != null) {
-                        navigate(`/work/${encodeURIComponent(slug)}`);
-                      }
-                    } catch (_) {
-                        // Intentionally empty
-                      }
+                    const slug = items?.[i]?.slug;
+                    if (slug != null) {
+                      navigate(`/work/${encodeURIComponent(slug)}`);
+                    }
                   }}
                 >
                   {isRtl ? (
@@ -504,28 +499,22 @@ export default function StickyPinnedSection({
                   willChange: "opacity, transform",
                 }}
                 onMouseEnter={(e) => {
-                  try {
-                    gsap.to(e.currentTarget, {
-                      scale: 1.1,
-                      duration: 0.25,
-                      ease: "power2.out",
-                    });
-                  } catch {}
+                  gsap.to(e.currentTarget, {
+                    scale: 1.1,
+                    duration: 0.25,
+                    ease: "power2.out",
+                  });
                 }}
                 onMouseLeave={(e) => {
-                  try {
-                    gsap.to(e.currentTarget, {
-                      scale: 1.0,
-                      duration: 0.25,
-                      ease: "power2.out",
-                    });
-                  } catch {}
+                  gsap.to(e.currentTarget, {
+                    scale: 1.0,
+                    duration: 0.25,
+                    ease: "power2.out",
+                  });
                 }}
                 onClick={() => {
-                  try {
-                    const slug = items?.[i]?.slug;
-                    if (slug != null) navigate(`/work/${encodeURIComponent(slug)}`);
-                  } catch {}
+                  const slug = items?.[i]?.slug;
+                  if (slug != null) navigate(`/work/${encodeURIComponent(slug)}`);
                 }}
               >
                 {it.media ?? (

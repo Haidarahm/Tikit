@@ -6,7 +6,6 @@ import Footer from "../components/Footer";
 import { useI18nLanguage } from "../store/I18nLanguageContext";
 
 const PrivacyPolicy = () => {
-  const { t } = useTranslation();
   const { isRtl } = useI18nLanguage();
 
   const lastUpdated = "December 2, 2025";

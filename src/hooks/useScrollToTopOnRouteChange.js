@@ -97,7 +97,7 @@ export function useScrollToTopOnRouteChange() {
               requestAnimationFrame(() => {
                 try {
                   ScrollTrigger.refresh();
-                } catch (e) {
+                } catch {
                   // Ignore refresh errors - triggers may have been cleaned up
                 }
               });

@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { getBannerVideos } from "../apis/banners/aboutBanner";
 
-export const useAboutBannersStore = create((set, get) => ({
+export const useAboutBannersStore = create((set) => ({
   videos: [], // normalized as [{ id, media, mediaType, createdAt, updatedAt }]
   pagination: null,
   loading: false,

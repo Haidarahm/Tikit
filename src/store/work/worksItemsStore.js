@@ -48,7 +48,7 @@ const createInitialState = () => ({
   events: createCategoryState(),
 });
 
-export const useWorkItemsStore = create((set, get) => {
+export const useWorkItemsStore = create((set) => {
   const loadCategory = async (category, params = {}) => {
     const config = CATEGORY_CONFIG[category];
     if (!config) throw new Error(`Unknown work category "${category}"`);

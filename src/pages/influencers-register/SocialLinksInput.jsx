@@ -64,7 +64,6 @@ const SocialLinksInput = ({
   label,
   socialLinks = [],
   onChange,
-  name = "socialLinks",
   className = "",
 }) => {
   const { t } = useTranslation();
@@ -126,10 +125,6 @@ const SocialLinksInput = ({
     return SOCIAL_PLATFORMS.find((p) => p.value === platformValue);
   };
 
-  const getPriceType = (typeValue) => {
-    return PRICE_TYPES.find((p) => p.value === typeValue);
-  };
-
   return (
     <div className={`flex flex-col gap-2 w-full ${className}`}>
       {/* Label */}
@@ -151,7 +146,6 @@ const SocialLinksInput = ({
             linkIndex={linkIndex}
             isRtl={isRtl}
             getPlatform={getPlatform}
-            getPriceType={getPriceType}
             updateSocialLink={updateSocialLink}
             removeSocialLink={removeSocialLink}
             addPrice={addPrice}
@@ -184,7 +178,6 @@ const SocialLinkCard = ({
   linkIndex,
   isRtl,
   getPlatform,
-  getPriceType,
   updateSocialLink,
   removeSocialLink,
   addPrice,
