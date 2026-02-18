@@ -58,11 +58,12 @@ const NewsDetails = () => {
         // If paragraphs are already cached for this slug, use them
         if (existingBlogData?.paragraphs && Array.isArray(existingBlogData.paragraphs)) {
           setDetailsData(existingBlogData.paragraphs)
+          setIsLoading(false)
+          loadingRef.current = false
           return
         }
 
         // Only fetch paragraphs/details - header data should come from Content.jsx or store
-        // If header data doesn't exist, it will be handled by the parent or we'll show loading state
         const response = await loadNewsDetails(slug, language)
         const data = Array.isArray(response?.data) ? response.data : []
         setDetailsData(data)
@@ -86,6 +87,22 @@ const NewsDetails = () => {
   const blogData = newsDetails[slug]
   const paragraphes = detailsData || (blogData?.paragraphs && Array.isArray(blogData.paragraphs) ? blogData.paragraphs : [])
   const seoProps = getBlogSEOProps(blogData, slug)
+
+  // Fetch header data if it doesn't exist in store (for direct URL access)
+  useEffect(() => {
+    if (!slug || blogData) return // Skip if no slug or data already exists
+    
+    // Only fetch header if it's missing (header data should come from Content.jsx normally)
+    const fetchHeaderIfNeeded = async () => {
+      try {
+        await loadOneNews(slug, language)
+      } catch (error) {
+        console.error('Failed to load news header:', error)
+      }
+    }
+    
+    fetchHeaderIfNeeded()
+  }, [slug, language, blogData, loadOneNews])
 
   useEffect(() => {
     if (!sectionRef.current || !paragraphes.length || isLoading) return

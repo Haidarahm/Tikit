@@ -35,7 +35,9 @@ const NewsDetailsHeader = ({ newsData: propNewsData, loading: propLoading }) => 
     if (propNewsData) {
       const currentSlug = propNewsData.slug || propNewsData.id
       if (currentSlug !== lastFetchedSlugRef.current) {
-        setImageLoaded(false) // Reset image load state when news changes
+        // Check if there's an image - if not, mark as loaded immediately
+        const hasImage = propNewsData?.image || propNewsData?.images
+        setImageLoaded(!hasImage) // If no image, set to true immediately
         lastFetchedSlugRef.current = currentSlug
       }
     } else {
@@ -46,13 +48,19 @@ const NewsDetailsHeader = ({ newsData: propNewsData, loading: propLoading }) => 
 
   // Use news data from props
   const currentNewsData = propNewsData
-  const isLoading = propLoading || !currentNewsData || !imageLoaded
+  // Show loading skeleton only when explicitly loading OR when we have no data
+  // Image loading state is handled separately for the image element itself
+  const isLoading = propLoading === true || !currentNewsData
 
   useEffect(() => {
-    if (!currentNewsData || propLoading || !imageLoaded) return
+    if (!currentNewsData || propLoading) return
 
     // Wait for refs to be attached (elements must be rendered)
     if (!headerImageRef.current || !headerTitleRef.current) return
+
+    // If there's an image, wait for it to load before animating
+    const hasImage = currentNewsData?.image || currentNewsData?.images
+    if (hasImage && !imageLoaded) return
 
     // Set initial states for header elements
     if (headerImageRef.current) {
@@ -202,7 +210,7 @@ const NewsDetailsHeader = ({ newsData: propNewsData, loading: propLoading }) => 
               )}
               
               {/* Badge and Date Overlay */}
-              {currentNewsData && imageLoaded && (
+              {currentNewsData && (imageLoaded || !(currentNewsData?.image || currentNewsData?.images)) && (
                 <div className={`absolute ${isRtl ? 'top-4 right-4 sm:top-6 sm:right-6 md:top-8 md:right-8' : 'top-4 left-4 sm:top-6 sm:left-6 md:top-8 md:left-8'} flex flex-col gap-2 sm:gap-3 z-10`}>
                   <div
                     ref={badgeRef}
