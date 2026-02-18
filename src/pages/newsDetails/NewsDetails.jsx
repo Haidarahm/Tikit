@@ -236,7 +236,10 @@ const NewsDetails = () => {
       
     <div data-nav-color="black" ref={sectionRef} className="news-details w-full overflow-hidden   ">
       {/* Header Section */}
-      <NewsDetailsHeader newsData={blogData} loading={loading || isLoading} />
+      <NewsDetailsHeader 
+        newsData={blogData} 
+        loading={loading || isLoading}
+      />
 
       {/* Paragraphs Section */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 space-y-12 sm:space-y-16 md:space-y-20 lg:space-y-32 my-8 sm:my-10 md:my-12 lg:my-16">

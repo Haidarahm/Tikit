@@ -19,6 +19,17 @@ const NewsDetailsHeader = ({ newsData: propNewsData, loading: propLoading }) => 
   const dateRef = useRef(null)
   const lineRef = useRef(null)
 
+  // Get image URL from data (handles both image string and images array)
+  const getImageUrl = (data) => {
+    if (!data) return null
+    if (data.image) return data.image
+    if (data.images) {
+      // If images is an array, get first item; if string, use it directly
+      return Array.isArray(data.images) ? data.images[0] : data.images
+    }
+    return null
+  }
+
   // Format date from ISO string
   const formatDate = (dateString) => {
     if (!dateString) return ''
@@ -30,14 +41,40 @@ const NewsDetailsHeader = ({ newsData: propNewsData, loading: propLoading }) => 
     })
   }
 
+  // Debug: Log when data changes
+  useEffect(() => {
+    if (propNewsData) {
+      const imageUrl = getImageUrl(propNewsData)
+      console.log('NewsDetailsHeader - Received data:', {
+        title: propNewsData.title,
+        image: propNewsData.image,
+        images: propNewsData.images,
+        imageUrl: imageUrl,
+        slug: propNewsData.slug
+      })
+    } else {
+      console.log('NewsDetailsHeader - No data received, propLoading:', propLoading)
+    }
+  }, [propNewsData, propLoading])
+
   // Reset image load state when news data changes
   useEffect(() => {
     if (propNewsData) {
       const currentSlug = propNewsData.slug || propNewsData.id
       if (currentSlug !== lastFetchedSlugRef.current) {
         // Check if there's an image - if not, mark as loaded immediately
-        const hasImage = propNewsData?.image || propNewsData?.images
-        setImageLoaded(!hasImage) // If no image, set to true immediately
+        const imageUrl = getImageUrl(propNewsData)
+        if (!imageUrl) {
+          setImageLoaded(true) // If no image, set to true immediately
+        } else {
+          setImageLoaded(false) // Reset to false when new image URL
+          // Fallback: if image doesn't load within 1 second, show it anyway (reduced from 3s)
+          const timeout = setTimeout(() => {
+            setImageLoaded(true)
+          }, 1000)
+          
+          return () => clearTimeout(timeout)
+        }
         lastFetchedSlugRef.current = currentSlug
       }
     } else {
@@ -52,116 +89,151 @@ const NewsDetailsHeader = ({ newsData: propNewsData, loading: propLoading }) => 
   // Image loading state is handled separately for the image element itself
   const isLoading = propLoading === true || !currentNewsData
 
+  // Track if this is the first render with data
+  const hasAnimatedRef = useRef(false)
+  const animationTimeoutRef = useRef(null)
+
   useEffect(() => {
     if (!currentNewsData || propLoading) return
 
     // Wait for refs to be attached (elements must be rendered)
     if (!headerImageRef.current || !headerTitleRef.current) return
 
-    // If there's an image, wait for it to load before animating
-    const hasImage = currentNewsData?.image || currentNewsData?.images
-    if (hasImage && !imageLoaded) return
-
-    // Set initial states for header elements
-    if (headerImageRef.current) {
-      gsap.set(headerImageRef.current, { opacity: 0, scale: 1.08, y: 30 })
-    }
-    if (headerTitleRef.current) {
-      gsap.set(headerTitleRef.current, { opacity: 0, y: 50 })
-    }
-    if (headerSubtitleRef.current) {
-      gsap.set(headerSubtitleRef.current, { opacity: 0, y: 30 })
-    }
-    if (descriptionRef.current) {
-      gsap.set(descriptionRef.current, { opacity: 0, y: 30 })
-    }
-    if (badgeRef.current) {
-      gsap.set(badgeRef.current, { opacity: 0, scale: 0.9, y: 20 })
-    }
-    if (dateRef.current) {
-      gsap.set(dateRef.current, { opacity: 0, x: isRtl ? 30 : -30 })
-    }
-    if (lineRef.current) {
-      gsap.set(lineRef.current, { scaleX: 0 })
+    // Clear any pending timeouts
+    if (animationTimeoutRef.current) {
+      clearTimeout(animationTimeoutRef.current)
     }
 
-    // Header animations - run immediately on first render
-    const headerTl = gsap.timeline({ defaults: { ease: "power3.out" } })
-    
-    if (headerImageRef.current) {
-      headerTl.to(headerImageRef.current, {
-        opacity: 1,
-        scale: 1,
-        y: 0,
-        duration: 1.2,
-      })
-    }
-    if (badgeRef.current) {
-      headerTl.to(badgeRef.current, {
-        opacity: 1,
-        scale: 1,
-        y: 0,
-        duration: 0.7,
-      }, "-=0.9")
-    }
-    if (dateRef.current) {
-      headerTl.to(dateRef.current, {
-        opacity: 1,
-        x: 0,
-        duration: 0.8,
-      }, "-=0.7")
-    }
-    if (headerTitleRef.current) {
-      headerTl.to(headerTitleRef.current, {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: "power2.out",
-      }, "-=0.5")
-    }
-    if (headerSubtitleRef.current) {
-      headerTl.to(headerSubtitleRef.current, {
-        opacity: 1,
-        y: 0,
-        duration: 0.9,
-        ease: "power2.out",
-      }, "-=0.7")
-    }
-    if (descriptionRef.current) {
-      headerTl.to(descriptionRef.current, {
-        opacity: 1,
-        y: 0,
-        duration: 0.9,
-        ease: "power2.out",
-      }, "-=0.6")
-    }
-    if (lineRef.current) {
-      headerTl.to(lineRef.current, {
-        scaleX: 1,
-        duration: 0.8,
-        ease: "power2.out",
-      }, "-=0.4")
-    }
-
-    // Parallax effect on scroll for image
-    if (headerImageRef.current) {
-      const imgElement = headerImageRef.current.querySelector('img')
-      if (imgElement) {
-        gsap.to(imgElement, {
-          scale: 1.08,
-          ease: "none",
-          scrollTrigger: {
-            trigger: headerImageRef.current,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: 1.2,
-          },
-        })
+    // If we've already animated once, skip animation and show content immediately
+    if (hasAnimatedRef.current) {
+      // Just set up parallax, no entrance animation
+      if (headerImageRef.current) {
+        const imgElement = headerImageRef.current.querySelector('img')
+        if (imgElement) {
+          gsap.to(imgElement, {
+            scale: 1.08,
+            ease: "none",
+            scrollTrigger: {
+              trigger: headerImageRef.current,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: 1.2,
+            },
+          })
+        }
       }
+      return
     }
+
+    // First render - animate in quickly (but don't hide content first if data exists)
+    // Use a very short delay to ensure DOM is ready, then animate
+    animationTimeoutRef.current = setTimeout(() => {
+      // Set initial states for header elements only if they're not already visible
+      // This allows content to show immediately when data exists
+      if (headerImageRef.current && headerImageRef.current.style.opacity !== '1') {
+        gsap.set(headerImageRef.current, { opacity: 0, scale: 1.08, y: 30 })
+      }
+      if (headerTitleRef.current && headerTitleRef.current.style.opacity !== '1') {
+        gsap.set(headerTitleRef.current, { opacity: 0, y: 50 })
+      }
+      if (headerSubtitleRef.current && headerSubtitleRef.current.style.opacity !== '1') {
+        gsap.set(headerSubtitleRef.current, { opacity: 0, y: 30 })
+      }
+      if (descriptionRef.current && descriptionRef.current.style.opacity !== '1') {
+        gsap.set(descriptionRef.current, { opacity: 0, y: 30 })
+      }
+      if (badgeRef.current && badgeRef.current.style.opacity !== '1') {
+        gsap.set(badgeRef.current, { opacity: 0, scale: 0.9, y: 20 })
+      }
+      if (dateRef.current && dateRef.current.style.opacity !== '1') {
+        gsap.set(dateRef.current, { opacity: 0, x: isRtl ? 30 : -30 })
+      }
+      if (lineRef.current && lineRef.current.style.scaleX !== '1') {
+        gsap.set(lineRef.current, { scaleX: 0 })
+      }
+
+      // Header animations - fast animation
+      const headerTl = gsap.timeline({ defaults: { ease: "power3.out" } })
+      
+      if (headerImageRef.current) {
+        headerTl.to(headerImageRef.current, {
+          opacity: 1,
+          scale: 1,
+          y: 0,
+          duration: 0.3,
+        }, 0)
+      }
+      if (badgeRef.current) {
+        headerTl.to(badgeRef.current, {
+          opacity: 1,
+          scale: 1,
+          y: 0,
+          duration: 0.2,
+        }, 0.1)
+      }
+      if (dateRef.current) {
+        headerTl.to(dateRef.current, {
+          opacity: 1,
+          x: 0,
+          duration: 0.2,
+        }, 0.1)
+      }
+      if (headerTitleRef.current) {
+        headerTl.to(headerTitleRef.current, {
+          opacity: 1,
+          y: 0,
+          duration: 0.3,
+          ease: "power2.out",
+        }, 0.05)
+      }
+      if (headerSubtitleRef.current) {
+        headerTl.to(headerSubtitleRef.current, {
+          opacity: 1,
+          y: 0,
+          duration: 0.2,
+          ease: "power2.out",
+        }, 0.15)
+      }
+      if (descriptionRef.current) {
+        headerTl.to(descriptionRef.current, {
+          opacity: 1,
+          y: 0,
+          duration: 0.2,
+          ease: "power2.out",
+        }, 0.1)
+      }
+      if (lineRef.current) {
+        headerTl.to(lineRef.current, {
+          scaleX: 1,
+          duration: 0.2,
+          ease: "power2.out",
+        }, 0.2)
+      }
+
+      // Parallax effect on scroll for image
+      if (headerImageRef.current) {
+        const imgElement = headerImageRef.current.querySelector('img')
+        if (imgElement) {
+          gsap.to(imgElement, {
+            scale: 1.08,
+            ease: "none",
+            scrollTrigger: {
+              trigger: headerImageRef.current,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: 1.2,
+            },
+          })
+        }
+      }
+
+      hasAnimatedRef.current = true
+    }, 50) // Very short delay - just to ensure DOM is ready
 
     return () => {
-      headerTl.kill()
+      if (animationTimeoutRef.current) {
+        clearTimeout(animationTimeoutRef.current)
+      }
       // Kill any ScrollTriggers
       ScrollTrigger.getAll().forEach(trigger => {
         if (trigger.vars?.trigger === headerImageRef.current) {
@@ -169,7 +241,7 @@ const NewsDetailsHeader = ({ newsData: propNewsData, loading: propLoading }) => 
         }
       })
     }
-  }, [isRtl, currentNewsData, propLoading, imageLoaded])
+  }, [isRtl, currentNewsData, propLoading])
 
   return (
     <header
@@ -191,18 +263,31 @@ const NewsDetailsHeader = ({ newsData: propNewsData, loading: propLoading }) => 
               )}
               
               {/* Image */}
-              {(currentNewsData?.image || currentNewsData?.images) && (
-                <img
-                  src={currentNewsData.image || currentNewsData.images}
-                  alt={currentNewsData.title || "News Header"}
-                  className={`w-full h-full object-cover transition-all duration-700 group-hover:scale-105 ${
-                    imageLoaded ? 'opacity-100' : 'opacity-0'
-                  }`}
-                  loading="eager"
-                  onLoad={() => setImageLoaded(true)}
-                  onError={() => setImageLoaded(true)}
-                />
-              )}
+              {(() => {
+                const imageUrl = getImageUrl(currentNewsData)
+                if (!imageUrl) return null
+                
+                return (
+                  <img
+                    key={imageUrl} // Force re-render when URL changes
+                    src={imageUrl}
+                    alt={currentNewsData.title || "News Header"}
+                    className={`w-full h-full object-cover transition-opacity duration-700 group-hover:scale-105 ${
+                      imageLoaded ? 'opacity-100' : 'opacity-0'
+                    }`}
+                    loading="eager"
+                    onLoad={() => {
+                      console.log('Image loaded successfully:', imageUrl)
+                      setImageLoaded(true)
+                    }}
+                    onError={(e) => {
+                      console.error('Image failed to load:', imageUrl, e)
+                      setImageLoaded(true) // Set to true even on error to show content
+                    }}
+                    style={{ display: imageLoaded ? 'block' : 'block' }} // Always render, just control opacity
+                  />
+                )
+              })()}
               
               {/* Gradient Overlay */}
               {imageLoaded && (
@@ -210,7 +295,7 @@ const NewsDetailsHeader = ({ newsData: propNewsData, loading: propLoading }) => 
               )}
               
               {/* Badge and Date Overlay */}
-              {currentNewsData && (imageLoaded || !(currentNewsData?.image || currentNewsData?.images)) && (
+              {currentNewsData && (imageLoaded || !getImageUrl(currentNewsData)) && (
                 <div className={`absolute ${isRtl ? 'top-4 right-4 sm:top-6 sm:right-6 md:top-8 md:right-8' : 'top-4 left-4 sm:top-6 sm:left-6 md:top-8 md:left-8'} flex flex-col gap-2 sm:gap-3 z-10`}>
                   <div
                     ref={badgeRef}
