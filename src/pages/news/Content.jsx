@@ -4,6 +4,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { getAllNewsItems } from "../../apis/news";
 import { useI18nLanguage } from "../../store/I18nLanguageContext";
+import { useNewsStore } from "../../store/newsStore";
 import { useTranslation } from "react-i18next";
 
 // Register GSAP plugin
@@ -215,6 +216,7 @@ const Content = () => {
   const containerRef = useRef(null);
   const { language, isRtl } = useI18nLanguage();
   const { t } = useTranslation();
+  const { cacheNewsItems } = useNewsStore();
   const [newsItems, setNewsItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [loadingMore, setLoadingMore] = useState(false);
@@ -238,6 +240,8 @@ const Content = () => {
         if (!isMounted) return;
         const items = Array.isArray(response?.data) ? response.data : [];
         setNewsItems(items);
+        // Cache news items in store so NewsDetails can reuse header data
+        cacheNewsItems(items);
         // Check if there are more items based on pagination info
         const pagination = response?.pagination;
         if (pagination) {
@@ -278,6 +282,8 @@ const Content = () => {
       
       if (newItems.length > 0) {
         setNewsItems((prev) => [...prev, ...newItems]);
+        // Cache new news items in store so NewsDetails can reuse header data
+        cacheNewsItems(newItems);
         setPage(nextPage);
         // Check if there are more items based on pagination info
         const pagination = response?.pagination;

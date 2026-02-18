@@ -16,6 +16,27 @@ export const useNewsStore = create((set, get) => ({
 
   setLang: (lang) => set({ lang }),
 
+  // Cache news items from Content.jsx to avoid duplicate API calls
+  cacheNewsItems: (items) => {
+    if (!Array.isArray(items)) return;
+    
+    set((state) => {
+      const updatedDetails = { ...state.newsDetails };
+      items.forEach((item) => {
+        if (item.slug) {
+          // Only cache if not already cached or if cached data is incomplete
+          if (!updatedDetails[item.slug] || !updatedDetails[item.slug].id) {
+            updatedDetails[item.slug] = {
+              ...updatedDetails[item.slug],
+              ...item,
+            };
+          }
+        }
+      });
+      return { newsDetails: updatedDetails };
+    });
+  },
+
   // Load all news items
   loadNewsItems: async (params = {}) => {
     const { page, per_page, lang } = params;

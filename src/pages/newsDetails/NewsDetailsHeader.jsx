@@ -1,17 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { useParams } from 'react-router-dom'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useI18nLanguage } from '../../store/I18nLanguageContext'
-import { useNewsStore } from '../../store/newsStore'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const NewsDetailsHeader = () => {
-  const { slug } = useParams()
-  const { isRtl, language } = useI18nLanguage()
-  const { newsDetails, loading } = useNewsStore()
-  const [newsData, setNewsData] = useState(null)
+const NewsDetailsHeader = ({ newsData: propNewsData, loading: propLoading }) => {
+  const { isRtl } = useI18nLanguage()
   const [imageLoaded, setImageLoaded] = useState(false)
   const lastFetchedSlugRef = useRef(null)
   
@@ -35,32 +30,26 @@ const NewsDetailsHeader = () => {
     })
   }
 
-  // News data comes from store - fetched by parent NewsDetails to avoid duplicate API calls
+  // Reset image load state when news data changes
   useEffect(() => {
-    if (!slug) {
-      setNewsData(null)
-      setImageLoaded(false)
-      return
-    }
-    const existingData = newsDetails[slug]
-    if (existingData && typeof existingData === 'object' && (existingData.id || existingData.slug)) {
-      setNewsData(existingData)
-      if (slug !== lastFetchedSlugRef.current) {
-        setImageLoaded(false) // Reset image load state when slug changes
-        lastFetchedSlugRef.current = slug
+    if (propNewsData) {
+      const currentSlug = propNewsData.slug || propNewsData.id
+      if (currentSlug !== lastFetchedSlugRef.current) {
+        setImageLoaded(false) // Reset image load state when news changes
+        lastFetchedSlugRef.current = currentSlug
       }
     } else {
-      setNewsData(null)
+      setImageLoaded(false)
       lastFetchedSlugRef.current = null
     }
-  }, [slug, newsDetails])
+  }, [propNewsData])
 
-  // Get news data from store (populated by NewsDetails)
-  const currentNewsData = newsData || newsDetails[slug]
-  const isLoading = loading || !currentNewsData || !imageLoaded
+  // Use news data from props
+  const currentNewsData = propNewsData
+  const isLoading = propLoading || !currentNewsData || !imageLoaded
 
   useEffect(() => {
-    if (!currentNewsData || loading || !imageLoaded) return
+    if (!currentNewsData || propLoading || !imageLoaded) return
 
     // Wait for refs to be attached (elements must be rendered)
     if (!headerImageRef.current || !headerTitleRef.current) return
@@ -172,7 +161,7 @@ const NewsDetailsHeader = () => {
         }
       })
     }
-  }, [isRtl, currentNewsData, loading, imageLoaded])
+  }, [isRtl, currentNewsData, propLoading, imageLoaded])
 
   return (
     <header
@@ -194,9 +183,9 @@ const NewsDetailsHeader = () => {
               )}
               
               {/* Image */}
-              {currentNewsData?.image && (
+              {(currentNewsData?.image || currentNewsData?.images) && (
                 <img
-                  src={currentNewsData.image}
+                  src={currentNewsData.image || currentNewsData.images}
                   alt={currentNewsData.title || "News Header"}
                   className={`w-full h-full object-cover transition-all duration-700 group-hover:scale-105 ${
                     imageLoaded ? 'opacity-100' : 'opacity-0'

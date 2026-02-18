@@ -35,7 +35,7 @@ const NewsDetails = () => {
     }
   }, [slug])
 
-  // Load news details (paragraphs) by slug
+  // Load news details (paragraphs) by slug - only one API call needed
   useEffect(() => {
     if (!slug) {
       setIsLoading(false)
@@ -52,16 +52,17 @@ const NewsDetails = () => {
 
     const fetchDetails = async () => {
       try {
-        // Get blog data by slug (store caches it)
-        const blogData = newsDetails[slug] || await loadOneNews(slug, language)
-
+        // Check if header data already exists in store (from Content.jsx or previous load)
+        const existingBlogData = newsDetails[slug]
+        
         // If paragraphs are already cached for this slug, use them
-        if (blogData?.paragraphs && Array.isArray(blogData.paragraphs)) {
-          setDetailsData(blogData.paragraphs)
+        if (existingBlogData?.paragraphs && Array.isArray(existingBlogData.paragraphs)) {
+          setDetailsData(existingBlogData.paragraphs)
           return
         }
 
-        // Otherwise, load paragraphs by slug
+        // Only fetch paragraphs/details - header data should come from Content.jsx or store
+        // If header data doesn't exist, it will be handled by the parent or we'll show loading state
         const response = await loadNewsDetails(slug, language)
         const data = Array.isArray(response?.data) ? response.data : []
         setDetailsData(data)
@@ -79,7 +80,7 @@ const NewsDetails = () => {
     return () => {
       loadingRef.current = false
     }
-  }, [slug, language, loadOneNews, loadNewsDetails])
+  }, [slug, language, loadNewsDetails, newsDetails])
 
   // Get current blog header & paragraphs (both keyed by slug in store)
   const blogData = newsDetails[slug]
@@ -218,7 +219,7 @@ const NewsDetails = () => {
       
     <div data-nav-color="black" ref={sectionRef} className="news-details w-full overflow-hidden   ">
       {/* Header Section */}
-      <NewsDetailsHeader />
+      <NewsDetailsHeader newsData={blogData} loading={loading || isLoading} />
 
       {/* Paragraphs Section */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 space-y-12 sm:space-y-16 md:space-y-20 lg:space-y-32 my-8 sm:my-10 md:my-12 lg:my-16">
