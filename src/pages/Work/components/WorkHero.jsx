@@ -1,6 +1,5 @@
 import React, { useEffect, useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
-import TikitTitle from "../../../components/TikitTitle";
 
 const WorkHero = ({  t, isRtl }) => {
   const titleContainerRef = useRef(null);
@@ -61,15 +60,13 @@ const WorkHero = ({  t, isRtl }) => {
     <div  data-nav-color="black" className="h-[50vh] md:h-[70vh] flex flex-col justify-around items-center w-full description  mt-[104px]">
       <div className="w-full"></div>
       <div ref={titleContainerRef} className="overflow-hidden">
-        <div
+        <h1
           ref={titleRef}
-          className="title will-change-transform"
+          className={`text-4xl md:text-6xl lg:text-7xl font-black leading-tight tracking-tight mb-6 text-[var(--foreground)] ${isRtl ? "font-cairo" : "font-antonio"} will-change-transform`}
+          style={{ transformStyle: "preserve-3d" }}
         >
-          <TikitTitle
-           title={t("work.title")}
-           disableAnimation={true}
-          />
-        </div>
+          {t("work.title")}
+        </h1>
       </div>
       <div
         className={`description  w-full relative z-30 flex md:flex-row flex-col text-[var(--foreground)] px-[20px] md:px-[30px] gap-4 md:gap-12 justify-center items-center ${
