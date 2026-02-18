@@ -5,6 +5,11 @@ import { useI18nLanguage } from '../../store/I18nLanguageContext'
 
 gsap.registerPlugin(ScrollTrigger)
 
+// Detect if we're in prerendering mode (react-snap)
+const isPrerendering = typeof window !== "undefined" && 
+  (window.navigator?.userAgent?.includes("HeadlessChrome") || 
+   window.navigator?.userAgent?.includes("PhantomJS"))
+
 const NewsDetailsHeader = ({ newsData: propNewsData, loading: propLoading }) => {
   const { isRtl } = useI18nLanguage()
   const [imageLoaded, setImageLoaded] = useState(false)
@@ -41,19 +46,23 @@ const NewsDetailsHeader = ({ newsData: propNewsData, loading: propLoading }) => 
     })
   }
 
-  // Debug: Log when data changes
+  // Debug: Log when data changes (only in development, not during prerendering)
   useEffect(() => {
-    if (propNewsData) {
-      const imageUrl = getImageUrl(propNewsData)
-      console.log('NewsDetailsHeader - Received data:', {
-        title: propNewsData.title,
-        image: propNewsData.image,
-        images: propNewsData.images,
-        imageUrl: imageUrl,
-        slug: propNewsData.slug
-      })
-    } else {
-      console.log('NewsDetailsHeader - No data received, propLoading:', propLoading)
+    if (isPrerendering) return // Skip logging during prerendering
+    
+    if (process.env.NODE_ENV === 'development') {
+      if (propNewsData) {
+        const imageUrl = getImageUrl(propNewsData)
+        console.log('NewsDetailsHeader - Received data:', {
+          title: propNewsData.title,
+          image: propNewsData.image,
+          images: propNewsData.images,
+          imageUrl: imageUrl,
+          slug: propNewsData.slug
+        })
+      } else {
+        console.log('NewsDetailsHeader - No data received, propLoading:', propLoading)
+      }
     }
   }, [propNewsData, propLoading])
 
@@ -67,13 +76,18 @@ const NewsDetailsHeader = ({ newsData: propNewsData, loading: propLoading }) => 
         if (!imageUrl) {
           setImageLoaded(true) // If no image, set to true immediately
         } else {
-          setImageLoaded(false) // Reset to false when new image URL
-          // Fallback: if image doesn't load within 1 second, show it anyway (reduced from 3s)
-          const timeout = setTimeout(() => {
+          // During prerendering, mark images as loaded immediately to ensure content appears
+          if (isPrerendering) {
             setImageLoaded(true)
-          }, 1000)
-          
-          return () => clearTimeout(timeout)
+          } else {
+            setImageLoaded(false) // Reset to false when new image URL
+            // Fallback: if image doesn't load within 1 second, show it anyway
+            const timeout = setTimeout(() => {
+              setImageLoaded(true)
+            }, 1000)
+            
+            return () => clearTimeout(timeout)
+          }
         }
         lastFetchedSlugRef.current = currentSlug
       }
@@ -98,6 +112,34 @@ const NewsDetailsHeader = ({ newsData: propNewsData, loading: propLoading }) => 
 
     // Wait for refs to be attached (elements must be rendered)
     if (!headerImageRef.current || !headerTitleRef.current) return
+
+    // Skip animations during prerendering - content should be visible immediately
+    if (isPrerendering) {
+      // During snap, ensure content is visible and skip animations
+      if (headerImageRef.current) {
+        gsap.set(headerImageRef.current, { opacity: 1, scale: 1, y: 0 })
+      }
+      if (headerTitleRef.current) {
+        gsap.set(headerTitleRef.current, { opacity: 1, y: 0 })
+      }
+      if (headerSubtitleRef.current) {
+        gsap.set(headerSubtitleRef.current, { opacity: 1, y: 0 })
+      }
+      if (descriptionRef.current) {
+        gsap.set(descriptionRef.current, { opacity: 1, y: 0 })
+      }
+      if (badgeRef.current) {
+        gsap.set(badgeRef.current, { opacity: 1, scale: 1, y: 0 })
+      }
+      if (dateRef.current) {
+        gsap.set(dateRef.current, { opacity: 1, x: 0 })
+      }
+      if (lineRef.current) {
+        gsap.set(lineRef.current, { scaleX: 1 })
+      }
+      hasAnimatedRef.current = true
+      return
+    }
 
     // Clear any pending timeouts
     if (animationTimeoutRef.current) {
@@ -277,11 +319,15 @@ const NewsDetailsHeader = ({ newsData: propNewsData, loading: propLoading }) => 
                     }`}
                     loading="eager"
                     onLoad={() => {
-                      console.log('Image loaded successfully:', imageUrl)
+                      if (process.env.NODE_ENV === 'development' && !isPrerendering) {
+                        console.log('Image loaded successfully:', imageUrl)
+                      }
                       setImageLoaded(true)
                     }}
                     onError={(e) => {
-                      console.error('Image failed to load:', imageUrl, e)
+                      if (process.env.NODE_ENV === 'development' && !isPrerendering) {
+                        console.error('Image failed to load:', imageUrl, e)
+                      }
                       setImageLoaded(true) // Set to true even on error to show content
                     }}
                     style={{ display: imageLoaded ? 'block' : 'block' }} // Always render, just control opacity
