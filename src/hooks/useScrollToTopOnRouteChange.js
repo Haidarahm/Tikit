@@ -20,6 +20,7 @@ export function useScrollToTopOnRouteChange() {
   );
 
   const scrollToTop = useCallback(() => {
+    // Reset native scroll containers
     window.scrollTo(0, 0);
     document.documentElement.scrollTop = 0;
     document.body.scrollTop = 0;
@@ -30,6 +31,7 @@ export function useScrollToTopOnRouteChange() {
       mainContainer.scrollTop = 0;
     }
 
+    // Reset Lenis virtual scroll if available
     const lenisInstance =
       document.querySelector("[data-lenis-root]")?.__lenis__ || window.lenis;
     if (lenisInstance && typeof lenisInstance.scrollTo === "function") {
@@ -55,9 +57,13 @@ export function useScrollToTopOnRouteChange() {
       currentPathname.startsWith("/work/") &&
       previousPathname !== currentPathname;
     const isNavigatingToWorkDetail = isWorkDetailRoute(currentPathname);
-
+    
+    // Always scroll to top when navigating to blog detail pages
+    const isBlogDetailRoute = currentPathname.startsWith("/blogs/") && currentPathname !== "/blogs";
+    
     const shouldScroll =
-      !isNavigatingBetweenWorkSections || isNavigatingToWorkDetail;
+      !isNavigatingBetweenWorkSections || isNavigatingToWorkDetail || isBlogDetailRoute;
+    
     if (shouldScroll) {
       scrollToTop();
     }
@@ -76,8 +82,12 @@ export function useScrollToTopOnRouteChange() {
       pathname.startsWith("/work/") &&
       previousPathname !== pathname;
     const isNavigatingToWorkDetail = isWorkDetailRoute(pathname);
+    
+    // Always scroll to top when navigating to blog detail pages
+    const isBlogDetailRoute = pathname.startsWith("/blogs/") && pathname !== "/blogs";
+    
     const shouldScroll =
-      !isNavigatingBetweenWorkSections || isNavigatingToWorkDetail;
+      !isNavigatingBetweenWorkSections || isNavigatingToWorkDetail || isBlogDetailRoute;
 
     if (!shouldScroll) return;
 
@@ -96,7 +106,20 @@ export function useScrollToTopOnRouteChange() {
             if (activeTriggers.length > 0) {
               requestAnimationFrame(() => {
                 try {
+                  // Store scroll position before refresh
+                  const scrollBeforeRefresh = window.pageYOffset || document.documentElement.scrollTop;
+                  
                   ScrollTrigger.refresh();
+                  
+                  // Force scroll to top after refresh, especially for blog routes
+                  requestAnimationFrame(() => {
+                    scrollToTop();
+                    // Double-check and force again if needed
+                    const scrollAfterRefresh = window.pageYOffset || document.documentElement.scrollTop;
+                    if (scrollAfterRefresh !== 0) {
+                      scrollToTop();
+                    }
+                  });
                 } catch {
                   // Ignore refresh errors - triggers may have been cleaned up
                 }

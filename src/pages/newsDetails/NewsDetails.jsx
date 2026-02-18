@@ -21,6 +21,20 @@ const NewsDetails = () => {
   const sectionRef = useRef(null)
   const paragraphsRef = useRef([])
 
+  // Ensure scroll to top when component mounts (backup for scroll hook)
+  useEffect(() => {
+    // Reset native scroll positions
+    window.scrollTo(0, 0)
+    document.documentElement.scrollTop = 0
+    document.body.scrollTop = 0
+    
+    // Also handle Lenis if available
+    const lenisInstance = document.querySelector("[data-lenis-root]")?.__lenis__ || window.lenis
+    if (lenisInstance && typeof lenisInstance.scrollTo === "function") {
+      lenisInstance.scrollTo(0, { immediate: true })
+    }
+  }, [slug])
+
   // Load news details (paragraphs) by slug
   useEffect(() => {
     if (!slug) {

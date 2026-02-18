@@ -36,6 +36,19 @@ function SmoothScrollProvider({ children }) {
           gestureOrientation: "vertical",
         });
 
+        // Expose Lenis globally so other hooks (like scroll-to-top)
+        // can control the virtual scroll position.
+        // Also mark the document as the Lenis root.
+        if (typeof window !== "undefined") {
+          window.lenis = lenis;
+        }
+        if (typeof document !== "undefined") {
+          const rootEl = document.documentElement;
+          if (rootEl) {
+            rootEl.setAttribute("data-lenis-root", "true");
+          }
+        }
+
         // Sync Lenis with ScrollTrigger
         lenis.on("scroll", ScrollTrigger.update);
 
@@ -64,6 +77,16 @@ function SmoothScrollProvider({ children }) {
       }
       if (lenis) {
         lenis.destroy();
+      }
+      if (typeof window !== "undefined" && window.lenis === lenis) {
+        // Clean up global reference if it's still pointing to this instance
+        delete window.lenis;
+      }
+      if (typeof document !== "undefined") {
+        const rootEl = document.documentElement;
+        if (rootEl && rootEl.getAttribute("data-lenis-root") === "true") {
+          rootEl.removeAttribute("data-lenis-root");
+        }
       }
     };
   }, []);
