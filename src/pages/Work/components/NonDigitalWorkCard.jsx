@@ -29,7 +29,7 @@ const NonDigitalWorkCard = ({isRtl, innerRef, normalized, t, onViewDetails }) =>
           </h3>
         ) : null}
         {normalized.objective ? (
-          <p className="mb-4 text-center text-[18px] text-gray-200 md:text-[20px]">
+          <p className="hidden md:block mb-4 text-center text-[18px] text-gray-200 md:text-[20px]">
             {normalized.objective}
           </p>
         ) : null}

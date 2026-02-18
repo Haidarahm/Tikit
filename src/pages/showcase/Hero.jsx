@@ -179,7 +179,7 @@ const Hero = ({ caseData, loading }) => {
               opacity: 0,
               transform: "translateY(30px)",
             }}
-            className="text-[35px] md:text-[50px] lg:text-[70px] text-center md:text-start leading-[1.1] tracking-tight"
+            className="text-[35px] md:text-[50px] lg:text-[70px] text-center md:text-start leading-[1] tracking-tight"
           >
             {title}
           </h1>
@@ -190,11 +190,11 @@ const Hero = ({ caseData, loading }) => {
             style={{
               color: "#fff",
               textShadow: "0 2px 12px rgba(0, 0, 0, 0.4)",
-              fontFamily: isRtl ? "" : "Antonio",
+              fontFamily: isRtl ? "" : "HeroLight",
               opacity: 0,
               transform: "translateY(30px)",
             }}
-            className="subtitle text-center md:text-start font-[700] text-xl sm:text-2xl md:text-3xl lg:text-4xl leading-relaxed text-white/95 max-w-3xl"
+            className="subtitle text-center md:text-start font-[300] text-xl sm:text-2xl md:text-3xl lg:text-4xl leading-relaxed text-white/95 max-w-3xl"
           >
             {subtitle}
           </h3>
