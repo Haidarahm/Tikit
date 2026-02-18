@@ -47,8 +47,8 @@ const TikitTitle = ({ title, className, mainWord, disableAnimation }) => {
           {" "}
           <span
             className={`${
-              isRtl ? "font-cairo" : "font-caveat pr-6"
-            } inline-block  text-3xl sm:text-4xl md:text-5xl lg:text-[80px] py-4 w-fit bg-gradient-to-r from-[#6ACBCC] to-[#1C6F6C] bg-clip-text text-transparent`}
+              isRtl ? "font-cairo py-4 " : "font-caveat pr-6"
+            } inline-block  text-4xl sm:text-6xl md:text-7xl lg:text-[80px] w-fit bg-gradient-to-r from-[#6ACBCC] to-[#1C6F6C] bg-clip-text text-transparent`}
           >
             {mainWord}
           </span>
