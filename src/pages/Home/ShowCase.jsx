@@ -116,6 +116,7 @@ const ShowCase = () => {
             start: "top 85%",
             once: true, // Only animate once
             toggleActions: "play none none none",
+            refreshPriority: 0, // Default priority
           },
         });
       }
@@ -189,6 +190,7 @@ const ShowCase = () => {
               start: isMobile ? "top 95%" : "top 85%",
               end: isMobile ? "top 55%" : "top 5%",
               scrub: 2.6,
+              refreshPriority: 0, // Default priority
             },
           })
           .to(card, {
@@ -219,17 +221,8 @@ const ShowCase = () => {
           );
       });
 
-      // Only refresh if triggers are still active and connected
-      try {
-        const activeTriggers = ScrollTrigger.getAll().filter(t => 
-          t.vars && t.vars.trigger && t.vars.trigger.isConnected
-        );
-        if (activeTriggers.length > 0) {
-          ScrollTrigger.refresh(true);
-        }
-      } catch (e) {
-        // Ignore refresh errors
-      }
+      // Don't force refresh - let ScrollTrigger handle it naturally
+      // Multiple refresh calls can cause conflicts between components
     }, sectionRef);
 
     return () => {

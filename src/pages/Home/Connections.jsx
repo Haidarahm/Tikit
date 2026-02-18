@@ -46,6 +46,7 @@ const Connections = memo(() => {
         start: "top 0%",
         end: "bottom 0%",
         scrub: 1.5,
+        refreshPriority: 0, // Default priority
       },
     });
 
@@ -61,18 +62,12 @@ const Connections = memo(() => {
         start: "top 0%",
         end: "bottom 0%",
         scrub: 1.5,
+        refreshPriority: 0, // Default priority
       },
     });
 
-    // Only refresh if triggers are still active
-    try {
-      const hasActiveTriggers = element1Tween?.scrollTrigger || element2Tween?.scrollTrigger;
-      if (hasActiveTriggers) {
-        ScrollTrigger.refresh();
-      }
-    } catch (e) {
-      // Ignore refresh errors
-    }
+    // Don't refresh immediately - let ScrollTrigger handle it naturally
+    // Multiple refresh calls can cause conflicts between components
 
     return () => {
       // Kill ScrollTrigger instances FIRST

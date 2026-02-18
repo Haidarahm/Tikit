@@ -119,16 +119,11 @@ const PinnedSection = () => {
         animation: tween,
         invalidateOnRefresh: true,
         pinSpacing: true,
-        refreshPriority: -1, // Lower priority to prevent conflicts with other ScrollTriggers
+        refreshPriority: 1, // Higher priority for pinned sections (refresh first)
       });
       
-      // Ensure smooth transition by refreshing ScrollTrigger after pin setup
-      // Use requestAnimationFrame for safe DOM updates
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          ScrollTrigger.refresh();
-        });
-      });
+      // Don't refresh immediately - let ScrollTrigger handle it naturally
+      // Pinned sections should refresh first due to refreshPriority: 1
 
       videoObserverRef.current = new IntersectionObserver(
         (entries) => {

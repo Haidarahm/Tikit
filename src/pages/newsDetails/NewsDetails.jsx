@@ -21,7 +21,7 @@ const NewsDetails = () => {
   const sectionRef = useRef(null)
   const paragraphsRef = useRef([])
 
-  // Load news details (paragraphs) - first get blog via slug to obtain id, then load details
+  // Load news details (paragraphs) by slug
   useEffect(() => {
     if (!slug) {
       setIsLoading(false)
@@ -38,20 +38,17 @@ const NewsDetails = () => {
 
     const fetchDetails = async () => {
       try {
-        // Get blog data by slug (header fetches this too; store caches it)
+        // Get blog data by slug (store caches it)
         const blogData = newsDetails[slug] || await loadOneNews(slug, language)
-        const newsId = blogData?.id
-        if (!newsId) {
-          setDetailsData([])
+
+        // If paragraphs are already cached for this slug, use them
+        if (blogData?.paragraphs && Array.isArray(blogData.paragraphs)) {
+          setDetailsData(blogData.paragraphs)
           return
         }
-        // Check if we have cached details by id (legacy key)
-        const existingDetails = newsDetails[newsId]
-        if (existingDetails && Array.isArray(existingDetails)) {
-          setDetailsData(existingDetails)
-          return
-        }
-        const response = await loadNewsDetails(newsId, language)
+
+        // Otherwise, load paragraphs by slug
+        const response = await loadNewsDetails(slug, language)
         const data = Array.isArray(response?.data) ? response.data : []
         setDetailsData(data)
       } catch (error) {
@@ -70,10 +67,9 @@ const NewsDetails = () => {
     }
   }, [slug, language, loadOneNews, loadNewsDetails])
 
-  // Get current details data (details are keyed by id in store)
+  // Get current blog header & paragraphs (both keyed by slug in store)
   const blogData = newsDetails[slug]
-  const detailsById = blogData?.id ? newsDetails[blogData.id] : null
-  const paragraphes = detailsData || (detailsById && Array.isArray(detailsById) ? detailsById : [])
+  const paragraphes = detailsData || (blogData?.paragraphs && Array.isArray(blogData.paragraphs) ? blogData.paragraphs : [])
   const seoProps = getBlogSEOProps(blogData, slug)
 
   useEffect(() => {

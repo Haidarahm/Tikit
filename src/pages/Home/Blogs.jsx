@@ -42,6 +42,7 @@ const Blogs = () => {
               trigger: titleSectionRef.current,
               start: "top 85%",
               toggleActions: "play none none none",
+              refreshPriority: 0, // Default priority
             },
           }
         );

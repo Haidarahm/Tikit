@@ -13,9 +13,10 @@ export const getAllNewsItems = async (params = {}) => {
   return response.data;
 };
 
-export const getNewsDetails = async (id, params = {}) => {
+// Fetch news details (paragraphs) by blog slug
+export const getNewsDetails = async (slug, params = {}) => {
   const { lang } = params;
-  const response = await api.get(`/blogs-details/${id}/get`, {
+  const response = await api.get(`/blogs-details/${encodeURIComponent(slug)}/get`, {
     params: {
       ...(lang ? { lang } : {}),
     },

@@ -3,7 +3,12 @@ import { getAllNewsItems, getNewsDetails, showOneNews } from "../apis/news";
 
 export const useNewsStore = create((set, get) => ({
   newsItems: [],
-  newsDetails: {}, // key: slug -> details object
+  // newsDetails map:
+  // key: slug -> {
+  //   ...blog header fields,
+  //   paragraphs?: array of detail items
+  // }
+  newsDetails: {},
   activeNewsSlug: null,
   lang: undefined,
   loading: false,
@@ -46,21 +51,27 @@ export const useNewsStore = create((set, get) => ({
     }
   },
 
-  // Load single news details by id (returns array of detail items)
-  loadNewsDetails: async (id, lang) => {
-    if (!id) return null;
+  // Load single news details (paragraphs) by slug (returns array of detail items)
+  loadNewsDetails: async (slug, lang) => {
+    if (!slug) return null;
 
     const effectiveLang = lang ?? get().lang ?? "en";
     set({ loading: true, error: null });
 
     try {
-      const response = await getNewsDetails(id, { lang: effectiveLang });
+      const response = await getNewsDetails(slug, { lang: effectiveLang });
       const data = Array.isArray(response?.data) 
         ? response.data
         : [];
 
       set((state) => ({
-        newsDetails: { ...state.newsDetails, [id]: data },
+        newsDetails: {
+          ...state.newsDetails,
+          [slug]: {
+            ...(state.newsDetails[slug] || {}),
+            paragraphs: data,
+          },
+        },
         lang: effectiveLang,
         loading: false,
       }));
@@ -79,7 +90,7 @@ export const useNewsStore = create((set, get) => ({
   loadOneNews: async (slug, lang) => {
     if (!slug) return null;
 
-    // Return cached data if already loaded
+    // Return cached header data if already loaded
     const cached = get().newsDetails[slug];
     if (cached && typeof cached === "object" && (cached.id || cached.slug)) {
       return cached;
@@ -97,7 +108,13 @@ export const useNewsStore = create((set, get) => ({
       }
 
       set((state) => ({
-        newsDetails: { ...state.newsDetails, [slug]: data },
+        newsDetails: {
+          ...state.newsDetails,
+          [slug]: {
+            ...(state.newsDetails[slug] || {}),
+            ...data,
+          },
+        },
         activeNewsSlug: slug,
         lang: effectiveLang,
         loading: false,

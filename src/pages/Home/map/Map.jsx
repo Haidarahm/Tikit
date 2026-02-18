@@ -171,7 +171,8 @@ const Map = () => {
             trigger: section,
             start: 'top 70%',
             toggleActions: 'play none none none',
-            once: true
+            once: true,
+            refreshPriority: 0, // Default priority
           }
         })
 
