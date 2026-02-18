@@ -231,8 +231,8 @@ const PinnedSection = () => {
                 type={video.type}
                 loop
                 muted
+                preload="none"
                 playsInline
-                preload="metadata"
               />
               <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
                 <p className="text-white font-medium text-sm md:text-base">
