@@ -10,12 +10,12 @@ import {
 } from "./avatar";
 
 // Local influencer avatars from assets/influencers
-import naemaAlshehiImg from "../../assets/influencers/Naema Alshehi.webp";
-import hazzaAlSheryaniImg from "../../assets/influencers/hazza al sheryani.webp";
-import ahmedBenChaibahImg from "../../assets/influencers/Ahmed ben chaibah.webp";
-import salamahAlmuheriImg from "../../assets/influencers/Salamah Almuheri.webp";
-import helalAljaberiImg from "../../assets/influencers/Helal Aljaberi.webp";
-import thaerAlTurkmaniImg from "../../assets/influencers/thaer al turkmani.webp";
+import naemaAlshehiImg from "../../assets/influencers/Naema-Alshehi.webp";
+import hazzaAlSheryaniImg from "../../assets/influencers/hazza-al-sheryani.webp";
+import ahmedBenChaibahImg from "../../assets/influencers/ahmed-ben-chaibah.webp";
+import salamahAlmuheriImg from "../../assets/influencers/Salamah-Almuheri.webp";
+import helalAljaberiImg from "../../assets/influencers/Helal-Aljaberi.webp";
+import thaerAlTurkmaniImg from "../../assets/influencers/thaer-al-turkmani.webp";
 
 const AVATARS = [
   {
