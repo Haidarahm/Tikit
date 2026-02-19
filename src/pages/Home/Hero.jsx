@@ -1,7 +1,7 @@
 import React, { useEffect, useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { useTranslation } from "react-i18next";
-import AvatarGroupDemo from "../../components/ui/AvatarGroupDemo";
+import HeroAvatarGroup from "../../components/ui/HeroAvatarGroup";
 
 const Hero = ({ introDone = true }) => {
   const sectionRef = useRef(null);
@@ -132,7 +132,7 @@ const Hero = ({ introDone = true }) => {
 
         {/* Avatars */}
         <div data-hero-animate className="mt-8 md:mt-[50px]">
-          <AvatarGroupDemo />
+          <HeroAvatarGroup />
           <div className="text-center mt-2 md:mt-[10px]">
             <span
               className="font-bold text-sm sm:text-base text-white"
