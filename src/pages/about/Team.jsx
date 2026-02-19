@@ -497,6 +497,7 @@ const Team = () => {
                   width={200}
                   height={250}
                   className="h-full w-full object-cover select-none absolute inset-0"
+                  loading="lazy"
                   draggable={false}
                   loading="lazy"
                 />
