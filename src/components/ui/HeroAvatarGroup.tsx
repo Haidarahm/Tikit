@@ -1,7 +1,6 @@
 "use client";
 
 import * as React from "react";
-import * as AvatarPrimitive from "@radix-ui/react-avatar";
 import {
   AvatarGroup,
   AvatarGroupTooltip,
@@ -15,35 +14,55 @@ import salamahAlmuheriImg from "../../assets/influencers/Salamah-Almuheri.webp";
 import helalAljaberiImg from "../../assets/influencers/Helal-Aljaberi.webp";
 import thaerAlTurkmaniImg from "../../assets/influencers/thaer-al-turkmani.webp";
 
+type AvatarStatus = "idle" | "loading" | "loaded" | "error";
+
+const AvatarContext = React.createContext<{
+  status: AvatarStatus;
+  setStatus: (status: AvatarStatus) => void;
+}>({ status: "idle", setStatus: () => {} });
+
 function Avatar({
   className,
+  children,
   ...props
-}: React.ComponentProps<typeof AvatarPrimitive.Root>) {
+}: React.HTMLAttributes<HTMLDivElement>) {
+  const [status, setStatus] = React.useState<AvatarStatus>("loading");
   return (
-    <AvatarPrimitive.Root
-      data-slot="avatar"
-      className={cn(
-        "relative flex size-8 shrink-0 overflow-hidden rounded-full",
-        className
-      )}
-      {...props}
-    />
+    <AvatarContext.Provider value={{ status, setStatus }}>
+      <div
+        data-slot="avatar"
+        className={cn(
+          "relative flex size-8 shrink-0 overflow-hidden rounded-full",
+          className
+        )}
+        {...props}
+      >
+        {children}
+      </div>
+    </AvatarContext.Provider>
   );
 }
 
 function AvatarImage({
   className,
+  src,
+  alt,
   ...props
-}: React.ComponentProps<typeof AvatarPrimitive.Image>) {
+}: React.ImgHTMLAttributes<HTMLImageElement>) {
+  const { setStatus } = React.useContext(AvatarContext);
   return (
-    <AvatarPrimitive.Image
+    <img
       data-slot="avatar-image"
-      className={cn("aspect-square size-full", className)}
+      src={src}
+      alt={alt ?? ""}
+      className={cn("aspect-square size-full object-cover", className)}
       loading="lazy"
       decoding="async"
       fetchPriority="low"
       width={48}
       height={48}
+      onLoad={() => setStatus("loaded")}
+      onError={() => setStatus("error")}
       {...props}
     />
   );
@@ -51,17 +70,22 @@ function AvatarImage({
 
 function AvatarFallback({
   className,
+  children,
   ...props
-}: React.ComponentProps<typeof AvatarPrimitive.Fallback>) {
+}: React.HTMLAttributes<HTMLSpanElement>) {
+  const { status } = React.useContext(AvatarContext);
+  if (status === "loaded") return null;
   return (
-    <AvatarPrimitive.Fallback
+    <span
       data-slot="avatar-fallback"
       className={cn(
-        "bg-muted flex size-full items-center justify-center rounded-full",
+        "bg-muted flex size-full items-center justify-center rounded-full absolute inset-0",
         className
       )}
       {...props}
-    />
+    >
+      {children}
+    </span>
   );
 }
 
