@@ -38,7 +38,12 @@
       "/about-us",
       "/services",
       "/work",
-      "/contact"
+      "/contact",
+      "/contact-us",
+      "/showcase/axi",
+      "/showcase/department-of-culture-and-tourism",
+      "/showcase/spotify",
+      "/showcase/ounass"
     ],
     "puppeteerExecutablePath": null,
     "headless": true,
