@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite --host",
     "build": "vite build",
-    "postbuild": "react-snap",
+    "postbuild": "node scripts/react-snap-with-showcase.js",
     "lint": "eslint .",
     "preview": "vite preview --host",
     "generate-sitemap": "node scripts/generate-sitemap.js"
