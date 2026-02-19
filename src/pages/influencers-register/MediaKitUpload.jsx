@@ -110,6 +110,7 @@ const MediaKitUpload = ({
             src={UploadIcon}
             alt="Upload"
             className="w-16 h-16 md:w-20 md:h-20 "
+            loading="lazy"
           />
         </div>
 

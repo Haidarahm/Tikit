@@ -141,6 +141,7 @@ const DetailsHeader = () => {
           src={image1}
           alt="Vision"
           className="block w-full h-full object-cover opacity-30 dark:opacity-20"
+          loading="lazy"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[var(--background)] via-[var(--background)]/50 to-[var(--background)]" />
       </div>

@@ -228,6 +228,7 @@ const SocialMediaManagement = () => {
             width={1920}
             height={1080}
             className="w-full h-full object-cover"
+            loading="lazy"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[var(--background)]/80 via-[var(--background)]/60 to-[var(--background)]" />
         </div>

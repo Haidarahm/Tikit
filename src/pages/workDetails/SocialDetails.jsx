@@ -246,6 +246,7 @@ const SocialDetails = () => {
                           width={80}
                           height={80}
                           className="h-full w-full object-contain"
+                          loading="lazy"
                         />
                       </div>
                     )}
@@ -324,6 +325,7 @@ const SocialDetails = () => {
                               width={600}
                               height={380}
                               className="h-full w-full max-h-[380px] object-cover transition-transform duration-700 group-hover:scale-105"
+                              loading="lazy"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)]/60 via-[var(--background)]/10 to-transparent transition-opacity duration-300 group-hover:opacity-100" />
                           </div>
@@ -348,6 +350,7 @@ const SocialDetails = () => {
                               src={src}
                               alt={`Thumb ${index + 1}`}
                               className="h-[70px] w-full rounded-2xl object-cover opacity-80 transition border border-[var(--foreground)]/10 bg-[var(--container-bg)]/70 hover:opacity-100"
+                              loading="lazy"
                             />
                           </SwiperSlide>
                         ))}

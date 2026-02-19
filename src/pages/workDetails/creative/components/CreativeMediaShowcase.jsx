@@ -37,6 +37,7 @@ const CreativeMediaShowcase = ({ mediaImages, brandImages, title, t }) => {
                     src={src}
                     alt={`${title} media ${index + 1}`}
                     className="h-full w-full max-h-[400px] object-cover transition-transform duration-700 group-hover:scale-105"
+                    loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)]/60 via-[var(--background)]/10 to-transparent transition-opacity duration-300 group-hover:opacity-100" />
                 </div>
@@ -58,6 +59,7 @@ const CreativeMediaShowcase = ({ mediaImages, brandImages, title, t }) => {
                     src={src}
                     alt={`Thumb ${index + 1}`}
                     className="h-[70px] w-full rounded-2xl object-cover opacity-80 transition border border-[var(--foreground)]/10 bg-[var(--container-bg)]/70 hover:opacity-100"
+                    loading="lazy"
                   />
                 </SwiperSlide>
               ))}
@@ -93,6 +95,7 @@ const CreativeMediaShowcase = ({ mediaImages, brandImages, title, t }) => {
                   src={src}
                   alt={`${title} brand ${index + 1}`}
                   className="w-full h-full object-cover"
+                  loading="lazy"
                 />
               </SwiperSlide>
             ))}

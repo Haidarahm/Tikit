@@ -497,6 +497,7 @@ const Team = () => {
                   width={200}
                   height={250}
                   className="h-full w-full object-cover select-none absolute inset-0"
+                  loading="lazy"
                   draggable={false}
                 />
                 <div className="relative h-full flex flex-col justify-end items-center gap-2 p-2 md:p-6">

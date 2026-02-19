@@ -188,6 +188,7 @@ const RegisterPlan = ({ selectedPlan, onPlanSelect, className = "", followerCoun
                   className={`w-full h-full object-contain filter brightness-0 invert ${
                     isDisabled ? "opacity-50" : ""
                   }`}
+                  loading="lazy"
                 />
               </div>
 

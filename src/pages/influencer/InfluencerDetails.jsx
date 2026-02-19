@@ -219,6 +219,7 @@ export const InfluencerDetails = ({
           className={`absolute w-full bottom-4 md:-bottom-2 md:h-2/3  ${
             isReversed ? "left-0" : "right-0"
           }`}
+          loading="lazy"
         />
       </div>
     </section>

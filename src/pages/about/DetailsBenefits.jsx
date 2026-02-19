@@ -128,6 +128,7 @@ const DetailsBenefits = () => {
             src={image3}
             alt="Our Mission"
             className="block w-full h-[120%] object-cover"
+            loading="lazy"
           />
         </div>
 
