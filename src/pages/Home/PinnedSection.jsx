@@ -119,11 +119,8 @@ const PinnedSection = () => {
         animation: tween,
         invalidateOnRefresh: true,
         pinSpacing: true,
-        refreshPriority: 1, // Higher priority for pinned sections (refresh first)
+        refreshPriority: -1, // Refresh AFTER WorkSection/StickyPinnedSection so positions are correct
       });
-      
-      // Don't refresh immediately - let ScrollTrigger handle it naturally
-      // Pinned sections should refresh first due to refreshPriority: 1
 
       videoObserverRef.current = new IntersectionObserver(
         (entries) => {
@@ -147,10 +144,14 @@ const PinnedSection = () => {
       });
     }, sectionRef);
 
-    // store context for cleanup
     contextRef.current = ctx;
 
+    const rafId = requestAnimationFrame(() => {
+      ScrollTrigger.refresh();
+    });
+
     return () => {
+      cancelAnimationFrame(rafId);
       // Disconnect video observers
       if (videoObserverRef.current) {
         try {
@@ -195,7 +196,7 @@ const PinnedSection = () => {
   return (
     <section 
       ref={sectionRef}
-      className="relative w-full overflow-hidden hidden md:block"
+      className="relative w-full overflow-hidden hidden md:block z-20"
       style={{ 
         minHeight: "100vh",
       }}

@@ -103,32 +103,9 @@ const WorkSection = memo(() => {
   }, [error, retryCount, loadSections, language, isClient]);
 
   useEffect(() => {
-    if (!isClient || !sectionRef.current) return;
-
-    // Reset retry count when language changes
+    if (!isClient) return;
     setRetryCount(0);
-
-    // Use IntersectionObserver to load data when component is about to be visible
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            loadSections({ lang: language, page: 1, per_page: 3 });
-            observer.disconnect(); // Only load once
-          }
-        });
-      },
-      {
-        rootMargin: '200px', // Start loading 200px before component is visible
-        threshold: 0.01,
-      }
-    );
-
-    observer.observe(sectionRef.current);
-
-    return () => {
-      observer.disconnect();
-    };
+    loadSections({ lang: language, page: 1, per_page: 3 });
   }, [loadSections, language, isClient]);
 
   const getLocalizedField = (item, baseKey) => {
@@ -179,124 +156,120 @@ const WorkSection = memo(() => {
     });
   }, [sections, isClient, language]);
 
-  // Show loading state during initial load or retry
-  if (!isClient || loading || (error && retryCount < maxRetries)) {
-    return (
-      <div className="min-h-[1400px] my-6 md:my-16 work-section-container relative flex flex-col mx-auto z-10 w-full justify-center">
-        <div className="headline mb-4 px-6 md:px-10 flex w-full justify-between items-center">
-          <h2 className="text-[var(--foreground)] md:text-center font-bold text-[18px] md:text-[32px]">
-            {t("home.work.title")}
-          </h2>
-        </div>
-        {/* Desktop skeleton */}
-        <div className="hidden md:block min-h-[1200px]">
-          <div className="flex justify-center items-center h-full">
-            <div className="flex flex-col gap-8 w-full max-w-6xl px-10">
-              {[1, 2, 3].map((idx) => (
-                <div key={idx} className="flex gap-10 items-center">
-                  <div className="flex-1 space-y-4">
-                    <div className="h-8 w-3/4 bg-gradient-to-r from-[var(--foreground)]/10 via-[var(--foreground)]/20 to-[var(--foreground)]/10 rounded animate-pulse" />
-                    <div className="h-6 w-1/2 bg-gradient-to-r from-[var(--foreground)]/10 via-[var(--foreground)]/20 to-[var(--foreground)]/10 rounded animate-pulse" />
-                    <div className="h-4 w-full bg-gradient-to-r from-[var(--foreground)]/10 via-[var(--foreground)]/20 to-[var(--foreground)]/10 rounded animate-pulse" />
-                  </div>
-                  <div className="w-[25rem] lg:w-[35rem] h-[65vh] bg-gradient-to-r from-[var(--foreground)]/10 via-[var(--foreground)]/20 to-[var(--foreground)]/10 rounded-xl animate-pulse" />
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-        {/* Mobile skeleton */}
-        <div className="md:hidden px-[20px] space-y-6">
-          {[1, 2, 3].map((idx) => (
-            <div key={idx} className="flex flex-col gap-[20px]">
-              <div className="space-y-3">
-                <div className="h-6 w-3/4 bg-gradient-to-r from-[var(--foreground)]/10 via-[var(--foreground)]/20 to-[var(--foreground)]/10 rounded animate-pulse" />
-                <div className="h-4 w-1/2 bg-gradient-to-r from-[var(--foreground)]/10 via-[var(--foreground)]/20 to-[var(--foreground)]/10 rounded animate-pulse" />
-              </div>
-              <div className="w-full h-[250px] bg-gradient-to-r from-[var(--foreground)]/10 via-[var(--foreground)]/20 to-[var(--foreground)]/10 rounded-[20px] animate-pulse" />
-            </div>
-          ))}
-        </div>
-      </div>
-    );
-  }
-
-  // Don't show error state - just show skeleton/empty state and retry silently
-  // Error handling is done via retry logic above
+  const showSkeleton = !isClient || loading || (error && retryCount < maxRetries);
 
   return (
     <div ref={sectionRef} className="w-full">
-      {items && items.length > 0 && (
-        <div
-          className={`relative hidden  md:block z-10 w-full overflow-visible text-[var(--foreground)] ${
-            isRtl ? "font-cairo" : "font-hero-light"
-          }`}
-          dir={isRtl ? "rtl" : "ltr"}
-        >
-          <StickyPinnedSection items={items} heightPerItemVh={100} />
-        </div>
-      )}
-      <div
-        className={`mobile-view gap-[30px] min-h-[1400px] h-full md:hidden relative text-[var(--foreground)] flex flex-col w-full px-[20px] ${
-          isRtl ? "font-cairo" : "font-hero-light"
-        }`}
-        dir={isRtl ? "rtl" : "ltr"}
-      >
-        <div className="main-content w-full flex flex-col gap-[20px] mt-16">
-          <h2 className="text-[24px] font-bold font-antonio text-center">
-            Our Works
-          </h2>
-          {(items || []).map((item, index) => (
-            <div
-              key={(item.title || "") + String(index)}
-              className="element-wrapper mb-6 flex flex-col w-full gap-[30px]"
-            >
-              <div className="text flex flex-col gap-[5px]">
-                <div className="flex items-center justify-between">
-                  {item.title && (
-                    <h2 className="text-[20px] font-bold">{item.title}</h2>
-                  )}
-                  <button
-                    className="rounded-full border font-light 
-                    border-[var(--secondary)] text-[var(--secondary)] text-[11px] uppercase 
-                    px-4 py-1 
-                    transition-colors"
-                    onClick={() => {
-                      try {
-                        if (item.slug != null) {
-                          navigate(`/work/${encodeURIComponent(item.slug)}`);
-                        }
-                      } catch (_) {}
-                    }}
-                  >
-                    {t("home.work.viewWork")}
-                  </button>
+      {showSkeleton ? (
+        <div className="min-h-[1400px] md:min-h-[350vh] my-6 md:my-16 work-section-container relative flex flex-col mx-auto z-10 w-full justify-center">
+          <div className="headline mb-4 px-6 md:px-10 flex w-full justify-between items-center">
+            <h2 className="text-[var(--foreground)] md:text-center font-bold text-[18px] md:text-[32px]">
+              {t("home.work.title")}
+            </h2>
+          </div>
+          <div className="hidden md:block min-h-[1200px]">
+            <div className="flex justify-center items-center h-full">
+              <div className="flex flex-col gap-8 w-full max-w-6xl px-10">
+                {[1, 2, 3].map((idx) => (
+                  <div key={idx} className="flex gap-10 items-center">
+                    <div className="flex-1 space-y-4">
+                      <div className="h-8 w-3/4 bg-gradient-to-r from-[var(--foreground)]/10 via-[var(--foreground)]/20 to-[var(--foreground)]/10 rounded animate-pulse" />
+                      <div className="h-6 w-1/2 bg-gradient-to-r from-[var(--foreground)]/10 via-[var(--foreground)]/20 to-[var(--foreground)]/10 rounded animate-pulse" />
+                      <div className="h-4 w-full bg-gradient-to-r from-[var(--foreground)]/10 via-[var(--foreground)]/20 to-[var(--foreground)]/10 rounded animate-pulse" />
+                    </div>
+                    <div className="w-[25rem] lg:w-[35rem] h-[65vh] bg-gradient-to-r from-[var(--foreground)]/10 via-[var(--foreground)]/20 to-[var(--foreground)]/10 rounded-xl animate-pulse" />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="md:hidden px-[20px] space-y-6">
+            {[1, 2, 3].map((idx) => (
+              <div key={idx} className="flex flex-col gap-[20px]">
+                <div className="space-y-3">
+                  <div className="h-6 w-3/4 bg-gradient-to-r from-[var(--foreground)]/10 via-[var(--foreground)]/20 to-[var(--foreground)]/10 rounded animate-pulse" />
+                  <div className="h-4 w-1/2 bg-gradient-to-r from-[var(--foreground)]/10 via-[var(--foreground)]/20 to-[var(--foreground)]/10 rounded animate-pulse" />
                 </div>
-                {item.subtitle ? (
-                  <div className="subtitle text-[16px] opacity-80">
-                    {item.subtitle}
-                  </div>
-                ) : null}
-                {item.description ? (
-                  <div className=" description text-[14px] opacity-80">
-                    {item.description}
-                  </div>
-                ) : null}
+                <div className="w-full h-[250px] bg-gradient-to-r from-[var(--foreground)]/10 via-[var(--foreground)]/20 to-[var(--foreground)]/10 rounded-[20px] animate-pulse" />
               </div>
-              <div className="image relative w-full h-[250px] rounded-[20px] overflow-hidden">
-                {item.media || (
-                  <div className="w-full h-full bg-gradient-to-r from-[var(--foreground)]/10 via-[var(--foreground)]/20 to-[var(--foreground)]/10 animate-pulse rounded-[20px]" />
-                )}
-              </div>
-            </div>
-          ))}
-          {(!items || items.length === 0) && !loading ? (
-            <div className="text-center text-sm opacity-70">
-              {t("home.work.noWorks")}
-            </div>
-          ) : null}
+            ))}
+          </div>
         </div>
-      </div>
+      ) : (
+        <>
+          {items && items.length > 0 && (
+            <div
+              className={`relative hidden md:block z-10 w-full overflow-visible text-[var(--foreground)] ${
+                isRtl ? "font-cairo" : "font-hero-light"
+              }`}
+              dir={isRtl ? "rtl" : "ltr"}
+            >
+              <StickyPinnedSection items={items} heightPerItemVh={100} />
+            </div>
+          )}
+          <div
+            className={`mobile-view gap-[30px] min-h-[1400px] h-full md:hidden relative text-[var(--foreground)] flex flex-col w-full px-[20px] ${
+              isRtl ? "font-cairo" : "font-hero-light"
+            }`}
+            dir={isRtl ? "rtl" : "ltr"}
+          >
+            <div className="main-content w-full flex flex-col gap-[20px] mt-16">
+              <h2 className="text-[24px] font-bold font-antonio text-center">
+                Our Works
+              </h2>
+              {(items || []).map((item, index) => (
+                <div
+                  key={(item.title || "") + String(index)}
+                  className="element-wrapper mb-6 flex flex-col w-full gap-[30px]"
+                >
+                  <div className="text flex flex-col gap-[5px]">
+                    <div className="flex items-center justify-between">
+                      {item.title && (
+                        <h2 className="text-[20px] font-bold">{item.title}</h2>
+                      )}
+                      <button
+                        className="rounded-full border font-light 
+                        border-[var(--secondary)] text-[var(--secondary)] text-[11px] uppercase 
+                        px-4 py-1 
+                        transition-colors"
+                        onClick={() => {
+                          try {
+                            if (item.slug != null) {
+                              navigate(`/work/${encodeURIComponent(item.slug)}`);
+                            }
+                          } catch (_) {}
+                        }}
+                      >
+                        {t("home.work.viewWork")}
+                      </button>
+                    </div>
+                    {item.subtitle ? (
+                      <div className="subtitle text-[16px] opacity-80">
+                        {item.subtitle}
+                      </div>
+                    ) : null}
+                    {item.description ? (
+                      <div className=" description text-[14px] opacity-80">
+                        {item.description}
+                      </div>
+                    ) : null}
+                  </div>
+                  <div className="image relative w-full h-[250px] rounded-[20px] overflow-hidden">
+                    {item.media || (
+                      <div className="w-full h-full bg-gradient-to-r from-[var(--foreground)]/10 via-[var(--foreground)]/20 to-[var(--foreground)]/10 animate-pulse rounded-[20px]" />
+                    )}
+                  </div>
+                </div>
+              ))}
+              {(!items || items.length === 0) && !loading ? (
+                <div className="text-center text-sm opacity-70">
+                  {t("home.work.noWorks")}
+                </div>
+              ) : null}
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 });

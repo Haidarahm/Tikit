@@ -4,7 +4,6 @@ import Hero from "./Hero";
 import SEOHead from "../../components/SEOHead";
 import Blogs from "./Blogs";
 // import ElasticGridScroll from "./elastic/ElasticGridScroll";
-import PinnedSection from "./PinnedSection";
 import LogoIntro from "../../components/LogoIntro";
 import Numbers from "./Numbers";
 import Goals from "./Goals";
@@ -15,6 +14,7 @@ import Footer from "../../components/Footer";
 import Influencers from "./influencers/Influencers";
 import ShowCase from "./ShowCase";
 import Map from "./map/Map";
+import PinnedSection from "./PinnedSection";
 import ContactUs from "./ContactUs";
 
 
@@ -174,7 +174,7 @@ function Home() {
 
         <Hero introDone={introDone} />
        
-          <ShowCase />
+            <ShowCase />
           <Numbers />
         <Goals />
        

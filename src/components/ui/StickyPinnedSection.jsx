@@ -339,13 +339,18 @@ export default function StickyPinnedSection({
           trigger: el,
           start: "top 80%",
           onEnter: playFeaturedTitle,
-          refreshPriority: 1, // Higher priority for title animation
+          refreshPriority: 1,
           fastScrollEnd: true,
         });
       }
     });
 
+    const rafId = requestAnimationFrame(() => {
+      ScrollTrigger.refresh();
+    });
+
     return () => {
+      cancelAnimationFrame(rafId);
       // Kill ScrollTrigger instances FIRST to prevent DOM manipulation conflicts
       ScrollTrigger.getAll().forEach((trigger) => {
         if (trigger.trigger === el) {
