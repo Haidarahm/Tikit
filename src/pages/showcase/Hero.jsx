@@ -135,6 +135,7 @@ const Hero = ({ caseData, loading }) => {
           height={1080}
           onLoad={() => setImageLoaded(true)}
           onError={() => setImageLoaded(false)}
+          loading="lazy"
         />
       )}
 

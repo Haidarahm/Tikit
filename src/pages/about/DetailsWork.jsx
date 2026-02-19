@@ -142,6 +142,7 @@ const DetailsWork = () => {
                 src={work.img}
                 alt={t(`about.details.work.items.${work.titleKey}`)}
                 className="block w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <span className={`absolute bottom-4 text-white text-4xl md:text-5xl lg:text-6xl font-bold opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0 ${isRtl ? "right-4 font-cairo" : "left-4 font-antonio"}`}>

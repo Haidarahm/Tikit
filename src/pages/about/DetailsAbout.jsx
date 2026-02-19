@@ -97,6 +97,7 @@ const DetailsAbout = () => {
             src={image2}
             alt="About Tikit"
             className="block w-full h-[120%] object-cover"
+            loading="lazy"
           />
         </div>
 

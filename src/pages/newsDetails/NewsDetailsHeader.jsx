@@ -317,7 +317,7 @@ const NewsDetailsHeader = ({ newsData: propNewsData, loading: propLoading }) => 
                     className={`w-full h-full object-cover transition-opacity duration-700 group-hover:scale-105 ${
                       imageLoaded ? 'opacity-100' : 'opacity-0'
                     }`}
-                    loading="eager"
+                    loading="lazy"
                     onLoad={() => {
                       if (process.env.NODE_ENV === 'development' && !isPrerendering) {
                         console.log('Image loaded successfully:', imageUrl)

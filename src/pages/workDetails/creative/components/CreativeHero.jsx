@@ -13,6 +13,7 @@ const CreativeHero = ({ mainImage, title, logo, theme, isRtl, t, onBack }) => {
           width={1920}
           height={600}
           className="absolute inset-0 w-full h-full object-cover"
+          loading="lazy"
         />
         <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/50 to-black/60" />
 
@@ -26,6 +27,7 @@ const CreativeHero = ({ mainImage, title, logo, theme, isRtl, t, onBack }) => {
                   width={160}
                   height={160}
                   className="h-full w-full object-contain"
+                  loading="lazy"
                 />
               </div>
             )}
@@ -69,6 +71,7 @@ const CreativeHero = ({ mainImage, title, logo, theme, isRtl, t, onBack }) => {
                   width={80}
                   height={80}
                   className="h-full w-full object-contain"
+                  loading="lazy"
                 />
               </div>
             )}

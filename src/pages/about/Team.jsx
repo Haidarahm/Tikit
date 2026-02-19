@@ -395,7 +395,7 @@ const Team = () => {
                       src={member.image}
                       alt={member.name || `team-${index + 1}`}
                       width={320}
-                      loading="eager"
+                      loading="lazy"
                       decoding="async"
                       height={400}
                       className="absolute w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-110"
@@ -498,6 +498,7 @@ const Team = () => {
                   height={250}
                   className="h-full w-full object-cover select-none absolute inset-0"
                   draggable={false}
+                  loading="lazy"
                 />
                 <div className="relative h-full flex flex-col justify-end items-center gap-2 p-2 md:p-6">
                   <span
