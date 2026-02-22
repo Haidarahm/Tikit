@@ -1,242 +1,251 @@
-import React, { useLayoutEffect , useRef, useMemo } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import React, { useEffect, useRef, useMemo } from "react";
 
 const PinnedSection = () => {
   const sectionRef = useRef(null);
-  const containerRef = useRef(null);
-  const scrollTriggerRef = useRef(null);
+  const stickyContainerRef = useRef(null);
+  const trackRef = useRef(null);
   const videoObserverRef = useRef(null);
-  const contextRef = useRef(null);
 
-  // Sample video data - replace with actual video URLs
   const videos = useMemo(() => {
     return [
-      {
-        src: "/reels/reel-1.mp4",
-        label: "Creative Campaign",
-        type: "video/mp4",
-      },
-      {
-        src: "/reels/reel-2.mp4",
-        label: "Brand Storytelling",
-        type: "video/mp4",
-      },
-      {
-        src: "/reels/reel-3.mp4",
-        label: "Social Impact",
-        type: "video/mp4",
-      },
-      {
-        src: "/reels/reel-4.mp4",
-        label: "Digital Innovation",
-        type: "video/mp4",
-      },
-      {
-        src: "/reels/reel-5.mp4",
-        label: "Community Building",
-        type: "video/mp4",
-      },
-      {
-        src: "/reels/reel-6.mp4",
-        label: "Growth Strategy",
-        type: "video/mp4",
-      },
-      {
-        src: "/reels/reel-7.mp4",
-        label: "Content Creation",
-        type: "video/mp4",
-      },
-      {
-        src: "/reels/reel-8.mp4",
-        label: "Influencer Marketing",
-        type: "video/mp4",
-      },
+      { src: "/reels/reel-1.mp4", label: "Creative Campaign",    type: "video/mp4" },
+      { src: "/reels/reel-2.mp4", label: "Brand Storytelling",   type: "video/mp4" },
+      { src: "/reels/reel-3.mp4", label: "Social Impact",        type: "video/mp4" },
+      { src: "/reels/reel-4.mp4", label: "Digital Innovation",   type: "video/mp4" },
+      { src: "/reels/reel-5.mp4", label: "Community Building",   type: "video/mp4" },
+      { src: "/reels/reel-6.mp4", label: "Growth Strategy",      type: "video/mp4" },
+      { src: "/reels/reel-7.mp4", label: "Content Creation",     type: "video/mp4" },
+      { src: "/reels/reel-8.mp4", label: "Influencer Marketing", type: "video/mp4" },
     ];
   }, []);
 
-  useLayoutEffect(() => {
-    if (!sectionRef.current || !containerRef.current) return;
+  useEffect(() => {
+    if (!sectionRef.current || !trackRef.current || !stickyContainerRef.current) return;
+    if (window.innerWidth < 768) return;
 
-    const section = sectionRef.current;
-    const container = containerRef.current;
-    
-    // Check if elements are still connected to DOM
-    if (!section.isConnected || !container.isConnected) return;
+    const section         = sectionRef.current;
+    const track           = trackRef.current;
+    const stickyContainer = stickyContainerRef.current;
 
-    // Clean up any existing ScrollTrigger instances for this section BEFORE creating new ones
-    ScrollTrigger.getAll().forEach((trigger) => {
-      if (trigger.trigger === section) {
-        try {
-          trigger.kill();
-        } catch (e) {
-          // Ignore errors during cleanup
-        }
+    let scrollDistance = 0;
+    let maxTranslate   = 0;
+    let sectionTop     = 0;
+    let sectionHeight  = 0;
+    let resizeTimer;
+    let recalcTimeout1;
+    let recalcTimeout2;
+    let lastBodyHeight = 0;
+    let bodyHeightCheckInterval;
+
+    const calculate = () => {
+      const trackWidth     = track.scrollWidth;
+      const viewportWidth  = window.innerWidth;
+      const viewportHeight = window.innerHeight;
+
+      scrollDistance = Math.max(0, trackWidth - viewportWidth);
+      maxTranslate  = scrollDistance;
+      sectionHeight = viewportHeight + scrollDistance;
+
+      const rect = section.getBoundingClientRect();
+      const scrollY = window.scrollY;
+      sectionTop = rect.top + scrollY;
+
+      section.style.height = `${sectionHeight}px`;
+    };
+
+    const onScroll = () => {
+      const scrollY        = window.scrollY;
+      const viewportHeight = window.innerHeight;
+      const sectionStart   = sectionTop;
+      const sectionEnd     = sectionTop + sectionHeight - viewportHeight;
+
+      if (scrollDistance <= 0) {
+        stickyContainer.style.position = "relative";
+        stickyContainer.style.top      = "";
+        stickyContainer.style.left     = "";
+        stickyContainer.style.width    = "";
+        track.style.transform          = "translate3d(0, 0, 0)";
+        return;
       }
-    });
 
-    const ctx = gsap.context(() => {
-      const containerWidth = container.scrollWidth;
-      const viewportWidth = window.innerWidth;
-      const totalDistance = containerWidth - viewportWidth;
+      // Before section
+      if (scrollY < sectionStart) {
+        stickyContainer.style.position = "relative";
+        stickyContainer.style.top      = "";
+        stickyContainer.style.left     = "";
+        stickyContainer.style.width    = "";
+        track.style.transform          = "translate3d(0, 0, 0)";
+        return;
+      }
 
-      if (totalDistance <= 0) return;
+      // After section — lock at final position
+      if (scrollY > sectionEnd) {
+        stickyContainer.style.position = "absolute";
+        stickyContainer.style.top      = `${sectionHeight - viewportHeight}px`;
+        stickyContainer.style.left     = "0";
+        stickyContainer.style.width    = "100%";
+        track.style.transform          = `translate3d(-${maxTranslate}px, 0, 0)`;
+        return;
+      }
 
-      // Get the first card width to calculate initial position
-      const firstCard = container.querySelector('div');
-      const firstCardWidth = firstCard?.offsetWidth || 300;
-      const padding = 32; // Account for px-8 padding (md:px-8 = 32px)
-      
-      // Calculate initial position: start with first card's right edge at viewport's right edge
-      // This makes the first card appear from the right and scroll left
-      const initialX = viewportWidth - firstCardWidth - padding;
+      // Within scroll range — pin and translate
+      stickyContainer.style.position = "fixed";
+      stickyContainer.style.top      = "0";
+      stickyContainer.style.left     = "0";
+      stickyContainer.style.width    = "100%";
 
-      // Set initial position so first card starts visible from right
-      gsap.set(container, { x: initialX });
+      const progress = sectionEnd === sectionStart
+        ? 0
+        : (scrollY - sectionStart) / (sectionEnd - sectionStart);
 
-      // Animate from right to left: 
-      // Start with first card visible at right edge
-      // End at -totalDistance (last cards visible at left)
-      const tween = gsap.fromTo(container, 
-        {
-          x: initialX, // Start with first reel visible from right
-        },
-        {
-          x: -totalDistance, // Scroll left to show all cards, ending at left
-          ease: "none",
-        }
-      );
+      const translateX = -(progress * maxTranslate);
+      track.style.transform = `translate3d(${translateX}px, 0, 0)`;
+    };
 
-      scrollTriggerRef.current = ScrollTrigger.create({
-        trigger: section,
-        start: "top top",
-        end: `+=${totalDistance}`,
-        pin: true,
-        scrub: 1,
-        anticipatePin: 1,
-        animation: tween,
-        invalidateOnRefresh: true,
-        pinSpacing: true,
-        refreshPriority: -1, // Refresh AFTER WorkSection/StickyPinnedSection so positions are correct
+    const init = () => {
+      requestAnimationFrame(() => {
+        calculate();
+        onScroll();
+
+        // Delayed recalculations — sections above load API data and change page height
+        recalcTimeout1 = setTimeout(() => {
+          calculate();
+          onScroll();
+        }, 100);
+
+        recalcTimeout2 = setTimeout(() => {
+          calculate();
+          onScroll();
+        }, 500);
+
+        // Poll for body height changes (other sections loading/expanding)
+        lastBodyHeight = document.body.scrollHeight;
+        bodyHeightCheckInterval = setInterval(() => {
+          const currentHeight = document.body.scrollHeight;
+          if (currentHeight !== lastBodyHeight) {
+            lastBodyHeight = currentHeight;
+            calculate();
+            onScroll();
+          }
+        }, 300);
+
+        window.addEventListener("scroll", onScroll, { passive: true });
       });
+    };
 
-      videoObserverRef.current = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            const video = entry.target;
-            if (!video || !video.isConnected) return;
-            if (entry.isIntersecting) {
-              video.play().catch(() => {});
-            } else {
-              video.pause();
-            }
-          });
-        },
-        { threshold: 0.5 }
-      );
-
-      container.querySelectorAll("video").forEach((video) => {
-        if (videoObserverRef.current) {
-          videoObserverRef.current.observe(video);
+    const handleResize = () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        if (window.innerWidth < 768) {
+          section.style.height           = "";
+          stickyContainer.style.position = "";
+          stickyContainer.style.top      = "";
+          stickyContainer.style.left     = "";
+          stickyContainer.style.width    = "";
+          track.style.transform          = "";
+          window.removeEventListener("scroll", onScroll);
+          return;
         }
-      });
-    }, sectionRef);
+        calculate();
+        onScroll();
+      }, 200);
+    };
 
-    contextRef.current = ctx;
+    init();
+    window.addEventListener("resize", handleResize);
 
-    const rafId = requestAnimationFrame(() => {
-      ScrollTrigger.refresh();
+    return () => {
+      clearTimeout(resizeTimer);
+      clearTimeout(recalcTimeout1);
+      clearTimeout(recalcTimeout2);
+      clearInterval(bodyHeightCheckInterval);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", handleResize);
+      if (section) section.style.height = "";
+      if (stickyContainer) {
+        stickyContainer.style.position = "";
+        stickyContainer.style.top      = "";
+        stickyContainer.style.left     = "";
+        stickyContainer.style.width    = "";
+      }
+      if (track) track.style.transform = "";
+    };
+  }, []);
+
+  // Play/pause videos based on visibility
+  useEffect(() => {
+    if (!trackRef.current) return;
+
+    videoObserverRef.current = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const video = entry.target;
+          if (!video || !video.isConnected) return;
+          if (entry.isIntersecting) {
+            video.play().catch(() => {});
+          } else {
+            video.pause();
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    trackRef.current.querySelectorAll("video").forEach((video) => {
+      videoObserverRef.current.observe(video);
     });
 
     return () => {
-      cancelAnimationFrame(rafId);
-      // Disconnect video observers
       if (videoObserverRef.current) {
-        try {
-          videoObserverRef.current.disconnect();
-        } catch {}
+        videoObserverRef.current.disconnect();
         videoObserverRef.current = null;
-      }
-
-      // Get current section reference (may have changed)
-      const currentSection = sectionRef.current;
-
-      // Kill this section's ScrollTrigger FIRST
-      if (scrollTriggerRef.current) {
-        try {
-          scrollTriggerRef.current.kill();
-        } catch {}
-        scrollTriggerRef.current = null;
-      }
-
-      // As an extra safety, kill any remaining triggers for this section
-      // Use both the captured section and current ref to catch all instances
-      ScrollTrigger.getAll().forEach((trigger) => {
-        const triggerElement = trigger.trigger;
-        if (triggerElement === section || triggerElement === currentSection) {
-          try {
-            trigger.kill();
-          } catch {}
-        }
-      });
-
-      // Revert GSAP context AFTER ScrollTrigger is killed to restore DOM
-      if (contextRef.current) {
-        try {
-          contextRef.current.revert();
-        } catch {}
-        contextRef.current = null;
       }
     };
   }, []);
-  
 
   return (
-    <section 
+    <section
       ref={sectionRef}
+      dir="ltr"
       className="relative w-full overflow-hidden hidden md:block z-20"
-      style={{ 
-        minHeight: "100vh",
-      }}
     >
-      <div className="sticky top-0 flex items-center justify-start h-screen">
-        <div 
-          ref={containerRef}
-          className="flex items-center h-full gap-4 md:gap-6 px-4 md:px-8"
-          style={{ 
-            width: 'max-content',
-            willChange: 'transform'
-          }}
-        >
-          {videos.map((video, index) => (
-            <div 
-              key={index}
-              className="relative flex-shrink-0 bg-gray-900 rounded-lg overflow-hidden"
-              style={{
-                width: 'clamp(280px, 30vw, 440px)',
-                height: 'clamp(420px, 45vw, 650px)',
-                minWidth: '280px',
-                minHeight: '420px'
-              }}
-            >
-              <video
-                className="w-full h-full object-cover"
-                src={video.src}
-                type={video.type}
-                loop
-                muted
-                preload="none"
-                playsInline
-              />
-              <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
-                <p className="text-white font-medium text-sm md:text-base">
-                  {video.label}
-                </p>
+      <div
+        ref={stickyContainerRef}
+        className="flex flex-row h-screen overflow-hidden bg-[var(--background)]"
+      >
+        <div className="relative z-0 flex flex-row h-screen w-full">
+          <div
+            ref={trackRef}
+            className="flex flex-row items-center gap-4 md:gap-6 px-4 md:px-8 pr-[10vw]"
+            style={{ willChange: "transform" }}
+          >
+            {videos.map((video, index) => (
+              <div
+                key={index}
+                className="relative flex-shrink-0 bg-gray-900 rounded-lg overflow-hidden"
+                style={{
+                  width:     "clamp(280px, 30vw, 440px)",
+                  height:    "clamp(420px, 45vw, 650px)",
+                  minWidth:  "280px",
+                  minHeight: "420px",
+                }}
+              >
+                <video
+                  className="w-full h-full object-cover"
+                  src={video.src}
+                  loop
+                  muted
+                  preload="none"
+                  playsInline
+                />
+                <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
+                  <p className="text-white font-medium text-sm md:text-base">
+                    {video.label}
+                  </p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>
