@@ -1,9 +1,85 @@
-import React, { useEffect, useState, useMemo, memo } from "react";
-import FlowingMenu from "../../components/FlowingMenu";
+import React, { useEffect, useState, useMemo, memo, useRef } from "react";
 import { useServicesStore } from "../../store/servicesStore";
 import { useNavigate } from "react-router-dom";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
 import { useTranslation } from "react-i18next";
+import TikitTitle from "../../components/TikitTitle.jsx";
+
+const CARD_COLORS = [
+  { bg: "bg-[#35D5D0]/15", border: "border-[#35D5D0]/30", accent: "#35D5D0" },
+  { bg: "bg-[#E84B43]/15", border: "border-[#E84B43]/30", accent: "#E84B43" },
+  { bg: "bg-[#F3A67A]/15", border: "border-[#F3A67A]/30", accent: "#F3A67A" },
+  { bg: "bg-[#252525]/15", border: "border-[#252525]/30", accent: "#6ACBCC" },
+];
+
+const ServiceCard = ({ service, index, onClick }) => {
+  const colors = CARD_COLORS[index % CARD_COLORS.length];
+
+  return (
+    // Outer: stable grid cell — never transforms, prevents neighbors from jumping
+    <div
+      onClick={onClick}
+      className="group relative cursor-pointer"
+      data-aos="fade-up"
+      data-aos-delay={index * 120}
+      data-aos-duration="700"
+      style={{ perspective: "800px" }}
+    >
+      {/* Inner: the only element that scales — isolated from layout flow */}
+      <div
+        className={`relative rounded-[14px] overflow-hidden border ${colors.border} ${colors.bg} flex flex-col h-full`}
+        style={{
+          transition: "transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease",
+        }}
+        onMouseEnter={e => {
+          e.currentTarget.style.transform = "scale(1.025) translateZ(0)";
+          e.currentTarget.style.boxShadow = "0 16px 40px rgba(0,0,0,0.18)";
+        }}
+        onMouseLeave={e => {
+          e.currentTarget.style.transform = "scale(1) translateZ(0)";
+          e.currentTarget.style.boxShadow = "none";
+        }}
+      >
+        {/* Image */}
+        <div className="relative w-full h-[150px] md:h-[160px] overflow-hidden">
+          <img
+            src={service.media}
+            alt={service.title}
+            className="w-full h-full object-cover"
+            style={{ transition: "transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)" }}
+            onMouseEnter={e => { e.currentTarget.style.transform = "scale(1.08) translateZ(0)"; }}
+            onMouseLeave={e => { e.currentTarget.style.transform = "scale(1) translateZ(0)"; }}
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+        </div>
+
+        {/* Content */}
+        <div className="p-4 flex flex-col gap-1.5 flex-1">
+          <h3 className="font-antonio font-bold text-[18px] md:text-[20px] text-[var(--foreground)] group-hover:bg-gradient-to-r group-hover:from-[#6ACBCC] group-hover:to-[#1C6F6C] group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">
+            {service.title}
+          </h3>
+
+          <p className="text-[var(--foreground)]/70 text-[12px] md:text-[13px] font-light leading-[1.5] line-clamp-2">
+            {service.subtitle}
+          </p>
+
+          {/* Arrow — always visible on mobile, hover-reveal on desktop */}
+          <div
+            className="flex items-center gap-2 mt-auto pt-1 text-[12px] font-medium opacity-100 md:opacity-0 md:translate-y-2 md:group-hover:opacity-100 md:group-hover:translate-y-0 transition-all duration-300"
+            style={{ color: colors.accent }}
+          >
+            <span>Learn More</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const Services = memo(() => {
   const navigate = useNavigate();
@@ -11,41 +87,31 @@ const Services = memo(() => {
   const { language, isRtl } = useI18nLanguage();
   const { t } = useTranslation();
   const [isClient, setIsClient] = useState(false);
+  const sectionRef = useRef(null);
 
-  // Ensure we're on the client side before making API calls
   useEffect(() => {
     setIsClient(true);
   }, []);
 
-  const sectionRef = React.useRef(null);
-
   useEffect(() => {
     if (!isClient || !sectionRef.current) return;
 
-    // Use IntersectionObserver to load data when component is about to be visible
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             loadServices({ lang: language, page: 1, per_page: 4 });
-            observer.disconnect(); // Only load once
+            observer.disconnect();
           }
         });
       },
-      {
-        rootMargin: '200px', // Start loading 200px before component is visible
-        threshold: 0.01,
-      }
+      { rootMargin: "200px", threshold: 0.01 }
     );
 
     observer.observe(sectionRef.current);
-
-    return () => {
-      observer.disconnect();
-    };
+    return () => observer.disconnect();
   }, [language, loadServices, isClient]);
 
-  // Language-independent route slugs (used when API provides slug, or for index fallback)
   const SERVICE_ROUTE_SLUGS = [
     "influencer-marketing",
     "social-media-management",
@@ -53,27 +119,23 @@ const Services = memo(() => {
     "branding",
   ];
 
-  // Map service title (any language) or index to route – never use raw title in URL
   const getServiceRoute = (title, index = 0) => {
     const raw = (title || "").trim();
     const titleLower = raw.toLowerCase();
-    // Normalize for Latin scripts (strip diacritics for French: é → e, etc.)
     const normalized =
       typeof titleLower.normalize === "function"
         ? titleLower.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
         : titleLower;
 
-    // Influencer Marketing – EN, AR, FR
     if (
       titleLower.includes("influencer marketing") ||
       titleLower.includes("تسويق المؤثرين") ||
       titleLower.includes("تسويق المؤثر") ||
       normalized.includes("marketing dinfluence") ||
       normalized.includes("marketing d'influence")
-    ) {
+    )
       return `/services/${SERVICE_ROUTE_SLUGS[0]}`;
-    }
-    // Social Media Management – EN, AR, FR
+
     if (
       titleLower.includes("social media management") ||
       titleLower.includes("social media marketing") ||
@@ -81,159 +143,97 @@ const Services = memo(() => {
       titleLower.includes("وسائل التواصل") ||
       normalized.includes("gestion des medias sociaux") ||
       normalized.includes("gestion des médias sociaux")
-    ) {
+    )
       return `/services/${SERVICE_ROUTE_SLUGS[1]}`;
-    }
-    // Production – EN, AR, FR
+
     if (
       titleLower.includes("production") ||
       titleLower.includes("الإنتاج") ||
       titleLower.includes("إنتاج")
-    ) {
+    )
       return `/services/${SERVICE_ROUTE_SLUGS[2]}`;
-    }
-    // Branding – EN, AR, FR
+
     if (
       titleLower.includes("branding") ||
       titleLower.includes("العلامة التجارية") ||
       titleLower.includes("الهوية التجارية") ||
       normalized.includes("identite de marque") ||
       normalized.includes("identité de marque")
-    ) {
+    )
       return `/services/${SERVICE_ROUTE_SLUGS[3]}`;
-    }
 
-    // Index-based fallback when title doesn't match (e.g. new translation or API wording)
     const safeIndex = Math.min(Math.max(0, index), SERVICE_ROUTE_SLUGS.length - 1);
     return `/services/${SERVICE_ROUTE_SLUGS[safeIndex]}`;
   };
 
   const items = useMemo(
     () =>
-      (services || []).map((s, index) => {
-        // Prefer API slug when available (language-independent)
-        const link = s?.slug
-          ? `/services/${s.slug}`
-          : getServiceRoute(s?.title, index);
-        return {
-          link,
-          text: s?.title,
-          image: s?.media,
-        };
-      }),
+      (services || []).map((s, index) => ({
+        ...s,
+        link: s?.slug ? `/services/${s.slug}` : getServiceRoute(s?.title, index),
+      })),
     [services]
   );
 
-  // Skeleton loader component
-  const SkeletonLoader = () => {
-    const skeletonItems = Array.from({ length: 4 }).map((_, index) => (
-      <div
-        key={index}
-        className={`flex pb-4 justify-center text-[20px] mb-4 ${
-          index < 3 ? "border-[var(--secondary)] border-b-2" : ""
-        }`}
-      >
-        <div className="h-6 w-48 bg-gradient-to-r from-[var(--foreground)]/20 via-[var(--foreground)]/10 to-[var(--foreground)]/20 rounded animate-pulse" />
+  const SkeletonCard = () => (
+    <div className="rounded-[14px] overflow-hidden border border-[var(--foreground)]/10 bg-[var(--foreground)]/5">
+      <div className="w-full h-[150px] md:h-[160px] bg-gradient-to-r from-[var(--foreground)]/10 via-[var(--foreground)]/5 to-[var(--foreground)]/10 animate-pulse" />
+      <div className="p-4 flex flex-col gap-2">
+        <div className="h-5 w-3/4 bg-[var(--foreground)]/10 rounded animate-pulse" />
+        <div className="h-3.5 w-full bg-[var(--foreground)]/8 rounded animate-pulse" />
       </div>
-    ));
+    </div>
+  );
 
-    return (
-      <>
-        {/* Desktop skeleton */}
-        <div
-          className="hidden md:block"
-          style={{ position: "relative", height: "100%" }}
-        >
-          <div className="w-full h-full overflow-hidden">
-            <nav className="flex flex-col h-full m-0 p-0">
-              {Array.from({ length: 4 }).map((_, idx) => (
-                <div
-                  key={idx}
-                  className="flex-1 relative overflow-hidden text-center shadow-[0_-1px_0_0_var(--secondary)] py-6 flex items-center justify-center"
-                >
-                  <div className="h-8 w-64 bg-gradient-to-r from-[var(--foreground)]/20 via-[var(--foreground)]/10 to-[var(--foreground)]/20 rounded animate-pulse" />
-                </div>
-              ))}
-            </nav>
-          </div>
-        </div>
-        {/* Mobile skeleton */}
-        <div className="mobile-view flex flex-col md:hidden">
-          {skeletonItems}
-        </div>
-      </>
-    );
-  };
-
-  const renderContent = () => {
-    // Show skeleton loader during initial load or if there's an error (retry silently)
-    if (!isClient || loading || error) {
-      return <SkeletonLoader />;
-    }
-
-    // Show content only if we have items
-    if (!items || items.length === 0) {
-      return <SkeletonLoader />;
-    }
-
-    // Main content
-    return (
-      <>
-        <div
-          className="hidden md:block"
-          style={{ position: "relative", height: "100%" }}
-        >
-          <FlowingMenu items={items} />
-        </div>
-        <div className="mobile-view flex flex-col md:hidden">
-          {items.map((item, index) => (
-            <div
-              key={index}
-              className={`flex pb-4 justify-center text-[20px] mb-4 cursor-pointer ${
-                index < items.length - 1
-                  ? "border-[var(--secondary)] border-b-2"
-                  : ""
-              }`}
-              onClick={() => navigate(item.link)}
-              data-aos="flip-up"
-              data-aos-delay={index * 150}
-              data-aos-duration="600"
-              data-aos-easing="ease-out-cubic"
-              data-aos-once="false"
-              data-aos-mirror="true"
-            >
-              <h2 className="text-lg font-semibold mt-2 text-[var(--secondary)]">
-                {item.text}
-              </h2>
-            </div>
-          ))}
-        </div>
-      </>
-    );
-  };
+  const showSkeleton = !isClient || loading || error || !items || items.length === 0;
 
   return (
     <div
       ref={sectionRef}
-      className={`section my-4 md:my-8 relative  md:min-h-[450px] 2xl:min-h-[490px] ${
+      data-nav-color="black"
+      className={`section my-4 md:my-8 relative overflow-visible ${
         isRtl ? "font-cairo" : "font-hero-light"
-      } flex flex-col mx-auto z-10 w-full justify-center`}
+      } flex flex-col mx-auto z-10 w-[95vw] md:w-6/7 max-w-[1400px]`}
       dir={isRtl ? "rtl" : "ltr"}
     >
-      <div className="headline mb-4 px-6 md:px-10 flex w-full justify-between items-center">
-        <h2 className="text-[var(--foreground)] font-antonio md:text-center font-bold text-[18px] md:text-[40px]">
-          {t("home.services.title")}
-        </h2>
-        {!loading && !error && items && items.length > 0 && (
+      {/* Two-column layout: Left text + Right cards */}
+      <div className="flex flex-col md:flex-row gap-6 md:gap-10 items-start md:items-center">
+        {/* Left Section — Title, subtitle, description */}
+        <div className="w-full md:w-[35%] flex flex-col gap-3 md:gap-5 px-2 md:px-0">
+          <TikitTitle
+            title={t("home.services.title")}
+            mainWord=""
+            disableAnimation
+          />
+
+          <p className="text-[var(--foreground)]/70 text-[14px] md:text-[16px] font-light leading-[1.6] max-w-[450px]">
+            {t("services.hero.subdescription")}
+          </p>
+
           <button
             onClick={() => navigate("/services")}
-            className="bg-transparent hover:text-[var(--background)] shadow-lg shadow-[#52C3C5]/30 font-bold dark:shadow-[#000]/30 hover:bg-[var(--secondary)] border-[var(--secondary)] text-[var(--secondary)] transition duration-75 ease-in border px-2 h-8 md:h-10 text-[14px] rounded-full uppercase"
+            className="w-fit mt-1 bg-transparent hover:bg-[#52C3C5] hover:text-white border border-[#52C3C5] text-[#52C3C5] transition-all duration-300 px-5 py-2 text-[13px] md:text-[14px] rounded-full font-semibold uppercase tracking-wide"
           >
             {t("home.services.explore")}
           </button>
-        )}
+        </div>
+
+        {/* Right Section — Service cards grid — padding gives room for scale overflow */}
+        <div className="w-full md:w-[65%] grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 p-2">
+          {showSkeleton
+            ? Array.from({ length: 4 }).map((_, i) => (
+                <SkeletonCard key={i} index={i} />
+              ))
+            : items.map((service, index) => (
+                <ServiceCard
+                  key={service.id || index}
+                  service={service}
+                  index={index}
+                  onClick={() => navigate(service.link)}
+                />
+              ))}
+        </div>
       </div>
-      {renderContent()}
     </div>
   );
 });
