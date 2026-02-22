@@ -33,11 +33,9 @@ const ServiceCard = ({ service, index, onClick }) => {
         }}
         onMouseEnter={e => {
           e.currentTarget.style.transform = "scale(1.025) translateZ(0)";
-          e.currentTarget.style.boxShadow = "0 16px 40px rgba(0,0,0,0.18)";
         }}
         onMouseLeave={e => {
           e.currentTarget.style.transform = "scale(1) translateZ(0)";
-          e.currentTarget.style.boxShadow = "none";
         }}
       >
         {/* Image */}
