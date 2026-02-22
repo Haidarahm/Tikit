@@ -81,12 +81,22 @@
   --font-cairo: "Cairo", sans-serif;
 }
 
-html, body {
+html {
+  height: auto !important;
+  min-height: 100%;
+  overscroll-behavior: none;
+  scroll-behavior: auto !important;
+  background: var(--background);
+  transition: background 0.3s ease;
+}
+
+body {
   height: auto !important;
   min-height: 100%;
   overflow-x: hidden;
+  overflow-y: auto;
   overscroll-behavior: none;
-  scroll-behavior: auto !important; /* MUST remove smooth behavior */
+  scroll-behavior: auto !important;
   background: var(--background);
   transition: background 0.3s ease;
 }
@@ -136,9 +146,8 @@ body {
   position: relative;
   color: white;
   overflow: hidden;
-  /* scroll-snap-stop: always; */
-  contain: layout style paint;
-  will-change: transform;
+  contain: style paint;
+  will-change: auto;
 }
 
 
