@@ -1,9 +1,25 @@
 import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { gsap } from "gsap";
+import { useIntro } from "../../../store/IntroContext";
 
 export function useNavbarAnimations(logoRef, navRef) {
+  const { introDone } = useIntro();
+  const { pathname } = useLocation();
+  const isHome = pathname === "/";
+
+  // Wait for intro to finish on the home page before animating navbar
+  const shouldAnimate = isHome ? introDone : true;
+
   useEffect(() => {
-    // timeline: logo appears first, then nav items stagger
+    if (!shouldAnimate) {
+      // Hide navbar elements until intro is done
+      if (logoRef.current) gsap.set(logoRef.current, { scale: 0, opacity: 0 });
+      const navItems = navRef.current ? navRef.current.querySelectorAll(".nav-item") : [];
+      gsap.set(navItems, { opacity: 0, y: 12 });
+      return;
+    }
+
     const queryNavItems = () =>
       navRef.current ? navRef.current.querySelectorAll(".nav-item") : [];
 
@@ -107,6 +123,6 @@ export function useNavbarAnimations(logoRef, navRef) {
         delete logoNode._onEnterLogoPart;
       }
     };
-  }, [logoRef, navRef]);
+  }, [logoRef, navRef, shouldAnimate]);
 }
 

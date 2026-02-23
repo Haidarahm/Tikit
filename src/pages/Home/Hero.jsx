@@ -11,8 +11,7 @@ const Hero = ({ introDone = true }) => {
   const isMobile =
     typeof window !== "undefined" && window.innerWidth < 768;
 
-  // Set initial state before paint so Hero is ready for animation when intro finishes
-  // (or invisible/ready when returning user loads with introDone=true)
+  // Set initial state before paint
   useLayoutEffect(() => {
     const section = sectionRef.current;
     const content = contentRef.current;
@@ -27,7 +26,7 @@ const Hero = ({ introDone = true }) => {
     gsap.set(items, { autoAlpha: 0, y: 40 });
   }, []);
 
-  // Run entrance animations only when intro is done (so they play when Hero becomes visible)
+  // Run entrance animations only when intro is done
   useEffect(() => {
     if (!introDone) return;
 
@@ -36,14 +35,12 @@ const Hero = ({ introDone = true }) => {
     if (!section || !content) return;
 
     const ctx = gsap.context(() => {
-      // Background scale-in
       gsap.to(section, {
         scale: 1,
         duration: 0.8,
         ease: "back.out(1.2)",
       });
 
-      // Content stagger
       const items = gsap.utils.toArray("[data-hero-animate]", content);
       if (items.length) {
         gsap.to(items, {

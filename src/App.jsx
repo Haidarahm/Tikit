@@ -11,6 +11,7 @@ import Loader from "./components/Loader.jsx";
 import Home from "./pages/Home/Home";
 import { ToastContainer } from "./components/ui/Toast";
 import AIAssistButton from "./components/AIAssistButton";
+import { IntroProvider } from "./store/IntroContext";
 
 // Lazy load components
 const NewsletterPopup = lazy(() => import("./components/NewsletterPopup"));
@@ -104,6 +105,7 @@ function App() {
   return (
     <ThemeProvider>
       <ClientProvider>
+        <IntroProvider>
         <ToastContainer />
         <Suspense fallback={<LoadingSpinner />}>
           <Routes>
@@ -151,6 +153,7 @@ function App() {
           <NewsletterPopup />
         </Suspense>
         <AIAssistButton />
+        </IntroProvider>
       </ClientProvider>
     </ThemeProvider>
   );

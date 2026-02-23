@@ -1,10 +1,10 @@
-import { useState } from "react";
 // Critical above-the-fold components - load immediately
 import Hero from "./Hero";
 import SEOHead from "../../components/SEOHead";
 import Blogs from "./Blogs";
 // import ElasticGridScroll from "./elastic/ElasticGridScroll";
 import LogoIntro from "../../components/LogoIntro";
+import { useIntro } from "../../store/IntroContext";
 import Numbers from "./Numbers";
 import Goals from "./Goals";
 import Services from "./Services";
@@ -84,10 +84,7 @@ const homepageSchema = {
 };
 
 function Home() {
-  const [introDone, setIntroDone] = useState(() => {
-    if (typeof window === "undefined") return false;
-    return sessionStorage.getItem("logoIntroSeen") === "true";
-  });
+  const { introDone, setIntroDone } = useIntro();
 
   return (
     <>
