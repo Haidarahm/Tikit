@@ -77,7 +77,6 @@ export const Influencer = () => {
   const navButtonRefs = useRef([]);
   const isProgrammaticScrollRef = useRef(false);
   const pendingScrollIndexRef = useRef(null);
-  const pendingInfluencerRequestsRef = useRef(new Set());
   const [activeIndex, setActiveIndex] = useState(0);
   const [activeSectionKey, setActiveSectionKey] = useState(null);
   const { isRtl, language } = useI18nLanguage();
@@ -86,17 +85,16 @@ export const Influencer = () => {
   const sectionsLoading = useInfluencersStore((state) => state.sectionsLoading);
   const sectionsError = useInfluencersStore((state) => state.sectionsError);
   const loadSections = useInfluencersStore((state) => state.loadSections);
-  const influencersBySection = useInfluencersStore(
-    (state) => state.influencersBySection
+  const allInfluencers = useInfluencersStore((state) => state.allInfluencers);
+  const allInfluencersLoading = useInfluencersStore(
+    (state) => state.allInfluencersLoading
   );
-  const influencersLoading = useInfluencersStore(
-    (state) => state.influencersLoading
+  const allInfluencersError = useInfluencersStore(
+    (state) => state.allInfluencersError
   );
-  const influencersError = useInfluencersStore(
-    (state) => state.influencersError
+  const loadAllInfluencers = useInfluencersStore(
+    (state) => state.loadAllInfluencers
   );
-  const loadInfluencers = useInfluencersStore((state) => state.loadInfluencers);
-  const clearSection = useInfluencersStore((state) => state.clearSection);
 
   const normalizedSections = useMemo(() => {
     const list = Array.isArray(sections) ? sections : [];
@@ -112,6 +110,20 @@ export const Influencer = () => {
       };
     });
   }, [sections]);
+
+  // Distribute allInfluencers by section (match section_title to section label)
+  const influencersBySection = useMemo(() => {
+    const list = Array.isArray(allInfluencers) ? allInfluencers : [];
+    const map = {};
+    for (const section of normalizedSections) {
+      const label = (section.label || "").trim().toLowerCase();
+      map[section.key] = list.filter((inf) => {
+        const infSection = (inf?.section_title || "").trim().toLowerCase();
+        return infSection === label || infSection.startsWith(label + " ");
+      });
+    }
+    return map;
+  }, [allInfluencers, normalizedSections]);
 
   useEffect(() => {
     let isMounted = true;
@@ -154,14 +166,10 @@ export const Influencer = () => {
 
   useEffect(() => {
     loadSections({ lang: language });
-    // Clear influencers cache when language changes to force reload with new language
-    clearSection();
-    // Clear pending requests when language changes
-    pendingInfluencerRequestsRef.current.clear();
+    loadAllInfluencers({ lang: language });
     setActiveIndex(0);
     setActiveSectionKey(null);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [language]);
+  }, [language, loadSections, loadAllInfluencers]);
 
   useEffect(() => {
     if (!normalizedSections.length) {
@@ -195,25 +203,6 @@ export const Influencer = () => {
     }
   }, [activeSectionKey, normalizedSections, activeIndex]);
 
-  useEffect(() => {
-    if (!activeSectionKey) return;
-    // Skip if already loaded
-    if (influencersBySection[activeSectionKey]) {
-      pendingInfluencerRequestsRef.current.delete(activeSectionKey);
-      return;
-    }
-    // Skip if request already pending
-    if (pendingInfluencerRequestsRef.current.has(activeSectionKey)) {
-      return;
-    }
-    // Mark as pending and load
-    pendingInfluencerRequestsRef.current.add(activeSectionKey);
-    loadInfluencers(activeSectionKey, { lang: language }).finally(() => {
-      pendingInfluencerRequestsRef.current.delete(activeSectionKey);
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [activeSectionKey, loadInfluencers, language]);
-
   // Handle programmatic scrolling after DOM and data are ready
   useEffect(() => {
     const pendingIndex = pendingScrollIndexRef.current;
@@ -229,14 +218,8 @@ export const Influencer = () => {
     const targetElement = detailRefs.current[pendingIndex];
     if (!targetElement) return;
 
-    // Check if influencers data has loaded (or if section has no influencers requirement)
-    const hasInfluencersData = influencersBySection[section.key] !== undefined;
-    if (!hasInfluencersData && !sectionsLoading && !influencersLoading) {
-      // If data should have loaded but hasn't, clear pending scroll
-      pendingScrollIndexRef.current = null;
-      return;
-    }
-    if (!hasInfluencersData) return; // Wait for data to load
+    // Wait for influencers data to load
+    if (allInfluencersLoading) return;
 
     // Set flag to prevent ScrollTrigger from updating active section during scroll
     isProgrammaticScrollRef.current = true;
@@ -294,28 +277,10 @@ export const Influencer = () => {
   }, [
     normalizedSections,
     influencersBySection,
-    sectionsLoading,
-    influencersLoading,
+    allInfluencersLoading,
     activeIndex,
     activeSectionKey,
   ]);
-
-  useEffect(() => {
-    const nextIndex = activeIndex + 1;
-    const nextSection = normalizedSections[nextIndex];
-    if (!nextSection) return;
-    const nextKey = nextSection.key;
-    // Skip if already loaded
-    if (!nextKey || influencersBySection[nextKey]) return;
-    // Skip if request already pending
-    if (pendingInfluencerRequestsRef.current.has(nextKey)) return;
-    // Mark as pending and load
-    pendingInfluencerRequestsRef.current.add(nextKey);
-    loadInfluencers(nextKey, { lang: language }).finally(() => {
-      pendingInfluencerRequestsRef.current.delete(nextKey);
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [activeIndex, normalizedSections, loadInfluencers, language]);
 
   // Keep the nav scroller synced to the active button without showing a scrollbar
   useEffect(() => {
@@ -648,10 +613,8 @@ export const Influencer = () => {
                 influencer1,
                 influencer2,
               ]);
-              const hasLoaded = Array.isArray(
-                influencersBySection[section.key]
-              );
-              const isLoadingSection = influencersLoading && !hasLoaded;
+              const hasLoaded = !allInfluencersLoading;
+              const isLoadingSection = allInfluencersLoading;
 
               return (
                 <section
@@ -677,9 +640,9 @@ export const Influencer = () => {
                     <div className="text-sm text-[var(--foreground)]/70">
                       {t("influencer.loading")}
                     </div>
-                  ) : influencersError && !hasLoaded ? (
+                  ) : allInfluencersError && !hasLoaded ? (
                     <div className="text-sm text-red-500">
-                      {influencersError || t("influencer.loadError")}
+                      {allInfluencersError || t("influencer.loadError")}
                     </div>
                   ) : influencers.length === 0 ? (
                     <div className="text-sm text-[var(--foreground)]/70">
@@ -720,10 +683,8 @@ export const Influencer = () => {
                 influencer1,
                 influencer2,
               ]);
-              const hasLoaded = Array.isArray(
-                influencersBySection[activeSection.key]
-              );
-              const isLoadingSection = influencersLoading && !hasLoaded;
+              const hasLoaded = !allInfluencersLoading;
+              const isLoadingSection = allInfluencersLoading;
 
               return (
                 <div className="space-y-6">
@@ -743,9 +704,9 @@ export const Influencer = () => {
                     <div className="text-sm text-[var(--foreground)]/70 text-center py-8">
                       {t("influencer.loading")}
                     </div>
-                  ) : influencersError && !hasLoaded ? (
+                  ) : allInfluencersError && !hasLoaded ? (
                     <div className="text-sm text-red-500 text-center py-8">
-                      {influencersError || t("influencer.loadError")}
+                      {allInfluencersError || t("influencer.loadError")}
                     </div>
                   ) : influencers.length === 0 ? (
                     <div className="text-sm text-[var(--foreground)]/70 text-center py-8">

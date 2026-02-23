@@ -1,12 +1,13 @@
 import { api } from "../../config/backend";
 
 export const getAllInfluencers = async (params = {}) => {
-  const { page, per_page = 40 } = params;
+  const { page, per_page = 40, lang } = params;
 
   const response = await api.get("/influencers/get/all", {
     params: {
       ...(page !== undefined ? { page } : {}),
       ...(per_page !== undefined ? { per_page } : {}),
+      ...(lang ? { lang } : {}),
     },
   });
 
