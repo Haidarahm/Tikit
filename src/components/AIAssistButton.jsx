@@ -130,7 +130,6 @@ function AIAssistButton() {
               aria-hidden="true"
             />
             <motion.div
-              data-lenis-prevent
               className="relative flex h-[480px] w-full max-w-md flex-col overflow-hidden rounded-2xl border border-[var(--foreground)]/10 dark:border-[var(--foreground)]/20 bg-[var(--background)] shadow-2xl dark:shadow-[var(--foreground)]/10"
               initial={{ opacity: 0, y: 24, scale: 0.96 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -158,9 +157,8 @@ function AIAssistButton() {
                 </button>
               </div>
 
-              {/* Messages - scroll container (data-lenis-prevent + stopPropagation for Lenis) */}
+              {/* Messages - scroll container */}
               <div
-                data-lenis-prevent
                 className="flex-1 min-h-0 overflow-y-auto overscroll-contain p-4 space-y-4"
                 style={{
                   WebkitOverflowScrolling: "touch",

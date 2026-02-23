@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useTheme } from "../../store/ThemeContext.jsx";
 import "./work.css";
@@ -55,8 +55,6 @@ const Work = () => {
   const { t } = useTranslation();
   const [activeSectionSlug, setActiveSectionSlug] = useState(null);
   const [activeType, setActiveType] = useState(null);
-  const lenisCleanupTimeout = useRef(null);
-
   useEffect(() => {
     const ticker = () => ScrollTrigger.update();
     gsap.ticker.add(ticker);

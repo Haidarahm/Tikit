@@ -243,7 +243,6 @@ const CountryCodeDropdown = ({ value, onChange, isRtl, t }) => {
           {/* Scrollable list */}
           <div 
             ref={listRef}
-            data-lenis-prevent
             className="overflow-y-auto overscroll-contain"
             style={{ maxHeight: "240px" }}
             onWheelCapture={(e) => {

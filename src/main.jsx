@@ -5,7 +5,6 @@ import App from "./App.jsx";
 import { BrowserRouter } from "react-router-dom";
 import "./locales/i18n";
 import { I18nLanguageProvider } from "./store/I18nLanguageContext.jsx";
-import SmoothScrollProvider from "./components/SmoothScrollProvider.jsx";
 
 let reloaded = false;
 
@@ -34,11 +33,9 @@ if (!rootElement) {
 const app = (
   <BrowserRouter>
     <StrictMode>
-      <I18nLanguageProvider>
-        <SmoothScrollProvider>
+        <I18nLanguageProvider>
           <App />
-        </SmoothScrollProvider>
-      </I18nLanguageProvider>
+        </I18nLanguageProvider>
     </StrictMode>
   </BrowserRouter>
 );

@@ -8,7 +8,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
  * - Skips contact page
  * - Respects state.preserveScroll
  * - Special handling for work sections (no scroll when switching tabs; scroll when entering work detail)
- * - Handles Lenis, main container, and ScrollTrigger (immediate + delayed refresh for lazy load)
+ * - Handles main container and ScrollTrigger (immediate + delayed refresh for lazy load)
  */
 export function useScrollToTopOnRouteChange() {
   const { pathname, state } = useLocation();
@@ -29,13 +29,6 @@ export function useScrollToTopOnRouteChange() {
       document.querySelector("main") || document.querySelector("[data-nav-color]");
     if (mainContainer) {
       mainContainer.scrollTop = 0;
-    }
-
-    // Reset Lenis virtual scroll if available
-    const lenisInstance =
-      document.querySelector("[data-lenis-root]")?.__lenis__ || window.lenis;
-    if (lenisInstance && typeof lenisInstance.scrollTo === "function") {
-      lenisInstance.scrollTo(0, { immediate: true });
     }
 
     try {
