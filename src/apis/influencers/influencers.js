@@ -1,5 +1,18 @@
 import { api } from "../../config/backend";
 
+export const getAllInfluencers = async (params = {}) => {
+  const { page, per_page = 40 } = params;
+
+  const response = await api.get("/influencers/get/all", {
+    params: {
+      ...(page !== undefined ? { page } : {}),
+      ...(per_page !== undefined ? { per_page } : {}),
+    },
+  });
+
+  return response.data;
+};
+
 export const getAllSections = async (params = {}) => {
   const { page, per_page, lang } = params;
 

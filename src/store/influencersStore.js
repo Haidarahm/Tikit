@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import {
   getAllSections,
+  getAllInfluencers,
   getInfluencers,
 } from "../apis/influencers/influencers";
 
@@ -9,6 +10,11 @@ const initialState = {
   sectionsPagination: null,
   sectionsLoading: false,
   sectionsError: null,
+
+  allInfluencers: [],
+  allInfluencersPagination: null,
+  allInfluencersLoading: false,
+  allInfluencersError: null,
 
   influencersBySection: {},
   influencersPagination: {},
@@ -36,6 +42,28 @@ export const useInfluencersStore = create((set) => ({
       set({
         sectionsError: error?.message || "Failed to load sections",
         sectionsLoading: false,
+      });
+    }
+  },
+
+  loadAllInfluencers: async (params = {}) => {
+    set({ allInfluencersLoading: true, allInfluencersError: null });
+    try {
+      const response = await getAllInfluencers({
+        per_page: 40,
+        ...params,
+      });
+      const items = Array.isArray(response?.data) ? response.data : [];
+
+      set({
+        allInfluencers: items,
+        allInfluencersPagination: response?.pagination ?? null,
+        allInfluencersLoading: false,
+      });
+    } catch (error) {
+      set({
+        allInfluencersError: error?.message || "Failed to load influencers",
+        allInfluencersLoading: false,
       });
     }
   },
