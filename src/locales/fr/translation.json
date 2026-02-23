@@ -149,7 +149,29 @@
         },
         "services": {
             "title": "Ce que nous faisons le mieux",
-            "explore": "Explorer les services"
+            "explore": "Explorer les services",
+            "items": [
+                {
+                    "title": "Marketing d'influence",
+                    "subtitle": "Boostez votre marque grâce aux créateurs",
+                    "description": "Nous connectons les marques à des voix qui comptent. Grâce à un appariement fondé sur les données et des collaborations authentiques, nous vous aidons à atteindre des audiences qui font confiance et réagissent — transformant l'influence en impact réel."
+                },
+                {
+                    "title": "Gestion des médias sociaux",
+                    "subtitle": "Nous gérons votre présence en ligne avec précision et créativité.",
+                    "description": "De la planification à la publication, nous créons du contenu engageant, suivons les performances et développons des communautés fidèles qui placent votre marque au centre des conversations."
+                },
+                {
+                    "title": "Production",
+                    "subtitle": "Du concept au montage final, nous donnons vie aux idées audacieuses.",
+                    "description": "Que ce soit du contenu social, des visuels de marque ou des tournages commerciaux complets, notre équipe de production livre des récits de qualité qui captent l'attention et génèrent l'action."
+                },
+                {
+                    "title": "Branding",
+                    "subtitle": "Nous créons des marques qui se démarquent et représentent une valeur.",
+                    "description": "De l'identité visuelle à la voix de marque, nous façonnons la façon dont les audiences vous voient, vous ressentent et vous retiennent — créant clarté, cohérence et connexion à chaque point de contact."
+                }
+            ]
         },
         "influencers": {
             "badge": "Nos influenceurs",
