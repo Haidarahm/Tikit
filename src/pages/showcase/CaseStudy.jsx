@@ -108,50 +108,53 @@ const CaseStudy = ({ caseData, videos: videosFromProps }) => {
     };
   }, [caseData, videosFromProps]);
 
-  // Scroll listener for active section detection
+  // Scroll listener for active section detection (RAF-throttled, batched reads)
   useEffect(() => {
+    let rafId = 0;
+
     const handleScroll = () => {
-      const viewportCenter = window.innerHeight * 0.4;
-      
-      let activeFound = false;
-      
-      for (let index = 0; index < sectionRefs.current.length; index++) {
-        const ref = sectionRefs.current[index];
-        if (ref) {
-          const rect = ref.getBoundingClientRect();
-          if (rect.top <= viewportCenter && rect.bottom >= viewportCenter) {
+      if (rafId) return;
+      rafId = requestAnimationFrame(() => {
+        rafId = 0;
+        const viewportCenter = window.innerHeight * 0.4;
+
+        // Batch all getBoundingClientRect reads in a single pass
+        const rects = sectionRefs.current.map((ref) =>
+          ref ? ref.getBoundingClientRect() : null
+        );
+
+        let activeFound = false;
+        for (let index = 0; index < rects.length; index++) {
+          const rect = rects[index];
+          if (rect && rect.top <= viewportCenter && rect.bottom >= viewportCenter) {
             setActiveIndex(index);
             activeFound = true;
             break;
           }
         }
-      }
-      
-      if (!activeFound) {
-        let closestIndex = 0;
-        let closestDistance = Infinity;
-        
-        sectionRefs.current.forEach((ref, index) => {
-          if (ref) {
-            const rect = ref.getBoundingClientRect();
+
+        if (!activeFound) {
+          let closestIndex = 0;
+          let closestDistance = Infinity;
+          rects.forEach((rect, index) => {
+            if (!rect) return;
             const distance = Math.abs(rect.top - viewportCenter);
             if (distance < closestDistance) {
               closestDistance = distance;
               closestIndex = index;
             }
-          }
-        });
-        
-        setActiveIndex(closestIndex);
-      }
+          });
+          setActiveIndex(closestIndex);
+        }
+      });
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    
-    handleScroll(); // Initial check
+    handleScroll();
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      if (rafId) cancelAnimationFrame(rafId);
     };
   }, []);
 

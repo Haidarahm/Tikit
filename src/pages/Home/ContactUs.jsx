@@ -374,7 +374,7 @@ const SocialLinkInput = ({
           htmlFor={inputId}
           className={`absolute ${
             isRtl ? "right-3" : "left-3"
-          } -top-2.5 bg-[#F5F7FB] dark:bg-[#000] px-1 text-[var(--foreground)] text-xs transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-2 peer-focus:-top-2.5 peer-focus:text-xs`}
+          } -top-2.5 bg-[#F5F7FB] dark:bg-[#000] px-1 text-[var(--foreground)] text-xs transition-[top,font-size,color] duration-200 peer-placeholder-shown:text-sm peer-placeholder-shown:top-2 peer-focus:-top-2.5 peer-focus:text-xs`}
         >
           {t("contact.action.form.link")}
         </label>
@@ -690,7 +690,7 @@ const ContactUs = memo(({ className = "" }) => {
                     htmlFor="message"
                     className={`absolute ${
                       isRtl ? "right-3" : "left-3"
-                    } -top-2.5 bg-[#F5F7FB] dark:bg-[#000] px-1 text-[var(--foreground)] text-xs transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-2 peer-focus:-top-2.5 peer-focus:text-xs`}
+                    } -top-2.5 bg-[#F5F7FB] dark:bg-[#000] px-1 text-[var(--foreground)] text-xs transition-[top,font-size,color] duration-200 peer-placeholder-shown:text-sm peer-placeholder-shown:top-2 peer-focus:-top-2.5 peer-focus:text-xs`}
                   >
                     {t("contact.action.form.message")}
                   </label>
@@ -756,7 +756,7 @@ const ContactUs = memo(({ className = "" }) => {
                       htmlFor="influencer-message"
                       className={`absolute ${
                         isRtl ? "right-3" : "left-3"
-                      } -top-2.5 bg-[#F5F7FB] dark:bg-[#000] px-1 text-[var(--foreground)] text-xs transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-2 peer-focus:-top-2.5 peer-focus:text-xs`}
+                      } -top-2.5 bg-[#F5F7FB] dark:bg-[#000] px-1 text-[var(--foreground)] text-xs transition-[top,font-size,color] duration-200 peer-placeholder-shown:text-sm peer-placeholder-shown:top-2 peer-focus:-top-2.5 peer-focus:text-xs`}
                     >
                       {t("contact.action.form.message")}
                     </label>
@@ -773,7 +773,7 @@ const ContactUs = memo(({ className = "" }) => {
               loading ? "opacity-50 cursor-not-allowed" : ""
             }`}
           >
-            <span className="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out rounded-full transform translate-y-0 bg-[var(--secondary)] group-hover:h-full opacity-90"></span>
+            <span className="absolute inset-0 w-full h-full rounded-full bg-[var(--secondary)] opacity-90 origin-bottom scale-y-0 group-hover:scale-y-100 transition-transform duration-200 ease-out will-change-transform"></span>
             <span className="relative uppercase group-hover:text-[var(--background)] text-sm md:text-base font-semibold flex items-center gap-2">
               {loading && (
                 <svg

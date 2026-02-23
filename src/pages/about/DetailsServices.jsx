@@ -148,8 +148,8 @@ const DetailsServices = () => {
               {t(`about.details.services.items.${key}.desc`)}
             </p>
 
-            {/* Hover line */}
-            <div className={`absolute bottom-0 w-0 h-1 bg-gradient-to-r from-[#6ACBCC] to-[#1C6F6C] group-hover:w-full transition-all duration-500 ${isRtl ? "right-0" : "left-0"}`} />
+            {/* Hover line — uses scaleX transform instead of width to avoid layout */}
+            <div className={`absolute bottom-0 w-full h-1 bg-gradient-to-r from-[#6ACBCC] to-[#1C6F6C] transition-transform duration-500 scale-x-0 group-hover:scale-x-100 ${isRtl ? "right-0 origin-right" : "left-0 origin-left"}`} />
           </div>
         ))}
       </div>

@@ -97,8 +97,11 @@ const Goals = memo(() => {
               <img
                 src={goal.image}
                 alt={goal.title}
+                width={600}
+                height={400}
                 className="w-full h-full rounded-[15px] object-cover"
                 loading="lazy"
+                decoding="async"
               />
             </div>
           </ScrollStackItem>
@@ -142,8 +145,11 @@ const Goals = memo(() => {
               <img
                 src={goal.image}
                 alt={goal.title}
+                width={500}
+                height={300}
                 className="rounded-[15px] md:rounded-[39px] w-[120px] md:w-[500px] object-cover"
                 loading="lazy"
+                decoding="async"
               />
             </div>
           );

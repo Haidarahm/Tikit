@@ -24,20 +24,24 @@ const Accordion = ({ items = [], accordion = false, expandIconPosition = "end", 
 
   // Set max-height dynamically for smooth animation
   useEffect(() => {
+    // Batch all reads first, then all writes to avoid forced reflow
+    const updates = [];
     Object.keys(contentRefs.current).forEach((key) => {
       const element = contentRefs.current[key];
-      if (element) {
-        const innerElement = element.querySelector("div");
-        if (openKeys.includes(key)) {
-          // Set max-height to scrollHeight for smooth expansion
-          const height = innerElement?.scrollHeight || 0;
-          element.style.maxHeight = `${height}px`;
-          // Force reflow to ensure transition starts
-          element.offsetHeight;
-        } else {
-          element.style.maxHeight = "0px";
-        }
+      if (!element) return;
+      const innerElement = element.querySelector("div");
+      if (openKeys.includes(key)) {
+        const height = innerElement?.scrollHeight || 0;
+        updates.push({ element, maxHeight: `${height}px` });
+      } else {
+        updates.push({ element, maxHeight: "0px" });
       }
+    });
+    // Write phase — no reads after this point
+    requestAnimationFrame(() => {
+      updates.forEach(({ element, maxHeight }) => {
+        element.style.maxHeight = maxHeight;
+      });
     });
   }, [openKeys]);
 

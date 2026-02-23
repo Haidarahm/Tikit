@@ -52,7 +52,7 @@ const FloatingInput = ({ id, label, containerClassName, inputProps = {} }) => {
           htmlFor={id}
           className={`absolute ${
             isRtl ? "right-4" : "left-4"
-          } -top-2.5 bg-[var(--background)] px-1 text-[var(--foreground)] text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-focus:-top-2.5 peer-focus:text-sm`}
+          } -top-2.5 bg-[var(--background)] px-1 text-[var(--foreground)] text-sm transition-[top,font-size,color] duration-200 peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-focus:-top-2.5 peer-focus:text-sm`}
         >
           {label}
         </label>
@@ -341,7 +341,7 @@ const SocialLinkInput = ({
           htmlFor={`${id}-link`}
           className={`absolute ${
             isRtl ? "right-4" : "left-4"
-          } -top-2.5 bg-[var(--background)] px-1 text-[var(--foreground)] text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-focus:-top-2.5 peer-focus:text-sm`}
+          } -top-2.5 bg-[var(--background)] px-1 text-[var(--foreground)] text-sm transition-[top,font-size,color] duration-200 peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-focus:-top-2.5 peer-focus:text-sm`}
         >
           {t("contact.action.form.link")}
         </label>
@@ -677,7 +677,7 @@ const Action = () => {
                     htmlFor="contact-message"
                     className={`absolute ${
                       isRtl ? "right-4" : "left-4"
-                    } -top-2.5 bg-[var(--background)] px-1 text-[var(--foreground)] text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-focus:-top-2.5 peer-focus:text-sm`}
+                    } -top-2.5 bg-[var(--background)] px-1 text-[var(--foreground)] text-sm transition-[top,font-size,color] duration-200 peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-focus:-top-2.5 peer-focus:text-sm`}
                   >
                     {t("contact.action.form.message")}
                   </label>
@@ -748,7 +748,7 @@ const Action = () => {
                       htmlFor="influencer-message"
                       className={`absolute ${
                         isRtl ? "right-4" : "left-4"
-                      } -top-2.5 bg-[var(--background)] px-1 text-[var(--foreground)] text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-focus:-top-2.5 peer-focus:text-sm`}
+                      } -top-2.5 bg-[var(--background)] px-1 text-[var(--foreground)] text-sm transition-[top,font-size,color] duration-200 peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-focus:-top-2.5 peer-focus:text-sm`}
                     >
                       {t("contact.action.form.message")}
                     </label>
@@ -766,7 +766,7 @@ const Action = () => {
               loading ? "opacity-50 cursor-not-allowed" : ""
             }`}
           >
-            <span className="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out rounded-full transform translate-y-0 bg-[var(--secondary)]  group-hover:h-full opacity-90"></span>
+            <span className="absolute inset-0 w-full h-full rounded-full bg-[var(--secondary)] opacity-90 origin-bottom scale-y-0 group-hover:scale-y-100 transition-transform duration-200 ease-out will-change-transform"></span>
             <span className="relative uppercase group-hover:text-[var(--background)]  text-sm md:text-base font-semibold flex items-center gap-2">
               {loading && (
                 <svg

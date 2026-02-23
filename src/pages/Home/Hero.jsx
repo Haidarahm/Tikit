@@ -1,15 +1,15 @@
-import React, { useEffect, useLayoutEffect, useRef } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useMemo } from "react";
 import gsap from "gsap";
 import { useTranslation } from "react-i18next";
 import HeroAvatarGroup from "../../components/ui/HeroAvatarGroup";
+
+const isMobileDevice =
+  typeof window !== "undefined" && window.innerWidth < 768;
 
 const Hero = ({ introDone = true }) => {
   const sectionRef = useRef(null);
   const contentRef = useRef(null);
   const { t } = useTranslation();
-
-  const isMobile =
-    typeof window !== "undefined" && window.innerWidth < 768;
 
   // Set initial state before paint
   useLayoutEffect(() => {
@@ -76,7 +76,7 @@ const Hero = ({ introDone = true }) => {
           className="absolute inset-0 w-full h-full object-cover"
         >
           <source
-            src={isMobile ? "/main-hero-mobile.mp4" : "/showcase-video.mp4"}
+            src={isMobileDevice ? "/main-hero-mobile.mp4" : "/showcase-video.mp4"}
             type="video/mp4"
           />
         </video>

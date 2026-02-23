@@ -1,4 +1,4 @@
-import { useEffect, useRef, useLayoutEffect, useCallback } from "react";
+import { useEffect, useRef, useCallback } from "react";
 import { useLocation } from "react-router-dom";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -40,8 +40,8 @@ export function useScrollToTopOnRouteChange() {
     }
   }, []);
 
-  // Immediate scroll before paint
-  useLayoutEffect(() => {
+  // Immediate scroll on route change
+  useEffect(() => {
     const currentPathname = pathname;
     const previousPathname = previousPathnameRef.current;
 
@@ -64,7 +64,7 @@ export function useScrollToTopOnRouteChange() {
     previousPathnameRef.current = currentPathname;
   }, [pathname, state, isWorkDetailRoute, scrollToTop]);
 
-  // Delayed scrolls for Lenis/lazy load + ScrollTrigger refresh
+  // Delayed scrolls for lazy load + ScrollTrigger refresh
   useEffect(() => {
     if (pathname.startsWith("/contact-us")) return;
     if (state?.preserveScroll) return;

@@ -37,29 +37,35 @@ const PinnedSection = () => {
     let lastBodyHeight = 0;
     let bodyHeightCheckInterval;
 
+    let cachedViewportHeight = window.innerHeight;
+    let rafId = 0;
+
     const calculate = () => {
+      // READ phase — batch all layout reads
       const trackWidth     = track.scrollWidth;
       const viewportWidth  = window.innerWidth;
-      const viewportHeight = window.innerHeight;
+      cachedViewportHeight = window.innerHeight;
+      const rect           = section.getBoundingClientRect();
+      const currentScrollY = window.scrollY;
 
+      // COMPUTE
       scrollDistance = Math.max(0, trackWidth - viewportWidth);
       maxTranslate  = scrollDistance;
-      sectionHeight = viewportHeight + scrollDistance;
+      sectionHeight = cachedViewportHeight + scrollDistance;
+      sectionTop    = rect.top + currentScrollY;
 
-      const rect = section.getBoundingClientRect();
-      const scrollY = window.scrollY;
-      sectionTop = rect.top + scrollY;
-
+      // WRITE phase — single DOM write
       section.style.height = `${sectionHeight}px`;
     };
 
     const onScroll = () => {
-      const scrollY        = window.scrollY;
-      const viewportHeight = window.innerHeight;
-      const sectionStart   = sectionTop;
-      const sectionEnd     = sectionTop + sectionHeight - viewportHeight;
+      // READ phase — only two reads (scrollY is cheap)
+      const scrollY      = window.scrollY;
+      const sectionStart = sectionTop;
+      const sectionEnd   = sectionTop + sectionHeight - cachedViewportHeight;
 
-      if (scrollDistance <= 0) {
+      // WRITE phase — one branch of writes only
+      if (scrollDistance <= 0 || scrollY < sectionStart) {
         stickyContainer.style.position = "relative";
         stickyContainer.style.top      = "";
         stickyContainer.style.left     = "";
@@ -68,27 +74,15 @@ const PinnedSection = () => {
         return;
       }
 
-      // Before section
-      if (scrollY < sectionStart) {
-        stickyContainer.style.position = "relative";
-        stickyContainer.style.top      = "";
-        stickyContainer.style.left     = "";
-        stickyContainer.style.width    = "";
-        track.style.transform          = "translate3d(0, 0, 0)";
-        return;
-      }
-
-      // After section — lock at final position
       if (scrollY > sectionEnd) {
         stickyContainer.style.position = "absolute";
-        stickyContainer.style.top      = `${sectionHeight - viewportHeight}px`;
+        stickyContainer.style.top      = `${sectionHeight - cachedViewportHeight}px`;
         stickyContainer.style.left     = "0";
         stickyContainer.style.width    = "100%";
         track.style.transform          = `translate3d(-${maxTranslate}px, 0, 0)`;
         return;
       }
 
-      // Within scroll range — pin and translate
       stickyContainer.style.position = "fixed";
       stickyContainer.style.top      = "0";
       stickyContainer.style.left     = "0";
@@ -98,8 +92,15 @@ const PinnedSection = () => {
         ? 0
         : (scrollY - sectionStart) / (sectionEnd - sectionStart);
 
-      const translateX = -(progress * maxTranslate);
-      track.style.transform = `translate3d(${translateX}px, 0, 0)`;
+      track.style.transform = `translate3d(${-(progress * maxTranslate)}px, 0, 0)`;
+    };
+
+    const onScrollThrottled = () => {
+      if (rafId) return;
+      rafId = requestAnimationFrame(() => {
+        rafId = 0;
+        onScroll();
+      });
     };
 
     const init = () => {
@@ -129,7 +130,7 @@ const PinnedSection = () => {
           }
         }, 300);
 
-        window.addEventListener("scroll", onScroll, { passive: true });
+        window.addEventListener("scroll", onScrollThrottled, { passive: true });
       });
     };
 
@@ -143,7 +144,7 @@ const PinnedSection = () => {
           stickyContainer.style.left     = "";
           stickyContainer.style.width    = "";
           track.style.transform          = "";
-          window.removeEventListener("scroll", onScroll);
+          window.removeEventListener("scroll", onScrollThrottled);
           return;
         }
         calculate();
@@ -159,7 +160,8 @@ const PinnedSection = () => {
       clearTimeout(recalcTimeout1);
       clearTimeout(recalcTimeout2);
       clearInterval(bodyHeightCheckInterval);
-      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("scroll", onScrollThrottled);
+      if (rafId) cancelAnimationFrame(rafId);
       window.removeEventListener("resize", handleResize);
       if (section) section.style.height = "";
       if (stickyContainer) {

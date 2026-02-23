@@ -311,13 +311,16 @@ const NewsDetailsHeader = ({ newsData: propNewsData, loading: propLoading }) => 
                 
                 return (
                   <img
-                    key={imageUrl} // Force re-render when URL changes
+                    key={imageUrl}
                     src={imageUrl}
                     alt={currentNewsData.title || "News Header"}
+                    width={1200}
+                    height={630}
                     className={`w-full h-full object-cover transition-opacity duration-700 group-hover:scale-105 ${
                       imageLoaded ? 'opacity-100' : 'opacity-0'
                     }`}
                     loading="lazy"
+                    decoding="async"
                     onLoad={() => {
                       if (process.env.NODE_ENV === 'development' && !isPrerendering) {
                         console.log('Image loaded successfully:', imageUrl)

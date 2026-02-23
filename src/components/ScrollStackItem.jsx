@@ -538,7 +538,7 @@ const ScrollStack = ({
     refreshNow,
   ]);
 
-  const containerStyles = useWindowScroll
+  const containerStyles = useMemo(() => useWindowScroll
     ? {
         overscrollBehavior: "contain",
         WebkitOverflowScrolling: "touch",
@@ -554,7 +554,7 @@ const ScrollStack = ({
         transform: "translateZ(0)",
         willChange: "scroll-position",
         zIndex: 1,
-      };
+      }, [useWindowScroll]);
 
   const containerClassName = useWindowScroll
     ? `relative w-full ${className}`.trim()

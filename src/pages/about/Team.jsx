@@ -97,79 +97,69 @@ const Team = () => {
     let resizeTimer;
     let imageLoadHandlers = new Set();
 
+    let cachedViewportHeight = window.innerHeight;
+    let rafId = 0;
+
     const calculate = () => {
-      // Batch all layout reads together to avoid forced reflow
-      const trackWidth = track.scrollWidth;
-      const viewportWidth = window.innerWidth;
-      const viewportHeight = window.innerHeight;
+      // READ phase — batch all layout reads
+      const trackWidth     = track.scrollWidth;
+      const viewportWidth  = window.innerWidth;
+      cachedViewportHeight = window.innerHeight;
+      const rect           = section.getBoundingClientRect();
+      const currentScrollY = window.scrollY;
 
-      // Horizontal distance: full track width minus full viewport
+      // COMPUTE
       scrollDistance = Math.max(0, trackWidth - viewportWidth);
-      maxTranslate = scrollDistance;
+      maxTranslate  = scrollDistance;
+      sectionHeight = cachedViewportHeight + scrollDistance;
+      sectionTop    = rect.top + currentScrollY;
 
-      // Vertical scroll area: viewport height + horizontal distance
-      sectionHeight = viewportHeight + scrollDistance;
-
-      // Batch getBoundingClientRect and scrollY reads
-      const rect = section.getBoundingClientRect();
-      const scrollY = window.scrollY;
-      sectionTop = rect.top + scrollY;
-
-      // Set section height to create scroll space
+      // WRITE phase
       section.style.height = `${sectionHeight}px`;
     };
 
     const onScroll = () => {
-      const scrollY = window.scrollY;
-      const viewportHeight = window.innerHeight;
-
+      const scrollY      = window.scrollY;
       const sectionStart = sectionTop;
-      // End when bottom of viewport reaches end of section
-      const sectionEnd = sectionTop + sectionHeight - viewportHeight;
+      const sectionEnd   = sectionTop + sectionHeight - cachedViewportHeight;
 
-      if (scrollDistance <= 0) {
-        // Nothing to scroll horizontally; just ensure default layout
+      if (scrollDistance <= 0 || scrollY < sectionStart) {
         stickyContainer.style.position = "relative";
-        stickyContainer.style.top = "";
-        stickyContainer.style.left = "";
-        stickyContainer.style.width = "";
-        track.style.transform = "translate3d(0, 0, 0)";
+        stickyContainer.style.top      = "";
+        stickyContainer.style.left     = "";
+        stickyContainer.style.width    = "";
+        track.style.transform          = "translate3d(0, 0, 0)";
         return;
       }
 
-      // Before section
-      if (scrollY < sectionStart) {
-        stickyContainer.style.position = "relative";
-        stickyContainer.style.top = "";
-        stickyContainer.style.left = "";
-        stickyContainer.style.width = "";
-        track.style.transform = "translate3d(0, 0, 0)";
-        return;
-      }
-
-      // After section - lock at final position
       if (scrollY > sectionEnd) {
         stickyContainer.style.position = "absolute";
-        stickyContainer.style.top = `${sectionHeight - viewportHeight}px`;
-        stickyContainer.style.left = "0";
-        stickyContainer.style.width = "100%";
-        track.style.transform = `translate3d(-${maxTranslate}px, 0, 0)`;
+        stickyContainer.style.top      = `${sectionHeight - cachedViewportHeight}px`;
+        stickyContainer.style.left     = "0";
+        stickyContainer.style.width    = "100%";
+        track.style.transform          = `translate3d(-${maxTranslate}px, 0, 0)`;
         return;
       }
 
-      // Within the horizontal scroll range → pin & translate
       stickyContainer.style.position = "fixed";
-      stickyContainer.style.top = "0";
-      stickyContainer.style.left = "0";
-      stickyContainer.style.width = "100%";
+      stickyContainer.style.top      = "0";
+      stickyContainer.style.left     = "0";
+      stickyContainer.style.width    = "100%";
 
       const progress =
         sectionEnd === sectionStart
           ? 0
           : (scrollY - sectionStart) / (sectionEnd - sectionStart);
 
-      const translateX = -(progress * maxTranslate);
-      track.style.transform = `translate3d(${translateX}px, 0, 0)`;
+      track.style.transform = `translate3d(${-(progress * maxTranslate)}px, 0, 0)`;
+    };
+
+    const onScrollThrottled = () => {
+      if (rafId) return;
+      rafId = requestAnimationFrame(() => {
+        rafId = 0;
+        onScroll();
+      });
     };
 
     const attachImageLoadListeners = () => {
@@ -245,7 +235,7 @@ const Team = () => {
           subtree: true,
         });
         
-        window.addEventListener("scroll", onScroll, { passive: true });
+        window.addEventListener("scroll", onScrollThrottled, { passive: true });
       });
     };
 
@@ -260,7 +250,7 @@ const Team = () => {
           stickyContainer.style.left = "";
           stickyContainer.style.width = "";
           track.style.transform = "";
-          window.removeEventListener("scroll", onScroll);
+          window.removeEventListener("scroll", onScrollThrottled);
           return;
         }
 
@@ -275,7 +265,8 @@ const Team = () => {
     return () => {
       clearTimeout(resizeTimer);
       clearTimeout(imageCheckTimeout);
-      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("scroll", onScrollThrottled);
+      if (rafId) cancelAnimationFrame(rafId);
       window.removeEventListener("resize", handleResize);
       window.removeEventListener('teamImageLoaded', handleImageLoadEvent);
       if (mutationObserver) {
@@ -398,7 +389,7 @@ const Team = () => {
                       loading="lazy"
                       decoding="async"
                       height={400}
-                      className="absolute w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-110"
+                      className="absolute w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-110 will-change-transform"
                       draggable={false}
                       onLoad={() => {
                         // Trigger recalculation when image loads

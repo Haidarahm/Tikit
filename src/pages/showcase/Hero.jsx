@@ -133,7 +133,9 @@ const Hero = ({ caseData, loading }) => {
           alt={title || "Project logo"}
           width={1920}
           height={1080}
-          loading="lazy"
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
           onLoad={() => setImageLoaded(true)}
           onError={() => setImageLoaded(false)}
         />

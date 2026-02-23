@@ -1,4 +1,4 @@
-import React, { useMemo, memo } from "react";
+import React, { useMemo, memo, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
 import { useTranslation } from "react-i18next";
@@ -29,7 +29,7 @@ const CARD_COLORS = [
   { bg: "bg-[#252525]/15", border: "border-[#252525]/30", accent: "#6ACBCC" },
 ];
 
-const ServiceCard = ({ service, index, onClick }) => {
+const ServiceCard = memo(({ service, index, onClick }) => {
   const colors = CARD_COLORS[index % CARD_COLORS.length];
 
   return (
@@ -42,36 +42,23 @@ const ServiceCard = ({ service, index, onClick }) => {
       style={{ perspective: "800px" }}
     >
       <div
-        className={`relative rounded-[14px] overflow-hidden border ${colors.border} ${colors.bg} flex flex-col h-full`}
-        style={{
-          transition: "transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease",
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.transform = "scale(1.025) translateZ(0)";
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.transform = "scale(1) translateZ(0)";
-        }}
+        className={`relative rounded-[14px] overflow-hidden border ${colors.border} ${colors.bg} flex flex-col h-full will-change-transform hover:scale-[1.025] transition-transform duration-400 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]`}
       >
         <div className="relative w-full h-[150px] md:h-[160px] overflow-hidden">
           <img
             src={service.media}
             alt={service.title}
-            className="w-full h-full object-cover"
-            style={{ transition: "transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)" }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = "scale(1.08) translateZ(0)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = "scale(1) translateZ(0)";
-            }}
+            width={400}
+            height={160}
+            className="w-full h-full object-cover transition-transform duration-600 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:scale-[1.08]"
             loading="lazy"
+            decoding="async"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
         </div>
 
         <div className="p-4 flex flex-col gap-1.5 flex-1">
-          <h3 className="font-antonio font-bold text-[18px] md:text-[20px] text-[var(--foreground)] group-hover:bg-gradient-to-r group-hover:from-[#6ACBCC] group-hover:to-[#1C6F6C] group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">
+          <h3 className="font-antonio font-bold text-[18px] md:text-[20px] text-[var(--foreground)] group-hover:bg-gradient-to-r group-hover:from-[#6ACBCC] group-hover:to-[#1C6F6C] group-hover:bg-clip-text group-hover:text-transparent transition-colors duration-300">
             {service.title}
           </h3>
 
@@ -80,7 +67,7 @@ const ServiceCard = ({ service, index, onClick }) => {
           </p>
 
           <div
-            className="flex items-center gap-2 mt-auto pt-1 text-[12px] font-medium opacity-100 md:opacity-0 md:translate-y-2 md:group-hover:opacity-100 md:group-hover:translate-y-0 transition-all duration-300"
+            className="flex items-center gap-2 mt-auto pt-1 text-[12px] font-medium opacity-100 md:opacity-0 md:translate-y-2 md:group-hover:opacity-100 md:group-hover:translate-y-0 transition-[opacity,transform] duration-300"
             style={{ color: colors.accent }}
           >
             <span>Learn More</span>
@@ -93,7 +80,8 @@ const ServiceCard = ({ service, index, onClick }) => {
       </div>
     </div>
   );
-};
+});
+ServiceCard.displayName = "ServiceCard";
 
 const FALLBACK_ITEMS = [
   {
@@ -122,6 +110,10 @@ const Services = memo(() => {
   const navigate = useNavigate();
   const { isRtl } = useI18nLanguage();
   const { t } = useTranslation();
+
+  const handleCardClick = useCallback((link) => {
+    navigate(link);
+  }, [navigate]);
 
   const items = useMemo(() => {
     const translated = t("home.services.items", { returnObjects: true });
@@ -170,7 +162,7 @@ const Services = memo(() => {
               key={index}
               service={service}
               index={index}
-              onClick={() => navigate(service.link)}
+              onClick={() => handleCardClick(service.link)}
             />
           ))}
         </div>
