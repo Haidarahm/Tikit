@@ -16,7 +16,7 @@ const SERVICE_IMAGES = [
 ];
 
 const SERVICE_ROUTES = [
-  "/services/influencer-marketing",
+  "/services/influencer-marketing-agency-dubai",
   "/services/social-media-management",
   "/services/production",
   "/services/branding",

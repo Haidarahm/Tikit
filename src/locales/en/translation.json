@@ -852,11 +852,43 @@
     },
     "serviceSections": {
         "influencerMarketing": {
-            "badge": "Influencer Marketing",
+            "badge": "Influencer Marketing Agency Dubai",
             "hero": {
-                "title": "Connect With The Right",
-                "mainWord": "Influencers",
-                "description": "We bridge the gap between brands and influential voices, creating authentic partnerships that drive engagement, build trust, and deliver measurable results across all platforms."
+                "title": "Dubai's Premier Influencer",
+                "mainWord": "Marketing Agency",
+                "description": "We bridge the gap between brands and influential voices across the UAE, creating authentic partnerships that drive engagement, build trust, and deliver measurable ROI across Instagram, TikTok, YouTube, and all major platforms."
+            },
+            "subServices": {
+                "title": "Our Influencer Marketing Solutions",
+                "subtitle": "Comprehensive influencer marketing services tailored for the UAE market",
+                "campaignManagement": {
+                    "title": "Campaign Management",
+                    "description": "End-to-end influencer campaign planning, execution, and optimization for maximum brand impact."
+                },
+                "microInfluencer": {
+                    "title": "Micro-Influencer Marketing",
+                    "description": "Leverage authentic nano and micro-influencers for cost-effective engagement across the UAE."
+                },
+                "luxuryInfluencer": {
+                    "title": "Luxury Influencer Marketing",
+                    "description": "Premium influencer partnerships for high-end brands in Dubai's luxury market."
+                },
+                "roiAnalytics": {
+                    "title": "ROI & Analytics",
+                    "description": "Data-driven campaign measurement with real-time dashboards and comprehensive reporting."
+                },
+                "instagramInfluencer": {
+                    "title": "Instagram Influencer Marketing",
+                    "description": "Strategic Instagram Reels, Stories, and collaborations to maximize brand visibility."
+                },
+                "tiktokInfluencer": {
+                    "title": "TikTok Influencer Marketing",
+                    "description": "Viral TikTok campaigns leveraging trending content to reach Gen Z and millennials."
+                },
+                "influencerCost": {
+                    "title": "Influencer Marketing Cost UAE",
+                    "description": "Transparent pricing tiers and budget planning for influencer marketing in the UAE."
+                }
             },
             "stats": {
                 "influencersNetwork": "Influencers Network",

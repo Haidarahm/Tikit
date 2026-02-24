@@ -6,20 +6,18 @@ import { BrowserRouter } from "react-router-dom";
 import "./locales/i18n";
 import { I18nLanguageProvider } from "./store/I18nLanguageContext.jsx";
 
-let reloaded = false;
-
-// Guard window/document access for prerendering compatibility
 if (typeof window !== "undefined") {
   window.addEventListener('error', (e) => {
     if (
-      !reloaded &&
-      (
-        e.message?.includes('Failed to fetch dynamically imported module') ||
-        e.message?.includes('Expected a JavaScript module script')
-      )
+      e.message?.includes('Failed to fetch dynamically imported module') ||
+      e.message?.includes('Expected a JavaScript module script')
     ) {
-      reloaded = true;
-      window.location.reload();
+      const lastReload = sessionStorage.getItem('chunk-reload-ts');
+      const now = Date.now();
+      if (!lastReload || now - Number(lastReload) > 10000) {
+        sessionStorage.setItem('chunk-reload-ts', String(now));
+        window.location.reload();
+      }
     }
   });
 }

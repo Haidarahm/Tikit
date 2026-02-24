@@ -12,6 +12,7 @@ import Home from "./pages/Home/Home";
 import { ToastContainer } from "./components/ui/Toast";
 import AIAssistButton from "./components/AIAssistButton";
 import { IntroProvider } from "./store/IntroContext";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 // Lazy load components
 const NewsletterPopup = lazy(() => import("./components/NewsletterPopup"));
@@ -31,9 +32,30 @@ const InfluencersRegister = lazy(() =>
   import("./pages/influencers-register/InfluencersRegister")
 );
 
-// Service Sections
+// Service Sections - Influencer Marketing Hub & Sub-pages
 const InfluencerMarketing = lazy(() =>
   import("./pages/services-sections/influencers-marketing/InfluencerMarketing")
+);
+const CampaignManagement = lazy(() =>
+  import("./pages/services-sections/influencers-marketing/CampaignManagement")
+);
+const MicroInfluencerMarketing = lazy(() =>
+  import("./pages/services-sections/influencers-marketing/MicroInfluencerMarketing")
+);
+const LuxuryInfluencerMarketing = lazy(() =>
+  import("./pages/services-sections/influencers-marketing/LuxuryInfluencerMarketing")
+);
+const ROIAnalytics = lazy(() =>
+  import("./pages/services-sections/influencers-marketing/ROIAnalytics")
+);
+const InstagramInfluencerMarketing = lazy(() =>
+  import("./pages/services-sections/influencers-marketing/InstagramInfluencerMarketing")
+);
+const TiktokInfluencerMarketing = lazy(() =>
+  import("./pages/services-sections/influencers-marketing/TiktokInfluencerMarketing")
+);
+const InfluencerMarketingCost = lazy(() =>
+  import("./pages/services-sections/influencers-marketing/InfluencerMarketingCost")
 );
 const SocialMediaManagement = lazy(() =>
   import("./pages/services-sections/SocialMediaManagement")
@@ -107,6 +129,7 @@ function App() {
       <ClientProvider>
         <IntroProvider>
         <ToastContainer />
+        <ErrorBoundary>
         <Suspense fallback={<LoadingSpinner />}>
           <Routes>
             <Route element={<Layout />}>
@@ -130,8 +153,15 @@ function App() {
               <Route path="/work/social/:slug" element={<SocialDetails />} />
               <Route path="/work/creative/:slug" element={<CreativeDetails />} />
               <Route path="/work/event/:slug" element={<EventDetails />} />
-              {/* Service Sections */}
-              <Route path="/services/influencer-marketing" element={<InfluencerMarketing />} />
+              {/* Service Sections - Influencer Marketing Hub & Sub-pages */}
+              <Route path="/services/influencer-marketing-agency-dubai" element={<InfluencerMarketing />} />
+              <Route path="/services/influencer-marketing-agency-dubai/campaign-management" element={<CampaignManagement />} />
+              <Route path="/services/influencer-marketing-agency-dubai/micro-influencer-marketing-uae" element={<MicroInfluencerMarketing />} />
+              <Route path="/services/influencer-marketing-agency-dubai/luxury-influencer-marketing" element={<LuxuryInfluencerMarketing />} />
+              <Route path="/services/influencer-marketing-agency-dubai/roi-analytics" element={<ROIAnalytics />} />
+              <Route path="/services/influencer-marketing-agency-dubai/instagram-influencer-marketing" element={<InstagramInfluencerMarketing />} />
+              <Route path="/services/influencer-marketing-agency-dubai/tiktok-influencer-marketing" element={<TiktokInfluencerMarketing />} />
+              <Route path="/services/influencer-marketing-agency-dubai/influencer-marketing-cost-uae" element={<InfluencerMarketingCost />} />
               <Route path="/services/social-media-management" element={<SocialMediaManagement />} />
               <Route path="/services/production" element={<Production />} />
               <Route path="/services/branding" element={<Branding />} />
@@ -149,6 +179,7 @@ function App() {
             </Route>
           </Routes>
         </Suspense>
+        </ErrorBoundary>
         <Suspense fallback={null}>
           <NewsletterPopup />
         </Suspense>

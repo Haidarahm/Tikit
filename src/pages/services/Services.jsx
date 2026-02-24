@@ -90,7 +90,7 @@ const Services = () => {
       normalized.includes("marketing dinfluence") ||
       normalized.includes("marketing d'influence")
     ) {
-      return "/services/influencer-marketing";
+      return "/services/influencer-marketing-agency-dubai";
     }
     // Social Media Marketing/Management
     if (
