@@ -33,7 +33,7 @@ const InfluencersRegister = lazy(() =>
 
 // Service Sections
 const InfluencerMarketing = lazy(() =>
-  import("./pages/services-sections/InfluencerMarketing")
+  import("./pages/services-sections/influencers-marketing/InfluencerMarketing")
 );
 const SocialMediaManagement = lazy(() =>
   import("./pages/services-sections/SocialMediaManagement")

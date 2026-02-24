@@ -2,15 +2,15 @@ import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useTranslation } from "react-i18next";
-import { useI18nLanguage } from "../../store/I18nLanguageContext";
-import influencerHero from "../../assets/services/Influencer-Marketing.webp";
-import influencer1 from "../../assets/influencers/ahmed-ben-chaibah.webp";
-import influencer2 from "../../assets/influencers/hessa-alfalasi.webp";
-import influencer3 from "../../assets/influencers/amira-mohamed.webp";
-import influencer4 from "../../assets/influencers/sultan-alsuwaidi.webp";
-import TikitTitle from "../../components/TikitTitle";
-import SEOHead from "../../components/SEOHead";
-import FAQ from "../../components/FAQ";
+import { useI18nLanguage } from "../../../store/I18nLanguageContext";
+import influencerHero from "../../../assets/services/Influencer-Marketing.webp";
+import influencer1 from "../../../assets/influencers/ahmed-ben-chaibah.webp";
+import influencer2 from "../../../assets/influencers/hessa-alfalasi.webp";
+import influencer3 from "../../../assets/influencers/amira-mohamed.webp";
+import influencer4 from "../../../assets/influencers/sultan-alsuwaidi.webp";
+import TikitTitle from "../../../components/TikitTitle";
+import SEOHead from "../../../components/SEOHead";
+import FAQ from "../../../components/FAQ";
 import { HiCheckCircle, HiBadgeCheck, HiGlobe, HiUserGroup, HiChartBar } from "react-icons/hi";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -389,49 +389,6 @@ const InfluencerMarketing = () => {
       <div className="container mx-auto px-6">
         <div className="h-px bg-gradient-to-r from-transparent via-[var(--foreground)]/20 to-transparent" />
       </div>
-
-      {/* Showcase Section */}
-      <section ref={showcaseRef} className="py-20 px-6">
-        <div className="max-w-7xl mx-auto">
-          <h2 className={`text-3xl md:text-5xl font-bold text-[var(--foreground)] text-center mb-4 ${language === "ar" ? "font-cairo" : "font-antonio"}`}>
-            {t("serviceSections.influencerMarketing.showcase.title")}
-          </h2>
-          <p className="text-[var(--foreground)]/60 text-center mb-16 max-w-2xl mx-auto">
-            {t("serviceSections.influencerMarketing.showcase.description")}
-          </p>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {[
-              { img: influencer1, name: "Ahmed Ben Chaibah" },
-              { img: influencer2, name: "Hessa Alfalasi" },
-              { img: influencer3, name: "Sara Gazioglu" },
-              { img: influencer4, name: "Sultan Alsuwaidi" },
-            ].map((influencer, idx) => (
-              <div
-                key={idx}
-                className="showcase-image group relative overflow-hidden rounded-2xl aspect-square"
-              >
-                <img
-                  src={influencer.img}
-                  alt={influencer.name}
-                  width={300}
-                  height={300}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <p className="text-white font-semibold text-sm md:text-base">
-                      {influencer.name}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Why Trust Us Section - Entity & Trust Signals */}
       <section ref={trustRef} className="py-20 px-6 bg-[var(--foreground)]/5">
         <div className="max-w-6xl mx-auto">
