@@ -1,10 +1,21 @@
 import React, { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../store/I18nLanguageContext";
 
 gsap.registerPlugin(ScrollTrigger);
+
+// Map service keys to internal routes (only services with dedicated pages)
+const SERVICE_ROUTES = {
+  influencerMarketing: "/services/influencer-marketing-agency-dubai",
+  brandStrategy: "/services/branding",
+  socialMedia: "/services/social-media-management",
+  creativeDesign: "/services/branding",
+  contentCreation: "/services/production",
+  digitalMarketing: "/services",
+};
 
 const serviceKeys = [
   "influencerMarketing",
@@ -112,46 +123,58 @@ const DetailsServices = () => {
 
       {/* Services Grid */}
       <div ref={listRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 lg:gap-6 max-w-6xl mx-auto">
-        {serviceKeys.map((key, index) => (
-          <div
-            key={index}
-            className="serv-item group relative p-4 md:p-6 lg:p-8 rounded-xl md:rounded-2xl border border-[var(--foreground)]/10 bg-[var(--foreground)]/[0.02] hover:border-[#6ACBCC]/50 hover:bg-[#6ACBCC]/5 transition-all duration-300 cursor-default overflow-hidden"
-          >
-            {/* Number background */}
-            <span className={`absolute -top-2 md:-top-4 text-[60px] md:text-[80px] font-bold text-[var(--foreground)]/[0.03] group-hover:text-[#6ACBCC]/10 transition-colors duration-300 select-none ${isRtl ? "-left-2 font-cairo" : "-right-2 font-antonio"}`}>
-              {String(index + 1).padStart(2, "0")}
-            </span>
+        {serviceKeys.map((key, index) => {
+          const href = SERVICE_ROUTES[key];
+          const cardClass = `serv-item group relative p-4 md:p-6 lg:p-8 rounded-xl md:rounded-2xl border border-[var(--foreground)]/10 bg-[var(--foreground)]/[0.02] hover:border-[#6ACBCC]/50 hover:bg-[#6ACBCC]/5 transition-all duration-300 overflow-hidden ${href ? "cursor-pointer" : "cursor-default"}`;
 
-            {/* Arrow icon */}
-            <div className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-[#6ACBCC]/30 flex items-center justify-center mb-3 md:mb-4 group-hover:bg-[#6ACBCC] group-hover:border-[#6ACBCC] transition-all duration-300">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                className={`w-4 h-4 md:w-5 md:h-5 group-hover:rotate-0 transition-transform duration-300 ${isRtl ? "rotate-[135deg]" : "rotate-[-45deg]"}`}
-              >
-                <path
-                  d="M5 12H19M19 12L12 5M19 12L12 19"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="text-[#6ACBCC] group-hover:text-white"
-                />
-              </svg>
+          const content = (
+            <>
+              {/* Number background */}
+              <span className={`absolute -top-2 md:-top-4 text-[60px] md:text-[80px] font-bold text-[var(--foreground)]/[0.03] group-hover:text-[#6ACBCC]/10 transition-colors duration-300 select-none ${isRtl ? "-left-2 font-cairo" : "-right-2 font-antonio"}`}>
+                {String(index + 1).padStart(2, "0")}
+              </span>
+
+              {/* Arrow icon */}
+              <div className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-[#6ACBCC]/30 flex items-center justify-center mb-3 md:mb-4 group-hover:bg-[#6ACBCC] group-hover:border-[#6ACBCC] transition-all duration-300">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  className={`w-4 h-4 md:w-5 md:h-5 group-hover:rotate-0 transition-transform duration-300 ${isRtl ? "rotate-[135deg]" : "rotate-[-45deg]"}`}
+                >
+                  <path
+                    d="M5 12H19M19 12L12 5M19 12L12 19"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="text-[#6ACBCC] group-hover:text-white"
+                  />
+                </svg>
+              </div>
+
+              {/* Content */}
+              <h3 className={`text-base md:text-lg lg:text-xl font-bold text-[var(--foreground)] mb-1 md:mb-2 group-hover:text-[#6ACBCC] transition-colors duration-300 ${isRtl ? "font-cairo" : "font-antonio"}`}>
+                {t(`about.details.services.items.${key}.name`)}
+              </h3>
+              <p className={`text-xs md:text-sm text-[var(--foreground)]/80 dark:text-[var(--foreground)]/50 group-hover:text-[var(--foreground)] dark:group-hover:text-[var(--foreground)]/70 transition-colors duration-300 ${isRtl ? "font-cairo" : "font-hero-light"}`}>
+                {t(`about.details.services.items.${key}.desc`)}
+              </p>
+
+              {/* Hover line — uses scaleX transform instead of width to avoid layout */}
+              <div className={`absolute bottom-0 w-full h-1 bg-gradient-to-r from-[#6ACBCC] to-[#1C6F6C] transition-transform duration-500 scale-x-0 group-hover:scale-x-100 ${isRtl ? "right-0 origin-right" : "left-0 origin-left"}`} />
+            </>
+          );
+
+          return href ? (
+            <Link key={index} to={href} className={cardClass}>
+              {content}
+            </Link>
+          ) : (
+            <div key={index} className={cardClass}>
+              {content}
             </div>
-
-            {/* Content */}
-            <h3 className={`text-base md:text-lg lg:text-xl font-bold text-[var(--foreground)] mb-1 md:mb-2 group-hover:text-[#6ACBCC] transition-colors duration-300 ${isRtl ? "font-cairo" : "font-antonio"}`}>
-              {t(`about.details.services.items.${key}.name`)}
-            </h3>
-            <p className={`text-xs md:text-sm text-[var(--foreground)]/80 dark:text-[var(--foreground)]/50 group-hover:text-[var(--foreground)] dark:group-hover:text-[var(--foreground)]/70 transition-colors duration-300 ${isRtl ? "font-cairo" : "font-hero-light"}`}>
-              {t(`about.details.services.items.${key}.desc`)}
-            </p>
-
-            {/* Hover line — uses scaleX transform instead of width to avoid layout */}
-            <div className={`absolute bottom-0 w-full h-1 bg-gradient-to-r from-[#6ACBCC] to-[#1C6F6C] transition-transform duration-500 scale-x-0 group-hover:scale-x-100 ${isRtl ? "right-0 origin-right" : "left-0 origin-left"}`} />
-          </div>
-        ))}
+          );
+        })}
       </div>
 
       {/* Bottom CTA Section */}

@@ -111,7 +111,7 @@ const SocialDetails = () => {
         label: t("work.details.social.followerGrowth"),
         value:
           itemData.follower_growth != null
-            ? `${itemData.follower_growth}%`
+            ? formatNumber(itemData.follower_growth)
             : null,
         Icon: FiTrendingUp,
       },
