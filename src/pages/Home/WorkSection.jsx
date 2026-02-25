@@ -136,6 +136,7 @@ const WorkSection = memo(() => {
 
       return {
         id: section?.id ?? `${title}-${section?.type ?? "work"}`,
+        slug: section?.slug ?? section?.slug_en ?? "",
         title,
         subtitle,
         description,
@@ -234,8 +235,10 @@ const WorkSection = memo(() => {
                         transition-colors"
                         onClick={() => {
                           try {
-                            if (item.slug != null) {
+                            if (item.slug) {
                               navigate(`/work/${encodeURIComponent(item.slug)}`);
+                            } else {
+                              navigate("/work");
                             }
                           } catch (_) {}
                         }}
