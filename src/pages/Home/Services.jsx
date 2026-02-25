@@ -137,7 +137,11 @@ const Services = memo(() => {
       dir={isRtl ? "rtl" : "ltr"}
     >
       <div className="flex flex-col md:flex-row gap-6 md:gap-10 items-start md:items-center">
-        <div className="w-full md:w-[35%] flex flex-col gap-3 md:gap-5 px-2 md:px-0">
+        <div
+          className="w-full md:w-[35%] flex flex-col gap-3 md:gap-5 px-2 md:px-0"
+          data-aos="fade-up"
+          data-aos-duration="600"
+        >
           <TikitTitle
             title={t("home.services.title")}
             mainWord=""

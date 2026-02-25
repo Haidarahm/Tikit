@@ -400,7 +400,11 @@ const Map = () => {
         <div className={`flex flex-col lg:flex-row items-center gap-8 lg:gap-12 h-full`}>
           
           {/* Left Section - Agency Info */}
-          <div className={`w-full lg:w-2/5 flex flex-col justify-center ${isRtl === "true" ? 'text-right' : ''}`}>
+          <div
+            className={`w-full lg:w-2/5 flex flex-col justify-center ${isRtl === "true" ? 'text-right' : ''}`}
+            data-aos="fade-up"
+            data-aos-duration="600"
+          >
             <span className='animate-text text-[#4ec0c3] text-sm md:text-base font-medium tracking-widest uppercase mb-4'>
               {t('home.map.badge')}
             </span>
