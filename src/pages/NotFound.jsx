@@ -4,11 +4,13 @@ import { gsap } from "gsap";
 import Logo from "../assets/logo.jsx";
 import { useTheme } from "../store/ThemeContext";
 import { useI18nLanguage } from "../store/I18nLanguageContext";
+import { useFontClass } from "../hooks/useFontClass";
 import { useTranslation } from "react-i18next";
 
 const NotFound = () => {
   const { theme } = useTheme();
   const { isRtl } = useI18nLanguage();
+  const { fontHeading, fontBody } = useFontClass();
   const { t } = useTranslation();
   const containerRef = useRef(null);
   const logoRef = useRef(null);
@@ -142,7 +144,7 @@ const NotFound = () => {
       {/* 404 Number */}
       <div
         ref={numberRef}
-        className={`relative mb-4  ${isRtl ? "font-cairo" : "font-antonio"}`}
+        className={`relative mb-4 ${fontHeading}`}
       >
         <span className="text-[120px] md:text-[200px] lg:text-[220px] font-bold leading-none bg-gradient-to-r from-[#6ACBCC] to-[#1C6F6C] bg-clip-text text-transparent">
           404
@@ -157,7 +159,7 @@ const NotFound = () => {
       <h1
         ref={titleRef}
         className={`text-2xl md:text-4xl lg:text-5xl font-bold text-[var(--foreground)] mb-4 text-center ${
-          isRtl ? "font-cairo" : "font-antonio"
+          fontHeading
         }`}
       >
         {t("notFound.title", "Oops! Page Not Found")}
@@ -167,7 +169,7 @@ const NotFound = () => {
       <p
         ref={descRef}
         className={`text-base md:text-lg lg:text-xl text-[var(--foreground)]/60 mb-8  text-center max-w-md ${
-          isRtl ? "font-cairo" : "font-hero-light"
+          fontBody
         }`}
       >
         {t("notFound.description", "The page you're looking for doesn't exist or has been moved.")}
@@ -177,9 +179,7 @@ const NotFound = () => {
       <div ref={buttonRef}>
         <Link
           to="/"
-          className={`group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#6ACBCC] to-[#1C6F6C] text-white font-semibold rounded-full overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-[#6ACBCC]/30 hover:scale-105 ${
-            isRtl ? "font-cairo flex-row-reverse" : "font-hero-light"
-          }`}
+          className={`group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#6ACBCC] to-[#1C6F6C] text-white font-semibold rounded-full overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-[#6ACBCC]/30 hover:scale-105 ${fontBody} ${isRtl ? "flex-row-reverse" : ""}`}
         >
           {/* Button shine effect */}
           <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />

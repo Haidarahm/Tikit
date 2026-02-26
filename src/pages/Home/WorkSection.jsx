@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState, memo, useRef } from "react";
 import StickyPinnedSection from "../../components/ui/StickyPinnedSection";
 import { useWorksSectionsStore } from "../../store/work/worksSectionsStore";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
+import { useFontClass } from "../../hooks/useFontClass";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
@@ -56,6 +57,7 @@ const ImageWithSkeleton = ({ src, alt, className, ...props }) => {
 const WorkSection = memo(() => {
   const { sections, loadSections, loading, error } = useWorksSectionsStore();
   const { language, isRtl } = useI18nLanguage();
+  const { fontBody } = useFontClass();
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [isClient, setIsClient] = useState(false);
@@ -200,18 +202,14 @@ const WorkSection = memo(() => {
         <>
           {items && items.length > 0 && (
             <div
-              className={`relative hidden md:block z-10 w-full overflow-visible text-[var(--foreground)] ${
-                isRtl ? "font-cairo" : "font-hero-light"
-              }`}
+              className={`relative hidden md:block z-10 w-full overflow-visible text-[var(--foreground)] ${fontBody}`}
               dir={isRtl ? "rtl" : "ltr"}
             >
               <StickyPinnedSection items={items} heightPerItemVh={100} />
             </div>
           )}
           <div
-            className={`mobile-view gap-[30px] min-h-[1400px] h-full md:hidden relative text-[var(--foreground)] flex flex-col w-full px-[20px] ${
-              isRtl ? "font-cairo" : "font-hero-light"
-            }`}
+            className={`mobile-view gap-[30px] min-h-[1400px] h-full md:hidden relative text-[var(--foreground)] flex flex-col w-full px-[20px] ${fontBody}`}
             dir={isRtl ? "rtl" : "ltr"}
           >
             <div className="main-content w-full flex flex-col gap-[20px] mt-16">

@@ -1,7 +1,9 @@
 import React, { useEffect, useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
+import { useFontClass } from "../../../hooks/useFontClass";
 
-const WorkHero = ({  t, isRtl }) => {
+const WorkHero = ({ t }) => {
+  const { fontHeading, isRtl } = useFontClass();
   const titleContainerRef = useRef(null);
   const titleRef = useRef(null);
   const descTitleWrapRef = useRef(null);
@@ -62,7 +64,7 @@ const WorkHero = ({  t, isRtl }) => {
       <div ref={titleContainerRef} className="overflow-hidden">
         <h1
           ref={titleRef}
-          className={`text-4xl md:text-6xl lg:text-7xl font-black leading-tight tracking-tight mb-6 text-[var(--foreground)] ${isRtl ? "font-cairo" : "font-antonio"} will-change-transform`}
+          className={`text-4xl md:text-6xl lg:text-7xl font-black leading-tight tracking-tight mb-6 text-[var(--foreground)] ${fontHeading} will-change-transform`}
           style={{ transformStyle: "preserve-3d" }}
         >
           {t("work.title")}

@@ -3,6 +3,7 @@ import { useTheme } from "../../store/ThemeContext";
 import { useClient } from "../../store/ClientContext";
 import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../store/I18nLanguageContext";
+import { useFontClass } from "../../hooks/useFontClass";
 import { useContactStore } from "../../store/contactStore";
 import { useToastStore } from "../../store/toastStore";
 import {
@@ -366,6 +367,7 @@ const Action = () => {
   const { clientType } = useClient();
   const { t } = useTranslation();
   const { isRtl } = useI18nLanguage();
+  const { fontBody } = useFontClass();
   const actionRef = useRef(null);
   const [formData, setFormData] = useState({
     name: "",
@@ -533,9 +535,7 @@ const Action = () => {
       ref={actionRef}
       id="contact-action-section"
       data-scroll-section
-      className={`snap-start snap-always min-h- justify-center flex flex-col lg:flex-row gap-8 md:gap-16 lg:gap-24 xl:gap-32 py-16 md:py-12  px-4 md:px-8 lg:px-14 ${
-        isRtl ? "font-cairo" : "font-hero-light"
-      }`}
+      className={`snap-start snap-always min-h- justify-center flex flex-col lg:flex-row gap-8 md:gap-16 lg:gap-24 xl:gap-32 py-16 md:py-12  px-4 md:px-8 lg:px-14 ${fontBody}`}
       dir={isRtl ? "rtl" : "ltr"}
     >
       {/* Left Section */}

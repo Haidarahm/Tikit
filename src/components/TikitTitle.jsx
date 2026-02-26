@@ -1,9 +1,11 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { useI18nLanguage } from "../store/I18nLanguageContext";
+import { useFontClass } from "../hooks/useFontClass";
 
 const TikitTitle = ({ title, className, mainWord, disableAnimation }) => {
   const { isRtl } = useI18nLanguage();
+  const { fontHeading } = useFontClass();
   const titleRef = useRef(null);
 
   useEffect(() => {
@@ -37,9 +39,7 @@ const TikitTitle = ({ title, className, mainWord, disableAnimation }) => {
     <h1
       ref={titleRef}
       dir={isRtl ? "rtl" : "ltr"}
-      className={`${className} ${
-        isRtl ? " font-cairo " : "font-antonio"
-      } tikit-title`}
+      className={`${className} ${fontHeading} tikit-title`}
     >
       {title}
       {mainWord ? (

@@ -3,6 +3,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useTranslation } from 'react-i18next'
 import { useI18nLanguage } from '../../../store/I18nLanguageContext'
+import { useFontClass } from '../../../hooks/useFontClass'
 import { useTheme } from '../../../store/ThemeContext'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -11,7 +12,7 @@ const Map = () => {
   const { theme } = useTheme()
   const { t } = useTranslation()
   const { isRtl } = useI18nLanguage()
-  const titleFont = isRtl === "true" ? "font-cairo" : "font-antonio"
+  const { fontHeading } = useFontClass()
   
   const sectionRef = useRef(null)
   const mapContainerRef = useRef(null)
@@ -409,7 +410,7 @@ const Map = () => {
               {t('home.map.badge')}
             </span>
             
-            <h2 className={`animate-text text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--foreground)] mb-6 leading-tight ${titleFont}`}>
+            <h2 className={`animate-text text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--foreground)] mb-6 leading-tight ${fontHeading}`}>
               {t('home.map.title')}
               <span className='block text-[#4ec0c3]'>{t('home.map.titleHighlight')}</span>
             </h2>

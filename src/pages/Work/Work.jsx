@@ -9,6 +9,7 @@ import ContactUs from "../Home/ContactUs";
 import { useWorksSectionsStore } from "../../store/work/worksSectionsStore";
 import { useWorkItemsStore } from "../../store/work/worksItemsStore";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
+import { useFontClass } from "../../hooks/useFontClass";
 import { useTranslation } from "react-i18next";
 import SEOHead from "../../components/SEOHead";
 import WorkHero from "./components/WorkHero";
@@ -52,6 +53,7 @@ const Work = () => {
     resetAll,
   } = useWorkItemsStore();
   const { language, isRtl } = useI18nLanguage();
+  const { fontBody } = useFontClass();
   const { t } = useTranslation();
   const [activeSectionSlug, setActiveSectionSlug] = useState(null);
   const [activeType, setActiveType] = useState(null);
@@ -215,9 +217,7 @@ const Work = () => {
   return (
     <div
    
-      className={`work-section min-h-[100vh] flex flex-col  ${
-        isRtl ? "font-cairo" : "font-hero-light"
-      }`}
+      className={`work-section min-h-[100vh] flex flex-col ${fontBody}`}
     >
       <SEOHead
         title="Case Studies & Portfolio | Tikit Agency Dubai - 300+ Projects"
@@ -229,7 +229,7 @@ const Work = () => {
           { name: "Case Studies", url: "/work" }
         ]}
       />
-      <WorkHero  t={t} isRtl={isRtl} />
+      <WorkHero t={t} />
 
       <WorkSectionSelector
         sections={sections}

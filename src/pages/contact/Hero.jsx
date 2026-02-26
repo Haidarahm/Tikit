@@ -3,6 +3,7 @@ import { gsap } from "gsap";
 import { useTheme } from "../../store/ThemeContext";
 import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../store/I18nLanguageContext";
+import { useFontClass } from "../../hooks/useFontClass";
 
 const Hero = () => {
   const h1WrapRef = useRef(null);
@@ -12,6 +13,7 @@ const Hero = () => {
   const { theme } = useTheme();
   const { t } = useTranslation();
   const { isRtl } = useI18nLanguage();
+  const { fontBody } = useFontClass();
 
   const gradientColors =
     theme === "light"
@@ -38,9 +40,7 @@ const Hero = () => {
   return (
     <section
       data-scroll-section
-      className={`text-[var(--foreground)] snap-start snap-always h-[50vh] md:h-screen w-full flex items-center justify-center ${
-        isRtl ? "font-cairo" : "font-hero-light"
-      }`}
+      className={`text-[var(--foreground)] snap-start snap-always h-[50vh] md:h-screen w-full flex items-center justify-center ${fontBody}`}
       dir={isRtl ? "rtl" : "ltr"}
     >
       <div className="text-center mt-[104px]">

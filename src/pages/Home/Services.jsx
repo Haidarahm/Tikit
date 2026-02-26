@@ -1,6 +1,7 @@
 import React, { useMemo, memo, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
+import { useFontClass } from "../../hooks/useFontClass";
 import { useTranslation } from "react-i18next";
 import TikitTitle from "../../components/TikitTitle.jsx";
 import influencerMarketing from "../../assets/services/Influencer-Marketing.webp";
@@ -109,6 +110,7 @@ const FALLBACK_ITEMS = [
 const Services = memo(() => {
   const navigate = useNavigate();
   const { isRtl } = useI18nLanguage();
+  const { fontBody } = useFontClass();
   const { t } = useTranslation();
 
   const handleCardClick = useCallback((link) => {
@@ -132,7 +134,7 @@ const Services = memo(() => {
     <div
       data-nav-color="black"
       className={`section my-4 md:my-8 relative overflow-visible ${
-        isRtl ? "font-cairo" : "font-hero-light"
+        fontBody
       } flex flex-col mx-auto z-10 w-[95vw] md:w-6/7 max-w-[1400px]`}
       dir={isRtl ? "rtl" : "ltr"}
     >

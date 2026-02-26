@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
+import { useFontClass } from "../../hooks/useFontClass";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -25,6 +26,7 @@ export default function StickyPinnedSection({
   const navigate = useNavigate();
   const { t } = useTranslation();
   const { isRtl } = useI18nLanguage();
+  const { fontBody } = useFontClass();
 
   const count = items?.length ?? 0;
 
@@ -378,7 +380,7 @@ export default function StickyPinnedSection({
     <section
       ref={sectionRef}
       className={`relative ${
-        isRtl ? "font-cairo" : "font-hero-light"
+        fontBody
       } w-full overflow-visible`}
       dir={isRtl ? "rtl" : "ltr"}
     >

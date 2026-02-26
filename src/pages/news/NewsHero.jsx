@@ -3,10 +3,12 @@ import { useTranslation } from "react-i18next";
 import gsap from "gsap";
 import LightRays from "../../components/LightRays";
 import { useI18nLanguage } from "../../store/I18nLanguageContext";
+import { useFontClass } from "../../hooks/useFontClass";
 
 const NewsHero = () => {
   const { t } = useTranslation();
   const { isRtl } = useI18nLanguage();
+  const { fontHeading } = useFontClass();
   const [isDark, setIsDark] = useState(null); // null = not checked yet
   const [isThemeReady, setIsThemeReady] = useState(false);
   const kickerRef = useRef(null);
@@ -159,7 +161,7 @@ const NewsHero = () => {
         {/* Title */}
         <h1
           ref={titleRef}
-          className={`text-5xl md:text-6xl lg:text-7xl font-black leading-tight tracking-tight mb-6 ${textColor} ${isRtl ? "font-cairo" : "font-antonio"}`}
+          className={`text-5xl md:text-6xl lg:text-7xl font-black leading-tight tracking-tight mb-6 ${textColor} ${fontHeading}`}
           style={{ transformStyle: "preserve-3d", opacity: 0 }}
         >
           {t("news.hero.title")}

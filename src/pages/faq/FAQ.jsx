@@ -15,11 +15,13 @@ import SEOHead from "../../components/SEOHead";
 import Footer from "../../components/Footer";
 import Accordion from "../../components/ui/Accordion";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
+import { useFontClass } from "../../hooks/useFontClass";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
 const FAQ = () => {
   const { isRtl, language } = useI18nLanguage();
+  const { fontHeading, fontBody } = useFontClass();
   const { t } = useTranslation();
   const navigate = useNavigate();
 
@@ -46,9 +48,7 @@ const FAQ = () => {
           {icons[index]}
         </div>
         <span
-          className={`text-lg md:text-xl font-semibold text-[var(--foreground)] ${
-            isRtl ? "font-cairo" : "font-antonio"
-          }`}
+          className={`text-lg md:text-xl font-semibold text-[var(--foreground)] ${fontHeading}`}
         >
           {t(`faq.questions.q${num}.question`)}
         </span>
@@ -67,7 +67,7 @@ const FAQ = () => {
   return (
     <div
     data-nav-color="black"
-      className={`min-h-screen bg-[var(--background)] ${isRtl ? "font-cairo" : "font-hero-light"}`}
+      className={`min-h-screen bg-[var(--background)] ${fontBody}`}
       dir={isRtl ? "rtl" : "ltr"}
     >
       <SEOHead
@@ -104,9 +104,7 @@ const FAQ = () => {
             <FaQuestionCircle className="w-10 h-10 text-white" />
           </div>
           <h1
-            className={`text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--foreground)] mb-6 ${
-              isRtl ? "font-cairo" : "font-antonio"
-            }`}
+            className={`text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--foreground)] mb-6 ${fontHeading}`}
           >
             {t("faq.title", "Frequently Asked Questions")}
           </h1>
@@ -141,9 +139,7 @@ const FAQ = () => {
             {/* Content */}
             <div className="relative text-center">
               <h2
-                className={`text-3xl md:text-4xl font-bold text-[var(--foreground)] mb-4 ${
-                  isRtl ? "font-cairo" : "font-antonio"
-                }`}
+                className={`text-3xl md:text-4xl font-bold text-[var(--foreground)] mb-4 ${fontHeading}`}
               >
                 {t("faq.cta.title", "Still have questions?")}
               </h2>

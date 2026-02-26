@@ -3,6 +3,7 @@ import FloatingInput from "../../components/ui/FloatingInput";
 import LogoLoop from "../../components/LogoLoop";
 import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
+import { useFontClass } from "../../hooks/useFontClass";
 import { useContactStore } from "../../store/contactStore";
 import { useToastStore } from "../../store/toastStore";
 import { useTheme } from "../../store/ThemeContext";
@@ -518,6 +519,7 @@ const ContactUs = memo(({ className = "" }) => {
   const { theme } = useTheme();
   const { t } = useTranslation();
   const { isRtl } = useI18nLanguage();
+  const { fontBody } = useFontClass();
 
   const [brandImages, setBrandImages] = React.useState([]);
   const [imagesLoading, setImagesLoading] = React.useState(true);
@@ -555,9 +557,7 @@ const ContactUs = memo(({ className = "" }) => {
 
   return (
     <div
-      className={`relative my-5 md:my-10 gap-3.5 overflow-hidden text-[var(--foreground)] ${
-        isRtl ? "font-cairo" : "font-hero-light"
-      } rounded-[25px] flex flex-col mx-auto py-[40px] md:py-[60px] px-[40px] md:px-[50px] w-[95vw] dark:bg-black ${className}`}
+      className={`relative my-5 md:my-10 gap-3.5 overflow-hidden text-[var(--foreground)] ${fontBody} rounded-[25px] flex flex-col mx-auto py-[40px] md:py-[60px] px-[40px] md:px-[50px] w-[95vw] dark:bg-black ${className}`}
       dir={isRtl ? "rtl" : "ltr"}
     >
       <div className="email w-full flex flex-col md:flex-row h-2/3 justify-between items-center md:items-stretch relative z-10">

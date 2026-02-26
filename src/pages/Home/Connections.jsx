@@ -11,6 +11,7 @@ import { useClient } from "../../store/ClientContext.jsx";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
+import { useFontClass } from "../../hooks/useFontClass";
 import TikitTitle from "../../components/TikitTitle.jsx";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -22,6 +23,7 @@ const Connections = memo(() => {
   const { setClientType } = useClient();
   const { t } = useTranslation();
   const { isRtl } = useI18nLanguage();
+  const { fontBody } = useFontClass();
 
   // Define gradient colors based on theme
   const gradientColors =
@@ -91,9 +93,7 @@ const Connections = memo(() => {
   return (
     <div
       ref={sectionContainerRef}
-      className={`relative text-[var(--foreground)] dark:text-white md:h-[60vh] flex flex-col w-full justify-center ${
-        isRtl ? "font-cairo" : "font-hero-light"
-      } section-container-scroll md:mt-[20px]`}
+      className={`relative text-[var(--foreground)] dark:text-white md:h-[60vh] flex flex-col w-full justify-center ${fontBody} section-container-scroll md:mt-[20px]`}
       dir={isRtl ? "rtl" : "ltr"}
     >
       <img

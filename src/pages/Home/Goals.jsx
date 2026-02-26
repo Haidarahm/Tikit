@@ -7,12 +7,14 @@ import image4 from "../../assets/images/goal-image-4.webp";
 import { useTheme } from "../../store/ThemeContext.jsx";
 import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
+import { useFontClass } from "../../hooks/useFontClass";
 import TikitTitle from "../../components/TikitTitle.jsx";
 
 const Goals = memo(() => {
   const { theme } = useTheme();
   const { t } = useTranslation();
   const { isRtl } = useI18nLanguage();
+  const { fontHeading, fontBody } = useFontClass();
 
   const fallback = [
     {
@@ -67,7 +69,7 @@ const Goals = memo(() => {
   return (
     <div
       data-nav-color="black"
-      className={`section ${isRtl ? "font-cairo" : "font-hero-light"} flex flex-col md:flex-row mx-auto goals-section md:h-[2000px] z-10 w-full md:w-6/7`}
+      className={`section ${fontBody} flex flex-col md:flex-row mx-auto goals-section md:h-[2000px] z-10 w-full md:w-6/7`}
       dir={isRtl ? "rtl" : "ltr"}
     >
       {/* Desktop ScrollStack */}
@@ -86,9 +88,7 @@ const Goals = memo(() => {
           >
             <div className="text w-2/3">
               <h1  dir={isRtl ? "rtl" : "ltr"}
-      className={` ${
-        isRtl ? " font-cairo " : "font-antonio"
-      } tikit-title`}>{goal.title}</h1>
+      className={`${fontHeading} tikit-title`}>{goal.title}</h1>
               <p className="font-light text-[var(--foreground)] text-[14px] md:text-[32px] leading-[20px] md:leading-[45px]">
                 {goal.description}
               </p>

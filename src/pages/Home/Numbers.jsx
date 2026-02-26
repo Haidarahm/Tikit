@@ -1,6 +1,7 @@
 import React, { memo } from "react";
 import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
+import { useFontClass } from "../../hooks/useFontClass";
 import CountUp from "../../components/CountUp";
 import TikitTitle from "../../components/TikitTitle.jsx";
 import  {useTheme } from "../../store/ThemeContext.jsx";
@@ -9,6 +10,7 @@ const Numbers = memo(() => {
   const {theme} = useTheme();
   const { t } = useTranslation();
   const { isRtl } = useI18nLanguage();
+  const { fontBody } = useFontClass();
   const data = [
     {
       count: 300,
@@ -49,9 +51,7 @@ const Numbers = memo(() => {
   return (
     <div
       data-nav-color="black"
-      className={`section ${
-        isRtl ? "font-cairo" : "font-hero-light"
-      } my-10 md:my-0 flex flex-col mx-auto md:h-screen z-10 w-[98%] sm:w-[95%] md:w-6/7 justify-center px-4 md:px-0`}
+      className={`section ${fontBody} my-10 md:my-0 flex flex-col mx-auto md:h-screen z-10 w-[98%] sm:w-[95%] md:w-6/7 justify-center px-4 md:px-0`}
     >
       <div className="texts text-center ">
         <TikitTitle

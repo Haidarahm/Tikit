@@ -349,7 +349,6 @@ const WorkItemsGrid = ({
               return (
                 <NonDigitalWorkCard
                   key={normalized.detailId ?? `${activeKey}-${index}`}
-                  isRtl={isRtl}
                   innerRef={(el) => {
                     imagesRef.current[index] = el;
                   }}

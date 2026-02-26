@@ -1,7 +1,9 @@
 import React from "react";
+import { useFontClass } from "../../../hooks/useFontClass";
 
-const NonDigitalWorkCard = ({isRtl, innerRef, normalized, t, onViewDetails }) => {
-  
+const NonDigitalWorkCard = ({ innerRef, normalized, t, onViewDetails }) => {
+  const { fontHeading } = useFontClass();
+
   return (
     <div
       ref={innerRef}
@@ -24,7 +26,7 @@ const NonDigitalWorkCard = ({isRtl, innerRef, normalized, t, onViewDetails }) =>
 
       <div className="content-work absolute inset-0 flex flex-col items-center justify-center overflow-hidden bg-black/30 opacity-100 transition-opacity duration-300 md:bg-black/60 md:opacity-0 md:group-hover:opacity-100">
         {normalized.title ? (
-          <h3  className={`${isRtl ? "font-cairo" : "font-antonio"}  text-center text-[28px] font-bold text-white md:text-[60px]`}>
+          <h3 className={`${fontHeading} text-center text-[28px] font-bold text-white md:text-[60px]`}>
             {normalized.title}
           </h3>
         ) : null}

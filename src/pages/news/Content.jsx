@@ -4,6 +4,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { getAllNewsItems } from "../../apis/news";
 import { useI18nLanguage } from "../../store/I18nLanguageContext";
+import { useFontClass } from "../../hooks/useFontClass";
 import { useNewsStore } from "../../store/newsStore";
 import { useTranslation } from "react-i18next";
 
@@ -215,6 +216,7 @@ const SkeletonCard = () => {
 const Content = () => {
   const containerRef = useRef(null);
   const { language, isRtl } = useI18nLanguage();
+  const { fontBody } = useFontClass();
   const { t } = useTranslation();
   const { cacheNewsItems } = useNewsStore();
   const [newsItems, setNewsItems] = useState([]);
@@ -406,7 +408,7 @@ const Content = () => {
   }, []);
 
   return (
-    <div ref={containerRef} className={`news-cards-container ${isRtl ? "font-cairo" : "font-hero-light"}`}>
+    <div ref={containerRef} className={`news-cards-container ${fontBody}`}>
       {loading && (
         <div className="cards-skeleton">
           {Array.from({ length: ITEMS_PER_PAGE }).map((_, index) => (

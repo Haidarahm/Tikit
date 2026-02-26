@@ -15,12 +15,14 @@ import { useSubscriptionStore } from "../store/subscriptionStore";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../store/I18nLanguageContext.jsx";
+import { useFontClass } from "../hooks/useFontClass";
 
 const Footer = ({ className }) => {
   const { theme } = useTheme();
   const { subscribe, loading } = useSubscriptionStore();
   const { t } = useTranslation();
   const { isRtl } = useI18nLanguage();
+  const { fontBody } = useFontClass();
   const [formData, setFormData] = useState({ name: "", email: "" });
   const [emailError, setEmailError] = useState("");
 
@@ -137,9 +139,7 @@ const Footer = ({ className }) => {
 
   return (
     <footer
-      className={`w-full md:min-h-[670px] bg-gradient-to-b from-transparent to-[var(--secondary)]/5 text-[var(--foreground)] ${
-        isRtl ? "font-cairo" : "font-hero-light"
-      } ${className}`}
+      className={`w-full md:min-h-[670px] bg-gradient-to-b from-transparent to-[var(--secondary)]/5 text-[var(--foreground)] ${fontBody} ${className}`}
       dir={isRtl ? "rtl" : "ltr"}
     >
       {/* Newsletter Section */}
