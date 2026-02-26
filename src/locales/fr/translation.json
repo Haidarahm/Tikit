@@ -1191,6 +1191,248 @@
                 "description": "Créons une identité de marque qui fait une impression durable",
                 "button": "Parlons-en"
             }
+        },
+        "digitalMarketing": {
+            "badge": "Agence Marketing Digital Dubaï",
+            "hero": {
+                "title": "Agence Leader de Marketing",
+                "mainWord": "Digital à Dubaï",
+                "description": "Nous stimulons la croissance de votre entreprise grâce à des stratégies de marketing digital basées sur les données, combinant marketing de performance, SEO, publicité payante et optimisation des conversions."
+            },
+            "hubLinkTitle": "Hub Marketing Digital",
+            "hubLinkDesc": "Explorez tous nos services et solutions de marketing digital.",
+            "relatedTitle": "Services Connexes",
+            "definition": {
+                "whatIsTitle": "Qu'est-ce que le Marketing Digital ?",
+                "paragraph": "Le marketing digital englobe toutes les actions marketing utilisant Internet ou les appareils électroniques. Les entreprises exploitent les canaux numériques tels que les moteurs de recherche, les réseaux sociaux, l'email et les sites web pour atteindre leurs clients actuels et potentiels.",
+                "benefitsTitle": "Avantages Clés du Marketing Digital",
+                "benefitsList": [
+                    "Ciblage précis basé sur les données démographiques, le comportement et l'intention",
+                    "Résultats mesurables avec analyses en temps réel et rapports complets",
+                    "Campagnes rentables avec retour sur investissement optimisé",
+                    "Stratégies évolutives qui grandissent avec votre entreprise",
+                    "Présence multi-canal sur recherche, social, email et display"
+                ],
+                "processTitle": "Comment Fonctionne le Marketing Digital",
+                "processSteps": [
+                    "Audit de votre présence digitale actuelle et identification des opportunités",
+                    "Développement d'une stratégie data-driven alignée sur vos objectifs",
+                    "Exécution des campagnes sur les canaux optimaux avec suivi continu",
+                    "Analyse des performances et optimisation pour un ROI maximal",
+                    "Expansion des stratégies gagnantes et exploration de nouveaux canaux"
+                ]
+            },
+            "subServices": {
+                "title": "Nos Solutions Marketing Digital",
+                "subtitle": "Services complets de marketing digital adaptés aux entreprises de Dubaï et des EAU",
+                "learnMore": "En Savoir Plus",
+                "performanceMarketing": {
+                    "title": "Marketing de Performance",
+                    "description": "Campagnes axées sur le ROI avec stratégies data-driven via médias payants et publicité programmatique."
+                },
+                "seoServices": {
+                    "title": "Services SEO",
+                    "description": "Boostez le trafic organique avec SEO technique, optimisation on-page et stratégies de contenu."
+                },
+                "paidAds": {
+                    "title": "Gestion des Publicités",
+                    "description": "Gestion experte de Google Ads, Facebook Ads, LinkedIn Ads et TikTok optimisée pour les conversions."
+                },
+                "conversionOptimization": {
+                    "title": "Optimisation des Conversions",
+                    "description": "Maximisez les revenus du trafic existant grâce aux tests A/B et à l'analyse UX."
+                }
+            },
+            "process": {
+                "title": "Notre Processus",
+                "description": "Une approche systématique du marketing digital pour des résultats mesurables et constants",
+                "steps": {
+                    "audit": { "title": "Audit Digital", "description": "Analyse complète de votre présence digitale, du paysage concurrentiel et des opportunités de marché." },
+                    "strategy": { "title": "Développement Stratégique", "description": "Feuille de route personnalisée avec KPIs clairs, sélection de canaux et allocation budgétaire." },
+                    "execution": { "title": "Exécution des Campagnes", "description": "Notre équipe lance et gère les campagnes avec suivi continu et tests A/B." },
+                    "optimization": { "title": "Optimisation & Scaling", "description": "Analyse des performances, affinement des stratégies et expansion de ce qui fonctionne." }
+                }
+            },
+            "stats": {
+                "campaigns": { "value": "500+", "label": "Campagnes Gérées" },
+                "roiAvg": { "value": "4.2x", "label": "ROI Moyen" },
+                "adSpend": { "value": "$10M+", "label": "Budget Pub Géré" },
+                "clients": { "value": "150+", "label": "Clients Satisfaits" }
+            },
+            "trust": {
+                "title": "Pourquoi Choisir Tikit Agency",
+                "subtitle": "Notre expérience en marketing digital aux EAU et dans la région du Golfe",
+                "card1Title": "Certifié Google",
+                "card1Desc": "Notre équipe détient les certifications Google Ads et Analytics.",
+                "card2Title": "Expertise Régionale",
+                "card2Desc": "Connaissance approfondie du paysage digital des EAU.",
+                "card3Title": "Équipe Dédiée",
+                "card3Desc": "Stratèges, analystes et créatifs spécialisés pour chaque projet.",
+                "card4Title": "Data-Driven",
+                "card4Desc": "Chaque décision appuyée par les données et les analyses.",
+                "paragraph": "Avec des années d'expérience sur le marché des EAU, Tikit Agency combine expertise locale et meilleures pratiques mondiales."
+            },
+            "faqTitle": "FAQ Marketing Digital",
+            "faqItems": [
+                { "question": "Quels services de marketing digital proposez-vous à Dubaï ?", "answer": "Nous proposons des services complets incluant marketing de performance, SEO, gestion publicitaire, optimisation des conversions, marketing de contenu et rapports analytiques." },
+                { "question": "Combien coûte le marketing digital à Dubaï ?", "answer": "Les coûts varient selon les services. Les forfaits SEO démarrent à 5 000-15 000 AED/mois. La gestion publicitaire 3 000-10 000 AED/mois plus budget pub. Les forfaits complets à partir de 15 000 AED/mois." },
+                { "question": "Combien de temps pour voir des résultats ?", "answer": "La publicité payante génère des résultats en quelques jours. Le SEO montre des résultats en 3-6 mois. Les campagnes de performance atteignent un niveau optimal en 2-3 mois." },
+                { "question": "Qu'est-ce qui fait une bonne agence de marketing digital ?", "answer": "Une bonne agence combine stratégies data-driven et exécution créative avec communication transparente et résultats mesurables." },
+                { "question": "Travaillez-vous avec des entreprises hors de Dubaï ?", "answer": "Oui, nous servons des clients aux EAU, en Arabie Saoudite et dans le Golfe." }
+            ],
+            "cta": {
+                "title": "Prêt à Développer Votre Présence Digitale ?",
+                "description": "Créons une stratégie marketing digital data-driven qui génère des résultats mesurables.",
+                "button": "Commencer"
+            },
+            "performanceMarketing": {
+                "badge": "Marketing de Performance Dubaï",
+                "hero": { "title": "Marketing de Performance", "mainWord": "Data-Driven", "description": "Campagnes ROI-focused via médias payants, publicité programmatique et analytics avancés." },
+                "definition": {
+                    "whatIsTitle": "Qu'est-ce que le Marketing de Performance ?",
+                    "paragraph": "Le marketing de performance est une approche orientée résultats où les annonceurs ne paient que lorsque des actions spécifiques sont réalisées.",
+                    "benefitsList": ["Payez uniquement pour les résultats mesurables", "Optimisation en temps réel des campagnes", "Ciblage précis de l'audience", "Reporting transparent avec métriques ROAS", "Budgets évolutifs"]
+                },
+                "services": {
+                    "title": "Services de Marketing de Performance",
+                    "subtitle": "Solutions complètes pour les entreprises à Dubaï",
+                    "items": {
+                        "paidMedia": { "title": "Stratégie Médias Payants", "description": "Planification et gestion des campagnes payantes sur les réseaux de recherche, social et display." },
+                        "programmatic": { "title": "Publicité Programmatique", "description": "Achat publicitaire automatisé et data-driven via éditeurs et réseaux premium." },
+                        "retargeting": { "title": "Retargeting & Remarketing", "description": "Réengagez les visiteurs intéressés avec des publicités personnalisées." },
+                        "analytics": { "title": "Analytics & Attribution", "description": "Tracking avancé et modélisation d'attribution pour comprendre le parcours client." },
+                        "growthHacking": { "title": "Growth Hacking", "description": "Expérimentation rapide pour identifier les leviers de croissance les plus efficaces." },
+                        "attribution": { "title": "Attribution Multi-Touch", "description": "Comprenez la contribution de chaque canal aux conversions." }
+                    }
+                },
+                "process": {
+                    "title": "Notre Processus",
+                    "steps": {
+                        "research": { "title": "Recherche & Audit", "description": "Analyse approfondie de votre marché, concurrents et performance actuelle." },
+                        "launch": { "title": "Lancement", "description": "Configuration stratégique avec ciblage, créatifs et stratégies d'enchères optimisés." },
+                        "optimize": { "title": "Optimisation Continue", "description": "Monitoring quotidien et optimisation des enchères, audiences et créatifs." },
+                        "scale": { "title": "Scaling & Croissance", "description": "Expansion des campagnes performantes et exploration de nouveaux canaux." }
+                    }
+                },
+                "faqTitle": "FAQ Marketing de Performance",
+                "faqItems": [
+                    { "question": "Quelle différence entre marketing de performance et marketing digital ?", "answer": "Le marketing de performance est un sous-ensemble du marketing digital focalisé sur les résultats mesurables." },
+                    { "question": "Quelles plateformes utilisez-vous ?", "answer": "Google Ads, Meta Ads, LinkedIn Ads, TikTok Ads et plateformes programmatiques." },
+                    { "question": "Quel ROI puis-je espérer ?", "answer": "Nos clients voient généralement 3-5x de ROAS en 3-6 mois." },
+                    { "question": "Comment mesurez-vous le succès ?", "answer": "Nous suivons le CPA, ROAS, CTR, taux de conversion et valeur client à vie." }
+                ]
+            },
+            "seoServices": {
+                "badge": "Services SEO Dubaï",
+                "hero": { "title": "Services SEO Experts", "mainWord": "à Dubaï", "description": "Boostez votre visibilité organique avec SEO technique, optimisation on-page et stratégies de contenu." },
+                "definition": {
+                    "whatIsTitle": "Qu'est-ce que le SEO ?",
+                    "paragraph": "Le SEO (Search Engine Optimization) est la pratique d'optimiser les sites web pour mieux se classer dans les résultats de recherche.",
+                    "benefitsList": ["Croissance durable du trafic organique", "Crédibilité accrue dans les résultats de recherche", "Meilleure expérience utilisateur", "ROI long terme qui se cumule", "Trafic ciblé de chercheurs actifs"]
+                },
+                "services": {
+                    "title": "Nos Services SEO",
+                    "subtitle": "Solutions SEO complètes pour le marché des EAU",
+                    "items": {
+                        "technicalSeo": { "title": "SEO Technique", "description": "Architecture du site, crawlabilité, Core Web Vitals et optimisation technique." },
+                        "onPage": { "title": "SEO On-Page", "description": "Optimisation du contenu, balises meta, liens internes et ciblage de mots-clés." },
+                        "linkBuilding": { "title": "Link Building", "description": "Acquisition stratégique de backlinks de qualité depuis des sites autoritaires." },
+                        "contentStrategy": { "title": "Stratégie de Contenu", "description": "Planification et création de contenu data-driven aligné sur l'intention de recherche." },
+                        "localSeo": { "title": "SEO Local", "description": "Optimisation Google Business Profile et stratégies géo-ciblées pour Dubaï." },
+                        "seoAudits": { "title": "Audits SEO", "description": "Audits techniques et de contenu complets avec recommandations actionnables." }
+                    }
+                },
+                "process": {
+                    "title": "Notre Processus SEO",
+                    "steps": {
+                        "audit": { "title": "Audit Complet", "description": "Analyse de la santé technique, qualité du contenu et profil de backlinks." },
+                        "keywords": { "title": "Recherche de Mots-Clés", "description": "Identification des mots-clés à forte valeur et intention commerciale." },
+                        "optimize": { "title": "Optimisation On-Site", "description": "Corrections techniques, optimisation du contenu et amélioration de la structure." },
+                        "monitor": { "title": "Suivi & Affinement", "description": "Tracking des classements, trafic et conversions avec optimisation continue." }
+                    }
+                },
+                "faqTitle": "FAQ Services SEO",
+                "faqItems": [
+                    { "question": "Combien de temps pour des résultats SEO ?", "answer": "Le SEO est une stratégie long terme. Améliorations initiales en semaines, classements significatifs en 3-6 mois, croissance majeure en 6-12 mois." },
+                    { "question": "Combien coûte le SEO à Dubaï ?", "answer": "Les forfaits basiques démarrent à 5 000 AED/mois. Les industries compétitives nécessitent 10 000-25 000 AED/mois." },
+                    { "question": "Le SEO vaut-il l'investissement à Dubaï ?", "answer": "Absolument. Avec plus de 90% des expériences en ligne commençant par un moteur de recherche." },
+                    { "question": "Différence entre SEO on-page et off-page ?", "answer": "Le SEO on-page concerne les éléments de votre site. Le SEO off-page inclut les activités externes comme le link building." }
+                ]
+            },
+            "paidAds": {
+                "badge": "Gestion Publicités Dubaï",
+                "hero": { "title": "Gestion Experte", "mainWord": "des Publicités", "description": "Nous gérons des campagnes publicitaires performantes sur Google, Facebook, LinkedIn et TikTok." },
+                "definition": {
+                    "whatIsTitle": "Qu'est-ce que la Gestion des Publicités ?",
+                    "paragraph": "La gestion des publicités payantes implique la planification stratégique, l'exécution et l'optimisation des campagnes publicitaires sur les plateformes digitales.",
+                    "benefitsList": ["Visibilité immédiate dès le lancement", "Ciblage précis de l'audience", "Contrôle total des budgets", "Résultats mesurables avec attribution claire", "Tests et itérations rapides"]
+                },
+                "services": {
+                    "title": "Plateformes Gérées",
+                    "subtitle": "Gestion publicitaire experte sur toutes les plateformes majeures",
+                    "items": {
+                        "googleAds": { "title": "Google Ads", "description": "Campagnes Search, Display, Shopping et YouTube pour un trafic à forte intention." },
+                        "facebookAds": { "title": "Facebook & Instagram Ads", "description": "Publicité sociale full-funnel avec ciblage avancé." },
+                        "linkedinAds": { "title": "LinkedIn Ads", "description": "Publicité B2B avec ciblage professionnel précis." },
+                        "tiktokAds": { "title": "TikTok Ads", "description": "Publicité vidéo engageante pour atteindre les jeunes audiences." },
+                        "displayAds": { "title": "Display Advertising", "description": "Campagnes display programmatiques via éditeurs premium." },
+                        "remarketing": { "title": "Remarketing", "description": "Campagnes stratégiques de réengagement des visiteurs." }
+                    }
+                },
+                "process": {
+                    "title": "Notre Processus Publicitaire",
+                    "steps": {
+                        "audit": { "title": "Audit du Compte", "description": "Revue approfondie des campagnes existantes et identification des opportunités." },
+                        "setup": { "title": "Configuration", "description": "Structure stratégique avec ciblage, textes et créatifs optimisés." },
+                        "optimize": { "title": "Optimisation Quotidienne", "description": "Gestion continue des enchères et tests créatifs." },
+                        "report": { "title": "Reporting & Analyse", "description": "Rapports transparents avec insights actionnables." }
+                    }
+                },
+                "faqTitle": "FAQ Publicités Payantes",
+                "faqItems": [
+                    { "question": "Combien investir en publicité à Dubaï ?", "answer": "Nous recommandons un minimum de 5 000-10 000 AED/mois. Les industries compétitives nécessitent 20 000-50 000 AED/mois." },
+                    { "question": "Quelle plateforme pour mon entreprise ?", "answer": "Google pour l'intention de recherche, Facebook pour la notoriété, LinkedIn pour le B2B, TikTok pour les jeunes." },
+                    { "question": "Qu'est-ce qu'un bon ROAS ?", "answer": "Varie selon l'industrie. L'e-commerce vise 3-5x. Nous définissons des benchmarks selon votre secteur." },
+                    { "question": "Comment optimisez-vous les campagnes ?", "answer": "Tests A/B, affinement d'audience, optimisation des enchères, gestion des mots-clés négatifs." }
+                ]
+            },
+            "conversionOptimization": {
+                "badge": "Optimisation des Conversions Dubaï",
+                "hero": { "title": "Maximisez Vos Conversions", "mainWord": "& Revenus", "description": "Tests A/B, analyse UX et stratégies data-driven pour convertir plus de visiteurs en clients." },
+                "definition": {
+                    "whatIsTitle": "Qu'est-ce que l'Optimisation des Conversions ?",
+                    "paragraph": "L'optimisation du taux de conversion (CRO) est le processus systématique d'augmentation du pourcentage de visiteurs qui effectuent une action souhaitée.",
+                    "benefitsList": ["Augmentation des revenus sans budget pub supplémentaire", "Amélioration de l'expérience utilisateur", "Décisions basées sur les données et les tests", "Réduction du coût d'acquisition client", "Croissance cumulative dans le temps"]
+                },
+                "services": {
+                    "title": "Nos Services CRO",
+                    "subtitle": "Optimisation data-driven pour maximiser votre ROI digital",
+                    "items": {
+                        "abTesting": { "title": "Tests A/B & Multivariés", "description": "Tests rigoureux des éléments de page pour identifier les combinaisons gagnantes." },
+                        "uxAudit": { "title": "Audit UX & Analyse", "description": "Évaluation complète avec heatmaps, enregistrements de sessions et recherche utilisateur." },
+                        "landingPages": { "title": "Landing Pages", "description": "Conception et optimisation de landing pages à haute conversion." },
+                        "funnelOptimization": { "title": "Optimisation du Funnel", "description": "Identification et correction des points de friction dans le parcours de conversion." },
+                        "speedOptimization": { "title": "Optimisation de la Vitesse", "description": "Amélioration des temps de chargement et Core Web Vitals." },
+                        "behavioralAnalysis": { "title": "Analyse Comportementale", "description": "Analyse approfondie des comportements utilisateurs." }
+                    }
+                },
+                "process": {
+                    "title": "Notre Processus CRO",
+                    "steps": {
+                        "analyze": { "title": "Analyse des Données", "description": "Collecte et analyse de données quantitatives et qualitatives." },
+                        "hypothesize": { "title": "Hypothèses", "description": "Création d'hypothèses basées sur les preuves et priorisées par impact." },
+                        "test": { "title": "Test & Validation", "description": "Tests A/B statistiquement significatifs pour valider les hypothèses." },
+                        "implement": { "title": "Implémentation & Itération", "description": "Déploiement des variantes gagnantes et poursuite du cycle d'optimisation." }
+                    }
+                },
+                "faqTitle": "FAQ Optimisation des Conversions",
+                "faqItems": [
+                    { "question": "Qu'est-ce qu'un bon taux de conversion ?", "answer": "Les sites e-commerce voient généralement 2-4%. Les pages de lead gen peuvent atteindre 5-15%. L'objectif est l'amélioration continue." },
+                    { "question": "Combien de temps pour des résultats CRO ?", "answer": "Gains rapides en quelques semaines. Tests A/B en 2-4 semaines. Programme CRO complet en 2-3 mois." },
+                    { "question": "Quels outils utilisez-vous ?", "answer": "Google Analytics 4, Hotjar, Microsoft Clarity, Optimizely et dashboards personnalisés." },
+                    { "question": "Faut-il beaucoup de trafic pour le CRO ?", "answer": "Nous recommandons au moins 10 000 visiteurs mensuels. Pour les sites à faible trafic, nous nous concentrons sur la recherche qualitative." }
+                ]
+            }
         }
     }
 }

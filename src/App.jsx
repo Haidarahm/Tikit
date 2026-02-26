@@ -67,6 +67,23 @@ const Branding = lazy(() =>
   import("./pages/services-sections/Branding")
 );
 
+// Service Sections - Digital Marketing Hub & Sub-pages
+const DigitalMarketing = lazy(() =>
+  import("./pages/services-sections/digital-marketing/DigitalMarketing")
+);
+const PerformanceMarketing = lazy(() =>
+  import("./pages/services-sections/digital-marketing/PerformanceMarketing")
+);
+const SEOServices = lazy(() =>
+  import("./pages/services-sections/digital-marketing/SEOServices")
+);
+const PaidAdsManagement = lazy(() =>
+  import("./pages/services-sections/digital-marketing/PaidAdsManagement")
+);
+const ConversionOptimization = lazy(() =>
+  import("./pages/services-sections/digital-marketing/ConversionOptimization")
+);
+
 const InfluenceDetails = lazy(() =>
   import("./pages/workDetails/influenceDetails.jsx").then((module) => ({
     default: module.default,
@@ -165,6 +182,12 @@ function App() {
               <Route path="/services/social-media-management" element={<SocialMediaManagement />} />
               <Route path="/services/production" element={<Production />} />
               <Route path="/services/branding" element={<Branding />} />
+              {/* Service Sections - Digital Marketing Hub & Sub-pages */}
+              <Route path="/services/digital-marketing-agency-dubai" element={<DigitalMarketing />} />
+              <Route path="/services/digital-marketing-agency-dubai/performance-marketing" element={<PerformanceMarketing />} />
+              <Route path="/services/digital-marketing-agency-dubai/seo-services" element={<SEOServices />} />
+              <Route path="/services/digital-marketing-agency-dubai/paid-ads-management" element={<PaidAdsManagement />} />
+              <Route path="/services/digital-marketing-agency-dubai/conversion-optimization" element={<ConversionOptimization />} />
               {/* AI-Targeted Landing Pages */}
               <Route path="/influencer-marketing-dubai" element={<InfluencerMarketingDubai />} />
               <Route path="/influencer-marketing-saudi-arabia" element={<InfluencerMarketingSaudiArabia />} />

@@ -1457,6 +1457,300 @@
                 { "question": "What is included in a brand identity package?", "answer": "A comprehensive brand identity package typically includes: logo design (primary, secondary, and icon versions), color palette with specifications, typography system, brand guidelines document, business card and letterhead design, social media templates, and brand application examples. Additional elements like packaging, signage, and website design can be added based on needs." },
                 { "question": "When should a business consider rebranding?", "answer": "Consider rebranding when your current brand no longer reflects your business values or direction, when entering new markets or expanding services, when your brand looks outdated compared to competitors, after a merger or acquisition, or when your target audience has shifted. A brand refresh can modernize your image while maintaining brand equity." }
             ]
+        },
+        "digitalMarketing": {
+            "badge": "Digital Marketing Agency Dubai",
+            "hero": {
+                "title": "Dubai's Leading Digital",
+                "mainWord": "Marketing Agency",
+                "description": "We drive measurable business growth through data-driven digital marketing strategies, combining performance marketing, SEO, paid advertising, and conversion optimization to maximize your ROI across all digital channels."
+            },
+            "hubLinkTitle": "Digital Marketing Hub",
+            "hubLinkDesc": "Explore all our digital marketing services and solutions for your business.",
+            "relatedTitle": "Explore Related Services",
+            "definition": {
+                "whatIsTitle": "What is Digital Marketing?",
+                "paragraph": "Digital marketing encompasses all marketing efforts that use the internet or electronic devices. Businesses leverage digital channels such as search engines, social media, email, and websites to connect with current and prospective customers. It includes strategies like SEO, PPC advertising, content marketing, social media marketing, and conversion optimization to drive measurable results and sustainable growth.",
+                "benefitsTitle": "Key Benefits of Digital Marketing",
+                "benefitsList": [
+                    "Precise audience targeting based on demographics, behavior, and intent signals",
+                    "Measurable results with real-time analytics and comprehensive reporting",
+                    "Cost-effective campaigns with optimized return on ad spend (ROAS)",
+                    "Scalable strategies that grow with your business needs",
+                    "Multi-channel presence across search, social, email, and display networks"
+                ],
+                "processTitle": "How Digital Marketing Works",
+                "processSteps": [
+                    "Audit your current digital presence and identify growth opportunities",
+                    "Develop a data-driven strategy aligned with your business objectives",
+                    "Execute campaigns across optimal channels with continuous monitoring",
+                    "Analyze performance data and optimize for maximum ROI",
+                    "Scale successful strategies and explore new growth channels"
+                ]
+            },
+            "subServices": {
+                "title": "Our Digital Marketing Solutions",
+                "subtitle": "Comprehensive digital marketing services tailored for businesses in Dubai and the UAE",
+                "learnMore": "Learn More",
+                "performanceMarketing": {
+                    "title": "Performance Marketing",
+                    "description": "ROI-focused campaigns with data-driven strategies across paid media, programmatic advertising, and growth marketing channels."
+                },
+                "seoServices": {
+                    "title": "SEO Services",
+                    "description": "Boost organic traffic with technical SEO, on-page optimization, link building, and content strategies for sustainable rankings."
+                },
+                "paidAds": {
+                    "title": "Paid Ads Management",
+                    "description": "Expert management of Google Ads, Facebook Ads, LinkedIn Ads, and TikTok campaigns optimized for maximum conversions."
+                },
+                "conversionOptimization": {
+                    "title": "Conversion Optimization",
+                    "description": "Maximize revenue from existing traffic through A/B testing, UX analysis, and data-driven CRO strategies."
+                }
+            },
+            "process": {
+                "title": "Our Process",
+                "description": "A systematic approach to digital marketing that delivers consistent, measurable results",
+                "steps": {
+                    "audit": {
+                        "title": "Digital Audit",
+                        "description": "We conduct a comprehensive analysis of your current digital presence, competitor landscape, and market opportunities to identify growth potential."
+                    },
+                    "strategy": {
+                        "title": "Strategy Development",
+                        "description": "We create a tailored digital marketing roadmap with clear KPIs, channel selection, budget allocation, and timeline for execution."
+                    },
+                    "execution": {
+                        "title": "Campaign Execution",
+                        "description": "Our team launches and manages campaigns across all selected channels with continuous monitoring, optimization, and A/B testing."
+                    },
+                    "optimization": {
+                        "title": "Optimization & Scaling",
+                        "description": "We analyze performance data, refine strategies, and scale what works to maximize your return on investment across all channels."
+                    }
+                }
+            },
+            "stats": {
+                "campaigns": { "value": "500+", "label": "Campaigns Managed" },
+                "roiAvg": { "value": "4.2x", "label": "Average ROI" },
+                "adSpend": { "value": "$10M+", "label": "Ad Spend Managed" },
+                "clients": { "value": "150+", "label": "Happy Clients" }
+            },
+            "trust": {
+                "title": "Why Trust Tikit Agency",
+                "subtitle": "Our experience and track record in digital marketing across the UAE and GCC region",
+                "card1Title": "Google Certified",
+                "card1Desc": "Our team holds Google Ads and Analytics certifications ensuring best practices in every campaign.",
+                "card2Title": "Regional Expertise",
+                "card2Desc": "Deep understanding of the UAE and GCC digital landscape, consumer behavior, and market trends.",
+                "card3Title": "Dedicated Team",
+                "card3Desc": "A specialized team of strategists, analysts, and creative professionals for every project.",
+                "card4Title": "Data-Driven",
+                "card4Desc": "Every decision backed by data, analytics, and industry benchmarks for maximum performance.",
+                "paragraph": "With years of experience in the UAE market, Tikit Agency combines local insights with global best practices to deliver digital marketing strategies that drive real business growth."
+            },
+            "faqTitle": "Digital Marketing FAQ",
+            "faqItems": [
+                { "question": "What digital marketing services do you offer in Dubai?", "answer": "We offer comprehensive digital marketing services including performance marketing, SEO (search engine optimization), paid advertising management (Google Ads, Facebook Ads, LinkedIn Ads, TikTok Ads), conversion rate optimization, content marketing, and analytics reporting. Each service is tailored to your business goals and the UAE market." },
+                { "question": "How much does digital marketing cost in Dubai?", "answer": "Digital marketing costs vary based on services, scope, and competition. SEO packages typically start from AED 5,000-15,000/month. Paid advertising management fees range from AED 3,000-10,000/month plus ad spend. Comprehensive digital marketing packages start from AED 15,000/month. We provide customized quotes based on your specific needs and goals." },
+                { "question": "How long does it take to see results from digital marketing?", "answer": "Timelines vary by channel. Paid advertising can generate results within days of launch. SEO typically shows meaningful results in 3-6 months. Performance marketing campaigns usually reach optimal performance within 2-3 months of testing and optimization. We provide monthly progress reports with clear metrics and milestones." },
+                { "question": "What makes a good digital marketing agency?", "answer": "A good digital marketing agency combines data-driven strategies with creative execution, maintains transparent communication, provides measurable results, stays current with industry trends, and has proven experience in your market. At Tikit Agency, we add deep UAE market expertise and a dedicated team approach to every project." },
+                { "question": "Do you work with businesses outside Dubai?", "answer": "Yes, we serve clients across the UAE, Saudi Arabia, and the broader GCC region. Our digital marketing strategies are tailored to each market's unique characteristics, consumer behavior, and regulatory requirements. We also work with international brands looking to establish their digital presence in the Middle East." }
+            ],
+            "cta": {
+                "title": "Ready to Grow Your Digital Presence?",
+                "description": "Let's create a data-driven digital marketing strategy that delivers measurable results for your business.",
+                "button": "Get Started"
+            },
+            "performanceMarketing": {
+                "badge": "Performance Marketing Dubai",
+                "hero": {
+                    "title": "Data-Driven Performance",
+                    "mainWord": "Marketing",
+                    "description": "We deliver ROI-focused performance marketing campaigns that drive measurable growth through paid media, programmatic advertising, and advanced analytics."
+                },
+                "definition": {
+                    "whatIsTitle": "What is Performance Marketing?",
+                    "paragraph": "Performance marketing is a results-driven approach where advertisers pay only when specific actions are completed — such as clicks, leads, or sales. It combines advanced targeting, real-time bidding, and continuous optimization to maximize return on ad spend across search, social, display, and programmatic channels.",
+                    "benefitsList": [
+                        "Pay only for measurable results like clicks, leads, or conversions",
+                        "Real-time campaign optimization with advanced analytics and AI-powered bidding",
+                        "Precise audience targeting across demographics, interests, and behaviors",
+                        "Transparent reporting with clear attribution and ROAS metrics",
+                        "Scalable budgets that grow with your business success"
+                    ]
+                },
+                "services": {
+                    "title": "Our Performance Marketing Services",
+                    "subtitle": "Comprehensive performance marketing solutions for businesses in Dubai",
+                    "items": {
+                        "paidMedia": { "title": "Paid Media Strategy", "description": "Strategic planning and management of paid campaigns across search, social, and display networks for maximum impact." },
+                        "programmatic": { "title": "Programmatic Advertising", "description": "Automated, data-driven ad buying across premium publishers and networks for efficient reach and targeting." },
+                        "retargeting": { "title": "Retargeting & Remarketing", "description": "Re-engage visitors who showed interest with personalized ads across the web and social platforms." },
+                        "analytics": { "title": "Analytics & Attribution", "description": "Advanced tracking and attribution modeling to understand the full customer journey and optimize spend." },
+                        "growthHacking": { "title": "Growth Hacking", "description": "Rapid experimentation across marketing channels to identify the most effective ways to grow your business." },
+                        "attribution": { "title": "Multi-Touch Attribution", "description": "Understand which channels and touchpoints contribute most to conversions for smarter budget allocation." }
+                    }
+                },
+                "process": {
+                    "title": "Our Performance Marketing Process",
+                    "steps": {
+                        "research": { "title": "Research & Audit", "description": "Deep analysis of your market, competitors, and current performance to identify opportunities." },
+                        "launch": { "title": "Campaign Launch", "description": "Strategic campaign setup with optimized targeting, creatives, and bidding strategies." },
+                        "optimize": { "title": "Continuous Optimization", "description": "Daily monitoring and optimization of bids, audiences, and creatives for peak performance." },
+                        "scale": { "title": "Scale & Grow", "description": "Expand successful campaigns and explore new channels to drive sustainable growth." }
+                    }
+                },
+                "faqTitle": "Performance Marketing FAQ",
+                "faqItems": [
+                    { "question": "What is the difference between performance marketing and digital marketing?", "answer": "Performance marketing is a subset of digital marketing focused specifically on measurable outcomes. While digital marketing encompasses all online marketing activities, performance marketing only pays for specific results like clicks, leads, or sales, making it highly measurable and ROI-focused." },
+                    { "question": "What platforms do you use for performance marketing?", "answer": "We manage campaigns across Google Ads (Search, Display, Shopping, YouTube), Meta Ads (Facebook & Instagram), LinkedIn Ads, TikTok Ads, programmatic platforms (DV360, The Trade Desk), and other channels based on your target audience and goals." },
+                    { "question": "What ROI can I expect from performance marketing?", "answer": "ROI varies by industry and campaign objectives. Our clients typically see 3-5x return on ad spend (ROAS) within 3-6 months. We set realistic benchmarks based on your industry and continuously optimize to improve performance over time." },
+                    { "question": "How do you measure performance marketing success?", "answer": "We track KPIs including Cost Per Acquisition (CPA), Return on Ad Spend (ROAS), Click-Through Rate (CTR), Conversion Rate, Customer Lifetime Value (CLV), and overall revenue impact. Custom dashboards provide real-time visibility into campaign performance." }
+                ]
+            },
+            "seoServices": {
+                "badge": "SEO Services Dubai",
+                "hero": {
+                    "title": "Expert SEO Services",
+                    "mainWord": "in Dubai",
+                    "description": "We boost your organic visibility with technical SEO, on-page optimization, strategic link building, and content strategies that deliver sustainable search engine rankings and traffic growth."
+                },
+                "definition": {
+                    "whatIsTitle": "What is SEO?",
+                    "paragraph": "Search Engine Optimization (SEO) is the practice of optimizing websites and content to rank higher in search engine results pages (SERPs). It involves technical optimization, on-page content improvements, link building, and strategic keyword targeting to increase organic visibility and drive qualified traffic to your website.",
+                    "benefitsList": [
+                        "Sustainable organic traffic growth without ongoing ad spend",
+                        "Higher credibility and trust from appearing in top search results",
+                        "Better user experience through optimized site structure and speed",
+                        "Long-term ROI that compounds over time as authority builds",
+                        "Targeted traffic from users actively searching for your products or services"
+                    ]
+                },
+                "services": {
+                    "title": "Our SEO Services",
+                    "subtitle": "Comprehensive search engine optimization solutions for the UAE market",
+                    "items": {
+                        "technicalSeo": { "title": "Technical SEO", "description": "Site architecture, crawlability, Core Web Vitals, schema markup, and server optimization for search engine excellence." },
+                        "onPage": { "title": "On-Page SEO", "description": "Content optimization, meta tags, internal linking, keyword targeting, and content structuring for maximum relevance." },
+                        "linkBuilding": { "title": "Link Building", "description": "Strategic acquisition of high-quality backlinks from authoritative websites to boost domain authority." },
+                        "contentStrategy": { "title": "Content Strategy", "description": "Data-driven content planning, creation, and optimization aligned with search intent and business goals." },
+                        "localSeo": { "title": "Local SEO", "description": "Google Business Profile optimization, local citations, and geo-targeted strategies for Dubai and UAE visibility." },
+                        "seoAudits": { "title": "SEO Audits", "description": "Comprehensive technical and content audits with actionable recommendations for improvement." }
+                    }
+                },
+                "process": {
+                    "title": "Our SEO Process",
+                    "steps": {
+                        "audit": { "title": "Comprehensive Audit", "description": "In-depth analysis of your website's technical health, content quality, and backlink profile." },
+                        "keywords": { "title": "Keyword Research", "description": "Identify high-value keywords with strong search volume and commercial intent for your market." },
+                        "optimize": { "title": "On-Site Optimization", "description": "Implement technical fixes, optimize content, and improve site structure for search engines." },
+                        "monitor": { "title": "Monitor & Refine", "description": "Track rankings, traffic, and conversions with continuous optimization and monthly reporting." }
+                    }
+                },
+                "faqTitle": "SEO Services FAQ",
+                "faqItems": [
+                    { "question": "How long does SEO take to show results?", "answer": "SEO is a long-term strategy. Initial improvements in technical health and indexing can be seen within weeks. Meaningful ranking improvements typically appear in 3-6 months. Significant organic traffic growth usually occurs within 6-12 months, depending on competition and current site authority." },
+                    { "question": "What is the cost of SEO services in Dubai?", "answer": "SEO pricing depends on scope and competition. Basic SEO packages start from AED 5,000/month for local businesses. Competitive industries may require AED 10,000-25,000/month for comprehensive strategies. Enterprise-level SEO with multiple locations can range higher. We provide customized quotes based on your specific situation." },
+                    { "question": "Is SEO worth it for businesses in Dubai?", "answer": "Absolutely. With over 90% of online experiences starting with a search engine and the UAE having one of the highest internet penetration rates globally, SEO is essential for any business wanting to capture online demand. It provides sustainable, cost-effective traffic growth compared to paid advertising." },
+                    { "question": "What is the difference between on-page and off-page SEO?", "answer": "On-page SEO focuses on optimizing elements within your website — content, meta tags, internal links, and site structure. Off-page SEO involves activities outside your website, primarily building high-quality backlinks and managing your online reputation to increase domain authority and search rankings." }
+                ]
+            },
+            "paidAds": {
+                "badge": "Paid Ads Management Dubai",
+                "hero": {
+                    "title": "Expert Paid Ads",
+                    "mainWord": "Management",
+                    "description": "We manage high-performing paid advertising campaigns across Google, Facebook, LinkedIn, and TikTok, optimizing every dollar for maximum conversions and ROI."
+                },
+                "definition": {
+                    "whatIsTitle": "What is Paid Ads Management?",
+                    "paragraph": "Paid ads management involves the strategic planning, execution, and optimization of paid advertising campaigns across digital platforms. This includes Google Ads (search, display, shopping, and video), social media advertising (Facebook, Instagram, LinkedIn, TikTok), and programmatic display campaigns, all managed with the goal of maximizing return on ad spend.",
+                    "benefitsList": [
+                        "Immediate visibility and traffic from day one of campaign launch",
+                        "Precise audience targeting across search intent, demographics, and behavior",
+                        "Complete control over budgets, bidding, and campaign objectives",
+                        "Measurable results with clear attribution from click to conversion",
+                        "Rapid testing and iteration of messaging, creatives, and audiences"
+                    ]
+                },
+                "services": {
+                    "title": "Platforms We Manage",
+                    "subtitle": "Expert advertising management across all major digital platforms",
+                    "items": {
+                        "googleAds": { "title": "Google Ads", "description": "Search, Display, Shopping, and YouTube campaigns to capture high-intent traffic and drive conversions." },
+                        "facebookAds": { "title": "Facebook & Instagram Ads", "description": "Full-funnel social advertising with advanced targeting, creative testing, and conversion optimization." },
+                        "linkedinAds": { "title": "LinkedIn Ads", "description": "B2B advertising with precise professional targeting for lead generation and brand awareness." },
+                        "tiktokAds": { "title": "TikTok Ads", "description": "Engaging video advertising to reach Gen Z and millennial audiences with creative, platform-native content." },
+                        "displayAds": { "title": "Display Advertising", "description": "Programmatic display campaigns across premium publishers for brand awareness and retargeting." },
+                        "remarketing": { "title": "Remarketing", "description": "Strategic remarketing campaigns to re-engage visitors and move them through the conversion funnel." }
+                    }
+                },
+                "process": {
+                    "title": "Our Paid Ads Process",
+                    "steps": {
+                        "audit": { "title": "Account Audit", "description": "Thorough review of existing campaigns, identifying wasted spend and missed opportunities." },
+                        "setup": { "title": "Campaign Setup", "description": "Strategic campaign structure, targeting, ad copy, and creative development for optimal performance." },
+                        "optimize": { "title": "Daily Optimization", "description": "Continuous bid management, audience refinement, and creative testing to improve performance." },
+                        "report": { "title": "Reporting & Analysis", "description": "Transparent reporting with actionable insights and strategic recommendations for growth." }
+                    }
+                },
+                "faqTitle": "Paid Ads FAQ",
+                "faqItems": [
+                    { "question": "How much should I spend on paid advertising in Dubai?", "answer": "Ad budgets depend on your industry, competition, and goals. We recommend starting with a minimum of AED 5,000-10,000/month for testing across platforms. Competitive industries may require AED 20,000-50,000/month or more. We help you allocate budget efficiently based on performance data and market benchmarks." },
+                    { "question": "Which advertising platform is best for my business?", "answer": "The best platform depends on your audience and goals. Google Ads is ideal for capturing search intent. Facebook/Instagram works for awareness and consideration. LinkedIn excels in B2B. TikTok reaches younger demographics. We analyze your business and recommend the optimal platform mix for your objectives." },
+                    { "question": "What is a good ROAS for paid advertising?", "answer": "A good ROAS varies by industry and business model. E-commerce businesses typically aim for 3-5x ROAS. Lead generation campaigns often target a cost per lead (CPL) that aligns with customer lifetime value. We set benchmarks based on your industry and continuously optimize to improve returns." },
+                    { "question": "How do you optimize paid advertising campaigns?", "answer": "We use a data-driven approach including A/B testing ad copy and creatives, audience refinement, bid strategy optimization, negative keyword management, landing page improvements, and conversion tracking analysis. Our team monitors campaigns daily and makes adjustments to maximize performance." }
+                ]
+            },
+            "conversionOptimization": {
+                "badge": "Conversion Optimization Dubai",
+                "hero": {
+                    "title": "Maximize Conversions",
+                    "mainWord": "& Revenue",
+                    "description": "We use A/B testing, UX analysis, and data-driven strategies to turn more of your existing visitors into customers, maximizing revenue without increasing ad spend."
+                },
+                "definition": {
+                    "whatIsTitle": "What is Conversion Rate Optimization?",
+                    "paragraph": "Conversion Rate Optimization (CRO) is the systematic process of increasing the percentage of website visitors who take a desired action — whether making a purchase, filling out a form, or subscribing to a service. It combines data analytics, user behavior analysis, A/B testing, and UX design to remove friction and improve the customer journey.",
+                    "benefitsList": [
+                        "Increase revenue from your existing traffic without additional ad spend",
+                        "Improve user experience leading to higher customer satisfaction and retention",
+                        "Data-backed decisions through rigorous testing and statistical analysis",
+                        "Lower customer acquisition costs by converting more visitors",
+                        "Compound growth as improvements stack over time"
+                    ]
+                },
+                "services": {
+                    "title": "Our CRO Services",
+                    "subtitle": "Data-driven conversion optimization to maximize your digital ROI",
+                    "items": {
+                        "abTesting": { "title": "A/B & Multivariate Testing", "description": "Rigorous testing of page elements, layouts, and messaging to identify winning combinations that drive conversions." },
+                        "uxAudit": { "title": "UX Audit & Analysis", "description": "Comprehensive user experience evaluation using heatmaps, session recordings, and user research methodologies." },
+                        "landingPages": { "title": "Landing Page Optimization", "description": "Design and optimize high-converting landing pages with persuasive copy, compelling visuals, and clear CTAs." },
+                        "funnelOptimization": { "title": "Funnel Optimization", "description": "Identify and fix drop-off points in your conversion funnel to maximize throughput from visit to purchase." },
+                        "speedOptimization": { "title": "Page Speed Optimization", "description": "Improve loading times and Core Web Vitals to reduce bounce rates and improve conversion rates." },
+                        "behavioralAnalysis": { "title": "Behavioral Analytics", "description": "Deep analysis of user behavior patterns to uncover insights and optimization opportunities." }
+                    }
+                },
+                "process": {
+                    "title": "Our CRO Process",
+                    "steps": {
+                        "analyze": { "title": "Data Analysis", "description": "Collect and analyze quantitative and qualitative data to understand user behavior and identify conversion blockers." },
+                        "hypothesize": { "title": "Hypothesis Development", "description": "Create evidence-based hypotheses for improvements prioritized by potential impact and ease of implementation." },
+                        "test": { "title": "Test & Validate", "description": "Run statistically significant A/B tests to validate hypotheses and measure the impact of changes." },
+                        "implement": { "title": "Implement & Iterate", "description": "Roll out winning variations and continue the optimization cycle for continuous improvement." }
+                    }
+                },
+                "faqTitle": "Conversion Optimization FAQ",
+                "faqItems": [
+                    { "question": "What is a good conversion rate?", "answer": "Average conversion rates vary by industry and type. E-commerce sites typically see 2-4% conversion rates, while lead generation pages can achieve 5-15%. However, the goal of CRO is continuous improvement — even a 0.5% increase in conversion rate can significantly impact revenue. We benchmark against your industry and set realistic improvement targets." },
+                    { "question": "How long does CRO take to show results?", "answer": "Initial quick wins from obvious UX improvements can be seen within weeks. A/B tests typically need 2-4 weeks to reach statistical significance. A comprehensive CRO program shows measurable improvement within 2-3 months, with compounding gains over 6-12 months as optimizations build on each other." },
+                    { "question": "What tools do you use for conversion optimization?", "answer": "We use industry-leading tools including Google Analytics 4, Hotjar and Microsoft Clarity for heatmaps and recordings, Optimizely and Google Optimize for A/B testing, and custom analytics dashboards for monitoring. We also leverage AI-powered tools for predictive analytics and personalization." },
+                    { "question": "Do I need a lot of traffic for CRO?", "answer": "CRO is most effective with sufficient traffic volume to reach statistical significance quickly. We recommend at least 10,000 monthly visitors for standard A/B testing. For lower-traffic sites, we focus on qualitative research, UX improvements, and micro-conversion optimization to drive meaningful improvements." }
+                ]
+            }
         }
     }
 }

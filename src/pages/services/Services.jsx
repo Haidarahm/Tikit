@@ -123,7 +123,16 @@ const Services = () => {
     ) {
       return "/services/production";
     }
-    return null; // No route for Web Development and Digital Marketing
+    // Digital Marketing
+    if (
+      titleLower.includes("digital marketing") ||
+      titleLower.includes("التسويق الرقمي") ||
+      normalized.includes("marketing digital") ||
+      normalized.includes("marketing numerique")
+    ) {
+      return "/services/digital-marketing-agency-dubai";
+    }
+    return null; // No route for Web Development
   };
 
   const services = translatedItems.map((item, index) => ({

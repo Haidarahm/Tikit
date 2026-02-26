@@ -1,0 +1,358 @@
+/* ============================================
+   Digital Marketing Agency Dubai Hub & Sub-pages
+   Shared styles using @apply (Tailwind CSS)
+   ============================================ */
+@reference "../../../index.css";
+
+/* Page wrapper */
+.dm-page {
+  @apply min-h-screen;
+  background-color: var(--background);
+}
+
+/* Hero */
+.dm-hero {
+  @apply relative min-h-[70vh] flex items-center justify-center overflow-hidden py-20 px-6;
+}
+
+.dm-hero-overlay {
+  @apply absolute inset-0 opacity-10;
+}
+
+.dm-hero-gradient {
+  @apply absolute inset-0;
+  background: linear-gradient(
+    to bottom right,
+    color-mix(in srgb, #52c3c5 30%, transparent),
+    transparent,
+    color-mix(in srgb, #1c6f6c 30%, transparent)
+  );
+}
+
+.dm-hero-content {
+  @apply relative z-10 mt-10 max-w-6xl mx-auto text-center;
+}
+
+.dm-badge {
+  @apply inline-block px-6 py-2 mb-6 rounded-full text-sm font-semibold uppercase tracking-wider;
+  background-color: rgb(82 195 197 / 0.1);
+  color: #52c3c5;
+}
+
+.dm-hero-desc {
+  @apply text-lg md:text-xl max-w-3xl mx-auto leading-relaxed;
+  color: color-mix(in srgb, var(--foreground) 70%, transparent);
+}
+
+/* Section */
+.dm-section {
+  @apply py-16 md:py-20 px-4 md:px-6;
+}
+
+.dm-section-alt {
+  @apply py-16 md:py-20 px-4 md:px-6;
+  background-color: color-mix(in srgb, var(--foreground) 5%, transparent);
+}
+
+.dm-container {
+  @apply max-w-6xl mx-auto;
+}
+
+.dm-container-wide {
+  @apply max-w-7xl mx-auto;
+}
+
+/* Divider */
+.dm-divider-wrap {
+  @apply container mx-auto px-6;
+}
+
+.dm-divider {
+  @apply h-px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    color-mix(in srgb, var(--foreground) 20%, transparent),
+    transparent
+  );
+}
+
+/* Section headings */
+.dm-section-title {
+  @apply text-3xl md:text-5xl font-bold text-center mb-4;
+  color: var(--foreground);
+}
+
+.dm-section-subtitle {
+  @apply text-center mb-12 md:mb-16 max-w-2xl mx-auto;
+  color: color-mix(in srgb, var(--foreground) 60%, transparent);
+}
+
+.dm-heading {
+  @apply text-2xl md:text-3xl font-bold mb-6;
+  color: var(--foreground);
+}
+
+.dm-text {
+  @apply text-lg leading-relaxed mb-8;
+  color: color-mix(in srgb, var(--foreground) 80%, transparent);
+}
+
+.dm-text-sm {
+  @apply text-sm;
+  color: color-mix(in srgb, var(--foreground) 70%, transparent);
+}
+
+/* Cards */
+.dm-card {
+  @apply p-8 rounded-3xl backdrop-blur-sm transition-all duration-300;
+  background-color: color-mix(in srgb, var(--foreground) 5%, transparent);
+  border: 1px solid color-mix(in srgb, var(--foreground) 10%, transparent);
+}
+
+.dm-card:hover {
+  border-color: rgb(82 195 197 / 0.5);
+}
+
+.dm-card-icon {
+  @apply w-16 h-16 rounded-2xl flex items-center justify-center mb-6 transition-transform duration-300;
+  background: linear-gradient(135deg, #52c3c5, #1c6f6c);
+}
+
+.dm-card:hover .dm-card-icon {
+  @apply scale-110;
+}
+
+.dm-card-title {
+  @apply text-2xl font-bold mb-3;
+  color: var(--foreground);
+}
+
+.dm-card-desc {
+  @apply leading-relaxed;
+  color: color-mix(in srgb, var(--foreground) 70%, transparent);
+}
+
+/* Stat cards */
+.dm-stat-card {
+  @apply text-center p-6 rounded-2xl backdrop-blur-sm;
+  background-color: color-mix(in srgb, var(--foreground) 5%, transparent);
+  border: 1px solid color-mix(in srgb, var(--foreground) 10%, transparent);
+}
+
+.dm-stat-value {
+  @apply text-4xl md:text-5xl font-bold mb-2;
+  color: #52c3c5;
+}
+
+.dm-stat-label {
+  @apply text-sm md:text-base;
+  color: color-mix(in srgb, var(--foreground) 70%, transparent);
+}
+
+/* Process steps */
+.dm-process-card {
+  @apply relative p-8 rounded-3xl backdrop-blur-sm transition-all duration-300;
+  background-color: color-mix(in srgb, var(--foreground) 5%, transparent);
+  border: 1px solid color-mix(in srgb, var(--foreground) 10%, transparent);
+}
+
+.dm-process-card:hover {
+  border-color: rgb(82 195 197 / 0.5);
+}
+
+.dm-step-number {
+  @apply absolute -top-4 -left-4 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold transition-transform duration-300;
+  background: linear-gradient(135deg, #52c3c5, #1c6f6c);
+  box-shadow: 0 4px 15px rgb(82 195 197 / 0.3);
+}
+
+.dm-process-card:hover .dm-step-number {
+  @apply scale-110;
+}
+
+.dm-step-title {
+  @apply text-xl font-bold mb-3 mt-4;
+  color: var(--foreground);
+}
+
+.dm-step-desc {
+  @apply leading-relaxed;
+  color: color-mix(in srgb, var(--foreground) 70%, transparent);
+}
+
+/* Trust cards */
+.dm-trust-card {
+  @apply p-6 rounded-2xl;
+  background-color: var(--background);
+  border: 1px solid color-mix(in srgb, var(--foreground) 10%, transparent);
+}
+
+.dm-trust-icon {
+  @apply w-12 h-12 rounded-full flex items-center justify-center mb-4;
+  background-color: rgb(82 195 197 / 0.1);
+}
+
+.dm-trust-icon svg {
+  @apply w-6 h-6;
+  color: #52c3c5;
+}
+
+.dm-trust-title {
+  @apply text-lg font-bold mb-2;
+  color: var(--foreground);
+}
+
+.dm-trust-desc {
+  @apply text-sm;
+  color: color-mix(in srgb, var(--foreground) 70%, transparent);
+}
+
+/* CTA button */
+.dm-cta-btn {
+  @apply inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white rounded-full transition-all duration-300;
+  background-color: #52c3c5;
+  box-shadow: 0 10px 25px rgb(82 195 197 / 0.3);
+}
+
+.dm-cta-btn:hover {
+  background-color: #1c6f6c;
+  transform: scale(1.05);
+}
+
+/* Check list items */
+.dm-check-item {
+  @apply flex items-start gap-3;
+}
+
+.dm-check-icon {
+  @apply w-6 h-6 flex-shrink-0 mt-0.5;
+  color: #52c3c5;
+}
+
+/* Numbered list items */
+.dm-number-item {
+  @apply flex items-start gap-3;
+}
+
+.dm-number-badge {
+  @apply w-6 h-6 rounded-full text-white text-sm flex items-center justify-center flex-shrink-0 mt-0.5;
+  background-color: #52c3c5;
+}
+
+/* Hub services grid */
+.dm-hub-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-8;
+}
+
+.dm-hub-card {
+  @apply relative p-8 rounded-3xl transition-all duration-500 overflow-hidden no-underline block;
+  background-color: color-mix(in srgb, var(--foreground) 3%, transparent);
+  border: 1px solid color-mix(in srgb, var(--foreground) 8%, transparent);
+}
+
+.dm-hub-card::before {
+  @apply absolute inset-0 opacity-0 transition-opacity duration-500;
+  content: "";
+  background: linear-gradient(135deg, rgb(82 195 197 / 0.05), rgb(28 111 108 / 0.05));
+}
+
+.dm-hub-card:hover {
+  border-color: rgb(82 195 197 / 0.4);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgb(82 195 197 / 0.12);
+}
+
+.dm-hub-card:hover::before {
+  @apply opacity-100;
+}
+
+.dm-hub-card-icon {
+  @apply relative z-10 w-14 h-14 rounded-2xl flex items-center justify-center mb-5 transition-transform duration-300;
+  background: linear-gradient(135deg, #52c3c5, #1c6f6c);
+}
+
+.dm-hub-card:hover .dm-hub-card-icon {
+  @apply scale-110;
+}
+
+.dm-hub-card-title {
+  @apply relative z-10 text-xl font-bold mb-2;
+  color: var(--foreground);
+}
+
+.dm-hub-card-desc {
+  @apply relative z-10 text-sm leading-relaxed mb-4;
+  color: color-mix(in srgb, var(--foreground) 60%, transparent);
+}
+
+.dm-hub-card-link {
+  @apply relative z-10 text-sm font-semibold flex items-center gap-1 transition-all duration-300;
+  color: #52c3c5;
+}
+
+.dm-hub-card:hover .dm-hub-card-link {
+  gap: 0.5rem;
+}
+
+/* Related / internal link cards */
+.dm-link-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+}
+
+.dm-link-card {
+  @apply relative p-6 rounded-2xl transition-all duration-300 overflow-hidden no-underline;
+  background-color: color-mix(in srgb, var(--foreground) 3%, transparent);
+  border: 1px solid color-mix(in srgb, var(--foreground) 10%, transparent);
+}
+
+.dm-link-card:hover {
+  border-color: rgb(82 195 197 / 0.5);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgb(82 195 197 / 0.15);
+}
+
+.dm-link-card-icon {
+  @apply w-10 h-10 rounded-lg flex items-center justify-center mb-3;
+  background-color: rgb(82 195 197 / 0.1);
+}
+
+.dm-link-card-icon svg {
+  @apply w-5 h-5;
+  color: #52c3c5;
+}
+
+.dm-link-card-title {
+  @apply text-lg font-bold mb-2;
+  color: var(--foreground);
+}
+
+.dm-link-card-desc {
+  @apply text-sm;
+  color: color-mix(in srgb, var(--foreground) 60%, transparent);
+}
+
+.dm-link-card-arrow {
+  @apply mt-4 text-sm font-semibold flex items-center gap-1 transition-all duration-300;
+  color: #52c3c5;
+}
+
+.dm-link-card:hover .dm-link-card-arrow {
+  gap: 0.5rem;
+}
+
+/* Gradient text */
+.dm-gradient-text {
+  @apply bg-clip-text text-transparent;
+  background-image: linear-gradient(to right, #52c3c5, #1c6f6c);
+}
+
+/* Feature grid */
+.dm-feature-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8;
+}
+
+/* Two-column layout */
+.dm-two-col {
+  @apply grid grid-cols-1 lg:grid-cols-2 gap-12 items-center;
+}
