@@ -54,17 +54,26 @@ api.interceptors.response.use(
       return Promise.reject(error);
     }
 
-    // Don't retry if we've already tried or if it's not a network error
-    if (config._retry || !error.response) {
+    // Retry limit (max 2 retries = 3 total attempts)
+    const retryCount = config._retryCount ?? 0;
+    const maxRetries = 2;
+
+    if (retryCount >= maxRetries) {
       return Promise.reject(error);
     }
 
-    // Only retry on 5xx server errors or network errors (but not during prerendering)
-    if (!isPrerendering && (error.response?.status >= 500 || !error.response)) {
-      config._retry = true;
+    // Retry on: 5xx server errors, timeout (ECONNABORTED), or network errors (no response)
+    const isTimeout = error.code === "ECONNABORTED";
+    const isNetworkError = !error.response;
+    const isServerError = error.response?.status >= 500;
+    const isRetryable = isTimeout || isNetworkError || isServerError;
 
-      // Wait 1 second before retry
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+    if (!isPrerendering && isRetryable) {
+      config._retryCount = retryCount + 1;
+
+      // Wait 1–2 seconds before retry (longer for timeout/network)
+      const delay = isTimeout || isNetworkError ? 2000 : 1000;
+      await new Promise((resolve) => setTimeout(resolve, delay));
 
       return api(config);
     }

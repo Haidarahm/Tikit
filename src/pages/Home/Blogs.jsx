@@ -18,8 +18,8 @@ const Blogs = () => {
   const { newsItems, loadNewsItems, loading } = useNewsStore();
 
   useEffect(() => {
-    // Load first 4 news items
-    loadNewsItems({ per_page: 4, page: 1 });
+    // Load first 4 news items (with retry on timeout handled by API interceptor)
+    loadNewsItems({ per_page: 4, page: 1 }).catch(() => {});
   }, [loadNewsItems]);
 
   /* GSAP - Title section staggered appear */
