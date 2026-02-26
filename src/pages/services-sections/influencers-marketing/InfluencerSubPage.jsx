@@ -3,7 +3,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Link } from "react-router-dom";
 import { useI18nLanguage } from "../../../store/I18nLanguageContext";
-import TikitTitle from "../../../components/TikitTitle";
+import HeroWithBadge from "../../../components/HeroWithBadge";
 import SEOHead from "../../../components/SEOHead";
 import FAQ from "../../../components/FAQ";
 import { HiCheckCircle, HiArrowRight } from "react-icons/hi";
@@ -121,16 +121,16 @@ const InfluencerSubPage = ({ pageData }) => {
             <div className="absolute inset-0 bg-gradient-to-tr from-[#52C3C5]/30 via-transparent to-[#1C6F6C]/30" />
           </div>
         )}
-        <div className="im-hero-content">
-          <span className="hero-animate im-badge">{pageData.badge}</span>
-          <TikitTitle
-            className="hero-animate block"
-            title={pageData.hero.title}
-            mainWord={pageData.hero.mainWord}
-            disableAnimation
-          />
-          <p className="hero-animate im-hero-desc">{pageData.hero.description}</p>
-        </div>
+        <HeroWithBadge
+          badge={pageData.badge}
+          title={pageData.hero.title}
+          mainWord={pageData.hero.mainWord}
+          description={pageData.hero.description}
+          titleClassName="hero-animate block"
+          descriptionClassName="hero-animate im-hero-desc"
+          contentClassName="im-hero-content"
+          disableAnimation
+        />
       </section>
 
       <div className="im-divider-wrap"><div className="im-divider" /></div>

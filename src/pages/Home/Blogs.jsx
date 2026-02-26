@@ -5,7 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useNewsStore } from "../../store/newsStore";
 import { ArrowRight, Calendar, Clock } from "lucide-react";
-import TikitTitle from "../../components/TikitTitle";
+import HeroWithBadge from "../../components/HeroWithBadge";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -120,19 +120,16 @@ const Blogs = () => {
     <section className="w-full py-10 md:py-24 bg-[var(--background)] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div
-          ref={titleSectionRef}
-          className="mb-12 md:mb-16 text-center"
-        >
-          <TikitTitle
-            className="blogs-hero-animate block"
+        <div ref={titleSectionRef} className="mb-12 md:mb-16">
+          <HeroWithBadge
             title={t("home.blogs.title")}
             mainWord={t("home.blogs.mainWord")}
+            description={t("home.blogs.description")}
+            titleClassName="blogs-hero-animate block"
+            descriptionClassName="blogs-hero-animate text-lg md:text-xl text-[var(--foreground)] opacity-70 max-w-2xl mx-auto leading-relaxed"
+            contentClassName="text-center"
             disableAnimation
           />
-          <p className="blogs-hero-animate text-lg md:text-xl text-[var(--foreground)] opacity-70 max-w-2xl mx-auto">
-            {t("home.blogs.description")}
-          </p>
         </div>
 
         {/* Blog Grid */}

@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
 import { useShowcaseStore } from "../../store/showcaseStore";
 import { useNavigate } from "react-router-dom";
-import TikitTitle from "../../components/TikitTitle";
+import HeroWithBadge from "../../components/HeroWithBadge";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -271,15 +271,15 @@ const ShowCase = () => {
         data-nav-color="black"
         className="flex flex-col w-full items-center min-h-[200px] px-4 text-center gap-4"
       >
-        <TikitTitle
-          className="block"
+        <HeroWithBadge
           title={t("home.showcase.title")}
           mainWord={t("home.showcase.mainWord")}
+          description={t("home.showcase.description")}
+          titleClassName="block"
+          descriptionClassName="text-[var(--foreground)] text-base sm:text-lg md:text-xl lg:text-[24px] max-w-4xl"
+          contentClassName="flex flex-col items-center gap-4"
           disableAnimation
         />
-        <p className="text-[var(--foreground)] text-base sm:text-lg md:text-xl lg:text-[24px] max-w-4xl">
-          {t("home.showcase.description")}
-        </p>
       </div>
 
       {/* GRID */}

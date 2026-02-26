@@ -23,7 +23,7 @@ import {
   HiBadgeCheck,
   HiGlobe,
 } from "react-icons/hi";
-import TikitTitle from "../../components/TikitTitle";
+import HeroWithBadge from "../../components/HeroWithBadge";
 import SEOHead from "../../components/SEOHead";
 import FAQ from "../../components/FAQ";
 
@@ -233,15 +233,15 @@ const SocialMediaManagement = () => {
           <div className="absolute inset-0 bg-gradient-to-b from-[var(--background)]/80 via-[var(--background)]/60 to-[var(--background)]" />
         </div>
 
-        <div className="relative mt-10 z-10 max-w-6xl mx-auto text-center">
-          <span className="hero-animate inline-block px-6 py-2 mb-6 rounded-full bg-[#52C3C5]/10 text-[#52C3C5] text-sm font-semibold uppercase tracking-wider">
-            {t("serviceSections.socialMediaManagement.badge")}
-          </span>
-          <TikitTitle title={t("serviceSections.socialMediaManagement.hero.title")} mainWord={t("serviceSections.socialMediaManagement.hero.mainWord")} />
-          <p className="hero-animate text-lg md:text-xl text-[var(--foreground)]/70 max-w-3xl mx-auto leading-relaxed">
-            {t("serviceSections.socialMediaManagement.hero.description")}
-          </p>
-        </div>
+        <HeroWithBadge
+          badge={t("serviceSections.socialMediaManagement.badge")}
+          title={t("serviceSections.socialMediaManagement.hero.title")}
+          mainWord={t("serviceSections.socialMediaManagement.hero.mainWord")}
+          description={t("serviceSections.socialMediaManagement.hero.description")}
+          titleClassName="hero-animate block"
+          descriptionClassName="hero-animate text-lg md:text-xl text-[var(--foreground)]/70 max-w-3xl mx-auto leading-relaxed"
+          contentClassName="relative mt-10 z-10 max-w-6xl mx-auto text-center"
+        />
       </section>
 
       {/* Divider */}

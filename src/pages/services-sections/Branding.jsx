@@ -30,7 +30,7 @@ import {
   MdDirectionsCar,
   MdStorefront,
 } from "react-icons/md";
-import TikitTitle from "../../components/TikitTitle";
+import HeroWithBadge from "../../components/HeroWithBadge";
 import SEOHead from "../../components/SEOHead";
 import FAQ from "../../components/FAQ";
 
@@ -225,21 +225,16 @@ const Branding = () => {
           <div className="absolute inset-0 bg-gradient-to-tr from-[#52C3C5]/30 via-transparent to-[#1C6F6C]/30" />
         </div>
 
-        <div className="relative mt-10 z-10 max-w-6xl mx-auto text-center">
-          <span className="hero-animate inline-block px-6 py-2 mb-6 rounded-full bg-[#52C3C5]/10 text-[#52C3C5] text-sm font-semibold uppercase tracking-wider">
-            {t("serviceSections.branding.badge")}
-          </span>
-
-          <TikitTitle
-            className="hero-animate block"
-            title={t("serviceSections.branding.hero.title")}
-            mainWord={t("serviceSections.branding.hero.mainWord")}
-            disableAnimation
-          />
-          <p className="hero-animate text-lg md:text-xl text-[var(--foreground)]/70 max-w-3xl mx-auto leading-relaxed">
-            {t("serviceSections.branding.hero.description")}
-          </p>
-        </div>
+        <HeroWithBadge
+          badge={t("serviceSections.branding.badge")}
+          title={t("serviceSections.branding.hero.title")}
+          mainWord={t("serviceSections.branding.hero.mainWord")}
+          description={t("serviceSections.branding.hero.description")}
+          titleClassName="hero-animate block"
+          descriptionClassName="hero-animate text-lg md:text-xl text-[var(--foreground)]/70 max-w-3xl mx-auto leading-relaxed"
+          contentClassName="relative mt-10 z-10 max-w-6xl mx-auto text-center"
+          disableAnimation
+        />
       </section>
 
       {/* Divider */}

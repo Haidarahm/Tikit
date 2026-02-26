@@ -15,7 +15,7 @@ import { useInfluencersStore } from "../../../store/influencersStore";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../../store/I18nLanguageContext.jsx";
-import TikitTitle from "../../../components/TikitTitle.jsx";
+import HeroWithBadge from "../../../components/HeroWithBadge.jsx";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
@@ -207,22 +207,15 @@ const Influencers = () => {
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#52C3C5]/10 dark:bg-[#52C3C5]/20 mb-4">
-            <span className="w-2 h-2 rounded-full bg-[#52C3C5] animate-pulse"></span>
-            <span className="text-sm font-medium text-[#52C3C5]">
-              {t("home.influencers.badge")}
-            </span>
-          </div>
-
-          <TikitTitle
-            title={t("home.influencers.title")}
-            mainWord={t("home.influencers.mainWord")}
-          />
-          <p className="text-[var(--foreground)]/70 max-w-2xl mx-auto">
-            {t("home.influencers.subtitle")}
-          </p>
-        </div>
+        <HeroWithBadge
+          badge={t("home.influencers.badge")}
+          title={t("home.influencers.title")}
+          mainWord={t("home.influencers.mainWord")}
+          description={t("home.influencers.subtitle")}
+          badgeVariant="pulse"
+          descriptionClassName="text-[var(--foreground)]/70 max-w-2xl mx-auto"
+          contentClassName="text-center mb-12"
+        />
 
         {/* Category Menu Bar */}
         <div

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../../store/I18nLanguageContext";
 import influencerHero from "../../../assets/services/Influencer-Marketing.webp";
-import TikitTitle from "../../../components/TikitTitle";
+import HeroWithBadge from "../../../components/HeroWithBadge";
 import SEOHead from "../../../components/SEOHead";
 import FAQ from "../../../components/FAQ";
 import {
@@ -173,11 +173,15 @@ const InfluencerMarketing = () => {
           <img src={influencerHero} alt="Influencer Marketing Agency Dubai" width={1920} height={1080} className="im-hero-image" loading="lazy" />
           <div className="im-hero-gradient" />
         </div>
-        <div className="im-hero-content">
-          <span className="hero-animate im-badge">{t("serviceSections.influencerMarketing.badge")}</span>
-          <TikitTitle title={t("serviceSections.influencerMarketing.hero.title")} mainWord={t("serviceSections.influencerMarketing.hero.mainWord")} />
-          <p className="hero-animate im-hero-desc">{t("serviceSections.influencerMarketing.hero.description")}</p>
-        </div>
+        <HeroWithBadge
+          badge={t("serviceSections.influencerMarketing.badge")}
+          title={t("serviceSections.influencerMarketing.hero.title")}
+          mainWord={t("serviceSections.influencerMarketing.hero.mainWord")}
+          description={t("serviceSections.influencerMarketing.hero.description")}
+          titleClassName="hero-animate block"
+          descriptionClassName="hero-animate im-hero-desc"
+          contentClassName="im-hero-content"
+        />
       </section>
 
       <div className="im-divider-wrap"><div className="im-divider" /></div>
