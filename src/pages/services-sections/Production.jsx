@@ -29,6 +29,7 @@ import {
 import HeroWithBadge from "../../components/HeroWithBadge";
 import SEOHead from "../../components/SEOHead";
 import FAQ from "../../components/FAQ";
+import ServiceCard from "../../components/ServiceCard";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -295,17 +296,14 @@ const Production = () => {
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Service 1 */}
-            <div className="service-card group p-8 rounded-3xl bg-[var(--foreground)]/5 backdrop-blur-sm border border-[var(--foreground)]/10 hover:border-[#52C3C5]/50 transition-all duration-300">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#52C3C5] to-[#1C6F6C] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <HiVideoCamera className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-2xl font-bold text-[var(--foreground)] mb-3">
-                {t("serviceSections.production.services.items.videoProduction.title")}
-              </h3>
-              <p className="text-[var(--foreground)]/70 leading-relaxed mb-4">
-                {t("serviceSections.production.services.items.videoProduction.description")}
-              </p>
+            <ServiceCard
+              icon={HiVideoCamera}
+              title={t("serviceSections.production.services.items.videoProduction.title")}
+              description={t("serviceSections.production.services.items.videoProduction.description")}
+              iconWrapperClassName="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#52C3C5] to-[#1C6F6C] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
+              iconClassName="w-8 h-8 text-white"
+              titleClassName="text-2xl font-bold text-[var(--foreground)] mb-3"
+            >
               <ul className="space-y-2 text-[var(--foreground)]/60 text-sm">
                 {t("serviceSections.production.services.items.videoProduction.features", { returnObjects: true }).map((feature, idx) => (
                   <li key={idx} className="flex items-center gap-2">
@@ -314,19 +312,16 @@ const Production = () => {
                   </li>
                 ))}
               </ul>
-            </div>
+            </ServiceCard>
 
-            {/* Service 2 */}
-            <div className="service-card group p-8 rounded-3xl bg-[var(--foreground)]/5 backdrop-blur-sm border border-[var(--foreground)]/10 hover:border-[#52C3C5]/50 transition-all duration-300">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#52C3C5] to-[#1C6F6C] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <HiCamera className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-2xl font-bold text-[var(--foreground)] mb-3">
-                {t("serviceSections.production.services.items.photography.title")}
-              </h3>
-              <p className="text-[var(--foreground)]/70 leading-relaxed mb-4">
-                {t("serviceSections.production.services.items.photography.description")}
-              </p>
+            <ServiceCard
+              icon={HiCamera}
+              title={t("serviceSections.production.services.items.photography.title")}
+              description={t("serviceSections.production.services.items.photography.description")}
+              iconWrapperClassName="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#52C3C5] to-[#1C6F6C] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
+              iconClassName="w-8 h-8 text-white"
+              titleClassName="text-2xl font-bold text-[var(--foreground)] mb-3"
+            >
               <ul className="space-y-2 text-[var(--foreground)]/60 text-sm">
                 {t("serviceSections.production.services.items.photography.features", { returnObjects: true }).map((feature, idx) => (
                   <li key={idx} className="flex items-center gap-2">
@@ -335,19 +330,16 @@ const Production = () => {
                   </li>
                 ))}
               </ul>
-            </div>
+            </ServiceCard>
 
-            {/* Service 3 */}
-            <div className="service-card group p-8 rounded-3xl bg-[var(--foreground)]/5 backdrop-blur-sm border border-[var(--foreground)]/10 hover:border-[#52C3C5]/50 transition-all duration-300">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#52C3C5] to-[#1C6F6C] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <HiPlay className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-2xl font-bold text-[var(--foreground)] mb-3">
-                {t("serviceSections.production.services.items.postProduction.title")}
-              </h3>
-              <p className="text-[var(--foreground)]/70 leading-relaxed mb-4">
-                {t("serviceSections.production.services.items.postProduction.description")}
-              </p>
+            <ServiceCard
+              icon={HiPlay}
+              title={t("serviceSections.production.services.items.postProduction.title")}
+              description={t("serviceSections.production.services.items.postProduction.description")}
+              iconWrapperClassName="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#52C3C5] to-[#1C6F6C] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
+              iconClassName="w-8 h-8 text-white"
+              titleClassName="text-2xl font-bold text-[var(--foreground)] mb-3"
+            >
               <ul className="space-y-2 text-[var(--foreground)]/60 text-sm">
                 {t("serviceSections.production.services.items.postProduction.features", { returnObjects: true }).map((feature, idx) => (
                   <li key={idx} className="flex items-center gap-2">
@@ -356,19 +348,16 @@ const Production = () => {
                   </li>
                 ))}
               </ul>
-            </div>
+            </ServiceCard>
 
-            {/* Service 4 */}
-            <div className="service-card group p-8 rounded-3xl bg-[var(--foreground)]/5 backdrop-blur-sm border border-[var(--foreground)]/10 hover:border-[#52C3C5]/50 transition-all duration-300">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#52C3C5] to-[#1C6F6C] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <HiMicrophone className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-2xl font-bold text-[var(--foreground)] mb-3">
-                {t("serviceSections.production.services.items.audioProduction.title")}
-              </h3>
-              <p className="text-[var(--foreground)]/70 leading-relaxed mb-4">
-                {t("serviceSections.production.services.items.audioProduction.description")}
-              </p>
+            <ServiceCard
+              icon={HiMicrophone}
+              title={t("serviceSections.production.services.items.audioProduction.title")}
+              description={t("serviceSections.production.services.items.audioProduction.description")}
+              iconWrapperClassName="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#52C3C5] to-[#1C6F6C] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
+              iconClassName="w-8 h-8 text-white"
+              titleClassName="text-2xl font-bold text-[var(--foreground)] mb-3"
+            >
               <ul className="space-y-2 text-[var(--foreground)]/60 text-sm">
                 {t("serviceSections.production.services.items.audioProduction.features", { returnObjects: true }).map((feature, idx) => (
                   <li key={idx} className="flex items-center gap-2">
@@ -377,19 +366,16 @@ const Production = () => {
                   </li>
                 ))}
               </ul>
-            </div>
+            </ServiceCard>
 
-            {/* Service 5 */}
-            <div className="service-card group p-8 rounded-3xl bg-[var(--foreground)]/5 backdrop-blur-sm border border-[var(--foreground)]/10 hover:border-[#52C3C5]/50 transition-all duration-300">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#52C3C5] to-[#1C6F6C] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <HiDesktopComputer className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-2xl font-bold text-[var(--foreground)] mb-3">
-                {t("serviceSections.production.services.items.liveStreaming.title")}
-              </h3>
-              <p className="text-[var(--foreground)]/70 leading-relaxed mb-4">
-                {t("serviceSections.production.services.items.liveStreaming.description")}
-              </p>
+            <ServiceCard
+              icon={HiDesktopComputer}
+              title={t("serviceSections.production.services.items.liveStreaming.title")}
+              description={t("serviceSections.production.services.items.liveStreaming.description")}
+              iconWrapperClassName="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#52C3C5] to-[#1C6F6C] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
+              iconClassName="w-8 h-8 text-white"
+              titleClassName="text-2xl font-bold text-[var(--foreground)] mb-3"
+            >
               <ul className="space-y-2 text-[var(--foreground)]/60 text-sm">
                 {t("serviceSections.production.services.items.liveStreaming.features", { returnObjects: true }).map((feature, idx) => (
                   <li key={idx} className="flex items-center gap-2">
@@ -398,19 +384,16 @@ const Production = () => {
                   </li>
                 ))}
               </ul>
-            </div>
+            </ServiceCard>
 
-            {/* Service 6 */}
-            <div className="service-card group p-8 rounded-3xl bg-[var(--foreground)]/5 backdrop-blur-sm border border-[var(--foreground)]/10 hover:border-[#52C3C5]/50 transition-all duration-300">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#52C3C5] to-[#1C6F6C] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <HiLightBulb className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-2xl font-bold text-[var(--foreground)] mb-3">
-                {t("serviceSections.production.services.items.creativeDirection.title")}
-              </h3>
-              <p className="text-[var(--foreground)]/70 leading-relaxed mb-4">
-                {t("serviceSections.production.services.items.creativeDirection.description")}
-              </p>
+            <ServiceCard
+              icon={HiLightBulb}
+              title={t("serviceSections.production.services.items.creativeDirection.title")}
+              description={t("serviceSections.production.services.items.creativeDirection.description")}
+              iconWrapperClassName="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#52C3C5] to-[#1C6F6C] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
+              iconClassName="w-8 h-8 text-white"
+              titleClassName="text-2xl font-bold text-[var(--foreground)] mb-3"
+            >
               <ul className="space-y-2 text-[var(--foreground)]/60 text-sm">
                 {t("serviceSections.production.services.items.creativeDirection.features", { returnObjects: true }).map((feature, idx) => (
                   <li key={idx} className="flex items-center gap-2">
@@ -419,7 +402,7 @@ const Production = () => {
                   </li>
                 ))}
               </ul>
-            </div>
+            </ServiceCard>
           </div>
         </div>
       </section>

@@ -26,6 +26,7 @@ import {
 import HeroWithBadge from "../../components/HeroWithBadge";
 import SEOHead from "../../components/SEOHead";
 import FAQ from "../../components/FAQ";
+import ServiceCard from "../../components/ServiceCard";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -307,83 +308,59 @@ const SocialMediaManagement = () => {
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Service 1 */}
-            <div className="service-card p-8 rounded-3xl bg-[var(--foreground)]/5 backdrop-blur-sm border border-[var(--foreground)]/10 hover:border-[#52C3C5]/50 transition-all duration-300 group">
-              <div className="w-14 h-14 rounded-2xl bg-[#52C3C5]/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <HiDocumentText className="w-7 h-7 text-[#52C3C5]" />
-              </div>
-              <h3 className="text-xl font-bold text-[var(--foreground)] mb-3">
-                {t("serviceSections.socialMediaManagement.services.items.contentCreation.title")}
-              </h3>
-              <p className="text-[var(--foreground)]/70 leading-relaxed">
-                {t("serviceSections.socialMediaManagement.services.items.contentCreation.description")}
-              </p>
-            </div>
+            <ServiceCard
+              icon={HiDocumentText}
+              title={t("serviceSections.socialMediaManagement.services.items.contentCreation.title")}
+              description={t("serviceSections.socialMediaManagement.services.items.contentCreation.description")}
+              iconWrapperClassName="w-14 h-14 rounded-2xl bg-[#52C3C5]/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
+              iconClassName="w-7 h-7 text-[#52C3C5]"
+              titleClassName="text-xl font-bold text-[var(--foreground)] mb-3"
+            />
 
-            {/* Service 2 */}
-            <div className="service-card p-8 rounded-3xl bg-[var(--foreground)]/5 backdrop-blur-sm border border-[var(--foreground)]/10 hover:border-[#52C3C5]/50 transition-all duration-300 group">
-              <div className="w-14 h-14 rounded-2xl bg-[#52C3C5]/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <HiCalendar className="w-7 h-7 text-[#52C3C5]" />
-              </div>
-              <h3 className="text-xl font-bold text-[var(--foreground)] mb-3">
-                {t("serviceSections.socialMediaManagement.services.items.contentPlanning.title")}
-              </h3>
-              <p className="text-[var(--foreground)]/70 leading-relaxed">
-                {t("serviceSections.socialMediaManagement.services.items.contentPlanning.description")}
-              </p>
-            </div>
+            <ServiceCard
+              icon={HiCalendar}
+              title={t("serviceSections.socialMediaManagement.services.items.contentPlanning.title")}
+              description={t("serviceSections.socialMediaManagement.services.items.contentPlanning.description")}
+              iconWrapperClassName="w-14 h-14 rounded-2xl bg-[#52C3C5]/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
+              iconClassName="w-7 h-7 text-[#52C3C5]"
+              titleClassName="text-xl font-bold text-[var(--foreground)] mb-3"
+            />
 
-            {/* Service 3 */}
-            <div className="service-card p-8 rounded-3xl bg-[var(--foreground)]/5 backdrop-blur-sm border border-[var(--foreground)]/10 hover:border-[#52C3C5]/50 transition-all duration-300 group">
-              <div className="w-14 h-14 rounded-2xl bg-[#52C3C5]/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <HiUserGroup className="w-7 h-7 text-[#52C3C5]" />
-              </div>
-              <h3 className="text-xl font-bold text-[var(--foreground)] mb-3">
-                {t("serviceSections.socialMediaManagement.services.items.communityManagement.title")}
-              </h3>
-              <p className="text-[var(--foreground)]/70 leading-relaxed">
-                {t("serviceSections.socialMediaManagement.services.items.communityManagement.description")}
-              </p>
-            </div>
+            <ServiceCard
+              icon={HiUserGroup}
+              title={t("serviceSections.socialMediaManagement.services.items.communityManagement.title")}
+              description={t("serviceSections.socialMediaManagement.services.items.communityManagement.description")}
+              iconWrapperClassName="w-14 h-14 rounded-2xl bg-[#52C3C5]/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
+              iconClassName="w-7 h-7 text-[#52C3C5]"
+              titleClassName="text-xl font-bold text-[var(--foreground)] mb-3"
+            />
 
-            {/* Service 4 */}
-            <div className="service-card p-8 rounded-3xl bg-[var(--foreground)]/5 backdrop-blur-sm border border-[var(--foreground)]/10 hover:border-[#52C3C5]/50 transition-all duration-300 group">
-              <div className="w-14 h-14 rounded-2xl bg-[#52C3C5]/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <HiChartBar className="w-7 h-7 text-[#52C3C5]" />
-              </div>
-              <h3 className="text-xl font-bold text-[var(--foreground)] mb-3">
-                {t("serviceSections.socialMediaManagement.services.items.analytics.title")}
-              </h3>
-              <p className="text-[var(--foreground)]/70 leading-relaxed">
-                {t("serviceSections.socialMediaManagement.services.items.analytics.description")}
-              </p>
-            </div>
+            <ServiceCard
+              icon={HiChartBar}
+              title={t("serviceSections.socialMediaManagement.services.items.analytics.title")}
+              description={t("serviceSections.socialMediaManagement.services.items.analytics.description")}
+              iconWrapperClassName="w-14 h-14 rounded-2xl bg-[#52C3C5]/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
+              iconClassName="w-7 h-7 text-[#52C3C5]"
+              titleClassName="text-xl font-bold text-[var(--foreground)] mb-3"
+            />
 
-            {/* Service 5 */}
-            <div className="service-card p-8 rounded-3xl bg-[var(--foreground)]/5 backdrop-blur-sm border border-[var(--foreground)]/10 hover:border-[#52C3C5]/50 transition-all duration-300 group">
-              <div className="w-14 h-14 rounded-2xl bg-[#52C3C5]/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <HiCurrencyDollar className="w-7 h-7 text-[#52C3C5]" />
-              </div>
-              <h3 className="text-xl font-bold text-[var(--foreground)] mb-3">
-                {t("serviceSections.socialMediaManagement.services.items.paidAdvertising.title")}
-              </h3>
-              <p className="text-[var(--foreground)]/70 leading-relaxed">
-                {t("serviceSections.socialMediaManagement.services.items.paidAdvertising.description")}
-              </p>
-            </div>
+            <ServiceCard
+              icon={HiCurrencyDollar}
+              title={t("serviceSections.socialMediaManagement.services.items.paidAdvertising.title")}
+              description={t("serviceSections.socialMediaManagement.services.items.paidAdvertising.description")}
+              iconWrapperClassName="w-14 h-14 rounded-2xl bg-[#52C3C5]/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
+              iconClassName="w-7 h-7 text-[#52C3C5]"
+              titleClassName="text-xl font-bold text-[var(--foreground)] mb-3"
+            />
 
-            {/* Service 6 */}
-            <div className="service-card p-8 rounded-3xl bg-[var(--foreground)]/5 backdrop-blur-sm border border-[var(--foreground)]/10 hover:border-[#52C3C5]/50 transition-all duration-300 group">
-              <div className="w-14 h-14 rounded-2xl bg-[#52C3C5]/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <HiLightningBolt className="w-7 h-7 text-[#52C3C5]" />
-              </div>
-              <h3 className="text-xl font-bold text-[var(--foreground)] mb-3">
-                {t("serviceSections.socialMediaManagement.services.items.crisisManagement.title")}
-              </h3>
-              <p className="text-[var(--foreground)]/70 leading-relaxed">
-                {t("serviceSections.socialMediaManagement.services.items.crisisManagement.description")}
-              </p>
-            </div>
+            <ServiceCard
+              icon={HiLightningBolt}
+              title={t("serviceSections.socialMediaManagement.services.items.crisisManagement.title")}
+              description={t("serviceSections.socialMediaManagement.services.items.crisisManagement.description")}
+              iconWrapperClassName="w-14 h-14 rounded-2xl bg-[#52C3C5]/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
+              iconClassName="w-7 h-7 text-[#52C3C5]"
+              titleClassName="text-xl font-bold text-[var(--foreground)] mb-3"
+            />
           </div>
         </div>
       </section>

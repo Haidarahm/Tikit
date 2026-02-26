@@ -33,6 +33,7 @@ import {
 import HeroWithBadge from "../../components/HeroWithBadge";
 import SEOHead from "../../components/SEOHead";
 import FAQ from "../../components/FAQ";
+import ServiceCard from "../../components/ServiceCard";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -300,83 +301,59 @@ const Branding = () => {
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Service 1 */}
-            <div className="service-card group p-8 rounded-3xl bg-[var(--foreground)]/5 backdrop-blur-sm border border-[var(--foreground)]/10 hover:border-[#52C3C5]/50 transition-all duration-300">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#52C3C5] to-[#1C6F6C] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <HiColorSwatch className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-2xl font-bold text-[var(--foreground)] mb-3">
-                {t("serviceSections.branding.services.items.brandStrategy.title")}
-              </h3>
-              <p className="text-[var(--foreground)]/70 leading-relaxed">
-                {t("serviceSections.branding.services.items.brandStrategy.description")}
-              </p>
-            </div>
+            <ServiceCard
+              icon={HiColorSwatch}
+              title={t("serviceSections.branding.services.items.brandStrategy.title")}
+              description={t("serviceSections.branding.services.items.brandStrategy.description")}
+              iconWrapperClassName="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#52C3C5] to-[#1C6F6C] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
+              iconClassName="w-8 h-8 text-white"
+              titleClassName="text-2xl font-bold text-[var(--foreground)] mb-3"
+            />
 
-            {/* Service 2 */}
-            <div className="service-card group p-8 rounded-3xl bg-[var(--foreground)]/5 backdrop-blur-sm border border-[var(--foreground)]/10 hover:border-[#52C3C5]/50 transition-all duration-300">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#52C3C5] to-[#1C6F6C] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <HiLightBulb className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-2xl font-bold text-[var(--foreground)] mb-3">
-                {t("serviceSections.branding.services.items.logoDesign.title")}
-              </h3>
-              <p className="text-[var(--foreground)]/70 leading-relaxed">
-                {t("serviceSections.branding.services.items.logoDesign.description")}
-              </p>
-            </div>
+            <ServiceCard
+              icon={HiLightBulb}
+              title={t("serviceSections.branding.services.items.logoDesign.title")}
+              description={t("serviceSections.branding.services.items.logoDesign.description")}
+              iconWrapperClassName="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#52C3C5] to-[#1C6F6C] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
+              iconClassName="w-8 h-8 text-white"
+              titleClassName="text-2xl font-bold text-[var(--foreground)] mb-3"
+            />
 
-            {/* Service 3 */}
-            <div className="service-card group p-8 rounded-3xl bg-[var(--foreground)]/5 backdrop-blur-sm border border-[var(--foreground)]/10 hover:border-[#52C3C5]/50 transition-all duration-300">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#52C3C5] to-[#1C6F6C] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <HiTemplate className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-2xl font-bold text-[var(--foreground)] mb-3">
-                {t("serviceSections.branding.services.items.visualIdentity.title")}
-              </h3>
-              <p className="text-[var(--foreground)]/70 leading-relaxed">
-                {t("serviceSections.branding.services.items.visualIdentity.description")}
-              </p>
-            </div>
+            <ServiceCard
+              icon={HiTemplate}
+              title={t("serviceSections.branding.services.items.visualIdentity.title")}
+              description={t("serviceSections.branding.services.items.visualIdentity.description")}
+              iconWrapperClassName="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#52C3C5] to-[#1C6F6C] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
+              iconClassName="w-8 h-8 text-white"
+              titleClassName="text-2xl font-bold text-[var(--foreground)] mb-3"
+            />
 
-            {/* Service 4 */}
-            <div className="service-card group p-8 rounded-3xl bg-[var(--foreground)]/5 backdrop-blur-sm border border-[var(--foreground)]/10 hover:border-[#52C3C5]/50 transition-all duration-300">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#52C3C5] to-[#1C6F6C] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <HiBookOpen className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-2xl font-bold text-[var(--foreground)] mb-3">
-                {t("serviceSections.branding.services.items.brandGuidelines.title")}
-              </h3>
-              <p className="text-[var(--foreground)]/70 leading-relaxed">
-                {t("serviceSections.branding.services.items.brandGuidelines.description")}
-              </p>
-            </div>
+            <ServiceCard
+              icon={HiBookOpen}
+              title={t("serviceSections.branding.services.items.brandGuidelines.title")}
+              description={t("serviceSections.branding.services.items.brandGuidelines.description")}
+              iconWrapperClassName="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#52C3C5] to-[#1C6F6C] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
+              iconClassName="w-8 h-8 text-white"
+              titleClassName="text-2xl font-bold text-[var(--foreground)] mb-3"
+            />
 
-            {/* Service 5 */}
-            <div className="service-card group p-8 rounded-3xl bg-[var(--foreground)]/5 backdrop-blur-sm border border-[var(--foreground)]/10 hover:border-[#52C3C5]/50 transition-all duration-300">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#52C3C5] to-[#1C6F6C] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <HiCube className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-2xl font-bold text-[var(--foreground)] mb-3">
-                {t("serviceSections.branding.services.items.packagingDesign.title")}
-              </h3>
-              <p className="text-[var(--foreground)]/70 leading-relaxed">
-                {t("serviceSections.branding.services.items.packagingDesign.description")}
-              </p>
-            </div>
+            <ServiceCard
+              icon={HiCube}
+              title={t("serviceSections.branding.services.items.packagingDesign.title")}
+              description={t("serviceSections.branding.services.items.packagingDesign.description")}
+              iconWrapperClassName="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#52C3C5] to-[#1C6F6C] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
+              iconClassName="w-8 h-8 text-white"
+              titleClassName="text-2xl font-bold text-[var(--foreground)] mb-3"
+            />
 
-            {/* Service 6 */}
-            <div className="service-card group p-8 rounded-3xl bg-[var(--foreground)]/5 backdrop-blur-sm border border-[var(--foreground)]/10 hover:border-[#52C3C5]/50 transition-all duration-300">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#52C3C5] to-[#1C6F6C] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <HiRefresh className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-2xl font-bold text-[var(--foreground)] mb-3">
-                {t("serviceSections.branding.services.items.brandRefresh.title")}
-              </h3>
-              <p className="text-[var(--foreground)]/70 leading-relaxed">
-                {t("serviceSections.branding.services.items.brandRefresh.description")}
-              </p>
-            </div>
+            <ServiceCard
+              icon={HiRefresh}
+              title={t("serviceSections.branding.services.items.brandRefresh.title")}
+              description={t("serviceSections.branding.services.items.brandRefresh.description")}
+              iconWrapperClassName="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#52C3C5] to-[#1C6F6C] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
+              iconClassName="w-8 h-8 text-white"
+              titleClassName="text-2xl font-bold text-[var(--foreground)] mb-3"
+            />
           </div>
         </div>
       </section>
