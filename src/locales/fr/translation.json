@@ -844,71 +844,201 @@
         }
     },
     "serviceSections": {
-        "influencerMarketing": {
-            "badge": "Marketing d'Influence",
-            "hero": {
-                "title": "Connectez-vous avec les",
-                "mainWord": "Bons Influenceurs",
-                "description": "Nous créons un pont entre les marques et les voix influentes, créant des partenariats authentiques qui génèrent de l'engagement, renforcent la confiance et offrent des résultats mesurables sur toutes les plateformes."
-            },
-            "stats": {
-                "influencersNetwork": "Réseau d'Influenceurs",
-                "successfulCampaigns": "Campagnes Réussies",
-                "totalReach": "Portée Totale",
-                "clientSatisfaction": "Satisfaction Client"
-            },
-            "process": {
-                "title": "Notre Processus",
-                "description": "De la stratégie à l'exécution, nous gérons tous les aspects de vos campagnes de marketing d'influence",
-                "steps": {
-                    "strategy": {
-                        "title": "Stratégie et Planification",
-                        "description": "Nous analysons votre marque, votre public cible et vos objectifs pour créer une stratégie de marketing d'influence personnalisée qui s'aligne sur vos objectifs et maximise le ROI."
-                    },
-                    "selection": {
-                        "title": "Sélection d'Influenceurs",
-                        "description": "Nous associons soigneusement votre marque avec des influenceurs dont le public, les valeurs et le style de contenu s'alignent parfaitement avec les objectifs de votre campagne, garantissant des partenariats authentiques."
-                    },
-                    "management": {
-                        "title": "Gestion de Campagne",
-                        "description": "De la négociation de contrat à l'approbation du contenu et aux calendriers de publication, nous gérons chaque détail pour assurer une exécution fluide et des performances optimales."
-                    },
-                    "analytics": {
-                        "title": "Analyses et Rapports",
-                        "description": "Suivez les performances de la campagne avec des analyses détaillées, des insights et des rapports complets qui démontrent un impact réel et informent les stratégies futures."
-                    }
-                }
-            },
-            "showcase": {
-                "title": "Influenceurs en Vedette",
-                "description": "Connectez-vous avec des influenceurs de premier plan dans diverses niches et plateformes"
-            },
-            "cta": {
-                "title": "Prêt à Amplifier Votre Marque ?",
-                "description": "Créons une campagne de marketing d'influence qui génère de vrais résultats",
-                "button": "Commencer"
-            },
-            "subServices": {
-                "title": "Nos solutions de marketing d'influence",
-                "subtitle": "Services complets adaptés au marché des EAU",
-                "campaignManagement": { "title": "Gestion de Campagne", "description": "Planification et exécution de campagnes de bout en bout." },
-                "microInfluencer": { "title": "Marketing Micro-Influenceurs", "description": "Nano et micro-influenceurs pour un engagement rentable." },
-                "luxuryInfluencer": { "title": "Marketing Influenceurs Luxe", "description": "Partenariats premium pour marques haut de gamme." },
-                "roiAnalytics": { "title": "ROI et Analyses", "description": "Mesure et tableaux de bord en temps réel." },
-                "instagramInfluencer": { "title": "Marketing Instagram", "description": "Reels, Stories et collaborations Instagram." },
-                "tiktokInfluencer": { "title": "Marketing TikTok", "description": "Campagnes virales TikTok." },
-                "influencerCost": { "title": "Coût Marketing Influenceurs EAU", "description": "Grilles tarifaires et planification budgétaire." }
-            },
-            "subPages": {
-                "campaignManagement": { "badge": "Gestion de Campagne", "hero": { "title": "Gestion de Campagne", "mainWord": "Expert", "description": "De la stratégie aux rapports finaux, nos gestionnaires gèrent chaque détail." }, "definition": { "title": "Qu'est-ce que la gestion de campagne ?", "paragraph": "Processus complet de planification, exécution et optimisation.", "benefitsTitle": "Pourquoi la gestion professionnelle", "benefits": ["Flux de travail rationalisé"], "processTitle": "Notre processus", "processSteps": ["Session découverte", "Brief détaillé", "Sourcing et négociation", "Gestion du contenu", "Lancement", "Rapports"] }, "stats": [{"value": "200+", "label": "Campagnes gérées"}, {"value": "98%", "label": "Livraison à temps"}, {"value": "3.5x", "label": "ROI moyen"}, {"value": "500+", "label": "Partenaires"}], "features": { "title": "Services de gestion", "subtitle": "Tout pour une campagne réussie", "items": [{"title": "Stratégie et planification", "description": "Plans complets."}, {"title": "Sourcing influenceurs", "description": "Sélection basée sur les données."}, {"title": "Gestion du contenu", "description": "Workflows de validation."}, {"title": "Planning", "description": "Calendriers coordonnés."}, {"title": "Suivi des performances", "description": "Tableaux de bord temps réel."}, {"title": "Optimisation post-campagne", "description": "Analyse et recommandations."}] }, "process": { "title": "Comment nous gérons votre campagne", "subtitle": "Processus en 4 étapes", "steps": [{"title": "Brief et stratégie", "description": "Plongée dans votre marque et objectifs."}, {"title": "Appariement et contrat", "description": "Identification et négociation."}, {"title": "Création et lancement", "description": "Cycle de vie du contenu."}, {"title": "Surveillance et optimisation", "description": "Monitoring et rapports."}] }, "trust": { "title": "Pourquoi nous faire confiance", "subtitle": "Expertise prouvée aux EAU", "cards": [{"title": "Managers dédiés", "description": "Un gestionnaire par campagne."}, {"title": "Expertise multi-plateformes", "description": "Instagram, TikTok, YouTube et plus."}, {"title": "Réseau 500+", "description": "Influenceurs vérifiés."}, {"title": "Rapports transparents", "description": "Tableaux de bord et rapports."}], "paragraph": "200+ campagnes exécutées." }, "faq": { "title": "FAQ Gestion de campagne", "items": [{"question": "Qu'est-ce qui est inclus ?", "answer": "Notre gestion couvre tout, de la stratégie initiale à la sélection des influenceurs, en passant par la validation du contenu, la planification, le suivi en direct et les rapports post-campagne. Concrètement : sessions de découverte pour aligner objectifs et KPIs ; brief détaillé avec directives créatives et cadres de message ; recherche, vérification et négociation avec les influenceurs adaptés de notre réseau 500+ créateurs ; gestion du cycle complet de création du contenu (briefs, brouillons, tours de validation, workflow d'approbation) ; coordination des calendriers de publication sur plusieurs influenceurs et plateformes ; monitoring en direct avec alertes de performance ; rapports post-campagne complets (portée, engagement, conversions, recommandations)."}, {"question": "Combien de temps pour lancer ?", "answer": "Les délais varient selon l'envergure et la complexité. Une campagne standard prend généralement 2 à 4 semaines du brief au lancement : semaine 1 pour stratégie, sourcing et contractualisation ; semaine 2 pour brief créatif, création et premières validations ; semaines 3-4 pour révisions, approbations finales et lancement. Les activations rapides (1-3 nano-influenceurs, une plateforme) peuvent se faire en 1-2 semaines. Les campagnes complexes multi-influenceurs ou avec production custom peuvent nécessiter 4-6 semaines. Nous fournissons un planning détaillé lors de la consultation initiale."}, {"question": "Gérez-vous les contrats ?", "answer": "Oui, nous gérons tous les aspects contractuels et financiers : négociation des tarifs et livrables avec les influenceurs ; rédaction et gestion des accords (droits d'usage, clauses d'exclusivité, propriété du contenu, planning) ; coordination des paiements (incluant paiements échelonnés si souhaité) ; respect des obligations de transparence (FTC/ASA) ; gestion des avenants ou prolongations. Vous gardez une visibilité complète sans charge administrative."}, {"question": "Comment assurez-vous la sécurité de la marque ?", "answer": "Nous appliquons une approche multi-couches : (1) Vérification pré-campagne — chaque influenceur est vérifié sur son audience, son contenu et son adéquation. (2) Briefs créatifs détaillés — directives, messages approuvés et standards visuels transmis aux créateurs. (3) Workflow de validation — tout contenu passe par plusieurs étapes d'approbation et check-lists. (4) Monitoring post-publication — suivi des commentaires, engagement et anomalies. (5) Protocoles de crise — processus d'escalade définis en cas d'incident. Sur 200+ campagnes, 98% livrées à temps sans incident majeur de sécurité de marque."}] }, "cta": { "title": "Prêt à lancer ?", "description": "Notre équipe gère votre campagne de A à Z.", "button": "Commencer" } },
-                "microInfluencer": { "badge": "Marketing Micro-Influenceurs", "hero": { "title": "Croissance authentique avec", "mainWord": "Micro-Influenceurs", "description": "Profitez des nano et micro-influenceurs pour un engagement élevé." }, "definition": { "title": "Qu'est-ce que le marketing micro-influenceurs ?", "paragraph": "Partenariats avec créateurs à audiences plus petites mais très engagées (1K-50K).", "benefitsTitle": "Pourquoi les micro-influenceurs", "benefits": ["Taux d'engagement 3-5x supérieur"], "processTitle": "Comment ça marche", "processSteps": ["Définir les segments", "Screener les influenceurs", "Coordonner les campagnes", "Lancer", "Suivre"] }, "stats": [{"value": "60%", "label": "Engagement supérieur"}, {"value": "300+", "label": "Influenceurs vérifiés"}, {"value": "7x", "label": "Coût par engagement"}, {"value": "85%", "label": "Taux de confiance"}], "features": { "title": "Services micro-influenceurs", "subtitle": "Partenariats stratégiques", "items": [{"title": "Découverte et vérification", "description": "Outils avancés."}, {"title": "Campagnes communautaires", "description": "Contenu authentique."}, {"title": "Stratégie budgétaire", "description": "Optimisation des coûts."}, {"title": "Campagnes scalables", "description": "Démarrage et montée en puissance."}, {"title": "UGC et amplification", "description": "Contenu généré par les utilisateurs."}, {"title": "Détection de fraude", "description": "Qualité du public."}] }, "process": { "title": "Notre processus", "subtitle": "Approche basée sur les données", "steps": [{"title": "Cartographie du public", "description": "Analyse démographique."}, {"title": "Vérification des créateurs", "description": "Processus de screening."}, {"title": "Campagnes multi-créateurs", "description": "Coordination."}, {"title": "Performance et scale", "description": "Suivi et expansion."}] }, "trust": { "title": "Pourquoi nous choisir", "subtitle": "Expertise marché EAU", "cards": [{"title": "Réseau vérifié", "description": "300+ influenceurs."}, {"title": "Experts marché", "description": "Compréhension des tendances."}, {"title": "Couverture multi-niches", "description": "Mode, food, tech, fitness, voyage."}, {"title": "Performance garantie", "description": "Sélection basée sur les données."}], "paragraph": "3-5x engagement supérieur." }, "faq": { "title": "FAQ Micro-influenceurs", "items": [{"question": "Différence micro vs macro ?", "answer": "Les micro-influenceurs ont généralement 1 000 à 50 000 abonnés avec 3 à 7% d'engagement, contre moins de 2% pour les macro (100K-1M+). Ils entretiennent des relations plus proches avec leur audience, ce qui génère des recommandations plus authentiques, une confiance accrue et de meilleures conversions. Le coût par engagement est souvent 5 à 7 fois plus favorable. Les macro offrent une portée plus large à coût plus élevé et qualité d'engagement inférieure. Pour des campagnes ciblées aux EAU, un mix de 10 à 15 micro-influenceurs surperforme souvent un seul macro en engagement et ROI."}, {"question": "Coût aux EAU ?", "answer": "Les tarifs micro-influenceurs aux EAU vont généralement de 500 à 5 000 AED par livrable selon la portée, l'engagement, la niche et le type de contenu. Nano (1K-10K) : 500-2 000 AED par post. Micro moyen (25K-50K) avec bon engagement : 2 000-5 000 AED. Tarifs réduits possibles pour partenariats en produits ou packages multi-livrables. Les prix EAU sont plus élevés que d'autres marchés en raison de l'audience à fort pouvoir d'achat et de la qualité du marché."}, {"question": "Combien d'influenceurs ?", "answer": "Le nombre optimal dépend des objectifs et du budget. Pour un lancement produit ciblé ou un segment spécifique, nous recommandons généralement 5 à 15 micro-influenceurs pour du contenu authentique et diversifié. Pour des campagnes d'awareness plus larges, 20 à 50 créateurs amplifient la portée et renforcent la preuve sociale. Le travail avec plusieurs créateurs réduit les risques et génère une bibliothèque UGC. Nous définissons le mix optimal en phase stratégie selon taille d'audience, focus géographique et objectifs."}, {"question": "Vérification de l'authenticité ?", "answer": "Nous utilisons outils et processus : (1) Analyse d'audience — historique de croissance, patterns d'engagement, répartition démographique pour détecter anomalies ou comportements bots. (2) Qualité de l'engagement — commentaires réels et pertinents vs réponses génériques. (3) Revue du contenu historique — cohérence, régularité et adéquation à la marque. (4) Vérification externe — recoupement avec les insights plateforme ou outils tiers si nécessaire. Nous recommandons uniquement des créateurs répondant à nos critères et affichant une audience authentique et engagée."}] }, "cta": { "title": "Démarrer une campagne micro", "description": "Connectez-vous avec des créateurs authentiques.", "button": "Commencer" } },
-                "luxuryInfluencer": { "badge": "Marketing Influenceurs Luxe", "hero": { "title": "Élevez votre marque avec", "mainWord": "Influenceurs Luxe", "description": "Partenariats avec les créateurs les plus prestigieux de Dubaï." }, "definition": { "title": "Qu'est-ce que le marketing influenceurs luxe ?", "paragraph": "Connexion de marques premium avec créateurs de calibre haut de gamme.", "benefitsTitle": "Pourquoi les marques luxe", "benefits": ["Accès aux publics aisés"], "processTitle": "Le processus luxe", "processSteps": ["Positionnement", "Curatrice des créateurs", "Concepts créatifs", "Exécution", "Analyse"] }, "stats": [{"value": "50+", "label": "Campagnes luxe"}, {"value": "100+", "label": "Créateurs premium"}, {"value": "25M+", "label": "Portée"}, {"value": "4.2x", "label": "Perception marque"}], "features": { "title": "Services luxe", "subtitle": "Solutions premium", "items": [{"title": "Curatrice créateurs élite", "description": "Influenceurs luxe vérifiés."}, {"title": "Production premium", "description": "Contenu cinématographique."}, {"title": "Expériences exclusives", "description": "Lieux prestigieux Dubaï."}, {"title": "Protection marque", "description": "Accords d'exclusivité."}, {"title": "Portée luxe mondiale", "description": "Publics internationaux."}, {"title": "Activation VIP", "description": "Lancements exclusifs."}] }, "process": { "title": "Le parcours premium", "subtitle": "Service haut de gamme", "steps": [{"title": "Immersion marque", "description": "Compréhension approfondie."}, {"title": "Curatrice créateurs", "description": "Sélection main."}, {"title": "Production haut de gamme", "description": "Qualité cinématographique."}, {"title": "Lancement exclusif", "description": "Expériences VIP."}] }, "trust": { "title": "Fait confiance aux marques luxe", "subtitle": "Partenariats premium à Dubaï", "cards": [{"title": "Réseau premium", "description": "Relations exclusives."}, {"title": "Expertise luxe Dubaï", "description": "Connaissance du marché."}, {"title": "Publics aisés", "description": "Accès HNW."}, {"title": "Analyses perception", "description": "Analyse de sentiment."}], "paragraph": "Mode, joaillerie, auto, hôtellerie." }, "faq": { "title": "FAQ Luxe", "items": [{"question": "Qu'est-ce qui différencie le luxe ?", "answer": "Le marketing influence luxe diffère sur trois axes : (1) Production — contenu haut de gamme (photos pro, vidéo cinématique, expériences réelles) reflétant la valeur de la marque. (2) Curation — influenceurs au style de vie aligné, audience composée de vrais acheteurs potentiels et non de simples followers. (3) Exclusivité et contrôle — accords avec droits d'usage étendus, clauses d'exclusivité et contrôle accru sur le timing et le contexte. Les marques luxe exigent aussi une protection de marque stricte et des workflows d'approbation multi-niveaux."}, {"question": "Comment sélectionnez-vous ?", "answer": "Nous évaluons selon plusieurs critères : (1) Richesse de l'audience — données démographiques et comportementales pour vérifier l'alignement pouvoir d'achat / goûts luxe. (2) Qualité et finition du contenu — cohérence visuelle, production et style. (3) Adéquation marque — créateurs dont le style de vie reflète naturellement les valeurs. (4) Historique et crédibilité — partenariats luxe passés, références. (5) Conformité — respect des guidelines publicitaires. Notre réseau de 100+ créateurs luxe à Dubaï et aux EAU est soigneusement vérifié."}, {"question": "Coût à Dubaï ?", "answer": "Les coûts varient selon le niveau d'influenceur, le type de contenu et l'envergure. Activations ciblées avec micro/mid-tier luxe (25K-100K) : à partir de 50 000 AED pour une série de contenu sur mesure ou un petit événement exclusif. Campagnes larges avec top influenceurs (100K-500K+), production haut de gamme et expériences VIP : jusqu'à 200 000 AED ou plus. Packages complets combinant plusieurs créateurs, production et activations : généralement 100 000 à 500 000 AED. Nous proposons des devis sur mesure selon objectifs et budget."}, {"question": "Industries servies ?", "answer": "Nous servons plusieurs secteurs luxe à Dubaï et aux EAU : mode et prêt-à-porter ; joaillerie et montres ; automobile, yachting et aviation privée ; hôtellerie et resorts ; immobilier premium ; voyage et tourisme haut de gamme ; restauration et hôtellerie fine ; beauté et parfums de luxe. Notre expertise terrain et notre connaissance des comportements consommateurs locaux aident les marques à éviter les erreurs courantes et à atteindre un message adapté."}] }, "cta": { "title": "Élevez votre présence", "description": "Partenariats avec créateurs prestigieux.", "button": "Lancer campagne luxe" } },
-                "roiAnalytics": { "badge": "ROI et Analyses", "hero": { "title": "Mesurez ce qui compte avec", "mainWord": "Analyses Données", "description": "Transformez le marketing d'influence en science." }, "definition": { "title": "Qu'est-ce que les analyses ROI ?", "paragraph": "Mesure et reporting sur la performance et le ROI des campagnes.", "benefitsTitle": "Pourquoi les campagnes analytiques", "benefits": ["ROI quantifié"], "processTitle": "Comment nous mesurons", "processSteps": ["Définir KPIs", "Infrastructure de tracking", "Monitoring temps réel", "Analyse", "Rapports"] }, "stats": [{"value": "100%", "label": "Couverture tracking"}, {"value": "24/7", "label": "Monitoring"}, {"value": "3.5x", "label": "ROI client"}, {"value": "200+", "label": "Campagnes analysées"}], "features": { "title": "Services analytiques", "subtitle": "Mesure complète", "items": [{"title": "Tableaux de bord temps réel", "description": "Monitoring en direct."}, {"title": "Attribution ROI", "description": "Modèles multi-touch."}, {"title": "Insights audience", "description": "Démographie et comportement."}, {"title": "Analyse d'engagement", "description": "Qualité et sentiment."}, {"title": "Rapports personnalisés", "description": "Visualisations."}, {"title": "Optimisation campagne", "description": "Recommandations."}] }, "process": { "title": "Notre processus analytique", "subtitle": "De la configuration aux insights", "steps": [{"title": "Cadre de mesure", "description": "KPIs et infrastructure."}, {"title": "Monitoring temps réel", "description": "Plateforme 24/7."}, {"title": "Analyse approfondie", "description": "Équipe données."}, {"title": "Rapports stratégiques", "description": "ROI et recommandations."}] }, "trust": { "title": "Données de confiance", "subtitle": "Analyses transparentes", "cards": [{"title": "Métriques vérifiées", "description": "Toutes vérifiées."}, {"title": "Tracking multi-plateformes", "description": "Instagram, TikTok, YouTube."}, {"title": "Vérification audience", "description": "Authenticité."}, {"title": "Tableaux personnalisés", "description": "Vos KPIs."}], "paragraph": "200+ campagnes trackées." }, "faq": { "title": "FAQ Analyses", "items": [{"question": "Comment mesurez-vous le ROI ?", "answer": "Nous relions la performance des campagnes influence aux résultats business via : (1) Suivi des conversions — UTM, codes promo, liens dédiés et pixels pour attribuer visites et achats aux influenceurs et campagnes. (2) Modèles d'attribution — first-touch, last-touch et multi-touch pour comprendre le parcours client. (3) Intégration outils — GA, Meta, TikTok, CRM quand possible pour consolider les données. (4) Analyse avant/après — comparaison ventes ou awareness avant et après campagne en l'absence de tracking direct. Nous fournissons des calculs ROI clairs dans les rapports : coût par conversion, CPA, coût par acquisition d'awareness."}, {"question": "Quelles métriques ?", "answer": "Nous suivons un ensemble de métriques selon les objectifs : Portée — impressions, reach unique, vues, portée totale. Engagement — likes, commentaires, partages, saves, clics, taux d'engagement. Contenu — taux de complétion vidéo, temps de vue, performance par type. Conversions — clics liens, conversions site, ventes via codes promo ou UTM. Awareness — enquêtes pré/post, analyse sentiment, mention de marque. Ces métriques sont visibles en temps réel et résumées dans des rapports périodiques avec contexte et benchmarks."}, {"question": "Fréquence des rapports ?", "answer": "Nous offrons plusieurs niveaux : (1) Tableau temps réel — accès 24/7 aux métriques live pendant la campagne. (2) Rapports hebdomadaires — résumés exécutifs pendant les campagnes actives, avec comparaisons et recommandations. (3) Rapport post-campagne — analyse complète incluant résultats, ROI, performance contenu et influenceurs, comparaison aux objectifs et recommandations pour les prochaines campagnes. La fréquence et le format sont adaptables selon vos besoins."}, {"question": "Conversions offline ?", "answer": "Oui. Pour les conversions offline nous utilisons : (1) Codes promo dédiés — codes uniques par influenceur ou campagne pour lier ventes en magasin. (2) QR codes — codes personnalisés dans le contenu ou le print reliés au parcours. (3) Landing pages dédiées — pages uniques par influenceur avec tracking. (4) Enquêtes post-achat — demander aux clients comment ils ont découvert la marque. (5) Études brand lift — mesurer l'évolution de l'awareness et de l'intention avant/après. Nous relions ces résultats aux dépenses campagne pour calculer le ROI."}] }, "cta": { "title": "Mesurez votre impact", "description": "Analyses claires prouvant la valeur.", "button": "Commencer" } },
-                "instagramInfluencer": { "badge": "Marketing Instagram", "hero": { "title": "Dominez le fil avec", "mainWord": "Créateurs Instagram", "description": "Profitez d'Instagram via des partenariats stratégiques." }, "definition": { "title": "Qu'est-ce que le marketing Instagram ?", "paragraph": "Utilisation de créateurs pour promouvoir les marques via storytelling visuel.", "benefitsTitle": "Pourquoi Instagram mène", "benefits": ["Plus haute plateforme d'engagement aux EAU"], "processTitle": "Notre approche Instagram", "processSteps": ["Audit présence", "Identifier créateurs", "Stratégies contenu", "Gestion", "Suivi"] }, "stats": [{"value": "300+", "label": "Campagnes Instagram"}, {"value": "400+", "label": "Créateurs"}, {"value": "40M+", "label": "Impressions"}, {"value": "5.2%", "label": "Taux d'engagement"}], "features": { "title": "Services Instagram", "subtitle": "Campagnes complètes", "items": [{"title": "Campagnes Reels", "description": "Vidéo court format."}, {"title": "Stories et Highlights", "description": "Contenu interactif."}, {"title": "Collaborations", "description": "Doubler la portée."}, {"title": "Contenu shoppable", "description": "Posts avec tags produits."}, {"title": "Campagnes hashtag", "description": "Stratégies de marque."}, {"title": "Programmes ambassadeurs", "description": "Partenariats longs termes."}] }, "process": { "title": "Processus Instagram", "subtitle": "Approche stratégique", "steps": [{"title": "Stratégie plateforme", "description": "Analyse paysage."}, {"title": "Appariement créateurs", "description": "Style visuel aligné."}, {"title": "Contenu et lancement", "description": "Cycle de vie."}, {"title": "Optimiser et rapporter", "description": "Suivi et rapports."}] }, "trust": { "title": "Experts Instagram", "subtitle": "Résultats prouvés", "cards": [{"title": "Spécialistes plateforme", "description": "Stratégistes dédiés."}, {"title": "400+ créateurs", "description": "Réseau vérifié."}, {"title": "Leaders marché EAU", "description": "Tendances Instagram."}, {"title": "Résultats prouvés", "description": "5%+ engagement."}], "paragraph": "300+ campagnes, 400+ créateurs." }, "faq": { "title": "FAQ Instagram", "items": [{"question": "Pourquoi Instagram aux EAU ?", "answer": "Instagram a l'une des plus hautes pénétration aux EAU (plus de 70% d'utilisateurs actifs) et un format visuel très adapté aux marques et consommateurs. L'audience est diversifiée et à fort pouvoir d'achat, avec un fort intérêt mode, beauté, voyage, food — idéal pour les campagnes B2C. L'algorithme favorise le contenu organique de qualité, et les influenceurs locaux ont des communautés engagées, avec des taux d'engagement supérieurs à nombre d'autres marchés. Instagram Shop permet aussi le commerce in-app, raccourcissant le parcours découverte → achat."}, {"question": "Types de contenu qui marchent ?", "answer": "Les performances varient selon objectifs et audience. Reels — excellents pour la portée et la croissance, surtout avec des créateurs maîtrisant le format ; meilleure distribution que les posts statiques. Stories — idéales pour l'engagement et l'awareness immédiat ; bonnes pour offres limitées, révélations produit et interaction directe. Posts statiques — toujours efficaces pour l'inspiration, la rétention et le shopping (tags produits). Posts Collab — doublent la portée en combinant audiences créateur et marque. Nous recommandons un mix : Reels pour portée, Stories pour engagement, Collabs pour portée doublée, contenu shoppable pour convertir."}, {"question": "Reels vs TikTok ?", "answer": "Même format court, mais différences importantes. Reels — s'appuient sur la base Instagram existante ; audience souvent plus mature et aisée ; contenu plus poli, adapté aux marques luxe et beauté. Portée possible via followers et discovery. TikTok — potentiel viral plus fort via For You ; audience plus jeune ; contenu authentique et rapide fonctionne mieux. TikTok pour l'awareness et la croissance rapide ; Instagram pour construire la marque et convertir. Un mix des deux est souvent optimal pour les marques aux EAU."}, {"question": "Instagram Shopping ?", "answer": "Oui. Nous gérons des campagnes complètes Instagram Shop : tagging produits dans posts, Reels et Stories des influenceurs via intégration Shopify/Facebook Catalog ; création de contenu shoppable reliant directement aux achats ; suivi des clics et conversions. La marque doit avoir un Instagram Shop configuré avec catalogue connecté. Nous gérons aussi la coordination technique, les libellés et les approbations pour une expérience fluide et une mesure précise."}] }, "cta": { "title": "Amplifiez votre Instagram", "description": "Connectez-vous avec les bons créateurs.", "button": "Lancer campagne" } },
-                "tiktokInfluencer": { "badge": "Marketing TikTok", "hero": { "title": "Devenez viral avec", "mainWord": "Créateurs TikTok", "description": "Exploitez la croissance de TikTok." }, "definition": { "title": "Qu'est-ce que le marketing TikTok ?", "paragraph": "Contenu vidéo court pour portée organique massive via For You Page.", "benefitsTitle": "Pourquoi TikTok change la donne", "benefits": ["Potentiel viral inégalé"], "processTitle": "Notre cadre TikTok", "processSteps": ["Recherche tendances", "Identifier créateurs", "Concepts créatifs", "Production", "Suivi métriques"] }, "stats": [{"value": "150+", "label": "Campagnes TikTok"}, {"value": "200+", "label": "Créateurs"}, {"value": "100M+", "label": "Vues"}, {"value": "12%", "label": "Engagement"}], "features": { "title": "Services TikTok", "subtitle": "Campagnes virales", "items": [{"title": "Campagnes vidéo virales", "description": "Contenu pour viralité."}, {"title": "Stratégie sons", "description": "Sons tendance."}, {"title": "Campagnes défi", "description": "Hashtag challenges."}, {"title": "TikTok Spark Ads", "description": "Amplifier contenu organique."}, {"title": "TikTok Shop", "description": "Contenu shoppable."}, {"title": "Communauté créateurs", "description": "Relations long terme."}] }, "process": { "title": "Processus TikTok", "subtitle": "Stratégie native", "steps": [{"title": "Recherche tendances", "description": "Spécialistes analysent."}, {"title": "Casting créateurs", "description": "Créateurs natifs TikTok."}, {"title": "Production et lancement", "description": "Guidance créative."}, {"title": "Amplifier et analyser", "description": "Boost et métriques."}] }, "trust": { "title": "Experts TikTok", "subtitle": "Plateforme à plus forte croissance", "cards": [{"title": "Spécialistes TikTok", "description": "Stratégistes dédiés."}, {"title": "200+ créateurs", "description": "Réseau natif."}, {"title": "Experts tendances EAU", "description": "Tendances locales."}, {"title": "100M+ vues", "description": "Track record."}], "paragraph": "150+ campagnes, 100M+ vues." }, "faq": { "title": "FAQ TikTok", "items": [{"question": "Pourquoi TikTok pour les marques ?", "answer": "TikTok offre une portée organique exceptionnelle — un bon contenu peut atteindre des millions de vues sans budget pub massif grâce à la page For You. L'usage quotidien moyen dépasse 95 minutes, l'audience est captive et engagée. La plateforme domine Gen Z et millennials, cibles clés pour beaucoup de marques. TikTok Shop et les intégrations commerce se développent, raccourcissant le parcours contenu → achat. Les marques qui adoptent le style TikTok (fun, rapide, authentique) enregistrent une croissance awareness et ventes plus rapide que sur les plateformes classiques."}, {"question": "Coût aux EAU ?", "answer": "Les coûts varient selon la taille, la niche et le type de contenu. Micro (10K-50K) : 1 000-3 000 AED par vidéo. Mid-tier (50K-200K) : 3 000-10 000 AED. Top (200K-1M+) : 10 000-50 000 AED ou plus. Les challenges ou packages multi-créateurs peuvent réduire le coût par livrable. TikTok Spark Ads — amplification du contenu organique — ajoute des coûts publicitaires selon les objectifs. Nous proposons des devis sur mesure et recommandons un mix influenceurs + amplification pour maximiser le ROI."}, {"question": "Marques qui performent ?", "answer": "Toutes les industries peuvent réussir sur TikTok — la clé est d'adapter le style à la plateforme, pas d'imposer des formats publicitaires classiques. Les secteurs les plus performants : mode et beauté — challenges, maquillage, OOTD, unboxing ; food et beverage — recettes, dégustations, contenu interactif ; tech et apps — démos, use cases, comparaisons ; sport et fitness — exercices, challenges, conseils ; voyage — contenus engageants et tips. Même finance et immobilier réussissent avec du contenu éducatif et divertissant. Notre track record de 150+ campagnes et 100M+ vues le prouve."}, {"question": "Mesure du succès ?", "answer": "Nous mesurons le succès via plusieurs métriques : (1) Vues et portée totale — base de performance vidéo. (2) Taux de complétion — % de viewers qui regardent jusqu'à la fin ; indicateur de qualité et rétention. (3) Engagement — likes, commentaires, partages, saves ; mesure du sentiment et de l'intérêt. (4) Conversions — clics liens, conversions site, ventes liées codes promo ou UTM. (5) Sentiment — qualité des commentaires et mention de marque. Nous lions tout à la dépense campagne pour calculer coût par vue, par engagement et ROI, avec tableaux temps réel et rapports post-campagne."}] }, "cta": { "title": "Prêt à devenir viral sur TikTok ?", "description": "Partenaires avec créateurs TikTok.", "button": "Lancer campagne TikTok" } },
-                "influencerCost": { "badge": "Coût Marketing Influenceurs EAU", "hero": { "title": "Tarification Marketing Influenceurs", "mainWord": "Transparente", "description": "Comprenez les coûts aux EAU." }, "definition": { "title": "Combien coûte le marketing d'influence aux EAU ?", "paragraph": "Les coûts varient selon niveau, plateforme, type de contenu, durée.", "benefitsTitle": "Aperçu tarifs", "benefits": ["Nano 1K-10K : 500-2 000 AED"], "processTitle": "Facteurs influençant le prix", "processSteps": ["Plateforme", "Complexité contenu", "Exclusivité", "Durée", "Quantité"] }, "stats": [{"value": "500 AED", "label": "Tarif de base"}, {"value": "3-7x", "label": "ROI moyen"}, {"value": "40%", "label": "Économies packages"}, {"value": "200+", "label": "Budgets optimisés"}], "features": { "title": "Services planification budget", "subtitle": "Planification financière", "items": [{"title": "Modélisation budget", "description": "Modèles 5 000-500 000+ AED."}, {"title": "Négociation tarifs", "description": "Économies 20-40%."}, {"title": "Optimisation coûts", "description": "Allocation stratégique."}, {"title": "Propositions transparentes", "description": "Détail sans frais cachés."}, {"title": "Prévision ROI", "description": "Projections données."}, {"title": "Garanties performance", "description": "Taux engagement minimum."}] }, "process": { "title": "Comment nous optimisons", "subtitle": "Approche investissement", "steps": [{"title": "Budget par objectifs", "description": "Objectifs d'abord."}, {"title": "Stratégie mix influenceurs", "description": "Mix nano, micro, macro."}, {"title": "Négociation et packages", "description": "Meilleurs tarifs."}, {"title": "Suivi et optimisation", "description": "Suivi budget temps réel."}] }, "trust": { "title": "Expertise budget", "subtitle": "Optimisation des budgets", "cards": [{"title": "200+ budgets planifiés", "description": "5K à 500K+ AED."}, {"title": "Tarifs marché EAU", "description": "Connaissance actualisée."}, {"title": "500+ relations", "description": "Tarifs améliorés."}, {"title": "ROI 3-7x", "description": "Optimisation constante."}], "paragraph": "Données de benchmarking." }, "faq": { "title": "FAQ Coûts", "items": [{"question": "Budget minimum ?", "answer": "Il est possible de démarrer à partir de 5 000 AED pour une campagne ciblée avec 2 à 5 nano ou micro-influenceurs sur une plateforme. Suffisant pour un lancement produit, un test marché ou du contenu initial. Pour des campagnes plus ambitieuses ou multi-plateformes, nous recommandons 15 000-50 000 AED pour des résultats significatifs. Les budgets 100 000+ AED conviennent aux grosses campagnes saisonnières ou aux marques visant une large awareness. Nous proposons des devis sur mesure pour tout niveau et détaillons clairement la répartition des coûts."}, {"question": "Pourquoi tarifs EAU plus élevés ?", "answer": "Les tarifs aux EAU reflètent un pouvoir d'achat élevé, une qualité d'audience et un coût de vie plus élevé pour les influenceurs locaux. L'audience dispose d'un revenu disponible supérieur, ce qui attire les marques luxe et consommation — donc une forte demande d'influenceurs. La concurrence pour les meilleurs créateurs est forte et les marques internationales investissent massivement. Toutefois, les taux de conversion et la valeur client vie sont souvent plus élevés, ce qui peut justifier un coût plus élevé et un ROI solide si la campagne est bien gérée."}, {"question": "Comment facturez-vous ?", "answer": "Nous facturons généralement des frais de gestion de 15 à 25% sur le budget total influenceurs, selon l'envergure et les services. Les frais sont détaillés dans chaque proposition, sans coûts cachés. Inclus : planification stratégique, sélection et négociation influenceurs, gestion contenu et approbations, monitoring et rapports. Des frais additionnels peuvent s'appliquer pour production custom ou analyses avancées — tout est explicite. Transparence totale sur coût global et livrables attendus."}, {"question": "Comment réduire coûts ?", "answer": "Plusieurs leviers : (1) Micro-influenceurs — nano et micro offrent souvent un coût par engagement bien meilleur que les macro. (2) Packages et campagnes multiples — engagement pluriannuel ou multi-campagnes peut réduire les tarifs de 20 à 40% grâce à nos relations. (3) Programmes ambassadeurs — partenariats long terme réduisent le coût par livrable et fournissent du contenu cohérent. (4) UGC et réutilisation — utiliser le contenu généré en ads prolonge la campagne à faible coût. (5) Focus plateforme — une ou deux plateformes au lieu de tout réduit coût et complexité. Nous vous aidons à choisir la stratégie adaptée à votre budget."}, {"question": "ROI attendu ?", "answer": "Sur 200+ campagnes gérées, le ROI moyen se situe entre 3x et 7x selon le secteur, les objectifs et le type de campagne. Les campagnes de conversion directe (e-commerce, codes promo) affichent souvent un ROI plus rapide et mesurable. Les campagnes d'awareness ont des effets long terme plus difficiles à attribuer — nous utilisons enquêtes pré/post et analyse sentiment pour estimer l'impact. Nous fournissons des projections ROI basées sur les données en phase de planification et comparons les performances réelles dans les rapports."}] }, "cta": { "title": "Obtenez une proposition personnalisée", "description": "Objectifs et budget pour proposition sur mesure.", "button": "Demander une proposition" } }
-            }
-        },
+       "influencerMarketing": {
+  "seo": {
+    "title": "Agence de marketing digital leader à Dubaï",
+    "description": "Agence de publicité et de marketing digital leader aux Émirats, offrant des solutions personnalisées pour générer une croissance mesurable, des prospects qualifiés et une augmentation des revenus.",
+    "serviceType": "Agence de marketing digital à Dubaï"
+  },
+  "hero": {
+    "badge": "🚀 Moteur de croissance à Dubaï",
+    "title": "L’agence de marketing digital leader à",
+    "mainWord": "Dubaï",
+    "description": "Nous ne promettons pas seulement du trafic. Nous livrons des profits mesurables, des campagnes traçables et une croissance visible — approuvée par des marques locales et internationales aux Émirats."
+  },
+  "problems": {
+    "sectionLabel": "Le Problème",
+    "title": "Pourquoi la plupart des entreprises ont du mal à se développer ?",
+    "description": "Dubaï est un marché compétitif. La mauvaise agence peut vous coûter des dizaines de milliers sans aucun résultat.",
+    "items": [
+      {
+        "title": "Absence de stratégie claire orientée profit",
+        "text": "De nombreuses agences publient du contenu et lancent des publicités en espérant de l’engagement. C’est risquer votre budget. Le trafic peut augmenter tandis que les revenus stagnent."
+      },
+      {
+        "title": "Budget gaspillé sur des publicités non convertissantes",
+        "text": "Les campagnes PPC ou les publicités sur les réseaux sociaux ou Google mal ciblées disparaissent rapidement. Vous pouvez obtenir 10 000 clics en un mois et zéro vente."
+      },
+      {
+        "title": "Suivi et reporting faibles",
+        "text": "Certaines agences fournissent des rapports remplis de termes complexes sans valeur exploitable. Nous offrons des tableaux de bord en temps réel et des rapports transparents pour que vous sachiez toujours ce qui fonctionne."
+      },
+      {
+        "title": "Manque de connaissance du marché des Émirats",
+        "text": "Dubaï n’est pas un marché comme les autres. La langue, la culture et les habitudes de consommation comptent. Les campagnes génériques échouent — seule l’expertise locale apporte des résultats."
+      }
+    ]
+  },
+  "process": {
+    "sectionLabel": "Notre Méthode",
+    "title": "Comment les entreprises se développent réellement avec Tikit",
+    "description": "Un système éprouvé en 4 étapes — chaque étape axée sur la rentabilité, l’efficacité et des résultats mesurables.",
+    "steps": [
+      {
+        "n": "01",
+        "title": "Analyse approfondie de l’entreprise et du marché",
+        "text": "Nous analysons votre entreprise, vos concurrents et le marché des Émirats pour identifier opportunités, menaces et potentiels de croissance cachés."
+      },
+      {
+        "n": "02",
+        "title": "Développement d’une stratégie personnalisée",
+        "text": "Pas de modèles standards. Pas de solutions génériques. Chaque campagne est conçue selon vos objectifs, votre audience et vos cibles de revenus."
+      },
+      {
+        "n": "03",
+        "title": "Exécution de campagnes multicanales",
+        "text": "SEO, publicité payante, réseaux sociaux et optimisation du site — chaque canal soutient l’autre pour maximiser le ROI."
+      },
+      {
+        "n": "04",
+        "title": "Optimisation et expansion basées sur les données",
+        "text": "Nous suivons chaque clic, prospect et conversion. Nous testons, ajustons et développons ce qui fonctionne réellement."
+      }
+    ]
+  },
+  "benefits": {
+    "sectionLabel": "Ce Que Vous Obtenez",
+    "title": "Des résultats mesurables et fiables",
+    "description": "Nous ne gérons pas seulement des campagnes. Nous livrons des résultats soutenus par des données réelles.",
+    "items": [
+      {
+        "title": "Campagnes axées sur le ROI sur tous les canaux digitaux",
+        "text": "Chaque campagne est conçue pour générer plus de profits que de dépenses. Pas de clics inutiles. Pas de suppositions. Un marketing orienté performance."
+      },
+      {
+        "title": "Reporting transparent et tableaux de bord",
+        "text": "Suivez vos campagnes en temps réel. Voyez exactement ce qui fonctionne. Connaissez votre retour sur investissement au dirham près."
+      },
+      {
+        "title": "Exécution rapide sans compromis sur la qualité",
+        "text": "Nous avançons vite. Nous lançons rapidement. Nous dépassons la concurrence — sans jamais sacrifier la qualité."
+      },
+      {
+        "title": "Expertise locale et internationale",
+        "text": "Nous comprenons le marché local, la culture et les nuances linguistiques (anglais et arabe) pour les marques à Dubaï et à l’international."
+      }
+    ]
+  },
+  "caseStudy": {
+    "sectionLabel": "Résultats Réels",
+    "title": "Les marques qui ont choisi la meilleure agence à Dubaï",
+    "tag": "Mini étude de cas · Marque e-commerce",
+    "caseTitle": "Dépenses publicitaires élevées, zéro conversion — transformation complète en 90 jours",
+    "stats": [
+      { "value": "3x", "label": "Croissance des ventes" },
+      { "value": "90", "label": "jours pour obtenir des résultats" },
+      { "value": "Mois 1", "label": "ROI positif" }
+    ],
+    "tags": [
+      "SEO",
+      "Publicité payante",
+      "Réseaux sociaux",
+      "Optimisation de landing page",
+      "Message localisé"
+    ],
+    "quote": "\"Enfin une agence qui délivre un ROI mesurable. Pas de superflu, seulement de la croissance.\" — Marque retail, Dubaï"
+  },
+  "whyUs": {
+    "sectionLabel": "Pourquoi Tikit",
+    "title": "Ce qui fait de nous la meilleure agence de marketing digital à Dubaï",
+    "items": [
+      {
+        "title": "Pas de stratégies génériques",
+        "text": "Chaque campagne est conçue sur mesure selon votre entreprise et vos objectifs."
+      },
+      {
+        "title": "Tarification transparente",
+        "text": "Pas de frais cachés. Pas de surprises. Des prix clairs pour vous concentrer sur la croissance."
+      },
+      {
+        "title": "Décisions basées sur les données",
+        "text": "Chaque action est soutenue par des analyses et des insights réels. Aucune supposition."
+      },
+      {
+        "title": "Communication directe",
+        "text": "Parlez directement à votre account manager dédié — sans intermédiaires ni retards."
+      }
+    ]
+  },
+  "subServices": {
+    "sectionLabel": "Explorez Nos Services",
+    "title": "Tout ce dont vous avez besoin pour dominer Dubaï",
+    "description": "De la gestion de campagne aux stratégies spécifiques par plateforme — découvrez notre gamme complète de services en marketing d’influence.",
+    "learnMore": "En savoir plus",
+    "items": [
+      {
+        "title": "Gestion de campagnes",
+        "desc": "Planification, exécution et reporting de campagnes d’influence de A à Z — pour atteindre vos objectifs sans complexité."
+      },
+      {
+        "title": "Marketing de micro-influenceurs aux Émirats",
+        "desc": "Des créateurs authentiques avec un fort engagement qui transforment les audiences en clients fidèles."
+      },
+      {
+        "title": "Marketing d’influence de luxe",
+        "desc": "Campagnes haut de gamme pour marques premium — connectez-vous à des voix exclusives à Dubaï et au-delà."
+      },
+      {
+        "title": "Analyse du ROI",
+        "desc": "Tableaux de bord détaillés et rapports précis pour que chaque dirham soit optimisé."
+      },
+      {
+        "title": "Marketing d’influence sur Instagram",
+        "desc": "Campagnes Instagram percutantes avec les bons créateurs pour développer portée, confiance et revenus."
+      },
+      {
+        "title": "Marketing d’influence sur TikTok",
+        "desc": "Stratégies TikTok à fort potentiel viral avec des créateurs crédibles générant notoriété et conversions."
+      },
+      {
+        "title": "Coût du marketing d’influence aux Émirats",
+        "desc": "Transparence tarifaire complète — comprenez le coût des campagnes et optimisez votre budget intelligemment."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Questions Fréquentes",
+    "items": [
+      {
+        "question": "Combien coûte une agence de marketing digital à Dubaï ?",
+        "answer": "Le prix dépend de vos objectifs. Nous proposons des plans transparents adaptés à votre entreprise, sans frais cachés."
+      },
+      {
+        "question": "En combien de temps puis-je voir des résultats ?",
+        "answer": "Certaines campagnes génèrent des résultats en quelques semaines. Le SEO et le branding évoluent progressivement sur plusieurs mois."
+      },
+      {
+        "question": "Proposez-vous des solutions marketing complètes ?",
+        "answer": "Oui. SEO, publicité payante, réseaux sociaux, optimisation de site, marketing de contenu — tout est géré sous un même toit."
+      },
+      {
+        "question": "Exigez-vous des contrats à long terme ?",
+        "answer": "Non. Nous proposons des formules flexibles basées sur les résultats et la croissance."
+      },
+      {
+        "question": "Travaillez-vous avec des marques internationales entrant sur le marché des Émirats ?",
+        "answer": "Absolument. Nous adaptons les campagnes au public de Dubaï et des Émirats, y compris des campagnes multilingues en anglais et en arabe."
+      }
+    ]
+  },
+  "cta": {
+    "sectionLabel": "Prêt à Croître ?",
+    "title": "Prêt à travailler avec une agence leader à Dubaï ?",
+    "description": "Réservez une consultation stratégique gratuite. Obtenez une feuille de route claire pour vous développer à Dubaï et aux Émirats — et arrêtez de gaspiller chaque dirham.",
+    "primaryButton": "Réserver une consultation gratuite",
+    "secondaryButton": "Contactez-nous maintenant"
+  }
+},
         "socialMediaManagement": {
             "badge": "Gestion des Médias Sociaux",
             "hero": {

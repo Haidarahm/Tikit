@@ -851,204 +851,212 @@
         }
     },
     "serviceSections": {
-        "influencerMarketing": {
-            "badge": "Influencer Marketing Agency Dubai",
-            "hero": {
-                "title": "Dubai's Premier Influencer",
-                "mainWord": "Marketing Agency",
-                "description": "We bridge the gap between brands and influential voices across the UAE, creating authentic partnerships that drive engagement, build trust, and deliver measurable ROI across Instagram, TikTok, YouTube, and all major platforms."
-            },
-            "subServices": {
-                "title": "Our Influencer Marketing Solutions",
-                "subtitle": "Comprehensive influencer marketing services tailored for the UAE market",
-                "campaignManagement": {
-                    "title": "Campaign Management",
-                    "description": "End-to-end influencer campaign planning, execution, and optimization for maximum brand impact."
-                },
-                "microInfluencer": {
-                    "title": "Micro-Influencer Marketing",
-                    "description": "Leverage authentic nano and micro-influencers for cost-effective engagement across the UAE."
-                },
-                "luxuryInfluencer": {
-                    "title": "Luxury Influencer Marketing",
-                    "description": "Premium influencer partnerships for high-end brands in Dubai's luxury market."
-                },
-                "roiAnalytics": {
-                    "title": "ROI & Analytics",
-                    "description": "Data-driven campaign measurement with real-time dashboards and comprehensive reporting."
-                },
-                "instagramInfluencer": {
-                    "title": "Instagram Influencer Marketing",
-                    "description": "Strategic Instagram Reels, Stories, and collaborations to maximize brand visibility."
-                },
-                "tiktokInfluencer": {
-                    "title": "TikTok Influencer Marketing",
-                    "description": "Viral TikTok campaigns leveraging trending content to reach Gen Z and millennials."
-                },
-                "influencerCost": {
-                    "title": "Influencer Marketing Cost UAE",
-                    "description": "Transparent pricing tiers and budget planning for influencer marketing in the UAE."
-                }
-            },
-            "stats": {
-                "influencersNetwork": "Influencers Network",
-                "successfulCampaigns": "Successful Campaigns",
-                "totalReach": "Total Reach",
-                "clientSatisfaction": "Client Satisfaction"
-            },
-            "process": {
-                "title": "Our Process",
-                "description": "From strategy to execution, we handle every aspect of your influencer marketing campaigns",
-                "steps": {
-                    "strategy": {
-                        "title": "Strategy & Planning",
-                        "description": "We analyze your brand, target audience, and goals to create a customized influencer marketing strategy that aligns with your objectives and maximizes ROI."
-                    },
-                    "selection": {
-                        "title": "Influencer Selection",
-                        "description": "We carefully match your brand with influencers whose audience, values, and content style align perfectly with your campaign goals, ensuring authentic partnerships."
-                    },
-                    "management": {
-                        "title": "Campaign Management",
-                        "description": "From contract negotiation to content approval and posting schedules, we manage every detail to ensure smooth execution and optimal performance."
-                    },
-                    "analytics": {
-                        "title": "Analytics & Reporting",
-                        "description": "Track campaign performance with detailed analytics, insights, and comprehensive reports that demonstrate real impact and inform future strategies."
-                    }
-                }
-            },
-            "showcase": {
-                "title": "Featured Influencers",
-                "description": "Connect with top-tier influencers across various niches and platforms"
-            },
-            "cta": {
-                "title": "Ready to Amplify Your Brand?",
-                "description": "Let's create an influencer marketing campaign that drives real results",
-                "button": "Get Started"
-            },
-            "definition": {
-                "whatIsTitle": "What is Influencer Marketing?",
-                "paragraph": "Influencer marketing is a strategic approach that connects brands with content creators who have engaged audiences on social media platforms. This service involves identifying, vetting, and partnering with influencers to create authentic content that promotes products or services to targeted demographics across Instagram, TikTok, YouTube, Snapchat, and other platforms.",
-                "benefitsTitle": "Key Benefits of Influencer Marketing",
-                "benefitsList": [
-                    "Authentic brand endorsements from trusted voices that resonate with target audiences",
-                    "Higher engagement rates compared to traditional advertising methods",
-                    "Access to niche communities and targeted demographics across multiple platforms",
-                    "Measurable ROI through tracking impressions, engagement, and conversions",
-                    "User-generated content that can be repurposed across marketing channels"
-                ],
-                "processTitle": "How Influencer Marketing Works",
-                "processSteps": [
-                    "Define campaign objectives, target audience, and key performance indicators",
-                    "Identify and vet influencers based on audience alignment and engagement metrics",
-                    "Negotiate partnerships and establish content guidelines and deliverables",
-                    "Execute campaign with content creation, approval, and scheduled posting",
-                    "Measure performance and provide detailed analytics and optimization recommendations"
+        
+            "influencerMarketing": {
+              "seo": {
+                "title": "Leading Digital Marketing Agency in Dubai",
+                "description": "A leading UAE-based advertising and digital marketing agency, delivering tailored solutions to drive measurable business growth, leads, and revenue.",
+                "serviceType": "Digital Marketing Agency Dubai"
+              },
+              "hero": {
+                "badge": "🚀 Dubai's Growth Engine",
+                "title": "Leading Digital Marketing Agency in",
+                "mainWord": "Dubai",
+                "description": "We don't just promise traffic. We deliver profit you can count, campaigns you can measure, and growth you can see — trusted by local and international brands across the UAE."
+              },
+              "problems": {
+                "sectionLabel": "The Problem",
+                "title": "Why Do Most Businesses Struggle to Scale?",
+                "description": "Dubai is competitive. The wrong agency can cost you tens of thousands with nothing to show.",
+                "items": [
+                  {
+                    "title": "No Clear Strategy That Makes Money",
+                    "text": "Many agencies post, run ads, and hope for engagement. That's gambling with your budget. Traffic may increase while revenue stays flat."
+                  },
+                  {
+                    "title": "Wasted Budget on Ads That Don't Convert",
+                    "text": "Poorly targeted PPC, social ads, or Google campaigns disappear fast. You can get 10,000 clicks in a month and zero sales."
+                  },
+                  {
+                    "title": "Poor Tracking & Reporting",
+                    "text": "Some agencies give reports full of jargon you can't act on. We provide real-time dashboards and transparent reporting so you always know what works."
+                  },
+                  {
+                    "title": "Lack of UAE Market Knowledge",
+                    "text": "Dubai is not like other markets. Language, culture, and spending habits matter. Generic campaigns fail — only local expertise drives results."
+                  }
                 ]
+              },
+              "process": {
+                "sectionLabel": "Our Process",
+                "title": "How Tikit Actually Grows Businesses",
+                "description": "A simple, proven 4-step system — every step focused on profit, efficiency, and measurable results.",
+                "steps": [
+                  {
+                    "n": "01",
+                    "title": "Deep Business & Market Analysis",
+                    "text": "We study your business, competitors, and the UAE market to find opportunities, threats, and hidden growth potential."
+                  },
+                  {
+                    "n": "02",
+                    "title": "Custom Strategy Development",
+                    "text": "No templates. No cookie-cutter solutions. Every campaign is built for your goals, audience, and revenue targets."
+                  },
+                  {
+                    "n": "03",
+                    "title": "Multi-Channel Campaign Execution",
+                    "text": "SEO, PPC, social media, and website optimisation — each channel supporting the others to maximise ROI."
+                  },
+                  {
+                    "n": "04",
+                    "title": "Data-Driven Optimisation & Scaling",
+                    "text": "We track every click, lead, and conversion. We test, tweak, and scale campaigns that actually work."
+                  }
+                ]
+              },
+              "benefits": {
+                "sectionLabel": "What You Get",
+                "title": "Results You Can Measure and Trust",
+                "description": "We don't just run campaigns. We deliver outcomes backed by real data.",
+                "items": [
+                  {
+                    "title": "ROI-Focused Campaigns Across All Digital Channels",
+                    "text": "Every campaign is designed to make more money than you spend. No wasted clicks. No guesswork. Only profit-driven marketing."
+                  },
+                  {
+                    "title": "Transparent Reporting & Performance Dashboards",
+                    "text": "Track your campaigns in real-time. See exactly what works. Know your ROI down to the last dirham."
+                  },
+                  {
+                    "title": "Faster Execution Without Compromising Quality",
+                    "text": "We move fast. Launch campaigns quickly. Beat competitors to the market — but never sacrifice quality."
+                  },
+                  {
+                    "title": "Expertise in Local & International Markets",
+                    "text": "We know the local market, the culture, and the language nuances (English and Arabic) for Dubai-based and international brands."
+                  }
+                ]
+              },
+              "caseStudy": {
+                "sectionLabel": "Real Results",
+                "title": "Brands That Chose the Best Agency in Dubai",
+                "tag": "Mini Case Study · E-Commerce Brand",
+                "caseTitle": "High Ad Spend, Zero Conversions — Transformed in 90 Days",
+                "stats": [
+                  {
+                    "value": "3x",
+                    "label": "Sales Growth"
+                  },
+                  {
+                    "value": "90",
+                    "label": "Days to Results"
+                  },
+                  {
+                    "value": "Month 1",
+                    "label": "ROI Positive"
+                  }
+                ],
+                "tags": [
+                  "SEO",
+                  "PPC",
+                  "Social Media",
+                  "Landing Page Optimisation",
+                  "Localised Messaging"
+                ],
+                "quote": "\"Finally, an agency that delivers measurable ROI. No fluff, just growth.\" — Retail Brand, Dubai"
+              },
+              "whyUs": {
+                "sectionLabel": "Why Tikit",
+                "title": "What Makes Us the Best Digital Marketing Agency in Dubai",
+                "items": [
+                  {
+                    "title": "No Generic Plans",
+                    "text": "Every campaign is built specifically for your business, goals, and audience."
+                  },
+                  {
+                    "title": "Transparent Pricing",
+                    "text": "No hidden fees. No surprise charges. Clear, upfront pricing so you can focus on growth."
+                  },
+                  {
+                    "title": "Data-Driven Decisions",
+                    "text": "Every move backed by real analytics and performance insights. No guessing."
+                  },
+                  {
+                    "title": "Direct Communication",
+                    "text": "Talk directly to your dedicated account manager — no middlemen, no delays."
+                  }
+                ]
+              },
+              "subServices": {
+                "sectionLabel": "Explore Our Services",
+                "title": "Everything You Need to Dominate Dubai",
+                "description": "From campaign management to platform-specific strategies — explore our full suite of influencer marketing services.",
+                "learnMore": "Learn more",
+                "items": [
+                  {
+                    "title": "Campaign Management",
+                    "desc": "End-to-end influencer campaign planning, execution, and reporting — so you hit goals without the chaos."
+                  },
+                  {
+                    "title": "Micro Influencer Marketing UAE",
+                    "desc": "Authentic, high-engagement micro creators who convert audiences into loyal customers across the UAE."
+                  },
+                  {
+                    "title": "Luxury Influencer Marketing",
+                    "desc": "Prestige campaigns crafted for luxury brands — connecting you with premium voices in Dubai and beyond."
+                  },
+                  {
+                    "title": "ROI Analytics",
+                    "desc": "Deep-dive performance dashboards and attribution reporting so every dirham is accounted for."
+                  },
+                  {
+                    "title": "Instagram Influencer Marketing",
+                    "desc": "Scroll-stopping Instagram campaigns with the right creators to grow reach, trust, and revenue."
+                  },
+                  {
+                    "title": "TikTok Influencer Marketing",
+                    "desc": "Viral-ready TikTok strategies with vetted creators driving awareness and conversions at scale."
+                  },
+                  {
+                    "title": "Influencer Marketing Cost UAE",
+                    "desc": "Transparent pricing breakdowns — understand what influencer campaigns cost and how to budget smart."
+                  }
+                ]
+              },
+              "faq": {
+                "title": "Frequently Asked Questions",
+                "items": [
+                  {
+                    "question": "How much does a digital marketing agency in Dubai cost?",
+                    "answer": "Pricing depends on your goals. We provide clear, transparent plans tailored to your business with no hidden fees."
+                  },
+                  {
+                    "question": "How long before I see results?",
+                    "answer": "Some campaigns deliver quick wins in weeks. SEO and branding grow steadily over months. We set realistic timelines based on your goals."
+                  },
+                  {
+                    "question": "Do you offer full-service advertising and digital marketing solutions?",
+                    "answer": "Yes. SEO, PPC, social media, website optimisation, content marketing — we handle it all under one roof."
+                  },
+                  {
+                    "question": "Do you require long-term contracts?",
+                    "answer": "No. We offer flexible packages based on results and growth goals. No lock-ins."
+                  },
+                  {
+                    "question": "Can you work with international brands entering the UAE market?",
+                    "answer": "Absolutely. We specialise in localising campaigns for Dubai and UAE audiences, including multilingual English and Arabic campaigns."
+                  }
+                ]
+              },
+              "cta": {
+                "sectionLabel": "Ready to Grow?",
+                "title": "Ready to Work with a Leading Digital Marketing Agency in Dubai?",
+                "description": "Book a free strategy consultation. Get a roadmap to scale in Dubai and UAE — and stop wasting a single dirham.",
+                "primaryButton": "Book Free Consultation",
+                "secondaryButton": "Call Us Now"
+              }
             },
-            "trust": {
-                "title": "Why Trust Tikit Agency",
-                "subtitle": "Our experience and track record in influencer marketing across the UAE and GCC region",
-                "card1Title": "5+ Years Experience",
-                "card1Desc": "Operating since 2020 with consistent growth and proven results in the MENA market.",
-                "card2Title": "Regional Presence",
-                "card2Desc": "Offices in Dubai, Saudi Arabia, and Turkey serving clients across the global region.",
-                "card3Title": "Diverse Client Portfolio",
-                "card3Desc": "Served 300+ clients including startups, SMEs, and enterprise brands across multiple industries.",
-                "card4Title": "Data-Driven Results",
-                "card4Desc": "Every campaign includes detailed analytics and ROI tracking with transparent reporting.",
-                "paragraph": "Tikit Agency has executed 200+ successful influencer campaigns across industries including fashion, beauty, food and beverage, technology, automotive, real estate, and hospitality. Our team of 50+ professionals includes strategists, content creators, and analytics specialists dedicated to delivering measurable results."
-            },
-            "faqTitle": "Frequently Asked Questions About Influencer Marketing",
-            "faqItems": [
-                { "question": "What is influencer marketing and how does it work?", "answer": "Influencer marketing is a form of social media marketing that uses endorsements and product mentions from individuals who have a dedicated social following. Brands partner with influencers to reach their target audience through authentic, trusted voices. The process typically involves identifying relevant influencers, negotiating partnerships, creating content, and measuring campaign performance." },
-                { "question": "How much does influencer marketing cost in the UAE?", "answer": "Influencer marketing costs in the UAE vary based on factors such as influencer tier (nano, micro, macro, or celebrity), platform, content type, and campaign duration. Nano-influencers (1K-10K followers) may charge AED 500-2,000 per post, while celebrity influencers can command AED 50,000+ per campaign. Tikit Agency provides customized quotes based on your specific goals and budget." },
-                { "question": "Which social media platforms are best for influencer marketing?", "answer": "The best platforms depend on your target audience and goals. Instagram remains the most popular for lifestyle, fashion, and beauty brands. TikTok excels for reaching younger demographics with viral content. YouTube is ideal for in-depth product reviews and tutorials. Snapchat is particularly effective in the UAE and GCC markets. LinkedIn works well for B2B influencer campaigns." },
-                { "question": "How do you measure influencer marketing ROI?", "answer": "We measure influencer marketing ROI through multiple metrics: reach and impressions, engagement rate (likes, comments, shares), click-through rates, conversion tracking, brand mention monitoring, and audience growth. Our team provides detailed analytics reports showing campaign performance, cost per engagement, and recommendations for optimization." },
-                { "question": "How long does an influencer marketing campaign take?", "answer": "Campaign timelines vary based on scope and objectives. A quick influencer activation can launch in 1-2 weeks. Standard campaigns typically take 4-6 weeks from strategy to execution. Comprehensive brand ambassador programs may span 3-12 months. During consultation, we provide a detailed timeline tailored to your project requirements." },
-                { "question": "Does Tikit Agency work with local UAE influencers?", "answer": "Yes. Tikit Agency has an extensive network of influencers across the UAE, Saudi Arabia, and the broader GCC region. We work with Arabic and English-speaking creators across all niches including fashion, beauty, lifestyle, tech, food, travel, fitness, and more. Our local presence in Dubai allows us to build strong, authentic relationships with regional influencers." }
-            ],
-            "subPages": {
-                "campaignManagement": {
-                    "badge": "Campaign Management",
-                    "hero": { "title": "Expert Influencer Campaign", "mainWord": "Management", "description": "From initial strategy to final reporting, our dedicated campaign managers handle every detail of your influencer marketing campaigns. We ensure seamless execution, brand consistency, and maximum ROI across all platforms." },
-                    "definition": { "title": "What is Influencer Campaign Management?", "paragraph": "Influencer campaign management is the comprehensive process of planning, executing, and optimizing influencer marketing campaigns from start to finish.", "benefitsTitle": "Why Professional Campaign Management Matters", "benefits": ["Streamlined workflows that save time and eliminate miscommunication", "Expert content review and approval processes", "Strategic posting schedules optimized for maximum engagement", "Real-time campaign monitoring with instant adjustments", "Comprehensive contracts and briefing documents"], "processTitle": "Our Campaign Management Process", "processSteps": ["Discovery session to understand brand objectives and KPIs", "Develop detailed campaign brief with creative guidelines", "Source, vet, and negotiate with the most suitable influencers", "Manage content creation, review cycles, and approval workflows", "Execute campaign launch with coordinated posting schedules", "Deliver comprehensive performance reports"] },
-                    "stats": [{"value": "200+", "label": "Campaigns Managed"}, {"value": "98%", "label": "On-Time Delivery"}, {"value": "3.5x", "label": "Average ROI"}, {"value": "500+", "label": "Influencer Partners"}],
-                    "features": { "title": "Campaign Management Services", "subtitle": "Everything you need for a successful influencer campaign", "items": [{"title": "Campaign Strategy & Planning", "description": "Comprehensive campaign blueprints with clear objectives, timelines, budgets, and KPIs."}, {"title": "Influencer Sourcing & Vetting", "description": "Data-driven influencer selection using audience analysis and brand alignment scoring."}, {"title": "Content Management & Approval", "description": "Streamlined content review workflows with brand guideline compliance checks."}, {"title": "Timeline & Scheduling", "description": "Coordinated posting schedules across multiple influencers and platforms."}, {"title": "Performance Tracking", "description": "Real-time campaign dashboards monitoring impressions, engagement, and ROI."}, {"title": "Post-Campaign Optimization", "description": "Detailed post-campaign analysis with actionable insights."}] },
-                    "process": { "title": "How We Manage Your Campaign", "subtitle": "A proven 4-step process for campaign excellence", "steps": [{"title": "Brief & Strategy", "description": "We start with a deep-dive into your brand, objectives, and target audience."}, {"title": "Influencer Matching & Contracting", "description": "Our team identifies and vets the best-fit influencers and handles contracts."}, {"title": "Content Creation & Launch", "description": "We manage the entire content lifecycle from briefing to scheduled publishing."}, {"title": "Monitor, Report & Optimize", "description": "Real-time performance monitoring with detailed analytics reports."}] },
-                    "trust": { "title": "Why Trust Our Campaign Management", "subtitle": "Proven expertise in managing influencer campaigns across the UAE", "cards": [{"title": "Dedicated Managers", "description": "Every campaign gets a dedicated account manager."}, {"title": "Multi-Platform Expertise", "description": "Expert management across Instagram, TikTok, YouTube, Snapchat, and more."}, {"title": "500+ Influencer Network", "description": "Access to a vetted network of influencers."}, {"title": "Transparent Reporting", "description": "Real-time dashboards and detailed post-campaign reports."}], "paragraph": "Our campaign management team has successfully executed 200+ influencer campaigns across fashion, beauty, F&B, automotive, real estate, and technology." },
-                    "faq": { "title": "Campaign Management FAQ", "items": [{"question": "What does influencer campaign management include?", "answer": "Our campaign management covers everything from initial strategy and influencer selection to content approval, scheduling, live monitoring, and post-campaign reporting. Specifically, we handle: discovery sessions to align on brand objectives and KPIs; developing detailed campaign briefs with creative guidelines and messaging frameworks; sourcing, vetting, and negotiating with the most suitable influencers from our network of 500+ creators; managing the full content creation cycle including briefs, drafts, revision rounds, and approval workflows; coordinating posting schedules across multiple influencers and platforms for maximum impact; real-time campaign monitoring with performance alerts; and delivering comprehensive post-campaign reports with reach, engagement, conversions, and actionable recommendations for future campaigns."}, {"question": "How long does it take to set up a campaign?", "answer": "Campaign timelines vary based on scope and complexity. A standard influencer campaign typically takes 2-4 weeks from initial brief to launch: Week 1 for strategy development, influencer sourcing, and contracting; Week 2 for creative briefing, content creation, and first-round approvals; Weeks 3-4 for revisions, final approvals, and scheduled launch. Quick activations (e.g., 1-3 nano-influencers, single-platform) can be set up in 1-2 weeks. Complex multi-influencer campaigns across several platforms, or campaigns requiring custom content production, may need 4-6 weeks of preparation. We provide a detailed timeline during the initial consultation based on your specific requirements."}, {"question": "Do you handle influencer contracts and payments?", "answer": "Yes, we handle all contractual and payment aspects on your behalf. This includes: negotiating rates and deliverables with influencers; drafting and managing agreements covering usage rights, exclusivity clauses, content ownership, and posting schedules; coordinating payment terms and processing (including milestone-based payments if preferred); ensuring compliance with FTC/ASA disclosure requirements for sponsored content; and managing any contract amendments or extensions. You maintain full visibility through approval stages, but we remove the administrative burden so you can focus on your brand strategy."}, {"question": "How do you ensure brand safety in campaigns?", "answer": "We implement a multi-layered brand safety approach: (1) Pre-campaign vetting—every influencer is screened for audience quality, past content, brand alignment, and any red flags before onboarding. (2) Detailed creative briefs—clear brand guidelines, approved messaging, do's and don'ts, and visual standards are shared with creators. (3) Content review workflow—all content goes through at least two approval stages (draft and final) with checklist-based review against brand guidelines. (4) Real-time monitoring—once live, we monitor comments and engagement for any issues and can flag or escalate quickly. (5) Crisis protocols—defined escalation paths if unexpected situations arise. This process has enabled us to maintain 98% on-time delivery with zero major brand safety incidents across 200+ campaigns."}] },
-                    "cta": { "title": "Ready to Launch Your Next Campaign?", "description": "Let our expert team manage your influencer campaign from start to finish for maximum impact and ROI.", "button": "Get Started" }
-                },
-                "microInfluencer": {
-                    "badge": "Micro-Influencer Marketing UAE",
-                    "hero": { "title": "Authentic Growth Through", "mainWord": "Micro-Influencers", "description": "Tap into the power of nano and micro-influencers who deliver higher engagement rates, genuine audience trust, and cost-effective results for brands across the UAE." },
-                    "definition": { "title": "What is Micro-Influencer Marketing?", "paragraph": "Micro-influencer marketing focuses on partnering with content creators who have smaller but highly engaged audiences, typically between 1,000 and 50,000 followers.", "benefitsTitle": "Why Micro-Influencers Outperform", "benefits": ["3-5x higher engagement rates compared to macro influencers", "Authentic recommendations that audiences genuinely trust", "Cost-effective partnerships", "Access to niche communities across the UAE", "Higher conversion rates", "Flexible content creation with faster turnaround"], "processTitle": "How Micro-Influencer Campaigns Work", "processSteps": ["Define target audience segments and identify relevant niches", "Screen and vet micro-influencers for authentic engagement", "Coordinate multi-influencer campaigns with consistent messaging", "Launch campaigns across multiple micro-influencers", "Track individual and aggregate performance metrics"] },
-                    "stats": [{"value": "60%", "label": "Higher Engagement vs Macro"}, {"value": "300+", "label": "Vetted Micro-Influencers"}, {"value": "7x", "label": "Better Cost-Per-Engagement"}, {"value": "85%", "label": "Audience Trust Rate"}],
-                    "features": { "title": "Micro-Influencer Services", "subtitle": "Strategic micro-influencer partnerships for authentic brand growth", "items": [{"title": "Influencer Discovery & Vetting", "description": "Advanced tools to find authentic micro-influencers with real engagement."}, {"title": "Community-Driven Campaigns", "description": "Build genuine brand advocacy through authentic, relatable content."}, {"title": "Budget-Optimized Strategy", "description": "Maximize your budget by distributing spend across multiple micro-influencers."}, {"title": "Scalable Campaigns", "description": "Start with a focused group and scale based on performance data."}, {"title": "UGC & Content Amplification", "description": "Generate authentic user-generated content for your owned channels."}, {"title": "Fraud Detection & Quality", "description": "Advanced audience analysis to detect fake followers and bot engagement."}] },
-                    "process": { "title": "Our Micro-Influencer Process", "subtitle": "A data-driven approach to micro-influencer success", "steps": [{"title": "Audience Mapping", "description": "We analyze your target demographics and map them to micro-influencer audiences."}, {"title": "Creator Screening", "description": "Every micro-influencer goes through our rigorous vetting process."}, {"title": "Multi-Creator Campaigns", "description": "We coordinate campaigns across multiple micro-influencers simultaneously."}, {"title": "Performance & Scale", "description": "We track performance per creator and identify top performers."}] },
-                    "trust": { "title": "Why Choose Us for Micro-Influencer Marketing", "subtitle": "Deep expertise in the UAE micro-influencer landscape", "cards": [{"title": "Vetted Network", "description": "300+ pre-screened micro-influencers with verified engagement."}, {"title": "UAE Market Experts", "description": "Deep understanding of UAE consumer behavior and trending content."}, {"title": "Multi-Niche Coverage", "description": "Micro-influencers across fashion, food, tech, fitness, travel, beauty, and more."}, {"title": "Performance Guaranteed", "description": "Data-driven creator selection with guaranteed engagement benchmarks."}], "paragraph": "Our micro-influencer campaigns consistently deliver 3-5x higher engagement rates than traditional influencer marketing." },
-                    "faq": { "title": "Micro-Influencer Marketing FAQ", "items": [{"question": "What is the difference between micro and macro influencers?", "answer": "Micro-influencers typically have 1,000–50,000 followers with engagement rates of 3–7%, while macro-influencers have 100K–1M+ followers with engagement rates often below 2%. Micro-influencers maintain closer relationships with their audiences, leading to more authentic recommendations, higher trust, and better conversion rates. They also offer significantly better cost-per-engagement (often 5–7x more efficient) and faster content turnaround. Macro-influencers deliver broader reach but at higher cost and lower engagement quality. For targeted campaigns in the UAE, a mix of 10–15 micro-influencers often outperforms a single macro-influencer in both engagement and ROI."}, {"question": "How much do micro-influencers cost in the UAE?", "answer": "Micro-influencer rates in the UAE typically range from AED 500 to AED 5,000 per deliverable, depending on follower count, engagement rate, niche, content type (post vs. Reel vs. Story), and exclusivity. Nano-influencers (1K–10K followers) usually charge AED 500–2,000 per post. Mid-range micro-influencers (25K–50K followers) with strong engagement may charge AED 2,000–5,000. Rates can be lower for gifted partnerships or multi-post packages. UAE rates are generally higher than in other regional markets due to the affluent audience and quality of the creator ecosystem, but the ROI per dirham spent often justifies the premium."}, {"question": "How many micro-influencers do I need for a campaign?", "answer": "The ideal number depends on your goals and budget. For focused product launches or niche targeting, we typically recommend 5–15 micro-influencers to create authentic, diverse content while maintaining manageable coordination. For broader brand awareness campaigns, 20–50 micro-influencers can amplify reach across different audience segments and create strong social proof. Working with multiple creators also diversifies risk and provides a library of user-generated content for repurposing. We model the optimal mix during the strategy phase based on your target audience size, geographic focus, and campaign objectives."}, {"question": "How do you verify micro-influencer authenticity?", "answer": "We use a combination of tools and processes: (1) Audience analytics—we analyze follower growth history, engagement patterns (likes vs. comments ratio), and geographic/demographic breakdown to identify unnatural spikes or bot-like behavior. (2) Engagement quality—we assess whether comments are genuine, on-topic, and from real accounts versus generic or spam responses. (3) Historical content review—we evaluate content consistency, posting frequency, and brand alignment. (4) Third-party verification—where applicable, we cross-reference metrics with platform insights or third-party tools. Only creators who pass our vetting criteria and demonstrate authentic, engaged audiences are recommended for campaigns."}] },
-                    "cta": { "title": "Start Your Micro-Influencer Campaign", "description": "Connect with authentic creators who genuinely influence purchase decisions.", "button": "Get Started" }
-                },
-                "luxuryInfluencer": {
-                    "badge": "Luxury Influencer Marketing",
-                    "hero": { "title": "Elevate Your Brand With", "mainWord": "Luxury Influencers", "description": "Partner with Dubai's most prestigious content creators to position your brand in the luxury space." },
-                    "definition": { "title": "What is Luxury Influencer Marketing?", "paragraph": "Luxury influencer marketing connects premium brands with high-caliber creators who embody sophistication and aspirational lifestyles.", "benefitsTitle": "Why Luxury Brands Choose Influencer Marketing", "benefits": ["Access to affluent, high-net-worth audiences", "Premium content production matching luxury brand standards", "Aspirational storytelling", "Exclusive access to Dubai's luxury events and venues", "Carefully curated partnerships"], "processTitle": "The Luxury Influencer Process", "processSteps": ["Define brand positioning and affluent demographics", "Curate premium influencers vetted for audience quality", "Develop high-end creative concepts", "Execute with white-glove management", "Analyze engagement with affluent audiences"] },
-                    "stats": [{"value": "50+", "label": "Luxury Campaigns"}, {"value": "100+", "label": "Premium Creators"}, {"value": "25M+", "label": "Affluent Audience Reach"}, {"value": "4.2x", "label": "Brand Perception Lift"}],
-                    "features": { "title": "Luxury Marketing Services", "subtitle": "Premium influencer solutions for discerning brands", "items": [{"title": "Elite Creator Curation", "description": "Handpicked luxury influencers vetted for authentic affluent audiences."}, {"title": "Premium Content Production", "description": "Cinematic-quality content meeting luxury brand standards."}, {"title": "Exclusive Experiences", "description": "Curate immersive brand experiences at Dubai's most prestigious venues."}, {"title": "Brand Protection", "description": "Strict exclusivity agreements and brand safety protocols."}, {"title": "Global Luxury Reach", "description": "Connect with international luxury audiences through Dubai-based creators."}, {"title": "VIP Event Activations", "description": "Exclusive launch events documented by premium creators."}] },
-                    "process": { "title": "The Premium Campaign Journey", "subtitle": "White-glove service from concept to completion", "steps": [{"title": "Brand Immersion", "description": "We deeply understand your brand DNA and luxury positioning."}, {"title": "Creator Curation", "description": "Our team handpicks premium creators aligned with your brand."}, {"title": "High-End Production", "description": "Professional content creation with cinematic production values."}, {"title": "Exclusive Launch", "description": "Coordinated campaign launch with exclusive experiences."}] },
-                    "trust": { "title": "Trusted by Luxury Brands", "subtitle": "Experience in premium brand partnerships across Dubai", "cards": [{"title": "Premium Network", "description": "Exclusive relationships with Dubai's top luxury creators."}, {"title": "Dubai Luxury Expertise", "description": "Deep knowledge of Dubai's luxury landscape."}, {"title": "Affluent Audiences", "description": "Access to high-net-worth individuals."}, {"title": "Brand Perception Analytics", "description": "Advanced sentiment analysis for luxury campaigns."}], "paragraph": "Our luxury influencer campaigns have served brands across fashion, jewelry, automotive, hospitality, and real estate." },
-                    "faq": { "title": "Luxury Influencer Marketing FAQ", "items": [{"question": "What makes luxury influencer marketing different?", "answer": "Luxury influencer marketing differs from mass-market campaigns in several key ways: (1) Production quality—content must match luxury brand standards with cinematic visuals, professional styling, and premium settings. (2) Creator curation—we handpick creators who genuinely embody aspirational lifestyles and have affluent, high-intent audiences, not just large follower counts. (3) Exclusivity—luxury brands often require category or brand exclusivity agreements to protect premium positioning. (4) White-glove management—every touchpoint, from brief to final approval, is managed with meticulous attention to detail. (5) Brand protection—strict content approval and alignment with brand values to maintain the prestige and sophistication expected in luxury marketing."}, {"question": "How do you select luxury influencers?", "answer": "Our selection process evaluates creators on multiple dimensions: (1) Audience affluence—we analyze follower demographics, interests, and behavior to ensure the audience has purchasing power and luxury affinity. (2) Content quality—aesthetic consistency, production value, and whether the creator's visual language aligns with luxury brand standards. (3) Lifestyle alignment—creators must genuinely live and represent the lifestyle the brand promotes, not merely pose for sponsored posts. (4) Past partnerships—we review brand history to avoid over-saturation and ensure compatibility. (5) Engagement authenticity—we verify that engagement comes from real, relevant audiences. Only creators who meet these criteria across all dimensions are recommended for luxury partnerships."}, {"question": "What is the cost of luxury influencer marketing in Dubai?", "answer": "Luxury influencer marketing in Dubai typically starts from AED 50,000 for focused activations (e.g., 1–3 premium creators, single content format) and can range to AED 500,000+ for comprehensive multi-creator campaigns with high-end production, exclusive events, and extended partnerships. Mid-tier luxury campaigns often invest AED 100,000–250,000 for a mix of premium creators, professional content production, and strategic distribution. Costs reflect the premium creator fees, cinematic production values, exclusive venue access, and white-glove management required for luxury brand standards. We provide detailed proposals with transparent breakdowns based on your objectives."}, {"question": "Which luxury industries do you serve?", "answer": "We work with luxury brands across fashion and haute couture, fine jewelry and watches, luxury automotive, premium hospitality and travel, high-end real estate, luxury beauty and skincare, and exclusive lifestyle brands. Our campaigns have included launches for international fashion houses, regional fine jewelry brands, premium automotive dealerships, five-star hotels and resorts, ultra-luxury real estate developments, and high-end F&B concepts. Dubai's position as a global luxury hub provides unique opportunities for brands in all these sectors to reach affluent, discerning audiences through carefully curated creator partnerships."}] },
-                    "cta": { "title": "Elevate Your Brand Presence", "description": "Partner with Dubai's most prestigious creators for your luxury brand story.", "button": "Start Your Luxury Campaign" }
-                },
-                "roiAnalytics": {
-                    "badge": "ROI & Analytics",
-                    "hero": { "title": "Measure What Matters With", "mainWord": "Data-Driven Analytics", "description": "Transform your influencer marketing from guesswork into a science. Real-time dashboards, comprehensive ROI tracking, and actionable insights." },
-                    "definition": { "title": "What is Influencer Marketing ROI Analytics?", "paragraph": "Influencer marketing ROI analytics measures and reports on the performance and return on investment of influencer campaigns.", "benefitsTitle": "Why Analytics-Driven Campaigns Win", "benefits": ["Quantify exact ROI for every dirham spent", "Identify top-performing influencers and content types", "Real-time monitoring enables instant adjustments", "Data-backed insights for strategic planning", "Transparent reporting builds confidence"], "processTitle": "How We Track & Measure Performance", "processSteps": ["Define clear KPIs aligned with business objectives", "Set up tracking infrastructure and attribution models", "Monitor campaigns in real-time", "Analyze cross-platform data", "Deliver comprehensive reports with recommendations"] },
-                    "stats": [{"value": "100%", "label": "Campaign Tracking Coverage"}, {"value": "24/7", "label": "Real-Time Monitoring"}, {"value": "3.5x", "label": "Average Client ROI"}, {"value": "200+", "label": "Campaigns Analyzed"}],
-                    "features": { "title": "Analytics & Reporting Services", "subtitle": "Comprehensive measurement for every aspect of your campaigns", "items": [{"title": "Real-Time Dashboards", "description": "Live campaign dashboards tracking impressions, engagement, and conversions."}, {"title": "ROI Attribution", "description": "Multi-touch attribution connecting influencer activities to sales."}, {"title": "Audience Insights", "description": "Demographics, interests, and behavioral patterns."}, {"title": "Engagement Analysis", "description": "Beyond likes—we measure engagement quality and sentiment."}, {"title": "Custom Reports", "description": "Tailored reports with visualizations and recommendations."}, {"title": "Campaign Optimization", "description": "Data-driven recommendations for live campaign optimization."}] },
-                    "process": { "title": "Our Analytics Process", "subtitle": "From setup to insights in four strategic steps", "steps": [{"title": "Measurement Framework", "description": "We establish clear KPIs and tracking infrastructure."}, {"title": "Real-Time Monitoring", "description": "Our platform monitors campaign performance 24/7."}, {"title": "Deep Analysis", "description": "Our data team analyzes cross-platform performance."}, {"title": "Strategic Reporting", "description": "We deliver reports with ROI calculations and recommendations."}] },
-                    "trust": { "title": "Data You Can Trust", "subtitle": "Transparent, accurate analytics for informed decision-making", "cards": [{"title": "Verified Metrics", "description": "All metrics verified and cross-referenced for accuracy."}, {"title": "Cross-Platform Tracking", "description": "Unified analytics across Instagram, TikTok, YouTube, and more."}, {"title": "Audience Verification", "description": "Advanced tools to verify audience authenticity."}, {"title": "Custom Dashboards", "description": "Personalized dashboards tailored to your KPIs."}], "paragraph": "Our analytics infrastructure has tracked 200+ campaigns, processing millions of data points." },
-                    "faq": { "title": "ROI & Analytics FAQ", "items": [{"question": "How do you measure influencer marketing ROI?", "answer": "We measure ROI through a combination of tracked conversions, UTM parameters, unique discount codes, and multi-touch attribution models. Before launch, we set up tracking infrastructure: UTM-tagged links for website traffic, unique promo or affiliate codes for sales attribution, and pixel tracking where applicable. During and after the campaign, we connect influencer activities (posts, stories, links) to downstream conversions—clicks, sign-ups, purchases—and calculate cost per acquisition and total return. For brand awareness objectives, we use reach, engagement, and earned media value as proxies for ROI. Our multi-touch attribution approach credits multiple touchpoints along the customer journey, giving you a more accurate picture of how influencer content contributes to conversions."}, {"question": "What metrics do you track?", "answer": "We track a comprehensive set of metrics: (1) Reach—impressions, unique reach, and audience overlap across influencers. (2) Engagement—likes, comments, shares, saves, and engagement rate (often benchmarked against platform averages). (3) Traffic—click-through rates, landing page visits, and time on site from influencer links. (4) Conversions—sign-ups, purchases, and cost per acquisition when tracking is enabled. (5) Content performance—which formats (Reels, Stories, posts), creators, and creatives perform best. (6) Earned media value—estimated equivalent ad spend for the organic reach generated. (7) Audience insights—demographics, interests, and geographic distribution. Metrics are customized based on your campaign objectives and reported in clear, actionable dashboards."}, {"question": "How often do you provide reports?", "answer": "Reporting frequency is tailored to your needs. During active campaigns, we provide real-time dashboard access so you can monitor performance anytime. Weekly performance summaries are standard, covering key metrics, top-performing content, and any notable trends. Comprehensive post-campaign reports are delivered within 1–2 weeks of campaign conclusion and include full data analysis, ROI calculations, audience insights, competitive benchmarks where relevant, and strategic recommendations for future campaigns. For long-term ambassador programs or retainer clients, we offer monthly or quarterly business reviews. All reports are designed for clarity and actionability, whether for internal stakeholders or C-suite presentations."}, {"question": "Can you track offline conversions?", "answer": "Yes. We use several methods to attribute offline conversions to influencer campaigns: (1) Unique promo codes—each influencer (or campaign) receives a dedicated code; sales using that code are attributed accordingly. (2) QR codes—custom QR codes on in-store materials or influencer content link to tracked landing pages or trigger conversion events. (3) Brand lift studies—surveys measuring brand awareness, consideration, and purchase intent before and after campaigns to quantify impact on consumer perception. (4) Footfall attribution—for retail clients, we can correlate campaign timing with store traffic when data is available. (5) Phone tracking—dedicated numbers or call tracking for campaigns driving phone enquiries. We work with you to design the tracking setup that best fits your sales channels and data capabilities."}] },
-                    "cta": { "title": "Start Measuring Your Impact", "description": "Get clear, accurate analytics that prove the value of your investment.", "button": "Get Started" }
-                },
-                "instagramInfluencer": {
-                    "badge": "Instagram Influencer Marketing",
-                    "hero": { "title": "Dominate the Feed With", "mainWord": "Instagram Creators", "description": "Leverage the full power of Instagram through strategic creator partnerships across Reels, Stories, and shoppable content." },
-                    "definition": { "title": "What is Instagram Influencer Marketing?", "paragraph": "Instagram influencer marketing uses content creators to promote brands through authentic visual storytelling.", "benefitsTitle": "Why Instagram Leads Influencer Marketing", "benefits": ["Highest engagement platform in the UAE", "Visual-first format for showcasing products", "Instagram Reels drive 2x more reach", "Shoppable content for direct conversions", "Instagram Collaborations double reach", "Story stickers and links drive engagement"], "processTitle": "Our Instagram Marketing Approach", "processSteps": ["Audit your Instagram presence and competitors", "Identify creators whose aesthetic aligns with your brand", "Develop content strategies for Reels, Stories, and collaborations", "Manage content creation and approval", "Track performance metrics"] },
-                    "stats": [{"value": "300+", "label": "Instagram Campaigns"}, {"value": "400+", "label": "Instagram Creators"}, {"value": "40M+", "label": "Total Impressions"}, {"value": "5.2%", "label": "Average Engagement Rate"}],
-                    "features": { "title": "Instagram Marketing Services", "subtitle": "Full-spectrum Instagram influencer campaigns", "items": [{"title": "Reels Campaigns", "description": "Short-form video with trending audio and creative storytelling."}, {"title": "Stories & Highlights", "description": "Engaging Stories with interactive stickers and swipe-up links."}, {"title": "Instagram Collaborations", "description": "Native collaboration posts doubling organic reach."}, {"title": "Shoppable Content", "description": "Product-tagged posts for seamless shopping."}, {"title": "Hashtag Campaigns", "description": "Branded hashtag strategies for user participation."}, {"title": "Brand Ambassador Programs", "description": "Long-term partnerships with consistent content."}] },
-                    "process": { "title": "Our Instagram Campaign Process", "subtitle": "Strategic approach to Instagram influencer success", "steps": [{"title": "Platform Strategy", "description": "We analyze your Instagram landscape and target audience."}, {"title": "Creator Matching", "description": "We identify creators whose visual style aligns with your brand."}, {"title": "Content & Launch", "description": "We manage the content lifecycle from briefing to posting."}, {"title": "Optimize & Report", "description": "We track performance and deliver comprehensive reports."}] },
-                    "trust": { "title": "Instagram Marketing Experts", "subtitle": "Proven results on the UAE's favorite visual platform", "cards": [{"title": "Platform Specialists", "description": "Dedicated Instagram strategists."}, {"title": "400+ Creators", "description": "Access to a vetted network of Instagram creators."}, {"title": "UAE Market Leaders", "description": "Deep understanding of UAE Instagram trends."}, {"title": "Proven Results", "description": "Consistent 5%+ engagement rates."}], "paragraph": "Our team has managed 300+ Instagram campaigns and 400+ creators." },
-                    "faq": { "title": "Instagram Influencer Marketing FAQ", "items": [{"question": "Why is Instagram best for influencer marketing in UAE?", "answer": "Instagram has over 70% user penetration in the UAE, making it the most widely used social platform in the market. Its visual-first format is ideal for brand storytelling, product showcases, and aspirational content—all central to influencer marketing. The platform offers multiple content formats (Reels, Stories, Posts, Shopping) that allow full-funnel campaigns from awareness to conversion. UAE audiences actively discover and purchase products through Instagram, and the platform's shopping features (product tags, Checkout) enable seamless commerce. Combined with our network of 400+ vetted Instagram creators and deep understanding of UAE trends, Instagram consistently delivers the strongest ROI for influencer campaigns in the region."}, {"question": "What types of Instagram content work best?", "answer": "The most effective content types depend on your goals: (1) Reels—currently drive the highest organic reach (often 2x or more vs. static posts) and are ideal for brand discovery, product demos, and trending formats. (2) Stories—best for daily engagement, behind-the-scenes content, polls, Q&As, and swipe-up links for traffic. (3) Collaboration posts—native collaboration features double organic reach by appearing on both brand and creator profiles. (4) Carousel posts—excel for educational content, before/after, or multi-product showcases. (5) Shoppable posts—product-tagged content enables direct conversion. We recommend a mix of formats for full-funnel impact: Reels for reach, Stories for engagement, and shoppable content for conversion."}, {"question": "How do Reels compare to TikTok?", "answer": "Both platforms excel at short-form video, but each has distinct strengths. Instagram Reels benefit from Instagram's established user base and integration with Shopping, making them stronger for conversion-focused campaigns and audiences already following your brand or creators. Reels also sit within a broader Instagram presence (profile, Stories, feed), supporting cohesive brand building. TikTok offers higher viral potential due to its For You Page algorithm, which surfaces content regardless of follower count—ideal for reach and discovery among younger demographics. TikTok Shopping is growing but less mature than Instagram's. Many successful brands use both: TikTok for awareness and virality, Instagram for engagement and conversion. We help you allocate budget and content strategy across both based on your objectives and audience."}, {"question": "Can you run Instagram Shopping campaigns?", "answer": "Yes. We set up full Instagram Shopping campaigns with influencers: product tagging in feed posts and Reels so users can tap to view and purchase; integration with your Instagram Shop or product catalog; and influencer discount codes for attribution. Content is created to showcase products in context (try-ons, unboxings, styling), and we ensure all posts comply with Instagram's shopping and disclosure policies. Combined with Instagram Checkout where available, we create a seamless path from discovery to purchase. We also coordinate with your e-commerce or retail team to ensure product feeds are accurate and inventory is synced for a smooth shopping experience."}] },
-                    "cta": { "title": "Amplify Your Instagram Presence", "description": "Connect with the right Instagram creators to build brand awareness in the UAE.", "button": "Launch Your Campaign" }
-                },
-                "tiktokInfluencer": {
-                    "badge": "TikTok Influencer Marketing",
-                    "hero": { "title": "Go Viral With", "mainWord": "TikTok Creators", "description": "Harness the explosive growth of TikTok to reach younger audiences and create viral moments across the UAE." },
-                    "definition": { "title": "What is TikTok Influencer Marketing?", "paragraph": "TikTok influencer marketing produces short-form video content that drives massive organic reach through the For You Page algorithm.", "benefitsTitle": "Why TikTok is a Game-Changer", "benefits": ["Unmatched viral potential", "UAE TikTok usage has grown 150%", "Gen Z spends 95 minutes daily on TikTok", "Authentic content format", "TikTok Shopping capabilities", "Trending sounds and challenges"], "processTitle": "Our TikTok Marketing Framework", "processSteps": ["Research trending content formats and sounds", "Identify TikTok-native creators", "Develop creative concepts blending brand with TikTok storytelling", "Produce and launch optimized for the algorithm", "Track viral metrics and conversions"] },
-                    "stats": [{"value": "150+", "label": "TikTok Campaigns"}, {"value": "200+", "label": "TikTok Creators"}, {"value": "100M+", "label": "Total Views Generated"}, {"value": "12%", "label": "Average Engagement Rate"}],
-                    "features": { "title": "TikTok Marketing Services", "subtitle": "Full-spectrum TikTok campaigns built for virality", "items": [{"title": "Viral Video Campaigns", "description": "Short-form content designed for maximum virality."}, {"title": "Trending Sound Strategy", "description": "Strategic use of trending sounds to boost discoverability."}, {"title": "Challenge Campaigns", "description": "Branded hashtag challenges encouraging mass participation."}, {"title": "TikTok Spark Ads", "description": "Amplify top-performing organic content with Spark Ads."}, {"title": "TikTok Shop Integration", "description": "Shoppable creator content for in-app purchases."}, {"title": "Creator Community Building", "description": "Long-term relationships with TikTok creators."}] },
-                    "process": { "title": "Our TikTok Campaign Process", "subtitle": "Platform-native strategy for maximum impact", "steps": [{"title": "Trend Research & Strategy", "description": "Our specialists research current trends and viral formats."}, {"title": "Creator Casting", "description": "We cast TikTok-native creators who understand platform culture."}, {"title": "Content Production & Launch", "description": "Creators produce content with our creative guidance."}, {"title": "Amplify & Analyze", "description": "We boost top content and track viral metrics."}] },
-                    "trust": { "title": "TikTok Marketing Experts", "subtitle": "Deep expertise in the UAE's fastest-growing platform", "cards": [{"title": "TikTok Specialists", "description": "Dedicated strategists who live the platform."}, {"title": "200+ Creators", "description": "Vetted network of TikTok-native creators."}, {"title": "UAE Trend Experts", "description": "Understanding of UAE-specific TikTok trends."}, {"title": "100M+ Views", "description": "Proven track record generating over 100 million views."}], "paragraph": "We've executed 150+ TikTok campaigns and generated 100M+ views." },
-                    "faq": { "title": "TikTok Influencer Marketing FAQ", "items": [{"question": "Why should brands use TikTok for influencer marketing?", "answer": "TikTok offers unmatched organic reach potential—the For You Page algorithm gives every piece of content a chance to go viral regardless of follower count, so even new or smaller creators can generate millions of views. Gen Z and millennials spend an average of 95 minutes daily on TikTok, making it the most engaging platform for younger demographics. Content on TikTok feels authentic and entertaining rather than overtly promotional, which drives higher trust and purchase intent. The platform has grown 150%+ in the UAE since 2022, and TikTok Shopping capabilities now enable direct in-app purchases. For brands targeting Gen Z, millennials, or seeking viral brand moments, TikTok influencer marketing is essential. Our 150+ TikTok campaigns have generated over 100 million views with an average 12% engagement rate—far exceeding typical benchmarks."}, {"question": "How much does TikTok influencer marketing cost in UAE?", "answer": "TikTok creator rates in the UAE typically range from AED 1,000 to AED 50,000+ per deliverable. Nano and micro-influencers (1K–50K followers) often charge AED 1,000–3,000 per video. Mid-tier creators (50K–200K followers) may charge AED 5,000–15,000. Top-tier TikTok creators with 500K+ followers and strong engagement can command AED 15,000–50,000 or more per campaign. Costs depend on follower count, average views (which can exceed follower count due to the algorithm), engagement rate, content complexity, exclusivity, and usage rights. We optimize budgets by matching creators to objectives—often a mix of 5–10 micro-influencers outperforms a single macro-influencer in both views and cost-effectiveness."}, {"question": "What types of brands perform best on TikTok?", "answer": "While TikTok initially excelled for fashion, beauty, and entertainment, it now drives results across virtually all industries—F&B, education, finance, real estate, B2B, and more. Success depends less on industry and more on adapting your brand message to TikTok's authentic, entertaining content style. The key is creating content that feels native to the platform: trend participation, relatable humor, behind-the-scenes moments, and storytelling that captures attention in the first 3 seconds. Brands that embrace TikTok's culture—rather than repurposing polished ads—see the best results. We help you translate your brand voice into TikTok-native content that resonates with UAE audiences."}, {"question": "How do you measure TikTok campaign success?", "answer": "We track a comprehensive set of TikTok metrics: (1) Video views and completion rates—critical for understanding if content holds attention. (2) Engagement—likes, comments, shares, saves, and engagement rate (TikTok benchmarks are typically higher than other platforms). (3) Profile visits and follower growth—indicating interest in the creator and brand. (4) Click-through rates—for links in bios or TikTok Shop. (5) Conversions—when tracking is set up via UTM links, promo codes, or TikTok Shop. (6) Hashtag performance—for branded or campaign hashtags. (7) Spark Ads performance—when we boost top organic content. We provide clear reporting that ties these metrics to your campaign objectives and ROI, with benchmarks based on our 150+ TikTok campaigns."}] },
-                    "cta": { "title": "Ready to Go Viral on TikTok?", "description": "Partner with TikTok-native creators who create content that captures attention.", "button": "Launch TikTok Campaign" }
-                },
-                "influencerCost": {
-                    "badge": "Influencer Marketing Cost UAE",
-                    "hero": { "title": "Transparent Influencer Marketing", "mainWord": "Pricing", "description": "Understand exactly what influencer marketing costs in the UAE. Get clear pricing guidance and strategies to maximize your return on every dirham." },
-                    "definition": { "title": "How Much Does Influencer Marketing Cost in UAE?", "paragraph": "Influencer marketing costs in the UAE vary based on influencer tier, platform, content type, and campaign duration.", "benefitsTitle": "UAE Influencer Pricing Overview", "benefits": ["Nano-influencers (1K-10K): AED 500 - 2,000 per deliverable", "Micro-influencers (10K-50K): AED 2,000 - 8,000 per deliverable", "Mid-tier (50K-200K): AED 8,000 - 25,000 per deliverable", "Macro-influencers (200K-1M): AED 25,000 - 75,000 per deliverable", "Celebrity (1M+): AED 75,000 - 500,000+ per campaign"], "processTitle": "Factors That Influence Pricing", "processSteps": ["Platform selection", "Content complexity", "Exclusivity and usage rights", "Campaign duration", "Deliverable quantity"] },
-                    "stats": [{"value": "AED 500", "label": "Starting Rate (Nano)"}, {"value": "3-7x", "label": "Average Campaign ROI"}, {"value": "40%", "label": "Cost Savings via Packages"}, {"value": "200+", "label": "Budgets Optimized"}],
-                    "features": { "title": "Budget Planning Services", "subtitle": "Strategic financial planning for maximum impact", "items": [{"title": "Budget Modeling", "description": "Custom budget models from AED 5,000 to AED 500,000+."}, {"title": "Rate Negotiation", "description": "Leverage our relationships to save 20-40% on average."}, {"title": "Cost Optimization", "description": "Strategic allocation across tiers and platforms."}, {"title": "Transparent Proposals", "description": "Detailed cost breakdowns with no hidden fees."}, {"title": "ROI Forecasting", "description": "Data-driven projections based on historical data."}, {"title": "Performance Guarantees", "description": "Minimum engagement rate guarantees."}] },
-                    "process": { "title": "How We Optimize Your Budget", "subtitle": "A strategic approach to influencer marketing investment", "steps": [{"title": "Objective-Based Budgeting", "description": "We start with your campaign goals and work backwards."}, {"title": "Influencer Mix Strategy", "description": "We recommend the ideal blend of nano, micro, and macro-influencers."}, {"title": "Negotiation & Packaging", "description": "Our relationships help secure the best rates."}, {"title": "Spend Tracking & Optimization", "description": "Real-time budget tracking with performance-based reallocation."}] },
-                    "trust": { "title": "Budget Expertise You Can Trust", "subtitle": "Proven track record of maximizing influencer marketing budgets", "cards": [{"title": "200+ Budgets Planned", "description": "From AED 5,000 startups to AED 500,000+ programs."}, {"title": "UAE Market Rates", "description": "Real-time knowledge of current UAE influencer rates."}, {"title": "500+ Relationships", "description": "Direct relationships for better rates."}, {"title": "3-7x Average ROI", "description": "Our optimization consistently delivers 3-7x return."}], "paragraph": "We have deep benchmarking data on influencer costs across every tier in the UAE." },
-                    "faq": { "title": "Influencer Marketing Cost FAQ", "items": [{"question": "What is the minimum budget for influencer marketing in UAE?", "answer": "You can start influencer marketing in the UAE from AED 5,000 for a focused nano/micro-influencer campaign—typically 3–5 nano-influencer posts or 2–3 micro-influencer activations on a single platform. For meaningful brand awareness or consideration campaigns, we recommend a minimum of AED 15,000–25,000 to work with a mix of micro and mid-tier influencers across 1–2 platforms. Comprehensive multi-platform campaigns with diverse creator tiers typically invest AED 50,000–100,000+. We tailor budget recommendations based on your objectives, target audience size, and desired reach. Even smaller budgets can deliver measurable results when strategically allocated."}, {"question": "Why are UAE influencer rates higher than other markets?", "answer": "UAE influencer rates reflect several factors: (1) High purchasing power—UAE audiences have significantly higher disposable income, so brand exposure translates to higher-value conversions and brands pay a premium for access. (2) Quality of the creator ecosystem—Dubai attracts top-tier creators with professional production standards and engaged, affluent audiences. (3) Regional hub status—content created in the UAE often reaches GCC and broader MENA audiences, increasing value. (4) Market maturity—the UAE influencer market is sophisticated, with established norms for rates, deliverables, and exclusivity. While rates are higher, the ROI per dirham spent often exceeds that of lower-cost markets due to audience quality and conversion potential."}, {"question": "How do you charge for your services?", "answer": "Tikit Agency typically charges a management fee of 15–25% of the total influencer spend, depending on campaign complexity and scope. This fee covers strategy development, influencer sourcing and vetting, campaign management, content approval workflows, performance monitoring, and reporting. All fees are transparently disclosed in proposals with a clear breakdown of influencer costs vs. management fees. There are no hidden charges—every line item is itemized. For retainers or long-term programs, we may offer discounted fee structures. We can also work on a project-based fee for specific deliverables. Contact us for a customized proposal based on your campaign requirements."}, {"question": "How can I reduce influencer marketing costs?", "answer": "Several strategies can optimize costs: (1) Work with nano and micro-influencers—they offer better cost-per-engagement and you can activate multiple creators within the same budget. (2) Multi-post packages—negotiate bundles (e.g., 3 posts for the price of 2.5) for better value. (3) Long-term ambassador partnerships—creators often offer discounted rates for ongoing collaborations. (4) Gifting and product seeding—for product-based brands, gifted partnerships (product in exchange for content) can reduce cash spend. (5) User-generated content rights—negotiate rights to repurpose content across your channels, multiplying the value of each activation. (6) Platform mix—allocating budget to TikTok or emerging platforms can sometimes deliver more reach per dirham. We apply these strategies as part of our budget optimization approach."}, {"question": "What ROI can I expect?", "answer": "Based on our 200+ campaigns, the average ROI for influencer marketing is 3–7x the investment. This varies by industry, campaign objective, and influencer mix. Micro-influencer campaigns often deliver the highest ROI per dirham (sometimes 5–10x) due to better engagement and cost efficiency. Macro and celebrity campaigns typically yield lower multiples but drive the highest absolute reach and awareness. Conversion-focused campaigns with strong tracking (promo codes, UTM links) typically show ROI of 3–5x. Brand awareness campaigns are harder to attribute directly but we measure through reach, engagement, and brand lift studies. During the proposal stage, we provide ROI projections based on your objectives and historical benchmarks for similar campaigns."}] },
-                    "cta": { "title": "Get Your Custom Pricing Proposal", "description": "Tell us your goals and budget for a tailored proposal with transparent pricing.", "button": "Request a Proposal" }
-                }
-            }
-        },
+          
         "socialMediaManagement": {
             "badge": "Social Media Management",
             "hero": {
