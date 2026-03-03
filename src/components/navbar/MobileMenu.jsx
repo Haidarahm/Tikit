@@ -4,7 +4,7 @@ import { NAV_LINKS } from "./constants";
 import ThemeToggle from "./ThemeToggle";
 import ContactDropdown from "./ContactDropdown";
 import LanguageSelector from "./LanguageSelector";
-import InfluencerDropdown from "./InfluencerDropdown";
+import NavDropdown from "./NavDropdown";
 
 export default function MobileMenu({
   mobileMenuRef,
@@ -13,7 +13,6 @@ export default function MobileMenu({
 }) {
   const { t } = useTranslation();
 
-  // Filter out influencer link and render it separately as dropdown
   const regularLinks = NAV_LINKS.filter((link) => link.to !== "/influencer");
 
   return (
@@ -35,8 +34,13 @@ export default function MobileMenu({
         ))}
 
         {/* Influencer Dropdown */}
-        <InfluencerDropdown
-          isMobile={true}
+        <NavDropdown
+          label={t("nav.influencers")}
+          items={[
+            { label: t("nav.ourInfluencers"),       to: "/influencer" },
+            { label: t("nav.registerAsInfluencer"), to: "/influencer-register" },
+          ]}
+          isMobile
           onClose={() => setIsMobileMenuOpen(false)}
         />
 
@@ -50,13 +54,11 @@ export default function MobileMenu({
           onClose={() => setIsMobileMenuOpen(false)}
         />
 
-        {/* Mobile Language selector */}
+        {/* Mobile Language Selector */}
         <LanguageSelector
           isMobile={true}
           onLanguageChange={() => {
-            if (isMobileMenuOpen) {
-              setIsMobileMenuOpen(false);
-            }
+            if (isMobileMenuOpen) setIsMobileMenuOpen(false);
           }}
         />
       </div>

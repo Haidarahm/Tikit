@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { NAV_LINKS } from "./constants";
 import { useNavColor } from "./hooks/useNavColor";
-import InfluencerDropdown from "./InfluencerDropdown";
+import NavDropdown from "./NavDropdown";
 
 export default function DesktopNavLinks({ language }) {
   const { t } = useTranslation();
@@ -10,8 +10,7 @@ export default function DesktopNavLinks({ language }) {
   const textColor =
     navColor === "white" ? "text-white" : "text-[var(--foreground)]";
 
-  // Filter out influencer link and render it separately as dropdown
-  const regularLinks = NAV_LINKS.filter((link) => link.to !== "/influencer");
+  const regularLinks = NAV_LINKS.filter((link) => link.to !== "/influencer" && link.to !=="/services");
 
   return (
     <div
@@ -45,7 +44,17 @@ export default function DesktopNavLinks({ language }) {
             </span>
           </Link>
         ))}
-        <InfluencerDropdown />
+   <NavDropdown
+          label={t("nav.services")}
+          
+        />
+        <NavDropdown
+          label={t("nav.influencers")}
+          items={[
+            { label: t("nav.ourInfluencers"),       to: "/influencer" },
+            { label: t("nav.registerAsInfluencer"), to: "/influencer-register" },
+          ]}
+        />
       </div>
     </div>
   );
