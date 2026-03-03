@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
 import {
   FiTarget,
   FiTrendingUp,
@@ -10,13 +10,18 @@ import {
   FiSearch,
   FiLayers,
   FiZap,
-  FiCheckCircle,
   FiMessageSquare,
   FiShield,
   FiDollarSign,
   FiUsers,
   FiArrowRight,
   FiPhone,
+  FiActivity,
+  FiStar,
+  FiPieChart,
+  FiInstagram,
+  FiVideo,
+  FiTag,
 } from "react-icons/fi";
 
 import influencerHero from "../../../assets/services/Influencer-Marketing.webp";
@@ -149,10 +154,55 @@ const faqItems = [
   },
 ];
 
+const subServices = [
+  {
+    icon: <FiActivity />,
+    title: "Campaign Management",
+    desc: "End-to-end influencer campaign planning, execution, and reporting — so you hit goals without the chaos.",
+    href: "/services/influencer-marketing-agency-dubai/campaign-management",
+  },
+  {
+    icon: <FiUsers />,
+    title: "Micro Influencer Marketing UAE",
+    desc: "Authentic, high-engagement micro creators who convert audiences into loyal customers across the UAE.",
+    href: "/services/influencer-marketing-agency-dubai/micro-influencer-marketing-uae",
+  },
+  {
+    icon: <FiStar />,
+    title: "Luxury Influencer Marketing",
+    desc: "Prestige campaigns crafted for luxury brands — connecting you with premium voices in Dubai and beyond.",
+    href: "/services/influencer-marketing-agency-dubai/luxury-influencer-marketing",
+  },
+  {
+    icon: <FiPieChart />,
+    title: "ROI Analytics",
+    desc: "Deep-dive performance dashboards and attribution reporting so every dirham is accounted for.",
+    href: "/services/influencer-marketing-agency-dubai/roi-analytics",
+  },
+  {
+    icon: <FiInstagram />,
+    title: "Instagram Influencer Marketing",
+    desc: "Scroll-stopping Instagram campaigns with the right creators to grow reach, trust, and revenue.",
+    href: "/services/influencer-marketing-agency-dubai/instagram-influencer-marketing",
+  },
+  {
+    icon: <FiVideo />,
+    title: "TikTok Influencer Marketing",
+    desc: "Viral-ready TikTok strategies with vetted creators driving awareness and conversions at scale.",
+    href: "/services/influencer-marketing-agency-dubai/tiktok-influencer-marketing",
+  },
+  {
+    icon: <FiTag />,
+    title: "Influencer Marketing Cost UAE",
+    desc: "Transparent pricing breakdowns — understand what influencer campaigns cost and how to budget smart.",
+    href: "/services/influencer-marketing-agency-dubai/influencer-marketing-cost-uae",
+  },
+];
+
 const breadcrumbs = [
   { name: "Home", url: "/" },
   { name: "Services", url: "/services" },
-  { name: "Digital Marketing Dubai", url: "/services/digital-marketing" },
+  { name: "Digital Marketing Dubai", url: "/services/influencer-marketing-agency-dubai" },
 ];
 
 /* ─── Helper: animate a ref's children ─────────────────────── */
@@ -186,6 +236,7 @@ const InfluencerMarketing = () => {
   const caseRef = useRef(null);
   const whyRef = useRef(null);
   const ctaRef = useRef(null);
+  const subServicesRef = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -201,6 +252,7 @@ const InfluencerMarketing = () => {
       revealChildren(stepsRef, ".im-step-card", {}, 0.1);
       revealChildren(benefitsRef, ".im-benefit-item", {}, 0.11);
       revealChildren(whyRef, ".im-whyus-card", {}, 0.1);
+      revealChildren(subServicesRef, ".im-subservice-card", {}, 0.08);
 
       /* Case Study slide in */
       if (caseRef.current) {
@@ -283,7 +335,7 @@ const InfluencerMarketing = () => {
         </div>
         <div ref={heroRef} className="im-hero__inner" style={{ opacity: 0 }}>
           <HeroWithBadge
-            badge=" Dubai's Growth Engine"
+            badge="🚀 Dubai's Growth Engine"
             badgeVariant="pulse"
             title="Leading Digital Marketing Agency in"
             mainWord="Dubai"
@@ -441,6 +493,31 @@ const InfluencerMarketing = () => {
         </div>
       </section>
 
+      {/* ── Sub-Services ─────────────────────────────────────── */}
+      <section className="im-section--alt">
+        <div className="im-container">
+          <div className="text-center max-w-2xl mx-auto mb-2">
+            <span className="im-section-label">Explore Our Services</span>
+            <h2 className="im-section-title">Everything You Need to Dominate Dubai</h2>
+            <p className="im-section-desc">
+              From campaign management to platform-specific strategies — explore our full suite of influencer marketing services.
+            </p>
+          </div>
+          <div ref={subServicesRef} className="im-subservices-grid">
+            {subServices.map((s) => (
+              <Link key={s.href} to={s.href} className="im-subservice-card">
+                <div className="im-subservice-card__icon">{s.icon}</div>
+                <h3 className="im-subservice-card__title">{s.title}</h3>
+                <p className="im-subservice-card__desc">{s.desc}</p>
+                <span className="im-subservice-card__cta">
+                  Learn more <FiArrowRight />
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── FAQ ──────────────────────────────────────────────── */}
       <FAQ
         items={faqItems}
@@ -458,15 +535,11 @@ const InfluencerMarketing = () => {
             Book a free strategy consultation. Get a roadmap to scale in Dubai and UAE — and stop wasting a single dirham.
           </p>
           <div className="im-reveal im-cta__buttons">
-            <a href="/contact-us" className="im-btn-primary">
+            <a href="/contact" className="im-btn-primary">
               <FiArrowRight />
               Book Free Consultation
             </a>
-            <a href="https://wa.me/971568881133"
-                  target="_blank"
-                  rel="noreferrer noopener"
-                 
-                  aria-label="Contact us on WhatsApp at 056 888 1133" className="im-btn-secondary">
+            <a href="tel:+97145774042" className="im-btn-secondary">
               <FiPhone />
               Call Us Now
             </a>
