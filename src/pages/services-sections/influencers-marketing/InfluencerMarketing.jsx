@@ -1,294 +1,360 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Link } from "react-router-dom";
-import { useTranslation } from "react-i18next";
-import { useI18nLanguage } from "../../../store/I18nLanguageContext";
+
+import {
+  FiTarget,
+  FiTrendingUp,
+  FiBarChart2,
+  FiGlobe,
+  FiSearch,
+  FiLayers,
+  FiZap,
+  FiCheckCircle,
+  FiMessageSquare,
+  FiShield,
+  FiDollarSign,
+  FiUsers,
+  FiArrowRight,
+  FiPhone,
+} from "react-icons/fi";
+
 import influencerHero from "../../../assets/services/Influencer-Marketing.webp";
 import HeroWithBadge from "../../../components/HeroWithBadge";
 import SEOHead from "../../../components/SEOHead";
 import FAQ from "../../../components/FAQ";
-import {
-  HiCheckCircle,
-  HiBadgeCheck,
-  HiGlobe,
-  HiUserGroup,
-  HiChartBar,
-  HiArrowRight,
-} from "react-icons/hi";
-import {
-  HiMegaphone,
-  HiSparkles,
-  HiCurrencyDollar,
-  HiPresentationChartBar,
-} from "react-icons/hi2";
-import { FaInstagram, FaTiktok } from "react-icons/fa";
+
 import "./influencersMarketing.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const BASE_PATH = "/services/influencer-marketing-agency-dubai";
-
-const subServices = [
+/* ─── Data ─────────────────────────────────────────────────── */
+const problems = [
   {
-    key: "campaignManagement",
-    path: `${BASE_PATH}/campaign-management`,
-    icon: HiMegaphone,
+    icon: <FiTarget />,
+    title: "No Clear Strategy That Makes Money",
+    text: "Many agencies post, run ads, and hope for engagement. That's gambling with your budget. Traffic may increase while revenue stays flat.",
   },
   {
-    key: "microInfluencer",
-    path: `${BASE_PATH}/micro-influencer-marketing-uae`,
-    icon: HiUserGroup,
+    icon: <FiDollarSign />,
+    title: "Wasted Budget on Ads That Don't Convert",
+    text: "Poorly targeted PPC, social ads, or Google campaigns disappear fast. You can get 10,000 clicks in a month and zero sales.",
   },
   {
-    key: "luxuryInfluencer",
-    path: `${BASE_PATH}/luxury-influencer-marketing`,
-    icon: HiSparkles,
+    icon: <FiBarChart2 />,
+    title: "Poor Tracking & Reporting",
+    text: "Some agencies give reports full of jargon you can't act on. We provide real-time dashboards and transparent reporting so you always know what works.",
   },
   {
-    key: "roiAnalytics",
-    path: `${BASE_PATH}/roi-analytics`,
-    icon: HiPresentationChartBar,
-  },
-  {
-    key: "instagramInfluencer",
-    path: `${BASE_PATH}/instagram-influencer-marketing`,
-    icon: FaInstagram,
-  },
-  {
-    key: "tiktokInfluencer",
-    path: `${BASE_PATH}/tiktok-influencer-marketing`,
-    icon: FaTiktok,
-  },
-  {
-    key: "influencerCost",
-    path: `${BASE_PATH}/influencer-marketing-cost-uae`,
-    icon: HiCurrencyDollar,
+    icon: <FiGlobe />,
+    title: "Lack of UAE Market Knowledge",
+    text: "Dubai is not like other markets. Language, culture, and spending habits matter. Generic campaigns fail — only local expertise drives results.",
   },
 ];
 
-const InfluencerMarketing = () => {
-  const { t } = useTranslation();
-  const { isRtl, language } = useI18nLanguage();
-  const heroRef = useRef(null);
-  const statsRef = useRef(null);
-  const processRef = useRef(null);
-  const definitionRef = useRef(null);
-  const trustRef = useRef(null);
-  const servicesRef = useRef(null);
+const steps = [
+  {
+    n: "01",
+    title: "Deep Business & Market Analysis",
+    text: "We study your business, competitors, and the UAE market to find opportunities, threats, and hidden growth potential.",
+  },
+  {
+    n: "02",
+    title: "Custom Strategy Development",
+    text: "No templates. No cookie-cutter solutions. Every campaign is built for your goals, audience, and revenue targets.",
+  },
+  {
+    n: "03",
+    title: "Multi-Channel Campaign Execution",
+    text: "SEO, PPC, social media, and website optimisation — each channel supporting the others to maximise ROI.",
+  },
+  {
+    n: "04",
+    title: "Data-Driven Optimisation & Scaling",
+    text: "We track every click, lead, and conversion. We test, tweak, and scale campaigns that actually work.",
+  },
+];
 
-  const fontClass = language === "ar" ? "font-cairo" : "font-antonio";
-  const faqItems = t("serviceSections.influencerMarketing.faqItems", { returnObjects: true });
+const benefits = [
+  {
+    icon: <FiTrendingUp />,
+    title: "ROI-Focused Campaigns Across All Digital Channels",
+    text: "Every campaign is designed to make more money than you spend. No wasted clicks. No guesswork. Only profit-driven marketing.",
+  },
+  {
+    icon: <FiBarChart2 />,
+    title: "Transparent Reporting & Performance Dashboards",
+    text: "Track your campaigns in real-time. See exactly what works. Know your ROI down to the last dirham.",
+  },
+  {
+    icon: <FiZap />,
+    title: "Faster Execution Without Compromising Quality",
+    text: "We move fast. Launch campaigns quickly. Beat competitors to the market — but never sacrifice quality.",
+  },
+  {
+    icon: <FiGlobe />,
+    title: "Expertise in Local & International Markets",
+    text: "We know the local market, the culture, and the language nuances (English and Arabic) for Dubai-based and international brands.",
+  },
+];
 
-  const serviceSchema = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "@id": `https://tikit.ae${BASE_PATH}#service`,
-    name: "Influencer Marketing Agency Dubai",
-    description:
-      "Leading influencer marketing agency in Dubai connecting brands with authentic creators across Instagram, TikTok, YouTube. Campaign management, micro-influencer marketing, luxury influencer partnerships, ROI analytics. 500+ influencer network, 200+ campaigns.",
-    provider: {
-      "@type": "Organization",
-      name: "Tikit Agency",
-      url: "https://tikit.ae",
-      telephone: "+971 4 577 4042",
-      email: "Holla@tikit.ae",
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: "The Burlington Tower, Marasi Drive, Office 309",
-        addressLocality: "Dubai",
-        addressCountry: "AE",
+const whyUs = [
+  {
+    icon: <FiLayers />,
+    title: "No Generic Plans",
+    text: "Every campaign is built specifically for your business, goals, and audience.",
+  },
+  {
+    icon: <FiShield />,
+    title: "Transparent Pricing",
+    text: "No hidden fees. No surprise charges. Clear, upfront pricing so you can focus on growth.",
+  },
+  {
+    icon: <FiSearch />,
+    title: "Data-Driven Decisions",
+    text: "Every move backed by real analytics and performance insights. No guessing.",
+  },
+  {
+    icon: <FiMessageSquare />,
+    title: "Direct Communication",
+    text: "Talk directly to your dedicated account manager — no middlemen, no delays.",
+  },
+];
+
+const faqItems = [
+  {
+    question: "How much does a digital marketing agency in Dubai cost?",
+    answer:
+      "Pricing depends on your goals. We provide clear, transparent plans tailored to your business with no hidden fees.",
+  },
+  {
+    question: "How long before I see results?",
+    answer:
+      "Some campaigns deliver quick wins in weeks. SEO and branding grow steadily over months. We set realistic timelines based on your goals.",
+  },
+  {
+    question: "Do you offer full-service advertising and digital marketing solutions?",
+    answer:
+      "Yes. SEO, PPC, social media, website optimisation, content marketing — we handle it all under one roof.",
+  },
+  {
+    question: "Do you require long-term contracts?",
+    answer:
+      "No. We offer flexible packages based on results and growth goals. No lock-ins.",
+  },
+  {
+    question: "Can you work with international brands entering the UAE market?",
+    answer:
+      "Absolutely. We specialise in localising campaigns for Dubai and UAE audiences, including multilingual English and Arabic campaigns.",
+  },
+];
+
+const breadcrumbs = [
+  { name: "Home", url: "/" },
+  { name: "Services", url: "/services" },
+  { name: "Digital Marketing Dubai", url: "/services/digital-marketing" },
+];
+
+/* ─── Helper: animate a ref's children ─────────────────────── */
+function revealChildren(containerRef, selector, fromVars = {}, staggerVal = 0.1) {
+  if (!containerRef.current) return;
+  const els = containerRef.current.querySelectorAll(selector);
+  if (!els.length) return;
+  gsap.fromTo(
+    els,
+    { opacity: 0, y: 36, ...fromVars },
+    {
+      opacity: 1,
+      y: 0,
+      duration: 0.75,
+      stagger: staggerVal,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top 82%",
       },
-    },
-    areaServed: { "@type": "Country", name: "United Arab Emirates" },
-    serviceType: "Influencer Marketing",
-    hasOfferCatalog: {
-      "@type": "OfferCatalog",
-      name: "Influencer Marketing Services",
-      itemListElement: [
-        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Influencer Campaign Management" } },
-        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Micro-Influencer Marketing UAE" } },
-        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Luxury Influencer Marketing" } },
-        { "@type": "Offer", itemOffered: { "@type": "Service", name: "ROI Analytics & Reporting" } },
-        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Instagram Influencer Marketing" } },
-        { "@type": "Offer", itemOffered: { "@type": "Service", name: "TikTok Influencer Marketing" } },
-      ],
-    },
-  };
+    }
+  );
+}
+
+/* ─── Component ─────────────────────────────────────────────── */
+const InfluencerMarketing = () => {
+  const heroRef = useRef(null);
+  const problemsRef = useRef(null);
+  const stepsRef = useRef(null);
+  const benefitsRef = useRef(null);
+  const caseRef = useRef(null);
+  const whyRef = useRef(null);
+  const ctaRef = useRef(null);
 
   useEffect(() => {
-    let ctx;
-    const timeout = setTimeout(() => {
-      ctx = gsap.context(() => {
-        const animate = (ref, selector, config = {}) => {
-          if (!ref.current) return;
-          const els = ref.current.querySelectorAll(selector);
-          if (!els.length) return;
-          gsap.fromTo(els, { opacity: 0, y: config.y || 40 }, {
-            opacity: 1, y: 0,
-            duration: config.duration || 0.8,
-            stagger: config.stagger || 0.15,
-            ease: config.ease || "power3.out",
-            scrollTrigger: { trigger: ref.current, start: "top 85%", toggleActions: "play none none none" },
+    const ctx = gsap.context(() => {
+      /* Hero entrance */
+      gsap.fromTo(
+        heroRef.current,
+        { opacity: 0, y: 24 },
+        { opacity: 1, y: 0, duration: 1.1, ease: "power3.out", delay: 0.15 }
+      );
+
+      /* Section reveals */
+      revealChildren(problemsRef, ".im-problem-card", {}, 0.12);
+      revealChildren(stepsRef, ".im-step-card", {}, 0.1);
+      revealChildren(benefitsRef, ".im-benefit-item", {}, 0.11);
+      revealChildren(whyRef, ".im-whyus-card", {}, 0.1);
+
+      /* Case Study slide in */
+      if (caseRef.current) {
+        gsap.fromTo(
+          caseRef.current,
+          { opacity: 0, x: -50 },
+          {
+            opacity: 1,
+            x: 0,
+            duration: 0.9,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: caseRef.current,
+              start: "top 80%",
+            },
+          }
+        );
+
+        /* Stat counters */
+        const statValues = caseRef.current.querySelectorAll(".im-case-study__stat-value[data-target]");
+        statValues.forEach((el) => {
+          const target = parseFloat(el.dataset.target);
+          const isMultiple = el.dataset.suffix === "x";
+          const counter = { val: 0 };
+          gsap.to(counter, {
+            val: target,
+            duration: 1.8,
+            ease: "power2.out",
+            onUpdate: () => {
+              el.textContent = isMultiple
+                ? `${Math.round(counter.val)}x`
+                : `${Math.round(counter.val)}`;
+            },
+            scrollTrigger: {
+              trigger: caseRef.current,
+              start: "top 78%",
+            },
           });
-        };
+        });
+      }
 
-        animate(heroRef, ".hero-animate", { y: 60, duration: 1, stagger: 0.2 });
-        animate(statsRef, ".im-stat-card", { y: 30 });
-        animate(processRef, ".im-process-card", { y: 50, stagger: 0.2 });
-        animate(servicesRef, ".im-hub-card", { y: 40, stagger: 0.1 });
-      });
-    }, 100);
+      /* CTA fade */
+      if (ctaRef.current) {
+        gsap.fromTo(
+          ctaRef.current.querySelectorAll(".im-reveal"),
+          { opacity: 0, y: 28 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            stagger: 0.12,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: ctaRef.current,
+              start: "top 85%",
+            },
+          }
+        );
+      }
+    });
 
-    return () => {
-      clearTimeout(timeout);
-      if (ctx) ctx.revert();
-    };
+    return () => ctx.revert();
   }, []);
 
   return (
-    <div
-      data-nav-color="black"
-      className={`im-page ${isRtl ? "font-cairo" : "font-hero-light"}`}
-      dir={isRtl ? "rtl" : "ltr"}
-    >
+    <>
       <SEOHead
-        title="Influencer Marketing Agency Dubai | Connect with Top Creators UAE"
-        description="Leading influencer marketing agency in Dubai. We connect brands with 500+ authentic creators across Instagram, TikTok, YouTube to drive engagement and ROI. Campaign management, micro-influencer marketing, luxury influencer partnerships."
-        keywords="influencer marketing agency Dubai, influencer agency UAE, influencer marketing services Dubai, Instagram influencer marketing, TikTok influencer marketing, micro influencer UAE, luxury influencer marketing Dubai, influencer campaign management"
-        canonicalUrl={BASE_PATH}
-        serviceType="Influencer Marketing"
-        structuredData={serviceSchema}
+        title="Leading Digital Marketing Agency in Dubai"
+        description="A leading UAE-based advertising and digital marketing agency, delivering tailored solutions to drive measurable business growth, leads, and revenue."
+        serviceType="Digital Marketing Agency Dubai"
+        breadcrumbs={breadcrumbs}
         faqItems={faqItems}
-        breadcrumbs={[
-          { name: "Home", url: "/" },
-          { name: "Services", url: "/services" },
-          { name: "Influencer Marketing Agency Dubai", url: BASE_PATH },
-        ]}
       />
 
-      {/* Hero */}
-      <section ref={heroRef} className="im-hero">
-        <div className="im-hero-overlay">
-          <img src={influencerHero} alt="Influencer Marketing Agency Dubai" width={1920} height={1080} className="im-hero-image" loading="lazy" />
-          <div className="im-hero-gradient" />
+      {/* ── Hero ─────────────────────────────────────────────── */}
+      <section className="im-hero" data-nav-color="black">
+        <div className="im-hero__image-wrapper">
+          <img src={influencerHero} alt="Digital Marketing Dubai" className="im-hero__image" />
+          <div className="im-hero__overlay" />
         </div>
-        <HeroWithBadge
-          badge={t("serviceSections.influencerMarketing.badge")}
-          title={t("serviceSections.influencerMarketing.hero.title")}
-          mainWord={t("serviceSections.influencerMarketing.hero.mainWord")}
-          description={t("serviceSections.influencerMarketing.hero.description")}
-          titleClassName="hero-animate block"
-          descriptionClassName="hero-animate im-hero-desc"
-          contentClassName="im-hero-content"
-        />
-      </section>
-
-      <div className="im-divider-wrap"><div className="im-divider" /></div>
-
-      {/* Definition */}
-      <section ref={definitionRef} className="im-section">
-        <div className="max-w-4xl mx-auto">
-          <h2 className={`im-heading ${fontClass}`}>{t("serviceSections.influencerMarketing.definition.whatIsTitle")}</h2>
-          <p className="im-text">{t("serviceSections.influencerMarketing.definition.paragraph")}</p>
-
-          <div className="mb-8">
-            <h3 className={`text-xl font-bold mb-4 ${fontClass}`} style={{ color: "var(--foreground)" }}>
-              {t("serviceSections.influencerMarketing.definition.benefitsTitle")}
-            </h3>
-            <ul className="space-y-3">
-              {t("serviceSections.influencerMarketing.definition.benefitsList", { returnObjects: true }).map((item, idx) => (
-                <li key={idx} className="im-check-item">
-                  <HiCheckCircle className="im-check-icon" />
-                  <span style={{ color: "color-mix(in srgb, var(--foreground) 80%, transparent)" }}>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h3 className={`text-xl font-bold mb-4 ${fontClass}`} style={{ color: "var(--foreground)" }}>
-              {t("serviceSections.influencerMarketing.definition.processTitle")}
-            </h3>
-            <ol className="space-y-3">
-              {t("serviceSections.influencerMarketing.definition.processSteps", { returnObjects: true }).map((step, idx) => (
-                <li key={idx} className="im-number-item">
-                  <span className="im-number-badge">{idx + 1}</span>
-                  <span style={{ color: "color-mix(in srgb, var(--foreground) 80%, transparent)" }}>{step}</span>
-                </li>
-              ))}
-            </ol>
-          </div>
+        <div ref={heroRef} className="im-hero__inner" style={{ opacity: 0 }}>
+          <HeroWithBadge
+            badge=" Dubai's Growth Engine"
+            badgeVariant="pulse"
+            title="Leading Digital Marketing Agency in"
+            mainWord="Dubai"
+            description="We don't just promise traffic. We deliver profit you can count, campaigns you can measure, and growth you can see — trusted by local and international brands across the UAE."
+          />
         </div>
       </section>
 
-      <div className="im-divider-wrap"><div className="im-divider" /></div>
-
-      {/* Stats */}
-      <section ref={statsRef} className="im-section">
-        <div className="im-container-wide">
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
-            <div className="im-stat-card">
-              <h3 className="im-stat-value">500+</h3>
-              <p className="im-stat-label">{t("serviceSections.influencerMarketing.stats.influencersNetwork")}</p>
-            </div>
-            <div className="im-stat-card">
-              <h3 className="im-stat-value">200+</h3>
-              <p className="im-stat-label">{t("serviceSections.influencerMarketing.stats.successfulCampaigns")}</p>
-            </div>
-            <div className="im-stat-card">
-              <h3 className="im-stat-value">50M+</h3>
-              <p className="im-stat-label">{t("serviceSections.influencerMarketing.stats.totalReach")}</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div className="im-divider-wrap"><div className="im-divider" /></div>
-
-      {/* Sub-Services Grid */}
-      <section ref={servicesRef} className="im-section">
-        <div className="im-container-wide">
-          <h2 className={`im-section-title ${fontClass}`}>{t("serviceSections.influencerMarketing.subServices.title")}</h2>
-          <p className="im-section-subtitle">{t("serviceSections.influencerMarketing.subServices.subtitle")}</p>
-          <div className="im-hub-grid">
-            {subServices.map((service) => {
-              const Icon = service.icon;
-              return (
-                <Link key={service.key} to={service.path} className="im-hub-card">
-                  <div className="im-hub-card-icon">
-                    <Icon className="w-7 h-7 text-white" />
-                  </div>
-                  <h3 className="im-hub-card-title">
-                    {t(`serviceSections.influencerMarketing.subServices.${service.key}.title`)}
-                  </h3>
-                  <p className="im-hub-card-desc">
-                    {t(`serviceSections.influencerMarketing.subServices.${service.key}.description`)}
-                  </p>
-                  <span className="im-hub-card-link">
-                    Learn More <HiArrowRight className="w-4 h-4" />
-                  </span>
-                </Link>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      <div className="im-divider-wrap"><div className="im-divider" /></div>
-
-      {/* Process */}
-      <section ref={processRef} className="im-section">
+      {/* ── Why Businesses Struggle ──────────────────────────── */}
+      <section className="im-section">
         <div className="im-container">
-          <h2 className={`im-section-title ${fontClass}`}>{t("serviceSections.influencerMarketing.process.title")}</h2>
-          <p className="im-section-subtitle">{t("serviceSections.influencerMarketing.process.description")}</p>
-          <div className="space-y-8">
-            {["strategy", "selection", "management", "analytics"].map((key, idx) => (
-              <div key={key} className="im-process-card">
-                <div className="im-step-number">{idx + 1}</div>
-                <div className="flex-1 text-center md:text-left">
-                  <h3 className="im-step-title">{t(`serviceSections.influencerMarketing.process.steps.${key}.title`)}</h3>
-                  <p className="im-step-desc">{t(`serviceSections.influencerMarketing.process.steps.${key}.description`)}</p>
+          <div className="text-center max-w-2xl mx-auto mb-2">
+            <span className="im-section-label">The Problem</span>
+            <h2 className="im-section-title">
+              Why Do Most Businesses Struggle to Scale?
+            </h2>
+            <p className="im-section-desc">
+              Dubai is competitive. The wrong agency can cost you tens of thousands with nothing to show.
+            </p>
+          </div>
+          <div ref={problemsRef} className="im-problems-grid">
+            {problems.map((p) => (
+              <div key={p.title} className="im-problem-card">
+                <div className="im-problem-card__icon">{p.icon}</div>
+                <h3 className="im-problem-card__title">{p.title}</h3>
+                <p className="im-problem-card__text">{p.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 4-Step Process ────────────────────────────────────── */}
+      <section className="im-section--alt">
+        <div className="im-container">
+          <div className="text-center max-w-2xl mx-auto mb-2">
+            <span className="im-section-label">Our Process</span>
+            <h2 className="im-section-title">How Tikit Actually Grows Businesses</h2>
+            <p className="im-section-desc">
+              A simple, proven 4-step system — every step focused on profit, efficiency, and measurable results.
+            </p>
+          </div>
+          <div ref={stepsRef} className="im-steps">
+            {steps.map((s) => (
+              <div key={s.n} className="im-step-card">
+                <div className="im-step-card__number">{s.n}</div>
+                <h3 className="im-step-card__title">{s.title}</h3>
+                <p className="im-step-card__text">{s.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Benefits ─────────────────────────────────────────── */}
+      <section className="im-section">
+        <div className="im-container">
+          <div className="text-center max-w-2xl mx-auto mb-2">
+            <span className="im-section-label">What You Get</span>
+            <h2 className="im-section-title">Results You Can Measure and Trust</h2>
+            <p className="im-section-desc">
+              We don't just run campaigns. We deliver outcomes backed by real data.
+            </p>
+          </div>
+          <div ref={benefitsRef} className="im-benefits-grid">
+            {benefits.map((b) => (
+              <div key={b.title} className="im-benefit-item">
+                <div className="im-benefit-item__icon">{b.icon}</div>
+                <div>
+                  <h3 className="im-benefit-item__title">{b.title}</h3>
+                  <p className="im-benefit-item__text">{b.text}</p>
                 </div>
               </div>
             ))}
@@ -296,56 +362,118 @@ const InfluencerMarketing = () => {
         </div>
       </section>
 
-      <div className="im-divider-wrap"><div className="im-divider" /></div>
-
-      {/* Trust */}
-      <section ref={trustRef} className="im-section-alt">
+      {/* ── Case Study ───────────────────────────────────────── */}
+      <section className="im-section--alt">
         <div className="im-container">
-          <h2 className={`im-section-title ${fontClass}`}>{t("serviceSections.influencerMarketing.trust.title")}</h2>
-          <p className="im-section-subtitle">{t("serviceSections.influencerMarketing.trust.subtitle")}</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { icon: HiBadgeCheck, titleKey: "card1Title", descKey: "card1Desc" },
-              { icon: HiGlobe, titleKey: "card2Title", descKey: "card2Desc" },
-              { icon: HiUserGroup, titleKey: "card3Title", descKey: "card3Desc" },
-              { icon: HiChartBar, titleKey: "card4Title", descKey: "card4Desc" },
-            ].map((card) => {
-              const Icon = card.icon;
-              return (
-                <div key={card.titleKey} className="im-trust-card">
-                  <div className="im-trust-icon"><Icon /></div>
-                  <h3 className="im-trust-title">{t(`serviceSections.influencerMarketing.trust.${card.titleKey}`)}</h3>
-                  <p className="im-trust-desc">{t(`serviceSections.influencerMarketing.trust.${card.descKey}`)}</p>
-                </div>
-              );
-            })}
+          <div className="text-center max-w-2xl mx-auto mb-10">
+            <span className="im-section-label">Real Results</span>
+            <h2 className="im-section-title">Brands That Chose the Best Agency in Dubai</h2>
           </div>
-          <div className="mt-12 text-center">
-            <p style={{ color: "color-mix(in srgb, var(--foreground) 70%, transparent)" }} className="max-w-3xl mx-auto">
-              {t("serviceSections.influencerMarketing.trust.paragraph")}
-            </p>
+          <div ref={caseRef} className="im-case-study">
+            <div className="im-case-study__glow" />
+            <span className="im-case-study__tag">Mini Case Study · E-Commerce Brand</span>
+            <h3 className="im-case-study__title">
+              High Ad Spend, Zero Conversions — Transformed in 90 Days
+            </h3>
+            <div className="im-case-study__stats">
+              <div>
+                <span
+                  className="im-case-study__stat-value"
+                  data-target="3"
+                  data-suffix="x"
+                >
+                  3x
+                </span>
+                <span className="im-case-study__stat-label">Sales Growth</span>
+              </div>
+              <div>
+                <span
+                  className="im-case-study__stat-value"
+                  data-target="90"
+                  data-suffix="%"
+                >
+                  90
+                </span>
+                <span className="im-case-study__stat-label">Days to Results</span>
+              </div>
+              <div>
+                <span className="im-case-study__stat-value">Month 1</span>
+                <span className="im-case-study__stat-label">ROI Positive</span>
+              </div>
+            </div>
+            <div className="flex flex-wrap gap-3 mb-6">
+              {["SEO", "PPC", "Social Media", "Landing Page Optimisation", "Localised Messaging"].map((tag) => (
+                <span
+                  key={tag}
+                  className="text-xs px-3 py-1 rounded-full font-semibold"
+                  style={{
+                    background: "color-mix(in srgb, var(--secondary) 12%, transparent)",
+                    color: "var(--secondary)",
+                  }}
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+            <blockquote className="im-case-study__quote">
+              "Finally, an agency that delivers measurable ROI. No fluff, just growth." — Retail Brand, Dubai
+            </blockquote>
           </div>
         </div>
       </section>
 
-      <div className="im-divider-wrap"><div className="im-divider" /></div>
-
-      {/* FAQ */}
-      <FAQ items={Array.isArray(faqItems) ? faqItems : []} title={t("serviceSections.influencerMarketing.faqTitle")} />
-
-      {/* CTA */}
+      {/* ── Why Tikit ────────────────────────────────────────── */}
       <section className="im-section">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className={`text-3xl md:text-5xl font-bold mb-6 ${fontClass}`} style={{ color: "var(--foreground)" }}>
-            {t("serviceSections.influencerMarketing.cta.title")}
-          </h2>
-          <p className="text-lg mb-8" style={{ color: "color-mix(in srgb, var(--foreground) 70%, transparent)" }}>
-            {t("serviceSections.influencerMarketing.cta.description")}
-          </p>
-          <a href="/contact-us" className="im-cta-btn">{t("serviceSections.influencerMarketing.cta.button")}</a>
+        <div className="im-container">
+          <div className="text-center max-w-2xl mx-auto mb-2">
+            <span className="im-section-label">Why Tikit</span>
+            <h2 className="im-section-title">What Makes Us the Best Digital Marketing Agency in Dubai</h2>
+          </div>
+          <div ref={whyRef} className="im-whyus-grid">
+            {whyUs.map((w) => (
+              <div key={w.title} className="im-whyus-card">
+                <div className="im-whyus-card__icon">{w.icon}</div>
+                <h3 className="im-whyus-card__title">{w.title}</h3>
+                <p className="im-whyus-card__text">{w.text}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
-    </div>
+
+      {/* ── FAQ ──────────────────────────────────────────────── */}
+      <FAQ
+        items={faqItems}
+        title="Frequently Asked Questions"
+      />
+
+      {/* ── CTA ──────────────────────────────────────────────── */}
+      <section ref={ctaRef} className="im-cta">
+        <div className="im-cta__inner">
+          <p className="im-reveal im-section-label text-center mb-4 block">Ready to Grow?</p>
+          <h2 className="im-reveal im-cta__title">
+            Ready to Work with a Leading Digital Marketing Agency in Dubai?
+          </h2>
+          <p className="im-reveal im-cta__desc">
+            Book a free strategy consultation. Get a roadmap to scale in Dubai and UAE — and stop wasting a single dirham.
+          </p>
+          <div className="im-reveal im-cta__buttons">
+            <a href="/contact-us" className="im-btn-primary">
+              <FiArrowRight />
+              Book Free Consultation
+            </a>
+            <a href="https://wa.me/971568881133"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                 
+                  aria-label="Contact us on WhatsApp at 056 888 1133" className="im-btn-secondary">
+              <FiPhone />
+              Call Us Now
+            </a>
+          </div>
+        </div>
+      </section>
+    </>
   );
 };
 
