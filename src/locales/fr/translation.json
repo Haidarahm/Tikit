@@ -8,7 +8,12 @@
         "influencers": "Influenceurs",
         "ourInfluencers": "Nos Influenceurs",
         "registerAsInfluencer": "S'inscrire en tant qu'influenceur",
-        "contact": "Contactez-nous"
+        "contact": "Contactez-nous",
+        "servicesSections": [
+            {
+                "influencerMarketing": "Agence spécialisée en marketing d’influence à Dubaï"
+            }
+        ]
     },
     "seo": {
         "defaultDescription": "Nous sommes Tikit — une agence de marketing complète guidée par l'insight et la créativité. Nous nous associons aux marques pour livrer des résultats grâce à une stratégie experte, une puissance créative et une exécution impeccable.",

@@ -20,7 +20,7 @@ const SERVICE_ROUTES = [
   "/services/influencer-marketing-agency-dubai",
   "/services/social-media-management",
   "/services/production",
-  "/services/branding",
+  "/services/branding-agency-dubai",
 ];
 
 const CARD_COLORS = [

@@ -41,7 +41,7 @@ const servicesPages = [
   { url: '/services/influencer-marketing-agency-dubai/influencer-marketing-cost-uae', changefreq: 'monthly', priority: '0.7' },
   { url: '/services/social-media-management', changefreq: 'monthly', priority: '0.8' },
   { url: '/services/production', changefreq: 'monthly', priority: '0.8' },
-  { url: '/services/branding', changefreq: 'monthly', priority: '0.8' },
+  { url: '/services/branding-agency-dubai', changefreq: 'monthly', priority: '0.8' },
 ];
 
 const pages = [

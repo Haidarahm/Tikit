@@ -1,0 +1,370 @@
+/* Branding.css */
+@reference "../../../index.css";
+
+/* ─── Hero ──────────────────────────────────────────────────── */
+.br-hero {
+    @apply relative min-h-[62vh] flex items-center justify-center overflow-hidden;
+    background: var(--background);
+  }
+  
+  .br-hero__inner {
+    @apply w-full max-w-6xl mx-auto px-6 md:px-10 py-24 md:py-32 text-center relative z-10;
+  }
+  
+  .br-hero__image-wrapper {
+    @apply absolute inset-0 z-0;
+  }
+  
+  .br-hero__image {
+    @apply w-full h-full object-cover;
+    opacity: 0.1;
+    filter: saturate(1.3) blur(1px);
+  }
+  
+  .br-hero__overlay {
+    @apply absolute inset-0 z-[1];
+    background: linear-gradient(
+      to bottom,
+      var(--background) 0%,
+      transparent 35%,
+      transparent 65%,
+      var(--background) 100%
+    );
+  }
+  
+  /* ─── Shared Section Layout ─────────────────────────────────── */
+  .br-section {
+    @apply py-16 md:py-24 px-6 md:px-10;
+    background: var(--background);
+  }
+  
+  .br-section--alt {
+    @apply py-16 md:py-24 px-6 md:px-10;
+    background: color-mix(in srgb, var(--secondary) 5%, var(--background) 95%);
+  }
+  
+  .br-container {
+    @apply max-w-6xl mx-auto;
+  }
+  
+  /* ─── Labels & Titles ───────────────────────────────────────── */
+  .br-label {
+    @apply inline-block text-xs font-bold uppercase tracking-[0.2em] mb-3 px-3 py-1 rounded-full;
+    color: var(--secondary);
+    background: color-mix(in srgb, var(--secondary) 12%, transparent);
+  }
+  
+  .br-title {
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-4;
+    color: var(--foreground);
+  }
+  
+  .br-desc {
+    @apply text-base md:text-lg leading-relaxed;
+    color: color-mix(in srgb, var(--foreground) 65%, transparent);
+  }
+  
+  /* ─── Problems Grid ─────────────────────────────────────────── */
+  .br-problems-grid {
+    @apply grid grid-cols-1 md:grid-cols-3 gap-6 mt-12;
+  }
+  
+  .br-problem-card {
+    @apply relative rounded-2xl p-7 overflow-hidden cursor-default;
+    background: color-mix(in srgb, var(--secondary) 5%, var(--background) 95%);
+    border: 1px solid color-mix(in srgb, var(--secondary) 14%, transparent);
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+      box-shadow 0.35s ease,
+      border-color 0.3s ease;
+  }
+  
+  .br-problem-card:hover {
+    transform: translateY(-6px) scale(1.01);
+    border-color: color-mix(in srgb, var(--secondary) 40%, transparent);
+    box-shadow: 0 22px 52px -10px color-mix(in srgb, var(--secondary) 18%, transparent);
+  }
+  
+  .br-problem-card__icon {
+    @apply flex items-center justify-center w-12 h-12 rounded-xl text-2xl mb-5;
+    background: color-mix(in srgb, var(--secondary) 14%, transparent);
+    color: var(--secondary);
+    transition: transform 0.3s ease;
+  }
+  
+  .br-problem-card:hover .br-problem-card__icon {
+    transform: scale(1.1) rotate(-4deg);
+  }
+  
+  .br-problem-card__title {
+    @apply text-lg font-bold mb-2;
+    color: var(--foreground);
+  }
+  
+  .br-problem-card__text {
+    @apply text-sm leading-relaxed;
+    color: color-mix(in srgb, var(--foreground) 62%, transparent);
+  }
+  
+  /* ─── Process Steps ─────────────────────────────────────────── */
+  .br-process-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12;
+  }
+  
+  .br-step-card {
+    @apply relative rounded-2xl p-7 overflow-hidden;
+    background: color-mix(in srgb, var(--secondary) 6%, var(--background) 94%);
+    border: 1px solid color-mix(in srgb, var(--secondary) 12%, transparent);
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+  }
+  
+  .br-step-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 18px 44px -8px color-mix(in srgb, var(--secondary) 20%, transparent);
+  }
+  
+  .br-step-card__number {
+    @apply text-5xl font-black mb-2 leading-none;
+    color: color-mix(in srgb, var(--secondary) 22%, transparent);
+  }
+  
+  .br-step-card__badge {
+    @apply text-xs font-bold uppercase tracking-widest mb-3 block;
+    color: var(--secondary);
+  }
+  
+  .br-step-card__title {
+    @apply text-base font-bold mb-2;
+    color: var(--foreground);
+  }
+  
+  .br-step-card__text {
+    @apply text-sm leading-relaxed;
+    color: color-mix(in srgb, var(--foreground) 60%, transparent);
+  }
+  
+  /* ─── Stats Banner ──────────────────────────────────────────── */
+  .br-stats-banner {
+    @apply grid grid-cols-1 sm:grid-cols-3 gap-6 mt-12;
+  }
+  
+  .br-stat-card {
+    @apply rounded-2xl p-8 text-center relative overflow-hidden;
+    background: color-mix(in srgb, var(--secondary) 7%, var(--background) 93%);
+    border: 1px solid color-mix(in srgb, var(--secondary) 18%, transparent);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .br-stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px -8px color-mix(in srgb, var(--secondary) 20%, transparent);
+  }
+  
+  .br-stat-card__value {
+    @apply text-5xl font-black mb-2 block;
+    color: var(--secondary);
+  }
+  
+  .br-stat-card__label {
+    @apply text-sm leading-relaxed;
+    color: color-mix(in srgb, var(--foreground) 65%, transparent);
+  }
+  
+  /* ─── Benefits Grid ─────────────────────────────────────────── */
+  .br-benefits-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 gap-8 mt-12;
+  }
+  
+  .br-benefit-item {
+    @apply flex gap-5 items-start;
+  }
+  
+  .br-benefit-item__icon {
+    @apply flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-xl text-xl;
+    background: color-mix(in srgb, var(--secondary) 14%, transparent);
+    color: var(--secondary);
+  }
+  
+  .br-benefit-item__title {
+    @apply text-base font-bold mb-1;
+    color: var(--foreground);
+  }
+  
+  .br-benefit-item__text {
+    @apply text-sm leading-relaxed;
+    color: color-mix(in srgb, var(--foreground) 62%, transparent);
+  }
+  
+  /* ─── Case Study Banner ─────────────────────────────────────── */
+  .br-case-study {
+    @apply rounded-3xl p-10 md:p-14 relative overflow-hidden;
+    background: color-mix(in srgb, var(--secondary) 8%, var(--background) 92%);
+    border: 1px solid color-mix(in srgb, var(--secondary) 22%, transparent);
+  }
+  
+  .br-case-study__glow {
+    @apply absolute -top-20 -right-20 w-80 h-80 rounded-full blur-3xl pointer-events-none;
+    background: color-mix(in srgb, var(--secondary) 14%, transparent);
+  }
+  
+  .br-case-study__glow--left {
+    @apply absolute -bottom-16 -left-16 w-64 h-64 rounded-full blur-3xl pointer-events-none;
+    background: color-mix(in srgb, var(--secondary) 8%, transparent);
+  }
+  
+  .br-case-study__tag {
+    @apply text-xs font-bold uppercase tracking-widest mb-4 block;
+    color: var(--secondary);
+  }
+  
+  .br-case-study__title {
+    @apply text-2xl md:text-3xl font-bold mb-6;
+    color: var(--foreground);
+  }
+  
+  .br-case-study__stats {
+    @apply flex flex-wrap gap-10 mb-8;
+  }
+  
+  .br-case-study__stat-value {
+    @apply text-4xl font-black block;
+    color: var(--secondary);
+  }
+  
+  .br-case-study__stat-label {
+    @apply text-xs uppercase tracking-wider mt-1 block;
+    color: color-mix(in srgb, var(--foreground) 55%, transparent);
+  }
+  
+  .br-case-study__pill {
+    @apply text-xs px-3 py-1 rounded-full font-semibold;
+    background: color-mix(in srgb, var(--secondary) 12%, transparent);
+    color: var(--secondary);
+  }
+  
+  .br-case-study__quote {
+    @apply text-base italic border-l-4 pl-5 mt-6 leading-relaxed;
+    border-color: var(--secondary);
+    color: color-mix(in srgb, var(--foreground) 70%, transparent);
+  }
+  
+  /* ─── Sub-Services Link Cards ───────────────────────────────── */
+  .br-subservices-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-12;
+  }
+  
+  .br-subservice-card {
+    @apply relative flex flex-col rounded-2xl p-6 no-underline overflow-hidden;
+    background: color-mix(in srgb, var(--secondary) 5%, var(--background) 95%);
+    border: 1px solid color-mix(in srgb, var(--secondary) 14%, transparent);
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+      box-shadow 0.35s ease,
+      border-color 0.3s ease;
+  }
+  
+  .br-subservice-card::before {
+    @apply absolute inset-0 opacity-0 rounded-2xl pointer-events-none;
+    content: "";
+    background: linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--secondary) 10%, transparent) 0%,
+      transparent 70%
+    );
+    transition: opacity 0.35s ease;
+  }
+  
+  .br-subservice-card:hover {
+    transform: translateY(-7px) scale(1.02);
+    border-color: color-mix(in srgb, var(--secondary) 45%, transparent);
+    box-shadow: 0 22px 52px -10px color-mix(in srgb, var(--secondary) 22%, transparent);
+  }
+  
+  .br-subservice-card:hover::before {
+    @apply opacity-100;
+  }
+  
+  .br-subservice-card__icon {
+    @apply flex items-center justify-center w-11 h-11 rounded-xl text-xl mb-4 flex-shrink-0;
+    background: color-mix(in srgb, var(--secondary) 14%, transparent);
+    color: var(--secondary);
+    transition: transform 0.3s ease, background 0.3s ease;
+  }
+  
+  .br-subservice-card:hover .br-subservice-card__icon {
+    transform: scale(1.12) rotate(-4deg);
+    background: color-mix(in srgb, var(--secondary) 22%, transparent);
+  }
+  
+  .br-subservice-card__title {
+    @apply text-sm font-bold mb-2 leading-snug;
+    color: var(--foreground);
+  }
+  
+  .br-subservice-card__desc {
+    @apply text-xs leading-relaxed flex-1 mb-4;
+    color: color-mix(in srgb, var(--foreground) 60%, transparent);
+  }
+  
+  .br-subservice-card__cta {
+    @apply inline-flex items-center gap-1.5 text-xs font-bold mt-auto;
+    color: var(--secondary);
+    transition: gap 0.25s ease;
+  }
+  
+  .br-subservice-card:hover .br-subservice-card__cta {
+    @apply gap-2.5;
+  }
+  
+  /* ─── CTA Section ───────────────────────────────────────────── */
+  .br-cta {
+    @apply py-20 px-6 md:px-10 text-center;
+    background: var(--background);
+  }
+  
+  .br-cta__inner {
+    @apply max-w-3xl mx-auto;
+  }
+  
+  .br-cta__title {
+    @apply text-3xl md:text-4xl font-bold mb-4;
+    color: var(--foreground);
+  }
+  
+  .br-cta__desc {
+    @apply text-base md:text-lg mb-10;
+    color: color-mix(in srgb, var(--foreground) 65%, transparent);
+  }
+  
+  .br-cta__buttons {
+    @apply flex flex-wrap items-center justify-center gap-4;
+  }
+  
+  .br-btn-primary {
+    @apply inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-sm transition-all duration-300;
+    background: var(--secondary);
+    color: var(--background);
+  }
+  
+  .br-btn-primary:hover {
+    opacity: 0.88;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px -6px color-mix(in srgb, var(--secondary) 50%, transparent);
+  }
+  
+  .br-btn-secondary {
+    @apply inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-sm transition-all duration-300;
+    border: 1.5px solid color-mix(in srgb, var(--secondary) 40%, transparent);
+    color: var(--secondary);
+    background: transparent;
+  }
+  
+  .br-btn-secondary:hover {
+    background: color-mix(in srgb, var(--secondary) 10%, transparent);
+    border-color: var(--secondary);
+    transform: translateY(-2px);
+  }
+  
+  /* ─── Scroll-reveal utilities ───────────────────────────────── */
+  .br-reveal {
+    opacity: 0;
+    transform: translateY(32px);
+  }

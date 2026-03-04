@@ -64,7 +64,7 @@ const Production = lazy(() =>
   import("./pages/services-sections/Production")
 );
 const Branding = lazy(() =>
-  import("./pages/services-sections/Branding")
+  import("./pages/services-sections/branding/Branding")
 );
 
 // Service Sections - Digital Marketing Hub & Sub-pages
@@ -181,7 +181,7 @@ function App() {
               <Route path="/services/influencer-marketing-agency-dubai/influencer-marketing-cost-uae" element={<InfluencerMarketingCost />} />
               <Route path="/services/social-media-management" element={<SocialMediaManagement />} />
               <Route path="/services/production" element={<Production />} />
-              <Route path="/services/branding" element={<Branding />} />
+              <Route path="/services/branding-agency-dubai" element={<Branding />} />
               {/* Service Sections - Digital Marketing Hub & Sub-pages */}
               <Route path="/services/digital-marketing-agency-dubai" element={<DigitalMarketing />} />
               <Route path="/services/digital-marketing-agency-dubai/performance-marketing" element={<PerformanceMarketing />} />

@@ -113,7 +113,7 @@ const Services = () => {
       normalized.includes("identite de marque") ||
       normalized.includes("identité de marque")
     ) {
-      return "/services/branding";
+      return "/services/branding-agency-dubai";
     }
     // Production
     if (
