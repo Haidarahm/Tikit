@@ -132,6 +132,11 @@
   font-variant-numeric: tabular-nums;
 }
 
+.im-step-card__badge {
+  @apply text-xs font-bold uppercase tracking-widest mb-3 block;
+  color: var(--secondary);
+}
+
 .im-step-card__title {
   @apply text-base font-bold mb-2;
   color: var(--foreground);
@@ -140,6 +145,33 @@
 .im-step-card__text {
   @apply text-sm leading-relaxed;
   color: color-mix(in srgb, var(--foreground) 60%, transparent);
+}
+
+/* ─── Stats Banner (value + label cards) ─────────────────────── */
+.im-stats-banner {
+  @apply grid grid-cols-1 sm:grid-cols-3 gap-6 mt-12;
+}
+
+.im-stat-card {
+  @apply rounded-2xl p-8 text-center relative overflow-hidden;
+  background: color-mix(in srgb, var(--secondary) 7%, var(--background) 93%);
+  border: 1px solid color-mix(in srgb, var(--secondary) 18%, transparent);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.im-stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px -8px color-mix(in srgb, var(--secondary) 20%, transparent);
+}
+
+.im-stat-card__value {
+  @apply text-5xl font-black mb-2 block;
+  color: var(--secondary);
+}
+
+.im-stat-card__label {
+  @apply text-sm leading-relaxed;
+  color: color-mix(in srgb, var(--foreground) 65%, transparent);
 }
 
 /* ─── Benefits Section ─────────────────────────────────────── */

@@ -100,11 +100,11 @@ const Branding = () => {
         { opacity: 1, y: 0, duration: 1.1, ease: "power3.out", delay: 0.15 }
       );
 
-      revealChildren(problemsRef, ".br-problem-card", {}, 0.12);
-      revealChildren(processRef, ".br-step-card", {}, 0.1);
-      revealChildren(statsRef, ".br-stat-card", {}, 0.12);
-      revealChildren(benefitsRef, ".br-benefit-item", {}, 0.11);
-      revealChildren(subServicesRef, ".br-subservice-card", {}, 0.08);
+      revealChildren(problemsRef, ".im-problem-card", {}, 0.12);
+      revealChildren(processRef, ".im-step-card", {}, 0.1);
+      revealChildren(statsRef, ".im-stat-card", {}, 0.12);
+      revealChildren(benefitsRef, ".im-benefit-item", {}, 0.11);
+      revealChildren(subServicesRef, ".im-subservice-card", {}, 0.08);
 
       if (caseRef.current) {
         gsap.fromTo(
@@ -122,7 +122,7 @@ const Branding = () => {
           }
         );
 
-        const statEls = caseRef.current.querySelectorAll(".br-case-study__stat-value[data-target]");
+        const statEls = caseRef.current.querySelectorAll(".im-case-study__stat-value[data-target]");
         statEls.forEach((el) => {
           const target = parseFloat(el.dataset.target);
           const suffix = el.dataset.suffix || "";
@@ -144,7 +144,7 @@ const Branding = () => {
 
       if (ctaRef.current) {
         gsap.fromTo(
-          ctaRef.current.querySelectorAll(".br-reveal"),
+          ctaRef.current.querySelectorAll(".im-reveal"),
           { opacity: 0, y: 28 },
           {
             opacity: 1,
@@ -176,7 +176,7 @@ const Branding = () => {
 
       <ServiceHeroSection
         ref={heroRef}
-        classPrefix="br"
+        classPrefix="im"
         dataNavColor="black"
         imageSrc={brandingHero}
         imageAlt="Branding Agency Dubai"
@@ -189,7 +189,7 @@ const Branding = () => {
 
       <ServiceProblemsSection
         ref={problemsRef}
-        classPrefix="br"
+        classPrefix="im"
         sectionLabel={t(`${TK}.problems.label`)}
         title={t(`${TK}.problems.title`)}
         description={t(`${TK}.problems.desc`)}
@@ -199,7 +199,7 @@ const Branding = () => {
 
       <ServiceProcessSection
         ref={processRef}
-        classPrefix="br"
+        classPrefix="im"
         sectionLabel={t(`${TK}.process.label`)}
         title={t(`${TK}.process.title`)}
         description={t(`${TK}.process.desc`)}
@@ -208,7 +208,7 @@ const Branding = () => {
 
       <ServiceStatsSection
         ref={statsRef}
-        classPrefix="br"
+        classPrefix="im"
         sectionLabel={t(`${TK}.stats.label`)}
         title={t(`${TK}.stats.title`)}
         description={t(`${TK}.stats.desc`)}
@@ -217,7 +217,7 @@ const Branding = () => {
 
       <ServiceCaseStudySection
         ref={caseRef}
-        classPrefix="br"
+        classPrefix="im"
         sectionLabel={t(`${TK}.caseStudy.label`)}
         title={t(`${TK}.caseStudy.title`)}
         tag={t(`${TK}.caseStudy.tag`)}
@@ -229,7 +229,7 @@ const Branding = () => {
 
       <ServiceBenefitsSection
         ref={benefitsRef}
-        classPrefix="br"
+        classPrefix="im"
         sectionLabel={t(`${TK}.benefits.label`)}
         title={t(`${TK}.benefits.title`)}
         description={t(`${TK}.benefits.desc`)}
@@ -239,7 +239,7 @@ const Branding = () => {
 
       <ServiceSubServicesSection
         ref={subServicesRef}
-        classPrefix="br"
+        classPrefix="im"
         sectionLabel={t(`${TK}.subServices.label`)}
         title={t(`${TK}.subServices.title`)}
         description={t(`${TK}.subServices.desc`)}
@@ -256,7 +256,7 @@ const Branding = () => {
 
       <ServiceCTASection
         ref={ctaRef}
-        classPrefix="br"
+        classPrefix="im"
         sectionLabel={t(`${TK}.cta.label`)}
         title={t(`${TK}.cta.title`)}
         description={t(`${TK}.cta.desc`)}
