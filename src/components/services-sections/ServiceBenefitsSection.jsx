@@ -9,26 +9,28 @@ import { forwardRef } from "react";
  * @param {Array<{ title: string, text: string }>} props.items
  * @param {React.ReactNode[]} props.icons
  * @param {string} [props.dir]
+ * @param {string} [props.classPrefix="im"]
  */
 const ServiceBenefitsSection = forwardRef((props, ref) => {
-  const { sectionLabel, title, description, items = [], icons = [], dir } = props;
+  const { sectionLabel, title, description, items = [], icons = [], dir, classPrefix = "im" } = props;
+  const p = classPrefix;
 
   return (
-    <section className="im-section" dir={dir}>
-      <div className="im-container">
+    <section className={`${p}-section`} dir={dir}>
+      <div className={`${p}-container`}>
         <div className="text-center max-w-2xl mx-auto mb-2">
-          <span className="im-section-label">{sectionLabel}</span>
-          <h2 className="im-section-title">{title}</h2>
-          <p className="im-section-desc">{description}</p>
+          <span className={`${p}-label`}>{sectionLabel}</span>
+          <h2 className={`${p}-title`}>{title}</h2>
+          <p className={`${p}-desc`}>{description}</p>
         </div>
-        <div ref={ref} className="im-benefits-grid">
+        <div ref={ref} className={`${p}-benefits-grid`}>
           {Array.isArray(items) &&
             items.map((b, i) => (
-              <div key={i} className="im-benefit-item">
-                <div className="im-benefit-item__icon">{icons[i]}</div>
+              <div key={i} className={`${p}-benefit-item`}>
+                <div className={`${p}-benefit-item__icon`}>{icons[i] ?? b.icon}</div>
                 <div>
-                  <h3 className="im-benefit-item__title">{b.title}</h3>
-                  <p className="im-benefit-item__text">{b.text}</p>
+                  <h3 className={`${p}-benefit-item__title`}>{b.title}</h3>
+                  <p className={`${p}-benefit-item__text`}>{b.text}</p>
                 </div>
               </div>
             ))}

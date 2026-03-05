@@ -12,6 +12,7 @@ import { FiArrowRight, FiPhone } from "react-icons/fi";
  * @param {string} props.secondaryButtonText
  * @param {string} [props.secondaryHref] - Default "tel:+97145774042"
  * @param {string} [props.dir]
+ * @param {string} [props.classPrefix="im"]
  */
 const ServiceCTASection = forwardRef((props, ref) => {
   const {
@@ -23,22 +24,24 @@ const ServiceCTASection = forwardRef((props, ref) => {
     secondaryButtonText,
     secondaryHref = "tel:+97145774042",
     dir,
+    classPrefix = "im",
   } = props;
+  const p = classPrefix;
 
   return (
-    <section ref={ref} className="im-cta" dir={dir}>
-      <div className="im-cta__inner">
-        <p className="im-reveal im-section-label text-center mb-4 block">
+    <section ref={ref} className={`${p}-cta`} dir={dir}>
+      <div className={`${p}-cta__inner`}>
+        <p className={`${p}-reveal ${p}-label text-center mb-4 block`}>
           {sectionLabel}
         </p>
-        <h2 className="im-reveal im-cta__title">{title}</h2>
-        <p className="im-reveal im-cta__desc">{description}</p>
-        <div className="im-reveal im-cta__buttons">
-          <a href={primaryHref} className="im-btn-primary">
+        <h2 className={`${p}-reveal ${p}-cta__title`}>{title}</h2>
+        <p className={`${p}-reveal ${p}-cta__desc`}>{description}</p>
+        <div className={`${p}-reveal ${p}-cta__buttons`}>
+          <a href={primaryHref} className={`${p}-btn-primary`}>
             <FiArrowRight />
             {primaryButtonText}
           </a>
-          <a href={secondaryHref} className="im-btn-secondary">
+          <a href={secondaryHref} className={`${p}-btn-secondary`}>
             <FiPhone />
             {secondaryButtonText}
           </a>

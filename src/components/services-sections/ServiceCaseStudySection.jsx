@@ -11,6 +11,7 @@ import { forwardRef } from "react";
  * @param {string[]} props.tags - Pill labels
  * @param {string} props.quote
  * @param {string} [props.dir]
+ * @param {string} [props.classPrefix="im"] - e.g. "br" for Branding (adds second glow, pill class)
  */
 const ServiceCaseStudySection = forwardRef((props, ref) => {
   const {
@@ -22,50 +23,46 @@ const ServiceCaseStudySection = forwardRef((props, ref) => {
     tags = [],
     quote,
     dir,
+    classPrefix = "im",
   } = props;
+  const p = classPrefix;
 
   return (
-    <section className="im-section--alt" dir={dir}>
-      <div className="im-container">
+    <section className={`${p}-section--alt`} dir={dir}>
+      <div className={`${p}-container`}>
         <div className="text-center max-w-2xl mx-auto mb-10">
-          <span className="im-section-label">{sectionLabel}</span>
-          <h2 className="im-section-title">{title}</h2>
+          <span className={`${p}-label`}>{sectionLabel}</span>
+          <h2 className={`${p}-title`}>{title}</h2>
         </div>
-        <div ref={ref} className="im-case-study">
-          <div className="im-case-study__glow" />
-          <span className="im-case-study__tag">{tag}</span>
-          <h3 className="im-case-study__title">{caseTitle}</h3>
-          <div className="im-case-study__stats">
+        <div ref={ref} className={`${p}-case-study`}>
+          <div className={`${p}-case-study__glow`} />
+          {p === "br" && <div className="br-case-study__glow--left" />}
+          <span className={`${p}-case-study__tag`}>{tag}</span>
+          <h3 className={`${p}-case-study__title`}>{caseTitle}</h3>
+          <div className={`${p}-case-study__stats`}>
             {Array.isArray(stats) &&
               stats.map((stat, i) => (
                 <div key={i}>
                   <span
-                    className="im-case-study__stat-value"
+                    className={`${p}-case-study__stat-value`}
                     {...(stat.dataTarget != null ? { "data-target": stat.dataTarget } : {})}
                     {...(stat.dataSuffix != null ? { "data-suffix": stat.dataSuffix } : {})}
                   >
                     {stat.value}
                   </span>
-                  <span className="im-case-study__stat-label">{stat.label}</span>
+                  <span className={`${p}-case-study__stat-label`}>{stat.label}</span>
                 </div>
               ))}
           </div>
           <div className="flex flex-wrap gap-3 mb-6">
             {Array.isArray(tags) &&
               tags.map((t) => (
-                <span
-                  key={t}
-                  className="text-xs px-3 py-1 rounded-full font-semibold"
-                  style={{
-                    background: "color-mix(in srgb, var(--secondary) 12%, transparent)",
-                    color: "var(--secondary)",
-                  }}
-                >
+                <span key={t} className={p === "br" ? `${p}-case-study__pill` : "im-case-study__pill"} style={p !== "br" ? { background: "color-mix(in srgb, var(--secondary) 12%, transparent)", color: "var(--secondary)" } : undefined}>
                   {t}
                 </span>
               ))}
           </div>
-          <blockquote className="im-case-study__quote">{quote}</blockquote>
+          <blockquote className={`${p}-case-study__quote`}>{quote}</blockquote>
         </div>
       </div>
     </section>

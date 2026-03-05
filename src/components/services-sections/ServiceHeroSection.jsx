@@ -13,6 +13,7 @@ import HeroWithBadge from "../HeroWithBadge";
  * @param {string} [props.description] - Optional description
  * @param {string} [props.heroClassName] - Extra class for section
  * @param {string} [props.dataNavColor] - e.g. "black" for data-nav-color
+ * @param {string} [props.classPrefix="im"] - CSS class prefix (e.g. "br" for Branding) so UI stays the same
  */
 const ServiceHeroSection = forwardRef((props, ref) => {
   const {
@@ -25,18 +26,20 @@ const ServiceHeroSection = forwardRef((props, ref) => {
     description,
     heroClassName = "",
     dataNavColor,
+    classPrefix = "im",
   } = props;
+  const p = classPrefix;
 
   return (
     <section
-      className={`im-hero ${heroClassName}`.trim()}
+      className={`${p}-hero ${heroClassName}`.trim()}
       {...(dataNavColor != null ? { "data-nav-color": dataNavColor } : {})}
     >
-      <div className="im-hero__image-wrapper">
-        <img src={imageSrc} alt={imageAlt} className="im-hero__image" />
-        <div className="im-hero__overlay" />
+      <div className={`${p}-hero__image-wrapper`}>
+        <img src={imageSrc} alt={imageAlt} className={`${p}-hero__image`} />
+        <div className={`${p}-hero__overlay`} />
       </div>
-      <div ref={ref} className="im-hero__inner" style={{ opacity: 0 }}>
+      <div ref={ref} className={`${p}-hero__inner`} style={{ opacity: 0 }}>
         <HeroWithBadge
           badge={badge}
           badgeVariant={badgeVariant}

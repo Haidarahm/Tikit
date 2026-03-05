@@ -13,6 +13,7 @@ import { FiArrowRight } from "react-icons/fi";
  * @param {string[]} props.hrefs - Routes for each card (same length as items)
  * @param {React.ReactNode[]} props.icons
  * @param {string} [props.dir]
+ * @param {string} [props.classPrefix="im"]
  */
 const ServiceSubServicesSection = forwardRef((props, ref) => {
   const {
@@ -24,29 +25,31 @@ const ServiceSubServicesSection = forwardRef((props, ref) => {
     hrefs = [],
     icons = [],
     dir,
+    classPrefix = "im",
   } = props;
+  const p = classPrefix;
 
   return (
-    <section className="im-section--alt" dir={dir}>
-      <div className="im-container">
+    <section className={`${p}-section--alt`} dir={dir}>
+      <div className={`${p}-container`}>
         <div className="text-center max-w-2xl mx-auto mb-2">
-          <span className="im-section-label">{sectionLabel}</span>
-          <h2 className="im-section-title">{title}</h2>
-          <p className="im-section-desc">{description}</p>
+          <span className={`${p}-label`}>{sectionLabel}</span>
+          <h2 className={`${p}-title`}>{title}</h2>
+          <p className={`${p}-desc`}>{description}</p>
         </div>
-        <div ref={ref} className="im-subservices-grid">
+        <div ref={ref} className={`${p}-subservices-grid`}>
           {Array.isArray(items) &&
             items.map((s, i) => (
               <Link
-                key={hrefs[i] || i}
-                to={hrefs[i] || "#"}
-                className="im-subservice-card"
+                key={hrefs[i] ?? s.href ?? i}
+                to={hrefs[i] ?? s.href ?? "#"}
+                className={`${p}-subservice-card`}
               >
-                <div className="im-subservice-card__icon">{icons[i]}</div>
-                <h3 className="im-subservice-card__title">{s.title}</h3>
-                <p className="im-subservice-card__desc">{s.desc}</p>
-                <span className="im-subservice-card__cta">
-                  {learnMoreText} <FiArrowRight />
+                <div className={`${p}-subservice-card__icon`}>{icons[i] ?? s.icon}</div>
+                <h3 className={`${p}-subservice-card__title`}>{s.title}</h3>
+                <p className={`${p}-subservice-card__desc`}>{s.desc}</p>
+                <span className={`${p}-subservice-card__cta`}>
+                  {learnMoreText ?? s.cta} <FiArrowRight />
                 </span>
               </Link>
             ))}

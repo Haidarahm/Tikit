@@ -67,6 +67,11 @@
   color: color-mix(in srgb, var(--foreground) 65%, transparent);
 }
 
+/* Aliases for classPrefix usage (im-label = im-section-label, etc.) */
+.im-label { @apply inline-block text-xs font-bold uppercase tracking-[0.2em] mb-3 px-3 py-1 rounded-full; color: var(--secondary); background: color-mix(in srgb, var(--secondary) 12%, transparent); letter-spacing: 0.18em; }
+.im-title { @apply text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-4; color: var(--foreground); }
+.im-desc { @apply text-base md:text-lg leading-relaxed; color: color-mix(in srgb, var(--foreground) 65%, transparent); }
+
 /* ─── Why Struggle Cards ─────────────────────────────────────── */
 .im-problems-grid {
   @apply grid grid-cols-1 md:grid-cols-2 gap-6 mt-12;
@@ -104,7 +109,8 @@
 }
 
 /* ─── Steps Section ─────────────────────────────────────────── */
-.im-steps {
+.im-steps,
+.im-process-grid {
   @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12;
 }
 
@@ -195,6 +201,12 @@
 .im-case-study__stat-label {
   @apply text-xs uppercase tracking-wider;
   color: color-mix(in srgb, var(--foreground) 55%, transparent);
+}
+
+.im-case-study__pill {
+  @apply text-xs px-3 py-1 rounded-full font-semibold;
+  background: color-mix(in srgb, var(--secondary) 12%, transparent);
+  color: var(--secondary);
 }
 
 .im-case-study__quote {

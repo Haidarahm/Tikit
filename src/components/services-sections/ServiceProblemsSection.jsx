@@ -9,25 +9,27 @@ import { forwardRef } from "react";
  * @param {Array<{ title: string, text: string }>} props.items - Problem cards
  * @param {React.ReactNode[]} props.icons - Icons for each card (same length as items)
  * @param {string} [props.dir] - "ltr" | "rtl"
+ * @param {string} [props.classPrefix="im"] - CSS class prefix (e.g. "br")
  */
 const ServiceProblemsSection = forwardRef((props, ref) => {
-  const { sectionLabel, title, description, items = [], icons = [], dir } = props;
+  const { sectionLabel, title, description, items = [], icons = [], dir, classPrefix = "im" } = props;
+  const p = classPrefix;
 
   return (
-    <section className="im-section" dir={dir}>
-      <div className="im-container">
+    <section className={`${p}-section`} dir={dir}>
+      <div className={`${p}-container`}>
         <div className="text-center max-w-2xl mx-auto mb-2">
-          <span className="im-section-label">{sectionLabel}</span>
-          <h2 className="im-section-title">{title}</h2>
-          <p className="im-section-desc">{description}</p>
+          <span className={`${p}-label`}>{sectionLabel}</span>
+          <h2 className={`${p}-title`}>{title}</h2>
+          <p className={`${p}-desc`}>{description}</p>
         </div>
-        <div ref={ref} className="im-problems-grid">
+        <div ref={ref} className={`${p}-problems-grid`}>
           {Array.isArray(items) &&
-            items.map((p, i) => (
-              <div key={i} className="im-problem-card">
-                <div className="im-problem-card__icon">{icons[i]}</div>
-                <h3 className="im-problem-card__title">{p.title}</h3>
-                <p className="im-problem-card__text">{p.text}</p>
+            items.map((item, i) => (
+              <div key={i} className={`${p}-problem-card`}>
+                <div className={`${p}-problem-card__icon`}>{icons[i] ?? item.icon}</div>
+                <h3 className={`${p}-problem-card__title`}>{item.title}</h3>
+                <p className={`${p}-problem-card__text`}>{item.text}</p>
               </div>
             ))}
         </div>
