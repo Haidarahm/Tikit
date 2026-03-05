@@ -160,6 +160,16 @@
                     "title": "Branding",
                     "subtitle": "We build brands that stand out and stand for something.",
                     "description": "From visual identity to brand voice, we shape how audiences see, feel, and remember you — creating clarity, consistency, and connection at every touchpoint."
+                },
+                {
+                    "title": "Digital Marketing",
+                    "subtitle": "Data-driven campaigns that drive growth and measurable ROI.",
+                    "description": "From SEO and paid ads to conversion optimization, we deliver full-funnel digital marketing strategies built for the UAE and GCC market."
+                },
+                {
+                    "title": "Web Development",
+                    "subtitle": "Fast, scalable websites and web apps that convert.",
+                    "description": "We build responsive websites and custom web applications — optimized for performance, SEO, and your business goals."
                 }
             ]
         },

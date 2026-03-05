@@ -178,7 +178,6 @@ function Home() {
 
         <Influencers />
         <Services />
-        
         <Connections />
         <WorkSection />
         <Map />

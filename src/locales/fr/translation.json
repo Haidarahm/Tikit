@@ -175,6 +175,16 @@
                     "title": "Branding",
                     "subtitle": "Nous créons des marques qui se démarquent et représentent une valeur.",
                     "description": "De l'identité visuelle à la voix de marque, nous façonnons la façon dont les audiences vous voient, vous ressentent et vous retiennent — créant clarté, cohérence et connexion à chaque point de contact."
+                },
+                {
+                    "title": "Marketing digital",
+                    "subtitle": "Campagnes data-driven qui génèrent croissance et ROI mesurable.",
+                    "description": "Du SEO aux campagnes payantes en passant par l'optimisation des conversions, nous délivrons des stratégies marketing digital full-funnel pour le marché des EAU et du Golfe."
+                },
+                {
+                    "title": "Développement web",
+                    "subtitle": "Sites et applications web rapides et évolutifs qui convertissent.",
+                    "description": "Nous construisons des sites web responsives et des applications sur mesure — optimisés pour la performance, le SEO et vos objectifs business."
                 }
             ]
         },
