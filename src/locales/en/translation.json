@@ -1333,143 +1333,101 @@
             ]
         },
         "branding": {
-            "badge": "Branding & Identity",
-            "hero": {
-                "title": "Build A Brand",
-                "mainWord": "That Stands Out",
-                "description": "We create distinctive brand identities that resonate with your audience, communicate your values, and set you apart in a crowded marketplace with memorable design and strategic positioning."
-            },
-            "services": {
-                "title": "Branding Services",
-                "description": "Complete branding solutions to establish and elevate your brand",
-                "items": {
-                    "brandStrategy": {
-                        "title": "Brand Strategy",
-                        "description": "Comprehensive brand strategy development including positioning, messaging, values, and market differentiation to guide all brand communications."
-                    },
-                    "logoDesign": {
-                        "title": "Logo Design",
-                        "description": "Custom logo design that captures your brand essence with memorable, scalable, and timeless visual marks that work across all applications."
-                    },
-                    "visualIdentity": {
-                        "title": "Visual Identity",
-                        "description": "Complete visual identity systems including color palettes, typography, imagery style, and design patterns for cohesive brand expression."
-                    },
-                    "brandGuidelines": {
-                        "title": "Brand Guidelines",
-                        "description": "Comprehensive brand guidelines documentation ensuring consistent brand application across all touchpoints and teams."
-                    },
-                    "packagingDesign": {
-                        "title": "Packaging Design",
-                        "description": "Eye-catching packaging design that protects your product while attracting customers and communicating brand value on the shelf."
-                    },
-                    "brandRefresh": {
-                        "title": "Brand Refresh",
-                        "description": "Modernize and revitalize existing brands to stay relevant, appeal to new audiences, and reflect business evolution while maintaining brand equity."
-                    }
-                }
-            },
-            "process": {
-                "title": "Our Branding Process",
-                "description": "A strategic approach to creating powerful brand identities",
-                "steps": {
-                    "discovery": {
-                        "title": "Discovery & Research",
-                        "description": "Deep dive into your business, competitors, target audience, and market landscape to inform strategy."
-                    },
-                    "strategy": {
-                        "title": "Strategy Development",
-                        "description": "Define brand positioning, personality, values, and messaging that differentiate you in the market."
-                    },
-                    "visual": {
-                        "title": "Visual Exploration",
-                        "description": "Create multiple design directions exploring different visual approaches to your brand identity."
-                    },
-                    "refinement": {
-                        "title": "Design Refinement",
-                        "description": "Refine chosen direction with careful attention to every detail for perfect execution."
-                    },
-                    "system": {
-                        "title": "Brand System Creation",
-                        "description": "Develop complete brand system with all visual elements, patterns, and applications."
-                    },
-                    "launch": {
-                        "title": "Guidelines & Launch",
-                        "description": "Deliver comprehensive brand guidelines and support successful brand launch and rollout."
-                    }
-                }
-            },
-            "elements": {
-                "title": "Brand Identity Elements",
-                "description": "Everything you need for a complete and cohesive brand presence",
-                "items": [
-                    "Logo Design",
-                    "Color Palette",
-                    "Typography",
-                    "Design System",
-                    "Business Cards",
-                    "Letterhead",
-                    "Email Templates",
-                    "Social Media Templates",
-                    "Packaging",
-                    "Merchandise",
-                    "Vehicle Wraps",
-                    "Signage"
-                ]
-            },
-            "stats": {
-                "brandsCreated": "Brands Created",
-                "yearsExperience": "Years Experience",
-                "industryAwards": "Industry Awards",
-                "clientSatisfaction": "Client Satisfaction"
-            },
-            "cta": {
-                "title": "Ready To Build Your Brand?",
-                "description": "Let's create a brand identity that makes a lasting impression",
-                "button": "Let's Talk"
-            },
-            "definition": {
-                "whatIsTitle": "What is Branding?",
-                "paragraph": "Branding is the strategic process of creating a unique identity for a business or product. It encompasses visual elements such as logo design, color palette, typography, and imagery, combined with brand messaging, voice, and values to create a cohesive identity that resonates with target audiences and differentiates the business from competitors in the marketplace.",
-                "benefitsTitle": "Key Benefits of Professional Branding",
-                "benefitsList": [
-                    "Increased brand recognition and recall among target audiences",
-                    "Clear differentiation from competitors in crowded markets",
-                    "Builds trust and credibility with customers and stakeholders",
-                    "Consistent visual and verbal identity across all touchpoints",
-                    "Supports premium pricing and customer loyalty over time"
+            "page": {
+                "seoTitle": "Branding Agency in Dubai | Brand Strategy & Identity Design",
+                "seoDescription": "Tikit is a full-service branding agency in Dubai that builds brands from the inside out — starting with strategy, ending with a bilingual identity system that works across every market and channel.",
+                "breadcrumbs": [
+                    { "name": "Home", "url": "/" },
+                    { "name": "Services", "url": "/services" },
+                    { "name": "Branding Agency Dubai", "url": "/services/branding-agency-dubai" }
                 ],
-                "processTitle": "The Branding Process",
-                "processSteps": [
-                    "Discovery and research phase to understand business, competitors, and target audience",
-                    "Strategy development defining brand positioning, personality, and messaging",
-                    "Visual exploration creating multiple design directions and concepts",
-                    "Refinement and finalization of chosen direction with detailed execution",
-                    "Brand system creation and comprehensive guidelines documentation"
-                ]
-            },
-            "trust": {
-                "title": "Why Trust Tikit Agency",
-                "subtitle": "Our experience and credentials in branding and identity design across the UAE and GCC region",
-                "card1Title": "15+ Years Combined Experience",
-                "card1Desc": "Our design team brings extensive experience in brand identity creation.",
-                "card2Title": "Regional Understanding",
-                "card2Desc": "Deep knowledge of UAE and GCC market aesthetics and cultural nuances.",
-                "card3Title": "300+ Brands Created",
-                "card3Desc": "Served startups, SMEs, and enterprises across multiple industries.",
-                "card4Title": "25+ Industry Awards",
-                "card4Desc": "Recognized for creative excellence and innovative design solutions.",
-                "paragraph": "Tikit Agency has created brand identities for clients across industries including hospitality, real estate, technology, F&B, fashion, healthcare, and financial services. Our design team combines strategic thinking with creative execution to deliver brands that stand out and drive business results."
-            },
-            "faqTitle": "Frequently Asked Questions About Branding",
-            "faqItems": [
-                { "question": "What is branding and why is it important?", "answer": "Branding is the process of creating a distinctive identity for a business that includes visual elements (logo, colors, typography), messaging, and the overall perception customers have of your company. Strong branding builds recognition, trust, and loyalty, differentiating your business from competitors and creating lasting connections with your target audience." },
-                { "question": "What does a branding agency do?", "answer": "A branding agency helps businesses develop and maintain their brand identity. Services include brand strategy development, logo design, visual identity creation, brand guidelines documentation, packaging design, and brand refresh projects. We work to ensure your brand communicates the right message and resonates with your target audience across all touchpoints." },
-                { "question": "How much does branding cost in the UAE?", "answer": "Branding costs vary based on scope and complexity. Basic logo design packages start from AED 5,000-15,000. Complete brand identity packages including logo, visual identity, and guidelines typically range from AED 20,000-75,000. Comprehensive branding projects with strategy, naming, and full collateral can range from AED 100,000+. Tikit Agency provides customized quotes based on your specific requirements." },
-                { "question": "How long does a branding project take?", "answer": "Timelines depend on project scope. A logo design project typically takes 2-4 weeks. A complete brand identity package usually requires 6-10 weeks. Full branding projects including strategy, visual identity, and collateral design can take 12-16 weeks. We provide detailed timelines during initial consultation based on your specific deliverables." },
-                { "question": "What is included in a brand identity package?", "answer": "A comprehensive brand identity package typically includes: logo design (primary, secondary, and icon versions), color palette with specifications, typography system, brand guidelines document, business card and letterhead design, social media templates, and brand application examples. Additional elements like packaging, signage, and website design can be added based on needs." },
-                { "question": "When should a business consider rebranding?", "answer": "Consider rebranding when your current brand no longer reflects your business values or direction, when entering new markets or expanding services, when your brand looks outdated compared to competitors, after a merger or acquisition, or when your target audience has shifted. A brand refresh can modernize your image while maintaining brand equity." }
-            ]
+                "hero": {
+                    "badge": "✦ Dubai's Brand Builders",
+                    "title": "Branding Agency in",
+                    "mainWord": "Dubai",
+                    "description": "We don't just design logos. We build brands that earn attention, trust, and loyalty — trusted by local and international businesses across the UAE and GCC."
+                },
+                "problems": {
+                    "label": "The Real Problem",
+                    "title": "The Real Reason Your Brand Isn't Doing Enough",
+                    "desc": "Most businesses in Dubai treat branding as a to-do item. Get a logo, pick some colours, move on. Here's why that always backfires.",
+                    "items": [
+                        { "title": "You Look Like Everyone Else", "text": "The UAE market adds thousands of new businesses every year. Most use the same stock fonts, safe colours, and generic messaging. If your brand could belong to any competitor, it belongs to none of them." },
+                        { "title": "Your Brand Doesn't Hold Together", "text": "A brand identity is a system, not a single asset. When your website looks different from your Instagram — and your Arabic materials feel like a translation job — customers notice even if they can't articulate why." },
+                        { "title": "There's No Strategy Underneath", "text": "Design without strategy is decoration. Without a clear positioning, defined audience, and compelling brand story, your visual identity has no foundation — it looks fine, says nothing, and converts poorly." }
+                    ]
+                },
+                "process": {
+                    "label": "Our Approach",
+                    "title": "From Blank Canvas to Bold Brand",
+                    "desc": "A proven four-stage process built for the realities of the UAE and GCC market. Every decision grounded in research. Every output built to last.",
+                    "steps": [
+                        { "n": "01", "badge": "Discover", "title": "Know Your Ground Before You Build", "text": "Business audit, market research, and competitor mapping. We find the space your brand can step into and genuinely own." },
+                        { "n": "02", "badge": "Define", "title": "Set the Strategy That Shapes Everything", "text": "Brand purpose, values, tone of voice, and positioning — building a messaging framework in English and Arabic your whole team can rally around." },
+                        { "n": "03", "badge": "Design", "title": "Build an Identity Worth Carrying", "text": "A complete visual identity: distinctive logo, colour palette, bilingual typography, iconography, and a comprehensive brand guidelines document." },
+                        { "n": "04", "badge": "Deploy", "title": "Get It Out Into the World, Properly", "text": "Full rollout across website, social media, sales collateral, and signage — so your brand arrives in market as a coherent, confident whole." }
+                    ]
+                },
+                "stats": {
+                    "label": "Our Track Record",
+                    "title": "Brands That Made the Move",
+                    "desc": "Delivered across retail, hospitality, real estate, F&B, healthcare, and professional services in the UAE and Saudi Arabia.",
+                    "items": [
+                        { "value": "15+", "label": "Years of branding experience across the UAE and GCC" },
+                        { "value": "300+", "label": "Brand identities delivered across retail, F&B, real estate, and more" },
+                        { "value": "25+", "label": "Industry awards for brand strategy and identity design" }
+                    ]
+                },
+                "caseStudy": {
+                    "label": "Featured Project",
+                    "title": "Award-Winning Identity That Scaled a Market Leader",
+                    "tag": "Case Study · Niche Startup → Market Leader",
+                    "caseTitle": "Strategic Heritage + Modern Visual Storytelling — Built to Scale",
+                    "stat1Label": "Increase in Brand Equity",
+                    "stat2Label": "Winning Identity System",
+                    "stat3Label": "Industry Awards",
+                    "pills": ["Brand Strategy", "Visual Identity", "Bilingual Design", "Brand Guidelines", "Market Rollout"],
+                    "quote": "\"Tikit didn't just give us a logo — they gave us a brand that our entire team believes in and our customers recognise immediately.\" — UAE Retail Brand"
+                },
+                "benefits": {
+                    "label": "What You Get",
+                    "title": "What You Get When You Work With Tikit",
+                    "desc": "We don't accept briefs that skip strategy. Because the most beautifully designed brand on a shaky foundation will always underperform.",
+                    "items": [
+                        { "title": "Strategy Is Never Optional", "text": "Every brand engagement starts with strategy. The most beautifully designed brand on a shaky foundation will always underperform. Our clients get brands that hold up under scrutiny, over time, and at scale." },
+                        { "title": "Built for Both Languages From Day One", "text": "We are one of very few branding agencies in Dubai that treats Arabic and English as equal creative considerations from the very first brief — not a translation, not an adaptation." },
+                        { "title": "One Team, Full Accountability", "text": "Strategy, design, and copywriting handled in-house. No freelancer network, no briefing chain. One point of contact who owns the outcome from kickoff to launch." },
+                        { "title": "Connected to Your Full Marketing Ecosystem", "text": "As a full-service agency, Tikit connects your brand directly to social media, influencer, content, and digital marketing execution. Your brand is the foundation every other channel builds on." }
+                    ]
+                },
+                "subServices": {
+                    "label": "Explore Our Services",
+                    "title": "Every Branding Service You Need",
+                    "desc": "From first brief to final rollout — explore our specialist branding services built for the UAE market.",
+                    "learnMore": "Learn more",
+                    "items": [
+                        { "title": "Brand Strategy", "desc": "Purpose, positioning, audience definition, and messaging framework — the foundation every great brand is built on.", "href": "/services/branding-agency-dubai/brand-strategy" },
+                        { "title": "Brand Identity Design", "desc": "Logo, colour palette, typography, iconography, and a complete bilingual brand guidelines document.", "href": "/services/branding-agency-dubai/brand-identity-design" },
+                        { "title": "Rebranding Services", "desc": "Evolve your brand without losing what you've already earned. We protect equity while resolving what's holding you back.", "href": "/services/branding-agency-dubai/rebranding-services" },
+                        { "title": "Brand Positioning", "desc": "Define where your brand stands in the market, why customers should choose you, and how to own that space consistently.", "href": "/services/branding-agency-dubai/brand-positioning" }
+                    ]
+                },
+                "faqTitle": "Frequently Asked Questions",
+                "faqItems": [
+                    { "question": "What's the difference between a brand identity and a brand strategy?", "answer": "Brand strategy defines what your brand means — your purpose, positioning, audience, and story. Brand identity makes it visible — your logo, colours, typography, and design system. One informs the other. Skipping strategy and going straight to design is the single most common and costly mistake businesses make." },
+                    { "question": "How long does a full branding project take?", "answer": "A complete brand strategy and identity project typically runs four to eight weeks. Faster timelines are possible for focused scopes; larger multi-market or enterprise projects may take longer. We agree on a timeline before we begin and hold to it." },
+                    { "question": "Can you rebrand us without destroying what we've already built?", "answer": "Yes — and protecting equity is always the first step in a rebrand. We audit what recognition, trust, and associations your current brand has earned, and build the evolution around preserving those assets while resolving what's holding you back." },
+                    { "question": "Do you work with international companies entering the UAE market?", "answer": "Frequently. Localising a global brand for the UAE and GCC market is a specialism of ours — whether adapting an existing identity for Arabic markets or building a separate regional brand architecture entirely." },
+                    { "question": "What does a branding project cost?", "answer": "Every project is scoped individually based on deliverables, timeline, and complexity. We provide clear, itemised proposals with no hidden fees. Book a consultation and we'll give you an accurate picture within 48 hours." }
+                ],
+                "cta": {
+                    "label": "Ready to Build?",
+                    "title": "Your Brand Should Be Working for You — Not Against You.",
+                    "desc": "Let's find out exactly what it needs. No jargon. No obligation. Book your free brand consultation today.",
+                    "primaryBtn": "Book Free Brand Consultation",
+                    "secondaryBtn": "Call Us Now"
+                }
+            }
         },
         "digitalMarketing": {
             "badge": "Digital Marketing Agency Dubai",

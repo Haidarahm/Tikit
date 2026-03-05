@@ -1231,100 +1231,100 @@
             }
         },
         "branding": {
-            "badge": "Identité de Marque",
-            "hero": {
-                "title": "Construisez une Marque",
-                "mainWord": "Qui Se Démarque",
-                "description": "Nous créons des identités de marque distinctives qui résonnent avec votre audience, communiquent vos valeurs et vous distinguent dans un marché encombré avec un design mémorable et un positionnement stratégique."
-            },
-            "services": {
-                "title": "Services de Marque",
-                "description": "Solutions de marque complètes pour établir et élever votre marque",
-                "items": {
-                    "brandStrategy": {
-                        "title": "Stratégie de Marque",
-                        "description": "Développement de stratégie de marque complète incluant positionnement, messagerie, valeurs et différenciation de marché pour guider toutes les communications de marque."
-                    },
-                    "logoDesign": {
-                        "title": "Conception de Logo",
-                        "description": "Conception de logo personnalisée qui capture l'essence de votre marque avec des marques visuelles mémorables, évolutives et intemporelles qui fonctionnent sur toutes les applications."
-                    },
-                    "visualIdentity": {
-                        "title": "Identité Visuelle",
-                        "description": "Systèmes d'identité visuelle complets incluant palettes de couleurs, typographie, style d'imagerie et motifs de design pour une expression de marque cohérente."
-                    },
-                    "brandGuidelines": {
-                        "title": "Lignes Directrices de Marque",
-                        "description": "Documentation complète des lignes directrices de marque assurant une application de marque cohérente sur tous les points de contact et équipes."
-                    },
-                    "packagingDesign": {
-                        "title": "Conception d'Emballage",
-                        "description": "Conception d'emballage accrocheuse qui protège votre produit tout en attirant les clients et communiquant la valeur de la marque sur l'étagère."
-                    },
-                    "brandRefresh": {
-                        "title": "Rafraîchissement de Marque",
-                        "description": "Moderniser et revitaliser les marques existantes pour rester pertinentes, attirer de nouveaux publics et refléter l'évolution de l'entreprise tout en maintenant l'équité de la marque."
-                    }
+            "page": {
+                "seoTitle": "Agence de Marque à Dubaï | Stratégie de Marque & Conception d'Identité",
+                "seoDescription": "Tikit est une agence de marque full-service à Dubaï qui construit les marques de l'intérieur — en commençant par la stratégie, pour aboutir à un système d'identité bilingue qui fonctionne sur tous les marchés et canaux.",
+                "breadcrumbs": [
+                    { "name": "Accueil", "url": "/" },
+                    { "name": "Services", "url": "/services" },
+                    { "name": "Agence de Marque Dubaï", "url": "/services/branding-agency-dubai" }
+                ],
+                "hero": {
+                    "badge": "✦ Les Bâtisseurs de Marques à Dubaï",
+                    "title": "Agence de Marque à",
+                    "mainWord": "Dubaï",
+                    "description": "Nous ne faisons pas que concevoir des logos. Nous construisons des marques qui gagnent l'attention, la confiance et la fidélité — approuvées par des entreprises locales et internationales aux EAU et dans le Golfe."
+                },
+                "problems": {
+                    "label": "Le Vrai Problème",
+                    "title": "La Vraie Raison Pour Laquelle Votre Marque ne Suffit Pas",
+                    "desc": "La plupart des entreprises à Dubaï traitent la marque comme une tâche. Un logo, quelques couleurs, on passe. Voici pourquoi ça échoue toujours.",
+                    "items": [
+                        { "title": "Vous Ressemblez à Tout le Monde", "text": "Le marché des EAU accueille des milliers de nouvelles entreprises chaque année. La plupart utilisent les mêmes polices standards, couleurs sûres et messages génériques. Si votre marque pourrait appartenir à n'importe quel concurrent, elle n'appartient à aucun." },
+                        { "title": "Votre Marque ne Tient pas Ensemble", "text": "Une identité de marque est un système, pas un seul actif. Quand votre site diffère de votre Instagram — et que vos supports en arabe ressemblent à un travail de traduction — les clients le remarquent même s'ils ne savent pas l'exprimer." },
+                        { "title": "Aucune Stratégie en Fondation", "text": "Le design sans stratégie, c'est de la décoration. Sans positionnement clair, audience définie et histoire de marque convaincante, votre identité visuelle n'a pas de fondation — elle a l'air bien, ne dit rien et convertit mal." }
+                    ]
+                },
+                "process": {
+                    "label": "Notre Approche",
+                    "title": "De la Page Blanche à la Marque Audacieuse",
+                    "desc": "Un processus en quatre étapes éprouvé pour les réalités du marché des EAU et du Golfe. Chaque décision ancrée dans la recherche. Chaque livrable conçu pour durer.",
+                    "steps": [
+                        { "n": "01", "badge": "Découvrir", "title": "Connaître le Terrain Avant de Construire", "text": "Audit d'entreprise, étude de marché et cartographie des concurrents. Nous trouvons l'espace où votre marque peut s'installer et vraiment s'approprier." },
+                        { "n": "02", "badge": "Définir", "title": "Fixer la Stratégie qui Façonne Tout", "text": "Raison d'être, valeurs, ton de voix et positionnement — construction d'un cadre de messagerie en anglais et arabe autour duquel toute l'équipe peut se rassembler." },
+                        { "n": "03", "badge": "Concevoir", "title": "Construire une Identité qui Vaut la Peine de Porter", "text": "Une identité visuelle complète : logo distinctif, palette de couleurs, typographie bilingue, iconographie et document de lignes directrices de marque complet." },
+                        { "n": "04", "badge": "Déployer", "title": "La Faire Sortir dans le Monde, Correctement", "text": "Déploiement complet sur le site, les réseaux sociaux, les supports commerciaux et la signalétique — pour que votre marque arrive sur le marché comme un tout cohérent et confiant." }
+                    ]
+                },
+                "stats": {
+                    "label": "Notre Bilan",
+                    "title": "Des Marques qui Ont Fait le Mouvement",
+                    "desc": "Livrées dans le retail, l'hôtellerie, l'immobilier, la restauration, la santé et les services aux professionnels aux EAU et en Arabie Saoudite.",
+                    "items": [
+                        { "value": "15+", "label": "Années d'expérience en marque aux EAU et dans le Golfe" },
+                        { "value": "300+", "label": "Identités de marque livrées dans le retail, la restauration, l'immobilier et plus" },
+                        { "value": "25+", "label": "Prix d'industrie pour la stratégie de marque et le design d'identité" }
+                    ]
+                },
+                "caseStudy": {
+                    "label": "Projet à la Une",
+                    "title": "Une Identité Primée qui a Propulsé un Leader de Marché",
+                    "tag": "Étude de Cas · Startup de Niche → Leader de Marché",
+                    "caseTitle": "Héritage Stratégique + Récit Visuel Moderne — Conçu pour Grandir",
+                    "stat1Label": "Augmentation de la Valeur de Marque",
+                    "stat2Label": "Système d'Identité Primé",
+                    "stat3Label": "Prix d'Industrie",
+                    "pills": ["Stratégie de Marque", "Identité Visuelle", "Design Bilingue", "Lignes Directrices de Marque", "Déploiement Marché"],
+                    "quote": "\"Tikit ne nous a pas juste donné un logo — ils nous ont donné une marque en laquelle toute notre équipe croit et que nos clients reconnaissent immédiatement.\" — Marque Retail EAU"
+                },
+                "benefits": {
+                    "label": "Ce que Vous Obtenez",
+                    "title": "Ce que Vous Obtenez en Travaillant avec Tikit",
+                    "desc": "Nous n'acceptons pas de briefs qui sautent la stratégie. Parce que la marque la plus belle sur une base fragile sous-performera toujours.",
+                    "items": [
+                        { "title": "La Stratégie n'est Jamais Optionnelle", "text": "Chaque projet de marque commence par la stratégie. La marque la plus belle sur une base fragile sous-performera toujours. Nos clients obtiennent des marques qui tiennent sous le regard, dans le temps et à l'échelle." },
+                        { "title": "Conçue pour les Deux Langues dès le Premier Jour", "text": "Nous sommes l'une des rares agences de marque à Dubaï qui traite l'arabe et l'anglais comme des considérations créatives égales dès le premier brief — pas une traduction, pas une adaptation." },
+                        { "title": "Une Équipe, une Responsabilité Totale", "text": "Stratégie, design et rédaction gérés en interne. Pas de réseau de freelances, pas de chaîne de briefs. Un seul interlocuteur qui porte le résultat du kickoff au lancement." },
+                        { "title": "Connectée à Votre Écosystème Marketing Complet", "text": "En tant qu'agence full-service, Tikit connecte votre marque directement à l'exécution des réseaux sociaux, de l'influence, du contenu et du marketing digital. Votre marque est le socle sur lequel chaque autre canal s'appuie." }
+                    ]
+                },
+                "subServices": {
+                    "label": "Explorez Nos Services",
+                    "title": "Chaque Service de Marque dont Vous Avez Besoin",
+                    "desc": "Du premier brief au déploiement final — explorez nos services de marque spécialisés conçus pour le marché des EAU.",
+                    "learnMore": "En savoir plus",
+                    "items": [
+                        { "title": "Stratégie de Marque", "desc": "Raison d'être, positionnement, définition d'audience et cadre de messagerie — le socle sur lequel toute grande marque est construite.", "href": "/services/branding-agency-dubai/brand-strategy" },
+                        { "title": "Conception d'Identité de Marque", "desc": "Logo, palette de couleurs, typographie, iconographie et document complet de lignes directrices de marque bilingue.", "href": "/services/branding-agency-dubai/brand-identity-design" },
+                        { "title": "Services de Rebranding", "desc": "Faites évoluer votre marque sans perdre ce que vous avez déjà gagné. Nous protégeons la valeur tout en résolvant ce qui vous retient.", "href": "/services/branding-agency-dubai/rebranding-services" },
+                        { "title": "Positionnement de Marque", "desc": "Définissez où se situe votre marque sur le marché, pourquoi les clients doivent vous choisir et comment occuper cet espace de façon cohérente.", "href": "/services/branding-agency-dubai/brand-positioning" }
+                    ]
+                },
+                "faqTitle": "Questions Fréquentes",
+                "faqItems": [
+                    { "question": "Quelle est la différence entre une identité de marque et une stratégie de marque ?", "answer": "La stratégie de marque définit ce que signifie votre marque — votre raison d'être, positionnement, audience et histoire. L'identité de marque la rend visible — votre logo, couleurs, typographie et système de design. L'une nourrit l'autre. Sauter la stratégie et aller droit au design est l'erreur la plus courante et la plus coûteuse des entreprises." },
+                    { "question": "Combien de temps dure un projet de marque complet ?", "answer": "Un projet complet de stratégie et d'identité de marque dure généralement de quatre à huit semaines. Des délais plus courts sont possibles pour des périmètres ciblés ; les projets multi-marchés ou enterprise plus larges peuvent prendre plus de temps. Nous convenons d'un calendrier avant de commencer et nous y tenons." },
+                    { "question": "Pouvez-vous nous rebrander sans détruire ce que nous avons déjà construit ?", "answer": "Oui — et protéger la valeur est toujours la première étape d'un rebrand. Nous auditons la reconnaissance, la confiance et les associations que votre marque actuelle a gagnées, et construisons l'évolution autour de la préservation de ces actifs tout en résolvant ce qui vous retient." },
+                    { "question": "Travaillez-vous avec des entreprises internationales qui entrent sur le marché des EAU ?", "answer": "Fréquemment. Localiser une marque mondiale pour le marché des EAU et du Golfe est une de nos spécialités — que ce soit adapter une identité existante aux marchés arabes ou construire une architecture de marque régionale entièrement séparée." },
+                    { "question": "Combien coûte un projet de marque ?", "answer": "Chaque projet est délimité individuellement selon les livrables, le calendrier et la complexité. Nous fournissons des propositions claires et détaillées sans frais cachés. Réservez une consultation et nous vous donnerons une image précise sous 48 heures." }
+                ],
+                "cta": {
+                    "label": "Prêt à Construire ?",
+                    "title": "Votre Marque Devrait Travailler pour Vous — Pas Contre Vous.",
+                    "desc": "Découvrons exactement ce dont elle a besoin. Pas de jargon. Pas d'engagement. Réservez votre consultation marque gratuite aujourd'hui.",
+                    "primaryBtn": "Réserver une Consultation Marque Gratuite",
+                    "secondaryBtn": "Appelez-nous"
                 }
-            },
-            "process": {
-                "title": "Notre Processus de Marque",
-                "description": "Une approche stratégique pour créer des identités de marque puissantes",
-                "steps": {
-                    "discovery": {
-                        "title": "Découverte et Recherche",
-                        "description": "Plongée approfondie dans votre entreprise, concurrents, public cible et paysage du marché pour informer la stratégie."
-                    },
-                    "strategy": {
-                        "title": "Développement de Stratégie",
-                        "description": "Définir le positionnement de marque, la personnalité, les valeurs et la messagerie qui vous différencient sur le marché."
-                    },
-                    "visual": {
-                        "title": "Exploration Visuelle",
-                        "description": "Créer plusieurs directions de design explorant différentes approches visuelles de votre identité de marque."
-                    },
-                    "refinement": {
-                        "title": "Raffinement du Design",
-                        "description": "Affiner la direction choisie avec une attention minutieuse à chaque détail pour une exécution parfaite."
-                    },
-                    "system": {
-                        "title": "Création de Système de Marque",
-                        "description": "Développer un système de marque complet avec tous les éléments visuels, motifs et applications."
-                    },
-                    "launch": {
-                        "title": "Lignes Directrices et Lancement",
-                        "description": "Livrer des lignes directrices de marque complètes et soutenir le lancement et le déploiement réussi de la marque."
-                    }
-                }
-            },
-            "elements": {
-                "title": "Éléments d'Identité de Marque",
-                "description": "Tout ce dont vous avez besoin pour une présence de marque complète et cohérente",
-                "items": [
-                    "Conception de Logo",
-                    "Palette de Couleurs",
-                    "Typographie",
-                    "Système de Design",
-                    "Cartes de Visite",
-                    "En-tête de Lettre",
-                    "Modèles d'Email",
-                    "Modèles de Médias Sociaux",
-                    "Emballage",
-                    "Marchandise",
-                    "Enveloppes de Véhicules",
-                    "Signalisation"
-                ]
-            },
-            "stats": {
-                "brandsCreated": "Marques Créées",
-                "yearsExperience": "Années d'Expérience",
-                "industryAwards": "Prix de l'Industrie",
-                "clientSatisfaction": "Satisfaction Client"
-            },
-            "cta": {
-                "title": "Prêt à Construire Votre Marque ?",
-                "description": "Créons une identité de marque qui fait une impression durable",
-                "button": "Parlons-en"
             }
         },
         "digitalMarketing": {

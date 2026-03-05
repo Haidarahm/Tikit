@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
@@ -26,141 +27,9 @@ import "./Branding.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
-/* ─── Data ──────────────────────────────────────────────────── */
-const problems = [
-  {
-    icon: <FiAlertCircle />,
-    title: "You Look Like Everyone Else",
-    text: "The UAE market adds thousands of new businesses every year. Most use the same stock fonts, safe colours, and generic messaging. If your brand could belong to any competitor, it belongs to none of them.",
-  },
-  {
-    icon: <FiLayout />,
-    title: "Your Brand Doesn't Hold Together",
-    text: "A brand identity is a system, not a single asset. When your website looks different from your Instagram — and your Arabic materials feel like a translation job — customers notice even if they can't articulate why.",
-  },
-  {
-    icon: <FiCompass />,
-    title: "There's No Strategy Underneath",
-    text: "Design without strategy is decoration. Without a clear positioning, defined audience, and compelling brand story, your visual identity has no foundation — it looks fine, says nothing, and converts poorly.",
-  },
-];
-
-const processSteps = [
-  {
-    n: "01",
-    badge: "Discover",
-    title: "Know Your Ground Before You Build",
-    text: "Business audit, market research, and competitor mapping. We find the space your brand can step into and genuinely own.",
-  },
-  {
-    n: "02",
-    badge: "Define",
-    title: "Set the Strategy That Shapes Everything",
-    text: "Brand purpose, values, tone of voice, and positioning — building a messaging framework in English and Arabic your whole team can rally around.",
-  },
-  {
-    n: "03",
-    badge: "Design",
-    title: "Build an Identity Worth Carrying",
-    text: "A complete visual identity: distinctive logo, colour palette, bilingual typography, iconography, and a comprehensive brand guidelines document.",
-  },
-  {
-    n: "04",
-    badge: "Deploy",
-    title: "Get It Out Into the World, Properly",
-    text: "Full rollout across website, social media, sales collateral, and signage — so your brand arrives in market as a coherent, confident whole.",
-  },
-];
-
-const stats = [
-  { value: "15+", label: "Years of branding experience across the UAE and GCC" },
-  { value: "300+", label: "Brand identities delivered across retail, F&B, real estate, and more" },
-  { value: "25+", label: "Industry awards for brand strategy and identity design" },
-];
-
-const benefits = [
-  {
-    icon: <FiCompass />,
-    title: "Strategy Is Never Optional",
-    text: "Every brand engagement starts with strategy. The most beautifully designed brand on a shaky foundation will always underperform. Our clients get brands that hold up under scrutiny, over time, and at scale.",
-  },
-  {
-    icon: <FiGlobe />,
-    title: "Built for Both Languages From Day One",
-    text: "We are one of very few branding agencies in Dubai that treats Arabic and English as equal creative considerations from the very first brief — not a translation, not an adaptation.",
-  },
-  {
-    icon: <FiShield />,
-    title: "One Team, Full Accountability",
-    text: "Strategy, design, and copywriting handled in-house. No freelancer network, no briefing chain. One point of contact who owns the outcome from kickoff to launch.",
-  },
-  {
-    icon: <FiLink />,
-    title: "Connected to Your Full Marketing Ecosystem",
-    text: "As a full-service agency, Tikit connects your brand directly to social media, influencer, content, and digital marketing execution. Your brand is the foundation every other channel builds on.",
-  },
-];
-
-const subServices = [
-  {
-    icon: <FiBookOpen />,
-    title: "Brand Strategy",
-    desc: "Purpose, positioning, audience definition, and messaging framework — the foundation every great brand is built on.",
-    href: "/services/branding-agency-dubai/brand-strategy",
-  },
-  {
-    icon: <FiEdit3 />,
-    title: "Brand Identity Design",
-    desc: "Logo, colour palette, typography, iconography, and a complete bilingual brand guidelines document.",
-    href: "/services/branding-agency-dubai/brand-identity-design",
-  },
-  {
-    icon: <FiRefreshCw />,
-    title: "Rebranding Services",
-    desc: "Evolve your brand without losing what you've already earned. We protect equity while resolving what's holding you back.",
-    href: "/services/branding-agency-dubai/rebranding-services",
-  },
-  {
-    icon: <FiMap />,
-    title: "Brand Positioning",
-    desc: "Define where your brand stands in the market, why customers should choose you, and how to own that space consistently.",
-    href: "/services/branding-agency-dubai/brand-positioning",
-  },
-];
-
-const faqItems = [
-  {
-    question: "What's the difference between a brand identity and a brand strategy?",
-    answer:
-      "Brand strategy defines what your brand means — your purpose, positioning, audience, and story. Brand identity makes it visible — your logo, colours, typography, and design system. One informs the other. Skipping strategy and going straight to design is the single most common and costly mistake businesses make.",
-  },
-  {
-    question: "How long does a full branding project take?",
-    answer:
-      "A complete brand strategy and identity project typically runs four to eight weeks. Faster timelines are possible for focused scopes; larger multi-market or enterprise projects may take longer. We agree on a timeline before we begin and hold to it.",
-  },
-  {
-    question: "Can you rebrand us without destroying what we've already built?",
-    answer:
-      "Yes — and protecting equity is always the first step in a rebrand. We audit what recognition, trust, and associations your current brand has earned, and build the evolution around preserving those assets while resolving what's holding you back.",
-  },
-  {
-    question: "Do you work with international companies entering the UAE market?",
-    answer:
-      "Frequently. Localising a global brand for the UAE and GCC market is a specialism of ours — whether adapting an existing identity for Arabic markets or building a separate regional brand architecture entirely.",
-  },
-  {
-    question: "What does a branding project cost?",
-    answer:
-      "Every project is scoped individually based on deliverables, timeline, and complexity. We provide clear, itemised proposals with no hidden fees. Book a consultation and we'll give you an accurate picture within 48 hours.",
-  },
-];
-
-const breadcrumbs = [
-  { name: "Home", url: "/" },
-  { name: "Services", url: "/services" },
-  { name: "Branding Agency Dubai", url: "/services/branding-agency-dubai" },
-];
+const problemIcons = [<FiAlertCircle key="1" />, <FiLayout key="2" />, <FiCompass key="3" />];
+const benefitIcons = [<FiCompass key="1" />, <FiGlobe key="2" />, <FiShield key="3" />, <FiLink key="4" />];
+const subServiceIcons = [<FiBookOpen key="1" />, <FiEdit3 key="2" />, <FiRefreshCw key="3" />, <FiMap key="4" />];
 
 /* ─── Helper: staggered scroll reveal ──────────────────────── */
 function revealChildren(containerRef, selector, fromVars = {}, staggerVal = 0.1) {
@@ -185,7 +54,9 @@ function revealChildren(containerRef, selector, fromVars = {}, staggerVal = 0.1)
 }
 
 /* ─── Component ─────────────────────────────────────────────── */
+const TK = "serviceSections.branding.page";
 const Branding = () => {
+  const { t } = useTranslation();
   const heroRef       = useRef(null);
   const problemsRef   = useRef(null);
   const processRef    = useRef(null);
@@ -194,6 +65,18 @@ const Branding = () => {
   const caseRef       = useRef(null);
   const subServicesRef = useRef(null);
   const ctaRef        = useRef(null);
+
+  const breadcrumbsRaw = t(`${TK}.breadcrumbs`, { returnObjects: true });
+  const breadcrumbs = Array.isArray(breadcrumbsRaw) ? breadcrumbsRaw : [];
+  const problemsData = t(`${TK}.problems.items`, { returnObjects: true });
+  const problems = Array.isArray(problemsData) ? problemsData.map((p, i) => ({ ...p, icon: problemIcons[i] })) : [];
+  const processSteps = t(`${TK}.process.steps`, { returnObjects: true });
+  const stats = t(`${TK}.stats.items`, { returnObjects: true });
+  const benefitsData = t(`${TK}.benefits.items`, { returnObjects: true });
+  const benefits = Array.isArray(benefitsData) ? benefitsData.map((b, i) => ({ ...b, icon: benefitIcons[i] })) : [];
+  const subServicesData = t(`${TK}.subServices.items`, { returnObjects: true });
+  const subServices = Array.isArray(subServicesData) ? subServicesData.map((s, i) => ({ ...s, icon: subServiceIcons[i] })) : [];
+  const faqItems = t(`${TK}.faqItems`, { returnObjects: true });
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -275,26 +158,26 @@ const Branding = () => {
   return (
     <>
       <SEOHead
-        title="Branding Agency in Dubai | Brand Strategy & Identity Design"
-        description="Tikit is a full-service branding agency in Dubai that builds brands from the inside out — starting with strategy, ending with a bilingual identity system that works across every market and channel."
+        title={t(`${TK}.seoTitle`)}
+        description={t(`${TK}.seoDescription`)}
         serviceType="Branding Agency Dubai"
         breadcrumbs={breadcrumbs}
         faqItems={faqItems}
       />
 
       {/* ── Hero ─────────────────────────────────────────────── */}
-      <section className="br-hero">
+      <section data-nav-color="black" className="br-hero">
         <div className="br-hero__image-wrapper">
           <img src={brandingHero} alt="Branding Agency Dubai" className="br-hero__image" />
           <div className="br-hero__overlay" />
         </div>
         <div ref={heroRef} className="br-hero__inner" style={{ opacity: 0 }}>
           <HeroWithBadge
-            badge="✦ Dubai's Brand Builders"
+            badge={t(`${TK}.hero.badge`)}
             badgeVariant="pulse"
-            title="Branding Agency in"
-            mainWord="Dubai"
-            description="We don't just design logos. We build brands that earn attention, trust, and loyalty — trusted by local and international businesses across the UAE and GCC."
+            title={t(`${TK}.hero.title`)}
+            mainWord={t(`${TK}.hero.mainWord`)}
+            description={t(`${TK}.hero.description`)}
           />
         </div>
       </section>
@@ -303,15 +186,15 @@ const Branding = () => {
       <section className="br-section">
         <div className="br-container">
           <div className="text-center max-w-2xl mx-auto mb-2">
-            <span className="br-label">The Real Problem</span>
-            <h2 className="br-title">The Real Reason Your Brand Isn't Doing Enough</h2>
+            <span className="br-label">{t(`${TK}.problems.label`)}</span>
+            <h2 className="br-title">{t(`${TK}.problems.title`)}</h2>
             <p className="br-desc">
-              Most businesses in Dubai treat branding as a to-do item. Get a logo, pick some colours, move on. Here's why that always backfires.
+              {t(`${TK}.problems.desc`)}
             </p>
           </div>
           <div ref={problemsRef} className="br-problems-grid">
-            {problems.map((p) => (
-              <div key={p.title} className="br-problem-card">
+            {(Array.isArray(problems) ? problems : []).map((p, idx) => (
+              <div key={idx} className="br-problem-card">
                 <div className="br-problem-card__icon">{p.icon}</div>
                 <h3 className="br-problem-card__title">{p.title}</h3>
                 <p className="br-problem-card__text">{p.text}</p>
@@ -325,14 +208,14 @@ const Branding = () => {
       <section className="br-section--alt">
         <div className="br-container">
           <div className="text-center max-w-2xl mx-auto mb-2">
-            <span className="br-label">Our Approach</span>
-            <h2 className="br-title">From Blank Canvas to Bold Brand</h2>
+            <span className="br-label">{t(`${TK}.process.label`)}</span>
+            <h2 className="br-title">{t(`${TK}.process.title`)}</h2>
             <p className="br-desc">
-              A proven four-stage process built for the realities of the UAE and GCC market. Every decision grounded in research. Every output built to last.
+              {t(`${TK}.process.desc`)}
             </p>
           </div>
           <div ref={processRef} className="br-process-grid">
-            {processSteps.map((s) => (
+            {(Array.isArray(processSteps) ? processSteps : []).map((s) => (
               <div key={s.n} className="br-step-card">
                 <div className="br-step-card__number">{s.n}</div>
                 <span className="br-step-card__badge">{s.badge}</span>
@@ -348,14 +231,14 @@ const Branding = () => {
       <section className="br-section">
         <div className="br-container">
           <div className="text-center max-w-2xl mx-auto mb-2">
-            <span className="br-label">Our Track Record</span>
-            <h2 className="br-title">Brands That Made the Move</h2>
+            <span className="br-label">{t(`${TK}.stats.label`)}</span>
+            <h2 className="br-title">{t(`${TK}.stats.title`)}</h2>
             <p className="br-desc">
-              Delivered across retail, hospitality, real estate, F&B, healthcare, and professional services in the UAE and Saudi Arabia.
+              {t(`${TK}.stats.desc`)}
             </p>
           </div>
           <div ref={statsRef} className="br-stats-banner">
-            {stats.map((s) => (
+            {(Array.isArray(stats) ? stats : []).map((s) => (
               <div key={s.value} className="br-stat-card">
                 <span className="br-stat-card__value">{s.value}</span>
                 <span className="br-stat-card__label">{s.label}</span>
@@ -369,15 +252,15 @@ const Branding = () => {
       <section className="br-section--alt">
         <div className="br-container">
           <div className="text-center max-w-2xl mx-auto mb-10">
-            <span className="br-label">Featured Project</span>
-            <h2 className="br-title">Award-Winning Identity That Scaled a Market Leader</h2>
+            <span className="br-label">{t(`${TK}.caseStudy.label`)}</span>
+            <h2 className="br-title">{t(`${TK}.caseStudy.title`)}</h2>
           </div>
           <div ref={caseRef} className="br-case-study">
             <div className="br-case-study__glow" />
             <div className="br-case-study__glow--left" />
-            <span className="br-case-study__tag">Case Study · Niche Startup → Market Leader</span>
+            <span className="br-case-study__tag">{t(`${TK}.caseStudy.tag`)}</span>
             <h3 className="br-case-study__title">
-              Strategic Heritage + Modern Visual Storytelling — Built to Scale
+              {t(`${TK}.caseStudy.caseTitle`)}
             </h3>
             <div className="br-case-study__stats">
               <div>
@@ -388,24 +271,24 @@ const Branding = () => {
                 >
                   40%
                 </span>
-                <span className="br-case-study__stat-label">Increase in Brand Equity</span>
+                <span className="br-case-study__stat-label">{t(`${TK}.caseStudy.stat1Label`)}</span>
               </div>
               <div>
                 <span className="br-case-study__stat-value">Award</span>
-                <span className="br-case-study__stat-label">Winning Identity System</span>
+                <span className="br-case-study__stat-label">{t(`${TK}.caseStudy.stat2Label`)}</span>
               </div>
               <div>
                 <span className="br-case-study__stat-value">25+</span>
-                <span className="br-case-study__stat-label">Industry Awards</span>
+                <span className="br-case-study__stat-label">{t(`${TK}.caseStudy.stat3Label`)}</span>
               </div>
             </div>
             <div className="flex flex-wrap gap-3 mb-6">
-              {["Brand Strategy", "Visual Identity", "Bilingual Design", "Brand Guidelines", "Market Rollout"].map((tag) => (
+              {(t(`${TK}.caseStudy.pills`, { returnObjects: true }) || []).map((tag) => (
                 <span key={tag} className="br-case-study__pill">{tag}</span>
               ))}
             </div>
             <blockquote className="br-case-study__quote">
-              "Tikit didn't just give us a logo — they gave us a brand that our entire team believes in and our customers recognise immediately." — UAE Retail Brand
+              {t(`${TK}.caseStudy.quote`)}
             </blockquote>
           </div>
         </div>
@@ -415,15 +298,15 @@ const Branding = () => {
       <section className="br-section">
         <div className="br-container">
           <div className="text-center max-w-2xl mx-auto mb-2">
-            <span className="br-label">What You Get</span>
-            <h2 className="br-title">What You Get When You Work With Tikit</h2>
+            <span className="br-label">{t(`${TK}.benefits.label`)}</span>
+            <h2 className="br-title">{t(`${TK}.benefits.title`)}</h2>
             <p className="br-desc">
-              We don't accept briefs that skip strategy. Because the most beautifully designed brand on a shaky foundation will always underperform.
+              {t(`${TK}.benefits.desc`)}
             </p>
           </div>
           <div ref={benefitsRef} className="br-benefits-grid">
-            {benefits.map((b) => (
-              <div key={b.title} className="br-benefit-item">
+            {(Array.isArray(benefits) ? benefits : []).map((b, idx) => (
+              <div key={idx} className="br-benefit-item">
                 <div className="br-benefit-item__icon">{b.icon}</div>
                 <div>
                   <h3 className="br-benefit-item__title">{b.title}</h3>
@@ -439,20 +322,20 @@ const Branding = () => {
       <section className="br-section--alt">
         <div className="br-container">
           <div className="text-center max-w-2xl mx-auto mb-2">
-            <span className="br-label">Explore Our Services</span>
-            <h2 className="br-title">Every Branding Service You Need</h2>
+            <span className="br-label">{t(`${TK}.subServices.label`)}</span>
+            <h2 className="br-title">{t(`${TK}.subServices.title`)}</h2>
             <p className="br-desc">
-              From first brief to final rollout — explore our specialist branding services built for the UAE market.
+              {t(`${TK}.subServices.desc`)}
             </p>
           </div>
           <div ref={subServicesRef} className="br-subservices-grid">
-            {subServices.map((s) => (
+            {(Array.isArray(subServices) ? subServices : []).map((s) => (
               <Link key={s.href} to={s.href} className="br-subservice-card">
                 <div className="br-subservice-card__icon">{s.icon}</div>
                 <h3 className="br-subservice-card__title">{s.title}</h3>
                 <p className="br-subservice-card__desc">{s.desc}</p>
                 <span className="br-subservice-card__cta">
-                  Learn more <FiArrowRight />
+                  {t(`${TK}.subServices.learnMore`)} <FiArrowRight />
                 </span>
               </Link>
             ))}
@@ -462,28 +345,28 @@ const Branding = () => {
 
       {/* ── FAQ ──────────────────────────────────────────────── */}
       <FAQ
-        items={faqItems}
-        title="Frequently Asked Questions"
+        items={Array.isArray(faqItems) ? faqItems : []}
+        title={t(`${TK}.faqTitle`)}
       />
 
       {/* ── CTA ──────────────────────────────────────────────── */}
       <section ref={ctaRef} className="br-cta">
         <div className="br-cta__inner">
-          <p className="br-reveal br-label text-center mb-4 block">Ready to Build?</p>
+          <p className="br-reveal br-label text-center mb-4 block">{t(`${TK}.cta.label`)}</p>
           <h2 className="br-reveal br-cta__title">
-            Your Brand Should Be Working for You — Not Against You.
+            {t(`${TK}.cta.title`)}
           </h2>
           <p className="br-reveal br-cta__desc">
-            Let's find out exactly what it needs. No jargon. No obligation. Book your free brand consultation today.
+            {t(`${TK}.cta.desc`)}
           </p>
           <div className="br-reveal br-cta__buttons">
             <a href="/contact" className="br-btn-primary">
               <FiArrowRight />
-              Book Free Brand Consultation
+              {t(`${TK}.cta.primaryBtn`)}
             </a>
             <a href="tel:+97145774042" className="br-btn-secondary">
               <FiPhone />
-              Call Us Now
+              {t(`${TK}.cta.secondaryBtn`)}
             </a>
           </div>
         </div>
