@@ -66,6 +66,9 @@ const Production = lazy(() =>
 const Branding = lazy(() =>
   import("./pages/services-sections/branding/Branding")
 );
+const WebDevelopment = lazy(() =>
+  import("./pages/services-sections/webDevelopment/WebDevelopment")
+);
 
 // Service Sections - Digital Marketing Hub & Sub-pages
 const DigitalMarketing = lazy(() =>
@@ -182,6 +185,7 @@ function App() {
               <Route path="/services/social-media-management" element={<SocialMediaManagement />} />
               <Route path="/services/production" element={<Production />} />
               <Route path="/services/branding-agency-dubai" element={<Branding />} />
+              <Route path="/services/web-development-dubai" element={<WebDevelopment />} />
               {/* Service Sections - Digital Marketing Hub & Sub-pages */}
               <Route path="/services/digital-marketing-agency-dubai" element={<DigitalMarketing />} />
               <Route path="/services/digital-marketing-agency-dubai/performance-marketing" element={<PerformanceMarketing />} />
