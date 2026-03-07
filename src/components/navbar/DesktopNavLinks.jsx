@@ -47,8 +47,8 @@ export default function DesktopNavLinks({ language }) {
    <NavDropdown
           label={t("nav.services")}
           items={[
-            { label: t("nav.servicesSections.0.influencerMarketing"),    to: "/services/influencer-marketing-agency-dubai" },
-           
+            { label: t("nav.servicesSections.0.influencerMarketing"), to: "/services/influencer-marketing-agency-dubai" },
+            { label: t("nav.servicesSections.1.branding"), to: "/services/branding-agency-dubai" },
           ]}
         />
         <NavDropdown
