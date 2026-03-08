@@ -14,6 +14,7 @@ import { useTheme } from "../../store/ThemeContext.jsx";
 import SEOHead from "../../components/SEOHead";
 import Footer from "../../components/Footer";
 import ContactUs from "../Home/ContactUs";
+import CaseStudy, { workItemToCaseData } from "../Work/components/CaseStudy";
 import { FiUsers, FiEye, FiActivity, FiArrowLeft } from "react-icons/fi";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Thumbs } from "swiper/modules";
@@ -72,6 +73,11 @@ const InfluenceDetails = () => {
 
   const itemData = influence.item;
   const media = influence.media || [];
+  const hasReels = Array.isArray(itemData?.reels) && itemData.reels.length > 0;
+  const caseData = useMemo(
+    () => (hasReels ? workItemToCaseData(itemData) : null),
+    [hasReels, itemData]
+  );
 
   const title = useMemo(() => {
     if (!itemData) return "";
@@ -202,6 +208,8 @@ const InfluenceDetails = () => {
             </div>
           ))}
         </div>
+      ) : itemData && hasReels && caseData ? (
+        <CaseStudy caseData={caseData} loading={false} />
       ) : itemData ? (
         <div className="px-4 md:px-10 pb-10 pt-28">
           <div className="space-y-12">
