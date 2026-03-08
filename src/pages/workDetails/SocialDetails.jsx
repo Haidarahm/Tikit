@@ -413,7 +413,7 @@ const SocialDetails = () => {
       )}
 
       <ContactUs />
-      <Footer />
+      
     </div>
   );
 };

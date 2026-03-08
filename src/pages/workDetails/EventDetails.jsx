@@ -254,7 +254,7 @@ const EventDetails = () => {
       )}
 
       <ContactUs />
-      <Footer />
+      
     </div>
   );
 };

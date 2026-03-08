@@ -117,7 +117,7 @@ const CreativeDetails = () => {
       )}
 
       <ContactUs />
-      <Footer />
+      
     </div>
   );
 };

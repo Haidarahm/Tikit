@@ -71,7 +71,7 @@ const CaseDetails = () => {
       <Images images={caseData?.images} />
       <CaseStudy caseData={caseData} videos={caseData?.videos} />
       <ContactUs />
-      <Footer />
+      
     </section>
   );
 };

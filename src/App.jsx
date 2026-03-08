@@ -13,6 +13,7 @@ import { ToastContainer } from "./components/ui/Toast";
 import AIAssistButton from "./components/AIAssistButton";
 import { IntroProvider } from "./store/IntroContext";
 import ErrorBoundary from "./components/ErrorBoundary";
+import Footer from "./components/Footer";
 
 // Lazy load components
 const NewsletterPopup = lazy(() => import("./components/NewsletterPopup"));
@@ -139,6 +140,7 @@ const Layout = () => {
         <Outlet />
       </main>
     </div>
+    <Footer />
   </>
   );
 };

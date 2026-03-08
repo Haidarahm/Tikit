@@ -231,7 +231,7 @@ For data protection inquiries, please email Holla@tikit.ae with "Privacy" in the
         </div>
       </section>
 
-      <Footer />
+      
     </div>
   );
 };

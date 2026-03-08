@@ -49,7 +49,7 @@ export const Blogs = () => {
       <NewsHero />
       <Content />
       <ContactUs />
-      <Footer />
+      
     </main>
   );
 };

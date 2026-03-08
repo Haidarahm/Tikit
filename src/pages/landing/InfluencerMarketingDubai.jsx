@@ -269,7 +269,7 @@ const InfluencerMarketingDubai = () => {
         title="FAQ: Influencer Marketing in Dubai"
       />
 
-      <Footer />
+      
     </div>
   );
 };

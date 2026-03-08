@@ -77,7 +77,7 @@ const AboutUs = () => {
       <Growth />
       <Team />
       <ContactUs />
-      <Footer />
+      
     </div>
   );
 };

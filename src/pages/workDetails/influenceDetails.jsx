@@ -382,7 +382,7 @@ const InfluenceDetails = () => {
       )}
 
       <ContactUs />
-      <Footer />
+      
     </div>
   );
 };

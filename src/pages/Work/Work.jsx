@@ -287,7 +287,7 @@ const Work = () => {
         />
       )}
       <ContactUs />
-      <Footer />
+      
     </div>
   );
 };

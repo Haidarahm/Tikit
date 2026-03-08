@@ -250,7 +250,7 @@ const InfluencerMarketingSaudiArabia = () => {
         title="FAQ: Influencer Marketing in Saudi Arabia"
       />
 
-      <Footer />
+      
     </div>
   );
 };

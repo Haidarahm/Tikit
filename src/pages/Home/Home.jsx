@@ -184,7 +184,7 @@ function Home() {
         <PinnedSection />
         <Blogs />
         <ContactUs />
-        <Footer />
+        
       </div>
     </>
   );

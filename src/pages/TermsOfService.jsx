@@ -170,7 +170,7 @@ The Burlington Tower, Marasi Drive, Dubai – Office 309
         </div>
       </section>
 
-      <Footer />
+      
     </div>
   );
 };
