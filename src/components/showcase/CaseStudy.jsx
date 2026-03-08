@@ -106,7 +106,7 @@ const CaseStudy = ({ caseData, videos: videosFromProps }) => {
         videos: apiVideos,
       },
     };
-  }, [caseData, videosFromProps]);
+  }, [caseData, videosFromProps, defaultSectionContent]);
 
   // Scroll listener for active section detection (RAF-throttled, batched reads)
   useEffect(() => {

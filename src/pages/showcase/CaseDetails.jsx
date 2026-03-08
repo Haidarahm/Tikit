@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import Hero from "./Hero";
-import CaseNumbers from "./CaseNumbers";
-import Images from "./Images";
-import CaseStudy from "./CaseStudy";
+import Hero from "../../components/showcase/Hero";
+import CaseNumbers from "../../components/showcase/CaseNumbers";
+import Images from "../../components/showcase/Images";
+import CaseStudy from "../../components/showcase/CaseStudy";
 import ContactUs from "../Home/ContactUs";
 import Footer from "../../components/Footer";
 import SEOHead from "../../components/SEOHead";

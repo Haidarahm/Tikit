@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import CountUp from "../../components/CountUp";
+import CountUp from "../CountUp";
 import { useI18nLanguage } from "../../store/I18nLanguageContext";
 import { useTranslation } from "react-i18next";
 
