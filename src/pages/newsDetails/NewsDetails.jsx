@@ -283,11 +283,12 @@ const NewsDetails = () => {
                   )}
                 </div>
 
-                {/* Description */}
+                {/* Description (HTML from backend: p, ul, ol, li, a, i, b) */}
                 {paragraph.description && (
-                  <p className="paragraph-description text-sm sm:text-base md:text-lg text-[var(--foreground)]/80 leading-relaxed mb-6 sm:mb-8 md:mb-10 lg:mb-12">
-                    {paragraph.description}
-                  </p>
+                  <div
+                    className="paragraph-description news-detail-html text-sm sm:text-base md:text-lg text-[var(--foreground)]/80 leading-relaxed mb-6 sm:mb-8 md:mb-10 lg:mb-12 [&_p]:mb-4 [&_p:last-child]:mb-0 [&_ul]:list-disc [&_ul]:pl-6 sm:[&_ul]:pl-8 [&_ul]:my-4 [&_ul]:space-y-1 [&_ol]:list-decimal [&_ol]:pl-6 sm:[&_ol]:pl-8 [&_ol]:my-4 [&_ol]:space-y-1 [&_li]:mb-1 [&_li_p]:mb-1 [&_li_p:last-child]:mb-0 [&_a]:text-[var(--secondary)] [&_a]:underline [&_a]:underline-offset-2 [&_a]:hover:opacity-90 [&_a]:break-words [&_i]:italic [&_b]:font-bold"
+                    dangerouslySetInnerHTML={{ __html: paragraph.description }}
+                  />
                 )}
 
                 {/* Images Container - Different layouts based on image count */}
