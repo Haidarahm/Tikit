@@ -86,14 +86,14 @@ const PaidAdsManagement = () => {
         title="Paid Ads Management Dubai | Google & Social Media Ads Agency"
         description="Expert paid advertising management in Dubai. Google Ads, Facebook Ads, LinkedIn Ads, and TikTok Ads campaigns optimized for maximum ROI and conversions."
         keywords="paid ads management Dubai, Google Ads agency UAE, Facebook Ads Dubai, PPC management, social media advertising Dubai, LinkedIn Ads agency"
-        canonicalUrl="/services/digital-marketing-agency-dubai/paid-ads-management"
+        canonicalUrl="/digital-marketing-agency-dubai/paid-ads-management"
         serviceType="Paid Ads Management"
         faqItems={faqItems}
         breadcrumbs={[
           { name: "Home", url: "/" },
           { name: "Services", url: "/services" },
-          { name: "Digital Marketing", url: "/services/digital-marketing-agency-dubai" },
-          { name: "Paid Ads Management", url: "/services/digital-marketing-agency-dubai/paid-ads-management" },
+          { name: "Digital Marketing", url: "/digital-marketing-agency-dubai" },
+          { name: "Paid Ads Management", url: "/digital-marketing-agency-dubai/paid-ads-management" },
         ]}
       />
 

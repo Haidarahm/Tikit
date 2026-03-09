@@ -1250,7 +1250,7 @@
                 "breadcrumbs": [
                     { "name": "Accueil", "url": "/" },
                     { "name": "Services", "url": "/services" },
-                    { "name": "Agence de Marque Dubaï", "url": "/services/branding-agency-dubai" }
+                    { "name": "Agence de Marque Dubaï", "url": "/branding-agency-dubai" }
                 ],
                 "hero": {
                     "badge": "✦ Les Bâtisseurs de Marques à Dubaï",
@@ -1317,10 +1317,10 @@
                     "desc": "Du premier brief au déploiement final — explorez nos services de marque spécialisés conçus pour le marché des EAU.",
                     "learnMore": "En savoir plus",
                     "items": [
-                        { "title": "Stratégie de Marque", "desc": "Raison d'être, positionnement, définition d'audience et cadre de messagerie — le socle sur lequel toute grande marque est construite.", "href": "/services/branding-agency-dubai/brand-strategy" },
-                        { "title": "Conception d'Identité de Marque", "desc": "Logo, palette de couleurs, typographie, iconographie et document complet de lignes directrices de marque bilingue.", "href": "/services/branding-agency-dubai/brand-identity-design" },
-                        { "title": "Services de Rebranding", "desc": "Faites évoluer votre marque sans perdre ce que vous avez déjà gagné. Nous protégeons la valeur tout en résolvant ce qui vous retient.", "href": "/services/branding-agency-dubai/rebranding-services" },
-                        { "title": "Positionnement de Marque", "desc": "Définissez où se situe votre marque sur le marché, pourquoi les clients doivent vous choisir et comment occuper cet espace de façon cohérente.", "href": "/services/branding-agency-dubai/brand-positioning" }
+                        { "title": "Stratégie de Marque", "desc": "Raison d'être, positionnement, définition d'audience et cadre de messagerie — le socle sur lequel toute grande marque est construite.", "href": "/branding-agency-dubai/brand-strategy" },
+                        { "title": "Conception d'Identité de Marque", "desc": "Logo, palette de couleurs, typographie, iconographie et document complet de lignes directrices de marque bilingue.", "href": "/branding-agency-dubai/brand-identity-design" },
+                        { "title": "Services de Rebranding", "desc": "Faites évoluer votre marque sans perdre ce que vous avez déjà gagné. Nous protégeons la valeur tout en résolvant ce qui vous retient.", "href": "/branding-agency-dubai/rebranding-services" },
+                        { "title": "Positionnement de Marque", "desc": "Définissez où se situe votre marque sur le marché, pourquoi les clients doivent vous choisir et comment occuper cet espace de façon cohérente.", "href": "/branding-agency-dubai/brand-positioning" }
                     ]
                 },
                 "faqTitle": "Questions Fréquentes",

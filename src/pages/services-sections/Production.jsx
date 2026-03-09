@@ -50,7 +50,7 @@ const Production = () => {
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
-    "@id": "https://tikit.ae/services/production#service",
+    "@id": "https://tikit.ae/production#service",
     "name": "Video Production Services",
     "description": "Video production is the process of creating video content from initial concept through final delivery. It encompasses pre-production planning, on-set filming with professional cameras and equipment, and post-production editing including color grading, sound design, and visual effects to produce polished content for commercials, social media, corporate communications, and brand storytelling.",
     "provider": {
@@ -201,14 +201,14 @@ const Production = () => {
         title="Video Production Services UAE | Professional Video Agency Dubai"
         description="Professional video production services in UAE. We create commercials, corporate videos, social media content, and photography with 4K/8K cinema cameras, drones, and expert editing. Full-service production from concept to delivery."
         keywords="video production UAE, video production company Dubai, commercial production UAE, corporate video Dubai, photography services UAE, video editing Dubai, drone videography UAE, live streaming Dubai"
-        canonicalUrl="/services/production"
+        canonicalUrl="/production"
         serviceType="Video Production"
         structuredData={serviceSchema}
         faqItems={faqItems}
         breadcrumbs={[
           { name: "Home", url: "/" },
           { name: "Services", url: "/services" },
-          { name: "Production", url: "/services/production" }
+          { name: "Production", url: "/production" }
         ]}
       />
 

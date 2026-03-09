@@ -11,19 +11,19 @@ import { useI18nLanguage } from "../../../../store/I18nLanguageContext";
 const SERVICES_CONFIG = {
   performanceMarketing: {
     icon: HiChartBar,
-    path: "/services/digital-marketing-agency-dubai/performance-marketing",
+    path: "/digital-marketing-agency-dubai/performance-marketing",
   },
   seoServices: {
     icon: HiSearchCircle,
-    path: "/services/digital-marketing-agency-dubai/seo-services",
+    path: "/digital-marketing-agency-dubai/seo-services",
   },
   paidAds: {
     icon: HiCurrencyDollar,
-    path: "/services/digital-marketing-agency-dubai/paid-ads-management",
+    path: "/digital-marketing-agency-dubai/paid-ads-management",
   },
   conversionOptimization: {
     icon: HiTrendingUp,
-    path: "/services/digital-marketing-agency-dubai/conversion-optimization",
+    path: "/digital-marketing-agency-dubai/conversion-optimization",
   },
 };
 
@@ -44,7 +44,7 @@ const DMRelatedServices = ({ current }) => {
         </h2>
         <div className="dm-link-grid mt-10">
           <Link
-            to="/services/digital-marketing-agency-dubai"
+            to="/digital-marketing-agency-dubai"
             className="dm-link-card"
           >
             <div className="dm-link-card-icon">

@@ -6,8 +6,18 @@ export function useHeroScrollColor() {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    // Keep navbar text white across the immersive services experience
-    if (pathname.startsWith("/services")) {
+    // Keep navbar text white across the immersive services experience (index + section pages)
+    const servicePaths = [
+      "/services",
+      "/influencer-marketing-agency-dubai",
+      "/social-media-management",
+      "/production",
+      "/branding-agency-dubai",
+      "/web-development-dubai",
+      "/digital-marketing-agency-dubai",
+    ];
+    const isServicePage = servicePaths.some((p) => pathname === p || pathname.startsWith(p + "/"));
+    if (isServicePage) {
       setTextColor("text-white");
       return () => {};
     }

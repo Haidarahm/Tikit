@@ -176,24 +176,24 @@ function App() {
               <Route path="/work/creative/:slug" element={<CreativeDetails />} />
               <Route path="/work/event/:slug" element={<EventDetails />} />
               {/* Service Sections - Influencer Marketing Hub & Sub-pages */}
-              <Route path="/services/influencer-marketing-agency-dubai" element={<InfluencerMarketing />} />
-              <Route path="/services/influencer-marketing-agency-dubai/campaign-management" element={<CampaignManagement />} />
-              <Route path="/services/influencer-marketing-agency-dubai/micro-influencer-marketing-uae" element={<MicroInfluencerMarketing />} />
-              <Route path="/services/influencer-marketing-agency-dubai/luxury-influencer-marketing" element={<LuxuryInfluencerMarketing />} />
-              <Route path="/services/influencer-marketing-agency-dubai/roi-analytics" element={<ROIAnalytics />} />
-              <Route path="/services/influencer-marketing-agency-dubai/instagram-influencer-marketing" element={<InstagramInfluencerMarketing />} />
-              <Route path="/services/influencer-marketing-agency-dubai/tiktok-influencer-marketing" element={<TiktokInfluencerMarketing />} />
-              <Route path="/services/influencer-marketing-agency-dubai/influencer-marketing-cost-uae" element={<InfluencerMarketingCost />} />
-              <Route path="/services/social-media-management" element={<SocialMediaManagement />} />
-              <Route path="/services/production" element={<Production />} />
-              <Route path="/services/branding-agency-dubai" element={<Branding />} />
-              <Route path="/services/web-development-dubai" element={<WebDevelopment />} />
+              <Route path="/influencer-marketing-agency-dubai" element={<InfluencerMarketing />} />
+              <Route path="/influencer-marketing-agency-dubai/campaign-management" element={<CampaignManagement />} />
+              <Route path="/influencer-marketing-agency-dubai/micro-influencer-marketing-uae" element={<MicroInfluencerMarketing />} />
+              <Route path="/influencer-marketing-agency-dubai/luxury-influencer-marketing" element={<LuxuryInfluencerMarketing />} />
+              <Route path="/influencer-marketing-agency-dubai/roi-analytics" element={<ROIAnalytics />} />
+              <Route path="/influencer-marketing-agency-dubai/instagram-influencer-marketing" element={<InstagramInfluencerMarketing />} />
+              <Route path="/influencer-marketing-agency-dubai/tiktok-influencer-marketing" element={<TiktokInfluencerMarketing />} />
+              <Route path="/influencer-marketing-agency-dubai/influencer-marketing-cost-uae" element={<InfluencerMarketingCost />} />
+              <Route path="/social-media-management" element={<SocialMediaManagement />} />
+              <Route path="/production" element={<Production />} />
+              <Route path="/branding-agency-dubai" element={<Branding />} />
+              <Route path="/web-development-dubai" element={<WebDevelopment />} />
               {/* Service Sections - Digital Marketing Hub & Sub-pages */}
-              <Route path="/services/digital-marketing-agency-dubai" element={<DigitalMarketing />} />
-              <Route path="/services/digital-marketing-agency-dubai/performance-marketing" element={<PerformanceMarketing />} />
-              <Route path="/services/digital-marketing-agency-dubai/seo-services" element={<SEOServices />} />
-              <Route path="/services/digital-marketing-agency-dubai/paid-ads-management" element={<PaidAdsManagement />} />
-              <Route path="/services/digital-marketing-agency-dubai/conversion-optimization" element={<ConversionOptimization />} />
+              <Route path="/digital-marketing-agency-dubai" element={<DigitalMarketing />} />
+              <Route path="/digital-marketing-agency-dubai/performance-marketing" element={<PerformanceMarketing />} />
+              <Route path="/digital-marketing-agency-dubai/seo-services" element={<SEOServices />} />
+              <Route path="/digital-marketing-agency-dubai/paid-ads-management" element={<PaidAdsManagement />} />
+              <Route path="/digital-marketing-agency-dubai/conversion-optimization" element={<ConversionOptimization />} />
               {/* AI-Targeted Landing Pages */}
               <Route path="/influencer-marketing-dubai" element={<InfluencerMarketingDubai />} />
               <Route path="/influencer-marketing-saudi-arabia" element={<InfluencerMarketingSaudiArabia />} />

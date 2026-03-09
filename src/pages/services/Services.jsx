@@ -90,7 +90,7 @@ const Services = () => {
       normalized.includes("marketing dinfluence") ||
       normalized.includes("marketing d'influence")
     ) {
-      return "/services/influencer-marketing-agency-dubai";
+      return "/influencer-marketing-agency-dubai";
     }
     // Social Media Marketing/Management
     if (
@@ -103,7 +103,7 @@ const Services = () => {
       normalized.includes("gestion des médias sociaux") ||
       normalized.includes("marketing des reseaux sociaux")
     ) {
-      return "/services/social-media-management";
+      return "/social-media-management";
     }
     // Branding
     if (
@@ -113,7 +113,7 @@ const Services = () => {
       normalized.includes("identite de marque") ||
       normalized.includes("identité de marque")
     ) {
-      return "/services/branding-agency-dubai";
+      return "/branding-agency-dubai";
     }
     // Production
     if (
@@ -121,7 +121,7 @@ const Services = () => {
       titleLower.includes("الإنتاج") ||
       titleLower.includes("إنتاج")
     ) {
-      return "/services/production";
+      return "/production";
     }
     // Digital Marketing
     if (
@@ -130,7 +130,7 @@ const Services = () => {
       normalized.includes("marketing digital") ||
       normalized.includes("marketing numerique")
     ) {
-      return "/services/digital-marketing-agency-dubai";
+      return "/digital-marketing-agency-dubai";
     }
     return null; // No route for Web Development
   };

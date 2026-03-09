@@ -57,13 +57,13 @@ const subServiceIcons = [
 ];
 
 const subServiceHrefs = [
-  "/services/influencer-marketing-agency-dubai/campaign-management",
-  "/services/influencer-marketing-agency-dubai/micro-influencer-marketing-uae",
-  "/services/influencer-marketing-agency-dubai/luxury-influencer-marketing",
-  "/services/influencer-marketing-agency-dubai/roi-analytics",
-  "/services/influencer-marketing-agency-dubai/instagram-influencer-marketing",
-  "/services/influencer-marketing-agency-dubai/tiktok-influencer-marketing",
-  "/services/influencer-marketing-agency-dubai/influencer-marketing-cost-uae",
+  "/influencer-marketing-agency-dubai/campaign-management",
+  "/influencer-marketing-agency-dubai/micro-influencer-marketing-uae",
+  "/influencer-marketing-agency-dubai/luxury-influencer-marketing",
+  "/influencer-marketing-agency-dubai/roi-analytics",
+  "/influencer-marketing-agency-dubai/instagram-influencer-marketing",
+  "/influencer-marketing-agency-dubai/tiktok-influencer-marketing",
+  "/influencer-marketing-agency-dubai/influencer-marketing-cost-uae",
 ];
 
 function revealChildren(containerRef, selector, fromVars = {}, staggerVal = 0.1) {
@@ -120,7 +120,7 @@ const InfluencerMarketing = () => {
   const breadcrumbs = [
     { name: t("serviceSections.influencerMarketing.breadcrumb.home", { defaultValue: "Home" }), url: "/" },
     { name: t("serviceSections.influencerMarketing.breadcrumb.services", { defaultValue: "Services" }), url: "/services" },
-    { name: t("serviceSections.influencerMarketing.seo.serviceType"), url: "/services/influencer-marketing-agency-dubai" },
+    { name: t("serviceSections.influencerMarketing.seo.serviceType"), url: "/influencer-marketing-agency-dubai" },
   ];
 
   const dir = isRtl ? "rtl" : "ltr";

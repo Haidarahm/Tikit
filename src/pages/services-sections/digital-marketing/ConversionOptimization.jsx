@@ -87,14 +87,14 @@ const ConversionOptimization = () => {
         title="Conversion Rate Optimization Dubai | CRO Agency UAE"
         description="Expert conversion rate optimization services in Dubai. We use A/B testing, UX analysis, and data-driven strategies to maximize conversions and revenue from your existing traffic."
         keywords="conversion rate optimization Dubai, CRO agency UAE, A/B testing Dubai, UX optimization, landing page optimization, conversion optimization agency"
-        canonicalUrl="/services/digital-marketing-agency-dubai/conversion-optimization"
+        canonicalUrl="/digital-marketing-agency-dubai/conversion-optimization"
         serviceType="Conversion Rate Optimization"
         faqItems={faqItems}
         breadcrumbs={[
           { name: "Home", url: "/" },
           { name: "Services", url: "/services" },
-          { name: "Digital Marketing", url: "/services/digital-marketing-agency-dubai" },
-          { name: "Conversion Optimization", url: "/services/digital-marketing-agency-dubai/conversion-optimization" },
+          { name: "Digital Marketing", url: "/digital-marketing-agency-dubai" },
+          { name: "Conversion Optimization", url: "/digital-marketing-agency-dubai/conversion-optimization" },
         ]}
       />
 

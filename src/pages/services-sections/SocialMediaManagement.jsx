@@ -47,7 +47,7 @@ const SocialMediaManagement = () => {
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
-    "@id": "https://tikit.ae/services/social-media-management#service",
+    "@id": "https://tikit.ae/social-media-management#service",
     "name": "Social Media Management Services",
     "description": "Social media management is the ongoing process of creating and publishing content, monitoring engagement, and growing an audience across social media platforms. This service includes content strategy, post creation, community management, analytics tracking, and paid social advertising to build brand presence and drive business results.",
     "provider": {
@@ -206,14 +206,14 @@ const SocialMediaManagement = () => {
         title="Social Media Management Services UAE | Expert Social Media Agency"
         description="Professional social media management services in UAE. We create content, manage communities, and grow your brand across Instagram, TikTok, Facebook, LinkedIn. Data-driven strategies for measurable results."
         keywords="social media management UAE, social media agency Dubai, Instagram management, TikTok marketing UAE, Facebook management, LinkedIn marketing, social media marketing Dubai, content creation UAE"
-        canonicalUrl="/services/social-media-management"
+        canonicalUrl="/social-media-management"
         serviceType="Social Media Management"
         structuredData={serviceSchema}
         faqItems={faqItems}
         breadcrumbs={[
           { name: "Home", url: "/" },
           { name: "Services", url: "/services" },
-          { name: "Social Media Management", url: "/services/social-media-management" }
+          { name: "Social Media Management", url: "/social-media-management" }
         ]}
       />
 

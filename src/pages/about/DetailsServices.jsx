@@ -9,12 +9,12 @@ gsap.registerPlugin(ScrollTrigger);
 
 // Map service keys to internal routes (only services with dedicated pages)
 const SERVICE_ROUTES = {
-  influencerMarketing: "/services/influencer-marketing-agency-dubai",
-  brandStrategy: "/services/branding-agency-dubai",
-  socialMedia: "/services/social-media-management",
-  creativeDesign: "/services/branding-agency-dubai",
-  contentCreation: "/services/production",
-  digitalMarketing: "/services",
+  influencerMarketing: "/influencer-marketing-agency-dubai",
+  brandStrategy: "/branding-agency-dubai",
+  socialMedia: "/social-media-management",
+  creativeDesign: "/branding-agency-dubai",
+  contentCreation: "/production",
+  digitalMarketing: "/digital-marketing-agency-dubai",
 };
 
 const serviceKeys = [

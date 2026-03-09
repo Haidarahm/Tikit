@@ -1344,7 +1344,7 @@
                 "breadcrumbs": [
                     { "name": "الرئيسية", "url": "/" },
                     { "name": "الخدمات", "url": "/services" },
-                    { "name": "وكالة الهوية التجارية دبي", "url": "/services/branding-agency-dubai" }
+                    { "name": "وكالة الهوية التجارية دبي", "url": "/branding-agency-dubai" }
                 ],
                 "hero": {
                     "badge": "✦ بناة العلامات في دبي",
@@ -1411,10 +1411,10 @@
                     "desc": "من الموجز الأول إلى النشر النهائي — استكشف خدمات الهوية المتخصصة المبنية لسوق الإمارات.",
                     "learnMore": "اعرف المزيد",
                     "items": [
-                        { "title": "استراتيجية العلامة", "desc": "الغرض والموضع وتحديد الجمهور وإطار الرسائل — الأساس الذي تُبنى عليه كل علامة عظيمة.", "href": "/services/branding-agency-dubai/brand-strategy" },
-                        { "title": "تصميم هوية العلامة", "desc": "شعار ولوحة ألوان وطباعة وأيقونات ووثيقة إرشادات علامة ثنائية اللغة كاملة.", "href": "/services/branding-agency-dubai/brand-identity-design" },
-                        { "title": "خدمات إعادة الهوية", "desc": "طوّر علامتك دون خسارة ما كسبته. نحافظ على القيمة بينما نحل ما يعيقك.", "href": "/services/branding-agency-dubai/rebranding-services" },
-                        { "title": "موضع العلامة", "desc": "حدد مكان علامتك في السوق ولماذا يختارك العملاء وكيف تمتلك تلك المساحة بثبات.", "href": "/services/branding-agency-dubai/brand-positioning" }
+                        { "title": "استراتيجية العلامة", "desc": "الغرض والموضع وتحديد الجمهور وإطار الرسائل — الأساس الذي تُبنى عليه كل علامة عظيمة.", "href": "/branding-agency-dubai/brand-strategy" },
+                        { "title": "تصميم هوية العلامة", "desc": "شعار ولوحة ألوان وطباعة وأيقونات ووثيقة إرشادات علامة ثنائية اللغة كاملة.", "href": "/branding-agency-dubai/brand-identity-design" },
+                        { "title": "خدمات إعادة الهوية", "desc": "طوّر علامتك دون خسارة ما كسبته. نحافظ على القيمة بينما نحل ما يعيقك.", "href": "/branding-agency-dubai/rebranding-services" },
+                        { "title": "موضع العلامة", "desc": "حدد مكان علامتك في السوق ولماذا يختارك العملاء وكيف تمتلك تلك المساحة بثبات.", "href": "/branding-agency-dubai/brand-positioning" }
                     ]
                 },
                 "faqTitle": "الأسئلة الشائعة",

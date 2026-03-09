@@ -14,7 +14,7 @@ import {
 import { HiMegaphone, HiSparkles, HiCurrencyDollar, HiPresentationChartBar } from "react-icons/hi2";
 import { FaInstagram, FaTiktok, FaGem, FaCrown } from "react-icons/fa";
 
-const BASE = "/services/influencer-marketing-agency-dubai";
+const BASE = "/influencer-marketing-agency-dubai";
 const TK = "serviceSections.influencerMarketing.subPages.luxuryInfluencer";
 
 const LuxuryInfluencerMarketing = () => {

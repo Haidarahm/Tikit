@@ -27,22 +27,22 @@ const SUB_SERVICES = [
   {
     key: "performanceMarketing",
     icon: HiChartBar,
-    path: "/services/digital-marketing-agency-dubai/performance-marketing",
+    path: "/digital-marketing-agency-dubai/performance-marketing",
   },
   {
     key: "seoServices",
     icon: HiSearchCircle,
-    path: "/services/digital-marketing-agency-dubai/seo-services",
+    path: "/digital-marketing-agency-dubai/seo-services",
   },
   {
     key: "paidAds",
     icon: HiCurrencyDollar,
-    path: "/services/digital-marketing-agency-dubai/paid-ads-management",
+    path: "/digital-marketing-agency-dubai/paid-ads-management",
   },
   {
     key: "conversionOptimization",
     icon: HiTrendingUp,
-    path: "/services/digital-marketing-agency-dubai/conversion-optimization",
+    path: "/digital-marketing-agency-dubai/conversion-optimization",
   },
 ];
 
@@ -61,7 +61,7 @@ const DigitalMarketing = () => {
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
-    "@id": "https://tikit.ae/services/digital-marketing-agency-dubai#service",
+    "@id": "https://tikit.ae/digital-marketing-agency-dubai#service",
     name: "Digital Marketing Services Dubai",
     description: "Comprehensive digital marketing services in Dubai including performance marketing, SEO, paid ads management, and conversion optimization. Data-driven strategies for measurable growth.",
     provider: {
@@ -156,14 +156,14 @@ const DigitalMarketing = () => {
         title="Digital Marketing Agency Dubai | Performance, SEO & Paid Ads"
         description="Leading digital marketing agency in Dubai. We deliver performance marketing, SEO services, paid ads management, and conversion optimization for measurable business growth across the UAE."
         keywords="digital marketing agency Dubai, performance marketing UAE, SEO services Dubai, paid ads management, conversion optimization, digital marketing company UAE, PPC agency Dubai"
-        canonicalUrl="/services/digital-marketing-agency-dubai"
+        canonicalUrl="/digital-marketing-agency-dubai"
         serviceType="Digital Marketing"
         structuredData={serviceSchema}
         faqItems={faqItems}
         breadcrumbs={[
           { name: "Home", url: "/" },
           { name: "Services", url: "/services" },
-          { name: "Digital Marketing", url: "/services/digital-marketing-agency-dubai" },
+          { name: "Digital Marketing", url: "/digital-marketing-agency-dubai" },
         ]}
       />
 

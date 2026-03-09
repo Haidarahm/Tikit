@@ -88,14 +88,14 @@ const SEOServicesPage = () => {
         title="SEO Services Dubai | Search Engine Optimization Agency UAE"
         description="Professional SEO services in Dubai. We boost organic traffic with technical SEO, on-page optimization, link building, and content strategy for sustainable search engine rankings."
         keywords="SEO services Dubai, search engine optimization UAE, SEO agency Dubai, technical SEO, link building UAE, organic traffic growth, SEO company Dubai"
-        canonicalUrl="/services/digital-marketing-agency-dubai/seo-services"
+        canonicalUrl="/digital-marketing-agency-dubai/seo-services"
         serviceType="SEO Services"
         faqItems={faqItems}
         breadcrumbs={[
           { name: "Home", url: "/" },
           { name: "Services", url: "/services" },
-          { name: "Digital Marketing", url: "/services/digital-marketing-agency-dubai" },
-          { name: "SEO Services", url: "/services/digital-marketing-agency-dubai/seo-services" },
+          { name: "Digital Marketing", url: "/digital-marketing-agency-dubai" },
+          { name: "SEO Services", url: "/digital-marketing-agency-dubai/seo-services" },
         ]}
       />
 

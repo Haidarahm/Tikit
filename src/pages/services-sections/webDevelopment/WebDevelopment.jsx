@@ -8,7 +8,7 @@ import "./WebDevelopment.css";
 const breadcrumbs = [
   { name: "Home", url: "/" },
   { name: "Services", url: "/services" },
-  { name: "Web Development Dubai", url: "/services/web-development-dubai" },
+  { name: "Web Development Dubai", url: "/web-development-dubai" },
 ];
 
 const WebDevelopment = () => {

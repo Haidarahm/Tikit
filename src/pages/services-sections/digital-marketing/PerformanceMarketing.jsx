@@ -83,14 +83,14 @@ const PerformanceMarketing = () => {
         title="Performance Marketing Dubai | Data-Driven Growth Agency"
         description="Expert performance marketing services in Dubai. We deliver ROI-focused campaigns with data-driven strategies across paid media, programmatic advertising, and growth marketing."
         keywords="performance marketing Dubai, growth marketing UAE, data-driven marketing agency, ROI-focused marketing, programmatic advertising Dubai"
-        canonicalUrl="/services/digital-marketing-agency-dubai/performance-marketing"
+        canonicalUrl="/digital-marketing-agency-dubai/performance-marketing"
         serviceType="Performance Marketing"
         faqItems={faqItems}
         breadcrumbs={[
           { name: "Home", url: "/" },
           { name: "Services", url: "/services" },
-          { name: "Digital Marketing", url: "/services/digital-marketing-agency-dubai" },
-          { name: "Performance Marketing", url: "/services/digital-marketing-agency-dubai/performance-marketing" },
+          { name: "Digital Marketing", url: "/digital-marketing-agency-dubai" },
+          { name: "Performance Marketing", url: "/digital-marketing-agency-dubai/performance-marketing" },
         ]}
       />
 

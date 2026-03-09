@@ -21,12 +21,12 @@ const SERVICE_IMAGES = [
 ];
 
 const SERVICE_ROUTES = [
-  "/services/influencer-marketing-agency-dubai",
-  "/services/social-media-management",
-  "/services/production",
-  "/services/branding-agency-dubai",
-  "/services/digital-marketing-agency-dubai",
-  "/services/web-development-dubai",
+  "/influencer-marketing-agency-dubai",
+  "/social-media-management",
+  "/production",
+  "/branding-agency-dubai",
+  "/digital-marketing-agency-dubai",
+  "/web-development-dubai",
 ];
 
 const ServiceCard = memo(({ service, index, onClick }) => (

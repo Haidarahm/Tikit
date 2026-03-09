@@ -1352,7 +1352,7 @@
                 "breadcrumbs": [
                     { "name": "Home", "url": "/" },
                     { "name": "Services", "url": "/services" },
-                    { "name": "Branding Agency Dubai", "url": "/services/branding-agency-dubai" }
+                    { "name": "Branding Agency Dubai", "url": "/branding-agency-dubai" }
                 ],
                 "hero": {
                     "badge": "✦ Dubai's Brand Builders",
@@ -1419,10 +1419,10 @@
                     "desc": "From first brief to final rollout — explore our specialist branding services built for the UAE market.",
                     "learnMore": "Learn more",
                     "items": [
-                        { "title": "Brand Strategy", "desc": "Purpose, positioning, audience definition, and messaging framework — the foundation every great brand is built on.", "href": "/services/branding-agency-dubai/brand-strategy" },
-                        { "title": "Brand Identity Design", "desc": "Logo, colour palette, typography, iconography, and a complete bilingual brand guidelines document.", "href": "/services/branding-agency-dubai/brand-identity-design" },
-                        { "title": "Rebranding Services", "desc": "Evolve your brand without losing what you've already earned. We protect equity while resolving what's holding you back.", "href": "/services/branding-agency-dubai/rebranding-services" },
-                        { "title": "Brand Positioning", "desc": "Define where your brand stands in the market, why customers should choose you, and how to own that space consistently.", "href": "/services/branding-agency-dubai/brand-positioning" }
+                        { "title": "Brand Strategy", "desc": "Purpose, positioning, audience definition, and messaging framework — the foundation every great brand is built on.", "href": "/branding-agency-dubai/brand-strategy" },
+                        { "title": "Brand Identity Design", "desc": "Logo, colour palette, typography, iconography, and a complete bilingual brand guidelines document.", "href": "/branding-agency-dubai/brand-identity-design" },
+                        { "title": "Rebranding Services", "desc": "Evolve your brand without losing what you've already earned. We protect equity while resolving what's holding you back.", "href": "/branding-agency-dubai/rebranding-services" },
+                        { "title": "Brand Positioning", "desc": "Define where your brand stands in the market, why customers should choose you, and how to own that space consistently.", "href": "/branding-agency-dubai/brand-positioning" }
                     ]
                 },
                 "faqTitle": "Frequently Asked Questions",
