@@ -75,9 +75,6 @@ const WebDevelopment = lazy(() =>
 const DigitalMarketing = lazy(() =>
   import("./pages/services-sections/digital-marketing/DigitalMarketing")
 );
-const PerformanceMarketing = lazy(() =>
-  import("./pages/services-sections/digital-marketing/PerformanceMarketing")
-);
 const SEOServices = lazy(() =>
   import("./pages/services-sections/digital-marketing/SEOServices")
 );
@@ -190,7 +187,6 @@ function App() {
               <Route path="/web-development-dubai" element={<WebDevelopment />} />
               {/* Service Sections - Digital Marketing Hub & Sub-pages */}
               <Route path="/digital-marketing-agency-dubai" element={<DigitalMarketing />} />
-              <Route path="/digital-marketing-agency-dubai/performance-marketing" element={<PerformanceMarketing />} />
               <Route path="/digital-marketing-agency-dubai/seo-services" element={<SEOServices />} />
               <Route path="/digital-marketing-agency-dubai/paid-ads-management" element={<PaidAdsManagement />} />
               <Route path="/digital-marketing-agency-dubai/conversion-optimization" element={<ConversionOptimization />} />

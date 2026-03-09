@@ -1374,10 +1374,6 @@
                 "title": "Nos Solutions Marketing Digital",
                 "subtitle": "Services complets de marketing digital adaptés aux entreprises de Dubaï et des EAU",
                 "learnMore": "En Savoir Plus",
-                "performanceMarketing": {
-                    "title": "Marketing de Performance",
-                    "description": "Campagnes axées sur le ROI avec stratégies data-driven via médias payants et publicité programmatique."
-                },
                 "seoServices": {
                     "title": "Services SEO",
                     "description": "Boostez le trafic organique avec SEO technique, optimisation on-page et stratégies de contenu."
@@ -1422,9 +1418,9 @@
             },
             "faqTitle": "FAQ Marketing Digital",
             "faqItems": [
-                { "question": "Quels services de marketing digital proposez-vous à Dubaï ?", "answer": "Nous proposons des services complets incluant marketing de performance, SEO, gestion publicitaire, optimisation des conversions, marketing de contenu et rapports analytiques." },
+                { "question": "Quels services de marketing digital proposez-vous à Dubaï ?", "answer": "Nous proposons des services complets incluant SEO, gestion publicitaire, optimisation des conversions, marketing de contenu et rapports analytiques." },
                 { "question": "Combien coûte le marketing digital à Dubaï ?", "answer": "Les coûts varient selon les services. Les forfaits SEO démarrent à 5 000-15 000 AED/mois. La gestion publicitaire 3 000-10 000 AED/mois plus budget pub. Les forfaits complets à partir de 15 000 AED/mois." },
-                { "question": "Combien de temps pour voir des résultats ?", "answer": "La publicité payante génère des résultats en quelques jours. Le SEO montre des résultats en 3-6 mois. Les campagnes de performance atteignent un niveau optimal en 2-3 mois." },
+                { "question": "Combien de temps pour voir des résultats ?", "answer": "La publicité payante génère des résultats en quelques jours. Le SEO montre des résultats en 3-6 mois. Nous fournissons des rapports mensuels avec des indicateurs et jalons clairs." },
                 { "question": "Qu'est-ce qui fait une bonne agence de marketing digital ?", "answer": "Une bonne agence combine stratégies data-driven et exécution créative avec communication transparente et résultats mesurables." },
                 { "question": "Travaillez-vous avec des entreprises hors de Dubaï ?", "answer": "Oui, nous servons des clients aux EAU, en Arabie Saoudite et dans le Golfe." }
             ],
@@ -1432,43 +1428,6 @@
                 "title": "Prêt à Développer Votre Présence Digitale ?",
                 "description": "Créons une stratégie marketing digital data-driven qui génère des résultats mesurables.",
                 "button": "Commencer"
-            },
-            "performanceMarketing": {
-                "badge": "Marketing de Performance Dubaï",
-                "hero": { "title": "Marketing de Performance", "mainWord": "Data-Driven", "description": "Campagnes ROI-focused via médias payants, publicité programmatique et analytics avancés." },
-                "definition": {
-                    "whatIsTitle": "Qu'est-ce que le Marketing de Performance ?",
-                    "paragraph": "Le marketing de performance est une approche orientée résultats où les annonceurs ne paient que lorsque des actions spécifiques sont réalisées.",
-                    "benefitsList": ["Payez uniquement pour les résultats mesurables", "Optimisation en temps réel des campagnes", "Ciblage précis de l'audience", "Reporting transparent avec métriques ROAS", "Budgets évolutifs"]
-                },
-                "services": {
-                    "title": "Services de Marketing de Performance",
-                    "subtitle": "Solutions complètes pour les entreprises à Dubaï",
-                    "items": {
-                        "paidMedia": { "title": "Stratégie Médias Payants", "description": "Planification et gestion des campagnes payantes sur les réseaux de recherche, social et display." },
-                        "programmatic": { "title": "Publicité Programmatique", "description": "Achat publicitaire automatisé et data-driven via éditeurs et réseaux premium." },
-                        "retargeting": { "title": "Retargeting & Remarketing", "description": "Réengagez les visiteurs intéressés avec des publicités personnalisées." },
-                        "analytics": { "title": "Analytics & Attribution", "description": "Tracking avancé et modélisation d'attribution pour comprendre le parcours client." },
-                        "growthHacking": { "title": "Growth Hacking", "description": "Expérimentation rapide pour identifier les leviers de croissance les plus efficaces." },
-                        "attribution": { "title": "Attribution Multi-Touch", "description": "Comprenez la contribution de chaque canal aux conversions." }
-                    }
-                },
-                "process": {
-                    "title": "Notre Processus",
-                    "steps": {
-                        "research": { "title": "Recherche & Audit", "description": "Analyse approfondie de votre marché, concurrents et performance actuelle." },
-                        "launch": { "title": "Lancement", "description": "Configuration stratégique avec ciblage, créatifs et stratégies d'enchères optimisés." },
-                        "optimize": { "title": "Optimisation Continue", "description": "Monitoring quotidien et optimisation des enchères, audiences et créatifs." },
-                        "scale": { "title": "Scaling & Croissance", "description": "Expansion des campagnes performantes et exploration de nouveaux canaux." }
-                    }
-                },
-                "faqTitle": "FAQ Marketing de Performance",
-                "faqItems": [
-                    { "question": "Quelle différence entre marketing de performance et marketing digital ?", "answer": "Le marketing de performance est un sous-ensemble du marketing digital focalisé sur les résultats mesurables." },
-                    { "question": "Quelles plateformes utilisez-vous ?", "answer": "Google Ads, Meta Ads, LinkedIn Ads, TikTok Ads et plateformes programmatiques." },
-                    { "question": "Quel ROI puis-je espérer ?", "answer": "Nos clients voient généralement 3-5x de ROAS en 3-6 mois." },
-                    { "question": "Comment mesurez-vous le succès ?", "answer": "Nous suivons le CPA, ROAS, CTR, taux de conversion et valeur client à vie." }
-                ]
             },
             "seoServices": {
                 "badge": "Services SEO Dubaï",

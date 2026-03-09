@@ -5,7 +5,6 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { useI18nLanguage } from "../../../store/I18nLanguageContext";
 import {
-  HiChartBar,
   HiSearchCircle,
   HiCurrencyDollar,
   HiTrendingUp,
@@ -24,11 +23,6 @@ import "./digitalMarketing.css";
 gsap.registerPlugin(ScrollTrigger);
 
 const SUB_SERVICES = [
-  {
-    key: "performanceMarketing",
-    icon: HiChartBar,
-    path: "/digital-marketing-agency-dubai/performance-marketing",
-  },
   {
     key: "seoServices",
     icon: HiSearchCircle,
@@ -63,7 +57,7 @@ const DigitalMarketing = () => {
     "@type": "Service",
     "@id": "https://tikit.ae/digital-marketing-agency-dubai#service",
     name: "Digital Marketing Services Dubai",
-    description: "Comprehensive digital marketing services in Dubai including performance marketing, SEO, paid ads management, and conversion optimization. Data-driven strategies for measurable growth.",
+    description: "Comprehensive digital marketing services in Dubai including SEO, paid ads management, and conversion optimization. Data-driven strategies for measurable growth.",
     provider: {
       "@type": "Organization",
       name: "Tikit Agency",
@@ -83,7 +77,6 @@ const DigitalMarketing = () => {
       "@type": "OfferCatalog",
       name: "Digital Marketing Services",
       itemListElement: [
-        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Performance Marketing" } },
         { "@type": "Offer", itemOffered: { "@type": "Service", name: "SEO Services" } },
         { "@type": "Offer", itemOffered: { "@type": "Service", name: "Paid Ads Management" } },
         { "@type": "Offer", itemOffered: { "@type": "Service", name: "Conversion Rate Optimization" } },
@@ -154,8 +147,8 @@ const DigitalMarketing = () => {
     <div data-nav-color="black" className={`dm-page ${isRtl ? "font-cairo" : "font-hero-light"}`} dir={isRtl ? "rtl" : "ltr"}>
       <SEOHead
         title="Digital Marketing Agency Dubai | Performance, SEO & Paid Ads"
-        description="Leading digital marketing agency in Dubai. We deliver performance marketing, SEO services, paid ads management, and conversion optimization for measurable business growth across the UAE."
-        keywords="digital marketing agency Dubai, performance marketing UAE, SEO services Dubai, paid ads management, conversion optimization, digital marketing company UAE, PPC agency Dubai"
+        description="Leading digital marketing agency in Dubai. We deliver SEO services, paid ads management, and conversion optimization for measurable business growth across the UAE."
+        keywords="digital marketing agency Dubai, SEO services Dubai, paid ads management, conversion optimization, digital marketing company UAE, PPC agency Dubai"
         canonicalUrl="/digital-marketing-agency-dubai"
         serviceType="Digital Marketing"
         structuredData={serviceSchema}

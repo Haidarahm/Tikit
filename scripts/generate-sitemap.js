@@ -44,7 +44,6 @@ const servicesPages = [
   { url: '/branding-agency-dubai', changefreq: 'monthly', priority: '0.8' },
   { url: '/web-development-dubai', changefreq: 'monthly', priority: '0.8' },
   { url: '/digital-marketing-agency-dubai', changefreq: 'monthly', priority: '0.8' },
-  { url: '/digital-marketing-agency-dubai/performance-marketing', changefreq: 'monthly', priority: '0.7' },
   { url: '/digital-marketing-agency-dubai/seo-services', changefreq: 'monthly', priority: '0.7' },
   { url: '/digital-marketing-agency-dubai/paid-ads-management', changefreq: 'monthly', priority: '0.7' },
   { url: '/digital-marketing-agency-dubai/conversion-optimization', changefreq: 'monthly', priority: '0.7' },

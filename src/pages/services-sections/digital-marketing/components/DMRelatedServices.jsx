@@ -9,10 +9,6 @@ import {
 import { useI18nLanguage } from "../../../../store/I18nLanguageContext";
 
 const SERVICES_CONFIG = {
-  performanceMarketing: {
-    icon: HiChartBar,
-    path: "/digital-marketing-agency-dubai/performance-marketing",
-  },
   seoServices: {
     icon: HiSearchCircle,
     path: "/digital-marketing-agency-dubai/seo-services",

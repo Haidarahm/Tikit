@@ -1447,7 +1447,7 @@
             "hero": {
                 "title": "Dubai's Leading Digital",
                 "mainWord": "Marketing Agency",
-                "description": "We drive measurable business growth through data-driven digital marketing strategies, combining performance marketing, SEO, paid advertising, and conversion optimization to maximize your ROI across all digital channels."
+                "description": "We drive measurable business growth through data-driven digital marketing strategies, combining SEO, paid advertising, and conversion optimization to maximize your ROI across all digital channels."
             },
             "hubLinkTitle": "Digital Marketing Hub",
             "hubLinkDesc": "Explore all our digital marketing services and solutions for your business.",
@@ -1476,10 +1476,6 @@
                 "title": "Our Digital Marketing Solutions",
                 "subtitle": "Comprehensive digital marketing services tailored for businesses in Dubai and the UAE",
                 "learnMore": "Learn More",
-                "performanceMarketing": {
-                    "title": "Performance Marketing",
-                    "description": "ROI-focused campaigns with data-driven strategies across paid media, programmatic advertising, and growth marketing channels."
-                },
                 "seoServices": {
                     "title": "SEO Services",
                     "description": "Boost organic traffic with technical SEO, on-page optimization, link building, and content strategies for sustainable rankings."
@@ -1536,9 +1532,9 @@
             },
             "faqTitle": "Digital Marketing FAQ",
             "faqItems": [
-                { "question": "What digital marketing services do you offer in Dubai?", "answer": "We offer comprehensive digital marketing services including performance marketing, SEO (search engine optimization), paid advertising management (Google Ads, Facebook Ads, LinkedIn Ads, TikTok Ads), conversion rate optimization, content marketing, and analytics reporting. Each service is tailored to your business goals and the UAE market." },
+                { "question": "What digital marketing services do you offer in Dubai?", "answer": "We offer comprehensive digital marketing services including SEO (search engine optimization), paid advertising management (Google Ads, Facebook Ads, LinkedIn Ads, TikTok Ads), conversion rate optimization, content marketing, and analytics reporting. Each service is tailored to your business goals and the UAE market." },
                 { "question": "How much does digital marketing cost in Dubai?", "answer": "Digital marketing costs vary based on services, scope, and competition. SEO packages typically start from AED 5,000-15,000/month. Paid advertising management fees range from AED 3,000-10,000/month plus ad spend. Comprehensive digital marketing packages start from AED 15,000/month. We provide customized quotes based on your specific needs and goals." },
-                { "question": "How long does it take to see results from digital marketing?", "answer": "Timelines vary by channel. Paid advertising can generate results within days of launch. SEO typically shows meaningful results in 3-6 months. Performance marketing campaigns usually reach optimal performance within 2-3 months of testing and optimization. We provide monthly progress reports with clear metrics and milestones." },
+                { "question": "How long does it take to see results from digital marketing?", "answer": "Timelines vary by channel. Paid advertising can generate results within days of launch. SEO typically shows meaningful results in 3-6 months. We provide monthly progress reports with clear metrics and milestones." },
                 { "question": "What makes a good digital marketing agency?", "answer": "A good digital marketing agency combines data-driven strategies with creative execution, maintains transparent communication, provides measurable results, stays current with industry trends, and has proven experience in your market. At Tikit Agency, we add deep UAE market expertise and a dedicated team approach to every project." },
                 { "question": "Do you work with businesses outside Dubai?", "answer": "Yes, we serve clients across the UAE, Saudi Arabia, and the broader GCC region. Our digital marketing strategies are tailored to each market's unique characteristics, consumer behavior, and regulatory requirements. We also work with international brands looking to establish their digital presence in the Middle East." }
             ],
@@ -1546,53 +1542,6 @@
                 "title": "Ready to Grow Your Digital Presence?",
                 "description": "Let's create a data-driven digital marketing strategy that delivers measurable results for your business.",
                 "button": "Get Started"
-            },
-            "performanceMarketing": {
-                "badge": "Performance Marketing Dubai",
-                "hero": {
-                    "title": "Data-Driven Performance",
-                    "mainWord": "Marketing",
-                    "description": "We deliver ROI-focused performance marketing campaigns that drive measurable growth through paid media, programmatic advertising, and advanced analytics."
-                },
-                "definition": {
-                    "whatIsTitle": "What is Performance Marketing?",
-                    "paragraph": "Performance marketing is a results-driven approach where advertisers pay only when specific actions are completed — such as clicks, leads, or sales. It combines advanced targeting, real-time bidding, and continuous optimization to maximize return on ad spend across search, social, display, and programmatic channels.",
-                    "benefitsList": [
-                        "Pay only for measurable results like clicks, leads, or conversions",
-                        "Real-time campaign optimization with advanced analytics and AI-powered bidding",
-                        "Precise audience targeting across demographics, interests, and behaviors",
-                        "Transparent reporting with clear attribution and ROAS metrics",
-                        "Scalable budgets that grow with your business success"
-                    ]
-                },
-                "services": {
-                    "title": "Our Performance Marketing Services",
-                    "subtitle": "Comprehensive performance marketing solutions for businesses in Dubai",
-                    "items": {
-                        "paidMedia": { "title": "Paid Media Strategy", "description": "Strategic planning and management of paid campaigns across search, social, and display networks for maximum impact." },
-                        "programmatic": { "title": "Programmatic Advertising", "description": "Automated, data-driven ad buying across premium publishers and networks for efficient reach and targeting." },
-                        "retargeting": { "title": "Retargeting & Remarketing", "description": "Re-engage visitors who showed interest with personalized ads across the web and social platforms." },
-                        "analytics": { "title": "Analytics & Attribution", "description": "Advanced tracking and attribution modeling to understand the full customer journey and optimize spend." },
-                        "growthHacking": { "title": "Growth Hacking", "description": "Rapid experimentation across marketing channels to identify the most effective ways to grow your business." },
-                        "attribution": { "title": "Multi-Touch Attribution", "description": "Understand which channels and touchpoints contribute most to conversions for smarter budget allocation." }
-                    }
-                },
-                "process": {
-                    "title": "Our Performance Marketing Process",
-                    "steps": {
-                        "research": { "title": "Research & Audit", "description": "Deep analysis of your market, competitors, and current performance to identify opportunities." },
-                        "launch": { "title": "Campaign Launch", "description": "Strategic campaign setup with optimized targeting, creatives, and bidding strategies." },
-                        "optimize": { "title": "Continuous Optimization", "description": "Daily monitoring and optimization of bids, audiences, and creatives for peak performance." },
-                        "scale": { "title": "Scale & Grow", "description": "Expand successful campaigns and explore new channels to drive sustainable growth." }
-                    }
-                },
-                "faqTitle": "Performance Marketing FAQ",
-                "faqItems": [
-                    { "question": "What is the difference between performance marketing and digital marketing?", "answer": "Performance marketing is a subset of digital marketing focused specifically on measurable outcomes. While digital marketing encompasses all online marketing activities, performance marketing only pays for specific results like clicks, leads, or sales, making it highly measurable and ROI-focused." },
-                    { "question": "What platforms do you use for performance marketing?", "answer": "We manage campaigns across Google Ads (Search, Display, Shopping, YouTube), Meta Ads (Facebook & Instagram), LinkedIn Ads, TikTok Ads, programmatic platforms (DV360, The Trade Desk), and other channels based on your target audience and goals." },
-                    { "question": "What ROI can I expect from performance marketing?", "answer": "ROI varies by industry and campaign objectives. Our clients typically see 3-5x return on ad spend (ROAS) within 3-6 months. We set realistic benchmarks based on your industry and continuously optimize to improve performance over time." },
-                    { "question": "How do you measure performance marketing success?", "answer": "We track KPIs including Cost Per Acquisition (CPA), Return on Ad Spend (ROAS), Click-Through Rate (CTR), Conversion Rate, Customer Lifetime Value (CLV), and overall revenue impact. Custom dashboards provide real-time visibility into campaign performance." }
-                ]
             },
             "seoServices": {
                 "badge": "SEO Services Dubai",
