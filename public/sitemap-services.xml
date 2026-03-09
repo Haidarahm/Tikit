@@ -8,97 +8,145 @@
   <!-- services -->
   <url>
     <loc>https://tikit.ae/services</loc>
-    <lastmod>2026-02-24</lastmod>
+    <lastmod>2026-03-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
-  <!-- services/influencer marketing agency dubai -->
+  <!-- influencer marketing agency dubai -->
   <url>
-    <loc>https://tikit.ae/services/influencer-marketing-agency-dubai</loc>
-    <lastmod>2026-02-24</lastmod>
+    <loc>https://tikit.ae/influencer-marketing-agency-dubai</loc>
+    <lastmod>2026-03-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- services/influencer marketing agency dubai/campaign management -->
+  <!-- influencer marketing agency dubai/campaign management -->
   <url>
-    <loc>https://tikit.ae/services/influencer-marketing-agency-dubai/campaign-management</loc>
-    <lastmod>2026-02-24</lastmod>
+    <loc>https://tikit.ae/influencer-marketing-agency-dubai/campaign-management</loc>
+    <lastmod>2026-03-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
-  <!-- services/influencer marketing agency dubai/micro influencer marketing uae -->
+  <!-- influencer marketing agency dubai/micro influencer marketing uae -->
   <url>
-    <loc>https://tikit.ae/services/influencer-marketing-agency-dubai/micro-influencer-marketing-uae</loc>
-    <lastmod>2026-02-24</lastmod>
+    <loc>https://tikit.ae/influencer-marketing-agency-dubai/micro-influencer-marketing-uae</loc>
+    <lastmod>2026-03-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
-  <!-- services/influencer marketing agency dubai/luxury influencer marketing -->
+  <!-- influencer marketing agency dubai/luxury influencer marketing -->
   <url>
-    <loc>https://tikit.ae/services/influencer-marketing-agency-dubai/luxury-influencer-marketing</loc>
-    <lastmod>2026-02-24</lastmod>
+    <loc>https://tikit.ae/influencer-marketing-agency-dubai/luxury-influencer-marketing</loc>
+    <lastmod>2026-03-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
-  <!-- services/influencer marketing agency dubai/roi analytics -->
+  <!-- influencer marketing agency dubai/roi analytics -->
   <url>
-    <loc>https://tikit.ae/services/influencer-marketing-agency-dubai/roi-analytics</loc>
-    <lastmod>2026-02-24</lastmod>
+    <loc>https://tikit.ae/influencer-marketing-agency-dubai/roi-analytics</loc>
+    <lastmod>2026-03-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
-  <!-- services/influencer marketing agency dubai/instagram influencer marketing -->
+  <!-- influencer marketing agency dubai/instagram influencer marketing -->
   <url>
-    <loc>https://tikit.ae/services/influencer-marketing-agency-dubai/instagram-influencer-marketing</loc>
-    <lastmod>2026-02-24</lastmod>
+    <loc>https://tikit.ae/influencer-marketing-agency-dubai/instagram-influencer-marketing</loc>
+    <lastmod>2026-03-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
-  <!-- services/influencer marketing agency dubai/tiktok influencer marketing -->
+  <!-- influencer marketing agency dubai/tiktok influencer marketing -->
   <url>
-    <loc>https://tikit.ae/services/influencer-marketing-agency-dubai/tiktok-influencer-marketing</loc>
-    <lastmod>2026-02-24</lastmod>
+    <loc>https://tikit.ae/influencer-marketing-agency-dubai/tiktok-influencer-marketing</loc>
+    <lastmod>2026-03-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
-  <!-- services/influencer marketing agency dubai/influencer marketing cost uae -->
+  <!-- influencer marketing agency dubai/influencer marketing cost uae -->
   <url>
-    <loc>https://tikit.ae/services/influencer-marketing-agency-dubai/influencer-marketing-cost-uae</loc>
-    <lastmod>2026-02-24</lastmod>
+    <loc>https://tikit.ae/influencer-marketing-agency-dubai/influencer-marketing-cost-uae</loc>
+    <lastmod>2026-03-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
-  <!-- services/social media management -->
+  <!-- social media management -->
   <url>
-    <loc>https://tikit.ae/services/social-media-management</loc>
-    <lastmod>2026-02-24</lastmod>
+    <loc>https://tikit.ae/social-media-management</loc>
+    <lastmod>2026-03-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- services/production -->
+  <!-- production -->
   <url>
-    <loc>https://tikit.ae/services/production</loc>
-    <lastmod>2026-02-24</lastmod>
+    <loc>https://tikit.ae/production</loc>
+    <lastmod>2026-03-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- services/branding-agency-dubai -->
+  <!-- branding agency dubai -->
   <url>
-    <loc>https://tikit.ae/services/branding-agency-dubai</loc>
-    <lastmod>2026-02-24</lastmod>
+    <loc>https://tikit.ae/branding-agency-dubai</loc>
+    <lastmod>2026-03-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+
+  <!-- web development dubai -->
+  <url>
+    <loc>https://tikit.ae/web-development-dubai</loc>
+    <lastmod>2026-03-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- digital marketing agency dubai -->
+  <url>
+    <loc>https://tikit.ae/digital-marketing-agency-dubai</loc>
+    <lastmod>2026-03-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- digital marketing agency dubai/performance marketing -->
+  <url>
+    <loc>https://tikit.ae/digital-marketing-agency-dubai/performance-marketing</loc>
+    <lastmod>2026-03-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- digital marketing agency dubai/seo services -->
+  <url>
+    <loc>https://tikit.ae/digital-marketing-agency-dubai/seo-services</loc>
+    <lastmod>2026-03-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- digital marketing agency dubai/paid ads management -->
+  <url>
+    <loc>https://tikit.ae/digital-marketing-agency-dubai/paid-ads-management</loc>
+    <lastmod>2026-03-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- digital marketing agency dubai/conversion optimization -->
+  <url>
+    <loc>https://tikit.ae/digital-marketing-agency-dubai/conversion-optimization</loc>
+    <lastmod>2026-03-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 
 </urlset>

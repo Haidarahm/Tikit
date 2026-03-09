@@ -25,6 +25,14 @@ Allow: /contact-us
 Allow: /blogs
 Allow: /blogs/
 Allow: /faq
+Allow: /influencer-marketing-agency-dubai
+Allow: /social-media-management
+Allow: /production
+Allow: /branding-agency-dubai
+Allow: /web-development-dubai
+Allow: /digital-marketing-agency-dubai
+Allow: /showcase
+Allow: /showcase/
 
 # Google Bard / Gemini
 User-agent: Google-Extended
@@ -91,6 +99,7 @@ Allow: /about-us
 Allow: /services
 Allow: /services/
 Allow: /work
+Allow: /work/
 Allow: /blogs
 Allow: /blogs/
 Allow: /influencer
@@ -99,6 +108,16 @@ Allow: /contact-us
 Allow: /faq
 Allow: /showcase
 Allow: /showcase/
+Allow: /influencer-marketing-agency-dubai
+Allow: /influencer-marketing-agency-dubai/
+Allow: /social-media-management
+Allow: /production
+Allow: /branding-agency-dubai
+Allow: /web-development-dubai
+Allow: /digital-marketing-agency-dubai
+Allow: /digital-marketing-agency-dubai/
+Allow: /influencer-marketing-dubai
+Allow: /influencer-marketing-saudi-arabia
 
 # Allow language-specific pages
 Allow: /en

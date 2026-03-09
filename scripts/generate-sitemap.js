@@ -28,20 +28,26 @@ const SITEMAP_SERVICES_PATH = path.join(__dirname, '../public/sitemap-services.x
 const SITEMAP_PAGES_PATH = path.join(__dirname, '../public/sitemap-pages.xml');
 const SITEMAP_BLOGS_PATH = path.join(__dirname, '../public/sitemap-blogs.xml');
 
-// Static URLs grouped by logical sitemap
+// Static URLs grouped by logical sitemap (service sections at root, no /services prefix)
 const servicesPages = [
   { url: '/services', changefreq: 'monthly', priority: '0.9' },
-  { url: '/services/influencer-marketing-agency-dubai', changefreq: 'monthly', priority: '0.8' },
-  { url: '/services/influencer-marketing-agency-dubai/campaign-management', changefreq: 'monthly', priority: '0.7' },
-  { url: '/services/influencer-marketing-agency-dubai/micro-influencer-marketing-uae', changefreq: 'monthly', priority: '0.7' },
-  { url: '/services/influencer-marketing-agency-dubai/luxury-influencer-marketing', changefreq: 'monthly', priority: '0.7' },
-  { url: '/services/influencer-marketing-agency-dubai/roi-analytics', changefreq: 'monthly', priority: '0.7' },
-  { url: '/services/influencer-marketing-agency-dubai/instagram-influencer-marketing', changefreq: 'monthly', priority: '0.7' },
-  { url: '/services/influencer-marketing-agency-dubai/tiktok-influencer-marketing', changefreq: 'monthly', priority: '0.7' },
-  { url: '/services/influencer-marketing-agency-dubai/influencer-marketing-cost-uae', changefreq: 'monthly', priority: '0.7' },
-  { url: '/services/social-media-management', changefreq: 'monthly', priority: '0.8' },
-  { url: '/services/production', changefreq: 'monthly', priority: '0.8' },
-  { url: '/services/branding-agency-dubai', changefreq: 'monthly', priority: '0.8' },
+  { url: '/influencer-marketing-agency-dubai', changefreq: 'monthly', priority: '0.8' },
+  { url: '/influencer-marketing-agency-dubai/campaign-management', changefreq: 'monthly', priority: '0.7' },
+  { url: '/influencer-marketing-agency-dubai/micro-influencer-marketing-uae', changefreq: 'monthly', priority: '0.7' },
+  { url: '/influencer-marketing-agency-dubai/luxury-influencer-marketing', changefreq: 'monthly', priority: '0.7' },
+  { url: '/influencer-marketing-agency-dubai/roi-analytics', changefreq: 'monthly', priority: '0.7' },
+  { url: '/influencer-marketing-agency-dubai/instagram-influencer-marketing', changefreq: 'monthly', priority: '0.7' },
+  { url: '/influencer-marketing-agency-dubai/tiktok-influencer-marketing', changefreq: 'monthly', priority: '0.7' },
+  { url: '/influencer-marketing-agency-dubai/influencer-marketing-cost-uae', changefreq: 'monthly', priority: '0.7' },
+  { url: '/social-media-management', changefreq: 'monthly', priority: '0.8' },
+  { url: '/production', changefreq: 'monthly', priority: '0.8' },
+  { url: '/branding-agency-dubai', changefreq: 'monthly', priority: '0.8' },
+  { url: '/web-development-dubai', changefreq: 'monthly', priority: '0.8' },
+  { url: '/digital-marketing-agency-dubai', changefreq: 'monthly', priority: '0.8' },
+  { url: '/digital-marketing-agency-dubai/performance-marketing', changefreq: 'monthly', priority: '0.7' },
+  { url: '/digital-marketing-agency-dubai/seo-services', changefreq: 'monthly', priority: '0.7' },
+  { url: '/digital-marketing-agency-dubai/paid-ads-management', changefreq: 'monthly', priority: '0.7' },
+  { url: '/digital-marketing-agency-dubai/conversion-optimization', changefreq: 'monthly', priority: '0.7' },
 ];
 
 const pages = [
