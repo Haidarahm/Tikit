@@ -1,10 +1,11 @@
-import React, { useEffect, useRef, useMemo } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 
 const PinnedSection = () => {
   const sectionRef = useRef(null);
   const stickyContainerRef = useRef(null);
   const trackRef = useRef(null);
   const videoObserverRef = useRef(null);
+  const [active, setActive] = useState(false);
 
   const videos = useMemo(() => {
     return [
@@ -19,7 +20,29 @@ const PinnedSection = () => {
     ];
   }, []);
 
+  // Activate only when near viewport (prevents early scroll/interval work)
   useEffect(() => {
+    if (!sectionRef.current) return;
+    if (typeof window === "undefined") return;
+    if (window.innerWidth < 768) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        if (entry?.isIntersecting) {
+          setActive(true);
+          observer.disconnect(); // activate once
+        }
+      },
+      { rootMargin: "800px", threshold: 0.01 }
+    );
+
+    observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!active) return;
     if (!sectionRef.current || !trackRef.current || !stickyContainerRef.current) return;
     if (window.innerWidth < 768) return;
 
@@ -36,6 +59,7 @@ const PinnedSection = () => {
     let recalcTimeout2;
     let lastBodyHeight = 0;
     let bodyHeightCheckInterval;
+    let stopBodyPollTimeout;
 
     let cachedViewportHeight = window.innerHeight;
     let rafId = 0;
@@ -129,6 +153,10 @@ const PinnedSection = () => {
             onScroll();
           }
         }, 300);
+        // Don’t keep polling forever; after initial layout settles, stop.
+        stopBodyPollTimeout = setTimeout(() => {
+          clearInterval(bodyHeightCheckInterval);
+        }, 3000);
 
         window.addEventListener("scroll", onScrollThrottled, { passive: true });
       });
@@ -160,6 +188,7 @@ const PinnedSection = () => {
       clearTimeout(recalcTimeout1);
       clearTimeout(recalcTimeout2);
       clearInterval(bodyHeightCheckInterval);
+      clearTimeout(stopBodyPollTimeout);
       window.removeEventListener("scroll", onScrollThrottled);
       if (rafId) cancelAnimationFrame(rafId);
       window.removeEventListener("resize", handleResize);
@@ -172,7 +201,7 @@ const PinnedSection = () => {
       }
       if (track) track.style.transform = "";
     };
-  }, []);
+  }, [active]);
 
   // Play/pause videos based on visibility
   useEffect(() => {

@@ -83,7 +83,8 @@ const useAnimationLoop = (
   seqWidth,
   isHovered,
   pauseOnHover,
-  isRtl = false
+  isRtl = false,
+  enabled = true
 ) => {
   const rafRef = useRef(null);
   const lastTimestampRef = useRef(null);
@@ -93,6 +94,11 @@ const useAnimationLoop = (
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
+    if (!enabled) {
+      // Ensure we don’t keep an old transform running when paused
+      lastTimestampRef.current = null;
+      return;
+    }
 
     const prefersReduced =
       typeof window !== "undefined" &&
@@ -149,7 +155,7 @@ const useAnimationLoop = (
       }
       lastTimestampRef.current = null;
     };
-  }, [targetVelocity, seqWidth, isHovered, pauseOnHover, trackRef]);
+  }, [targetVelocity, seqWidth, isHovered, pauseOnHover, trackRef, enabled]);
 };
 
 export const LogoLoop = memo(
@@ -177,6 +183,7 @@ export const LogoLoop = memo(
     const [copyCount, setCopyCount] = useState(ANIMATION_CONFIG.MIN_COPIES);
     const [isHovered, setIsHovered] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
+    const [isInView, setIsInView] = useState(false);
 
     // Detect mobile view
     useEffect(() => {
@@ -188,6 +195,18 @@ export const LogoLoop = memo(
       window.addEventListener("resize", checkMobile);
 
       return () => window.removeEventListener("resize", checkMobile);
+    }, []);
+
+    // Pause the RAF loop when offscreen (saves CPU)
+    useEffect(() => {
+      if (!containerRef.current) return;
+      const el = containerRef.current;
+      const observer = new IntersectionObserver(
+        ([entry]) => setIsInView(!!entry?.isIntersecting),
+        { rootMargin: "200px", threshold: 0.01 }
+      );
+      observer.observe(el);
+      return () => observer.disconnect();
     }, []);
 
     // Use conditional height: 25px for mobile, logoHeight for desktop
@@ -247,7 +266,8 @@ export const LogoLoop = memo(
       seqWidth,
       isHovered,
       pauseOnHover,
-      isRtl
+      isRtl,
+      isInView
     );
 
     const cssVariables = useMemo(
