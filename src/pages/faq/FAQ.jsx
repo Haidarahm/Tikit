@@ -12,7 +12,6 @@ import {
   FaBullhorn
 } from "react-icons/fa";
 import SEOHead from "../../components/SEOHead";
-import Footer from "../../components/Footer";
 import Accordion from "../../components/ui/Accordion";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
 import { useFontClass } from "../../hooks/useFontClass";

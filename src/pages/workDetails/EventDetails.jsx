@@ -6,7 +6,6 @@ import { useWorkItemDetailsStore } from "../../store/work/workItemDetailsStore";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
 import { useTheme } from "../../store/ThemeContext.jsx";
 import SEOHead from "../../components/SEOHead.jsx";
-import Footer from "../../components/Footer.jsx";
 import ContactUs from "../Home/ContactUs.jsx";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";

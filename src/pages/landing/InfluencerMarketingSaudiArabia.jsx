@@ -2,7 +2,6 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import SEOHead from "../../components/SEOHead";
 import FAQ from "../../components/FAQ";
-import Footer from "../../components/Footer";
 
 /**
  * AI-Optimized Landing Page: Influencer Marketing Agency Saudi Arabia

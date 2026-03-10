@@ -30,7 +30,6 @@ import {
   FaSnapchatGhost,
 } from "react-icons/fa";
 import ContactUs from "../Home/ContactUs.jsx";
-import Footer from "../../components/Footer.jsx";
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
@@ -796,7 +795,6 @@ export const Influencer = () => {
         </div>
       </div>
       <ContactUs/>
-      <Footer/>
     </div>
   );
 };

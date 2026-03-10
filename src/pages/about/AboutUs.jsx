@@ -5,7 +5,6 @@ import AnimatedText from "./AnimatedText";
 import Strategy from "./Strategy";
 import Team from "./Team";
 import Growth from "./Growth";
-import Footer from "../../components/Footer";
 import SEOHead from "../../components/SEOHead";
 import ContactUs from "../Home/ContactUs";
 import Details from "./Details";

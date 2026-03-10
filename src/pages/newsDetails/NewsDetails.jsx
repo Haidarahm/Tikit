@@ -6,7 +6,6 @@ import { useI18nLanguage } from '../../store/I18nLanguageContext'
 import { useNewsStore } from '../../store/newsStore'
 import SEOHead from '../../components/SEOHead'
 import NewsDetailsHeader from './NewsDetailsHeader'
-import Footer from '../../components/Footer'
 import { getBlogSEOProps } from '../news/Content'
 gsap.registerPlugin(ScrollTrigger)
 
@@ -348,7 +347,6 @@ const NewsDetails = () => {
           </div>
         )}
       </div>
-      <Footer/>
     </div>
     </>
   )

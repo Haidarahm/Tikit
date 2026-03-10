@@ -2,7 +2,6 @@ import React from "react";
 import Hero from "./Hero";
 import Action from "./Action";
 import "./contact.css";
-import Footer from "../../components/Footer";
 import SEOHead from "../../components/SEOHead";
 
 // ContactPage schema for rich results
@@ -65,7 +64,6 @@ const Contact = () => {
       <Hero />
       {/* <AnimatedLines /> */}
       <Action />
-      <Footer className="snap-start snap-always" />
     </div>
   );
 };

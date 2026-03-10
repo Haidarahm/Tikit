@@ -10,7 +10,6 @@ import Goals from "./Goals";
 import Services from "./Services";
 import WorkSection from "./WorkSection";
 import Connections from "./Connections";
-import Footer from "../../components/Footer";
 import Influencers from "./influencers/Influencers";
 import ShowCase from "./ShowCase";
 import Map from "./map/Map";

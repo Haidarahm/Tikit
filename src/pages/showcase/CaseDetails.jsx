@@ -4,7 +4,6 @@ import CaseNumbers from "../../components/showcase/CaseNumbers";
 import Images from "../../components/showcase/Images";
 import CaseStudy from "../../components/showcase/CaseStudy";
 import ContactUs from "../Home/ContactUs";
-import Footer from "../../components/Footer";
 import SEOHead from "../../components/SEOHead";
 import { useParams } from "react-router-dom";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";

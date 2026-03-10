@@ -2,7 +2,6 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import SEOHead from "../components/SEOHead";
-import Footer from "../components/Footer";
 import { useI18nLanguage } from "../store/I18nLanguageContext";
 
 const PrivacyPolicy = () => {

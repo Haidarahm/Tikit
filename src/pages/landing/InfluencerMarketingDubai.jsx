@@ -3,7 +3,6 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import SEOHead from "../../components/SEOHead";
 import FAQ, { getServicesFAQItems } from "../../components/FAQ";
-import Footer from "../../components/Footer";
 
 /**
  * AI-Optimized Landing Page: Influencer Marketing Agency Dubai
