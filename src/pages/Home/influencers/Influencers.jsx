@@ -200,6 +200,10 @@ const Influencers = () => {
     <section
       ref={sectionRef}
       className="influencers-scope influencers-home min-h-[900px] py-8 px-4 relative overflow-hidden bg-[var(--background)]"
+      style={{
+        contentVisibility: "auto",
+        containIntrinsicSize: "900px",
+      }}
       dir={isRtl ? "rtl" : "ltr"}
     >
       {/* Background decoration */}
