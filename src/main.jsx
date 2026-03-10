@@ -30,11 +30,9 @@ if (!rootElement) {
 
 const app = (
   <BrowserRouter>
-    <StrictMode>
         <I18nLanguageProvider>
           <App />
         </I18nLanguageProvider>
-    </StrictMode>
   </BrowserRouter>
 );
 
