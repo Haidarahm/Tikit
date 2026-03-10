@@ -41,8 +41,15 @@ const SEOHead = ({
     instagram: "https://www.instagram.com/tikit.ae/",
   };
 
+  // Avoid duplicating site name if caller already includes it
+  const hasSiteNameInTitle =
+    typeof title === "string" &&
+    title.toLowerCase().includes(siteName.toLowerCase());
+
   const fullTitle = title
-    ? `${title} | ${siteName}`
+    ? hasSiteNameInTitle
+      ? title
+      : `${title} | ${siteName}`
     : `${siteName} - Best Influencer Marketing Agency in Emirates | Social Media Management Company UAE & Saudi Arabia`;
   const fullDescription =
     description ||
