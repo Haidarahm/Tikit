@@ -1,20 +1,21 @@
-// Critical above-the-fold components - load immediately
+import { lazy } from "react";
 import Hero from "./Hero";
 import SEOHead from "../../components/SEOHead";
-import Blogs from "./Blogs";
-// import ElasticGridScroll from "./elastic/ElasticGridScroll";
 import LogoIntro from "../../components/LogoIntro";
 import { useIntro } from "../../store/IntroContext";
-import Numbers from "./Numbers";
-import Goals from "./Goals";
-import Services from "./Services";
-import WorkSection from "./WorkSection";
-import Connections from "./Connections";
-import Influencers from "./influencers/Influencers";
-import ShowCase from "./ShowCase";
-import Map from "./map/Map";
-import PinnedSection from "./PinnedSection";
-import ContactUs from "./ContactUs";
+import LazySection from "../../components/LazySection";
+
+const ShowCase = lazy(() => import("./ShowCase"));
+const Numbers = lazy(() => import("./Numbers"));
+const Goals = lazy(() => import("./Goals"));
+const Influencers = lazy(() => import("./influencers/Influencers"));
+const Services = lazy(() => import("./Services"));
+const Connections = lazy(() => import("./Connections"));
+const WorkSection = lazy(() => import("./WorkSection"));
+const Map = lazy(() => import("./map/Map"));
+const PinnedSection = lazy(() => import("./PinnedSection"));
+const Blogs = lazy(() => import("./Blogs"));
+const ContactUs = lazy(() => import("./ContactUs"));
 
 
 
@@ -169,20 +170,51 @@ function Home() {
         </section>
 
         <Hero introDone={introDone} />
-       
-            <ShowCase />
-          <Numbers />
-        <Goals />
-       
 
-        <Influencers />
-        <Services />
-        <Connections />
-        <WorkSection />
-        <Map />
-        <PinnedSection />
-        <Blogs />
-        <ContactUs />
+        <LazySection minHeight="400px">
+          <ShowCase />
+        </LazySection>
+
+        <LazySection minHeight="300px">
+          <Numbers />
+        </LazySection>
+
+        <LazySection minHeight="400px">
+          <Goals />
+        </LazySection>
+
+        <LazySection minHeight="500px">
+          <Influencers />
+        </LazySection>
+
+        <LazySection minHeight="400px">
+          <Services />
+        </LazySection>
+
+        <LazySection minHeight="300px">
+          <Connections />
+        </LazySection>
+
+        <LazySection minHeight="400px">
+          <WorkSection />
+        </LazySection>
+
+        <LazySection minHeight="500px" rootMargin="400px">
+          <Map />
+        </LazySection>
+
+        {/* PinnedSection is desktop-only; keep wrapper hidden on mobile to avoid blank space */}
+        <LazySection className="hidden md:block" minHeight="100vh" rootMargin="800px">
+          <PinnedSection />
+        </LazySection>
+
+        <LazySection minHeight="300px">
+          <Blogs />
+        </LazySection>
+
+        <LazySection minHeight="400px">
+          <ContactUs />
+        </LazySection>
         
       </div>
     </>
