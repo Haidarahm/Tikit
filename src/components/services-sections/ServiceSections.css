@@ -6,33 +6,131 @@
 
 /* ─── Hero Section ─────────────────────────────────────────── */
 .im-hero {
-  @apply relative min-h-[60vh] flex items-center justify-center overflow-hidden;
+  @apply relative min-h-[68vh] md:min-h-[100vh] flex items-center justify-center overflow-hidden isolate;
   background: var(--background);
 }
 
 .im-hero__inner {
-  @apply w-full max-w-6xl mx-auto px-6 md:px-10 py-24 md:py-32 text-center relative z-10;
+  @apply w-full max-w-6xl mx-auto px-6 md:px-10 mt-16 md:py-20 text-center relative z-10;
 }
 
 .im-hero__image-wrapper {
-  @apply absolute inset-0 z-0;
+  @apply absolute inset-0 z-0 pointer-events-none;
 }
 
 .im-hero__image {
   @apply w-full h-full object-cover;
-  opacity: 0.13;
-  filter: saturate(1.2);
+  opacity: 0.14;
+  filter: saturate(1.15) contrast(1.05);
 }
 
 .im-hero__overlay {
   @apply absolute inset-0 z-[1];
   background: linear-gradient(
-    to bottom,
-    var(--background) 0%,
-    transparent 40%,
-    transparent 60%,
+    180deg,
+    color-mix(in srgb, var(--background) 96%, transparent) 0%,
+    color-mix(in srgb, var(--background) 80%, transparent) 35%,
+    color-mix(in srgb, var(--background) 88%, transparent) 72%,
     var(--background) 100%
   );
+}
+
+.im-hero__mesh {
+  @apply absolute inset-0 z-[2];
+  background:
+    radial-gradient(
+      circle at 18% 20%,
+      color-mix(in srgb, var(--secondary) 13%, transparent) 0%,
+      transparent 44%
+    ),
+    radial-gradient(
+      circle at 82% 80%,
+      color-mix(in srgb, var(--secondary) 14%, transparent) 0%,
+      transparent 46%
+    );
+}
+
+.im-hero__orb {
+  @apply absolute rounded-full blur-3xl z-[2];
+  background: color-mix(in srgb, var(--secondary) 18%, transparent);
+  animation: imHeroFloat 7s ease-in-out infinite;
+}
+
+.im-hero__orb--one {
+  width: 220px;
+  height: 220px;
+  left: -60px;
+  top: 12%;
+}
+
+.im-hero__orb--two {
+  width: 260px;
+  height: 260px;
+  right: -80px;
+  bottom: 8%;
+  animation-delay: 0.7s;
+}
+
+.im-hero__content-card {
+  @apply relative mx-auto max-w-4xl px-2 py-3 md:px-4 md:py-5;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+.im-hero__badge {
+  @apply inline-flex items-center gap-2.5 mb-5 px-4 py-2 rounded-full text-[11px] sm:text-xs uppercase tracking-[0.18em] font-bold;
+  color: var(--secondary);
+  background: color-mix(in srgb, var(--secondary) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--secondary) 28%, transparent);
+}
+
+.im-hero__badge-dot {
+  @apply w-2 h-2 rounded-full;
+  background: var(--secondary);
+}
+
+.im-hero__badge--pulse .im-hero__badge-dot {
+  animation: imHeroPulse 1.7s ease-in-out infinite;
+}
+
+.im-hero__title {
+  @apply leading-tight;
+  color: var(--foreground);
+}
+
+.im-hero__description {
+  @apply mt-5 mx-auto text-base md:text-lg leading-relaxed max-w-3xl;
+  color: color-mix(in srgb, var(--foreground) 74%, transparent);
+}
+
+.im-hero__scroll-indicator {
+  @apply mt-8 mx-auto h-8 w-5 rounded-full border relative;
+  border-color: color-mix(in srgb, var(--secondary) 40%, transparent);
+}
+
+.im-hero__scroll-line {
+  @apply absolute left-1/2 top-1 block h-2 w-1 rounded-full;
+  transform: translateX(-50%);
+  background: var(--secondary);
+  animation: imHeroScroll 1.6s ease-in-out infinite;
+}
+
+@keyframes imHeroPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.45; transform: scale(0.72); }
+}
+
+@keyframes imHeroScroll {
+  0% { opacity: 0; transform: translateX(-50%) translateY(0); }
+  35% { opacity: 1; }
+  100% { opacity: 0; transform: translateX(-50%) translateY(14px); }
+}
+
+@keyframes imHeroFloat {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -10px, 0); }
 }
 
 /* ─── Section Shared ─────────────────────────────────────────── */

@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import HeroWithBadge from "../HeroWithBadge";
+import TikitTitle from "../TikitTitle";
 
 /**
  * Reusable hero section for service pages.
@@ -38,16 +38,32 @@ const ServiceHeroSection = forwardRef((props, ref) => {
       <div className={`${p}-hero__image-wrapper`}>
         <img src={imageSrc} alt={imageAlt} className={`${p}-hero__image`} />
         <div className={`${p}-hero__overlay`} />
+        <div className={`${p}-hero__mesh`} />
+        <div className={`${p}-hero__orb ${p}-hero__orb--one`} />
+        <div className={`${p}-hero__orb ${p}-hero__orb--two`} />
       </div>
       <div ref={ref} className={`${p}-hero__inner`} style={{ opacity: 0 }}>
-        <HeroWithBadge
-          badge={badge}
-          badgeVariant={badgeVariant}
-          title={title}
-          mainWord={mainWord}
-          description={description}
-          titleClassName="hero-animate block font-antonio"
-        />
+        <div className={`${p}-hero__content-card`}>
+          {badge ? (
+            <span className={`${p}-hero__badge ${badgeVariant === "pulse" ? `${p}-hero__badge--pulse` : ""}`}>
+              <span className={`${p}-hero__badge-dot`} />
+              {badge}
+            </span>
+          ) : null}
+
+          <TikitTitle
+            title={title}
+            mainWord={mainWord}
+            disableAnimation
+            className={`${p}-hero__title hero-animate block font-antonio`}
+          />
+
+          {description ? <p className={`${p}-hero__description`}>{description}</p> : null}
+
+          <div className={`${p}-hero__scroll-indicator`} aria-hidden="true">
+            <span className={`${p}-hero__scroll-line`} />
+          </div>
+        </div>
       </div>
     </section>
   );
