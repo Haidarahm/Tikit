@@ -1073,6 +1073,14 @@
           "mainWord": "B2B Influencer Marketing",
           "description": "Reach decision-makers, build authority, and generate qualified leads through data-driven influencer campaigns tailored for Dubai businesses."
         },
+        "audience": {
+          "sectionLabel": "التحدي",
+          "title": "هل تجد صعوبة في إيصال رسالتك إلى الجمهور المناسب في B2B؟",
+          "paragraphs": [
+            "أنت تعرف أن منتجك قوي، وفريقك يعمل بجد. لكن رغم الاستثمار في التسويق، ما زلت تجد صعوبة في جذب انتباه الشركات الأهم بالنسبة لك. الحملات التقليدية لا تحقق عائدًا قابلًا للقياس، والتواصل البارد لا يحقق تحويلات كافية، بينما يستفيد المنافسون بالفعل من مؤثري B2B للسيطرة على الحوار.",
+            "هذا الإحباط ليس خطأك. سوق B2B في دبي مزدحم، وصنّاع القرار مشغولون، والحملات العامة لا تبرز بسهولة."
+          ]
+        },
         "problems": {
           "sectionLabel": "The Challenge",
           "title": "Why B2B Brands Struggle to Reach the Right Buyers",

@@ -4,6 +4,7 @@
  */
 
 export { default as ServiceHeroSection } from "./ServiceHeroSection";
+export { default as ServiceAudiencePainSection } from "./ServiceAudiencePainSection";
 export { default as ServiceProblemsSection } from "./ServiceProblemsSection";
 export { default as ServiceProcessSection } from "./ServiceProcessSection";
 export { default as ServiceStatsSection } from "./ServiceStatsSection";

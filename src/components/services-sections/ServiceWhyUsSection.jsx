@@ -16,7 +16,7 @@ const ServiceWhyUsSection = forwardRef((props, ref) => {
 
   return (
     <section className={`${p}-section`} dir={dir}>
-      <div className={`${p}-container`}>
+      <div className={`${p}-container `}>
         <div className="text-center max-w-2xl mx-auto mb-2">
           <span className={`${p}-label`}>{sectionLabel}</span>
           <h2 className={`${p}-title`}>{title}</h2>

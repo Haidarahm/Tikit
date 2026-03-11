@@ -23,6 +23,7 @@ import SEOHead from "../../../components/SEOHead";
 import FAQ from "../../../components/FAQ";
 import {
   ServiceHeroSection,
+  ServiceAudiencePainSection,
   ServiceProblemsSection,
   ServiceProcessSection,
   ServiceStatsSection,
@@ -96,6 +97,7 @@ const MicroInfluencerMarketing = () => {
   const whyRef = useRef(null);
   const subServicesRef = useRef(null);
   const ctaRef = useRef(null);
+  const audienceRef = useRef(null);
 
   const breadcrumbs = [
     { name: t("nav.home"), url: "/" },
@@ -112,6 +114,7 @@ const MicroInfluencerMarketing = () => {
         { opacity: 1, y: 0, duration: 1.1, ease: "power3.out", delay: 0.15 }
       );
       revealChildren(problemsRef, ".im-problem-card", {}, 0.12);
+      revealChildren(audienceRef, ".im-audience-reveal", {}, 0.16);
       revealChildren(processRef, ".im-step-card", {}, 0.1);
       revealChildren(outcomesRef, ".im-stat-card", {}, 0.1);
       revealChildren(benefitsRef, ".im-benefit-item", {}, 0.1);
@@ -142,6 +145,17 @@ const MicroInfluencerMarketing = () => {
         mainWord={t(`${TK}.hero.mainWord`)}
         description={t(`${TK}.hero.description`)}
         dataNavColor="black"
+        classPrefix="im"
+      />
+
+      <ServiceAudiencePainSection
+        ref={audienceRef}
+        sectionLabel={t(`${TK}.audience.sectionLabel`)}
+        title={t(`${TK}.audience.title`)}
+        paragraphs={toArray(t(`${TK}.audience.paragraphs`, { returnObjects: true }))}
+        imageSrc="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=80"
+        imageAlt="B2B team meeting in Dubai office"
+        dir={dir}
         classPrefix="im"
       />
 
