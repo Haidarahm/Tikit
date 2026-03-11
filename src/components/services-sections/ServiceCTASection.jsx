@@ -34,7 +34,7 @@ const ServiceCTASection = forwardRef((props, ref) => {
         <p className={`${p}-reveal ${p}-label text-center mb-4 block`}>
           {sectionLabel}
         </p>
-        <h2 className={`${p}-reveal ${p}-cta__title`}>{title}</h2>
+        <h2 className={`${p}-reveal ${p}-cta__title font-antonio`}>{title}</h2>
         <p className={`${p}-reveal ${p}-cta__desc`}>{description}</p>
         <div className={`${p}-reveal ${p}-cta__buttons`}>
           <a href={primaryHref} className={`${p}-btn-primary`}>

@@ -20,7 +20,7 @@ const ServiceBenefitsSection = forwardRef((props, ref) => {
       <div className={`${p}-container`}>
         <div className="text-center max-w-2xl mx-auto mb-2">
           <span className={`${p}-label`}>{sectionLabel}</span>
-          <h2 className={`${p}-title`}>{title}</h2>
+          <h2 className={`${p}-title font-antonio`}>{title}</h2>
           <p className={`${p}-desc`}>{description}</p>
         </div>
         <div ref={ref} className={`${p}-benefits-grid`}>
@@ -29,7 +29,7 @@ const ServiceBenefitsSection = forwardRef((props, ref) => {
               <div key={i} className={`${p}-benefit-item`}>
                 <div className={`${p}-benefit-item__icon`}>{icons[i] ?? b.icon}</div>
                 <div>
-                  <h3 className={`${p}-benefit-item__title`}>{b.title}</h3>
+                  <h3 className={`${p}-benefit-item__title font-antonio`}>{b.title}</h3>
                   <p className={`${p}-benefit-item__text`}>{b.text}</p>
                 </div>
               </div>

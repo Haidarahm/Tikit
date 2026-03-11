@@ -19,7 +19,7 @@ const ServiceStatsSection = forwardRef((props, ref) => {
       <div className={`${p}-container`}>
         <div className="text-center max-w-2xl mx-auto mb-2">
           <span className={`${p}-label`}>{sectionLabel}</span>
-          <h2 className={`${p}-title`}>{title}</h2>
+          <h2 className={`${p}-title font-antonio`}>{title}</h2>
           <p className={`${p}-desc`}>{description}</p>
         </div>
         <div ref={ref} className={`${p}-stats-banner`}>

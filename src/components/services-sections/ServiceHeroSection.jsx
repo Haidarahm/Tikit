@@ -46,6 +46,7 @@ const ServiceHeroSection = forwardRef((props, ref) => {
           title={title}
           mainWord={mainWord}
           description={description}
+          titleClassName="hero-animate block font-antonio"
         />
       </div>
     </section>

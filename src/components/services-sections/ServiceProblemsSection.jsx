@@ -20,7 +20,7 @@ const ServiceProblemsSection = forwardRef((props, ref) => {
       <div className={`${p}-container`}>
         <div className="text-center max-w-2xl mx-auto mb-2">
           <span className={`${p}-label`}>{sectionLabel}</span>
-          <h2 className={`${p}-title`}>{title}</h2>
+          <h2 className={`${p}-title font-antonio`}>{title}</h2>
           <p className={`${p}-desc`}>{description}</p>
         </div>
         <div ref={ref} className={`${p}-problems-grid`}>
@@ -28,7 +28,7 @@ const ServiceProblemsSection = forwardRef((props, ref) => {
             items.map((item, i) => (
               <div key={i} className={`${p}-problem-card`}>
                 <div className={`${p}-problem-card__icon`}>{icons[i] ?? item.icon}</div>
-                <h3 className={`${p}-problem-card__title`}>{item.title}</h3>
+                <h3 className={`${p}-problem-card__title font-antonio`}>{item.title}</h3>
                 <p className={`${p}-problem-card__text`}>{item.text}</p>
               </div>
             ))}
