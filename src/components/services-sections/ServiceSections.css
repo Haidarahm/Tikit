@@ -422,6 +422,59 @@
   color: color-mix(in srgb, var(--foreground) 60%, transparent);
 }
 
+/* ─── Local Authority Section ───────────────────────────────── */
+.im-local-authority__head {
+  @apply mb-10;
+}
+
+.im-local-authority__layout {
+  @apply grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-start;
+}
+
+.im-local-authority__points {
+  @apply space-y-4;
+}
+
+.im-local-authority__point {
+  @apply rounded-2xl p-5 flex items-start gap-4;
+  background: color-mix(in srgb, var(--secondary) 6%, var(--background) 94%);
+  border: 1px solid color-mix(in srgb, var(--secondary) 16%, transparent);
+}
+
+.im-local-authority__icon {
+  @apply flex items-center justify-center rounded-xl w-10 h-10 text-lg flex-shrink-0;
+  color: var(--secondary);
+  background: color-mix(in srgb, var(--secondary) 14%, transparent);
+}
+
+.im-local-authority__text {
+  @apply text-sm leading-relaxed m-0;
+  color: color-mix(in srgb, var(--foreground) 75%, transparent);
+}
+
+.im-local-authority__footer {
+  @apply mt-6 text-base leading-relaxed font-medium;
+  color: color-mix(in srgb, var(--foreground) 86%, transparent);
+}
+
+.im-local-authority__media {
+  @apply relative min-h-[320px] md:min-h-[380px];
+}
+
+.im-local-authority__image {
+  @apply rounded-2xl object-cover w-full border;
+  border-color: color-mix(in srgb, var(--secondary) 22%, transparent);
+  box-shadow: 0 20px 54px -20px color-mix(in srgb, var(--secondary) 28%, transparent);
+}
+
+.im-local-authority__image--main {
+  @apply h-[300px] md:h-[360px];
+}
+
+.im-local-authority__image--secondary {
+  @apply h-[180px] md:h-[210px] absolute -bottom-6 -left-4 sm:left-6 w-[56%];
+}
+
 /* ─── CTA Section ─────────────────────────────────────────── */
 .im-cta {
   @apply py-20 px-6 md:px-10 text-center;

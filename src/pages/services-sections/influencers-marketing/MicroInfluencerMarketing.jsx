@@ -18,6 +18,9 @@ import {
   FiInstagram,
   FiVideo,
   FiTag,
+  FiTrendingUp,
+  FiBriefcase,
+  FiGlobe,
 } from "react-icons/fi";
 import SEOHead from "../../../components/SEOHead";
 import FAQ from "../../../components/FAQ";
@@ -29,6 +32,7 @@ import {
   ServiceStatsSection,
   ServiceBenefitsSection,
   ServiceWhyUsSection,
+  ServiceLocalAuthoritySection,
   ServiceSubServicesSection,
   ServiceCTASection,
 } from "../../../components/services-sections";
@@ -41,6 +45,7 @@ const TK = "serviceSections.influencerMarketing.subPages.microInfluencer";
 const problemIcons = [<FiUsers key="1" />, <FiTarget key="2" />, <FiBarChart2 key="3" />, <FiMapPin key="4" />];
 const benefitIcons = [<FiUserPlus key="1" />, <FiUsers key="2" />, <FiPieChart key="3" />, <FiTag key="4" />, <FiMapPin key="5" />];
 const whyUsIcons = [<FiLayers key="1" />, <FiActivity key="2" />, <FiMessageSquare key="3" />, <FiShield key="4" />];
+const localAuthorityIcons = [<FiTrendingUp key="1" />, <FiBriefcase key="2" />, <FiGlobe key="3" />];
 const subServiceIcons = [
   <FiActivity key="1" />,
   <FiUsers key="2" />,
@@ -96,6 +101,7 @@ const MicroInfluencerMarketing = () => {
   const benefitsRef = useRef(null);
   const whyRef = useRef(null);
   const subServicesRef = useRef(null);
+  const localAuthorityRef = useRef(null);
   const ctaRef = useRef(null);
   const audienceRef = useRef(null);
 
@@ -119,6 +125,7 @@ const MicroInfluencerMarketing = () => {
       revealChildren(outcomesRef, ".im-stat-card", {}, 0.1);
       revealChildren(benefitsRef, ".im-benefit-item", {}, 0.1);
       revealChildren(whyRef, ".im-whyus-card", {}, 0.1);
+      revealChildren(localAuthorityRef, ".im-local-authority-reveal", {}, 0.12);
       revealChildren(subServicesRef, ".im-subservice-card", {}, 0.08);
       revealChildren(ctaRef, ".im-reveal", {}, 0.12);
     });
@@ -207,6 +214,22 @@ const MicroInfluencerMarketing = () => {
         title={t(`${TK}.whyUs.title`)}
         items={toArray(t(`${TK}.whyUs.items`, { returnObjects: true }))}
         icons={whyUsIcons}
+        dir={dir}
+        classPrefix="im"
+      />
+
+      <ServiceLocalAuthoritySection
+        ref={localAuthorityRef}
+        sectionLabel={t(`${TK}.localAuthority.sectionLabel`)}
+        title={t(`${TK}.localAuthority.title`)}
+        description={t(`${TK}.localAuthority.description`)}
+        items={toArray(t(`${TK}.localAuthority.items`, { returnObjects: true }))}
+        footer={t(`${TK}.localAuthority.footer`)}
+        icons={localAuthorityIcons}
+        imageSrc="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1400&q=80"
+        imageAlt="Dubai business district skyline"
+        secondaryImageSrc="https://images.unsplash.com/photo-1460472178825-e5240623afd5?auto=format&fit=crop&w=1200&q=80"
+        secondaryImageAlt="Business team discussing strategy"
         dir={dir}
         classPrefix="im"
       />

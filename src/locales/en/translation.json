@@ -1197,6 +1197,17 @@
                       }
                     ]
                   },
+                  "localAuthority": {
+                    "sectionLabel": "Local Authority",
+                    "title": "Why Tikit is Different",
+                    "description": "We don’t run cookie-cutter campaigns. Tikit understands Dubai’s business culture, buyer behavior, and multilingual market dynamics. That means your campaigns resonate locally while staying scalable for growth.",
+                    "items": [
+                      "Deep knowledge of Dubai B2B market trends",
+                      "Expertise in B2B marketing influencers who influence decision-makers",
+                      "Multilingual capabilities for regional outreach"
+                    ],
+                    "footer": "You’re not just getting an agency. You’re getting a partner who knows how business works in Dubai."
+                  },
                   "faq": {
                     "title": "Frequently Asked Questions",
                     "items": [

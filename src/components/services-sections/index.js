@@ -11,5 +11,6 @@ export { default as ServiceStatsSection } from "./ServiceStatsSection";
 export { default as ServiceBenefitsSection } from "./ServiceBenefitsSection";
 export { default as ServiceCaseStudySection } from "./ServiceCaseStudySection";
 export { default as ServiceWhyUsSection } from "./ServiceWhyUsSection";
+export { default as ServiceLocalAuthoritySection } from "./ServiceLocalAuthoritySection";
 export { default as ServiceSubServicesSection } from "./ServiceSubServicesSection";
 export { default as ServiceCTASection } from "./ServiceCTASection";

@@ -1180,6 +1180,17 @@
           }
         ]
       },
+      "localAuthority": {
+        "sectionLabel": "Autorité locale",
+        "title": "Pourquoi Tikit fait la différence",
+        "description": "Nous ne lançons pas de campagnes standardisées. Tikit comprend la culture business de Dubaï, le comportement des acheteurs et la dynamique multilingue du marché. Vos campagnes résonnent localement tout en restant évolutives pour soutenir votre croissance.",
+        "items": [
+          "Connaissance approfondie des tendances du marché B2B à Dubaï",
+          "Expertise en influenceurs B2B qui impactent réellement les décideurs",
+          "Capacités multilingues pour une portée régionale"
+        ],
+        "footer": "Vous n'obtenez pas seulement une agence. Vous gagnez un partenaire qui comprend comment fonctionne le business à Dubaï."
+      },
       "faq": {
         "title": "Questions fréquentes",
         "items": [
