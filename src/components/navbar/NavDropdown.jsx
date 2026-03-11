@@ -100,12 +100,21 @@ export default function NavDropdown({ label, items = [], isMobile = false, onClo
             className={`w-full flex items-center justify-between text-left transition-all duration-200 rounded-lg ${
               isMobile
                 ? `text-xl md:text-2xl font-light uppercase tracking-wider py-3 px-5 ${
-                    level > 0 ? "ms-4 md:ms-6 text-lg md:text-xl normal-case tracking-normal" : ""
+                    level > 0
+                      ? "ms-4 md:ms-6 text-lg md:text-xl normal-case tracking-normal font-normal opacity-90"
+                      : "font-medium"
                   }`
-                : `text-sm py-3.5 px-5 ${level > 0 ? "ms-3 text-[13px]" : ""}`
+                : `py-3.5 px-5 ${
+                    level > 0
+                      ? "ms-3 text-[13px] font-normal opacity-90"
+                      : "text-sm font-semibold uppercase tracking-wide"
+                  }`
             } text-[var(--foreground)] hover:bg-[var(--container-bg)] dark:hover:bg-[var(--container-bg)]`}
           >
-            <span>{item.label}</span>
+            <span className="inline-flex items-center gap-2">
+              {level > 0 ? <span className="w-1.5 h-1.5 rounded-full bg-[var(--secondary)]/70" /> : null}
+              {item.label}
+            </span>
             {hasChildren ? <Chevron rotated={isExpanded} /> : null}
           </button>
 

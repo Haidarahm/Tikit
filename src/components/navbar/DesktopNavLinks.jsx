@@ -49,8 +49,11 @@ export default function DesktopNavLinks({ language }) {
           items={[
             {
               label: t("nav.servicesSections.0.influencerMarketing"),
-              to: "/influencer-marketing-agency-dubai",
               children: [
+                {
+                  label: t("nav.servicesSections.0.influencerMarketingAgencyDubai"),
+                  to: "/influencer-marketing-agency-dubai",
+                },
                 {
                   label: t("serviceSections.influencerMarketing.subPages.microInfluencer.badge"),
                   to: "/influencer-marketing-agency-dubai/micro-influencer-marketing-uae",
