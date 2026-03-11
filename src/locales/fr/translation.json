@@ -1122,13 +1122,13 @@
         ]
       },
       "outcomes": {
-        "sectionLabel": "Outcome Promise",
-        "title": "Growth You Can Measure",
-        "description": "Most clients see measurable traction within 60 days.",
+        "sectionLabel": "Promesse Tikit",
+        "title": "Une croissance B2B mesurable avec Tikit",
+        "description": "Avec Tikit, vous ne faites pas que lancer des campagnes. Vous développez une croissance B2B mesurable grâce à l’influencer marketing. La plupart des clients constatent des résultats mesurables en 60 jours.",
         "items": [
-          { "value": "60 Days", "label": "Typical timeline to measurable results" },
-          { "value": "Higher Quality", "label": "Leads aligned with your ICP" },
-          { "value": "Stronger", "label": "Brand authority among decision-makers" }
+          { "value": "Visibilité accrue", "label": "auprès des décideurs clés" },
+          { "value": "Leads plus qualifiés", "label": "qui convertissent réellement" },
+          { "value": "Autorité accélérée", "label": "et crédibilité renforcée dans votre niche" }
         ]
       },
       "features": {

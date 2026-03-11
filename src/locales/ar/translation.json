@@ -1132,13 +1132,13 @@
           ]
         },
         "outcomes": {
-          "sectionLabel": "Outcome Promise",
-          "title": "Growth You Can Measure",
-          "description": "Most clients see measurable traction within 60 days.",
+          "sectionLabel": "وعد تيكيت",
+          "title": "نمو B2B قابل للقياس مع تيكيت",
+          "description": "مع تيكيت، أنت لا تدير حملات فقط. أنت تبني نموًا قابلًا للقياس في B2B عبر التسويق بالمؤثرين. معظم العملاء يرون نتائج قابلة للقياس خلال 60 يومًا.",
           "items": [
-            { "value": "60 Days", "label": "Typical timeline to measurable results" },
-            { "value": "Higher Quality", "label": "Leads aligned with your ICP" },
-            { "value": "Stronger", "label": "Brand authority among decision-makers" }
+            { "value": "زيادة الظهور", "label": "أمام صناع القرار الرئيسيين" },
+            { "value": "عملاء محتملون أعلى جودة", "label": "ويتحولون فعليًا" },
+            { "value": "تعزيز أسرع", "label": "لسلطة العلامة ومصداقيتها في مجالك" }
           ]
         },
         "features": {
