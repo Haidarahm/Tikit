@@ -73,29 +73,73 @@
 .im-desc { @apply text-base md:text-lg leading-relaxed; color: color-mix(in srgb, var(--foreground) 65%, transparent); }
 
 /* ─── Why Struggle Cards ─────────────────────────────────────── */
+.im-problems-section .im-label {
+  color: var(--destructive, #ef4444);
+  background: color-mix(in srgb, var(--destructive, #ef4444) 14%, transparent);
+}
+
 .im-problems-grid {
   @apply grid grid-cols-1 md:grid-cols-2 gap-6 mt-12;
 }
 
 .im-problem-card {
   @apply relative rounded-2xl p-7 overflow-hidden cursor-default;
-  background: color-mix(in srgb, var(--secondary) 6%, var(--background) 94%);
-  border: 1px solid color-mix(in srgb, var(--secondary) 15%, transparent);
+  background:
+    linear-gradient(
+      155deg,
+      color-mix(in srgb, var(--destructive, #ef4444) 9%, var(--background) 91%) 0%,
+      color-mix(in srgb, var(--destructive, #ef4444) 4%, var(--background) 96%) 48%,
+      color-mix(in srgb, var(--destructive, #ef4444) 10%, var(--background) 90%) 100%
+    );
+  border: 1px solid color-mix(in srgb, var(--destructive, #ef4444) 30%, transparent);
   transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
     box-shadow 0.35s ease,
     border-color 0.3s ease;
 }
 
+.im-problem-card::before {
+  @apply absolute -top-16 -right-16 w-36 h-36 rounded-full pointer-events-none;
+  content: "";
+  background: color-mix(in srgb, var(--destructive, #ef4444) 16%, transparent);
+  filter: blur(26px);
+}
+
 .im-problem-card:hover {
   transform: translateY(-6px) scale(1.01);
-  border-color: color-mix(in srgb, var(--secondary) 40%, transparent);
-  box-shadow: 0 20px 50px -10px color-mix(in srgb, var(--secondary) 18%, transparent);
+  border-color: color-mix(in srgb, var(--destructive, #ef4444) 55%, transparent);
+  box-shadow: 0 20px 50px -10px color-mix(in srgb, var(--destructive, #ef4444) 28%, transparent);
 }
 
 .im-problem-card__icon {
-  @apply text-3xl mb-4 flex items-center justify-center w-12 h-12 rounded-xl;
-  background: color-mix(in srgb, var(--secondary) 14%, transparent);
-  color: var(--secondary);
+  @apply text-3xl mb-4 flex items-center justify-center w-12 h-12 rounded-xl relative overflow-hidden;
+  background: color-mix(in srgb, var(--destructive, #ef4444) 18%, transparent);
+  color: var(--destructive, #ef4444);
+  border: 1px solid color-mix(in srgb, var(--destructive, #ef4444) 32%, transparent);
+}
+
+/* Broken icon effect: subtle crack lines */
+.im-problem-card__icon::before,
+.im-problem-card__icon::after {
+  @apply absolute pointer-events-none;
+  content: "";
+  background: color-mix(in srgb, var(--destructive, #ef4444) 70%, transparent);
+  opacity: 0.35;
+}
+
+.im-problem-card__icon::before {
+  width: 2px;
+  height: 28px;
+  left: 52%;
+  top: -4px;
+  transform: rotate(25deg);
+}
+
+.im-problem-card__icon::after {
+  width: 20px;
+  height: 2px;
+  left: 10px;
+  top: 58%;
+  transform: rotate(-18deg);
 }
 
 .im-problem-card__title {

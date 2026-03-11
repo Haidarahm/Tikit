@@ -1062,72 +1062,72 @@
     "subPages": {
       "microInfluencer": {
         "seo": {
-          "title": "B2B Influencer Marketing in Dubai | Drive Measurable Results",
-          "description": "Tikit helps Dubai businesses run B2B influencer marketing campaigns that reach decision-makers, generate quality leads, and improve measurable ROI.",
-          "keywords": "b2b influencer marketing dubai, influencer marketing for b2b, b2b marketing influencers, b2b influencer marketing strategy, dubai b2b marketing",
-          "serviceType": "B2B Influencer Marketing Dubai"
+          "title": "التسويق بالمؤثرين B2B في دبي | نتائج قابلة للقياس",
+          "description": "تساعد تيكيت الشركات في دبي على تنفيذ حملات تسويق بالمؤثرين B2B تصل إلى صناع القرار، وتولد عملاء محتملين مؤهلين، وتحسن العائد على الاستثمار بشكل قابل للقياس.",
+          "keywords": "التسويق بالمؤثرين b2b دبي, استراتيجية مؤثرين b2b, مؤثرو الأعمال, وكالة تسويق مؤثرين دبي, توليد العملاء المحتملين b2b",
+          "serviceType": "التسويق بالمؤثرين B2B في دبي"
         },
-        "badge": "B2B Influencer Marketing Dubai",
+        "badge": "التسويق بالمؤثرين B2B في دبي",
         "hero": {
-          "title": "Drive Measurable Growth with",
-          "mainWord": "B2B Influencer Marketing",
-          "description": "Reach decision-makers, build authority, and generate qualified leads through data-driven influencer campaigns tailored for Dubai businesses."
+          "title": "حقق نموًا قابلًا للقياس مع",
+          "mainWord": "التسويق بالمؤثرين B2B",
+          "description": "استهدف صناع القرار المناسبين، وابنِ الثقة والسلطة لعلامتك، وحقق عملاء محتملين مؤهلين عبر حملات مبنية على البيانات ومصممة لسوق دبي."
         },
         "audience": {
           "sectionLabel": "التحدي",
-          "title": "هل تجد صعوبة في إيصال رسالتك إلى الجمهور المناسب في B2B؟",
+          "title": "هل تجد صعوبة في إيصال رسالتك إلى الجمهور المناسب  ؟",
           "paragraphs": [
             "أنت تعرف أن منتجك قوي، وفريقك يعمل بجد. لكن رغم الاستثمار في التسويق، ما زلت تجد صعوبة في جذب انتباه الشركات الأهم بالنسبة لك. الحملات التقليدية لا تحقق عائدًا قابلًا للقياس، والتواصل البارد لا يحقق تحويلات كافية، بينما يستفيد المنافسون بالفعل من مؤثري B2B للسيطرة على الحوار.",
             "هذا الإحباط ليس خطأك. سوق B2B في دبي مزدحم، وصنّاع القرار مشغولون، والحملات العامة لا تبرز بسهولة."
           ]
         },
         "problems": {
-          "sectionLabel": "The Challenge",
-          "title": "Why B2B Brands Struggle to Reach the Right Buyers",
-          "description": "Most campaigns are too generic for Dubai's competitive B2B market.",
+          "sectionLabel": "التحدي",
+          "title": "لماذا تواجه علامات B2B صعوبة في الوصول إلى المشترين المناسبين؟",
+          "description": "معظم الحملات تكون عامة أكثر من اللازم ولا تناسب طبيعة سوق B2B التنافسي في دبي.",
           "items": [
             {
-              "title": "Hard to identify credible B2B influencers",
-              "text": "Many creators have visibility but little impact on business buyers."
+              "title": "صعوبة اختيار مؤثري B2B الموثوقين",
+              "text": "العديد من صناع المحتوى لديهم وصول جيد، لكن تأثيرهم الفعلي على المشترين من الشركات محدود."
             },
             {
-              "title": "Low engagement with decision-makers",
-              "text": "Content often misses executives and stakeholders who can approve deals."
+              "title": "تفاعل ضعيف مع صناع القرار",
+              "text": "غالبًا لا يصل المحتوى إلى التنفيذيين وأصحاب المصلحة الذين يملكون صلاحية اعتماد الصفقات."
             },
             {
-              "title": "Lack of measurable ROI",
-              "text": "Budgets get spent without clear attribution to leads and revenue."
+              "title": "غياب عائد استثمار قابل للقياس",
+              "text": "يتم إنفاق الميزانيات دون ربط واضح بين الحملة وبين العملاء المحتملين أو الإيرادات."
             },
             {
-              "title": "Generic strategy mismatch",
-              "text": "What works in other markets often fails in Dubai's B2B environment."
+              "title": "استراتيجيات عامة غير مناسبة",
+              "text": "ما ينجح في أسواق أخرى يفشل كثيرًا في بيئة B2B الخاصة بدبي."
             }
           ]
         },
         "process": {
-          "sectionLabel": "Our Framework",
-          "title": "How Tikit Delivers Measurable Results",
-          "description": "A simple 4-step framework focused on outcomes, not vanity metrics.",
+          "sectionLabel": "منهجيتنا",
+          "title": "كيف تقدم تيكيت نتائج قابلة للقياس",
+          "description": "إطار عمل بسيط من 4 خطوات يركز على النتائج الفعلية وليس أرقام الواجهة.",
           "steps": [
             {
               "n": "01",
-              "title": "Analysis",
-              "text": "We assess audience, competitors, and market trends to identify the influencers that can move your business forward."
+              "title": "التحليل",
+              "text": "نحلل جمهورك ومنافسيك واتجاهات السوق لاختيار المؤثرين القادرين فعليًا على دفع أعمالك للأمام."
             },
             {
               "n": "02",
-              "title": "Strategy",
-              "text": "We build a campaign around your goals, from lead generation to authority building, with clear KPIs."
+              "title": "الاستراتيجية",
+              "text": "نبني الحملة وفق أهدافك، من توليد العملاء المحتملين إلى بناء السلطة، مع مؤشرات أداء واضحة."
             },
             {
               "n": "03",
-              "title": "Execution",
-              "text": "We coordinate creators, content, approvals, and publishing so your message reaches the right B2B buyers."
+              "title": "التنفيذ",
+              "text": "ننسق بين المؤثرين والمحتوى والاعتمادات والنشر لضمان وصول رسالتك إلى المشترين الصحيحين في B2B."
             },
             {
               "n": "04",
-              "title": "Optimization",
-              "text": "We track performance continuously and refine the campaign to improve lead quality and ROI over time."
+              "title": "التحسين",
+              "text": "نتابع الأداء بشكل مستمر ونحسن الحملة لرفع جودة العملاء المحتملين وتعظيم العائد بمرور الوقت."
             }
           ]
         },
@@ -1142,85 +1142,85 @@
           ]
         },
         "features": {
-          "sectionLabel": "What You Get",
-          "title": "Built for Business Outcomes",
-          "description": "Every part of the engagement is designed around measurable B2B growth.",
+          "sectionLabel": "ماذا ستحصل",
+          "title": "مصمم لنتائج أعمال حقيقية",
+          "description": "كل جزء من التعاون مصمم لتحقيق نمو B2B قابل للقياس.",
           "items": [
             {
-              "title": "Dedicated account manager",
-              "text": "You always know what is happening and what comes next."
+              "title": "مدير حساب مخصص",
+              "text": "تعرف دائمًا ما يحدث الآن وما الخطوة التالية."
             },
             {
-              "title": "Custom influencer network",
-              "text": "We match your brand with relevant voices in your niche."
+              "title": "شبكة مؤثرين مخصصة",
+              "text": "نطابق علامتك مع الأصوات الأكثر صلة بمجالك."
             },
             {
-              "title": "Full campaign reporting",
-              "text": "Track performance and ROI through transparent dashboards."
+              "title": "تقارير حملة كاملة",
+              "text": "تابع الأداء والعائد على الاستثمار عبر لوحات متابعة شفافة."
             },
             {
-              "title": "Transparent pricing",
-              "text": "Clear packages with no hidden costs or surprises."
+              "title": "تسعير شفاف",
+              "text": "باقات واضحة بدون تكاليف مخفية أو مفاجآت."
             },
             {
-              "title": "Local Dubai expertise",
-              "text": "Campaigns are adapted to business culture and buyer behavior in Dubai."
+              "title": "خبرة محلية في دبي",
+              "text": "حملات متوافقة مع ثقافة الأعمال وسلوك المشترين في دبي."
             }
           ]
         },
         "whyUs": {
-          "sectionLabel": "Why Tikit",
-          "title": "A Practical Growth Partner for B2B Brands",
+          "sectionLabel": "لماذا تيكيت",
+          "title": "شريك نمو عملي لعلامات B2B",
           "items": [
             {
-              "title": "No cookie-cutter plans",
-              "text": "Each strategy is tailored to your business model and revenue goals."
+              "title": "لا حلول جاهزة مكررة",
+              "text": "كل استراتيجية تُبنى بما يتناسب مع نموذج عملك وأهداف الإيرادات."
             },
             {
-              "title": "Data-driven decisions",
-              "text": "Every action is informed by measurable insights and performance data."
+              "title": "قرارات مبنية على البيانات",
+              "text": "كل خطوة تستند إلى رؤى قابلة للقياس وبيانات أداء فعلية."
             },
             {
-              "title": "Direct communication",
-              "text": "Work directly with your account team without delays or handoffs."
+              "title": "تواصل مباشر",
+              "text": "تتعامل مباشرة مع فريق حسابك بدون تأخير أو نقل متكرر للمهام."
             },
             {
-              "title": "Transparent operations",
-              "text": "Clear updates, clear costs, and clear accountability."
+              "title": "تنفيذ شفاف",
+              "text": "تحديثات واضحة، وتكاليف واضحة، ومسؤوليات واضحة."
             }
           ]
         },
         "faq": {
-          "title": "Frequently Asked Questions",
+          "title": "الأسئلة الشائعة",
           "items": [
             {
-              "question": "How much does a B2B influencer campaign cost?",
-              "answer": "Pricing depends on campaign scope, number of influencers, and your objectives. Tikit provides transparent packages with no hidden fees."
+              "question": "كم تكلفة حملة تسويق مؤثرين B2B؟",
+              "answer": "تعتمد التكلفة على نطاق الحملة وعدد المؤثرين والأهداف. تيكيت تقدم باقات شفافة دون رسوم مخفية."
             },
             {
-              "question": "How long until we see results?",
-              "answer": "Most clients see measurable engagement and qualified leads within 60 days."
+              "question": "متى يمكننا رؤية النتائج؟",
+              "answer": "معظم العملاء يرون نتائج قابلة للقياس وعملاء محتملين مؤهلين خلال 60 يومًا."
             },
             {
-              "question": "Do we need a long-term contract?",
-              "answer": "No. We offer flexible agreements based on your business needs and growth stage."
+              "question": "هل نحتاج إلى عقد طويل الأمد؟",
+              "answer": "لا. نقدم اتفاقيات مرنة حسب احتياجات أعمالك ومرحلة النمو."
             },
             {
-              "question": "How often do we get updates?",
-              "answer": "You receive weekly reporting and dashboard visibility with ongoing optimization updates."
+              "question": "كم مرة نحصل على التحديثات؟",
+              "answer": "تحصل على تقارير أسبوعية ورؤية مباشرة عبر لوحة المتابعة مع تحديثات تحسين مستمرة."
             },
             {
-              "question": "Who will we work with directly?",
-              "answer": "A dedicated account manager coordinates the entire campaign and remains your direct point of contact."
+              "question": "من سيكون جهة التواصل المباشرة؟",
+              "answer": "مدير حساب مخصص ينسق الحملة بالكامل ويبقى نقطة اتصالك المباشرة."
             }
           ]
         },
         "cta": {
-          "sectionLabel": "Ready to Grow?",
-          "title": "Reach the Right Decision-Makers in Dubai",
-          "description": "Book a free consultation and get a focused B2B influencer strategy designed for measurable lead and revenue impact.",
-          "primaryButton": "Book Free Consultation",
-          "secondaryButton": "Call Us Now"
+          "sectionLabel": "هل أنت جاهز للنمو؟",
+          "title": "صل إلى صناع القرار المناسبين في دبي",
+          "description": "احجز استشارة مجانية واحصل على استراتيجية مؤثرين B2B مركزة على عملاء محتملين مؤهلين وتأثير واضح على الإيرادات.",
+          "primaryButton": "احجز استشارة مجانية",
+          "secondaryButton": "اتصل بنا الآن"
         }
       }
     },

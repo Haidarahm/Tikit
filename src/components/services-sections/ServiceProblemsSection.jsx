@@ -16,7 +16,7 @@ const ServiceProblemsSection = forwardRef((props, ref) => {
   const p = classPrefix;
 
   return (
-    <section className={`${p}-section`} dir={dir}>
+    <section className={`${p}-section ${p}-problems-section`} dir={dir}>
       <div className={`${p}-container`}>
         <div className="text-center max-w-2xl mx-auto mb-2">
           <span className={`${p}-label`}>{sectionLabel}</span>
