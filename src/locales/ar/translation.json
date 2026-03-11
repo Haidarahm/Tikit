@@ -1059,6 +1059,163 @@
         }
       ]
     },
+    "subPages": {
+      "microInfluencer": {
+        "seo": {
+          "title": "B2B Influencer Marketing in Dubai | Drive Measurable Results",
+          "description": "Tikit helps Dubai businesses run B2B influencer marketing campaigns that reach decision-makers, generate quality leads, and improve measurable ROI.",
+          "keywords": "b2b influencer marketing dubai, influencer marketing for b2b, b2b marketing influencers, b2b influencer marketing strategy, dubai b2b marketing",
+          "serviceType": "B2B Influencer Marketing Dubai"
+        },
+        "badge": "B2B Influencer Marketing Dubai",
+        "hero": {
+          "title": "Drive Measurable Growth with",
+          "mainWord": "B2B Influencer Marketing",
+          "description": "Reach decision-makers, build authority, and generate qualified leads through data-driven influencer campaigns tailored for Dubai businesses."
+        },
+        "problems": {
+          "sectionLabel": "The Challenge",
+          "title": "Why B2B Brands Struggle to Reach the Right Buyers",
+          "description": "Most campaigns are too generic for Dubai's competitive B2B market.",
+          "items": [
+            {
+              "title": "Hard to identify credible B2B influencers",
+              "text": "Many creators have visibility but little impact on business buyers."
+            },
+            {
+              "title": "Low engagement with decision-makers",
+              "text": "Content often misses executives and stakeholders who can approve deals."
+            },
+            {
+              "title": "Lack of measurable ROI",
+              "text": "Budgets get spent without clear attribution to leads and revenue."
+            },
+            {
+              "title": "Generic strategy mismatch",
+              "text": "What works in other markets often fails in Dubai's B2B environment."
+            }
+          ]
+        },
+        "process": {
+          "sectionLabel": "Our Framework",
+          "title": "How Tikit Delivers Measurable Results",
+          "description": "A simple 4-step framework focused on outcomes, not vanity metrics.",
+          "steps": [
+            {
+              "n": "01",
+              "title": "Analysis",
+              "text": "We assess audience, competitors, and market trends to identify the influencers that can move your business forward."
+            },
+            {
+              "n": "02",
+              "title": "Strategy",
+              "text": "We build a campaign around your goals, from lead generation to authority building, with clear KPIs."
+            },
+            {
+              "n": "03",
+              "title": "Execution",
+              "text": "We coordinate creators, content, approvals, and publishing so your message reaches the right B2B buyers."
+            },
+            {
+              "n": "04",
+              "title": "Optimization",
+              "text": "We track performance continuously and refine the campaign to improve lead quality and ROI over time."
+            }
+          ]
+        },
+        "outcomes": {
+          "sectionLabel": "Outcome Promise",
+          "title": "Growth You Can Measure",
+          "description": "Most clients see measurable traction within 60 days.",
+          "items": [
+            { "value": "60 Days", "label": "Typical timeline to measurable results" },
+            { "value": "Higher Quality", "label": "Leads aligned with your ICP" },
+            { "value": "Stronger", "label": "Brand authority among decision-makers" }
+          ]
+        },
+        "features": {
+          "sectionLabel": "What You Get",
+          "title": "Built for Business Outcomes",
+          "description": "Every part of the engagement is designed around measurable B2B growth.",
+          "items": [
+            {
+              "title": "Dedicated account manager",
+              "text": "You always know what is happening and what comes next."
+            },
+            {
+              "title": "Custom influencer network",
+              "text": "We match your brand with relevant voices in your niche."
+            },
+            {
+              "title": "Full campaign reporting",
+              "text": "Track performance and ROI through transparent dashboards."
+            },
+            {
+              "title": "Transparent pricing",
+              "text": "Clear packages with no hidden costs or surprises."
+            },
+            {
+              "title": "Local Dubai expertise",
+              "text": "Campaigns are adapted to business culture and buyer behavior in Dubai."
+            }
+          ]
+        },
+        "whyUs": {
+          "sectionLabel": "Why Tikit",
+          "title": "A Practical Growth Partner for B2B Brands",
+          "items": [
+            {
+              "title": "No cookie-cutter plans",
+              "text": "Each strategy is tailored to your business model and revenue goals."
+            },
+            {
+              "title": "Data-driven decisions",
+              "text": "Every action is informed by measurable insights and performance data."
+            },
+            {
+              "title": "Direct communication",
+              "text": "Work directly with your account team without delays or handoffs."
+            },
+            {
+              "title": "Transparent operations",
+              "text": "Clear updates, clear costs, and clear accountability."
+            }
+          ]
+        },
+        "faq": {
+          "title": "Frequently Asked Questions",
+          "items": [
+            {
+              "question": "How much does a B2B influencer campaign cost?",
+              "answer": "Pricing depends on campaign scope, number of influencers, and your objectives. Tikit provides transparent packages with no hidden fees."
+            },
+            {
+              "question": "How long until we see results?",
+              "answer": "Most clients see measurable engagement and qualified leads within 60 days."
+            },
+            {
+              "question": "Do we need a long-term contract?",
+              "answer": "No. We offer flexible agreements based on your business needs and growth stage."
+            },
+            {
+              "question": "How often do we get updates?",
+              "answer": "You receive weekly reporting and dashboard visibility with ongoing optimization updates."
+            },
+            {
+              "question": "Who will we work with directly?",
+              "answer": "A dedicated account manager coordinates the entire campaign and remains your direct point of contact."
+            }
+          ]
+        },
+        "cta": {
+          "sectionLabel": "Ready to Grow?",
+          "title": "Reach the Right Decision-Makers in Dubai",
+          "description": "Book a free consultation and get a focused B2B influencer strategy designed for measurable lead and revenue impact.",
+          "primaryButton": "Book Free Consultation",
+          "secondaryButton": "Call Us Now"
+        }
+      }
+    },
     "cta": {
       "sectionLabel": "هل أنت مستعد للنمو؟",
       "title": "هل أنت مستعد للعمل مع وكالة تسويق رقمي رائدة في دبي؟",

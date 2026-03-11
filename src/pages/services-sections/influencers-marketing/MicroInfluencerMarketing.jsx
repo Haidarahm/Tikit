@@ -1,95 +1,234 @@
-import React from "react";
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useTranslation } from "react-i18next";
-import InfluencerSubPage from "./InfluencerSubPage";
+import { useI18nLanguage } from "../../../store/I18nLanguageContext";
 import {
-  HiUserGroup,
-  HiHeart,
-  HiCurrencyDollar,
-  HiTrendingUp,
-  HiChatAlt2,
-  HiShieldCheck,
-  HiBadgeCheck,
-  HiGlobe,
-  HiChartBar,
-} from "react-icons/hi";
-import { HiMegaphone, HiSparkles, HiPresentationChartBar } from "react-icons/hi2";
-import { FaInstagram, FaTiktok } from "react-icons/fa";
+  FiUsers,
+  FiTarget,
+  FiBarChart2,
+  FiMapPin,
+  FiUserPlus,
+  FiLayers,
+  FiMessageSquare,
+  FiPieChart,
+  FiShield,
+  FiActivity,
+  FiStar,
+  FiInstagram,
+  FiVideo,
+  FiTag,
+} from "react-icons/fi";
+import SEOHead from "../../../components/SEOHead";
+import FAQ from "../../../components/FAQ";
+import {
+  ServiceHeroSection,
+  ServiceProblemsSection,
+  ServiceProcessSection,
+  ServiceStatsSection,
+  ServiceBenefitsSection,
+  ServiceWhyUsSection,
+  ServiceSubServicesSection,
+  ServiceCTASection,
+} from "../../../components/services-sections";
+import "../../../components/services-sections/ServiceSections.css";
 
-const BASE = "/influencer-marketing-agency-dubai";
+gsap.registerPlugin(ScrollTrigger);
+
 const TK = "serviceSections.influencerMarketing.subPages.microInfluencer";
+
+const problemIcons = [<FiUsers key="1" />, <FiTarget key="2" />, <FiBarChart2 key="3" />, <FiMapPin key="4" />];
+const benefitIcons = [<FiUserPlus key="1" />, <FiUsers key="2" />, <FiPieChart key="3" />, <FiTag key="4" />, <FiMapPin key="5" />];
+const whyUsIcons = [<FiLayers key="1" />, <FiActivity key="2" />, <FiMessageSquare key="3" />, <FiShield key="4" />];
+const subServiceIcons = [
+  <FiActivity key="1" />,
+  <FiUsers key="2" />,
+  <FiStar key="3" />,
+  <FiPieChart key="4" />,
+  <FiInstagram key="5" />,
+  <FiVideo key="6" />,
+  <FiTag key="7" />,
+];
+
+const subServiceHrefs = [
+  "/influencer-marketing-agency-dubai/campaign-management",
+  "/influencer-marketing-agency-dubai/micro-influencer-marketing-uae",
+  "/influencer-marketing-agency-dubai/luxury-influencer-marketing",
+  "/influencer-marketing-agency-dubai/roi-analytics",
+  "/influencer-marketing-agency-dubai/instagram-influencer-marketing",
+  "/influencer-marketing-agency-dubai/tiktok-influencer-marketing",
+  "/influencer-marketing-agency-dubai/influencer-marketing-cost-uae",
+];
+
+function revealChildren(containerRef, selector, fromVars = {}, staggerVal = 0.1) {
+  if (!containerRef.current) return;
+  const els = containerRef.current.querySelectorAll(selector);
+  if (!els.length) return;
+  gsap.fromTo(
+    els,
+    { opacity: 0, y: 36, ...fromVars },
+    {
+      opacity: 1,
+      y: 0,
+      duration: 0.75,
+      stagger: staggerVal,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top 82%",
+      },
+    }
+  );
+}
+
+const toArray = (val) => (Array.isArray(val) ? val : []);
 
 const MicroInfluencerMarketing = () => {
   const { t } = useTranslation();
-  const featureIcons = [HiUserGroup, HiHeart, HiCurrencyDollar, HiTrendingUp, HiChatAlt2, HiShieldCheck];
-  const trustIcons = [HiBadgeCheck, HiGlobe, HiUserGroup, HiChartBar];
+  const { isRtl } = useI18nLanguage();
+  const dir = isRtl ? "rtl" : "ltr";
 
-  const pageData = {
-    seo: {
-      title: "Micro-Influencer Marketing UAE | Authentic Creator Partnerships Dubai",
-      description: "Micro-influencer marketing services in UAE. Connect with authentic nano and micro-influencers for cost-effective, high-engagement campaigns.",
-      keywords: "micro influencer marketing UAE, nano influencer Dubai, micro influencer agency UAE",
-      canonicalUrl: `${BASE}/micro-influencer-marketing-uae`,
-      serviceType: "Micro-Influencer Marketing",
-      structuredData: {
-        "@context": "https://schema.org",
-        "@type": "Service",
-        "@id": `https://tikit.ae${BASE}/micro-influencer-marketing-uae#service`,
-        name: "Micro-Influencer Marketing UAE",
-        description: "Authentic micro-influencer marketing services in the UAE.",
-        provider: { "@type": "Organization", name: "Tikit Agency", url: "https://tikit.ae" },
-        areaServed: { "@type": "Country", name: "United Arab Emirates" },
-      },
-      breadcrumbs: [
-        { name: t("nav.home"), url: "/" },
-        { name: t("nav.services"), url: "/services" },
-        { name: t("serviceSections.influencerMarketing.badge"), url: BASE },
-        { name: t(`${TK}.badge`), url: `${BASE}/micro-influencer-marketing-uae` },
-      ],
-    },
-    badge: t(`${TK}.badge`),
-    hero: {
-      title: t(`${TK}.hero.title`),
-      mainWord: t(`${TK}.hero.mainWord`),
-      description: t(`${TK}.hero.description`),
-    },
-    definition: {
-      title: t(`${TK}.definition.title`),
-      paragraph: t(`${TK}.definition.paragraph`),
-      benefitsTitle: t(`${TK}.definition.benefitsTitle`),
-      benefits: t(`${TK}.definition.benefits`, { returnObjects: true }),
-      processTitle: t(`${TK}.definition.processTitle`),
-      processSteps: t(`${TK}.definition.processSteps`, { returnObjects: true }),
-    },
-    stats: t(`${TK}.stats`, { returnObjects: true }),
-    features: {
-      title: t(`${TK}.features.title`),
-      subtitle: t(`${TK}.features.subtitle`),
-      items: t(`${TK}.features.items`, { returnObjects: true }).map((item, i) => ({ ...item, icon: featureIcons[i] })),
-    },
-    process: {
-      title: t(`${TK}.process.title`),
-      subtitle: t(`${TK}.process.subtitle`),
-      steps: t(`${TK}.process.steps`, { returnObjects: true }),
-    },
-    trust: {
-      title: t(`${TK}.trust.title`),
-      subtitle: t(`${TK}.trust.subtitle`),
-      cards: t(`${TK}.trust.cards`, { returnObjects: true }).map((card, i) => ({ ...card, icon: trustIcons[i] })),
-      paragraph: t(`${TK}.trust.paragraph`),
-    },
-    relatedPages: [
-      { path: `${BASE}/campaign-management`, title: t("serviceSections.influencerMarketing.subServices.campaignManagement.title"), description: t("serviceSections.influencerMarketing.subServices.campaignManagement.description"), icon: HiMegaphone },
-      { path: `${BASE}/roi-analytics`, title: t("serviceSections.influencerMarketing.subServices.roiAnalytics.title"), description: t("serviceSections.influencerMarketing.subServices.roiAnalytics.description"), icon: HiPresentationChartBar },
-      { path: `${BASE}/instagram-influencer-marketing`, title: t("serviceSections.influencerMarketing.subServices.instagramInfluencer.title"), description: t("serviceSections.influencerMarketing.subServices.instagramInfluencer.description"), icon: FaInstagram },
-      { path: `${BASE}/tiktok-influencer-marketing`, title: t("serviceSections.influencerMarketing.subServices.tiktokInfluencer.title"), description: t("serviceSections.influencerMarketing.subServices.tiktokInfluencer.description"), icon: FaTiktok },
-      { path: `${BASE}/luxury-influencer-marketing`, title: t("serviceSections.influencerMarketing.subServices.luxuryInfluencer.title"), description: t("serviceSections.influencerMarketing.subServices.luxuryInfluencer.description"), icon: HiSparkles },
-      { path: `${BASE}/influencer-marketing-cost-uae`, title: t("serviceSections.influencerMarketing.subServices.influencerCost.title"), description: t("serviceSections.influencerMarketing.subServices.influencerCost.description"), icon: HiCurrencyDollar },
-    ],
-    faq: { title: t(`${TK}.faq.title`), items: t(`${TK}.faq.items`, { returnObjects: true }) },
-    cta: { title: t(`${TK}.cta.title`), description: t(`${TK}.cta.description`), button: t(`${TK}.cta.button`) },
-  };
+  const heroRef = useRef(null);
+  const problemsRef = useRef(null);
+  const processRef = useRef(null);
+  const outcomesRef = useRef(null);
+  const benefitsRef = useRef(null);
+  const whyRef = useRef(null);
+  const subServicesRef = useRef(null);
+  const ctaRef = useRef(null);
 
-  return <InfluencerSubPage pageData={pageData} />;
+  const breadcrumbs = [
+    { name: t("nav.home"), url: "/" },
+    { name: t("nav.services"), url: "/services" },
+    { name: t("serviceSections.influencerMarketing.badge"), url: "/influencer-marketing-agency-dubai" },
+    { name: t(`${TK}.badge`), url: "/influencer-marketing-agency-dubai/micro-influencer-marketing-uae" },
+  ];
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        heroRef.current,
+        { opacity: 0, y: 24 },
+        { opacity: 1, y: 0, duration: 1.1, ease: "power3.out", delay: 0.15 }
+      );
+      revealChildren(problemsRef, ".im-problem-card", {}, 0.12);
+      revealChildren(processRef, ".im-step-card", {}, 0.1);
+      revealChildren(outcomesRef, ".im-stat-card", {}, 0.1);
+      revealChildren(benefitsRef, ".im-benefit-item", {}, 0.1);
+      revealChildren(whyRef, ".im-whyus-card", {}, 0.1);
+      revealChildren(subServicesRef, ".im-subservice-card", {}, 0.08);
+      revealChildren(ctaRef, ".im-reveal", {}, 0.12);
+    });
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <div className="im-page" data-nav-color="black" dir={dir}>
+      <SEOHead
+        title={t(`${TK}.seo.title`)}
+        description={t(`${TK}.seo.description`)}
+        keywords={t(`${TK}.seo.keywords`)}
+        canonicalUrl="/influencer-marketing-agency-dubai/micro-influencer-marketing-uae"
+        serviceType={t(`${TK}.seo.serviceType`)}
+        breadcrumbs={breadcrumbs}
+      />
+
+      <ServiceHeroSection
+        ref={heroRef}
+        imageSrc="/services-images/influencer-marketing.webp"
+        imageAlt={t(`${TK}.seo.serviceType`)}
+        badge={t(`${TK}.badge`)}
+        title={t(`${TK}.hero.title`)}
+        mainWord={t(`${TK}.hero.mainWord`)}
+        description={t(`${TK}.hero.description`)}
+        dataNavColor="black"
+        classPrefix="im"
+      />
+
+      <ServiceProblemsSection
+        ref={problemsRef}
+        sectionLabel={t(`${TK}.problems.sectionLabel`)}
+        title={t(`${TK}.problems.title`)}
+        description={t(`${TK}.problems.description`)}
+        items={toArray(t(`${TK}.problems.items`, { returnObjects: true }))}
+        icons={problemIcons}
+        dir={dir}
+        classPrefix="im"
+      />
+
+      <ServiceProcessSection
+        ref={processRef}
+        sectionLabel={t(`${TK}.process.sectionLabel`)}
+        title={t(`${TK}.process.title`)}
+        description={t(`${TK}.process.description`)}
+        steps={toArray(t(`${TK}.process.steps`, { returnObjects: true }))}
+        dir={dir}
+        classPrefix="im"
+      />
+
+      <ServiceStatsSection
+        ref={outcomesRef}
+        sectionLabel={t(`${TK}.outcomes.sectionLabel`)}
+        title={t(`${TK}.outcomes.title`)}
+        description={t(`${TK}.outcomes.description`)}
+        items={toArray(t(`${TK}.outcomes.items`, { returnObjects: true }))}
+        dir={dir}
+        classPrefix="im"
+      />
+
+      <ServiceBenefitsSection
+        ref={benefitsRef}
+        sectionLabel={t(`${TK}.features.sectionLabel`)}
+        title={t(`${TK}.features.title`)}
+        description={t(`${TK}.features.description`)}
+        items={toArray(t(`${TK}.features.items`, { returnObjects: true }))}
+        icons={benefitIcons}
+        dir={dir}
+        classPrefix="im"
+      />
+
+      <ServiceWhyUsSection
+        ref={whyRef}
+        sectionLabel={t(`${TK}.whyUs.sectionLabel`)}
+        title={t(`${TK}.whyUs.title`)}
+        items={toArray(t(`${TK}.whyUs.items`, { returnObjects: true }))}
+        icons={whyUsIcons}
+        dir={dir}
+        classPrefix="im"
+      />
+
+      <ServiceSubServicesSection
+        ref={subServicesRef}
+        sectionLabel={t("serviceSections.influencerMarketing.subServices.sectionLabel")}
+        title={t("serviceSections.influencerMarketing.subServices.title")}
+        description={t("serviceSections.influencerMarketing.subServices.description")}
+        learnMoreText={t("serviceSections.influencerMarketing.subServices.learnMore")}
+        items={toArray(t("serviceSections.influencerMarketing.subServices.items", { returnObjects: true }))}
+        hrefs={subServiceHrefs}
+        icons={subServiceIcons}
+        dir={dir}
+        classPrefix="im"
+      />
+
+      <FAQ
+        title={t(`${TK}.faq.title`)}
+        items={toArray(t(`${TK}.faq.items`, { returnObjects: true }))}
+      />
+
+      <ServiceCTASection
+        ref={ctaRef}
+        sectionLabel={t(`${TK}.cta.sectionLabel`)}
+        title={t(`${TK}.cta.title`)}
+        description={t(`${TK}.cta.description`)}
+        primaryButtonText={t(`${TK}.cta.primaryButton`)}
+        secondaryButtonText={t(`${TK}.cta.secondaryButton`)}
+        primaryHref="/contact-us"
+        secondaryHref="tel:+97145774042"
+        dir={dir}
+        classPrefix="im"
+      />
+    </div>
+  );
 };
 
 export default MicroInfluencerMarketing;
