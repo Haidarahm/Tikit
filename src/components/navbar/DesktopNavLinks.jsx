@@ -47,7 +47,16 @@ export default function DesktopNavLinks({ language }) {
    <NavDropdown
           label={t("nav.services")}
           items={[
-            { label: t("nav.servicesSections.0.influencerMarketing"), to: "/influencer-marketing-agency-dubai" },
+            {
+              label: t("nav.servicesSections.0.influencerMarketing"),
+              to: "/influencer-marketing-agency-dubai",
+              children: [
+                {
+                  label: t("serviceSections.influencerMarketing.subPages.microInfluencer.badge"),
+                  to: "/influencer-marketing-agency-dubai/micro-influencer-marketing-uae",
+                },
+              ],
+            },
             { label: t("nav.servicesSections.1.branding"), to: "/branding-agency-dubai" },
           ]}
         />
