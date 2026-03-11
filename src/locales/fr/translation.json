@@ -1133,8 +1133,8 @@
       },
       "features": {
         "sectionLabel": "Ce que vous obtenez",
-        "title": "Conçu pour des résultats business",
-        "description": "Chaque étape de la collaboration est pensée pour une croissance B2B mesurable.",
+        "title": "Quand vous travaillez avec Tikit ?",
+        "description": "Chaque étape de la collaboration est pensée pour une croissance B2B mesurable. Chaque fonctionnalité est conçue pour vous donner un résultat mesurable, rapidement.",
         "items": [
           {
             "title": "Account manager dédié",
@@ -1160,7 +1160,7 @@
       },
       "whyUs": {
         "sectionLabel": "Pourquoi Tikit",
-        "title": "Un partenaire de croissance concret pour les marques B2B",
+        "title": "Pourquoi choisir Tikit comme partenaire ?",
         "items": [
           {
             "title": "Aucune stratégie standardisée",
