@@ -18,7 +18,7 @@ const ServiceAudiencePainSection = forwardRef((props, ref) => {
   return (
     <section ref={ref} className={`${p}-section`} dir={dir}>
       <div className={`${p}-container`}>
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-6xl mx-auto text-center">
           {sectionLabel ? <span className={`${p}-label im-audience-reveal`}>{sectionLabel}</span> : null}
           <h2 className={`${p}-title mt-2 im-audience-reveal font-antonio`}>{title}</h2>
 
