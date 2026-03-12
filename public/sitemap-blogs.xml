@@ -8,15 +8,43 @@
   <!-- blogs -->
   <url>
     <loc>https://tikit.ae/blogs</loc>
-    <lastmod>2026-02-24</lastmod>
+    <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
-  <!-- Blog Posts (22 posts) -->
+  <!-- Blog Posts (26 posts) -->
+  <url>
+    <loc>https://tikit.ae/blogs/dubais-leading-digital-marketing-agencies-driving-growth-in-2026</loc>
+    <lastmod>2026-03-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://tikit.ae/blogs/influencer-marketing-myths-brands-should-ignore</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://tikit.ae/blogs/is-influencer-marketing-the-secret-to-scaling-high-end-brands-ultimate-guide</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://tikit.ae/blogs/what-drives-successful-influencer-campaigns</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
   <url>
     <loc>https://tikit.ae/blogs/what-are-the-key-strategies-behind-successful-influencer-campaigns</loc>
-    <lastmod>2026-02-24</lastmod>
+    <lastmod>2026-02-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>

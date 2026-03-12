@@ -26,13 +26,24 @@ Allow: /blogs
 Allow: /blogs/
 Allow: /faq
 Allow: /influencer-marketing-agency-dubai
+Allow: /influencer-marketing-agency-dubai/campaign-management
+Allow: /influencer-marketing-agency-dubai/micro-influencer-marketing-uae
+Allow: /influencer-marketing-agency-dubai/luxury-influencer-marketing
+Allow: /influencer-marketing-agency-dubai/roi-analytics
+Allow: /influencer-marketing-agency-dubai/instagram-influencer-marketing
+Allow: /influencer-marketing-agency-dubai/tiktok-influencer-marketing
+Allow: /influencer-marketing-agency-dubai/influencer-marketing-cost-uae
 Allow: /social-media-management
 Allow: /production
 Allow: /branding-agency-dubai
 Allow: /web-development-dubai
 Allow: /digital-marketing-agency-dubai
-Allow: /showcase
-Allow: /showcase/
+Allow: /digital-marketing-agency-dubai/seo-services
+Allow: /digital-marketing-agency-dubai/paid-ads-management
+Allow: /digital-marketing-agency-dubai/conversion-optimization
+Allow: /careers
+Allow: /privacy-policy
+Allow: /terms-of-service
 
 # Google Bard / Gemini
 User-agent: Google-Extended
@@ -110,20 +121,29 @@ Allow: /showcase
 Allow: /showcase/
 Allow: /influencer-marketing-agency-dubai
 Allow: /influencer-marketing-agency-dubai/
+Allow: /influencer-marketing-agency-dubai/campaign-management
+Allow: /influencer-marketing-agency-dubai/micro-influencer-marketing-uae
+Allow: /influencer-marketing-agency-dubai/luxury-influencer-marketing
+Allow: /influencer-marketing-agency-dubai/roi-analytics
+Allow: /influencer-marketing-agency-dubai/instagram-influencer-marketing
+Allow: /influencer-marketing-agency-dubai/tiktok-influencer-marketing
+Allow: /influencer-marketing-agency-dubai/influencer-marketing-cost-uae
 Allow: /social-media-management
 Allow: /production
 Allow: /branding-agency-dubai
 Allow: /web-development-dubai
 Allow: /digital-marketing-agency-dubai
 Allow: /digital-marketing-agency-dubai/
+Allow: /digital-marketing-agency-dubai/seo-services
+Allow: /digital-marketing-agency-dubai/paid-ads-management
+Allow: /digital-marketing-agency-dubai/conversion-optimization
 Allow: /influencer-marketing-dubai
 Allow: /influencer-marketing-saudi-arabia
+Allow: /careers
+Allow: /privacy-policy
+Allow: /terms-of-service
 
 # Allow language-specific pages
-Allow: /en
-Allow: /fr
-Allow: /ar
-
 # Allow static assets
 Allow: /assets/
 Allow: /images/
