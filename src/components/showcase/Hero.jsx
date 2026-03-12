@@ -12,8 +12,17 @@ const Hero = ({ caseData, loading }) => {
     const heroRef = useRef(null);
     const [imageLoaded, setImageLoaded] = useState(false);
     
-    // Use showcase logo as hero image (fallback to null if missing)
-    const heroImage = caseData?.logo || null;
+    // Prefer explicit main image, then first case image, and use logo only as final fallback.
+    const firstCaseImage = Array.isArray(caseData?.images)
+      ? caseData.images.find(Boolean)
+      : null;
+    const heroImage =
+      caseData?.main_image ||
+      caseData?.mainImage ||
+      firstCaseImage ||
+      caseData?.logo ||
+      null;
+    const logoImage = caseData?.logo || null;
 
     // Prefer a meaningful badge label if present
     const heroBadge = caseData?.category || caseData?.client || "Featured project";
@@ -173,7 +182,7 @@ const Hero = ({ caseData, loading }) => {
           </div>
 
           {/* Title */}
-          <h1
+          <div
             ref={titleRef}
             style={{
               color: "#fff",
@@ -182,10 +191,23 @@ const Hero = ({ caseData, loading }) => {
               opacity: 0,
               transform: "translateY(30px)",
             }}
-            className="text-[35px] md:text-[50px] lg:text-[70px] text-center md:text-start leading-[1] tracking-tight"
+            className="flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-5"
           >
-            {title}
-          </h1>
+            {logoImage ? (
+              <div className="flex items-center justify-center rounded-xl bg-white p-2.5 shadow-lg border border-white/30 w-14 h-14 md:w-16 md:h-16">
+                <img
+                  src={logoImage}
+                  alt={`${title || "Case study"} logo`}
+                  className="w-full h-full object-contain"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            ) : null}
+            <h1 className="text-[35px] md:text-[50px] lg:text-[70px] text-center md:text-start leading-[1] tracking-tight">
+              {title}
+            </h1>
+          </div>
 
           {/* Subtitle */}
           <h3
