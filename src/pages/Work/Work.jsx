@@ -268,10 +268,14 @@ const Work = () => {
           error={itemsError}
           showEmptyState={showEmptyState}
           language={language}
-          onViewDetails={(detailId) => {
+          onViewDetails={(detailId, itemMeta) => {
             if (detailId == null) return;
             if (activeKey === "influence") {
-              navigate(`/work/influence/${encodeURIComponent(detailId)}`);
+              navigate(`/work/influence/${encodeURIComponent(detailId)}`, {
+                state: {
+                  prefersCaseStudy: Boolean(itemMeta?.hasReels),
+                },
+              });
             } else if (activeKey === "social") {
               navigate(`/work/social/${encodeURIComponent(detailId)}`);
             } else if (activeKey === "creative") {

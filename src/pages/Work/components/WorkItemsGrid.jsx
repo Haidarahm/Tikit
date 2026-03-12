@@ -51,6 +51,7 @@ const normalizeItem = (item, type, fallbackImage) => {
           fallbackImage ??
           "",
         detailId: item?.slug ?? data?.slug ?? null,
+        hasReels: Array.isArray(data?.reels) && data.reels.length > 0,
       };
     }
     case "social": {

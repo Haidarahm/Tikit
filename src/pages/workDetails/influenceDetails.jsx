@@ -5,7 +5,7 @@ import React, {
   useLayoutEffect,
   useRef,
 } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { Skeleton } from "antd";
 import { useTranslation } from "react-i18next";
 import { useWorkItemDetailsStore } from "../../store/work/workItemDetailsStore";
@@ -49,6 +49,7 @@ const formatNumber = (num) => {
 const InfluenceDetails = () => {
   const { slug } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
   const { language, isRtl } = useI18nLanguage();
   const { theme } = useTheme();
   const { t } = useTranslation();
@@ -73,6 +74,7 @@ const InfluenceDetails = () => {
   const itemData = influence.item;
   const media = influence.media || [];
   const hasReels = Array.isArray(itemData?.reels) && itemData.reels.length > 0;
+  const prefersCaseStudy = Boolean(location.state?.prefersCaseStudy);
   const caseData = useMemo(
     () => (hasReels ? workItemToCaseData(itemData) : null),
     [hasReels, itemData]
@@ -196,7 +198,9 @@ const InfluenceDetails = () => {
         canonicalUrl={`/work/influence/${slug}`}
       />
 
-      {influence.loading ? (
+      {influence.loading && prefersCaseStudy ? (
+        <CaseStudy caseData={caseData} loading />
+      ) : influence.loading ? (
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8 px-4 md:px-6 pt-28 pb-10">
           {[0, 1, 2, 3].map((index) => (
             <div
