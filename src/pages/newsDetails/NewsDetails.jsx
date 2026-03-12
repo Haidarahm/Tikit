@@ -79,6 +79,7 @@ const NewsDetails = () => {
   const blogData = newsDetails[slug]
   const paragraphes = detailsData || (blogData?.paragraphs && Array.isArray(blogData.paragraphs) ? blogData.paragraphs : [])
   const seoProps = getBlogSEOProps(blogData, slug)
+  const seoKeywords = blogData?.focus_keyword || blogData?.focusKeyword || seoProps.keywords
 
   // Fetch header data if it doesn't exist in store (for direct URL access)
   useEffect(() => {
@@ -202,10 +203,11 @@ const NewsDetails = () => {
 
   return (
     <>
+    {console.log(seoKeywords)}
       <SEOHead
         title={seoProps.title}
         description={seoProps.description}
-        keywords={seoProps.keywords}
+        keywords={seoKeywords}
         canonicalUrl={seoProps.canonicalUrl}
         ogImage={seoProps.ogImage}
         ogType="article"
