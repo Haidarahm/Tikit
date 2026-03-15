@@ -32,9 +32,18 @@ const NonDigitalWorkCard = ({ innerRef, normalized, t, onViewDetails }) => {
             {normalized.title}
           </h3>
         ) : null}
-        {normalized.objective ? (
+        {normalized.subtitle ? (
           <p
-            className="hidden md:block mb-4 text-center text-[18px] text-gray-200 md:text-[20px] overflow-hidden"
+            className="hidden md:bloc px-2 mb-4 text-center text-[18px] text-gray-200 md:text-[20px] overflow-hidden"
+            style={{
+              display: "-webkit-box",
+              WebkitBoxOrient: "vertical",
+            }}
+          >
+            {normalized.subtitle}
+          </p>
+        ) : <p
+            className="hidden md:bloc px-2 mb-4 text-center text-[18px] text-gray-200 md:text-[20px] overflow-hidden"
             style={{
               display: "-webkit-box",
               WebkitLineClamp: 2,
@@ -42,8 +51,7 @@ const NonDigitalWorkCard = ({ innerRef, normalized, t, onViewDetails }) => {
             }}
           >
             {normalized.objective}
-          </p>
-        ) : null}
+          </p>}
         <button
           className="rounded-full border mt-4 border-white bg-transparent px-4 py-2 text-white transition hover:bg-white hover:text-black"
           onClick={() => onViewDetails(normalized.detailId, normalized)}
