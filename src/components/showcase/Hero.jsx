@@ -1,6 +1,18 @@
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { useI18nLanguage } from "../../store/I18nLanguageContext";
+import { BASE_URL } from "../../config/backend";
+
+const toImageUrl = (url) => {
+  if (!url || typeof url !== "string") return null;
+  if (/^https?:\/\//i.test(url)) return url;
+  try {
+    const origin = BASE_URL ? new URL(BASE_URL).origin : "";
+    return origin ? `${origin}${url.startsWith("/") ? "" : "/"}${url}` : url;
+  } catch {
+    return url;
+  }
+};
 
 const Hero = ({ caseData, loading }) => {
     const { isRtl } = useI18nLanguage();
@@ -10,10 +22,11 @@ const Hero = ({ caseData, loading }) => {
     const buttonRef = useRef(null);
     const imgRef = useRef(null);
     const heroRef = useRef(null);
-    const [imageLoaded, setImageLoaded] = useState(false);
+    const [imageStatus, setImageStatus] = useState("idle");
     
-    const logo = caseData?.logo || null;
-    const heroImage = logo;
+    const heroImage = toImageUrl(caseData?.logo);
+    const isImageLoaded = imageStatus === "loaded";
+    const isImageLoading = imageStatus === "loading";
 
     // Prefer a meaningful badge label if present
     const heroBadge = caseData?.category || caseData?.client || "Featured project";
@@ -35,20 +48,18 @@ const Hero = ({ caseData, loading }) => {
       }
     };
 
-    // Handle image loading (including cached images)
+    // Track image lifecycle so skeleton stops on error.
     useEffect(() => {
       if (!heroImage) {
-        setImageLoaded(false);
+        setImageStatus("idle");
         return;
       }
-
-      // Reset and check after render
-      setImageLoaded(false);
+      setImageStatus("loading");
       
       // Use requestAnimationFrame to check after DOM update
       const checkImage = () => {
         if (imgRef.current?.complete && imgRef.current?.naturalHeight !== 0) {
-          setImageLoaded(true);
+          setImageStatus("loaded");
         }
       };
       
@@ -117,17 +128,20 @@ const Hero = ({ caseData, loading }) => {
     >
       {/* Skeleton background */}
       <div
-        className={`absolute inset-0 z-0 bg-gradient-to-br from-gray-800 via-gray-700 to-gray-900 animate-pulse transition-opacity duration-700 ${
-          imageLoaded && heroImage ? "opacity-0" : "opacity-100"
+        className={`absolute inset-0 z-0 bg-gradient-to-br from-gray-800 via-gray-700 to-gray-900 transition-opacity duration-700 ${
+          loading || isImageLoading ? "animate-pulse" : ""
+        } ${
+          isImageLoaded && heroImage ? "opacity-0" : "opacity-100"
         }`}
       />
 
       {/* Actual image with parallax effect */}
       {heroImage && (
         <img
+          key={heroImage}
           ref={imgRef}
           className={`absolute inset-0 w-full h-full object-cover z-0 transition-opacity duration-700 scale-105 ${
-            imageLoaded ? "opacity-100" : "opacity-0"
+            isImageLoaded ? "opacity-100" : "opacity-0"
           }`}
           src={heroImage}
           alt={title || "Project logo"}
@@ -136,8 +150,8 @@ const Hero = ({ caseData, loading }) => {
           loading="eager"
           fetchPriority="high"
           decoding="async"
-          onLoad={() => setImageLoaded(true)}
-          onError={() => setImageLoaded(false)}
+          onLoad={() => setImageStatus("loaded")}
+          onError={() => setImageStatus("error")}
         />
       )}
 
