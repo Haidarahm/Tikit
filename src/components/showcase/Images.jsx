@@ -105,6 +105,8 @@ const Images = memo(({ images = [], columns = 3 }) => {
   }, [isLoaded, items]);
 
   const skeletonCount = shouldEnableSwipe ? 3 : items.length > 0 ? items.length : 6;
+  const slidePeekClass =
+    "!w-[calc(100%_-_24px)] sm:!w-[calc(100%_-_32px)] lg:!w-[calc(100%_-_56px)]";
 
   return (
     <section data-nav-color="white" className="py-4  h-[180vh] md:h-screen">
@@ -115,12 +117,17 @@ const Images = memo(({ images = [], columns = 3 }) => {
               <Swiper
                 slidesPerView="auto"
                 spaceBetween={16}
-                className="h-full w-full"
+                breakpoints={{
+                  0: { spaceBetween: 12 },
+                  640: { spaceBetween: 16 },
+                  1024: { spaceBetween: 24 },
+                }}
+                className="h-full w-full overflow-visible"
               >
                 {imageGroups.map((group, groupIndex) => (
                   <SwiperSlide
                     key={`group-${groupIndex}`}
-                    className="h-full !w-[calc(100%-40px)]"
+                    className={`h-full ${slidePeekClass}`}
                   >
                     <div className={`grid ${colsClass} gap-4 md:gap-6 h-full w-full`}>
                       {group.map((src, idx) => {
@@ -171,7 +178,7 @@ const Images = memo(({ images = [], columns = 3 }) => {
               </div>
             )
           ) : shouldEnableSwipe ? (
-            <div className="h-full !w-[calc(100%-40px)]">
+            <div className={`h-full ${slidePeekClass}`}>
               <div className={`grid ${colsClass} gap-4 md:gap-6 h-full w-full`}>
                 {Array.from({ length: skeletonCount }).map((_, idx) => (
                   <div

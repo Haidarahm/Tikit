@@ -63,7 +63,7 @@ const CaseNumbers = memo(({ caseData }) => {
           </h3>
         </div>
 
-        <div className="numbers relative flex flex-wrap justify-center md:justify-around gap-6 md:gap-0">
+        <div className="numbers py-8 md:py-0 relative flex flex-wrap justify-center md:justify-around gap-6 md:gap-0">
           {data.map(({ count, suffix, text1, text2, plus, color }, idx) => (
             <div
               key={idx}
