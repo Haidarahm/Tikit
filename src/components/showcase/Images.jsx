@@ -113,12 +113,15 @@ const Images = memo(({ images = [], columns = 3 }) => {
           {isLoaded ? (
             shouldEnableSwipe ? (
               <Swiper
-                slidesPerView={1}
+                slidesPerView="auto"
                 spaceBetween={16}
                 className="h-full w-full"
               >
                 {imageGroups.map((group, groupIndex) => (
-                  <SwiperSlide key={`group-${groupIndex}`} className="h-full">
+                  <SwiperSlide
+                    key={`group-${groupIndex}`}
+                    className="h-full !w-[calc(100%-40px)]"
+                  >
                     <div className={`grid ${colsClass} gap-4 md:gap-6 h-full w-full`}>
                       {group.map((src, idx) => {
                         const globalIndex = groupIndex * 3 + idx;
