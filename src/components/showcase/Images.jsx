@@ -104,7 +104,7 @@ const Images = memo(({ images = [], columns = 3 }) => {
     return () => observer.disconnect();
   }, [isLoaded, items]);
 
-  const skeletonCount = items.length > 0 ? items.length : 6;
+  const skeletonCount = shouldEnableSwipe ? 3 : items.length > 0 ? items.length : 6;
 
   return (
     <section data-nav-color="white" className="py-4  h-[180vh] md:h-screen">
@@ -170,6 +170,19 @@ const Images = memo(({ images = [], columns = 3 }) => {
                 ))}
               </div>
             )
+          ) : shouldEnableSwipe ? (
+            <div className="h-full !w-[calc(100%-40px)]">
+              <div className={`grid ${colsClass} gap-4 md:gap-6 h-full w-full`}>
+                {Array.from({ length: skeletonCount }).map((_, idx) => (
+                  <div
+                    key={`skeleton-${idx}`}
+                    className="overflow-hidden rounded-[18px] bg-[var(--card-background)] h-full animate-pulse"
+                  >
+                    <div className="w-full h-full bg-gradient-to-br from-gray-800/40 via-gray-700/30 to-gray-800/40" />
+                  </div>
+                ))}
+              </div>
+            </div>
           ) : (
             <div className={`grid ${colsClass} gap-4 md:gap-6 h-full w-full`}>
               {Array.from({ length: skeletonCount }).map((_, idx) => (

@@ -14,7 +14,6 @@ import SEOHead from "../../components/SEOHead";
 import WorkHero from "./components/WorkHero";
 import WorkSectionSelector from "./components/WorkSectionSelector";
 import WorkItemsGrid from "./components/WorkItemsGrid";
-import { Skeleton } from "antd";
 
 const TYPE_KEY_MAP = {
   influence: "influence",
@@ -199,13 +198,15 @@ const Work = () => {
   const activeKey = TYPE_KEY_MAP[activeType] ?? null;
   const activeState = activeKey ? stateMap[activeKey] : null;
   const currentItems = activeState?.items ?? [];
-  const itemsLoading = activeState?.loading;
+  const requestId = activeState?.requestId;
+  const waitingForFetch =
+    Boolean(activeKey) &&
+    (!requestId || String(requestId).startsWith("reset-"));
+  const itemsLoading = Boolean(activeState?.loading) || waitingForFetch;
   const itemsError = activeState?.error;
   const isDigitalActive = activeKey === "digital";
   const selectedSection =
     sections?.find((section) => section.slug === activeSectionSlug) ?? null;
-  const showEmptyState =
-    !itemsLoading && !itemsError && currentItems.length === 0;
   const containerKey = `${activeKey ?? "none"}-${activeSectionSlug ?? "none"}`;
 
   const handleViewDetails = (detailId) => {
@@ -245,50 +246,36 @@ const Work = () => {
         isRtl={isRtl}
       />
 
-      {itemsLoading ? (
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8 px-4 md:px-6 pt-10 pb-8">
-          {[0, 1, 2, 3].map((index) => (
-            <div
-              key={`work-skeleton-${index}`}
-              className="h-[260px] rounded-3xl bg-[var(--container-bg)]/80 p-6"
-            >
-              <Skeleton.Node active className="w-full h-full" />
-            </div>
-          ))}
-        </div>
-      ) : (
-        <WorkItemsGrid
-          key={containerKey}
-          containerKey={containerKey}
-          items={currentItems}
-          isDigital={isDigitalActive}
-          activeKey={activeKey}
-          selectedSection={selectedSection}
-          loading={itemsLoading}
-          error={itemsError}
-          showEmptyState={showEmptyState}
-          language={language}
-          onViewDetails={(detailId, itemMeta) => {
-            if (detailId == null) return;
-            if (activeKey === "influence") {
-              navigate(`/work/influence/${encodeURIComponent(detailId)}`, {
-                state: {
-                  prefersCaseStudy: Boolean(itemMeta?.hasReels),
-                },
-              });
-            } else if (activeKey === "social") {
-              navigate(`/work/social/${encodeURIComponent(detailId)}`);
-            } else if (activeKey === "creative") {
-              navigate(`/work/creative/${encodeURIComponent(detailId)}`);
-            } else if (activeKey === "events") {
-              navigate(`/work/event/${encodeURIComponent(detailId)}`);
-            } else {
-              handleViewDetails(detailId);
-            }
-          }}
-          t={t}
-        />
-      )}
+      <WorkItemsGrid
+        key={containerKey}
+        containerKey={containerKey}
+        items={currentItems}
+        isDigital={isDigitalActive}
+        activeKey={activeKey}
+        selectedSection={selectedSection}
+        loading={itemsLoading}
+        error={itemsError}
+        language={language}
+        onViewDetails={(detailId, itemMeta) => {
+          if (detailId == null) return;
+          if (activeKey === "influence") {
+            navigate(`/work/influence/${encodeURIComponent(detailId)}`, {
+              state: {
+                prefersCaseStudy: Boolean(itemMeta?.hasReels),
+              },
+            });
+          } else if (activeKey === "social") {
+            navigate(`/work/social/${encodeURIComponent(detailId)}`);
+          } else if (activeKey === "creative") {
+            navigate(`/work/creative/${encodeURIComponent(detailId)}`);
+          } else if (activeKey === "events") {
+            navigate(`/work/event/${encodeURIComponent(detailId)}`);
+          } else {
+            handleViewDetails(detailId);
+          }
+        }}
+        t={t}
+      />
       <ContactUs />
       
     </div>

@@ -235,7 +235,6 @@ const WorkItemsGrid = ({
   selectedSection,
   loading,
   error,
-  showEmptyState,
   onViewDetails,
   t,
   containerKey,
@@ -325,9 +324,16 @@ const WorkItemsGrid = ({
         <div className="col-span-full text-center text-sm text-red-400">
           {error}
         </div>
-      ) : null}
-
-      {!loading && !error
+      ) : loading && !error && !isDigital ? (
+        [0, 1, 2, 3].map((index) => (
+          <div
+            key={`work-grid-skeleton-${index}`}
+            className="h-[260px] rounded-3xl bg-[var(--container-bg)]/80 p-6"
+          >
+            <div className="h-full w-full rounded-2xl bg-[var(--foreground)]/10 animate-pulse" />
+          </div>
+        ))
+      ) : !loading && !error
         ? isDigital
           ? digitalMetrics.map(({ data, available }, index) => (
               <DigitalWorkCard
@@ -358,9 +364,7 @@ const WorkItemsGrid = ({
                 />
               );
             })
-        : null}
-
-      {showEmptyState ? (
+        : !loading && !error && items.length === 0 ? (
         <div className="col-span-full text-center text-sm opacity-70">
           {t("work.noWorks")}
         </div>
