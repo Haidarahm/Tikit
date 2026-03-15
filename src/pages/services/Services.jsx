@@ -6,9 +6,12 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
 import SEOHead from "../../components/SEOHead";
-import influencerMarketing from "../../assets/services/Influencer-Marketing.webp"
-import SocialMedia from "../../assets/services/Social-Media.webp"
-import Branding from "../../assets/services/Branding.webp"
+import influencerMarketingImage from "../../assets/services/Influencer-Marketing.webp";
+import socialMedia from "../../assets/services/Social-Media.webp";
+import brandingImage from "../../assets/services/Branding.webp";
+import productionImage from "../../assets/services/production.webp";
+import webDevelopmentImage from "../../assets/services/web_development.webp";
+import digitalMarketingImage from "../../assets/services/digital_marketing.webp";
 gsap.registerPlugin(Observer, SplitText);
 
 const Services = () => {
@@ -31,22 +34,19 @@ const Services = () => {
   const serviceImages = [
     {
       // Influencer Marketing - Content creator with ring light
-      image:
-      influencerMarketing,
+      image: influencerMarketingImage,
       gradient:
         "linear-gradient(180deg, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0.1) 100%)",
     },
     {
       // Social Media Marketing
-      image:
-       SocialMedia,
+      image: socialMedia,
       gradient:
         "linear-gradient(180deg, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0.1) 100%)",
     },
     {
       // Branding - Creative brand identity design
-      image:
-      Branding,
+      image: brandingImage,
       gradient:
         "linear-gradient(180deg, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0.1) 100%)",
     },
@@ -59,15 +59,13 @@ const Services = () => {
     },
     {
       // Web Development
-      image:
-        "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1920&h=1080&fit=crop",
+      image: webDevelopmentImage,
       gradient:
         "linear-gradient(180deg, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0.1) 100%)",
     },
     {
       // Digital Marketing
-      image:
-        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&h=1080&fit=crop",
+      image: digitalMarketingImage,
       gradient:
         "linear-gradient(180deg, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0.1) 100%)",
     },

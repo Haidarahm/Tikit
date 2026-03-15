@@ -1,11 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import { useLocation } from "react-router-dom";
 import { useI18nLanguage } from "../../store/I18nLanguageContext";
 
 const Hero = ({ caseData, loading }) => {
     const { isRtl } = useI18nLanguage();
-    const location = useLocation();
     const titleRef = useRef(null);
     const subtitleRef = useRef(null);
     const badgeRef = useRef(null);
@@ -15,13 +13,7 @@ const Hero = ({ caseData, loading }) => {
     const [imageLoaded, setImageLoaded] = useState(false);
     
     const logo = caseData?.logo || null;
-    const images = Array.isArray(caseData?.images) ? caseData.images : [];
-    const isFromWorkSection = location.pathname.startsWith("/work");
-
-    // Keep original behavior except when opened from Work.
-    const heroImage = isFromWorkSection
-      ? images[0] || logo || null
-      : logo;
+    const heroImage = logo;
 
     // Prefer a meaningful badge label if present
     const heroBadge = caseData?.category || caseData?.client || "Featured project";
@@ -234,17 +226,6 @@ const Hero = ({ caseData, loading }) => {
           </div>
         </div>
       </div>
-
-      {isFromWorkSection && logo && (
-        <div className="absolute right-4 bottom-6 md:right-8 md:bottom-8 z-20 inline-flex items-center justify-center rounded-2xl bg-white p-3 shadow-xl">
-          <img
-            src={logo}
-            alt={title || "Project logo"}
-            className="max-h-16 w-auto object-contain"
-            loading="lazy"
-          />
-        </div>
-      )}
 
       {/* Scroll indicator at bottom */}
       <div className="absolute bottom-8 left-1/2 hidden md:block -translate-x-1/2 z-20 animate-bounce">
