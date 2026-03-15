@@ -10,6 +10,7 @@ const Images = memo(({ images = [], columns = 3 }) => {
     [images]
   );
   const [isLoaded, setIsLoaded] = useState(false);
+  const [groupSize, setGroupSize] = useState(3);
   const loadedCountRef = useRef(0);
   const containerRef = useRef(null);
   const cardRefs = useRef([]);
@@ -23,14 +24,31 @@ const Images = memo(({ images = [], columns = 3 }) => {
 
   const colsClass = columnClasses[columns] || columnClasses[3];
   const shouldEnableSwipe = items.length > 3;
+
+  // Keep mobile behavior as-is; adjust grouping only for mid screens.
+  useEffect(() => {
+    const updateGroupSize = () => {
+      const width = window.innerWidth;
+      if (width >= 640 && width < 1024) {
+        setGroupSize(2);
+      } else {
+        setGroupSize(3);
+      }
+    };
+
+    updateGroupSize();
+    window.addEventListener("resize", updateGroupSize);
+    return () => window.removeEventListener("resize", updateGroupSize);
+  }, []);
+
   const imageGroups = useMemo(() => {
     if (!shouldEnableSwipe) return [items];
     const groups = [];
-    for (let i = 0; i < items.length; i += 3) {
-      groups.push(items.slice(i, i + 3));
+    for (let i = 0; i < items.length; i += groupSize) {
+      groups.push(items.slice(i, i + groupSize));
     }
     return groups;
-  }, [items, shouldEnableSwipe]);
+  }, [items, shouldEnableSwipe, groupSize]);
   cardRefs.current = [];
 
   useEffect(() => {
@@ -104,7 +122,7 @@ const Images = memo(({ images = [], columns = 3 }) => {
     return () => observer.disconnect();
   }, [isLoaded, items]);
 
-  const skeletonCount = shouldEnableSwipe ? 3 : items.length > 0 ? items.length : 6;
+  const skeletonCount = shouldEnableSwipe ? groupSize : items.length > 0 ? items.length : 6;
   const slidePeekClass =
     "!w-[calc(100%_-_24px)] sm:!w-[calc(100%_-_32px)] lg:!w-[calc(100%_-_56px)]";
 
@@ -131,7 +149,7 @@ const Images = memo(({ images = [], columns = 3 }) => {
                   >
                     <div className={`grid ${colsClass} gap-4 md:gap-6 h-full w-full`}>
                       {group.map((src, idx) => {
-                        const globalIndex = groupIndex * 3 + idx;
+                        const globalIndex = groupIndex * groupSize + idx;
                         return (
                           <div
                             key={globalIndex}
