@@ -1,5 +1,7 @@
 import React, { memo, useEffect, useMemo, useRef, useState } from "react";
 import { gsap } from "gsap";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 
 // Optional: can accept props later if you want to pass custom images/columns
 const Images = memo(({ images = [], columns = 3 }) => {
@@ -20,6 +22,15 @@ const Images = memo(({ images = [], columns = 3 }) => {
   };
 
   const colsClass = columnClasses[columns] || columnClasses[3];
+  const shouldEnableSwipe = items.length > 3;
+  const imageGroups = useMemo(() => {
+    if (!shouldEnableSwipe) return [items];
+    const groups = [];
+    for (let i = 0; i < items.length; i += 3) {
+      groups.push(items.slice(i, i + 3));
+    }
+    return groups;
+  }, [items, shouldEnableSwipe]);
   cardRefs.current = [];
 
   useEffect(() => {
@@ -96,32 +107,69 @@ const Images = memo(({ images = [], columns = 3 }) => {
   const skeletonCount = items.length > 0 ? items.length : 6;
 
   return (
-    <section data-nav-color="white" className="py-4 md:py-16 h-[180vh] md:h-screen">
+    <section data-nav-color="white" className="py-4  h-[180vh] md:h-screen">
       <div className=" h-full w-full mx-auto px-4 md:px-12">
-        <div
-          ref={containerRef}
-          className={`grid ${colsClass} gap-4 md:gap-6 h-full w-full`}
-        >
-          {isLoaded
-            ? items.map((src, idx) => (
-                <div
-                  key={idx}
-                  ref={(el) => {
-                    cardRefs.current[idx] = el;
-                  }}
-                  className="overflow-hidden rounded-[18px] bg-[var(--card-background)] h-full opacity-0"
-                >
-                  <img
-                    src={src}
-                    alt={`case-image-${idx + 1}`}
-                    width={600}
-                    height={400}
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                  />
-                </div>
-              ))
-            : Array.from({ length: skeletonCount }).map((_, idx) => (
+        <div ref={containerRef} className="h-full w-full">
+          {isLoaded ? (
+            shouldEnableSwipe ? (
+              <Swiper
+                slidesPerView={1}
+                spaceBetween={16}
+                className="h-full w-full"
+              >
+                {imageGroups.map((group, groupIndex) => (
+                  <SwiperSlide key={`group-${groupIndex}`} className="h-full">
+                    <div className={`grid ${colsClass} gap-4 md:gap-6 h-full w-full`}>
+                      {group.map((src, idx) => {
+                        const globalIndex = groupIndex * 3 + idx;
+                        return (
+                          <div
+                            key={globalIndex}
+                            ref={(el) => {
+                              cardRefs.current[globalIndex] = el;
+                            }}
+                            className="overflow-hidden rounded-[18px] bg-[var(--card-background)] h-full opacity-0"
+                          >
+                            <img
+                              src={src}
+                              alt={`case-image-${globalIndex + 1}`}
+                              width={600}
+                              height={400}
+                              className="w-full h-full object-cover"
+                              loading="lazy"
+                            />
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            ) : (
+              <div className={`grid ${colsClass} gap-4 md:gap-6 h-full w-full`}>
+                {items.map((src, idx) => (
+                  <div
+                    key={idx}
+                    ref={(el) => {
+                      cardRefs.current[idx] = el;
+                    }}
+                    className="overflow-hidden rounded-[18px] bg-[var(--card-background)] h-full opacity-0"
+                  >
+                    <img
+                      src={src}
+                      alt={`case-image-${idx + 1}`}
+                      width={600}
+                      height={400}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                ))}
+              </div>
+            )
+          ) : (
+            <div className={`grid ${colsClass} gap-4 md:gap-6 h-full w-full`}>
+              {Array.from({ length: skeletonCount }).map((_, idx) => (
                 <div
                   key={`skeleton-${idx}`}
                   className="overflow-hidden rounded-[18px] bg-[var(--card-background)] h-full animate-pulse"
@@ -129,6 +177,8 @@ const Images = memo(({ images = [], columns = 3 }) => {
                   <div className="w-full h-full bg-gradient-to-br from-gray-800/40 via-gray-700/30 to-gray-800/40" />
                 </div>
               ))}
+            </div>
+          )}
         </div>
       </div>
     </section>
