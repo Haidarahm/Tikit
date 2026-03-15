@@ -42,16 +42,15 @@ const normalizeItem = (item, type, fallbackImage) => {
   switch (type) {
     case "influence": {
       const data = item ?? {};
+      const logo = extractMediaUrl(data?.logo);
+      const hasReels = Array.isArray(data?.reels) && data.reels.length > 0;
       return {
         title: data?.title ?? "",
         objective: data?.objective ?? "",
-        image:
-          getFirstMediaUrl(item?.media) ??
-          extractMediaUrl(data?.logo) ??
-          fallbackImage ??
-          "",
+        image: getFirstMediaUrl(item?.media) ?? logo ?? fallbackImage ?? "",
+        logo,
         detailId: item?.slug ?? data?.slug ?? null,
-        hasReels: Array.isArray(data?.reels) && data.reels.length > 0,
+        hasReels,
       };
     }
     case "social": {

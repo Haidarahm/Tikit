@@ -3,6 +3,8 @@ import { useFontClass } from "../../../hooks/useFontClass";
 
 const NonDigitalWorkCard = ({ innerRef, normalized, t, onViewDetails }) => {
   const { fontHeading } = useFontClass();
+  const cardImage =
+    normalized.hasReels && normalized.logo ? normalized.logo : normalized.image;
 
   return (
     <div
@@ -11,9 +13,9 @@ const NonDigitalWorkCard = ({ innerRef, normalized, t, onViewDetails }) => {
       className="group relative overflow-hidden rounded-lg shadow-lg h-full w-full"
       style={{ minHeight: "10%" }}
     >
-      {normalized.image ? (
+      {cardImage ? (
         <img
-          src={normalized.image}
+          src={cardImage}
           alt={normalized.title || "work"}
           width={400}
           height={300}
@@ -31,7 +33,14 @@ const NonDigitalWorkCard = ({ innerRef, normalized, t, onViewDetails }) => {
           </h3>
         ) : null}
         {normalized.objective ? (
-          <p className="hidden md:block mb-4 text-center text-[18px] text-gray-200 md:text-[20px]">
+          <p
+            className="hidden md:block mb-4 text-center text-[18px] text-gray-200 md:text-[20px] overflow-hidden"
+            style={{
+              display: "-webkit-box",
+              WebkitLineClamp: 2,
+              WebkitBoxOrient: "vertical",
+            }}
+          >
             {normalized.objective}
           </p>
         ) : null}
