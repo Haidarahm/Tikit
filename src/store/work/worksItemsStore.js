@@ -7,6 +7,17 @@ import {
   getEventItems,
 } from "../../apis/work/worksITems";
 
+const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+const isRetryableError = (error) => {
+  const status = error?.response?.status;
+  const message = String(error?.message ?? "").toLowerCase();
+  const isTimeout = error?.code === "ECONNABORTED" || message.includes("timeout");
+  const isNetworkError = !error?.response;
+  const isServerError = typeof status === "number" && status >= 500;
+  return isTimeout || isNetworkError || isServerError;
+};
+
 const CATEGORY_CONFIG = {
   influence: {
     fetcher: getInfluenceItems,
@@ -48,6 +59,9 @@ const createInitialState = () => ({
   events: createCategoryState(),
 });
 
+const MAX_AUTO_RETRIES = 2;
+const RETRY_BASE_DELAY_MS = 3000;
+
 export const useWorkItemsStore = create((set) => {
   const loadCategory = async (category, params = {}) => {
     const config = CATEGORY_CONFIG[category];
@@ -70,7 +84,24 @@ export const useWorkItemsStore = create((set) => {
     }));
 
     try {
-      const response = await config.fetcher(params);
+      let response;
+      let attempt = 0;
+
+      while (attempt <= MAX_AUTO_RETRIES) {
+        try {
+          response = await config.fetcher(params);
+          break;
+        } catch (error) {
+          const canRetry =
+            attempt < MAX_AUTO_RETRIES && isRetryableError(error);
+          if (!canRetry) {
+            throw error;
+          }
+          attempt += 1;
+          await wait(RETRY_BASE_DELAY_MS * attempt); // 2s, then 4s
+        }
+      }
+
       const payload = response?.data ?? response ?? [];
       const normalized = Array.isArray(payload)
         ? payload
@@ -101,7 +132,8 @@ export const useWorkItemsStore = create((set) => {
           ...state,
           [category]: {
             ...state[category],
-            error: error?.message || config.errorMessage,
+            // Avoid surfacing raw backend errors like "Request failed with status code 500"
+            error: config.errorMessage,
             loading: false,
           },
         };
