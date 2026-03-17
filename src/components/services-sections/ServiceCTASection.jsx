@@ -41,7 +41,10 @@ const ServiceCTASection = forwardRef((props, ref) => {
             <FiArrowRight />
             {primaryButtonText}
           </a>
-          <a href={secondaryHref} className={`${p}-btn-secondary`}>
+          <a  href="https://wa.me/971568881133"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                   className={`${p}-btn-secondary`}>
             <FiPhone />
             {secondaryButtonText}
           </a>
