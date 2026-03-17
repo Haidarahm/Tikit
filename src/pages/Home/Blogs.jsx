@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useNewsStore } from "../../store/newsStore";
+import { useI18nLanguage } from "../../store/I18nLanguageContext";
 import { ArrowRight, Calendar, Clock } from "lucide-react";
 import HeroWithBadge from "../../components/HeroWithBadge";
 
@@ -12,15 +13,18 @@ gsap.registerPlugin(ScrollTrigger);
 const Blogs = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const { language } = useI18nLanguage();
   const [visibleCards, setVisibleCards] = useState([]);
   const cardsRef = useRef([]);
   const titleSectionRef = useRef(null);
   const { newsItems, loadNewsItems, loading } = useNewsStore();
 
   useEffect(() => {
-    // Load first 4 news items (with retry on timeout handled by API interceptor)
-    loadNewsItems({ per_page: 4, page: 1 }).catch(() => {});
-  }, [loadNewsItems]);
+    // Refetch first 4 items when language changes
+    setVisibleCards([]);
+    cardsRef.current = [];
+    loadNewsItems({ per_page: 4, page: 1, lang: language }).catch(() => {});
+  }, [loadNewsItems, language]);
 
   /* GSAP - Title section staggered appear */
   useEffect(() => {
@@ -85,7 +89,9 @@ const Blogs = () => {
   const formatDate = (dateString) => {
     if (!dateString) return "";
     const date = new Date(dateString);
-    return date.toLocaleDateString("en-US", {
+    const locale =
+      language === "ar" ? "ar-AE" : language === "fr" ? "fr-FR" : "en-US";
+    return date.toLocaleDateString(locale, {
       month: "short",
       day: "numeric",
       year: "numeric",

@@ -29,7 +29,7 @@ const SERVICE_ROUTES = [
   "/web-development-dubai",
 ];
 
-const ServiceCard = memo(({ service, index, onClick }) => (
+const ServiceCard = memo(({ service, index, onClick, isRtl, t }) => (
   <div
     onClick={onClick}
     className="group cursor-pointer"
@@ -59,8 +59,16 @@ const ServiceCard = memo(({ service, index, onClick }) => (
           {service.subtitle}
         </p>
         <p className="mt-2 text-[13px] font-medium text-[#52C3C5] flex items-center gap-1">
-          <span>Learn more</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <span>{t("home.services.learnMore", { defaultValue: "Learn more" })}</span>
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            className={isRtl ? "rotate-180" : ""}
+          >
             <path d="M5 12h14M12 5l7 7-7 7" />
           </svg>
         </p>
@@ -115,7 +123,7 @@ const Services = memo(() => {
             onClick={() => navigate("/services")}
             className="w-fit mt-2 text-[13px] font-medium text-[#52C3C5] hover:underline focus:outline-none"
           >
-            {t("home.services.explore")} →
+            {t("home.services.explore")} {isRtl ? "←" : "→"}
           </button>
         </div>
 
@@ -125,6 +133,8 @@ const Services = memo(() => {
               key={`${service.link}-${index}`}
               service={service}
               index={index}
+              isRtl={isRtl}
+              t={t}
               onClick={() => handleCardClick(service.link)}
             />
           ))}
