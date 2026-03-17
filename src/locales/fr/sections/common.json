@@ -1,0 +1,632 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "work": "Travaux",
+    "about": "À propos",
+    "services": "Services",
+    "news": "Actualités",
+    "influencers": "Influenceurs",
+    "ourInfluencers": "Nos Influenceurs",
+    "registerAsInfluencer": "S'inscrire en tant qu'influenceur",
+    "contact": "Contactez-nous",
+    "servicesSections": [
+      {
+        "digitalMarketing": "Marketing d'influence",
+        "digitalMarketingAgencyDubai": "Agence de marketing d'influence à Dubaï"
+      },
+      {
+        "branding": "Agence de Marque Dubaï"
+      }
+    ]
+  },
+  "seo": {
+    "defaultDescription": "Nous sommes Tikit — une agence de marketing complète guidée par l'insight et la créativité. Nous nous associons aux marques pour livrer des résultats grâce à une stratégie experte, une puissance créative et une exécution impeccable.",
+    "defaultKeywords": "agence marketing, marketing numérique, marketing d'influence, gestion des médias sociaux, branding, production, agence créative, stratégie marketing",
+    "home": {
+      "title": "Agence Tikit - Agence de Marketing Complète",
+      "description": "Agence de marketing axée sur le ROI livrant une stratégie experte, une puissance créative et une exécution impeccable. Partenaire avec Tikit pour le marketing d'influence, la gestion des médias sociaux, le branding et la production.",
+      "keywords": "agence marketing, marketing ROI, marketing d'influence, gestion des médias sociaux, branding, production, agence créative, stratégie marketing numérique"
+    },
+    "about": {
+      "title": "À propos de l'Agence Tikit - Notre Histoire et Équipe",
+      "description": "Découvrez le parcours de l'Agence Tikit en tant qu'agence de marketing complète. Découvrez notre équipe créative, les valeurs de l'entreprise et notre engagement à livrer des résultats exceptionnels à nos clients.",
+      "keywords": "à propos agence tik, équipe agence marketing, équipe créative, histoire entreprise, valeurs agence marketing"
+    },
+    "services": {
+      "title": "Nos Services Marketing - Agence Tikit",
+      "description": "Explorez les services marketing complets de l'Agence Tikit incluant le marketing d'influence, la gestion des médias sociaux, le branding et la production. Stratégie experte et exécution créative.",
+      "keywords": "services marketing, services marketing d'influence, gestion des médias sociaux, services branding, services production, stratégie marketing"
+    },
+    "work": {
+      "title": "Nos Travaux et Études de Cas - Agence Tikit",
+      "description": "Consultez le portfolio de l'Agence Tikit de campagnes marketing réussies et d'études de cas. Voyez comment nous avons aidé les marques à atteindre leurs objectifs marketing grâce à une stratégie créative.",
+      "keywords": "portfolio marketing, études de cas, campagnes marketing, histoires de succès de marques, résultats marketing"
+    },
+    "contact": {
+      "title": "Contactez l'Agence Tikit - Commencez Aujourd'hui",
+      "description": "Prêt à élever votre marque ? Contactez l'Agence Tikit pour des services marketing experts. Entrez en contact avec notre équipe de professionnels du marketing et commencez votre parcours vers le succès.",
+      "keywords": "contacter agence marketing, obtenir devis marketing, consultation marketing, consultation marque, demande services marketing"
+    }
+  },
+  "faq": {
+    "title": "Questions Fréquemment Posées",
+    "subtitle": "Trouvez des réponses aux questions courantes sur nos services, nos processus et comment nous pouvons aider votre marque à se développer.",
+    "cta": {
+      "title": "Vous avez encore des questions ?",
+      "description": "Contactez notre équipe et nous serons ravis de vous aider.",
+      "button": "Contactez-nous"
+    },
+    "questions": {
+      "q1": {
+        "question": "Comment fonctionne l'Agence Tikit ?",
+        "answer": "Notre processus est simple et efficace : D'abord, nous plongeons profondément dans la compréhension des objectifs de votre marque et de votre public cible. Ensuite, notre équipe stratégique développe un plan de campagne personnalisé. Ensuite, nous vous mettons en relation avec les bons créateurs ou créons du contenu convaincant. Enfin, nous exécutons la campagne et fournissons des analyses et des rapports en temps réel. Tout au long du processus, vous aurez un responsable de compte dédié garantissant que tout se déroule sans accroc."
+      },
+      "q2": {
+        "question": "Quel est votre processus de production ?",
+        "answer": "Notre flux de travail de production comprend quatre phases : 1) Pré-production - développement du concept, scénarisation, repérage de lieux et planification. 2) Production - tournage professionnel avec des caméras cinéma, des drones et des équipements de pointe. 3) Post-production - montage expert, étalonnage des couleurs, motion graphics et design sonore. 4) Livraison - contenu optimisé dans tous les formats requis pour vos plateformes. Nous gérons tout, des reels sur les réseaux sociaux aux productions commerciales à grande échelle."
+      },
+      "q3": {
+        "question": "Qui compose l'équipe Tikit ?",
+        "answer": "Notre équipe se compose de plus de 50 professionnels créatifs comprenant : des stratèges qui planifient des campagnes basées sur les données, des créateurs de contenu et vidéastes qui donnent vie aux idées, des gestionnaires de médias sociaux qui engagent les audiences, des designers qui créent des identités visuelles, et des responsables de compte qui assurent la satisfaction des clients. Nous avons également des spécialistes en relations avec les influenceurs, en analytique et en publicité payante dans la région MENA."
+      },
+      "q4": {
+        "question": "Où sont situés les bureaux de Tikit ?",
+        "answer": "L'Agence Tikit a une présence stratégique dans toute la région MENA. Notre siège social est à Dubaï au Burlington Tower, Marasi Drive, Bureau 309. Nous avons également des bureaux dédiés en Arabie Saoudite (desservant Riyad et Djeddah), à Istanbul (Turquie) et en Syrie. Cette présence régionale nous permet de comprendre les marchés locaux et de livrer des campagnes culturellement pertinentes dans le CCG et la région MENA plus large."
+      },
+      "q5": {
+        "question": "Combien de temps dure une campagne typique ?",
+        "answer": "Les délais de campagne varient en fonction de la portée et des objectifs. Une activation rapide d'influenceur peut être lancée en 1-2 semaines, tandis que les campagnes de marque complètes prennent généralement 4-8 semaines de la stratégie à l'exécution. Les projets de production à grande échelle peuvent nécessiter 6-12 semaines. Lors de notre consultation initiale, nous fournirons un calendrier détaillé adapté à votre projet spécifique et à vos objectifs."
+      },
+      "q6": {
+        "question": "Quelles plateformes sont votre spécialité ?",
+        "answer": "Nous gérons des campagnes sur toutes les principales plateformes de médias sociaux, notamment Instagram, TikTok, YouTube, Snapchat, Twitter/X, LinkedIn et Facebook. Nous sommes particulièrement forts sur les plateformes populaires dans la région MENA comme Instagram et Snapchat. Notre équipe reste à jour avec les algorithmes des plateformes, les formats tendance et les meilleures pratiques pour maximiser la portée et l'engagement de votre contenu."
+      },
+      "q7": {
+        "question": "Travaillez-vous avec des marques internationales ?",
+        "answer": "Absolument ! Bien que nous soyons basés dans la région MENA, nous travaillons avec des marques locales et internationales. Notre équipe multilingue (anglais, arabe, français, turc) et notre expertise culturelle aident les marques mondiales à entrer et à réussir sur les marchés du Moyen-Orient. Nous avons lancé avec succès des campagnes pour des marques d'Europe, d'Asie et d'Amérique du Nord cherchant à établir une présence dans la région du CCG."
+      },
+      "q8": {
+        "question": "Quelle est votre structure tarifaire ?",
+        "answer": "Notre tarification est personnalisée en fonction de la portée du projet, des livrables et de la durée de la campagne. Nous proposons des forfaits flexibles allant des projets ponctuels aux accords de rétention en cours. Les campagnes de marketing d'influence commencent en fonction du niveau du créateur et des objectifs d'engagement. Les services de production sont cotés par projet en fonction de la complexité. Contactez-nous pour une proposition détaillée adaptée à votre budget et à vos objectifs."
+      },
+      "q9": {
+        "question": "Comment mesurez-vous le succès d'une campagne ?",
+        "answer": "Nous suivons des métriques complètes alignées avec vos objectifs : portée et impressions, taux d'engagement (likes, commentaires, partages), trafic sur le site web et conversions, croissance des abonnés, analyse du sentiment de marque et ROI. Vous recevrez des rapports d'analyse détaillés montrant les performances de la campagne, les insights sur l'audience et les recommandations d'optimisation. Nous croyons en la transparence et les résultats basés sur les données."
+      },
+      "q10": {
+        "question": "Pouvez-vous aider avec les campagnes organiques et payantes ?",
+        "answer": "Oui ! Nous offrons à la fois une stratégie de contenu organique et des services de publicité payante. Notre approche organique se concentre sur l'engagement authentique, la construction de communauté et le contenu qui résonne. Pour les campagnes payantes, nous gérons les publicités sur les médias sociaux sur Facebook, Instagram, TikTok, Snapchat et LinkedIn avec un ciblage précis et une optimisation du budget. La plupart des clients bénéficient d'une approche hybride combinant les deux stratégies pour un impact maximal."
+      }
+    }
+  },
+  "home": {
+    "title": "Accueil",
+    "description": "Page d'accueil",
+    "hero": {
+      "tagline": "Agence marketing",
+      "title": "ROI REBELS",
+      "subtitle": "Propulser les marques avec de l'influence",
+      "clients": "+300 clients satisfaits"
+    },
+    "showcase": {
+      "title": "Propulser les marques avec",
+      "mainWord": "influence",
+      "description": "Tikit est une agence mondiale de marketing d'influence maintes fois récompensée. Que vous souhaitiez changer les perceptions ou créer du contenu qui arrête le défilement, nous le faisons mieux que quiconque."
+    },
+    "numbers": {
+      "headline": "La vraie mesure du",
+      "mainWord": "Succès",
+      "subheadline": "Des clients qui reviennent. La plupart restent longtemps après le premier projet.",
+      "items": {
+        "happyClients": {
+          "text1": "Clients",
+          "text2": "Heureux"
+        },
+        "years": {
+          "text1": "Années",
+          "text2": "d'expérience"
+        },
+        "projects": {
+          "text1": "Projets",
+          "text2": "Réalisés"
+        },
+        "awards": {
+          "text1": "Prix",
+          "text2": "et Distinctions"
+        }
+      }
+    },
+    "goals": {
+      "items": [
+        {
+          "title": "Amplifier la portée de votre marque",
+          "description": "Touchez de vrais publics avec un contenu pertinent. Nous faisons croître un trafic qui convertit réellement."
+        },
+        {
+          "title": "Booster la performance des campagnes",
+          "description": "Suivez les résultats en temps réel et optimisez chaque action — le tout géré sur une plateforme intelligente."
+        },
+        {
+          "title": "Créer avec un Objectif",
+          "description": "Chaque contenu que nous créons raconte votre histoire de manière authentique. Nous transformons la vision créative en impact durable pour votre marque."
+        },
+        {
+          "title": "Générer un engagement réel",
+          "description": "Touchez de vrais publics avec un contenu pertinent. Nous faisons croître un trafic qui convertit réellement."
+        }
+      ]
+    },
+    "services": {
+      "title": "Ce que nous faisons le mieux",
+      "explore": "Explorer les services",
+      "items": [
+        {
+          "title": "Marketing d'influence",
+          "subtitle": "Boostez votre marque grâce aux créateurs",
+          "description": "Nous connectons les marques à des voix qui comptent. Grâce à un appariement fondé sur les données et des collaborations authentiques, nous vous aidons à atteindre des audiences qui font confiance et réagissent — transformant l'influence en impact réel."
+        },
+        {
+          "title": "Gestion des médias sociaux",
+          "subtitle": "Nous gérons votre présence en ligne avec précision et créativité.",
+          "description": "De la planification à la publication, nous créons du contenu engageant, suivons les performances et développons des communautés fidèles qui placent votre marque au centre des conversations."
+        },
+        {
+          "title": "Production",
+          "subtitle": "Du concept au montage final, nous donnons vie aux idées audacieuses.",
+          "description": "Que ce soit du contenu social, des visuels de marque ou des tournages commerciaux complets, notre équipe de production livre des récits de qualité qui captent l'attention et génèrent l'action."
+        },
+        {
+          "title": "Branding",
+          "subtitle": "Nous créons des marques qui se démarquent et représentent une valeur.",
+          "description": "De l'identité visuelle à la voix de marque, nous façonnons la façon dont les audiences vous voient, vous ressentent et vous retiennent — créant clarté, cohérence et connexion à chaque point de contact."
+        },
+        {
+          "title": "Marketing digital",
+          "subtitle": "Campagnes data-driven qui génèrent croissance et ROI mesurable.",
+          "description": "Du SEO aux campagnes payantes en passant par l'optimisation des conversions, nous délivrons des stratégies marketing digital full-funnel pour le marché des EAU et du Golfe."
+        },
+        {
+          "title": "Développement web",
+          "subtitle": "Sites et applications web rapides et évolutifs qui convertissent.",
+          "description": "Nous construisons des sites web responsives et des applications sur mesure — optimisés pour la performance, le SEO et vos objectifs business."
+        }
+      ]
+    },
+    "influencers": {
+      "badge": "Nos influenceurs",
+      "title": "Rencontrez les",
+      "mainWord": "Créateurs",
+      "subtitle": "Connectez-vous à des voix influentes dans diverses catégories",
+      "loadingCategories": "Chargement des catégories...",
+      "categoriesError": "Impossible de charger les catégories.",
+      "noCategories": "Aucune catégorie disponible pour le moment.",
+      "loadingInfluencers": "Chargement des influenceurs...",
+      "influencersError": "Impossible de charger les influenceurs.",
+      "noInfluencers": "Nous n'avons pas encore trouvé d'influenceurs pour cette catégorie. Revenez bientôt.",
+      "showAll": "Tout afficher",
+      "followersLabel": "{{count}} abonnés"
+    },
+    "connections": {
+      "question": "Êtes-vous un influenceur ?",
+      "headline": "Rejoignez notre réseau de créateurs",
+      "mainWord": "dès aujourd'hui !",
+      "description": "Collaborez avec des marques qui correspondent à votre style, et faites de chaque partenariat un succès",
+      "joinNow": "Rejoindre maintenant"
+    },
+    "work": {
+      "title": "Travaux en vedette",
+      "explore": "Explorer les projets",
+      "viewWork": "Voir le travail",
+      "noWorks": "Aucun travail trouvé.",
+      "prev": "Préc",
+      "next": "Suiv",
+      "page": "Page"
+    },
+    "aboutUs": {
+      "title": "Qui nous sommes",
+      "description": "Nous créons et innovons des expériences numériques grâce à la collaboration stratégique et à la créativité. Chaque projet engage et inspire, visant à obtenir des résultats impactants."
+    },
+    "contactUs": {
+      "subtitle": "Commencez avec Tikit !",
+      "title": "Contactez-nous",
+      "mainWord": "Maintenant",
+      "description": "Nous voulons vous entendre. Faites-nous savoir",
+      "description2": "comment nous pouvons vous aider !",
+      "helpText": "Faites-nous savoir comment nous pouvons vous aider !",
+      "client": "Client",
+      "influencer": "Influenceur",
+      "name": "Nom",
+      "email": "Email",
+      "button": "Contactez-nous",
+      "brandsTrust": "200+ marques nous font confiance"
+    },
+    "map": {
+      "badge": "Présence Mondiale",
+      "title": "Tikit Agency",
+      "titleHighlight": "Mondial",
+      "description": "De Dubaï à Londres, nous connectons les marques avec des audiences du monde entier. Nos emplacements stratégiques nous permettent de proposer des campagnes culturellement pertinentes qui résonnent avec des marchés diversifiés.",
+      "hoverHint": "Survolez les épingles pour explorer nos emplacements",
+      "stats": [
+        {
+          "text": "5+ Bureaux Mondiaux"
+        },
+        {
+          "text": "20+ Pays Servis"
+        },
+        {
+          "text": "500M+ Portée d'Audience"
+        }
+      ],
+      "locations": [
+        {
+          "title": "Dubaï, EAU",
+          "description": "Notre siège au cœur du Moyen-Orient, moteur de l'innovation en marketing sur les réseaux sociaux."
+        },
+        {
+          "title": "Riyad, KSA",
+          "description": "Expansion de notre portée en Arabie Saoudite avec des campagnes d'influenceurs de pointe."
+        },
+        {
+          "title": "Le Caire, Égypte",
+          "description": "Connexion des marques avec des millions en Afrique du Nord grâce à une narration créative."
+        },
+        {
+          "title": "Londres, UK",
+          "description": "Hub européen pour les partenariats de marques mondiales et la gestion des célébrités."
+        },
+        {
+          "title": "Mumbai, Inde",
+          "description": "Exploitation du plus grand public numérique au monde avec des stratégies localisées."
+        }
+      ]
+    },
+    "reviews": {
+      "testimonials": [
+        {
+          "name": "Sophia Martinez",
+          "company": "Global Enterprises Ltd.",
+          "text": "AtomWallet a complètement transformé notre gestion des paiements internationaux. Les transactions sont rapides, sécurisées et sans effort."
+        },
+        {
+          "name": "David Lee",
+          "company": "TechBridge Solutions",
+          "text": "Envoyer de l'argent à des partenaires à l'étranger n'a jamais été aussi fluide. Le suivi en temps réel d'AtomWallet nous donne une tranquillité d'esprit totale."
+        },
+        {
+          "name": "Amira Hassan",
+          "company": "FinEdge Capital",
+          "text": "Les fonctionnalités de sécurité sont exceptionnelles. La protection multicouche garantit que nos transactions commerciales restent privées et protégées."
+        },
+        {
+          "name": "Liam Anderson",
+          "company": "Anderson Trading Co.",
+          "text": "Avec AtomWallet, je peux payer les fournisseurs et recevoir des fonds mondialement sans m'inquiéter des frais cachés. Transparent et fiable !"
+        },
+        {
+          "name": "Chen Wei",
+          "company": "BrightPath Logistics",
+          "text": "L'interface est si intuitive. En quelques minutes, mon équipe effectuait des paiements internationaux sans aucune formation requise."
+        }
+      ]
+    },
+    "blogs": {
+      "title": "Dernières",
+      "mainWord": "Perspectives",
+      "description": "Restez informé des dernières tendances, conseils et success stories du marketing d'influence"
+    }
+  },
+  "about": {
+    "title": "À propos",
+    "description": "Page à propos",
+    "hero": {
+      "title": "Nous sommes",
+      "mainWord": "Tikit !",
+      "title2": "Guidés par l'analyse, propulsés par la créativité",
+      "sectionTitle": "À propos de nous",
+      "description": "Guidés par l'intuition et la créativité : l'histoire derrière \"Tikit\" — une agence régionale qui dynamise les marques, construit la confiance et livre des résultats."
+    },
+    "images": {
+      "clients": "Nous avons +300 clients satisfaits",
+      "funding": "Nous avons aidé nos clients à obtenir +100M de financement"
+    },
+    "strategy": {
+      "title": "Pas de blabla.",
+      "subtitle": "Juste",
+      "rotatingTexts": [
+        "stratégie experte",
+        "puissance créative",
+        "exécution parfaite"
+      ],
+      "cards": [
+        {
+          "title": "Marketing d'influence",
+          "description": "Nous connectons les marques avec des voix qui comptent. Grâce à un appariement basé sur les données et des collaborations authentiques, nous vous aidons à atteindre des audiences qui font confiance et répondent — transformant l'influence en impact réel."
+        },
+        {
+          "title": "Gestion des réseaux sociaux",
+          "description": "Nous gérons la présence en ligne de votre marque avec précision et créativité. De la planification à la publication, nous créons du contenu engageant, suivons les performances et développons des communautés fidèles qui maintiennent votre marque au centre de la conversation."
+        },
+        {
+          "title": "Production",
+          "description": "Du concept au montage final, nous donnons vie aux idées audacieuses. Qu'il s'agisse de contenu social, de visuels de marque ou de tournages commerciaux à grande échelle, notre équipe de production livre une narration de qualité qui capte l'attention et suscite l'action."
+        },
+        {
+          "title": "Identité de marque",
+          "description": "Nous construisons des marques qui se démarquent et défendent quelque chose. De l'identité visuelle à la voix de la marque, nous façonnons la façon dont les audiences vous voient, ressentent et se souviennent de vous — créant clarté, cohérence et connexion à chaque point de contact."
+        }
+      ]
+    },
+    "growth": {
+      "title": "Nous créons des stratégies intelligentes et évolutives qui déclenchent une croissance réelle",
+      "description": "De la planification à l'exécution, nos équipes transforment la vision créative en résultats mesurables. Le vrai signe du succès ? Les clients qui reviennent — parce qu'ils ont vu l'impact de leurs propres yeux.",
+      "stats": [
+        {
+          "amount": 12,
+          "title": "prix pour l'innovation numérique"
+        },
+        {
+          "amount": 99,
+          "title": "taux de succès des projets 99%"
+        }
+      ]
+    },
+    "contactUs": {
+      "subtitle": "Commencez avec Tikit !",
+      "title": "Contactez-nous maintenant",
+      "description": "Nous voulons vous entendre. Faites-nous savoir",
+      "description2": "comment nous pouvons vous aider !",
+      "helpText": "Faites-nous savoir comment nous pouvons vous aider !",
+      "client": "Client",
+      "influencer": "Influenceur",
+      "name": "Nom",
+      "email": "Email",
+      "button": "Contactez-nous",
+      "brandsTrust": "200+ Marques nous font confiance"
+    },
+    "animatedText": {
+      "line1": {
+        "text1": "Pertinence",
+        "text2": "Portée",
+        "text3": "Confiance"
+      },
+      "line2": {
+        "text1": "Créer",
+        "text2": "Influence",
+        "text3": "et",
+        "text4": "Croître"
+      }
+    },
+    "details": {
+      "header": {
+        "title": "À propos de Tikit",
+        "subtitle": "Guidé par l'analyse, propulsé par la créativité",
+        "marquee": {
+          "strategy": "Stratégie",
+          "creativity": "Créativité",
+          "innovation": "Innovation",
+          "growth": "Croissance"
+        }
+      },
+      "vision": {
+        "title": "Notre",
+        "titleHighlight": "Vision",
+        "paragraph1": "Nous envisageons un avenir où les marques et les créateurs collaborent de manière transparente, créant des connexions authentiques et un impact mesurable dans la région du CCG et du MENA. Notre vision est d'être le pont qui transforme l'influence en résultats commerciaux significatifs.",
+        "paragraph2": "Grâce aux insights basés sur les données, l'excellence créative et les partenariats stratégiques, nous permettons aux marques d'atteindre leurs audiences idéales tout en aidant les créateurs à construire des carrières durables et impactantes."
+      },
+      "mission": {
+        "title": "Notre",
+        "titleHighlight": "Mission",
+        "paragraph1": "Chez Tikit, nous nous engageons à révolutionner le marketing d'influence en combinant la réflexion stratégique avec l'exécution créative. Notre mission est de fournir un retour sur investissement mesurable tout en favorisant des relations authentiques entre les marques et les créateurs.",
+        "paragraph2": "Nous croyons en la transparence, les décisions basées sur les données et les résultats qui parlent d'eux-mêmes. Chaque campagne que nous exécutons est conçue pour générer un engagement réel, construire la confiance de la marque et créer un impact durable.",
+        "benefits": {
+          "dataDriven": "Approche basée sur les données",
+          "creative": "Excellence créative",
+          "authentic": "Partenariats authentiques",
+          "innovative": "Solutions innovantes"
+        }
+      },
+      "work": {
+        "title": "Comment nous",
+        "titleHighlight": "Travaillons",
+        "subtitle": "Notre processus éprouvé transforme les idées en campagnes impactantes qui génèrent de vrais résultats",
+        "items": {
+          "strategy": "Stratégie et Planification",
+          "creation": "Création de Contenu",
+          "growth": "Croissance et Optimisation"
+        }
+      },
+      "services": {
+        "title": "Nos Services",
+        "titleHighlight": "Principaux",
+        "cta": "Nous combinons la réflexion stratégique avec l'exécution créative pour offrir des services qui génèrent des résultats mesurables",
+        "items": {
+          "brandStrategy": {
+            "name": "Stratégie de Marque",
+            "desc": "Développer des stratégies de marque complètes qui s'alignent avec vos objectifs commerciaux et résonnent avec votre public cible."
+          },
+          "digitalMarketing": {
+            "name": "Marketing d'Influence",
+            "desc": "Connectez votre marque avec des créateurs authentiques qui génèrent un engagement réel et un impact mesurable."
+          },
+          "socialMedia": {
+            "name": "Gestion des Réseaux Sociaux",
+            "desc": "Gérer la présence en ligne de votre marque avec précision et créativité sur toutes les principales plateformes."
+          },
+          "creativeDesign": {
+            "name": "Design Créatif",
+            "desc": "Construire des marques qui se démarquent avec une identité visuelle convaincante et une voix de marque cohérente."
+          },
+          "contentCreation": {
+            "name": "Création de Contenu",
+            "desc": "Du concept au montage final, nous donnons vie aux idées audacieuses avec une narration de qualité."
+          }
+        },
+        "tags": {
+          "dataDriven": "Basé sur les données",
+          "creative": "Créatif",
+          "authentic": "Authentique",
+          "innovative": "Innovant"
+        }
+      }
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "description": "Page de contact",
+    "hero": {
+      "title": "Des questions ? Demandez-nous simplement.",
+      "subtitle": "C'est vous, à la maison !"
+    },
+    "action": {
+      "subtitle": "Commencez avec Tikit !",
+      "title": "Contactez-nous",
+      "mainWord": "Maintenant",
+      "description": "Nous voulons vous entendre. Faites-nous savoir comment nous pouvons vous aider !",
+      "client": "Client",
+      "influencer": "Influenceur",
+      "addSocialLink": "Ajouter un lien social",
+      "addMessage": "Ajouter un message",
+      "hideMessage": "Masquer le message",
+      "selectPlatform": "Sélectionner une plateforme",
+      "socialPlatforms": {
+        "instagram": "Instagram",
+        "tiktok": "TikTok",
+        "youtube": "YouTube",
+        "facebook": "Facebook",
+        "twitter": "Twitter",
+        "linkedin": "LinkedIn",
+        "snapchat": "Snapchat",
+        "other": "Autre"
+      },
+      "form": {
+        "name": "Nom",
+        "email": "Email",
+        "phone": "Téléphone",
+        "countryCode": "Pays",
+        "subject": "Sujet",
+        "message": "Message",
+        "link": "Lien",
+        "submit": "Contactez-nous"
+      }
+    }
+  },
+  "services": {
+    "title": "Services",
+    "description": "Page des services",
+    "hero": {
+      "title": "Nous créons un design qui",
+      "subtitle": "mène et inspire",
+      "description": "Nos services exclusifs",
+      "subdescription": "Nous nous associons avec des marques qui veulent mener — celles prêtes à briser le bruit et apporter une vraie valeur à la vie des gens."
+    },
+    "page": {
+      "header": "Nos Services",
+      "scrollHint": "Défilez pour explorer",
+      "discoverButton": "Découvrir",
+      "items": [
+        {
+          "title": "Marketing d'influence",
+          "description": "Connectez votre marque à des voix qui comptent. Nous vous mettons en relation avec des créateurs authentiques qui génèrent un véritable engagement, transformant l'influence en impact mesurable à travers Dubaï, l'Arabie Saoudite et la région du CCG."
+        },
+        {
+          "title": "Marketing des Réseaux Sociaux",
+          "description": "Dominez Instagram, TikTok et au-delà avec du contenu captivant, des campagnes stratégiques et une croissance communautaire qui transforme les abonnés en clients fidèles"
+        },
+        {
+          "title": "Identité de marque",
+          "description": "Construisez une marque qui se démarque et représente quelque chose. De l'identité visuelle à la voix de la marque, nous façonnons la façon dont les audiences vous voient, vous ressentent et vous mémorisent — créant clarté, cohérence et connexion à chaque point de contact."
+        },
+        {
+          "title": "Production",
+          "description": "Du concept au montage final, nous donnons vie aux idées audacieuses. Qu'il s'agisse de contenu social, de visuels de marque ou de tournages commerciaux à grande échelle, notre équipe de production livre une narration de qualité qui capte l'attention."
+        },
+        {
+          "title": "Développement Web",
+          "description": "Création d'applications web modernes et réactives avec des technologies de pointe qui élèvent votre présence numérique et convertissent les visiteurs en clients."
+        },
+        {
+          "title": "Marketing Digital",
+          "description": "Stimuler la croissance grâce à des campagnes stratégiques, des analyses basées sur les données et une exécution axée sur le ROI qui génère des résultats mesurables pour votre marque."
+        }
+      ]
+    }
+  },
+  "news": {
+    "hero": {
+      "kicker": "Dernières Perspectives",
+      "title": "Histoires Qui Façonnent le Succès",
+      "description": "Découvrez les stratégies, les perspectives et les percées de notre équipe d'experts en marketing."
+    },
+    "content": {
+      "category1": "Stratégie",
+      "title1": "Comment Faire Évoluer Vos Campagnes d'Influence",
+      "excerpt1": "Une plongée approfondie dans les stratégies éprouvées pour faire évoluer les partenariats d'influenceurs sur les plateformes.",
+      "category2": "Créatif",
+      "title2": "7 Modèles Créatifs Qui Génèrent des Résultats",
+      "excerpt2": "Découvrez les modèles visuels et de messagerie qui surpassent systématiquement les campagnes sociales.",
+      "category3": "Données",
+      "title3": "Attribution en 2025 : Ce Qui Compte Vraiment",
+      "excerpt3": "Comment les spécialistes du marketing modernes mesurent le succès dans une ère de perte de signal et de changements de confidentialité.",
+      "readMore": "Lire la suite"
+    },
+    "showMore": "Voir Plus",
+    "loading": "Chargement...",
+    "error": "Impossible de charger les actualités pour le moment. Veuillez réessayer plus tard.",
+    "noNews": "Aucune actualité disponible."
+  },
+  "newsletter": {
+    "title": "Restez Informé",
+    "description": "Abonnez-vous à notre newsletter pour recevoir les dernières actualités et mises à jour directement dans votre boîte de réception.",
+    "name": "Nom",
+    "email": "Email",
+    "subscribe": "S'abonner",
+    "subscribing": "Abonnement en cours...",
+    "successTitle": "Merci !",
+    "successMessage": "Vous vous êtes abonné avec succès à notre newsletter. Nous vous tiendrons informé des dernières actualités !"
+  },
+  "footer": {
+    "contactText": "Si vous souhaitez travailler avec nous ou simplement prendre contact, nous serions ravis de vous entendre !",
+    "contactTitle": "Contact –",
+    "contactSubtitle": "pour Client ou Influenceur partout",
+    "whatsapp": "056 888 1133",
+    "copyright": "© Copyright 2025 | Tous droits réservés par Tikit",
+    "locations": {
+      "uae": "EAU - Marasi Drive, Dubaï",
+      "uk": "RU - Paddington, Londres",
+      "ksa": "Arabie Saoudite - Quartier Financier, Riyad",
+      "turkey": "Turquie - Levent, Istanbul",
+      "syria": "Syrie - Ziad Ibn Abi Softyan, Damas"
+    },
+    "links": {
+      "aboutUs": "À propos",
+      "services": "Services",
+      "work": "Travaux",
+      "contact": "Contactez-nous"
+    },
+    "services": {
+      "digitalMarketing": "Marketing d'Influence",
+      "socialMedia": "Médias Sociaux",
+      "branding": "Identité de marque",
+      "production": "Production"
+    },
+    "terms": {
+      "privacyPolicy": "Politique de Confidentialité",
+      "termsOfService": "Conditions d'utilisation",
+      "aboutUs": "À propos",
+      "cookieSettings": "Paramètres des Cookies"
+    },
+    "social": {
+      "facebook": "Facebook",
+      "instagram": "Instagram",
+      "linkedin": "LinkedIn",
+      "twitter": "X (Twitter)",
+      "tiktok": "TikTok",
+      "comingSoon": "Bientôt disponible"
+    }
+  },
+  "notFound": {
+    "title": "Oups ! Page Non Trouvée",
+    "description": "La page que vous recherchez n'existe pas ou a été déplacée.",
+    "backHome": "Retour à l'Accueil"
+  }
+}

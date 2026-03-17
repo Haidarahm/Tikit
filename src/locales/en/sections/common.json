@@ -1,0 +1,639 @@
+{
+  "nav": {
+    "home": "Home",
+    "work": "Case Studies",
+    "about": "About us",
+    "services": "Services",
+    "news": "Blogs",
+    "influencers": "Influencers",
+    "ourInfluencers": "Our Influencers",
+    "registerAsInfluencer": "Register as Influencer",
+    "contact": "Holla at us",
+    "servicesSections": [
+      {
+        "digitalMarketing": "Influencer Marketing",
+        "digitalMarketingAgencyDubai": "Influencer Marketing Agency Dubai"
+      },
+      {
+        "branding": "Branding Agency Dubai"
+      }
+    ]
+  },
+  "seo": {
+    "defaultDescription": "Tikit Agency is a leading influencer marketing agency in Dubai and Saudi Arabia. We connect brands with authentic creators to drive real engagement and measurable ROI across the GCC region. 300+ happy clients, 50+ team members.",
+    "defaultKeywords": "influencer marketing agency Dubai, influencer agency Saudi Arabia, best influencer marketing agency UAE, talent management Dubai, social media marketing GCC, influencer marketing KSA, content creators Dubai, influencer agency Riyadh",
+    "home": {
+      "title": "Best Influencer Marketing Agency in Dubai & Saudi Arabia",
+      "description": "Tikit Agency is the leading influencer marketing and talent management agency in Dubai and Saudi Arabia. 300+ happy clients, 50+ experts. We connect brands with authentic creators for measurable ROI across the GCC.",
+      "keywords": "best influencer marketing agency Dubai, influencer agency UAE, influencer marketing Saudi Arabia, talent management Dubai, top influencer agency GCC, social media agency Dubai, content creator agency"
+    },
+    "about": {
+      "title": "About Tikit Agency - Leading Influencer Marketing Agency UAE",
+      "description": "Tikit Agency is a Dubai-based influencer marketing agency with 50+ team members and offices in UAE, Saudi Arabia, and Syria. Learn about our journey helping 300+ brands achieve measurable results.",
+      "keywords": "about Tikit Agency, influencer agency Dubai team, marketing agency UAE, influencer marketing company Saudi Arabia, Dubai marketing agency"
+    },
+    "services": {
+      "title": "Influencer Marketing Services Dubai & Saudi Arabia",
+      "description": "Explore Tikit Agency's marketing services: Influencer Marketing, Talent Management, Social Media Marketing, Branding, and Production. Serving Dubai, Abu Dhabi, Riyadh, Jeddah, and the GCC.",
+      "keywords": "influencer marketing services Dubai, talent management UAE, social media agency Saudi Arabia, branding agency Dubai, production company GCC, digital marketing Riyadh"
+    },
+    "work": {
+      "title": "Influencer Marketing Case Studies - Tikit Agency Dubai",
+      "description": "View Tikit Agency's portfolio of successful influencer marketing campaigns in Dubai and Saudi Arabia. See how we've helped 300+ brands achieve measurable ROI through creator partnerships.",
+      "keywords": "influencer marketing case studies, Dubai marketing campaigns, Saudi Arabia brand campaigns, influencer campaign results, GCC marketing portfolio"
+    },
+    "contact": {
+      "title": "Contact Tikit Agency Dubai - Influencer Marketing Experts",
+      "description": "Contact Tikit Agency at +971 4 577 4042 or Holla@tikit.ae. Our main office is in The Burlington Tower, Marasi Drive, Dubai – Office 309 with offices in Saudi Arabia. Get a free consultation for influencer marketing.",
+      "keywords": "contact Tikit Agency, influencer agency Dubai contact, marketing agency phone UAE, Dubai marketing consultation, Saudi Arabia influencer agency"
+    },
+    "influencer": {
+      "title": "Join Tikit Agency - Influencer & Creator Management",
+      "description": "Join Tikit Agency's roster of influencers and content creators. We offer talent management, brand deal negotiations, and career growth opportunities across Dubai, Saudi Arabia, and the GCC.",
+      "keywords": "join influencer agency Dubai, influencer management UAE, content creator agency, talent management Saudi Arabia, become managed influencer"
+    }
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Find answers to common questions about our services, processes, and how we can help your brand grow.",
+    "cta": {
+      "title": "Still have questions?",
+      "description": "Get in touch with our team and we'll be happy to help you.",
+      "button": "Contact Us"
+    },
+    "questions": {
+      "q1": {
+        "question": "How does Tikit Agency work?",
+        "answer": "Our process is simple and effective: First, we dive deep into understanding your brand goals and target audience. Then, our strategy team develops a customized campaign plan. Next, we match you with the right creators or create compelling content. Finally, we execute the campaign and provide real-time analytics and reporting. Throughout the process, you'll have a dedicated account manager ensuring everything runs smoothly."
+      },
+      "q2": {
+        "question": "What is your production process?",
+        "answer": "Our production workflow has four phases: 1) Pre-Production - concept development, scriptwriting, location scouting, and planning. 2) Production - professional filming with cinema cameras, drones, and state-of-the-art equipment. 3) Post-Production - expert editing, color grading, motion graphics, and sound design. 4) Delivery - optimized content in all required formats for your platforms. We handle everything from social media reels to full-scale commercial productions."
+      },
+      "q3": {
+        "question": "Who is on the Tikit team?",
+        "answer": "Our team consists of 50+ creative professionals including: strategists who plan data-driven campaigns, content creators and videographers who bring ideas to life, social media managers who engage audiences, designers who craft visual identities, and account managers who ensure client satisfaction. We also have specialists in influencer relations, analytics, and paid advertising across the MENA region."
+      },
+      "q4": {
+        "question": "Where are Tikit's offices located?",
+        "answer": "Tikit Agency has a strategic presence across the MENA region. Our headquarters is in Dubai at The Burlington Tower, Marasi Drive, Office 309. We also have dedicated offices in Saudi Arabia (serving Riyadh and Jeddah), Istanbul (Turkey), and Syria. This regional presence allows us to understand local markets and deliver culturally relevant campaigns across the GCC and broader MENA region."
+      },
+      "q5": {
+        "question": "How long does a typical campaign take?",
+        "answer": "Campaign timelines vary based on scope and objectives. A quick influencer activation can launch in 1-2 weeks, while comprehensive brand campaigns typically take 4-8 weeks from strategy to execution. Full-scale production projects may require 6-12 weeks. During our initial consultation, we'll provide a detailed timeline tailored to your specific project and goals."
+      },
+      "q6": {
+        "question": "What platforms do you specialize in?",
+        "answer": "We manage campaigns across all major social media platforms including Instagram, TikTok, YouTube, Snapchat, Twitter/X, LinkedIn, and Facebook. We're particularly strong in platforms popular in the MENA region like Instagram and Snapchat. Our team stays updated with platform algorithms, trending formats, and best practices to maximize your content's reach and engagement."
+      },
+      "q7": {
+        "question": "Do you work with international brands?",
+        "answer": "Absolutely! While we're based in the MENA region, we work with both local and international brands. Our multilingual team (English, Arabic, French, Turkish) and cultural expertise help global brands enter and succeed in Middle Eastern markets. We've successfully launched campaigns for brands from Europe, Asia, and North America looking to establish presence in the GCC region."
+      },
+      "q8": {
+        "question": "What is your pricing structure?",
+        "answer": "Our pricing is customized based on project scope, deliverables, and campaign duration. We offer flexible packages ranging from one-time projects to ongoing retainer agreements. Influencer marketing campaigns start based on the creator tier and engagement goals. Production services are quoted per project based on complexity. Contact us for a detailed proposal tailored to your budget and objectives."
+      },
+      "q9": {
+        "question": "How do you measure campaign success?",
+        "answer": "We track comprehensive metrics aligned with your goals: reach and impressions, engagement rates (likes, comments, shares), website traffic and conversions, follower growth, brand sentiment analysis, and ROI. You'll receive detailed analytics reports showing campaign performance, audience insights, and recommendations for optimization. We believe in transparency and data-driven results."
+      },
+      "q10": {
+        "question": "Can you help with both organic and paid campaigns?",
+        "answer": "Yes! We offer both organic content strategy and paid advertising services. Our organic approach focuses on authentic engagement, community building, and content that resonates. For paid campaigns, we manage social media ads across Facebook, Instagram, TikTok, Snapchat, and LinkedIn with precise targeting and budget optimization. Most clients benefit from a hybrid approach combining both strategies for maximum impact."
+      }
+    }
+  },
+  "home": {
+    "title": "Home",
+    "description": "Home page",
+    "hero": {
+      "tagline": "Marketing Agency",
+      "title": "ROI REBELS",
+      "subtitle": "Fueling brands with influence",
+      "clients": "+300 Happy Clients"
+    },
+    "showcase": {
+      "title": "Fueling brands with",
+      "mainWord": "Influence",
+      "description": "Tikit is an award-winning global influencer marketing agency. Whether you want to shift perceptions or create scroll-stopping content, we do it better than anyone."
+    },
+    "numbers": {
+      "headline": "The true measure of",
+      "mainWord": "Success",
+      "subheadline": "Clients who come back. Most of ours stay long after the first project.",
+      "items": {
+        "happyClients": {
+          "text1": "Happy",
+          "text2": "Clients"
+        },
+        "years": {
+          "text1": "Years",
+          "text2": "Of Experiences"
+        },
+        "projects": {
+          "text1": "Completed",
+          "text2": "Projects"
+        },
+        "awards": {
+          "text1": "Award",
+          "text2": "Achievements"
+        }
+      }
+    },
+    "services": {
+      "title": "What We Do Best",
+      "explore": "Explore Services",
+      "items": [
+        {
+          "title": "Influencer Marketing",
+          "subtitle": "Boost your brand through creators",
+          "description": "We connect brands with voices that matter. Through data-backed matchmaking and authentic collaborations, we help you reach audiences that trust and respond — turning influence into real impact."
+        },
+        {
+          "title": "Social Media Management",
+          "subtitle": "We manage your brand's online presence with precision and creativity.",
+          "description": "From planning to posting, we craft engaging content, track performance, and grow loyal communities that keep your brand at the center of the conversation."
+        },
+        {
+          "title": "Production",
+          "subtitle": "From concept to final cut, we bring bold ideas to life.",
+          "description": "Whether it's social content, branded visuals, or full-scale commercial shoots, our production team delivers quality storytelling that captures attention and drives action."
+        },
+        {
+          "title": "Branding",
+          "subtitle": "We build brands that stand out and stand for something.",
+          "description": "From visual identity to brand voice, we shape how audiences see, feel, and remember you — creating clarity, consistency, and connection at every touchpoint."
+        },
+        {
+          "title": "Digital Marketing",
+          "subtitle": "Data-driven campaigns that drive growth and measurable ROI.",
+          "description": "From SEO and paid ads to conversion optimization, we deliver full-funnel digital marketing strategies built for the UAE and GCC market."
+        },
+        {
+          "title": "Web Development",
+          "subtitle": "Fast, scalable websites and web apps that convert.",
+          "description": "We build responsive websites and custom web applications — optimized for performance, SEO, and your business goals."
+        }
+      ]
+    },
+    "influencers": {
+      "badge": "Our Influencers",
+      "title": "Meet The",
+      "mainWord": "Creators",
+      "subtitle": "Connect with influential voices across diverse categories",
+      "loadingCategories": "Loading categories...",
+      "categoriesError": "Failed to load categories.",
+      "noCategories": "No categories available right now.",
+      "loadingInfluencers": "Loading influencers...",
+      "influencersError": "Failed to load influencers.",
+      "noInfluencers": "We couldn't find influencers for this category yet. Please check back soon.",
+      "showAll": "Show All",
+      "followersLabel": "{{count}} Followers"
+    },
+    "connections": {
+      "question": "Are you an influencer?",
+      "headline": "Join our creator network",
+      "mainWord": "Today!",
+      "description": "Partner with brands that match your style, and make every collaboration count",
+      "joinNow": "Join Now"
+    },
+    "work": {
+      "title": "Case Studies",
+      "explore": "Explore Case Studies",
+      "viewWork": "View Work",
+      "noWorks": "No works found.",
+      "prev": "Prev",
+      "next": "Next",
+      "page": "Page"
+    },
+    "goals": {
+      "items": [
+        {
+          "title": "Amplify your brand's reach",
+          "description": "Reach real audiences with meaningful content. We grow traffic that actually converts."
+        },
+        {
+          "title": "Boost campaign performance",
+          "description": "Track results in real time and optimize every move — all managed on one smart platform."
+        },
+        {
+          "title": "Create with Purpose",
+          "description": "Every piece of content we craft tells your story authentically. We turn creative vision into lasting brand impact."
+        },
+        {
+          "title": "Drive real engagement",
+          "description": "Reach real audiences with meaningful content. We grow traffic that actually converts."
+        }
+      ]
+    },
+    "aboutUs": {
+      "title": "Who We Are",
+      "description": "We create and innovate digital experiences through strategic collaboration and creativity. Each project engages and inspires, aiming to drive impactful results."
+    },
+    "contactUs": {
+      "subtitle": "Kick it off with Tikit!",
+      "title": "Holla at us",
+      "mainWord": "Now!",
+      "description": "We want to hear from you. let's us know",
+      "description2": "how we can help!",
+      "helpText": "let's us know how we can help!",
+      "client": "Client",
+      "influencer": "Influencer",
+      "name": "Name",
+      "email": "Email",
+      "button": "Holla at us",
+      "brandsTrust": "200+ Brands Trust Us"
+    },
+    "map": {
+      "badge": "Global Presence",
+      "title": "Tikit Agency",
+      "titleHighlight": "Worldwide",
+      "description": "From Dubai to London, we connect brands with audiences across the globe. Our strategic locations enable us to deliver culturally relevant campaigns that resonate with diverse markets.",
+      "hoverHint": "Hover over the pins to explore our locations",
+      "stats": [
+        {
+          "text": "5+ Global Offices"
+        },
+        {
+          "text": "200+ Countries Served"
+        },
+        {
+          "text": "500M+ Audience Reach"
+        }
+      ],
+      "locations": [
+        {
+          "title": "Dubai, UAE",
+          "description": "Our headquarters in the heart of the Middle East, driving innovation in social media marketing."
+        },
+        {
+          "title": "Riyadh, KSA",
+          "description": "Expanding our reach across Saudi Arabia with cutting-edge influencer campaigns."
+        },
+        {
+          "title": "Cairo, Egypt",
+          "description": "Connecting brands with millions across North Africa through creative storytelling."
+        },
+        {
+          "title": "London, UK",
+          "description": "European hub for global brand partnerships and celebrity management."
+        },
+        {
+          "title": "Mumbai, India",
+          "description": "Tapping into the world's largest digital audience with localized strategies."
+        }
+      ]
+    },
+    "reviews": {
+      "testimonials": [
+        {
+          "name": "Sophia Martinez",
+          "company": "Global Enterprises Ltd.",
+          "text": "AtomWallet has completely transformed how we manage international payments. Transactions are fast, secure, and effortless."
+        },
+        {
+          "name": "David Lee",
+          "company": "TechBridge Solutions",
+          "text": "Sending money to partners abroad has never been this smooth. AtomWallet's real-time tracking gives us complete peace of mind."
+        },
+        {
+          "name": "Amira Hassan",
+          "company": "FinEdge Capital",
+          "text": "The security features are outstanding. Multi-layer protection ensures our business transactions remain private and protected."
+        },
+        {
+          "name": "Liam Anderson",
+          "company": "Anderson Trading Co.",
+          "text": "With AtomWallet, I can pay vendors and receive funds globally without worrying about hidden fees. Transparent and reliable!"
+        },
+        {
+          "name": "Chen Wei",
+          "company": "BrightPath Logistics",
+          "text": "The interface is so intuitive. Within minutes, my team was making international payments without any training required."
+        }
+      ]
+    },
+    "blogs": {
+      "title": "Latest",
+      "mainWord": "Insights",
+      "description": "Stay updated with the latest trends, tips, and success stories from the world of influencer marketing"
+    }
+  },
+  "about": {
+    "title": "About",
+    "description": "About page",
+    "hero": {
+      "title": "We are",
+      "mainWord": "Tikit!",
+      "title2": "Driven by insight, powered by creativity",
+      "sectionTitle": "About us",
+      "description": "Driven by insight and creativity: the story behind \"Tikit\" — a global agency powering brands, building trust, and delivering results."
+    },
+    "images": {
+      "clients": "We have +300 satisfied clients",
+      "funding": "We helped our clients get +100M funding"
+    },
+    "strategy": {
+      "title": "No fluff.",
+      "subtitle": "Just",
+      "rotatingTexts": [
+        "expert strategy",
+        "creative firepower",
+        "flawless execution"
+      ],
+      "cards": [
+        {
+          "title": "Influencer Marketing",
+          "description": "We connect brands with voices that matter. Through data-backed matchmaking and authentic collaborations, we help you reach audiences that trust and respond — turning influence into real impact."
+        },
+        {
+          "title": "Social Media Management",
+          "description": "We manage your brand's online presence with precision and creativity. From planning to posting, we craft engaging content, track performance, and grow loyal communities that keep your brand at the center of the conversation."
+        },
+        {
+          "title": "Production",
+          "description": "From concept to final cut, we bring bold ideas to life. Whether it's social content, branded visuals, or full-scale commercial shoots, our production team delivers quality storytelling that captures attention and drives action."
+        },
+        {
+          "title": "Branding",
+          "description": "We build brands that stand out and stand for something. From visual identity to brand voice, we shape how audiences see, feel, and remember you — creating clarity, consistency, and connection at every touchpoint."
+        }
+      ]
+    },
+    "growth": {
+      "title": "We craft smart, scalable strategies that spark real growth",
+      "description": "From planning to execution, our teams turn creative vision into measurable results. The true sign of success? Clients who return — because they've seen the impact firsthand.",
+      "stats": [
+        {
+          "amount": 12,
+          "title": "award for digital innovation"
+        },
+        {
+          "amount": 99,
+          "title": "projects success rate 99%"
+        }
+      ]
+    },
+    "contactUs": {
+      "subtitle": "Kick it off with Tikit!",
+      "title": "Holla at us Now",
+      "description": "We want to hear from you. let's us know",
+      "description2": "how we can help!",
+      "helpText": "let's us know how we can help!",
+      "client": "Client",
+      "influencer": "Influencer",
+      "name": "Name",
+      "email": "Email",
+      "button": "Holla at us",
+      "brandsTrust": "200+ Brands Trust Us"
+    },
+    "animatedText": {
+      "line1": {
+        "text1": "Relevance",
+        "text2": "Reach",
+        "text3": "Trust"
+      },
+      "line2": {
+        "text1": "Create",
+        "text2": "Influence",
+        "text3": "y",
+        "text4": "Grow"
+      }
+    },
+    "details": {
+      "header": {
+        "title": "About Tikit",
+        "subtitle": "Driven by insight, powered by creativity",
+        "marquee": {
+          "strategy": "Strategy",
+          "creativity": "Creativity",
+          "innovation": "Innovation",
+          "growth": "Growth"
+        }
+      },
+      "vision": {
+        "title": "Our",
+        "titleHighlight": "Vision",
+        "paragraph1": "We envision a future where brands and creators collaborate seamlessly, driving authentic connections and measurable impact across the global region. Our vision is to be the bridge that transforms influence into meaningful business outcomes.",
+        "paragraph2": "Through data-driven insights, creative excellence, and strategic partnerships, we empower brands to reach their ideal audiences while helping creators build sustainable, impactful careers."
+      },
+      "mission": {
+        "title": "Our",
+        "titleHighlight": "Mission",
+        "paragraph1": "At Tikit, we're committed to revolutionizing influencer marketing by combining strategic thinking with creative execution. Our mission is to deliver measurable ROI while fostering authentic relationships between brands and creators.",
+        "paragraph2": "We believe in transparency, data-driven decisions, and results that speak for themselves. Every campaign we execute is designed to drive real engagement, build brand trust, and create lasting impact.",
+        "benefits": {
+          "dataDriven": "Data-Driven Approach",
+          "creative": "Creative Excellence",
+          "authentic": "Authentic Partnerships",
+          "innovative": "Innovative Solutions"
+        }
+      },
+      "work": {
+        "title": "How We",
+        "titleHighlight": "Work",
+        "subtitle": "Our proven process transforms ideas into impactful campaigns that drive real results",
+        "items": {
+          "strategy": "Strategy & Planning",
+          "creation": "Content Creation",
+          "growth": "Growth & Optimization"
+        }
+      },
+      "services": {
+        "title": "Our Core",
+        "titleHighlight": "Services",
+        "cta": "We combine strategic thinking with creative execution to deliver services that drive measurable results",
+        "items": {
+          "brandStrategy": {
+            "name": "Brand Strategy",
+            "desc": "Develop comprehensive brand strategies that align with your business goals and resonate with your target audience."
+          },
+          "digitalMarketing": {
+            "name": "Influencer Marketing",
+            "desc": "Connect your brand with authentic creators who drive real engagement and measurable impact."
+          },
+          "socialMedia": {
+            "name": "Social Media Management",
+            "desc": "Manage your brand's online presence with precision and creativity across all major platforms."
+          },
+          "creativeDesign": {
+            "name": "Creative Design",
+            "desc": "Build brands that stand out with compelling visual identity and consistent brand voice."
+          },
+          "contentCreation": {
+            "name": "Content Creation",
+            "desc": "From concept to final cut, we bring bold ideas to life with quality storytelling."
+          }
+        },
+        "tags": {
+          "dataDriven": "Data-Driven",
+          "creative": "Creative",
+          "authentic": "Authentic",
+          "innovative": "Innovative"
+        }
+      }
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "description": "Contact page",
+    "hero": {
+      "title": "Any questions? simply ask us.",
+      "subtitle": "This is you, home!"
+    },
+    "action": {
+      "subtitle": "Kick it off with Tikit!",
+      "title": "Holla at us",
+      "mainWord": "Now",
+      "description": "We want to hear from you. Let us know how we can help!",
+      "client": "Client",
+      "influencer": "Influencer",
+      "addSocialLink": "Add Social Link",
+      "addMessage": "Add Message",
+      "hideMessage": "Hide Message",
+      "selectPlatform": "Select platform",
+      "socialPlatforms": {
+        "instagram": "Instagram",
+        "tiktok": "TikTok",
+        "youtube": "YouTube",
+        "facebook": "Facebook",
+        "twitter": "Twitter",
+        "linkedin": "LinkedIn",
+        "snapchat": "Snapchat",
+        "other": "Other"
+      },
+      "form": {
+        "name": "Name",
+        "email": "Email",
+        "phone": "Phone",
+        "countryCode": "Country",
+        "subject": "Subject",
+        "message": "Message",
+        "link": "Link",
+        "submit": "Holla at us"
+      }
+    }
+  },
+  "services": {
+    "title": "Services",
+    "description": "Services page",
+    "hero": {
+      "title": "We make design that",
+      "subtitle": "lead and inspire",
+      "description": "Our exclusive services",
+      "subdescription": "We partner with brands that want to lead — those ready to break through the noise and bring real value to people's lives."
+    },
+    "page": {
+      "header": "Our Services",
+      "scrollHint": "Scroll to explore",
+      "discoverButton": "Discover",
+      "items": [
+        {
+          "title": "Influencer Marketing",
+          "description": "Connect your brand with voices that matter. We match you with authentic creators who drive real engagement, turning influence into measurable impact across Dubai, Saudi Arabia, and the GCC region."
+        },
+        {
+          "title": "Social Media Marketing",
+          "description": "Dominate Instagram, TikTok, and beyond with scroll-stopping content, strategic campaigns, and community-driven growth that turns followers into loyal customers."
+        },
+        {
+          "title": "Branding",
+          "description": "Build a brand that stands out and stands for something. From visual identity to brand voice, we shape how audiences see, feel, and remember you — creating clarity, consistency, and connection at every touchpoint."
+        },
+        {
+          "title": "Production",
+          "description": "From concept to final cut, we bring bold ideas to life. Whether it's social content, branded visuals, or full-scale commercial shoots, our production team delivers quality storytelling that captures attention."
+        },
+        {
+          "title": "Web Development",
+          "description": "Building responsive and modern web applications with cutting-edge technologies that elevate your digital presence and convert visitors into customers."
+        },
+        {
+          "title": "Digital Marketing",
+          "description": "Driving growth through strategic campaigns, data-driven insights, and ROI-focused execution that delivers measurable results for your brand."
+        }
+      ]
+    }
+  },
+  "news": {
+    "hero": {
+      "kicker": "Latest Insights",
+      "title": "Stories That Shape Success",
+      "description": "Discover strategies, insights, and breakthroughs from our team of marketing experts."
+    },
+    "content": {
+      "category1": "Strategy",
+      "title1": "How to Scale Your Influencer Campaigns",
+      "excerpt1": "A deep dive into proven strategies for scaling influencer partnerships across platforms.",
+      "category2": "Creative",
+      "title2": "7 Creative Patterns That Drive Results",
+      "excerpt2": "Discover the visual and messaging patterns that consistently outperform in social campaigns.",
+      "category3": "Data",
+      "title3": "Attribution in 2025: What Actually Matters",
+      "excerpt3": "How modern marketers measure success in an era of signal loss and privacy changes.",
+      "readMore": "Read more"
+    },
+    "showMore": "Show More",
+    "loading": "Loading...",
+    "error": "Unable to load news right now. Please try again later.",
+    "noNews": "No news available."
+  },
+  "newsletter": {
+    "title": "Stay Updated",
+    "description": "Subscribe to our newsletter to receive the latest news and updates directly to your inbox.",
+    "name": "Name",
+    "email": "Email",
+    "subscribe": "Subscribe",
+    "subscribing": "Subscribing...",
+    "successTitle": "Thank You!",
+    "successMessage": "You've successfully subscribed to our newsletter. We'll keep you updated with the latest news!"
+  },
+  "footer": {
+    "contactText": "If you would like to work with us or just want to get in touch, we'd love to hear from you!",
+    "contactTitle": "Contact –",
+    "contactSubtitle": "for Client or Influencer throughout",
+    "phone": "+971 4 577 4042",
+    "whatsapp": "056 888 1133",
+    "email": "Holla@tikit.ae",
+    "copyright": "© Copyright 2025 | All rights reserved by Tikit Agency",
+    "locations": {
+      "uae": "UAE - Marasi Drive, Dubai",
+      "uk": "UK - Paddington, London",
+      "ksa": "KSA - Financial District, Riyadh",
+      "turkey": "Turkey - Levent, Istanbul",
+      "syria": "Syria - Al Rawdah, Damascus"
+    },
+    "links": {
+      "aboutUs": "About us",
+      "services": "Services",
+      "work": "Case Studies",
+      "contact": "Contact"
+    },
+    "services": {
+      "digitalMarketing": "Influencer Marketing",
+      "socialMedia": "Social Media",
+      "branding": "Branding",
+      "production": "Production"
+    },
+    "terms": {
+      "privacyPolicy": "Privacy Policy",
+      "termsOfService": "Terms of Service",
+      "aboutUs": "About us",
+      "cookieSettings": "Cookie Settings"
+    },
+    "social": {
+      "facebook": "Facebook",
+      "instagram": "Instagram",
+      "linkedin": "LinkedIn",
+      "twitter": "X (Twitter)",
+      "tiktok": "TikTok",
+      "comingSoon": "Will be soon"
+    }
+  },
+  "notFound": {
+    "title": "Oops! Page Not Found",
+    "description": "The page you're looking for doesn't exist or has been moved.",
+    "backHome": "Back to Home"
+  }
+}
