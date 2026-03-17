@@ -1,0 +1,194 @@
+/* ============================================
+   Influencer Marketing Page – Custom styles
+   ============================================ */
+@import "../../../components/services-sections/ServiceSections.css";
+@reference "../../../index.css";
+
+/* ─── Section shared ─────────────────────────────────────────── */
+.inf-section {
+  @apply py-16 md:py-24 px-6 md:px-10;
+  background: var(--background);
+}
+
+.inf-section--alt {
+  background: color-mix(in srgb, var(--secondary) 4%, var(--background) 96%);
+}
+
+.inf-container {
+  @apply max-w-6xl mx-auto;
+}
+
+.inf-label {
+  @apply inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[11px] uppercase tracking-[0.18em] font-bold mb-6;
+  color: var(--secondary);
+  background: color-mix(in srgb, var(--secondary) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--secondary) 22%, transparent);
+}
+
+.inf-heading {
+  @apply text-3xl md:text-5xl font-bold leading-tight mb-4;
+  color: var(--foreground);
+}
+
+.inf-desc {
+  @apply text-base md:text-lg leading-relaxed max-w-3xl mb-10;
+  color: color-mix(in srgb, var(--foreground) 70%, transparent);
+}
+
+/* ─── Service Cards ──────────────────────────────────────────── */
+.inf-service-card {
+  @apply relative rounded-2xl p-6 md:p-8 border transition-all duration-300;
+  background: color-mix(in srgb, var(--secondary) 4%, var(--background) 96%);
+  border-color: color-mix(in srgb, var(--secondary) 14%, transparent);
+}
+
+.inf-service-card:hover {
+  border-color: var(--secondary);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px color-mix(in srgb, var(--secondary) 12%, transparent);
+}
+
+.inf-service-card__icon {
+  @apply w-12 h-12 rounded-xl flex items-center justify-center text-xl mb-4;
+  background: color-mix(in srgb, var(--secondary) 14%, transparent);
+  color: var(--secondary);
+}
+
+.inf-service-card__title {
+  @apply text-lg font-bold mb-2;
+  color: var(--foreground);
+}
+
+.inf-service-card__text {
+  @apply text-sm leading-relaxed;
+  color: color-mix(in srgb, var(--foreground) 65%, transparent);
+}
+
+/* ─── Platform Cards ─────────────────────────────────────────── */
+.inf-platform-card {
+  @apply relative rounded-2xl p-6 border overflow-hidden transition-all duration-300;
+  background: var(--background);
+  border-color: color-mix(in srgb, var(--foreground) 10%, transparent);
+}
+
+.inf-platform-card:hover {
+  border-color: var(--secondary);
+  transform: translateY(-2px);
+}
+
+.inf-platform-card__icon {
+  @apply w-14 h-14 rounded-full flex items-center justify-center text-2xl mb-4;
+  background: color-mix(in srgb, var(--secondary) 12%, transparent);
+  color: var(--secondary);
+}
+
+/* ─── Influencer Type Badges ─────────────────────────────────── */
+.inf-type-card {
+  @apply flex items-start gap-4 rounded-2xl p-5 border transition-all duration-300;
+  background: var(--background);
+  border-color: color-mix(in srgb, var(--foreground) 8%, transparent);
+}
+
+.inf-type-card:hover {
+  border-color: var(--secondary);
+}
+
+.inf-type-card__badge {
+  @apply flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold;
+  background: color-mix(in srgb, var(--secondary) 14%, transparent);
+  color: var(--secondary);
+}
+
+/* ─── Process Steps ──────────────────────────────────────────── */
+.inf-step {
+  @apply relative flex gap-5 md:gap-6;
+}
+
+.inf-step__number {
+  @apply flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center text-base font-bold;
+  background: var(--secondary);
+  color: var(--background);
+}
+
+.inf-step__line {
+  @apply absolute top-12 w-px h-[calc(100%-3rem)];
+  left: 1.5rem;
+  background: color-mix(in srgb, var(--secondary) 20%, transparent);
+}
+
+/* ─── Industry Tags ──────────────────────────────────────────── */
+.inf-industry-tag {
+  @apply inline-flex items-center gap-2 px-5 py-3 rounded-full border text-sm font-medium transition-all duration-300;
+  color: var(--foreground);
+  border-color: color-mix(in srgb, var(--foreground) 12%, transparent);
+  background: color-mix(in srgb, var(--secondary) 4%, var(--background) 96%);
+}
+
+.inf-industry-tag:hover {
+  border-color: var(--secondary);
+  background: color-mix(in srgb, var(--secondary) 10%, transparent);
+  color: var(--secondary);
+}
+
+/* ─── Why Us Cards ───────────────────────────────────────────── */
+.inf-why-card {
+  @apply rounded-2xl p-6 border transition-all duration-300;
+  background: var(--background);
+  border-color: color-mix(in srgb, var(--foreground) 8%, transparent);
+}
+
+.inf-why-card:hover {
+  border-color: var(--secondary);
+  box-shadow: 0 8px 30px color-mix(in srgb, var(--secondary) 8%, transparent);
+}
+
+.inf-why-card__icon {
+  @apply w-11 h-11 rounded-xl flex items-center justify-center text-lg mb-3;
+  background: color-mix(in srgb, var(--secondary) 12%, transparent);
+  color: var(--secondary);
+}
+
+/* ─── Comparison Table ───────────────────────────────────────── */
+.inf-table {
+  @apply w-full text-sm rounded-2xl overflow-hidden border;
+  border-color: color-mix(in srgb, var(--foreground) 10%, transparent);
+}
+
+.inf-table th {
+  @apply px-4 py-3 text-left font-bold text-xs uppercase tracking-wider;
+  background: color-mix(in srgb, var(--secondary) 10%, var(--background) 90%);
+  color: var(--secondary);
+}
+
+.inf-table td {
+  @apply px-4 py-3 border-t;
+  border-color: color-mix(in srgb, var(--foreground) 6%, transparent);
+  color: color-mix(in srgb, var(--foreground) 80%, transparent);
+}
+
+.inf-table tr:hover td {
+  background: color-mix(in srgb, var(--secondary) 4%, transparent);
+}
+
+/* ─── CTA ────────────────────────────────────────────────────── */
+.inf-cta {
+  @apply py-20 px-6 md:px-10 text-center;
+  background: color-mix(in srgb, var(--secondary) 6%, var(--background) 94%);
+}
+
+.inf-cta__btn {
+  @apply inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-base transition-all duration-300;
+  background: var(--secondary);
+  color: var(--background);
+}
+
+.inf-cta__btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px color-mix(in srgb, var(--secondary) 30%, transparent);
+}
+
+/* ─── Scroll-reveal utility ──────────────────────────────────── */
+.inf-reveal {
+  opacity: 0;
+  transform: translateY(32px);
+}
