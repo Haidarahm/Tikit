@@ -123,7 +123,7 @@ const Footer = ({ className }) => {
   ];
 
   const serviceLinks = [
-    { to: "/influencer-marketing-dubai", label: t("footer.services.influencerMarketing") },
+    { to: "/influencer-marketing-dubai", label: t("footer.services.digitalMarketing") },
     { to: "/services", label: t("footer.services.socialMedia") },
     { to: "/services", label: t("footer.services.branding") },
     { to: "/services", label: t("footer.services.production") },

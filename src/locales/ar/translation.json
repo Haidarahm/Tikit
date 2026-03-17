@@ -11,8 +11,8 @@
         "contact": "تواصل معنا",
         "servicesSections": [
             {
-                "influencerMarketing": "التسويق عبر المؤثرين",
-                "influencerMarketingAgencyDubai": "وكالة التسويق عبر المؤثرين في دبي"
+                "digitalMarketing": "التسويق عبر المؤثرين",
+                "digitalMarketingAgencyDubai": "وكالة التسويق عبر المؤثرين في دبي"
             },
             {
                 "branding": "وكالة الهوية التجارية دبي"
@@ -502,7 +502,7 @@
                         "name": "إنشاء المحتوى",
                         "desc": "من المفهوم إلى القطع النهائي، نحول الأفكار الجريئة إلى واقع بسرد عالي الجودة."
                     },
-                    "influencerMarketing": {
+                    "digitalMarketing": {
                         "name": "تسويق المؤثرين",
                         "desc": "ربط علامتك التجارية مع منشئين حقيقيين يدفعون التفاعل الحقيقي والتأثير القابل للقياس."
                     }
@@ -650,7 +650,7 @@
             "contact": "تواصل معنا"
         },
         "services": {
-            "influencerMarketing": "تسويق المؤثرين",
+            "digitalMarketing": "تسويق المؤثرين",
             "socialMedia": "وسائل التواصل الاجتماعي",
             "branding": "العلامة التجارية",
             "production": "الإنتاج"
@@ -864,7 +864,7 @@
         }
     },
     "serviceSections": {
-        "influencerMarketing": {
+        "digitalMarketing": {
     "seo": {
       "title": "وكالة التسويق الرقمي الرائدة في دبي",
       "description": "وكالة إعلانات وتسويق رقمي رائدة في الإمارات، تقدم حلولاً مخصصة لتحقيق نمو تجاري قابل للقياس وتوليد العملاء المحتملين وزيادة الإيرادات.",
