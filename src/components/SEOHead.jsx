@@ -146,6 +146,18 @@ const SEOHead = ({
     };
   };
 
+  // Detect FAQPage schema in either a single schema object or @graph payload.
+  const hasFAQPageSchema = (schema) => {
+    if (!schema || typeof schema !== "object") return false;
+
+    if (schema["@type"] === "FAQPage") return true;
+
+    const graph = Array.isArray(schema["@graph"]) ? schema["@graph"] : [];
+    return graph.some(
+      (node) => node && typeof node === "object" && node["@type"] === "FAQPage"
+    );
+  };
+
   // Generate Article Schema (for blog/news pages)
   const generateArticleSchema = () => {
     if (!articleData) return null;
@@ -366,7 +378,9 @@ const SEOHead = ({
 
     // Add FAQ schema if applicable
     const faqSchema = generateFAQSchema();
-    if (faqSchema) schemas.push(faqSchema);
+    if (faqSchema && !schemas.some(hasFAQPageSchema)) {
+      schemas.push(faqSchema);
+    }
 
     // Add article schema if applicable
     const articleSchema = generateArticleSchema();
