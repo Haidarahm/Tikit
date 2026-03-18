@@ -9,15 +9,11 @@
     "ourInfluencers": "مؤثرونا",
     "registerAsInfluencer": "سجل كمؤثر",
     "contact": "تواصل معنا",
-    "servicesSections": [
-      {
-        "digitalMarketing": "التسويق عبر المؤثرين",
-        "digitalMarketingAgencyDubai": "وكالة التسويق عبر المؤثرين في دبي"
-      },
-      {
-        "branding": "وكالة الهوية التجارية دبي"
-      }
-    ]
+    "servicesSections": {
+      "influencerMarketing": "التسويق عبر المؤثرين",
+      "influencerMarketingAgencyDubai": "وكالة التسويق عبر المؤثرين في دبي",
+      "branding": "وكالة الهوية التجارية دبي"
+    }
   },
   "seo": {
     "defaultDescription": "نحن تيكيت — وكالة تسويق شاملة مدفوعة بالبصيرة والإبداع. نتعاون مع العلامات التجارية لتقديم النتائج من خلال الاستراتيجية الخبيرة والقوة الإبداعية والتنفيذ المثالي.",

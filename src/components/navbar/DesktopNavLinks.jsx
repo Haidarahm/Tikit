@@ -48,19 +48,19 @@ export default function DesktopNavLinks({ language }) {
           label={t("nav.services")}
           items={[
             {
-              label: t("nav.servicesSections.0.digitalMarketing"),
+              label: t("nav.servicesSections.influencerMarketing"),
               children: [
                 {
-                  label: t("nav.servicesSections.0.digitalMarketingAgencyDubai"),
+                  label: t("nav.servicesSections.influencerMarketingAgencyDubai"),
                   to: "/influencer-marketing-agency-dubai",
                 },
                 {
-                  label: t("serviceSections.digitalMarketing.subPages.microInfluencer.badge"),
+                  label: t("serviceSections.influencerMarketing.subPages.microInfluencer.badge"),
                   to: "/influencer-marketing-agency-dubai/micro-influencer-marketing-uae",
                 },
               ],
             },
-            { label: t("nav.servicesSections.1.branding"), to: "/branding-agency-dubai" },
+            { label: t("nav.servicesSections.branding"), to: "/branding-agency-dubai" },
           ]}
         />
         <NavDropdown

@@ -9,15 +9,11 @@
     "ourInfluencers": "Our Influencers",
     "registerAsInfluencer": "Register as Influencer",
     "contact": "Holla at us",
-    "servicesSections": [
-      {
-        "digitalMarketing": "Influencer Marketing",
-        "digitalMarketingAgencyDubai": "Influencer Marketing Agency Dubai"
-      },
-      {
-        "branding": "Branding Agency Dubai"
-      }
-    ]
+    "servicesSections": {
+      "influencerMarketing": "Influencer Marketing",
+      "influencerMarketingAgencyDubai": "Influencer Marketing Agency Dubai",
+      "branding": "Branding Agency Dubai"
+    }
   },
   "seo": {
     "defaultDescription": "Tikit Agency is a leading influencer marketing agency in Dubai and Saudi Arabia. We connect brands with authentic creators to drive real engagement and measurable ROI across the GCC region. 300+ happy clients, 50+ team members.",

@@ -120,6 +120,13 @@
     "proceedButton": "Proceed"
   },
   "serviceSections": {
+    "influencerMarketing": {
+      "subPages": {
+        "microInfluencer": {
+          "badge": "B2B Influencer Marketing Dubai"
+        }
+      }
+    },
     "digitalMarketing": {
       "seo": {
         "title": "Leading Digital Marketing Agency in Dubai",

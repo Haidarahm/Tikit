@@ -120,6 +120,13 @@
     "proceedButton": "متابعة"
   },
   "serviceSections": {
+    "influencerMarketing": {
+      "subPages": {
+        "microInfluencer": {
+          "badge": "التسويق عبر المؤثرين B2B في دبي"
+        }
+      }
+    },
     "digitalMarketing": {
       "badge": "وكالة تسويق رقمي في دبي",
       "hero": {

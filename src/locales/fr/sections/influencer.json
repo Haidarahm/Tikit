@@ -120,6 +120,13 @@
     "proceedButton": "Continuer"
   },
   "serviceSections": {
+    "influencerMarketing": {
+      "subPages": {
+        "microInfluencer": {
+          "badge": "Marketing d'influence B2B à Dubaï"
+        }
+      }
+    },
     "digitalMarketing": {
       "badge": "Agence Marketing Digital Dubaï",
       "hero": {
