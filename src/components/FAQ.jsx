@@ -1,50 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useI18nLanguage } from "../store/I18nLanguageContext";
 
 /**
- * FAQ Component with built-in Schema.org FAQPage structured data
- * Optimized for AI Engine Optimization (AEO)
- * 
- * Usage:
- * <FAQ items={[{ question: "...", answer: "..." }]} />
+ * FAQ Component (UI only).
+ * Structured data is centralized in SEOHead to avoid duplicates.
  */
 const FAQ = ({ items = [], title, className = "" }) => {
   const { isRtl } = useI18nLanguage();
   const [openIndex, setOpenIndex] = useState(null);
-
-  // Inject FAQ Schema into head
-  useEffect(() => {
-    if (!items || items.length === 0) return;
-
-    const scriptId = "faq-structured-data";
-    let scriptTag = document.getElementById(scriptId);
-    
-    const faqSchema = {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": items.map(item => ({
-        "@type": "Question",
-        "name": item.question,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": item.answer
-        }
-      }))
-    };
-
-    if (!scriptTag) {
-      scriptTag = document.createElement("script");
-      scriptTag.id = scriptId;
-      scriptTag.type = "application/ld+json";
-      document.head.appendChild(scriptTag);
-    }
-    scriptTag.textContent = JSON.stringify(faqSchema);
-
-    return () => {
-      const tag = document.getElementById(scriptId);
-      if (tag) tag.remove();
-    };
-  }, [items]);
 
   const toggleItem = (index) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -56,8 +19,6 @@ const FAQ = ({ items = [], title, className = "" }) => {
     <section 
       className={`faq-section py-12 md:py-20 ${className}`}
       dir={isRtl ? "rtl" : "ltr"}
-      itemScope 
-      itemType="https://schema.org/FAQPage"
     >
       <div className="container mx-auto px-6 md:px-10">
         {title && (
@@ -71,9 +32,6 @@ const FAQ = ({ items = [], title, className = "" }) => {
             <div
               key={index}
               className="border border-[var(--secondary)]/20 rounded-lg overflow-hidden"
-              itemScope
-              itemProp="mainEntity"
-              itemType="https://schema.org/Question"
             >
               <button
                 onClick={() => toggleItem(index)}
@@ -82,7 +40,6 @@ const FAQ = ({ items = [], title, className = "" }) => {
               >
                 <h3 
                   className="text-lg font-medium text-[var(--foreground)] pr-4"
-                  itemProp="name"
                 >
                   {item.question}
                 </h3>
@@ -95,13 +52,9 @@ const FAQ = ({ items = [], title, className = "" }) => {
               
               <div
                 className={`overflow-hidden transition-all duration-300 ${openIndex === index ? 'max-h-96' : 'max-h-0'}`}
-                itemScope
-                itemProp="acceptedAnswer"
-                itemType="https://schema.org/Answer"
               >
                 <div 
                   className="px-6 py-4 text-[var(--foreground)]/80 bg-[var(--secondary)]/5"
-                  itemProp="text"
                 >
                   {item.answer}
                 </div>
