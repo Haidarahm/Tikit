@@ -424,9 +424,11 @@ const InfluencerMarketing = () => {
 
   return (
     <>
+    
       <SEOHead
         title="Influencer Marketing Agency Dubai | Influencer Campaigns"
         description="Top influencer marketing agency in Dubai helping brands connect with trusted creators and manage influencer campaigns across Instagram, TikTok, and YouTube."
+        keywords="influencer marketing agency dubai"
         serviceType="Influencer Marketing Agency Dubai"
         breadcrumbs={breadcrumbs}
         faqItems={faqItems}

@@ -150,6 +150,10 @@ const SEOHead = ({
   const hasFAQPageSchema = (schema) => {
     if (!schema || typeof schema !== "object") return false;
 
+    if (Array.isArray(schema)) {
+      return schema.some(hasFAQPageSchema);
+    }
+
     if (schema["@type"] === "FAQPage") return true;
 
     const graph = Array.isArray(schema["@graph"]) ? schema["@graph"] : [];
