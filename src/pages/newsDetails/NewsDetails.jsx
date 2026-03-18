@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -6,14 +6,61 @@ import { useI18nLanguage } from '../../store/I18nLanguageContext'
 import { useNewsStore } from '../../store/newsStore'
 import SEOHead from '../../components/SEOHead'
 import NewsDetailsHeader from './NewsDetailsHeader'
-import { getBlogSEOProps } from '../news/Content'
 gsap.registerPlugin(ScrollTrigger)
+
+const BASE_URL = 'https://tikit.ae'
+
+const getSafeCanonicalPath = (slugValue) => (slugValue ? `/blogs/${slugValue}` : '/blogs')
+
+const getSeoPropsFromDetails = (data, slugValue) => {
+  const canonicalPath = getSafeCanonicalPath(slugValue)
+  const canonicalUrl = `${BASE_URL}${canonicalPath}`
+
+  const fallbackTitle = data?.title || 'Blog'
+  const title = data?.meta_title || fallbackTitle
+
+  const description =
+    data?.meta_description ||
+    data?.description ||
+    data?.subtitle ||
+    `Read ${fallbackTitle} on Tikit Agency blog.`
+
+  const keywords =
+    data?.focus_keyword ||
+    data?.focusKeyword ||
+    data?.meta_keywords ||
+    ''
+
+  const ogImage = data?.image || data?.images || null
+
+  return {
+    title,
+    description,
+    keywords,
+    canonicalUrl: canonicalPath,
+    ogImage,
+    articleData: {
+      title: data?.title || title,
+      description,
+      image: ogImage,
+      publishDate: data?.created_at,
+      modifiedDate: data?.updated_at || data?.created_at,
+      url: canonicalUrl,
+    },
+    breadcrumbs: [
+      { name: 'Home', url: '/' },
+      { name: 'Blogs', url: '/blogs' },
+      { name: data?.title || 'Blog Post', url: canonicalPath },
+    ],
+  }
+}
 
 const NewsDetails = () => {
   const { slug } = useParams()
   const { isRtl, language } = useI18nLanguage()
   const { loadOneNews, loadNewsDetails, newsDetails, loading } = useNewsStore()
   const [detailsData, setDetailsData] = useState(null)
+  const [detailsMeta, setDetailsMeta] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
   const loadingRef = useRef(false)
   
@@ -50,18 +97,36 @@ const NewsDetails = () => {
         // If paragraphs are already cached for this slug, use them
         if (existingBlogData?.paragraphs && Array.isArray(existingBlogData.paragraphs)) {
           setDetailsData(existingBlogData.paragraphs)
+          setDetailsMeta(existingBlogData)
           setIsLoading(false)
           loadingRef.current = false
           return
         }
 
-        // Only fetch paragraphs/details - header data should come from Content.jsx or store
+        // Fetch details and use returned metadata directly for SEO
         const response = await loadNewsDetails(slug, language)
-        const data = Array.isArray(response?.data) ? response.data : []
-        setDetailsData(data)
+        const payload = response?.data
+
+        if (Array.isArray(payload)) {
+          setDetailsData(payload)
+          setDetailsMeta(null)
+        } else if (payload && typeof payload === 'object') {
+          const paragraphs =
+            Array.isArray(payload.paragraphs)
+              ? payload.paragraphs
+              : Array.isArray(payload.details)
+              ? payload.details
+              : []
+          setDetailsData(paragraphs)
+          setDetailsMeta(payload)
+        } else {
+          setDetailsData([])
+          setDetailsMeta(null)
+        }
       } catch (error) {
         console.error('Failed to load news details:', error)
         setDetailsData([])
+        setDetailsMeta(null)
       } finally {
         setIsLoading(false)
         loadingRef.current = false
@@ -78,8 +143,8 @@ const NewsDetails = () => {
   // Get current blog header & paragraphs (both keyed by slug in store)
   const blogData = newsDetails[slug]
   const paragraphes = detailsData || (blogData?.paragraphs && Array.isArray(blogData.paragraphs) ? blogData.paragraphs : [])
-  const seoProps = getBlogSEOProps(blogData, slug)
-  const seoKeywords = blogData?.focus_keyword || blogData?.focusKeyword || seoProps.keywords
+  const seoSource = detailsMeta || blogData || {}
+  const seoProps = useMemo(() => getSeoPropsFromDetails(seoSource, slug), [seoSource, slug])
 
   // Fetch header data if it doesn't exist in store (for direct URL access)
   useEffect(() => {
@@ -203,11 +268,10 @@ const NewsDetails = () => {
 
   return (
     <>
-    {console.log(seoKeywords)}
       <SEOHead
         title={seoProps.title}
         description={seoProps.description}
-        keywords={seoKeywords}
+        keywords={seoProps.keywords}
         canonicalUrl={seoProps.canonicalUrl}
         ogImage={seoProps.ogImage}
         ogType="article"
