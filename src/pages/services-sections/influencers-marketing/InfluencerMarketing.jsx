@@ -34,6 +34,7 @@ import influencerHero from "../../../assets/services/Influencer-Marketing.webp";
 import SEOHead from "../../../components/SEOHead";
 import FAQ from "../../../components/FAQ";
 import { ServiceHeroSection, ServiceCTASection } from "../../../components/services-sections";
+import ServiceSubServicesSection from "../../../components/services-sections/ServiceSubServicesSection";
 
 import InfServicesGrid from "./sub-components/InfServicesGrid";
 import InfFullService from "./sub-components/InfFullService";
@@ -258,6 +259,57 @@ const comparisonRows = [
   },
 ];
 
+const subServiceItems = [
+  {
+    title: "Campaign Management",
+    desc: "End-to-end campaign planning, execution, and optimization to keep influencer collaborations on track.",
+  },
+  {
+    title: "Micro Influencer Marketing UAE",
+    desc: "Target niche audiences through highly engaged micro creators across UAE-focused campaigns.",
+  },
+  {
+    title: "Luxury Influencer Marketing",
+    desc: "Premium influencer collaborations designed for luxury brands, high-value products, and exclusive audiences.",
+  },
+  {
+    title: "ROI Analytics",
+    desc: "Measure campaign performance with actionable reporting on reach, engagement, and return on investment.",
+  },
+  {
+    title: "Instagram Influencer Marketing",
+    desc: "Build visibility with creator-led Instagram content, including reels, stories, and branded posts.",
+  },
+  {
+    title: "TikTok Influencer Marketing",
+    desc: "Drive awareness through short-form TikTok campaigns that match trends and audience behavior.",
+  },
+  {
+    title: "Influencer Marketing Cost UAE",
+    desc: "Understand campaign pricing models and budget planning for influencer marketing in the UAE market.",
+  },
+];
+
+const subServiceHrefs = [
+  "/influencer-marketing-agency-dubai/campaign-management",
+  "/influencer-marketing-agency-dubai/micro-influencer-marketing-uae",
+  "/influencer-marketing-agency-dubai/luxury-influencer-marketing",
+  "/influencer-marketing-agency-dubai/roi-analytics",
+  "/influencer-marketing-agency-dubai/instagram-influencer-marketing",
+  "/influencer-marketing-agency-dubai/tiktok-influencer-marketing",
+  "/influencer-marketing-agency-dubai/influencer-marketing-cost-uae",
+];
+
+const subServiceIcons = [
+  <FiBarChart2 key="1" />,
+  <FiUsers key="2" />,
+  <FiAward key="3" />,
+  <FiTrendingUp key="4" />,
+  <FaInstagram key="5" />,
+  <FaTiktok key="6" />,
+  <FiFileText key="7" />,
+];
+
 const faqItems = [
   {
     question: "What does an influencer marketing agency do?",
@@ -311,6 +363,7 @@ const InfluencerMarketing = () => {
   const industriesRef = useRef(null);
   const whyUsRef = useRef(null);
   const comparisonRef = useRef(null);
+  const subServicesRef = useRef(null);
   const ctaRef = useRef(null);
 
   useEffect(() => {
@@ -328,6 +381,7 @@ const InfluencerMarketing = () => {
       revealChildren(processRef, ".inf-reveal", 0.12);
       revealChildren(industriesRef, ".inf-reveal", 0.08);
       revealChildren(whyUsRef, ".inf-reveal", 0.1);
+      revealChildren(subServicesRef, ".im-subservice-card", 0.08);
 
       if (comparisonRef.current) {
         gsap.fromTo(
@@ -453,6 +507,18 @@ const InfluencerMarketing = () => {
         description="See how influencer marketing compares to traditional advertising methods."
         rows={comparisonRows}
         footer="Influencer marketing allows brands to reach audiences through trusted creators, while traditional advertising focuses on direct promotional messaging."
+      />
+
+      <ServiceSubServicesSection
+        ref={subServicesRef}
+        sectionLabel="Sub-Services"
+        title="Explore Influencer Marketing Sub-Services"
+        description="Choose the influencer marketing service that best matches your campaign goals, target audience, and platform strategy."
+        learnMoreText="Learn More"
+        items={subServiceItems}
+        hrefs={subServiceHrefs}
+        icons={subServiceIcons}
+        classPrefix="im"
       />
 
       <FAQ items={faqItems} title="Frequently Asked Questions About Influencer Marketing in Dubai" />
