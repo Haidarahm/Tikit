@@ -85,7 +85,7 @@ const FAQ = () => {
       />
 
       {/* Hero Section with Gradient */}
-      <section className="relative py-20 md:py-32 px-6 md:px-10 overflow-hidden">
+      <section className="relative py-20 md:py-32 md:mt-[104px] px-6 md:px-10 overflow-hidden">
         {/* Background gradient */}
         <div className="absolute inset-0  "></div>
         
