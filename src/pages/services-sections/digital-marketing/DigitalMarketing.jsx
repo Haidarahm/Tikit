@@ -44,24 +44,12 @@ gsap.registerPlugin(ScrollTrigger);
 const problemIcons = [<FiTarget key="1" />, <FiDollarSign key="2" />, <FiBarChart2 key="3" />, <FiGlobe key="4" />];
 const benefitIcons = [<FiTrendingUp key="1" />, <FiBarChart2 key="2" />, <FiZap key="3" />, <FiGlobe key="4" />];
 const whyUsIcons = [<FiLayers key="1" />, <FiShield key="2" />, <FiSearch key="3" />, <FiMessageSquare key="4" />];
-const subServiceIcons = [
-  <FiActivity key="1" />,
-  <FiUsers key="2" />,
-  <FiStar key="3" />,
-  <FiPieChart key="4" />,
-  <FiInstagram key="5" />,
-  <FiVideo key="6" />,
-  <FiTag key="7" />,
-];
+const subServiceIcons = [<FiSearch key="1" />, <FiTrendingUp key="2" />, <FiActivity key="3" />];
 
 const subServiceHrefs = [
-  "/influencer-marketing-agency-dubai/campaign-management",
-  "/influencer-marketing-agency-dubai/micro-influencer-marketing-uae",
-  "/influencer-marketing-agency-dubai/luxury-influencer-marketing",
-  "/influencer-marketing-agency-dubai/roi-analytics",
-  "/influencer-marketing-agency-dubai/instagram-influencer-marketing",
-  "/influencer-marketing-agency-dubai/tiktok-influencer-marketing",
-  "/influencer-marketing-agency-dubai/influencer-marketing-cost-uae",
+  "/digital-marketing-agency-dubai/seo-services",
+  "/digital-marketing-agency-dubai/paid-ads-management",
+  "/digital-marketing-agency-dubai/conversion-optimization",
 ];
 
 function revealChildren(containerRef, selector, fromVars = {}, staggerVal = 0.1) {
@@ -104,7 +92,22 @@ const DigitalMarketing = () => {
   const steps = toArray(t("serviceSections.digitalMarketing.process.steps", { returnObjects: true }));
   const benefits = toArray(t("serviceSections.digitalMarketing.benefits.items", { returnObjects: true }));
   const whyUsItems = toArray(t("serviceSections.digitalMarketing.whyUs.items", { returnObjects: true }));
-  const subServices = toArray(t("serviceSections.digitalMarketing.subServices.items", { returnObjects: true }));
+  const subServices = [
+    {
+      title: t("serviceSections.digitalMarketing.seoServices.badge", { defaultValue: "SEO Services" }),
+      desc: "Improve search visibility and organic traffic with technical, on-page, and content SEO strategies.",
+    },
+    {
+      title: t("serviceSections.digitalMarketing.paidAds.badge", { defaultValue: "Paid Ads Management" }),
+      desc: "Launch and optimize paid campaigns across Google and social channels to generate qualified leads.",
+    },
+    {
+      title: t("serviceSections.digitalMarketing.conversionOptimization.badge", {
+        defaultValue: "Conversion Optimization",
+      }),
+      desc: "Turn more visitors into customers through CRO audits, testing, and landing-page performance improvements.",
+    },
+  ];
   const caseStatsRaw = toArray(t("serviceSections.digitalMarketing.caseStudy.stats", { returnObjects: true }));
   const caseTags = toArray(t("serviceSections.digitalMarketing.caseStudy.tags", { returnObjects: true }));
   const faqItems = toArray(t("serviceSections.digitalMarketing.faq.items", { returnObjects: true }));
@@ -260,10 +263,10 @@ const DigitalMarketing = () => {
 
       <ServiceSubServicesSection
         ref={subServicesRef}
-        sectionLabel={t("serviceSections.digitalMarketing.subServices.sectionLabel")}
-        title={t("serviceSections.digitalMarketing.subServices.title")}
-        description={t("serviceSections.digitalMarketing.subServices.description")}
-        learnMoreText={t("serviceSections.digitalMarketing.subServices.learnMore")}
+        sectionLabel="Sub-Services"
+        title="Explore Digital Marketing Sub-Services"
+        description="Choose a focused digital service based on your growth objective: visibility, paid acquisition, or conversion rate growth."
+        learnMoreText="Learn More"
         items={subServices}
         hrefs={subServiceHrefs}
         icons={subServiceIcons}

@@ -60,6 +60,10 @@ export default function DesktopNavLinks({ language }) {
                 },
               ],
             },
+            {
+              label: t("serviceSections.digitalMarketing.seo.serviceType"),
+              to: "/digital-marketing-agency-dubai",
+            },
             { label: t("nav.servicesSections.branding"), to: "/branding-agency-dubai" },
           ]}
         />
