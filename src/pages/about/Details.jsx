@@ -40,7 +40,7 @@ const Details = () => {
       <DetailsHeader />
       <DetailsAbout />
       <DetailsBenefits />
-      <DetailsWork />
+      {/* <DetailsWork /> */}
       <DetailsServices />
     </div>
   );

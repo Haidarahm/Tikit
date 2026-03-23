@@ -187,9 +187,7 @@ function Home() {
           <Influencers />
         </LazySection>
 
-        <LazySection minHeight="400px">
-          <Services />
-        </LazySection>
+    
 
         <LazySection minHeight="300px">
           <Connections />
@@ -211,7 +209,9 @@ function Home() {
         <LazySection minHeight="300px">
           <Blogs />
         </LazySection>
-
+        <LazySection minHeight="400px">
+          <Services />
+        </LazySection>
         <LazySection minHeight="400px">
           <ContactUs />
         </LazySection>

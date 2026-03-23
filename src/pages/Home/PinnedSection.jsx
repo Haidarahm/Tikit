@@ -9,14 +9,13 @@ const PinnedSection = () => {
 
   const videos = useMemo(() => {
     return [
-      { src: "/reels/reel-1.mp4", label: "Creative Campaign",    type: "video/mp4" },
-      { src: "/reels/reel-2.mp4", label: "Brand Storytelling",   type: "video/mp4" },
-      { src: "/reels/reel-3.mp4", label: "Social Impact",        type: "video/mp4" },
-      { src: "/reels/reel-4.mp4", label: "Digital Innovation",   type: "video/mp4" },
-      { src: "/reels/reel-5.mp4", label: "Community Building",   type: "video/mp4" },
-      { src: "/reels/reel-6.mp4", label: "Growth Strategy",      type: "video/mp4" },
-      { src: "/reels/reel-7.mp4", label: "Content Creation",     type: "video/mp4" },
-      { src: "/reels/reel-8.mp4", label: "Influencer Marketing", type: "video/mp4" },
+      { src: "/reels/reel-1.mp4", label: "Al Rahba Hospital",    type: "video/mp4" },
+      { src: "/reels/reel-2.mp4", label: "Chevrolet",   type: "video/mp4" },
+      { src: "/reels/reel-3.mp4", label: "AXI",        type: "video/mp4" },
+      { src: "/reels/reel-4.mp4", label: "Binghatti",   type: "video/mp4" },
+      { src: "/reels/reel-5.mp4", label: "GWM",   type: "video/mp4" },
+      { src: "/reels/reel-6.mp4", label: "Mihyar",      type: "video/mp4" },
+      { src: "/reels/reel-7.mp4", label: "Mercedes Benz",     type: "video/mp4" },
     ];
   }, []);
 
