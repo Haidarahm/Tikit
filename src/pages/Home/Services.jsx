@@ -98,7 +98,7 @@ const Services = memo(() => {
   const items = useMemo(() => {
     const translated = t("home.services.items", { returnObjects: true });
     const itemsArray = Array.isArray(translated) ? translated : FALLBACK_ITEMS;
-    return itemsArray.slice(0, 6).map((item, index) => ({
+    return itemsArray.slice(0, 3).map((item, index) => ({
       ...item,
       title: item.title || FALLBACK_ITEMS[index]?.title,
       subtitle: item.subtitle || FALLBACK_ITEMS[index]?.subtitle,
@@ -127,7 +127,7 @@ const Services = memo(() => {
           </button>
         </div>
 
-        <div className="w-full lg:w-[72%] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="w-full lg:w-[72%] grid grid-cols-1 md:grid-cols-3 gap-4">
           {items.map((service, index) => (
             <ServiceCard
               key={`${service.link}-${index}`}
