@@ -7,13 +7,6 @@ import {
 } from "../animate-ui/components/animate/avatar-group";
 import { cn } from "../../lib/utils";
 
-import naemaAlshehiImg from "../../assets/influencers/Naema-Alshehi.webp";
-import hazzaAlSheryaniImg from "../../assets/influencers/hazza-al-sheryani.webp";
-import ahmedBenChaibahImg from "../../assets/influencers/ahmed-ben-chaibah.webp";
-import salamahAlmuheriImg from "../../assets/influencers/Salamah-Almuheri.webp";
-import helalAljaberiImg from "../../assets/influencers/Helal-Aljaberi.webp";
-import thaerAlTurkmaniImg from "../../assets/influencers/thaer-al-turkmani.webp";
-
 type AvatarStatus = "idle" | "loading" | "loaded" | "error";
 
 const AvatarContext = React.createContext<{
@@ -90,14 +83,37 @@ function AvatarFallback({
 }
 
 const AVATARS = [
-  { src: naemaAlshehiImg, fallback: "NA", tooltip: "Naema Alshehi" },
-  { src: hazzaAlSheryaniImg, fallback: "HS", tooltip: "Hazza Al Sheryani" },
-  { src: ahmedBenChaibahImg, fallback: "AC", tooltip: "Ahmed Ben Chaibah" },
-  { src: salamahAlmuheriImg, fallback: "SA", tooltip: "Salamah Almuheri" },
-  { src: helalAljaberiImg, fallback: "HA", tooltip: "Helal Aljaberi" },
-  { src: thaerAlTurkmaniImg, fallback: "TT", tooltip: "Thaer Al Turkmani" },
+  {
+    src: "https://i.pinimg.com/webp/1200x/65/7c/e1/657ce19e18e65061190c7927400947cf.webp",
+    fallback: "AL",
+    tooltip: "André Luis",
+  },
+  {
+    src: "https://i.pinimg.com/webp/1200x/72/2c/91/722c912d31ec627c640127d08314eb7b.webp",
+    fallback: "AO",
+    tooltip: "AyMan OuFkiR",
+  },
+  {
+    src: "https://i.pinimg.com/736x/1a/99/b0/1a99b04a99f6700ea4da232597cf1e9f.jpg",
+    fallback: "KO",
+    tooltip: "Katren Olva",
+  },
+  {
+    src: "https://i.pinimg.com/1200x/aa/bf/53/aabf5323efc5ece75fdb5d2af2880b5c.jpg",
+    fallback: "HM",
+    tooltip: "Hammad Muthana",
+  },
+  {
+    src: "https://i.pinimg.com/webp/1200x/2d/cf/d1/2dcfd18ccda2c9a6987d8160911ffbe7.webp",
+    fallback: "WC",
+    tooltip: "Wictor Cardoso",
+  },
+  {
+    src: "https://i.pinimg.com/1200x/f6/0b/a1/f60ba14a969de9023559e3355b7c6390.jpg",
+    fallback: "SA",
+    tooltip: "Suzana Aljuneidi",
+  },
 ];
-
 export default function HeroAvatarGroup() {
   return (
     <AvatarGroup>
