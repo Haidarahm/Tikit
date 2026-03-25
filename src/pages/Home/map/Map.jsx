@@ -405,6 +405,8 @@ const Map = () => {
             className={`w-full lg:w-2/5 flex flex-col justify-center ${isRtl === "true" ? 'text-right' : ''}`}
             data-aos="fade-up"
             data-aos-duration="600"
+            data-aos-once="true"
+            data-aos-mirror="false"
           >
             <span className='animate-text text-[#4ec0c3] text-sm md:text-base font-medium tracking-widest uppercase mb-4'>
               {t('home.map.badge')}
