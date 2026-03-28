@@ -121,147 +121,7 @@
   },
   "serviceSections": {
     "influencerMarketing": {
-      "subPages": {
-        "microInfluencer": {
-          "badge": "B2B Influencer Marketing Dubai"
-        }
-      }
-    },
-    "digitalMarketing": {
-      "seo": {
-        "title": "Leading Digital Marketing Agency in Dubai",
-        "description": "A leading UAE-based advertising and digital marketing agency, delivering tailored solutions to drive measurable business growth, leads, and revenue.",
-        "serviceType": "Digital Marketing Agency Dubai"
-      },
-      "hero": {
-        "badge": "🚀 Dubai's Growth Engine",
-        "title": "Leading Digital Marketing Agency in",
-        "mainWord": "Dubai",
-        "description": "We don't just promise traffic. We deliver profit you can count, campaigns you can measure, and growth you can see — trusted by local and international brands across the UAE."
-      },
-      "problems": {
-        "sectionLabel": "The Problem",
-        "title": "Why Do Most Businesses Struggle to Scale?",
-        "description": "Dubai is competitive. The wrong agency can cost you tens of thousands with nothing to show.",
-        "items": [
-          {
-            "title": "No Clear Strategy That Makes Money",
-            "text": "Many agencies post, run ads, and hope for engagement. That's gambling with your budget. Traffic may increase while revenue stays flat."
-          },
-          {
-            "title": "Wasted Budget on Ads That Don't Convert",
-            "text": "Poorly targeted PPC, social ads, or Google campaigns disappear fast. You can get 10,000 clicks in a month and zero sales."
-          },
-          {
-            "title": "Poor Tracking & Reporting",
-            "text": "Some agencies give reports full of jargon you can't act on. We provide real-time dashboards and transparent reporting so you always know what works."
-          },
-          {
-            "title": "Lack of UAE Market Knowledge",
-            "text": "Dubai is not like other markets. Language, culture, and spending habits matter. Generic campaigns fail — only local expertise drives results."
-          }
-        ]
-      },
-      "process": {
-        "sectionLabel": "Our Process",
-        "title": "How Tikit Actually Grows Businesses",
-        "description": "A simple, proven 4-step system — every step focused on profit, efficiency, and measurable results.",
-        "steps": [
-          {
-            "n": "01",
-            "title": "Deep Business & Market Analysis",
-            "text": "We study your business, competitors, and the UAE market to find opportunities, threats, and hidden growth potential."
-          },
-          {
-            "n": "02",
-            "title": "Custom Strategy Development",
-            "text": "No templates. No cookie-cutter solutions. Every campaign is built for your goals, audience, and revenue targets."
-          },
-          {
-            "n": "03",
-            "title": "Multi-Channel Campaign Execution",
-            "text": "SEO, PPC, social media, and website optimisation — each channel supporting the others to maximise ROI."
-          },
-          {
-            "n": "04",
-            "title": "Data-Driven Optimisation & Scaling",
-            "text": "We track every click, lead, and conversion. We test, tweak, and scale campaigns that actually work."
-          }
-        ]
-      },
-      "benefits": {
-        "sectionLabel": "What You Get",
-        "title": "Results You Can Measure and Trust",
-        "description": "We don't just run campaigns. We deliver outcomes backed by real data.",
-        "items": [
-          {
-            "title": "ROI-Focused Campaigns Across All Digital Channels",
-            "text": "Every campaign is designed to make more money than you spend. No wasted clicks. No guesswork. Only profit-driven marketing."
-          },
-          {
-            "title": "Transparent Reporting & Performance Dashboards",
-            "text": "Track your campaigns in real-time. See exactly what works. Know your ROI down to the last dirham."
-          },
-          {
-            "title": "Faster Execution Without Compromising Quality",
-            "text": "We move fast. Launch campaigns quickly. Beat competitors to the market — but never sacrifice quality."
-          },
-          {
-            "title": "Expertise in Local & International Markets",
-            "text": "We know the local market, the culture, and the language nuances (English and Arabic) for Dubai-based and international brands."
-          }
-        ]
-      },
-      "caseStudy": {
-        "sectionLabel": "Real Results",
-        "title": "Brands That Chose the Best Agency in Dubai",
-        "tag": "Mini Case Study · E-Commerce Brand",
-        "caseTitle": "High Ad Spend, Zero Conversions — Transformed in 90 Days",
-        "stats": [
-          {
-            "value": "3x",
-            "label": "Sales Growth"
-          },
-          {
-            "value": "90",
-            "label": "Days to Results"
-          },
-          {
-            "value": "Month 1",
-            "label": "ROI Positive"
-          }
-        ],
-        "tags": [
-          "SEO",
-          "PPC",
-          "Social Media",
-          "Landing Page Optimisation",
-          "Localised Messaging"
-        ],
-        "quote": "\"Finally, an agency that delivers measurable ROI. No fluff, just growth.\" — Retail Brand, Dubai"
-      },
-      "whyUs": {
-        "sectionLabel": "Why Tikit",
-        "title": "What Makes Us the Best Digital Marketing Agency in Dubai",
-        "items": [
-          {
-            "title": "No Generic Plans",
-            "text": "Every campaign is built specifically for your business, goals, and audience."
-          },
-          {
-            "title": "Transparent Pricing",
-            "text": "No hidden fees. No surprise charges. Clear, upfront pricing so you can focus on growth."
-          },
-          {
-            "title": "Data-Driven Decisions",
-            "text": "Every move backed by real analytics and performance insights. No guessing."
-          },
-          {
-            "title": "Direct Communication",
-            "text": "Talk directly to your dedicated account manager — no middlemen, no delays."
-          }
-        ]
-      },
+      "badge": "Influencer Marketing Agency Dubai",
       "subServices": {
         "sectionLabel": "Explore Our Services",
         "title": "Everything You Need to Dominate Dubai",
@@ -295,31 +155,6 @@
           {
             "title": "Influencer Marketing Cost UAE",
             "desc": "Transparent pricing breakdowns — understand what influencer campaigns cost and how to budget smart."
-          }
-        ]
-      },
-      "faq": {
-        "title": "Frequently Asked Questions",
-        "items": [
-          {
-            "question": "How much does a digital marketing agency in Dubai cost?",
-            "answer": "Pricing depends on your goals. We provide clear, transparent plans tailored to your business with no hidden fees."
-          },
-          {
-            "question": "How long before I see results?",
-            "answer": "Some campaigns deliver quick wins in weeks. SEO and branding grow steadily over months. We set realistic timelines based on your goals."
-          },
-          {
-            "question": "Do you offer full-service advertising and digital marketing solutions?",
-            "answer": "Yes. SEO, PPC, social media, website optimisation, content marketing — we handle it all under one roof."
-          },
-          {
-            "question": "Do you require long-term contracts?",
-            "answer": "No. We offer flexible packages based on results and growth goals. No lock-ins."
-          },
-          {
-            "question": "Can you work with international brands entering the UAE market?",
-            "answer": "Absolutely. We specialise in localising campaigns for Dubai and UAE audiences, including multilingual English and Arabic campaigns."
           }
         ]
       },
@@ -507,6 +342,182 @@
             "secondaryButton": "Call Us Now"
           }
         }
+      }
+    },
+    "digitalMarketing": {
+      "seo": {
+        "title": "Leading Digital Marketing Agency in Dubai",
+        "description": "A leading UAE-based advertising and digital marketing agency, delivering tailored solutions to drive measurable business growth, leads, and revenue.",
+        "serviceType": "Digital Marketing Agency Dubai"
+      },
+      "hero": {
+        "badge": "🚀 Dubai's Growth Engine",
+        "title": "Leading Digital Marketing Agency in",
+        "mainWord": "Dubai",
+        "description": "We don't just promise traffic. We deliver profit you can count, campaigns you can measure, and growth you can see — trusted by local and international brands across the UAE."
+      },
+      "problems": {
+        "sectionLabel": "The Problem",
+        "title": "Why Do Most Businesses Struggle to Scale?",
+        "description": "Dubai is competitive. The wrong agency can cost you tens of thousands with nothing to show.",
+        "items": [
+          {
+            "title": "No Clear Strategy That Makes Money",
+            "text": "Many agencies post, run ads, and hope for engagement. That's gambling with your budget. Traffic may increase while revenue stays flat."
+          },
+          {
+            "title": "Wasted Budget on Ads That Don't Convert",
+            "text": "Poorly targeted PPC, social ads, or Google campaigns disappear fast. You can get 10,000 clicks in a month and zero sales."
+          },
+          {
+            "title": "Poor Tracking & Reporting",
+            "text": "Some agencies give reports full of jargon you can't act on. We provide real-time dashboards and transparent reporting so you always know what works."
+          },
+          {
+            "title": "Lack of UAE Market Knowledge",
+            "text": "Dubai is not like other markets. Language, culture, and spending habits matter. Generic campaigns fail — only local expertise drives results."
+          }
+        ]
+      },
+      "process": {
+        "sectionLabel": "Our Process",
+        "title": "How Tikit Actually Grows Businesses",
+        "description": "A simple, proven 4-step system — every step focused on profit, efficiency, and measurable results.",
+        "steps": [
+          {
+            "n": "01",
+            "title": "Deep Business & Market Analysis",
+            "text": "We study your business, competitors, and the UAE market to find opportunities, threats, and hidden growth potential."
+          },
+          {
+            "n": "02",
+            "title": "Custom Strategy Development",
+            "text": "No templates. No cookie-cutter solutions. Every campaign is built for your goals, audience, and revenue targets."
+          },
+          {
+            "n": "03",
+            "title": "Multi-Channel Campaign Execution",
+            "text": "SEO, PPC, social media, and website optimisation — each channel supporting the others to maximise ROI."
+          },
+          {
+            "n": "04",
+            "title": "Data-Driven Optimisation & Scaling",
+            "text": "We track every click, lead, and conversion. We test, tweak, and scale campaigns that actually work."
+          }
+        ]
+      },
+      "benefits": {
+        "sectionLabel": "What You Get",
+        "title": "Results You Can Measure and Trust",
+        "description": "We don't just run campaigns. We deliver outcomes backed by real data.",
+        "items": [
+          {
+            "title": "ROI-Focused Campaigns Across All Digital Channels",
+            "text": "Every campaign is designed to make more money than you spend. No wasted clicks. No guesswork. Only profit-driven marketing."
+          },
+          {
+            "title": "Transparent Reporting & Performance Dashboards",
+            "text": "Track your campaigns in real-time. See exactly what works. Know your ROI down to the last dirham."
+          },
+          {
+            "title": "Faster Execution Without Compromising Quality",
+            "text": "We move fast. Launch campaigns quickly. Beat competitors to the market — but never sacrifice quality."
+          },
+          {
+            "title": "Expertise in Local & International Markets",
+            "text": "We know the local market, the culture, and the language nuances (English and Arabic) for Dubai-based and international brands."
+          }
+        ]
+      },
+      "caseStudy": {
+        "sectionLabel": "Real Results",
+        "title": "Brands That Chose the Best Agency in Dubai",
+        "tag": "Mini Case Study · E-Commerce Brand",
+        "caseTitle": "High Ad Spend, Zero Conversions — Transformed in 90 Days",
+        "stats": [
+          {
+            "value": "3x",
+            "label": "Sales Growth"
+          },
+          {
+            "value": "90",
+            "label": "Days to Results"
+          },
+          {
+            "value": "Month 1",
+            "label": "ROI Positive"
+          }
+        ],
+        "tags": [
+          "SEO",
+          "PPC",
+          "Social Media",
+          "Landing Page Optimisation",
+          "Localised Messaging"
+        ],
+        "quote": "\"Finally, an agency that delivers measurable ROI. No fluff, just growth.\" — Retail Brand, Dubai"
+      },
+      "whyUs": {
+        "sectionLabel": "Why Tikit",
+        "title": "What Makes Us the Best Digital Marketing Agency in Dubai",
+        "items": [
+          {
+            "title": "No Generic Plans",
+            "text": "Every campaign is built specifically for your business, goals, and audience."
+          },
+          {
+            "title": "Transparent Pricing",
+            "text": "No hidden fees. No surprise charges. Clear, upfront pricing so you can focus on growth."
+          },
+          {
+            "title": "Data-Driven Decisions",
+            "text": "Every move backed by real analytics and performance insights. No guessing."
+          },
+          {
+            "title": "Direct Communication",
+            "text": "Talk directly to your dedicated account manager — no middlemen, no delays."
+          }
+        ]
+      },
+      "subServices": {
+        "learnMore": "Learn more",
+        "seoServices": {
+          "title": "SEO Services",
+          "description": "Grow organic traffic with technical SEO, on-page optimisation, link building, and content strategy."
+        },
+        "paidAds": {
+          "title": "Paid Ads Management",
+          "description": "Expert management of Google, Facebook, LinkedIn, and TikTok ads optimised for conversions."
+        },
+        "conversionOptimization": {
+          "title": "Conversion Optimisation",
+          "description": "Maximise revenue from existing traffic through A/B testing and UX analysis."
+        }
+      },
+      "faq": {
+        "title": "Frequently Asked Questions",
+        "items": [
+          {
+            "question": "How much does a digital marketing agency in Dubai cost?",
+            "answer": "Pricing depends on your goals. We provide clear, transparent plans tailored to your business with no hidden fees."
+          },
+          {
+            "question": "How long before I see results?",
+            "answer": "Some campaigns deliver quick wins in weeks. SEO and branding grow steadily over months. We set realistic timelines based on your goals."
+          },
+          {
+            "question": "Do you offer full-service advertising and digital marketing solutions?",
+            "answer": "Yes. SEO, PPC, social media, website optimisation, content marketing — we handle it all under one roof."
+          },
+          {
+            "question": "Do you require long-term contracts?",
+            "answer": "No. We offer flexible packages based on results and growth goals. No lock-ins."
+          },
+          {
+            "question": "Can you work with international brands entering the UAE market?",
+            "answer": "Absolutely. We specialise in localising campaigns for Dubai and UAE audiences, including multilingual English and Arabic campaigns."
+          }
+        ]
       },
       "cta": {
         "sectionLabel": "Ready to Grow?",

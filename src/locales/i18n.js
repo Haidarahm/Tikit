@@ -28,13 +28,8 @@ lng: (() => {
       return "en";
     }
   })(),
-  fallbackLng: (() => {
-    try {
-      return localStorage.getItem("language") || "en";
-    } catch {
-      return "en";
-    }
-  })(),
+  // Use English for missing keys so partial ar/fr translations do not show raw key paths.
+  fallbackLng: "en",
   interpolation: {
     escapeValue: false,
   },
