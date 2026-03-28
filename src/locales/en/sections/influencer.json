@@ -341,6 +341,139 @@
             "primaryButton": "Book Free Consultation",
             "secondaryButton": "Call Us Now"
           }
+        },
+        "campaignManagement": {
+          "badge": "Campaign Management",
+          "hero": {
+            "title": "Influencer Campaign Management",
+            "mainWord": "in Dubai",
+            "description": "End-to-end campaign management from strategy and creator selection to approvals, publishing, and performance reporting — built for brands that need accountability, not chaos."
+          },
+          "definition": {
+            "title": "What is influencer campaign management?",
+            "paragraph": "Campaign management is the operational backbone of influencer marketing. It covers briefs, contracts, timelines, content reviews, publishing coordination, and ROI reporting — so every deliverable lands on time and on brand.",
+            "benefitsTitle": "Why professional management matters",
+            "benefits": [
+              "Fewer missed deadlines and last-minute firefighting",
+              "Consistent brand messaging across every creator touchpoint",
+              "Clear approvals, revisions, and version control",
+              "Transparent spend, deliverables, and performance visibility"
+            ],
+            "processTitle": "How we run campaigns day to day",
+            "processSteps": [
+              "Kickoff, objectives, KPIs, and creator shortlists",
+              "Contracts, deliverable schedules, and creative briefs",
+              "Content production, QC, and structured approvals",
+              "Go-live coordination, amplification, and reporting"
+            ]
+          },
+          "stats": [
+            { "value": "300+", "label": "Campaigns orchestrated" },
+            { "value": "24/7", "label": "Dedicated coordination" },
+            { "value": "GCC", "label": "Regional creator networks" },
+            { "value": "Clear", "label": "Reporting & attribution" }
+          ],
+          "features": {
+            "title": "What we manage for you",
+            "subtitle": "Operational rigor across every stage of your influencer program",
+            "items": [
+              {
+                "title": "Strategy & briefing",
+                "description": "Clear objectives, audiences, messaging guardrails, and creator fit criteria."
+              },
+              {
+                "title": "Creator sourcing & vetting",
+                "description": "Audience checks, engagement quality, and brand-safety review before selection."
+              },
+              {
+                "title": "Content workflows",
+                "description": "Structured briefs, shot lists, revisions, and sign-off checkpoints."
+              },
+              {
+                "title": "Timeline & delivery control",
+                "description": "Milestones, reminders, and escalation paths so nothing slips."
+              },
+              {
+                "title": "Performance reporting",
+                "description": "Live dashboards and post-campaign insights tied to your KPIs."
+              },
+              {
+                "title": "Regional execution",
+                "description": "UAE-first coordination with multilingual support where campaigns require it."
+              }
+            ]
+          },
+          "process": {
+            "title": "Our campaign management framework",
+            "subtitle": "A repeatable system that scales from single activations to always-on programs",
+            "steps": [
+              {
+                "title": "Discover & align",
+                "description": "We align on goals, budgets, timelines, and success metrics with stakeholders."
+              },
+              {
+                "title": "Plan & assign",
+                "description": "We lock deliverables, contracts, publishing windows, and contingency buffers."
+              },
+              {
+                "title": "Produce & approve",
+                "description": "We run structured reviews so creative is compliant, on-brief, and on time."
+              },
+              {
+                "title": "Launch & optimise",
+                "description": "We coordinate go-live, track performance, and iterate toward stronger outcomes."
+              }
+            ]
+          },
+          "trust": {
+            "title": "Why brands trust Tikit with execution",
+            "subtitle": "Less guesswork, more predictable delivery",
+            "cards": [
+              {
+                "title": "Single point of ownership",
+                "description": "One accountable team coordinating creators, brands, and stakeholders."
+              },
+              {
+                "title": "Transparent workflows",
+                "description": "Shared visibility into status, spend, and upcoming deadlines."
+              },
+              {
+                "title": "Quality control",
+                "description": "Brand-safe reviews before anything goes live."
+              },
+              {
+                "title": "Data-backed decisions",
+                "description": "Performance signals inform mid-flight optimizations."
+              }
+            ],
+            "paragraph": "Whether you are launching a product drop or scaling an always-on ambassador program, we bring operational discipline so your team can focus on strategy — not chasing DMs."
+          },
+          "faq": {
+            "title": "Frequently Asked Questions",
+            "items": [
+              {
+                "question": "How long does a typical campaign take?",
+                "answer": "Timelines vary by scope; simple activations can move in weeks, while larger programs may span several months with phased deliverables."
+              },
+              {
+                "question": "Do you handle contracts and payments?",
+                "answer": "We coordinate the commercial and legal workflow with clear documentation so deliverables and milestones stay aligned."
+              },
+              {
+                "question": "Can you work with our legal and brand teams?",
+                "answer": "Yes — we are used to multi-stakeholder approvals and can adapt to your internal review processes."
+              },
+              {
+                "question": "What reporting do we receive?",
+                "answer": "You receive performance summaries aligned to your KPIs, plus narrative recommendations for what to scale or refine next."
+              }
+            ]
+          },
+          "cta": {
+            "title": "Ready to run campaigns without the chaos?",
+            "description": "Book a consultation and get a clear management plan for your next influencer program in Dubai and the UAE.",
+            "button": "Talk to our team"
+          }
         }
       }
     },

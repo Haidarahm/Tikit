@@ -12,7 +12,6 @@ import {
   HiLightBulb,
 } from "react-icons/hi";
 import {
-  HiMegaphone,
   HiSparkles,
   HiCurrencyDollar,
   HiPresentationChartBar,
@@ -21,11 +20,16 @@ import { FaInstagram, FaTiktok } from "react-icons/fa";
 
 const BASE = "/influencer-marketing-agency-dubai";
 const TK = "serviceSections.influencerMarketing.subPages.campaignManagement";
+const SUB_ITEMS_KEY = "serviceSections.influencerMarketing.subServices.items";
+
+const toArray = (val) => (Array.isArray(val) ? val : []);
 
 const CampaignManagement = () => {
   const { t } = useTranslation();
   const featureIcons = [HiClipboardList, HiUserGroup, HiPhotograph, HiClock, HiChartBar, HiLightBulb];
   const trustIcons = [HiBadgeCheck, HiGlobe, HiUserGroup, HiChartBar];
+
+  const subServiceItems = toArray(t(SUB_ITEMS_KEY, { returnObjects: true }));
 
   const pageData = {
     seo: {
@@ -60,15 +64,15 @@ const CampaignManagement = () => {
       title: t(`${TK}.definition.title`),
       paragraph: t(`${TK}.definition.paragraph`),
       benefitsTitle: t(`${TK}.definition.benefitsTitle`),
-      benefits: t(`${TK}.definition.benefits`, { returnObjects: true }),
+      benefits: toArray(t(`${TK}.definition.benefits`, { returnObjects: true })),
       processTitle: t(`${TK}.definition.processTitle`),
-      processSteps: t(`${TK}.definition.processSteps`, { returnObjects: true }),
+      processSteps: toArray(t(`${TK}.definition.processSteps`, { returnObjects: true })),
     },
-    stats: t(`${TK}.stats`, { returnObjects: true }),
+    stats: toArray(t(`${TK}.stats`, { returnObjects: true })),
     features: {
       title: t(`${TK}.features.title`),
       subtitle: t(`${TK}.features.subtitle`),
-      items: t(`${TK}.features.items`, { returnObjects: true }).map((item, i) => ({
+      items: toArray(t(`${TK}.features.items`, { returnObjects: true })).map((item, i) => ({
         ...item,
         icon: featureIcons[i],
       })),
@@ -76,28 +80,36 @@ const CampaignManagement = () => {
     process: {
       title: t(`${TK}.process.title`),
       subtitle: t(`${TK}.process.subtitle`),
-      steps: t(`${TK}.process.steps`, { returnObjects: true }),
+      steps: toArray(t(`${TK}.process.steps`, { returnObjects: true })),
     },
     trust: {
       title: t(`${TK}.trust.title`),
       subtitle: t(`${TK}.trust.subtitle`),
-      cards: t(`${TK}.trust.cards`, { returnObjects: true }).map((card, i) => ({
+      cards: toArray(t(`${TK}.trust.cards`, { returnObjects: true })).map((card, i) => ({
         ...card,
         icon: trustIcons[i],
       })),
       paragraph: t(`${TK}.trust.paragraph`),
     },
     relatedPages: [
-      { path: `${BASE}/micro-influencer-marketing-uae`, title: t("serviceSections.influencerMarketing.subServices.microInfluencer.title"), description: t("serviceSections.influencerMarketing.subServices.microInfluencer.description"), icon: HiUserGroup },
-      { path: `${BASE}/roi-analytics`, title: t("serviceSections.influencerMarketing.subServices.roiAnalytics.title"), description: t("serviceSections.influencerMarketing.subServices.roiAnalytics.description"), icon: HiPresentationChartBar },
-      { path: `${BASE}/instagram-influencer-marketing`, title: t("serviceSections.influencerMarketing.subServices.instagramInfluencer.title"), description: t("serviceSections.influencerMarketing.subServices.instagramInfluencer.description"), icon: FaInstagram },
-      { path: `${BASE}/tiktok-influencer-marketing`, title: t("serviceSections.influencerMarketing.subServices.tiktokInfluencer.title"), description: t("serviceSections.influencerMarketing.subServices.tiktokInfluencer.description"), icon: FaTiktok },
-      { path: `${BASE}/luxury-influencer-marketing`, title: t("serviceSections.influencerMarketing.subServices.luxuryInfluencer.title"), description: t("serviceSections.influencerMarketing.subServices.luxuryInfluencer.description"), icon: HiSparkles },
-      { path: `${BASE}/influencer-marketing-cost-uae`, title: t("serviceSections.influencerMarketing.subServices.influencerCost.title"), description: t("serviceSections.influencerMarketing.subServices.influencerCost.description"), icon: HiCurrencyDollar },
-    ],
+      { path: `${BASE}/micro-influencer-marketing-uae`, icon: HiUserGroup, itemIndex: 1 },
+      { path: `${BASE}/roi-analytics`, icon: HiPresentationChartBar, itemIndex: 3 },
+      { path: `${BASE}/instagram-influencer-marketing`, icon: FaInstagram, itemIndex: 4 },
+      { path: `${BASE}/tiktok-influencer-marketing`, icon: FaTiktok, itemIndex: 5 },
+      { path: `${BASE}/luxury-influencer-marketing`, icon: HiSparkles, itemIndex: 2 },
+      { path: `${BASE}/influencer-marketing-cost-uae`, icon: HiCurrencyDollar, itemIndex: 6 },
+    ].map(({ path, icon, itemIndex }) => {
+      const entry = subServiceItems[itemIndex];
+      return {
+        path,
+        icon,
+        title: entry?.title ?? "",
+        description: entry?.desc ?? "",
+      };
+    }),
     faq: {
       title: t(`${TK}.faq.title`),
-      items: t(`${TK}.faq.items`, { returnObjects: true }),
+      items: toArray(t(`${TK}.faq.items`, { returnObjects: true })),
     },
     cta: {
       title: t(`${TK}.cta.title`),
