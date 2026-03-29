@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { useLocation } from "react-router-dom";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useTranslation } from "react-i18next";
@@ -36,6 +37,7 @@ import {
   ServiceCTASection,
 } from "../../../components/services-sections";
 import {
+  INFLUENCER_MARKETING_BASE,
   influencerMarketingSubServiceHrefs,
   influencerMarketingSubServiceIcons,
   influencerMarketingSubServiceItems,
@@ -93,7 +95,7 @@ const MicroInfluencerMarketing = () => {
     { name: t("nav.home"), url: "/" },
     { name: t("nav.services"), url: "/services" },
     { name: t("serviceSections.influencerMarketing.badge"), url: "/influencer-marketing-agency-dubai" },
-    { name: t(`${TK}.badge`), url: "/influencer-marketing-agency-dubai/micro-influencer-marketing-uae" },
+    { name: t(`${TK}.badge`), url: pagePath },
   ];
 
   useEffect(() => {
@@ -122,7 +124,7 @@ const MicroInfluencerMarketing = () => {
         title={t(`${TK}.seo.title`)}
         description={t(`${TK}.seo.description`)}
         keywords={t(`${TK}.seo.keywords`)}
-        canonicalUrl="/influencer-marketing-agency-dubai/micro-influencer-marketing-uae"
+        canonicalUrl={pagePath}
         serviceType={t(`${TK}.seo.serviceType`)}
         breadcrumbs={breadcrumbs}
       />

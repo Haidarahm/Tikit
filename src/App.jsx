@@ -176,6 +176,7 @@ function App() {
               <Route path="/influencer-marketing-agency-dubai" element={<InfluencerMarketing />} />
               <Route path="/influencer-marketing-agency-dubai/campaign-management-dubai" element={<CampaignManagement />} />
               <Route path="/influencer-marketing-agency-dubai/micro-influencer-marketing-uae" element={<MicroInfluencerMarketing />} />
+              <Route path="/influencer-marketing-agency-dubai/b2b-influencer-marketing" element={<MicroInfluencerMarketing />} />
               <Route path="/influencer-marketing-agency-dubai/luxury-influencer-marketing" element={<LuxuryInfluencerMarketing />} />
               <Route path="/influencer-marketing-agency-dubai/roi-analytics" element={<ROIAnalytics />} />
               <Route path="/influencer-marketing-agency-dubai/instagram-influencer-marketing" element={<InstagramInfluencerMarketing />} />
