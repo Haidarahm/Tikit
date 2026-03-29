@@ -6,9 +6,7 @@
 @reference "../../../index.css";
 
 /* ─── Hero (branding tweaks) ──────────────────────────────────── */
-.im-hero {
-  min-height: 62vh;
-}
+/* Height comes from ServiceSections.css: min-h-[68vh] md:min-h-[100vh] */
 
 .im-hero__image {
   opacity: 0.1;

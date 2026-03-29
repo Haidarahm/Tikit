@@ -260,34 +260,35 @@ const comparisonRows = [
 ];
 
 const subServiceItems = [
-  {
-    title: "Campaign Management",
-    desc: "End-to-end campaign planning, execution, and optimization to keep influencer collaborations on track.",
-  },
+  // {
+  //   title: "Campaign Management",
+  //   desc: "End-to-end campaign planning, execution, and optimization to keep influencer collaborations on track.",
+  // },
   {
     title: "Micro Influencer Marketing UAE",
     desc: "Target niche audiences through highly engaged micro creators across UAE-focused campaigns.",
-  },
-  {
-    title: "Luxury Influencer Marketing",
-    desc: "Premium influencer collaborations designed for luxury brands, high-value products, and exclusive audiences.",
-  },
-  {
-    title: "ROI Analytics",
-    desc: "Measure campaign performance with actionable reporting on reach, engagement, and return on investment.",
-  },
-  {
-    title: "Instagram Influencer Marketing",
-    desc: "Build visibility with creator-led Instagram content, including reels, stories, and branded posts.",
-  },
-  {
-    title: "TikTok Influencer Marketing",
-    desc: "Drive awareness through short-form TikTok campaigns that match trends and audience behavior.",
-  },
-  {
-    title: "Influencer Marketing Cost UAE",
-    desc: "Understand campaign pricing models and budget planning for influencer marketing in the UAE market.",
-  },
+  }
+  // ,
+  // {
+  //   title: "Luxury Influencer Marketing",
+  //   desc: "Premium influencer collaborations designed for luxury brands, high-value products, and exclusive audiences.",
+  // },
+  // {
+  //   title: "ROI Analytics",
+  //   desc: "Measure campaign performance with actionable reporting on reach, engagement, and return on investment.",
+  // },
+  // {
+  //   title: "Instagram Influencer Marketing",
+  //   desc: "Build visibility with creator-led Instagram content, including reels, stories, and branded posts.",
+  // },
+  // {
+  //   title: "TikTok Influencer Marketing",
+  //   desc: "Drive awareness through short-form TikTok campaigns that match trends and audience behavior.",
+  // },
+  // {
+  //   title: "Influencer Marketing Cost UAE",
+  //   desc: "Understand campaign pricing models and budget planning for influencer marketing in the UAE market.",
+  // },
 ];
 
 const subServiceHrefs = [

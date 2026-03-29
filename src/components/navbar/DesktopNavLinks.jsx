@@ -44,7 +44,7 @@ export default function DesktopNavLinks({ language }) {
             </span>
           </Link>
         ))}
-   {/* <NavDropdown
+   <NavDropdown
           label={t("nav.services")}
           items={[
             {
@@ -66,7 +66,7 @@ export default function DesktopNavLinks({ language }) {
             },
             { label: t("nav.servicesSections.branding"), to: "/branding-agency-dubai" },
           ]}
-        /> */}
+        />
         <NavDropdown
           label={t("nav.influencers")}
           items={[
