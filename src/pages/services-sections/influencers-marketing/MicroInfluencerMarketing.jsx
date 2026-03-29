@@ -57,7 +57,7 @@ const subServiceIcons = [
 ];
 
 const subServiceHrefs = [
-  "/influencer-marketing-agency-dubai/campaign-management",
+  "/influencer-marketing-agency-dubai/campaign-management-dubai",
   "/influencer-marketing-agency-dubai/micro-influencer-marketing-uae",
   "/influencer-marketing-agency-dubai/luxury-influencer-marketing",
   "/influencer-marketing-agency-dubai/roi-analytics",

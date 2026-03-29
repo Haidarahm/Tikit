@@ -174,7 +174,7 @@ function App() {
               <Route path="/work/event/:slug" element={<EventDetails />} />
               {/* Service Sections - Influencer Marketing Hub & Sub-pages */}
               <Route path="/influencer-marketing-agency-dubai" element={<InfluencerMarketing />} />
-              <Route path="/influencer-marketing-agency-dubai/campaign-management" element={<CampaignManagement />} />
+              <Route path="/influencer-marketing-agency-dubai/campaign-management-dubai" element={<CampaignManagement />} />
               <Route path="/influencer-marketing-agency-dubai/micro-influencer-marketing-uae" element={<MicroInfluencerMarketing />} />
               <Route path="/influencer-marketing-agency-dubai/luxury-influencer-marketing" element={<LuxuryInfluencerMarketing />} />
               <Route path="/influencer-marketing-agency-dubai/roi-analytics" element={<ROIAnalytics />} />
