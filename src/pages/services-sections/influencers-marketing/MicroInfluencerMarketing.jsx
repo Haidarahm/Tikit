@@ -16,7 +16,6 @@ import {
   FiActivity,
   FiStar,
   FiInstagram,
-  FiVideo,
   FiTag,
   FiTrendingUp,
   FiBriefcase,
@@ -36,6 +35,11 @@ import {
   ServiceSubServicesSection,
   ServiceCTASection,
 } from "../../../components/services-sections";
+import {
+  influencerMarketingSubServiceHrefs,
+  influencerMarketingSubServiceIcons,
+  influencerMarketingSubServiceItems,
+} from "./influencerMarketingSubServices";
 import "../../../components/services-sections/ServiceSections.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -46,26 +50,6 @@ const problemIcons = [<FiUsers key="1" />, <FiTarget key="2" />, <FiBarChart2 ke
 const benefitIcons = [<FiUserPlus key="1" />, <FiUsers key="2" />, <FiPieChart key="3" />, <FiTag key="4" />, <FiMapPin key="5" />];
 const whyUsIcons = [<FiLayers key="1" />, <FiActivity key="2" />, <FiMessageSquare key="3" />, <FiShield key="4" />];
 const localAuthorityIcons = [<FiTrendingUp key="1" />, <FiBriefcase key="2" />, <FiGlobe key="3" />];
-const subServiceIcons = [
-  <FiActivity key="1" />,
-  <FiUsers key="2" />,
-  <FiStar key="3" />,
-  <FiPieChart key="4" />,
-  <FiInstagram key="5" />,
-  <FiVideo key="6" />,
-  <FiTag key="7" />,
-];
-
-const subServiceHrefs = [
-  "/influencer-marketing-agency-dubai/campaign-management-dubai",
-  "/influencer-marketing-agency-dubai/micro-influencer-marketing-uae",
-  "/influencer-marketing-agency-dubai/luxury-influencer-marketing",
-  "/influencer-marketing-agency-dubai/roi-analytics",
-  "/influencer-marketing-agency-dubai/instagram-influencer-marketing",
-  "/influencer-marketing-agency-dubai/tiktok-influencer-marketing",
-  "/influencer-marketing-agency-dubai/influencer-marketing-cost-uae",
-];
-
 function revealChildren(containerRef, selector, fromVars = {}, staggerVal = 0.1) {
   if (!containerRef.current) return;
   const els = containerRef.current.querySelectorAll(selector);
@@ -240,9 +224,9 @@ const MicroInfluencerMarketing = () => {
         title={t("serviceSections.influencerMarketing.subServices.title")}
         description={t("serviceSections.influencerMarketing.subServices.description")}
         learnMoreText={t("serviceSections.influencerMarketing.subServices.learnMore")}
-        items={toArray(t("serviceSections.influencerMarketing.subServices.items", { returnObjects: true }))}
-        hrefs={subServiceHrefs}
-        icons={subServiceIcons}
+        items={influencerMarketingSubServiceItems}
+        hrefs={influencerMarketingSubServiceHrefs}
+        icons={influencerMarketingSubServiceIcons}
         dir={dir}
         classPrefix="im"
       />

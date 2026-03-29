@@ -1,7 +1,7 @@
 import { forwardRef } from "react";
 import { useFontClass } from "../../../../hooks/useFontClass";
 
-const InfServicesGrid = forwardRef(({ label, title, description, services }, ref) => {
+const InfServicesGrid = forwardRef(({ label, title, description, services, footer }, ref) => {
   const { fontHeading } = useFontClass();
 
   return (
@@ -20,6 +20,8 @@ const InfServicesGrid = forwardRef(({ label, title, description, services }, ref
             </div>
           ))}
         </div>
+
+        {footer ? <p className="inf-desc mt-10 mb-0 max-w-3xl">{footer}</p> : null}
       </div>
     </section>
   );

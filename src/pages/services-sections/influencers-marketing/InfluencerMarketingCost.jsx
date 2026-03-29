@@ -13,10 +13,7 @@ import {
   HiChartBar,
   HiCheckCircle,
 } from "react-icons/hi";
-import { HiMegaphone, HiSparkles, HiPresentationChartBar } from "react-icons/hi2";
-import { FaInstagram, FaTiktok } from "react-icons/fa";
-
-const BASE = "/influencer-marketing-agency-dubai";
+import { getInfluencerSubServiceRelatedPages, INFLUENCER_MARKETING_BASE as BASE } from "./influencerMarketingSubServices";
 const TK = "serviceSections.influencerMarketing.subPages.influencerCost";
 
 const InfluencerMarketingCost = () => {
@@ -78,14 +75,7 @@ const InfluencerMarketingCost = () => {
       cards: t(`${TK}.trust.cards`, { returnObjects: true }).map((card, i) => ({ ...card, icon: trustIcons[i] })),
       paragraph: t(`${TK}.trust.paragraph`),
     },
-    relatedPages: [
-      { path: `${BASE}/campaign-management-dubai`, title: t("serviceSections.influencerMarketing.subServices.campaignManagement.title"), description: t("serviceSections.influencerMarketing.subServices.campaignManagement.description"), icon: HiMegaphone },
-      { path: `${BASE}/micro-influencer-marketing-uae`, title: t("serviceSections.influencerMarketing.subServices.microInfluencer.title"), description: t("serviceSections.influencerMarketing.subServices.microInfluencer.description"), icon: HiUserGroup },
-      { path: `${BASE}/roi-analytics`, title: t("serviceSections.influencerMarketing.subServices.roiAnalytics.title"), description: t("serviceSections.influencerMarketing.subServices.roiAnalytics.description"), icon: HiPresentationChartBar },
-      { path: `${BASE}/instagram-influencer-marketing`, title: t("serviceSections.influencerMarketing.subServices.instagramInfluencer.title"), description: t("serviceSections.influencerMarketing.subServices.instagramInfluencer.description"), icon: FaInstagram },
-      { path: `${BASE}/tiktok-influencer-marketing`, title: t("serviceSections.influencerMarketing.subServices.tiktokInfluencer.title"), description: t("serviceSections.influencerMarketing.subServices.tiktokInfluencer.description"), icon: FaTiktok },
-      { path: `${BASE}/luxury-influencer-marketing`, title: t("serviceSections.influencerMarketing.subServices.luxuryInfluencer.title"), description: t("serviceSections.influencerMarketing.subServices.luxuryInfluencer.description"), icon: HiSparkles },
-    ],
+    relatedPages: getInfluencerSubServiceRelatedPages(`${BASE}/influencer-marketing-cost-uae`),
     faq: { title: t(`${TK}.faq.title`), items: t(`${TK}.faq.items`, { returnObjects: true }) },
     cta: { title: t(`${TK}.cta.title`), description: t(`${TK}.cta.description`), button: t(`${TK}.cta.button`) },
   };
