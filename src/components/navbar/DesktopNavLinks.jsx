@@ -55,6 +55,10 @@ export default function DesktopNavLinks({ language }) {
                   to: "/influencer-marketing-agency-dubai",
                 },
                 {
+                  label: t("nav.servicesSections.campaignManagement"),
+                  to: "/influencer-marketing-agency-dubai/campaign-management-dubai",
+                },
+                {
                   label: t("serviceSections.influencerMarketing.subPages.microInfluencer.badge"),
                   to: "/influencer-marketing-agency-dubai/micro-influencer-marketing-uae",
                 },
