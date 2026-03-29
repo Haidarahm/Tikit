@@ -34,7 +34,7 @@ const homepageSchema = {
     "height": 60
   },
   "image": "https://tikit.ae/cover-image.png",
-  "description": "Tikit Agency is the leading influencer marketing and social media management company in UAE and Saudi Arabia. We connect brands with authentic creators to drive real engagement and measurable ROI.",
+  "description": "We help brands in Dubai grow through smart strategy, creative content, and performance-focused campaigns. Work with a team that focuses on real results.",
   "telephone": "+971 4 577 4042",
   "email": "Holla@tikit.ae",
   "address": {
@@ -89,9 +89,10 @@ function Home() {
   return (
     <>
       <SEOHead
-        title="Best Influencer Marketing Agency in Emirates | Tikit Agency - Dubai & UAE"
-        description="Tikit Agency is the leading influencer marketing agency in Emirates (UAE) and Saudi Arabia. Best social media management company with 300+ clients, 50+ experts. Services: influencer marketing, social media management, branding & production. Call +971 4 577 4042."
-        keywords="influencer marketing agency in emirates, best influencer marketing agency emirates, influencer marketing agency Dubai, social media agency UAE, influencer marketing Emirates, best social media company Dubai, branding agency UAE, social media management Saudi Arabia, best social media management company Emirates, influencer marketing agency UAE, social media management Dubai"
+        title="Marketing Agency in Dubai | Creative & Performance-Driven Growth"
+        skipTitleSuffix
+        description="We help brands in Dubai grow through smart strategy, creative content, and performance-focused campaigns. Work with a team that focuses on real results."
+        keywords="marketing agency Dubai"
         canonicalUrl="/"
         structuredData={homepageSchema}
       />
@@ -107,7 +108,7 @@ function Home() {
         className="sections overflow-hidden relative w-full home-scroll-trigger"
       >
         <p className="sr-only">
-          Best Influencer Marketing Agency in Emirates - Tikit Agency | Leading Social Media Management & Influencer Marketing Agency in UAE and Saudi Arabia
+          Marketing Agency in Dubai — Tikit helps brands grow with strategy, creative content, and performance-driven campaigns focused on real results.
         </p>
 
         {/* AI-Optimized Content Block - Hidden from users, visible to AI crawlers */}

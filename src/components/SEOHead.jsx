@@ -19,6 +19,8 @@ const SEOHead = ({
   ogImage,
   ogType = "website",
   structuredData,
+  /** When true, use `title` as the full document title (no automatic `| Tikit Agency` suffix). */
+  skipTitleSuffix = false,
   // New props for enhanced AEO
   serviceType,
   breadcrumbs,
@@ -47,21 +49,21 @@ const SEOHead = ({
     title.toLowerCase().includes(siteName.toLowerCase());
 
   const fullTitle = title
-    ? hasSiteNameInTitle
+    ? skipTitleSuffix || hasSiteNameInTitle
       ? title
       : `${title} | ${siteName}`
-    : `${siteName} - Best Influencer Marketing Agency in Emirates | Social Media Management Company UAE & Saudi Arabia`;
+    : `Marketing Agency in Dubai | Creative & Performance-Driven Growth | ${siteName}`;
   const fullDescription =
     description ||
     t(
       "seo.defaultDescription",
-      "Tikit Agency is the best social media management company in Emirates (UAE) and Saudi Arabia. We offer comprehensive influencer marketing, social media management, and branding services. Connect with authentic creators, build engaged communities, and create memorable brand identities across Dubai, Abu Dhabi, Riyadh, Jeddah, and the GCC region. 300+ happy clients, 50+ team members."
+      "We help brands in Dubai grow through smart strategy, creative content, and performance-focused campaigns. Work with a team that focuses on real results."
     );
   const fullKeywords =
     keywords ||
     t(
       "seo.defaultKeywords",
-      "influencer marketing agency in emirates, influencer marketing agency emirates, best influencer marketing agency in emirates, influencer marketing agency UAE, best social media management company Emirates, best social media management company Saudi Arabia, best social media management company UAE, influencer marketing Emirates, influencer marketing Saudi Arabia, branding company Emirates, branding company Saudi Arabia, social media agency Dubai, influencer marketing agency Dubai, branding agency Dubai, social media management Dubai, influencer marketing or branding, best influencer marketing company Emirates"
+      "marketing agency Dubai, creative marketing Dubai, performance marketing UAE, branding agency Dubai, digital marketing Dubai"
     );
   
   // Use provided canonicalUrl, or fallback to current location pathname
