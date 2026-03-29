@@ -4,7 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
 import { useShowcaseStore } from "../../store/showcaseStore";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import HeroWithBadge from "../../components/HeroWithBadge";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -274,7 +274,18 @@ const ShowCase = () => {
         <HeroWithBadge
           title={t("home.showcase.title")}
           mainWord={t("home.showcase.mainWord")}
-          description={t("home.showcase.description")}
+          description={
+            <>
+              {t("home.showcase.descriptionBefore")}
+              <Link
+                to="/influencer-marketing-agency-dubai"
+                className="text-[#52C3C5] underline underline-offset-[3px] decoration-[#52C3C5]/80 hover:opacity-90 font-medium transition-opacity"
+              >
+                {t("home.showcase.descriptionLink")}
+              </Link>
+              {t("home.showcase.descriptionAfter")}
+            </>
+          }
           titleClassName="block"
           descriptionClassName="text-[var(--foreground)] text-base sm:text-lg md:text-xl lg:text-[24px] max-w-4xl"
           contentClassName="flex flex-col items-center gap-4"

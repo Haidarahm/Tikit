@@ -112,7 +112,9 @@
     "showcase": {
       "title": "Fueling brands with",
       "mainWord": "Influence",
-      "description": "Tikit is an award-winning global influencer marketing agency. Whether you want to shift perceptions or create scroll-stopping content, we do it better than anyone."
+      "descriptionBefore": "Tikit is an award-winning global ",
+      "descriptionLink": "influencer marketing agency",
+      "descriptionAfter": ". Whether you want to shift perceptions or create scroll-stopping content, we do it better than anyone."
     },
     "numbers": {
       "headline": "The true measure of",

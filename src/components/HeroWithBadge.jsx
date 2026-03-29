@@ -7,7 +7,7 @@ import TikitTitle from "./TikitTitle";
  *   - badge: string | ReactNode (optional)
  *   - title: string
  *   - mainWord: string (optional)
- *   - description: string (optional)
+ *   - description: string | React.ReactNode (optional)
  *   - badgeVariant: "default" | "pulse" - pulse adds animated dot
  *   - titleClassName: string (e.g. "hero-animate block", "blogs-hero-animate block")
  *   - descriptionClassName: string
@@ -55,7 +55,7 @@ const HeroWithBadge = ({
         mainWord={mainWord}
         disableAnimation={disableAnimation}
       />
-      {description && (
+      {description != null && description !== "" && (
         <p className={descriptionClassName}>{description}</p>
       )}
     </div>
