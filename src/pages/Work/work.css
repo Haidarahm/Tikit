@@ -1,6 +1,16 @@
 .work-section img{
     @apply  col-span-1 w-full row-span-1 ;
 }
+
+/* Non-digital work grid: row count must match item layout (1 col mobile, 2 col md+). */
+.work-items-grid-nondigital {
+  grid-template-rows: repeat(var(--work-grid-rows-mobile, 1), minmax(0, 1fr));
+}
+@media (min-width: 768px) {
+  .work-items-grid-nondigital {
+    grid-template-rows: repeat(var(--work-grid-rows-desktop, 1), minmax(0, 1fr));
+  }
+}
 /* Hide scrollbar for horizontal swiper */
 .section-swiper::-webkit-scrollbar {
     display: none;

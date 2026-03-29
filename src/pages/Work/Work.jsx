@@ -173,7 +173,7 @@ const Work = () => {
     loader({
       lang: language,
       page: 1,
-      per_page: 10,
+      per_page: 14,
       slug: activeSectionSlug,
     }).catch(() => {});
   }, [

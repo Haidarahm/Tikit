@@ -18,7 +18,6 @@ import {
 } from "react-icons/fi";
 import DigitalWorkCard from "./DigitalWorkCard";
 import NonDigitalWorkCard from "./NonDigitalWorkCard";
-import { useI18nLanguage } from "../../../store/I18nLanguageContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -269,32 +268,39 @@ const WorkItemsGrid = ({
               start,
               end,
               scrub: 0.5,
+              invalidateOnRefresh: true,
             },
           }
         );
       });
     }, containerRef);
 
-    return () => ctx.revert();
-  }, [items, isDigital]);
+    const scheduleRefresh = () => {
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => ScrollTrigger.refresh());
+      });
+    };
+    scheduleRefresh();
+
+    window.addEventListener("resize", scheduleRefresh);
+
+    return () => {
+      window.removeEventListener("resize", scheduleRefresh);
+      ctx.revert();
+    };
+  }, [items, isDigital, containerKey]);
 
   const nonDigitalCount = Array.isArray(items) ? items.length : 0;
-  const computedRows = Math.max(1, Math.ceil(nonDigitalCount / 2));
-  const rowClassMap = {
-    1: "md:grid-rows-1",
-    2: "md:grid-rows-2",
-    3: "md:grid-rows-3",
-    4: "md:grid-rows-4",
-    5: "md:grid-rows-5",
-    6: "md:grid-rows-6",
-  };
-  const { isRtl } = useI18nLanguage();
-  const rowClass = rowClassMap[computedRows] ?? "md:grid-rows-4";
-  const dynamicHeight = computedRows * 85;
+  /** Single column on small screens */
+  const mobileRows = Math.max(1, nonDigitalCount);
+  /** Two columns from md breakpoint */
+  const desktopRows = Math.max(1, Math.ceil(nonDigitalCount / 2));
+  /** Vertical scroll space tuned for the 2-column layout (same basis as before). */
+  const dynamicHeight = desktopRows * 85;
 
   const containerClass = isDigital
     ? "images grid grid-cols-1 gap-6 md:gap-8 p-4 md:px-6"
-    : `images grid grid-cols-1 md:grid-cols-2 ${rowClass} gap-4 p-4 `;
+    : `images work-items-grid-nondigital grid grid-cols-1 md:grid-cols-2 gap-4 p-4 `;
 
   const digitalMetrics = useMemo(
     () =>
@@ -316,7 +322,11 @@ const WorkItemsGrid = ({
       className={`${containerClass} relative`}
       style={
         !isDigital && nonDigitalCount
-          ? { height: `${dynamicHeight}vh` }
+          ? {
+              height: `${dynamicHeight}vh`,
+              ["--work-grid-rows-mobile"]: mobileRows,
+              ["--work-grid-rows-desktop"]: desktopRows,
+            }
           : undefined
       }
     >
