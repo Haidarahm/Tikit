@@ -3,7 +3,6 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../../store/I18nLanguageContext";
-import { useFontClass } from "../../../hooks/useFontClass";
 
 import { FiUsers, FiTarget, FiBarChart2, FiTrendingUp, FiZap, FiShield, FiClock, FiFileText, FiGlobe, FiLayers } from "react-icons/fi";
 import { FaInstagram, FaTiktok, FaYoutube } from "react-icons/fa";
@@ -11,7 +10,11 @@ import { HiSparkles, HiShoppingCart, HiGlobeAlt, HiCamera } from "react-icons/hi
 
 import SEOHead from "../../../components/SEOHead";
 import FAQ from "../../../components/FAQ";
-import { ServiceHeroSection, ServiceCTASection } from "../../../components/services-sections";
+import {
+  ServiceHeroSection,
+  ServiceCTASection,
+  ServiceAudiencePainSection,
+} from "../../../components/services-sections";
 import influencerHero from "../../../assets/services/Influencer-Marketing.webp";
 
 import InfCampaignProcess from "./sub-components/InfCampaignProcess";
@@ -34,7 +37,6 @@ const MicroInfluencerMarketing = () => {
   const { t } = useTranslation();
   const { isRtl } = useI18nLanguage();
   const dir = isRtl ? "rtl" : "ltr";
-  const { fontHeading } = useFontClass();
 
   const whatIsPriorities = toArray(t(`${TK}.whatIs.priorities`, { returnObjects: true }));
   const whatIsResults = toArray(t(`${TK}.whatIs.results`, { returnObjects: true }));
@@ -136,7 +138,7 @@ const MicroInfluencerMarketing = () => {
         );
       };
 
-      reveal(whatRef, ".inf-reveal", 0.06);
+      reveal(whatRef, ".im-audience-reveal", 0.06);
       reveal(strategyRef, ".inf-reveal", 0.08);
       reveal(platformsRef, ".inf-reveal", 0.10);
       reveal(campaignTypesRef, ".inf-reveal", 0.08);
@@ -173,6 +175,7 @@ const MicroInfluencerMarketing = () => {
   ];
 
   const heroDescription = t(`${TK}.hero.description`);
+  const heroDescriptionWithTopCta = `${heroDescription} ${t(`${TK}.topCtaText`)}`;
 
   return (
     <div dir={dir} className={isRtl ? "font-cairo" : ""}>
@@ -194,123 +197,57 @@ const MicroInfluencerMarketing = () => {
         badgeVariant="pulse"
         title={t(`${TK}.hero.title`)}
         mainWord={t(`${TK}.hero.mainWord`)}
-        description={heroDescription}
+        description={heroDescriptionWithTopCta}
         dataNavColor="black"
       />
-
-      <div className="inf-section" style={{ paddingTop: "0px" }}>
-        <div className="inf-container">
-          <p className="inf-desc mb-0 inf-reveal" style={{ marginBottom: 0 }}>
-            <a href={CTA_HREF} className="text-[var(--secondary)] font-bold">
-              {t(`${TK}.topCtaText`)}
-            </a>
-          </p>
-        </div>
-      </div>
-
       {/* What is micro influencer marketing */}
-      <section ref={whatRef} className="inf-section">
-        <div className="inf-container">
-          <span className="inf-label">{t(`${TK}.whatIs.sectionLabel`)}</span>
-          <h2 className={`inf-heading ${fontHeading}`}>{t(`${TK}.whatIs.title`)}</h2>
-          <p className="inf-desc">{t(`${TK}.whatIs.description`)}</p>
-
-          <div className="max-w-3xl">
-            <p className="inf-desc mb-4" style={{ marginBottom: 16 }}>
-              {t(`${TK}.whatIs.prioritiesIntro`)}
-            </p>
-            <ul className="space-y-3 list-disc pl-5">
-              {whatIsPriorities.map((p, idx) => (
-                <li key={idx} className="inf-reveal" style={{ color: "var(--foreground)" }}>
-                  {p}
-                </li>
-              ))}
-            </ul>
-
-            <p className="mt-8 inf-desc mb-4" style={{ marginBottom: 16 }}>
-              {t(`${TK}.whatIs.resultsIntro`)}
-            </p>
-            <ul className="space-y-3 list-disc pl-5">
-              {whatIsResults.map((r, idx) => (
-                <li key={idx} className="inf-reveal" style={{ color: "var(--foreground)" }}>
-                  {r}
-                </li>
-              ))}
-            </ul>
-
-            <p className="mt-10 inf-reveal" style={{ marginBottom: 0 }}>
-              <a href={CTA_HREF} className="text-[var(--secondary)] font-bold">
-                {t(`${TK}.whatIs.ctaText`)}
-              </a>
-            </p>
-          </div>
-        </div>
-      </section>
+      <ServiceAudiencePainSection
+        ref={whatRef}
+        classPrefix="im"
+        dir={dir}
+        sectionLabel={t(`${TK}.whatIs.sectionLabel`)}
+        title={t(`${TK}.whatIs.title`)}
+        paragraphs={[
+          `${t(`${TK}.whatIs.prioritiesIntro`)} ${whatIsPriorities.join(" • ")}`,
+          `${t(`${TK}.whatIs.resultsIntro`)} ${whatIsResults.join(" • ")}`,
+          t(`${TK}.whatIs.ctaText`),
+        ]}
+      />
 
       {/* Strategy */}
       <InfCampaignProcess
         ref={strategyRef}
         label={t(`${TK}.strategy.sectionLabel`)}
         title={t(`${TK}.strategy.title`)}
-        description={t(`${TK}.strategy.description`)}
+        description={`${t(`${TK}.strategy.description`)} ${t(`${TK}.strategy.ctaText`)}`}
         steps={strategySteps}
       />
-
-      <div className="inf-section inf-section--alt" style={{ paddingTop: 0 }}>
-        <div className="inf-container">
-          <p className="inf-desc mb-0 inf-reveal">
-            <a href={CTA_HREF} className="text-[var(--secondary)] font-bold">
-              {t(`${TK}.strategy.ctaText`)}
-            </a>
-          </p>
-        </div>
-      </div>
 
       {/* Platforms */}
       <InfPlatforms
         ref={platformsRef}
         label={t(`${TK}.platforms.sectionLabel`)}
         title={t(`${TK}.platforms.title`)}
-        description={t(`${TK}.platforms.description`)}
+        description={`${t(`${TK}.platforms.description`)} ${t(`${TK}.platforms.ctaText`)}`}
         platforms={platforms}
       />
-
-      <div className="inf-section" style={{ paddingTop: 0 }}>
-        <div className="inf-container">
-          <p className="inf-desc mb-0 inf-reveal">
-            <a href={CTA_HREF} className="text-[var(--secondary)] font-bold">
-              {t(`${TK}.platforms.ctaText`)}
-            </a>
-          </p>
-        </div>
-      </div>
 
       {/* Campaign types */}
       <InfIconCardGrid
         ref={campaignTypesRef}
         label={t(`${TK}.campaignTypes.sectionLabel`)}
         title={t(`${TK}.campaignTypes.title`)}
-        description={t(`${TK}.campaignTypes.description`)}
+        description={`${t(`${TK}.campaignTypes.description`)} ${t(`${TK}.campaignTypes.ctaText`)}`}
         items={campaignTypes}
         columns={2}
       />
-
-      <div className="inf-section inf-section--alt" style={{ paddingTop: 0 }}>
-        <div className="inf-container">
-          <p className="inf-desc mb-0 inf-reveal">
-            <a href={CTA_HREF} className="text-[var(--secondary)] font-bold">
-              {t(`${TK}.campaignTypes.ctaText`)}
-            </a>
-          </p>
-        </div>
-      </div>
 
       {/* Comparison */}
       <InfComparisonTable
         ref={comparisonRef}
         label={t(`${TK}.comparison.sectionLabel`)}
         title={t(`${TK}.comparison.title`)}
-        description={t(`${TK}.comparison.description`)}
+        description={`${t(`${TK}.comparison.description`)} ${t(`${TK}.comparison.ctaText`)}`}
         rows={comparisonRows}
         headerFeature={t(`${TK}.comparison.headerFeature`)}
         headerInfluencer={t(`${TK}.comparison.headerInfluencer`)}
@@ -318,35 +255,15 @@ const MicroInfluencerMarketing = () => {
         footer={t(`${TK}.comparison.footer`)}
       />
 
-      <div className="inf-section" style={{ paddingTop: 0 }}>
-        <div className="inf-container">
-          <p className="inf-desc mb-0 inf-reveal">
-            <a href={CTA_HREF} className="text-[var(--secondary)] font-bold">
-              {t(`${TK}.comparison.ctaText`)}
-            </a>
-          </p>
-        </div>
-      </div>
-
       {/* Cost */}
       <InfIconCardGrid
         ref={costRef}
         label={t(`${TK}.cost.sectionLabel`)}
         title={t(`${TK}.cost.title`)}
-        description={t(`${TK}.cost.description`)}
+        description={`${t(`${TK}.cost.description`)} ${t(`${TK}.cost.ctaText`)}`}
         items={costItems}
         columns={2}
       />
-
-      <div className="inf-section inf-section--alt" style={{ paddingTop: 0 }}>
-        <div className="inf-container">
-          <p className="inf-desc mb-0 inf-reveal">
-            <a href={CTA_HREF} className="text-[var(--secondary)] font-bold">
-              {t(`${TK}.cost.ctaText`)}
-            </a>
-          </p>
-        </div>
-      </div>
 
       {/* Results (case study block style) */}
       <InfCaseStudyBlock
@@ -360,18 +277,8 @@ const MicroInfluencerMarketing = () => {
         strategyItems={toArray(t(`${TK}.results.strategyItems`, { returnObjects: true }))}
         outcomeTitle={t(`${TK}.results.outcomeTitle`)}
         outcomeItems={toArray(t(`${TK}.results.outcomeItems`, { returnObjects: true }))}
-        footer={t(`${TK}.results.footer`)}
+        footer={`${t(`${TK}.results.footer`)} ${t(`${TK}.results.ctaText`)}`}
       />
-
-      <div className="inf-section" style={{ paddingTop: 0 }}>
-        <div className="inf-container">
-          <p className="inf-desc mb-0 inf-reveal">
-            <a href={CTA_HREF} className="text-[var(--secondary)] font-bold">
-              {t(`${TK}.results.ctaText`)}
-            </a>
-          </p>
-        </div>
-      </div>
 
       {/* Market insights */}
       <InfIconCardGrid
@@ -387,19 +294,9 @@ const MicroInfluencerMarketing = () => {
         ref={nichesRef}
         label={t(`${TK}.marketInsights.popularNiches.sectionLabel`)}
         title={t(`${TK}.marketInsights.popularNiches.title`)}
-        description={t(`${TK}.marketInsights.popularNiches.description`)}
+        description={`${t(`${TK}.marketInsights.popularNiches.description`)} ${t(`${TK}.marketInsights.ctaText`)}`}
         industries={niches}
       />
-
-      <div className="inf-section inf-section--alt" style={{ paddingTop: 0 }}>
-        <div className="inf-container">
-          <p className="inf-desc mb-0 inf-reveal">
-            <a href={CTA_HREF} className="text-[var(--secondary)] font-bold">
-              {t(`${TK}.marketInsights.ctaText`)}
-            </a>
-          </p>
-        </div>
-      </div>
 
       {/* Why choose */}
       <InfWhyChooseUs
@@ -408,45 +305,39 @@ const MicroInfluencerMarketing = () => {
         title={t(`${TK}.whyChooseUs.title`)}
         description={t(`${TK}.whyChooseUs.description`)}
         reasons={whyReasons}
+        footerContent={
+          <>
+            <p className="inf-desc mb-0 inf-reveal">
+              {t(`${TK}.whyChooseUs.extra1.before`)}{" "}
+              <a href={t(`${TK}.whyChooseUs.extra1.href`)} className="text-[var(--secondary)] font-bold">
+                {t(`${TK}.whyChooseUs.extra1.linkText`)}
+              </a>{" "}
+              {t(`${TK}.whyChooseUs.extra1.after`)}
+            </p>
+            <p className="inf-desc inf-reveal" style={{ marginBottom: 10 }}>
+              {t(`${TK}.whyChooseUs.extra2.before`)}{" "}
+              <a href={t(`${TK}.whyChooseUs.extra2.href`)} className="text-[var(--secondary)] font-bold">
+                {t(`${TK}.whyChooseUs.extra2.linkText`)}
+              </a>{" "}
+              {t(`${TK}.whyChooseUs.extra2.after`)}
+            </p>
+
+            <p className="inf-reveal mt-10 mb-0">
+              <a href={CTA_HREF} className="text-[var(--secondary)] font-bold">
+                {t(`${TK}.whyChooseUs.ctaText`)}
+              </a>
+            </p>
+          </>
+        }
       />
 
-      <section className="inf-section" style={{ paddingTop: 0 }}>
-        <div className="inf-container">
-          <p className="inf-desc mb-0 inf-reveal">
-            {t(`${TK}.whyChooseUs.extra1.before`)}{" "}
-            <a href={t(`${TK}.whyChooseUs.extra1.href`)} className="text-[var(--secondary)] font-bold">
-              {t(`${TK}.whyChooseUs.extra1.linkText`)}
-            </a>{" "}
-            {t(`${TK}.whyChooseUs.extra1.after`)}
-          </p>
-          <p className="inf-desc inf-reveal" style={{ marginBottom: 10 }}>
-            {t(`${TK}.whyChooseUs.extra2.before`)}{" "}
-            <a href={t(`${TK}.whyChooseUs.extra2.href`)} className="text-[var(--secondary)] font-bold">
-              {t(`${TK}.whyChooseUs.extra2.linkText`)}
-            </a>{" "}
-            {t(`${TK}.whyChooseUs.extra2.after`)}
-          </p>
-
-          <p className="inf-reveal mt-10 mb-0">
-            <a href={CTA_HREF} className="text-[var(--secondary)] font-bold">
-              {t(`${TK}.whyChooseUs.ctaText`)}
-            </a>
-          </p>
-        </div>
-      </section>
-
       {/* FAQ */}
-      <FAQ items={faqItems} title={t(`${TK}.faq.title`)} />
-
-      <section className="inf-section" style={{ paddingTop: 8 }}>
-        <div className="inf-container">
-          <p className="inf-desc mb-0 inf-reveal">
-            <a href={CTA_HREF} className="text-[var(--secondary)] font-bold">
-              {t(`${TK}.faq.askTeamCta`)}
-            </a>
-          </p>
-        </div>
-      </section>
+      <FAQ
+        items={faqItems}
+        title={t(`${TK}.faq.title`)}
+        ctaText={t(`${TK}.faq.askTeamCta`)}
+        ctaHref={CTA_HREF}
+      />
 
       {/* Final CTA */}
       <ServiceCTASection
@@ -466,111 +357,3 @@ const MicroInfluencerMarketing = () => {
 };
 
 export default MicroInfluencerMarketing;
- 
-/*
-import React from "react";
-import { useTranslation } from "react-i18next";
-import { HiChartBar, HiDocumentReport, HiGlobe, HiShieldCheck, HiTrendingUp, HiUserGroup, HiBadgeCheck } from "react-icons/hi";
-
-import InfluencerSubPage from "./InfluencerSubPage";
-import { getInfluencerSubServiceRelatedPages, INFLUENCER_MARKETING_BASE as BASE } from "./influencerMarketingSubServices";
-
-const TK = "serviceSections.influencerMarketing.subPages.microInfluencer";
-
-const MicroInfluencerMarketing = () => {
-  const { t } = useTranslation();
-
-  const featureIcons = [HiUserGroup, HiTrendingUp, HiChartBar, HiDocumentReport, HiShieldCheck];
-  const trustIcons = [HiBadgeCheck, HiGlobe, HiUserGroup, HiChartBar];
-
-  const audienceParagraphs = t(`${TK}.audience.paragraphs`, { returnObjects: true }) || [];
-  const outcomesItems = t(`${TK}.outcomes.items`, { returnObjects: true }) || [];
-  const processStepsRaw = t(`${TK}.process.steps`, { returnObjects: true }) || [];
-  const featuresItemsRaw = t(`${TK}.features.items`, { returnObjects: true }) || [];
-  const whyUsItemsRaw = t(`${TK}.whyUs.items`, { returnObjects: true }) || [];
-  const faqItems = t(`${TK}.faq.items`, { returnObjects: true }) || [];
-
-  const pageData = {
-    seo: {
-      title: t(`${TK}.seo.title`, { defaultValue: "" }),
-      description: t(`${TK}.seo.description`, { defaultValue: "" }),
-      keywords: t(`${TK}.seo.keywords`, { defaultValue: "" }),
-      canonicalUrl: `${BASE}/micro-influencer-marketing-dubai`,
-      serviceType: t(`${TK}.seo.serviceType`, { defaultValue: "" }),
-      structuredData: {
-        "@context": "https://schema.org",
-        "@type": "Service",
-        "@id": `https://tikit.ae${BASE}/micro-influencer-marketing-dubai#service`,
-        name: t(`${TK}.badge`, { defaultValue: "" }),
-        description: t(`${TK}.seo.description`, { defaultValue: "" }),
-        provider: { "@type": "Organization", name: "Tikit Agency", url: "https://tikit.ae" },
-        areaServed: { "@type": "Country", name: "United Arab Emirates" },
-      },
-      breadcrumbs: [
-        { name: t("nav.home"), url: "/" },
-        { name: t("nav.services"), url: "/services" },
-        { name: t("serviceSections.influencerMarketing.badge"), url: BASE },
-        { name: t(`${TK}.badge`, { defaultValue: "" }), url: `${BASE}/micro-influencer-marketing-dubai` },
-      ],
-    },
-    badge: t(`${TK}.badge`, { defaultValue: "" }),
-    hero: {
-      title: t(`${TK}.hero.title`, { defaultValue: "" }),
-      mainWord: t(`${TK}.hero.mainWord`, { defaultValue: "" }),
-      description: t(`${TK}.hero.description`, { defaultValue: "" }),
-    },
-    definition: {
-      title: t(`${TK}.audience.title`, { defaultValue: "" }),
-      paragraph: Array.isArray(audienceParagraphs) ? audienceParagraphs.join(" ") : "",
-      benefitsTitle: t(`${TK}.outcomes.sectionLabel`, { defaultValue: "" }),
-      benefits: Array.isArray(outcomesItems)
-        ? outcomesItems.map((item) => `${item?.value ?? ""}${item?.label ? ` - ${item.label}` : ""}`.trim())
-        : [],
-    },
-    features: {
-      title: t(`${TK}.features.title`, { defaultValue: "" }),
-      subtitle: t(`${TK}.features.sectionLabel`, { defaultValue: "" }),
-      items: Array.isArray(featuresItemsRaw)
-        ? featuresItemsRaw.map((item, i) => ({
-            title: item?.title ?? "",
-            description: item?.text ?? "",
-            icon: featureIcons[i],
-          }))
-        : [],
-    },
-    process: {
-      title: t(`${TK}.process.title`, { defaultValue: "" }),
-      subtitle: t(`${TK}.process.description`, { defaultValue: "" }),
-      steps: Array.isArray(processStepsRaw)
-        ? processStepsRaw.map((s) => ({
-            title: s?.title ?? "",
-            description: s?.text ?? "",
-          }))
-        : [],
-    },
-    trust: {
-      title: t(`${TK}.whyUs.title`, { defaultValue: "" }),
-      subtitle: t(`${TK}.whyUs.sectionLabel`, { defaultValue: "" }),
-      cards: Array.isArray(whyUsItemsRaw)
-        ? whyUsItemsRaw.map((card, i) => ({
-            title: card?.title ?? "",
-            description: card?.text ?? "",
-            icon: trustIcons[i] ?? trustIcons[0],
-          }))
-        : [],
-      paragraph: `${t(`${TK}.localAuthority.description`, { defaultValue: "" })} ${t(`${TK}.localAuthority.footer`, { defaultValue: "" })}`.trim(),
-    },
-    relatedPages: getInfluencerSubServiceRelatedPages(`${BASE}/micro-influencer-marketing-dubai`, t),
-    faq: { title: t(`${TK}.faq.title`, { defaultValue: "" }), items: faqItems },
-    cta: {
-      title: t(`${TK}.cta.title`, { defaultValue: "" }),
-      description: t(`${TK}.cta.description`, { defaultValue: "" }),
-      button: t(`${TK}.cta.primaryButton`, { defaultValue: t(`${TK}.cta.sectionLabel`, { defaultValue: "Book Free Consultation" }) }),
-    },
-  };
-
-  return <InfluencerSubPage pageData={pageData} />;
-};
-
-export default MicroInfluencerMarketing;
-*/

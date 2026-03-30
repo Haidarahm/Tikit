@@ -5,7 +5,7 @@ import { useI18nLanguage } from "../store/I18nLanguageContext";
  * FAQ Component (UI only).
  * Structured data is centralized in SEOHead to avoid duplicates.
  */
-const FAQ = ({ items = [], title, className = "" }) => {
+const FAQ = ({ items = [], title, className = "", ctaText, ctaHref }) => {
   const { isRtl } = useI18nLanguage();
   const [openIndex, setOpenIndex] = useState(null);
 
@@ -62,12 +62,21 @@ const FAQ = ({ items = [], title, className = "" }) => {
             </div>
           ))}
         </div>
+
+        {ctaText && ctaHref ? (
+          <div className="max-w-3xl mx-auto mt-10 text-center">
+            <a
+              href={ctaHref}
+              className="text-[var(--secondary)] font-bold"
+            >
+              {ctaText}
+            </a>
+          </div>
+        ) : null}
       </div>
     </section>
   );
 };
-
-export { getHomeFAQItems, getServicesFAQItems } from "../utils/faqUtils.js";
 
 export default FAQ;
 

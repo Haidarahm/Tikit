@@ -1,8 +1,7 @@
 import React from "react";
-import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import SEOHead from "../../components/SEOHead";
-import FAQ, { getServicesFAQItems } from "../../components/FAQ";
+import FAQ from "../../components/FAQ";
 
 /**
  * AI-Optimized Landing Page: Influencer Marketing Agency Dubai
@@ -13,7 +12,6 @@ import FAQ, { getServicesFAQItems } from "../../components/FAQ";
  * - "Dubai influencer marketing"
  */
 const InfluencerMarketingDubai = () => {
-  const { t } = useTranslation();
   const navigate = useNavigate();
 
   // Page-specific structured data

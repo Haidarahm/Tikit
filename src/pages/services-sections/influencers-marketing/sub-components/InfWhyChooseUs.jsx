@@ -1,7 +1,7 @@
 import { forwardRef } from "react";
 import { useFontClass } from "../../../../hooks/useFontClass";
 
-const InfWhyChooseUs = forwardRef(({ label, title, description, reasons }, ref) => {
+const InfWhyChooseUs = forwardRef(({ label, title, description, reasons, footerContent }, ref) => {
   const { fontHeading } = useFontClass();
 
   return (
@@ -20,6 +20,12 @@ const InfWhyChooseUs = forwardRef(({ label, title, description, reasons }, ref) 
             </div>
           ))}
         </div>
+
+        {footerContent ? (
+          <div className="mt-12">
+            {footerContent}
+          </div>
+        ) : null}
       </div>
     </section>
   );
