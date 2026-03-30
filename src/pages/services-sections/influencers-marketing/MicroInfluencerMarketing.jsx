@@ -20,6 +20,7 @@ import influencerHero from "../../../assets/services/Influencer-Marketing.webp";
 import InfCampaignProcess from "./sub-components/InfCampaignProcess";
 import InfPlatforms from "./sub-components/InfPlatforms";
 import InfIconCardGrid from "./sub-components/InfIconCardGrid";
+import InfWhatIsSection from "./sub-components/InfWhatIsSection";
 import InfComparisonTable from "./sub-components/InfComparisonTable";
 import InfIndustries from "./sub-components/InfIndustries";
 import InfWhyChooseUs from "./sub-components/InfWhyChooseUs";
@@ -31,6 +32,11 @@ gsap.registerPlugin(ScrollTrigger);
 
 const TK = "serviceSections.influencerMarketing.microInfluencerMarketing";
 const toArray = (val) => (Array.isArray(val) ? val : []);
+const splitTextToCards = (text) =>
+  (typeof text === "string" ? text : "")
+    .split(/(?<=[.!?])\s+/)
+    .map((item) => item.trim())
+    .filter(Boolean);
 const CTA_HREF = "/contact-us";
 
 const MicroInfluencerMarketing = () => {
@@ -138,7 +144,7 @@ const MicroInfluencerMarketing = () => {
         );
       };
 
-      reveal(whatRef, ".im-audience-reveal", 0.06);
+      reveal(whatRef, ".inf-reveal", 0.06);
       reveal(strategyRef, ".inf-reveal", 0.08);
       reveal(platformsRef, ".inf-reveal", 0.10);
       reveal(campaignTypesRef, ".inf-reveal", 0.08);
@@ -175,7 +181,12 @@ const MicroInfluencerMarketing = () => {
   ];
 
   const heroDescription = t(`${TK}.hero.description`);
-  const heroDescriptionWithTopCta = `${heroDescription} ${t(`${TK}.topCtaText`)}`;
+  const topCtaText = t(`${TK}.topCtaText`);
+  const heroOverviewCards = [...splitTextToCards(heroDescription), topCtaText];
+  const heroShortDescription = t(`${TK}.hero.shortDescription`, {
+    defaultValue:
+      "Build trust with highly engaged creators and run measurable campaigns tailored to your audience in Dubai.",
+  });
 
   return (
     <div dir={dir} className={isRtl ? "font-cairo" : ""}>
@@ -195,23 +206,33 @@ const MicroInfluencerMarketing = () => {
         imageAlt={t(`${TK}.seo.serviceType`)}
         badge={t(`${TK}.badge`)}
         badgeVariant="pulse"
-        title={t(`${TK}.hero.title`)}
-        mainWord={t(`${TK}.hero.mainWord`)}
-        description={heroDescriptionWithTopCta}
+        title={t(`${TK}.hero.title`, { defaultValue: "Micro Influencer Marketing Services" })}
+        mainWord={t(`${TK}.hero.mainWord`, { defaultValue: "in Dubai" })}
+        description={heroShortDescription}
         dataNavColor="black"
       />
-      {/* What is micro influencer marketing */}
+
       <ServiceAudiencePainSection
-        ref={whatRef}
         classPrefix="im"
         dir={dir}
-        sectionLabel={t(`${TK}.whatIs.sectionLabel`)}
+        sectionLabel={t(`${TK}.hero.longSectionLabel`, { defaultValue: "Overview" })}
+        title={t(`${TK}.hero.longSectionTitle`, {
+          defaultValue: "Why Micro Influencer Marketing Works in Dubai",
+        })}
+        paragraphs={heroOverviewCards}
+      />
+      {/* What is micro influencer marketing */}
+      <InfWhatIsSection
+        ref={whatRef}
+        dir={dir}
+        label={t(`${TK}.whatIs.sectionLabel`)}
         title={t(`${TK}.whatIs.title`)}
-        paragraphs={[
-          `${t(`${TK}.whatIs.prioritiesIntro`)} ${whatIsPriorities.join(" • ")}`,
-          `${t(`${TK}.whatIs.resultsIntro`)} ${whatIsResults.join(" • ")}`,
-          t(`${TK}.whatIs.ctaText`),
-        ]}
+        description={t(`${TK}.whatIs.description`)}
+        prioritiesIntro={t(`${TK}.whatIs.prioritiesIntro`)}
+        priorities={whatIsPriorities}
+        resultsIntro={t(`${TK}.whatIs.resultsIntro`)}
+        results={whatIsResults}
+        ctaText={t(`${TK}.whatIs.ctaText`)}
       />
 
       {/* Strategy */}
