@@ -193,8 +193,8 @@ const DigitalMarketing = () => {
     <>
       <SEOHead
         title={t("serviceSections.digitalMarketing.seo.title")}
-        description={t("digitalMarketing.seo.description")}
-        serviceType={t("digitalMarketing.seo.serviceType")}
+        description={t("serviceSections.digitalMarketing.seo.description")}
+        serviceType={t("serviceSections.digitalMarketing.seo.serviceType")}
         breadcrumbs={breadcrumbs}
         faqItems={faqItems}
       />
