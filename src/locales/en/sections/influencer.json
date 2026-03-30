@@ -982,6 +982,29 @@
         ],
         "quote": "\"Finally, an agency that delivers measurable ROI. No fluff, just growth.\" — Retail Brand, Dubai"
       },
+      "marketExpertise": {
+        "sectionLabel": "Why Our Dubai Market Expertise",
+        "title": "Why Our Dubai Market Expertise Makes Us a Trusted Digital Marketing Agency in Dubai UAE",
+        "items": [
+          {
+            "title": "Deep Understanding of Dubai’s Competitive Landscape",
+            "text": "We know what works. We know what wastes money."
+          },
+          {
+            "title": "Multilingual Campaign Capabilities (English & Arabic)",
+            "text": "Reach your audience in the language they prefer. Increase engagement, trust, and conversions."
+          },
+          {
+            "title": "Strong Network Across UAE Industries",
+            "text": "We have connections in real estate, retail, tech, and tourism to accelerate results and opportunities."
+          }
+        ],
+        "microCta": {
+          "before": "Work with a ",
+          "highlight": "digital marketing agency in Dubai UAE",
+          "after": " that knows your market inside out."
+        }
+      },
       "whyUs": {
         "sectionLabel": "Why Tikit",
         "title": "What Makes Us the Best Digital Marketing Agency in Dubai",
@@ -1002,7 +1025,12 @@
             "title": "Direct Communication",
             "text": "Talk directly to your dedicated account manager — no middlemen, no delays."
           }
-        ]
+        ],
+        "microCta": {
+          "before": "Stop settling for “maybe it works.” Partner with the ",
+          "highlight": "best digital marketing agency in Dubai",
+          "after": " and start seeing real, measurable growth today."
+        }
       },
       "subServices": {
         "learnMore": "Learn more",
@@ -1043,6 +1071,24 @@
             "answer": "Absolutely. We specialise in localising campaigns for Dubai and UAE audiences, including multilingual English and Arabic campaigns."
           }
         ]
+      },
+      "finalCta": {
+        "title": "Ready to Work with a Leading Digital Marketing Agency in Dubai?",
+        "cards": [
+          {
+            "title": "Book a Free Strategy Consultation",
+            "description": "Talk to our experts. Get a roadmap to scale in Dubai and UAE."
+          },
+          {
+            "title": "Get a Custom Digital Marketing Audit",
+            "description": "See what works, what doesn’t, and how to optimise for growth immediately."
+          },
+          {
+            "title": "Contact Us via Call, WhatsApp, or Quick Form",
+            "description": "Don’t waste another dirham. Start growing today."
+          }
+        ],
+        "finalLine": "Scale smarter, faster, and profitably with the best digital marketing agency in Dubai."
       },
       "cta": {
         "sectionLabel": "Ready to Grow?",

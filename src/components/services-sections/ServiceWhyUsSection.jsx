@@ -9,9 +9,10 @@ import { forwardRef } from "react";
  * @param {React.ReactNode[]} props.icons
  * @param {string} [props.dir]
  * @param {string} [props.classPrefix="im"]
+ * @param {{ before: string, highlight: string, after: string }} [props.microCta]
  */
 const ServiceWhyUsSection = forwardRef((props, ref) => {
-  const { sectionLabel, title, items = [], icons = [], dir, classPrefix = "im" } = props;
+  const { sectionLabel, title, items = [], icons = [], dir, classPrefix = "im", microCta } = props;
   const p = classPrefix;
 
   return (
@@ -31,6 +32,13 @@ const ServiceWhyUsSection = forwardRef((props, ref) => {
               </div>
             ))}
         </div>
+        {microCta?.before || microCta?.highlight || microCta?.after ? (
+          <p className={`${p}-whyus-footer`}>
+            {microCta?.before ? microCta.before : ""}
+            {microCta?.highlight ? <strong>{microCta.highlight}</strong> : ""}
+            {microCta?.after ? microCta.after : ""}
+          </p>
+        ) : null}
       </div>
     </section>
   );

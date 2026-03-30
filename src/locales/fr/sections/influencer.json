@@ -928,26 +928,130 @@
         }
       },
       "process": {
-        "title": "Notre Processus",
-        "description": "Une approche systématique du marketing digital pour des résultats mesurables et constants",
-        "steps": {
-          "audit": {
-            "title": "Audit Digital",
-            "description": "Analyse complète de votre présence digitale, du paysage concurrentiel et des opportunités de marché."
+        "sectionLabel": "Notre processus",
+        "title": "Comment Tikit développe réellement votre activité à Dubaï",
+        "description": "Un système simple et éprouvé en 4 étapes — chaque étape axée sur le profit, l’efficacité et des résultats mesurables.",
+        "steps": [
+          {
+            "n": "01",
+            "title": "Analyse approfondie de l’activité et du marché",
+            "text": "Nous étudions votre activité, vos concurrents et le marché des EAU pour identifier les opportunités, les menaces et le potentiel de croissance caché."
           },
-          "strategy": {
-            "title": "Développement Stratégique",
-            "description": "Feuille de route personnalisée avec KPIs clairs, sélection de canaux et allocation budgétaire."
+          {
+            "n": "02",
+            "title": "Développement d’une stratégie sur-mesure",
+            "text": "Pas de modèles. Pas de solutions « prêtes à copier-coller ». Chaque campagne est construite pour vos objectifs, votre audience et vos cibles de revenus."
           },
-          "execution": {
-            "title": "Exécution des Campagnes",
-            "description": "Notre équipe lance et gère les campagnes avec suivi continu et tests A/B."
+          {
+            "n": "03",
+            "title": "Exécution de campagnes multi-canaux",
+            "text": "SEO, PPC, réseaux sociaux et optimisation du site — chaque canal soutient les autres pour maximiser le ROI."
           },
-          "optimization": {
-            "title": "Optimisation & Scaling",
-            "description": "Analyse des performances, affinement des stratégies et expansion de ce qui fonctionne."
+          {
+            "n": "04",
+            "title": "Optimisation guidée par les données & montée en puissance",
+            "text": "Nous suivons chaque clic, lead et conversion. Nous testons, ajustons et étendons les campagnes qui fonctionnent réellement."
           }
-        }
+        ]
+      },
+      "problems": {
+        "sectionLabel": "Le problème",
+        "title": "Pourquoi la plupart des entreprises ont du mal à se développer à Dubaï ?",
+        "description": "Dubaï est concurrentiel. La mauvaise agence peut vous coûter des dizaines de milliers… sans résultat à montrer.",
+        "items": [
+          {
+            "title": "Pas de stratégie claire qui génère des profits",
+            "text": "Beaucoup d’agences publient, lancent des pubs et espèrent l’engagement. Ce n’est pas du marketing. C’est un pari sur votre budget. Le trafic peut augmenter, mais vos revenus restent à plat."
+          },
+          {
+            "title": "Budget gaspillé sur des pubs qui ne convertissent pas",
+            "text": "Des campagnes PPC mal ciblées, des annonces sociales ou des campagnes Google disparaissent vite. Vous pouvez obtenir 10 000 clics le mois… et zéro vente."
+          },
+          {
+            "title": "Mauvais suivi & rapports incompréhensibles",
+            "text": "Certaines agences fournissent des rapports pleins de jargon sans action concrète. Nous proposons des dashboards en temps réel et un reporting transparent pour savoir ce qui fonctionne."
+          },
+          {
+            "title": "Manque de connaissance du marché aux EAU",
+            "text": "Dubaï n’est pas comme les autres marchés. La langue, la culture et les habitudes de dépense comptent aussi. Les campagnes génériques échouent — seule l’expertise locale apporte des résultats."
+          }
+        ]
+      },
+      "benefits": {
+        "sectionLabel": "Ce que vous obtenez",
+        "title": "Des résultats mesurables et fiables",
+        "description": "Nous ne faisons pas que lancer des campagnes. Nous délivrons des résultats basés sur des données réelles.",
+        "items": [
+          {
+            "title": "Campagnes axées sur le ROI sur tous les canaux digitaux",
+            "text": "Chaque campagne est conçue pour gagner plus d’argent que ce que vous dépensez. Pas de clics gaspillés. Pas de suppositions. Un marketing axé sur le profit."
+          },
+          {
+            "title": "Reporting transparent & dashboards de performance",
+            "text": "Suivez vos campagnes en temps réel. Voyez exactement ce qui marche. Connaissez votre ROI jusqu’au dernier dirham."
+          },
+          {
+            "title": "Exécution plus rapide sans compromis sur la qualité",
+            "text": "Nous avançons vite. Nous lançons rapidement. Nous devançons les concurrents — mais nous ne sacrifions jamais la qualité."
+          },
+          {
+            "title": "Expertise des marchés locaux et internationaux",
+            "text": "Nous travaillons avec des entreprises basées à Dubaï et des marques internationales entrant sur le marché des EAU. Nous connaissons le marché, la culture et les nuances linguistiques (anglais et arabe)."
+          }
+        ]
+      },
+      "caseStudy": {
+        "sectionLabel": "Résultats réels",
+        "title": "Les marques qui ont choisi la meilleure agence à Dubaï",
+        "tag": "Mini étude de cas · Marque e-commerce",
+        "caseTitle": "Forte dépense publicitaire, zéro conversions — transformée en 90 jours",
+        "stats": [
+          {
+            "value": "3x",
+            "label": "Croissance des ventes"
+          },
+          {
+            "value": "90",
+            "label": "Jours avant résultats"
+          },
+          {
+            "value": "Month 1",
+            "label": "ROI positif au premier mois"
+          }
+        ],
+        "tags": [
+          "SEO",
+          "PPC",
+          "Réseaux sociaux",
+          "Optimisation des pages d’atterrissage",
+          "Messages localisés"
+        ],
+        "quote": "\"Enfin, une agence qui délivre un ROI mesurable. Pas de blabla, que de la croissance.\" — Marque retail, Dubaï"
+      },
+      "faq": {
+        "title": "FAQ sur l’embauche d’une agence de marketing digital aux EAU",
+        "items": [
+          {
+            "question": "Combien coûte une agence de marketing digital à Dubaï ?",
+            "answer": "Les tarifs dépendent de vos objectifs. Nous proposons des plans clairs et transparents adaptés à votre entreprise, sans frais cachés."
+          },
+          {
+            "question": "Au bout de combien de temps verrai-je des résultats ?",
+            "answer": "Certaines campagnes apportent des résultats rapides en quelques semaines. Le SEO et le branding progressent régulièrement sur plusieurs mois. Nous fixons des délais réalistes selon vos objectifs."
+          },
+          {
+            "question": "Proposez-vous des solutions complètes en publicité et marketing digital ?",
+            "answer": "Oui. SEO, PPC, réseaux sociaux, optimisation du site web et content marketing — tout est géré sous un même toit."
+          },
+          {
+            "question": "Avez-vous besoin de contrats à long terme ?",
+            "answer": "Non. Nous proposons des forfaits flexibles basés sur les résultats et les objectifs de croissance. Pas d’engagement long."
+          },
+          {
+            "question": "Pouvez-vous travailler avec des marques internationales entrant sur le marché des EAU ?",
+            "answer": "Absolument. Nous nous spécialisons dans la localisation des campagnes pour les audiences de Dubaï et des EAU, y compris des campagnes multilingues en anglais et en arabe."
+          }
+        ]
       },
       "stats": {
         "campaigns": {
@@ -980,6 +1084,56 @@
         "card4Desc": "Chaque décision appuyée par les données et les analyses.",
         "paragraph": "Avec des années d'expérience sur le marché des EAU, Tikit Agency combine expertise locale et meilleures pratiques mondiales."
       },
+      "whyUs": {
+        "sectionLabel": "Pourquoi Tikit",
+        "title": "Ce qui fait de nous la meilleure agence de marketing digital à Dubaï",
+        "items": [
+          {
+            "title": "Pas de plans génériques",
+            "text": "Chaque campagne est conçue spécifiquement pour votre business, vos objectifs et votre audience—donc vous obtenez des résultats, pas des modèles."
+          },
+          {
+            "title": "Tarification transparente",
+            "text": "Aucun frais caché. Aucune mauvaise surprise. Une tarification claire et en amont pour que vous puissiez vous concentrer sur la croissance."
+          },
+          {
+            "title": "Décisions guidées par les données",
+            "text": "Chaque action est soutenue par des données réelles, des analytics et des insights de performance. Nous testons, optimisons et développons ce qui fonctionne."
+          },
+          {
+            "title": "Communication directe",
+            "text": "Parlez directement à votre responsable dédié—sans intermédiaires ni retards."
+          }
+        ],
+        "microCta": {
+          "before": "Arrêtez de vous contenter de “peut-être que ça marche”. Faites équipe avec la ",
+          "highlight": "meilleure agence de marketing digital à Dubaï",
+          "after": " et commencez dès aujourd’hui à voir une croissance réelle et mesurable."
+        }
+      },
+      "marketExpertise": {
+        "sectionLabel": "Expertise du Marché à Dubaï",
+        "title": "Pourquoi notre expertise du marché de Dubaï fait de nous une agence de marketing digital de confiance à Dubaï (EAU)",
+        "items": [
+          {
+            "title": "Compréhension approfondie du paysage concurrentiel à Dubaï",
+            "text": "Nous savons ce qui fonctionne. Nous savons ce qui gaspille votre budget."
+          },
+          {
+            "title": "Capacités de campagnes multilingues (anglais & arabe)",
+            "text": "Touchez votre audience dans la langue qu’elle préfère. Améliorez l’engagement, la confiance et les conversions."
+          },
+          {
+            "title": "Réseau solide à travers les secteurs des EAU",
+            "text": "Nous avons des connexions dans l’immobilier, le retail, la tech et le tourisme pour accélérer les résultats et les opportunités."
+          }
+        ],
+        "microCta": {
+          "before": "Travaillez avec une ",
+          "highlight": "agence de marketing digital à Dubaï aux EAU",
+          "after": " qui connaît votre marché de l’intérieur."
+        }
+      },
       "faqTitle": "FAQ Marketing Digital",
       "faqItems": [
         {
@@ -1003,6 +1157,24 @@
           "answer": "Oui, nous servons des clients aux EAU, en Arabie Saoudite et dans le Golfe."
         }
       ],
+      "finalCta": {
+        "title": "Prêt à travailler avec une agence de marketing digital de premier plan à Dubaï ?",
+        "cards": [
+          {
+            "title": "Réserver une consultation stratégique gratuite",
+            "description": "Parlez à nos experts. Obtenez une feuille de route pour accélérer à Dubaï et aux EAU."
+          },
+          {
+            "title": "Obtenir un audit digital personnalisé",
+            "description": "Voyez ce qui fonctionne, ce qui ne fonctionne pas, et comment optimiser votre croissance immédiatement."
+          },
+          {
+            "title": "Contactez-nous par appel, WhatsApp ou formulaire rapide",
+            "description": "Ne perdez plus un dirham. Démarrez votre croissance dès aujourd’hui."
+          }
+        ],
+        "finalLine": "Accélérez votre croissance, plus vite et plus rentable, avec la meilleure agence de marketing digital à Dubaï."
+      },
       "cta": {
         "title": "Prêt à Développer Votre Présence Digitale ?",
         "description": "Créons une stratégie marketing digital data-driven qui génère des résultats mesurables.",

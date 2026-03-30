@@ -422,6 +422,11 @@
   color: color-mix(in srgb, var(--foreground) 60%, transparent);
 }
 
+.im-whyus-footer {
+  @apply mt-8 text-sm leading-relaxed text-center;
+  color: color-mix(in srgb, var(--foreground) 75%, transparent);
+}
+
 /* ─── Local Authority Section ───────────────────────────────── */
 .im-local-authority__head {
   @apply mb-10;
@@ -522,6 +527,46 @@
   background: color-mix(in srgb, var(--secondary) 10%, transparent);
   border-color: var(--secondary);
   transform: translateY(-2px);
+}
+
+/* ─── Multi CTA Section ─────────────────────────────────────── */
+.im-multi-cta {
+  @apply py-20 px-6 md:px-10 text-center;
+  background: var(--background);
+}
+
+.im-multi-cta__inner {
+  @apply max-w-5xl mx-auto;
+}
+
+.im-multi-cta__title {
+  @apply text-3xl md:text-4xl font-bold mb-10;
+  color: var(--foreground);
+}
+
+.im-multi-cta__grid {
+  @apply grid grid-cols-1 md:grid-cols-3 gap-6;
+}
+
+.im-multi-cta__card {
+  @apply rounded-2xl p-7 border;
+  border-color: color-mix(in srgb, var(--secondary) 18%, transparent);
+  background: color-mix(in srgb, var(--secondary) 6%, var(--background) 94%);
+}
+
+.im-multi-cta__card-title {
+  @apply text-base font-bold mb-3;
+  color: var(--foreground);
+}
+
+.im-multi-cta__card-desc {
+  @apply text-sm leading-relaxed;
+  color: color-mix(in srgb, var(--foreground) 65%, transparent);
+}
+
+.im-multi-cta__final {
+  @apply mt-10 text-base leading-relaxed font-medium;
+  color: color-mix(in srgb, var(--foreground) 85%, transparent);
 }
 
 /* ─── Sub-Services Grid ─────────────────────────────────────── */

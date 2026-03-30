@@ -14,3 +14,4 @@ export { default as ServiceWhyUsSection } from "./ServiceWhyUsSection";
 export { default as ServiceLocalAuthoritySection } from "./ServiceLocalAuthoritySection";
 export { default as ServiceSubServicesSection } from "./ServiceSubServicesSection";
 export { default as ServiceCTASection } from "./ServiceCTASection";
+export { default as ServiceMultiCTASection } from "./ServiceMultiCTASection";

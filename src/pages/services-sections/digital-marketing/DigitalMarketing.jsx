@@ -34,7 +34,7 @@ import {
   ServiceCaseStudySection,
   ServiceWhyUsSection,
   ServiceSubServicesSection,
-  ServiceCTASection,
+  ServiceMultiCTASection,
 } from "../../../components/services-sections";
 
 import "../../../components/services-sections/ServiceSections.css";
@@ -44,6 +44,7 @@ gsap.registerPlugin(ScrollTrigger);
 const problemIcons = [<FiTarget key="1" />, <FiDollarSign key="2" />, <FiBarChart2 key="3" />, <FiGlobe key="4" />];
 const benefitIcons = [<FiTrendingUp key="1" />, <FiBarChart2 key="2" />, <FiZap key="3" />, <FiGlobe key="4" />];
 const whyUsIcons = [<FiLayers key="1" />, <FiShield key="2" />, <FiSearch key="3" />, <FiMessageSquare key="4" />];
+const marketExpertiseIcons = [<FiGlobe key="me1" />, <FiMessageSquare key="me2" />, <FiUsers key="me3" />];
 const subServiceIcons = [<FiSearch key="1" />, <FiTrendingUp key="2" />, <FiActivity key="3" />];
 
 const subServiceHrefs = [
@@ -82,6 +83,7 @@ const DigitalMarketing = () => {
   const stepsRef = useRef(null);
   const benefitsRef = useRef(null);
   const caseRef = useRef(null);
+  const marketExpertiseRef = useRef(null);
   const whyRef = useRef(null);
   const ctaRef = useRef(null);
   const subServicesRef = useRef(null);
@@ -92,6 +94,7 @@ const DigitalMarketing = () => {
   const steps = toArray(t("serviceSections.digitalMarketing.process.steps", { returnObjects: true }));
   const benefits = toArray(t("serviceSections.digitalMarketing.benefits.items", { returnObjects: true }));
   const whyUsItems = toArray(t("serviceSections.digitalMarketing.whyUs.items", { returnObjects: true }));
+  const marketExpertiseItems = toArray(t("serviceSections.digitalMarketing.marketExpertise.items", { returnObjects: true }));
   const subServices = [
     {
       title: t("serviceSections.digitalMarketing.seoServices.badge", { defaultValue: "SEO Services" }),
@@ -111,6 +114,19 @@ const DigitalMarketing = () => {
   const caseStatsRaw = toArray(t("serviceSections.digitalMarketing.caseStudy.stats", { returnObjects: true }));
   const caseTags = toArray(t("serviceSections.digitalMarketing.caseStudy.tags", { returnObjects: true }));
   const faqItems = toArray(t("serviceSections.digitalMarketing.faq.items", { returnObjects: true }));
+  const finalCtaCards = toArray(t("serviceSections.digitalMarketing.finalCta.cards", { returnObjects: true }));
+
+  const marketExpertiseMicroCta = {
+    before: t("serviceSections.digitalMarketing.marketExpertise.microCta.before"),
+    highlight: t("serviceSections.digitalMarketing.marketExpertise.microCta.highlight"),
+    after: t("serviceSections.digitalMarketing.marketExpertise.microCta.after"),
+  };
+
+  const whyUsMicroCta = {
+    before: t("serviceSections.digitalMarketing.whyUs.microCta.before"),
+    highlight: t("serviceSections.digitalMarketing.whyUs.microCta.highlight"),
+    after: t("serviceSections.digitalMarketing.whyUs.microCta.after"),
+  };
 
   const caseStats = caseStatsRaw.map((stat, i) => ({
     ...stat,
@@ -137,6 +153,7 @@ const DigitalMarketing = () => {
       revealChildren(problemsRef, ".im-problem-card", {}, 0.12);
       revealChildren(stepsRef, ".im-step-card", {}, 0.1);
       revealChildren(benefitsRef, ".im-benefit-item", {}, 0.11);
+      revealChildren(marketExpertiseRef, ".im-whyus-card", {}, 0.1);
       revealChildren(whyRef, ".im-whyus-card", {}, 0.1);
       revealChildren(subServicesRef, ".im-subservice-card", {}, 0.08);
 
@@ -253,11 +270,22 @@ const DigitalMarketing = () => {
       />
 
       <ServiceWhyUsSection
+        ref={marketExpertiseRef}
+        sectionLabel={t("serviceSections.digitalMarketing.marketExpertise.sectionLabel")}
+        title={t("serviceSections.digitalMarketing.marketExpertise.title")}
+        items={marketExpertiseItems}
+        icons={marketExpertiseIcons}
+        microCta={marketExpertiseMicroCta}
+        dir={dir}
+      />
+
+      <ServiceWhyUsSection
         ref={whyRef}
         sectionLabel={t("serviceSections.digitalMarketing.whyUs.sectionLabel")}
         title={t("serviceSections.digitalMarketing.whyUs.title")}
         items={whyUsItems}
         icons={whyUsIcons}
+        microCta={whyUsMicroCta}
         dir={dir}
       />
 
@@ -278,13 +306,11 @@ const DigitalMarketing = () => {
         title={t("serviceSections.digitalMarketing.faq.title")}
       />
 
-      <ServiceCTASection
+      <ServiceMultiCTASection
         ref={ctaRef}
-        sectionLabel={t("serviceSections.digitalMarketing.cta.sectionLabel")}
-        title={t("serviceSections.digitalMarketing.cta.title")}
-        description={t("serviceSections.digitalMarketing.cta.description")}
-        primaryButtonText={t("serviceSections.digitalMarketing.cta.primaryButton")}
-        secondaryButtonText={t("serviceSections.digitalMarketing.cta.secondaryButton")}
+        title={t("serviceSections.digitalMarketing.finalCta.title")}
+        cards={finalCtaCards}
+        finalLine={t("serviceSections.digitalMarketing.finalCta.finalLine")}
         dir={dir}
       />
     </>
