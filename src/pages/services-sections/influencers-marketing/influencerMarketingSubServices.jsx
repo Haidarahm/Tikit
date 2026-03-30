@@ -1,4 +1,4 @@
-import { FiBarChart2, FiUsers, FiBriefcase, FiAward, FiTrendingUp, FiFileText } from "react-icons/fi";
+import { FiBarChart2, FiAward, FiTrendingUp, FiFileText } from "react-icons/fi";
 import { FaInstagram, FaTiktok } from "react-icons/fa";
 
 export const INFLUENCER_MARKETING_BASE = "/influencer-marketing-agency-dubai";
@@ -8,14 +8,6 @@ export const influencerMarketingSubServiceItems = [
   {
     title: "Campaign Management",
     desc: "End-to-end campaign planning, execution, and optimization to keep influencer collaborations on track.",
-  },
-  {
-    title: "Micro Influencer Marketing UAE",
-    desc: "Target niche audiences through highly engaged micro creators across UAE-focused campaigns.",
-  },
-  {
-    title: "B2B Influencer Marketing Dubai",
-    desc: "Reach decision-makers with credible B2B creators, authority-building content, and measurable lead generation in Dubai and the UAE.",
   },
   // {
   //   title: "Luxury Influencer Marketing",
@@ -41,8 +33,6 @@ export const influencerMarketingSubServiceItems = [
 
 export const influencerMarketingSubServiceHrefs = [
   `${INFLUENCER_MARKETING_BASE}/campaign-management-dubai`,
-  `${INFLUENCER_MARKETING_BASE}/micro-influencer-marketing-uae`,
-  `${INFLUENCER_MARKETING_BASE}/b2b-influencer-marketing`,
   `${INFLUENCER_MARKETING_BASE}/luxury-influencer-marketing`,
   `${INFLUENCER_MARKETING_BASE}/roi-analytics`,
   `${INFLUENCER_MARKETING_BASE}/instagram-influencer-marketing`,
@@ -52,8 +42,6 @@ export const influencerMarketingSubServiceHrefs = [
 
 export const influencerMarketingSubServiceIcons = [
   <FiBarChart2 key="influencer-sub-cm" />,
-  <FiUsers key="influencer-sub-micro" />,
-  <FiBriefcase key="influencer-sub-b2b" />,
   <FiAward key="influencer-sub-luxury" />,
   <FiTrendingUp key="influencer-sub-roi" />,
   <FaInstagram key="influencer-sub-ig" />,

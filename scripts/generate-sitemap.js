@@ -33,8 +33,6 @@ const servicesPages = [
   { url: '/services', changefreq: 'monthly', priority: '0.9' },
   { url: '/influencer-marketing-agency-dubai', changefreq: 'monthly', priority: '0.8' },
   { url: '/influencer-marketing-agency-dubai/campaign-management-dubai', changefreq: 'monthly', priority: '0.7' },
-  { url: '/influencer-marketing-agency-dubai/micro-influencer-marketing-uae', changefreq: 'monthly', priority: '0.7' },
-  { url: '/influencer-marketing-agency-dubai/b2b-influencer-marketing', changefreq: 'monthly', priority: '0.7' },
   { url: '/influencer-marketing-agency-dubai/luxury-influencer-marketing', changefreq: 'monthly', priority: '0.7' },
   { url: '/influencer-marketing-agency-dubai/roi-analytics', changefreq: 'monthly', priority: '0.7' },
   { url: '/influencer-marketing-agency-dubai/instagram-influencer-marketing', changefreq: 'monthly', priority: '0.7' },
