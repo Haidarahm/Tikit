@@ -1,0 +1,23 @@
+---
+description: I18n wiring for Sub-Services sections
+globs: src/pages/services-sections/**/*.jsx
+alwaysApply: false
+---
+
+# When creating/updating a Sub-Services section
+
+- Use `useTranslation()` → `const { t } = useTranslation()`.
+- For section header + CTA text, read from i18n keys (always provide `defaultValue`):
+  - `serviceSections.<service>.subServices.sectionLabel`
+  - `serviceSections.<service>.subServices.title`
+  - `serviceSections.<service>.subServices.subtitle` (if used)
+  - `serviceSections.<service>.subServices.description`
+  - `serviceSections.<service>.subServices.learnMore`
+- For cards (`items`), NEVER hardcode `title/desc`; map from:
+  - `serviceSections.influencerMarketing.subServices.items`
+  - `serviceSections.digitalMarketing.subServices.<group>`
+  - (or use an existing helper like `getInfluencerMarketingSubServiceItems(t)` when present)
+- Ensure `hrefs` and `icons` align by index with `items` (same ordering/length).
+- For influencer marketing “related pages” lists, pass `t` into helpers (so titles/descriptions translate).
+- Always pass `dir` from `isRtl ? "rtl" : "ltr"` and keep `classPrefix` consistent.
+
