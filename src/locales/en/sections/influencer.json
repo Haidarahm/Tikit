@@ -1033,6 +1033,9 @@
         }
       },
       "subServices": {
+        "sectionLabel": "Sub-Services",
+        "title": "Explore Digital Marketing Sub-Services",
+        "subtitle": "Choose a focused digital service based on your growth objective: visibility, paid acquisition, or conversion rate growth.",
         "learnMore": "Learn more",
         "seoServices": {
           "title": "SEO Services",

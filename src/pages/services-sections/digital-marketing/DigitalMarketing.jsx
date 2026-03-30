@@ -97,18 +97,25 @@ const DigitalMarketing = () => {
   const marketExpertiseItems = toArray(t("serviceSections.digitalMarketing.marketExpertise.items", { returnObjects: true }));
   const subServices = [
     {
-      title: t("serviceSections.digitalMarketing.seoServices.badge", { defaultValue: "SEO Services" }),
-      desc: "Improve search visibility and organic traffic with technical, on-page, and content SEO strategies.",
+      title: t("serviceSections.digitalMarketing.subServices.seoServices.title", { defaultValue: "SEO Services" }),
+      desc: t("serviceSections.digitalMarketing.subServices.seoServices.description", {
+        defaultValue:
+          "Improve search visibility and organic traffic with technical, on-page, and content SEO strategies.",
+      }),
     },
     {
-      title: t("serviceSections.digitalMarketing.paidAds.badge", { defaultValue: "Paid Ads Management" }),
-      desc: "Launch and optimize paid campaigns across Google and social channels to generate qualified leads.",
+      title: t("serviceSections.digitalMarketing.subServices.paidAds.title", { defaultValue: "Paid Ads Management" }),
+      desc: t("serviceSections.digitalMarketing.subServices.paidAds.description", {
+        defaultValue: "Launch and optimize paid campaigns across Google and social channels to generate qualified leads.",
+      }),
     },
     {
-      title: t("serviceSections.digitalMarketing.conversionOptimization.badge", {
+      title: t("serviceSections.digitalMarketing.subServices.conversionOptimization.title", {
         defaultValue: "Conversion Optimization",
       }),
-      desc: "Turn more visitors into customers through CRO audits, testing, and landing-page performance improvements.",
+      desc: t("serviceSections.digitalMarketing.subServices.conversionOptimization.description", {
+        defaultValue: "Turn more visitors into customers through CRO audits, testing, and landing-page performance improvements.",
+      }),
     },
   ];
   const caseStatsRaw = toArray(t("serviceSections.digitalMarketing.caseStudy.stats", { returnObjects: true }));
@@ -291,10 +298,15 @@ const DigitalMarketing = () => {
 
       <ServiceSubServicesSection
         ref={subServicesRef}
-        sectionLabel="Sub-Services"
-        title="Explore Digital Marketing Sub-Services"
-        description="Choose a focused digital service based on your growth objective: visibility, paid acquisition, or conversion rate growth."
-        learnMoreText="Learn More"
+        sectionLabel={t("serviceSections.digitalMarketing.subServices.sectionLabel", { defaultValue: "Sub-Services" })}
+        title={t("serviceSections.digitalMarketing.subServices.title", {
+          defaultValue: "Explore Digital Marketing Sub-Services",
+        })}
+        description={t("serviceSections.digitalMarketing.subServices.subtitle", {
+          defaultValue:
+            "Choose a focused digital service based on your growth objective: visibility, paid acquisition, or conversion rate growth.",
+        })}
+        learnMoreText={t("serviceSections.digitalMarketing.subServices.learnMore", { defaultValue: "Learn More" })}
         items={subServices}
         hrefs={subServiceHrefs}
         icons={subServiceIcons}
