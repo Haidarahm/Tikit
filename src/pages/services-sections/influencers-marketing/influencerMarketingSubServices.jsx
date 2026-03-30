@@ -3,8 +3,8 @@ import { FaInstagram, FaTiktok } from "react-icons/fa";
 
 export const INFLUENCER_MARKETING_BASE = "/influencer-marketing-agency-dubai";
 
-/** Shared copy for influencer marketing sub-service cards and related links (English). */
-export const influencerMarketingSubServiceItems = [
+/** Fallback (English) copy used only when `t` is not provided. */
+const fallbackInfluencerMarketingSubServiceItems = [
   {
     title: "Campaign Management",
     desc: "End-to-end campaign planning, execution, and optimization to keep influencer collaborations on track.",
@@ -31,6 +31,31 @@ export const influencerMarketingSubServiceItems = [
   // },
 ];
 
+function pickInfluencerMarketingItemsFromI18n(allItems) {
+  // NOTE:
+  // Locale `subServices.items` contains 7 entries (including "Micro Influencer Marketing UAE"),
+  // but this page currently exposes only 6 routes (hrefs/icons) below.
+  // Keep indices that match the existing 6-card order.
+  const indicesToKeep = [0, 2, 3, 4, 5, 6];
+  return indicesToKeep.map((idx) => allItems?.[idx]).filter(Boolean);
+}
+
+export function getInfluencerMarketingSubServiceItems(t) {
+  try {
+    if (!t) return fallbackInfluencerMarketingSubServiceItems;
+    const allItems = t("serviceSections.influencerMarketing.subServices.items", { returnObjects: true });
+    if (!Array.isArray(allItems)) return fallbackInfluencerMarketingSubServiceItems;
+
+    const picked = pickInfluencerMarketingItemsFromI18n(allItems);
+    return picked.map((item) => ({
+      title: item?.title ?? "",
+      desc: item?.desc ?? "",
+    }));
+  } catch (e) {
+    return fallbackInfluencerMarketingSubServiceItems;
+  }
+}
+
 export const influencerMarketingSubServiceHrefs = [
   `${INFLUENCER_MARKETING_BASE}/campaign-management-dubai`,
   `${INFLUENCER_MARKETING_BASE}/luxury-influencer-marketing`,
@@ -52,14 +77,17 @@ export const influencerMarketingSubServiceIcons = [
 /**
  * Entries for InfluencerSubPage `relatedPages`: all sub-services except the current route.
  * @param {string} excludePath - Full path e.g. `${INFLUENCER_MARKETING_BASE}/roi-analytics`
+ * @param {Function} [t] - i18n translation function
  */
-export function getInfluencerSubServiceRelatedPages(excludePath) {
+export function getInfluencerSubServiceRelatedPages(excludePath, t) {
   const normalized = excludePath.replace(/\/$/, "");
+  const items = getInfluencerMarketingSubServiceItems(t);
+
   return influencerMarketingSubServiceHrefs
     .map((href, i) => ({
       path: href,
-      title: influencerMarketingSubServiceItems[i].title,
-      description: influencerMarketingSubServiceItems[i].desc,
+      title: items[i]?.title ?? "",
+      description: items[i]?.desc ?? "",
       icon: influencerMarketingSubServiceIcons[i],
     }))
     .filter((e) => e.path.replace(/\/$/, "") !== normalized);

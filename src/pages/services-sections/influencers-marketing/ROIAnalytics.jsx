@@ -75,7 +75,7 @@ const ROIAnalytics = () => {
       cards: t(`${TK}.trust.cards`, { returnObjects: true }).map((card, i) => ({ ...card, icon: trustIcons[i] })),
       paragraph: t(`${TK}.trust.paragraph`),
     },
-    relatedPages: getInfluencerSubServiceRelatedPages(`${BASE}/roi-analytics`),
+    relatedPages: getInfluencerSubServiceRelatedPages(`${BASE}/roi-analytics`, t),
     faq: { title: t(`${TK}.faq.title`), items: t(`${TK}.faq.items`, { returnObjects: true }) },
     cta: { title: t(`${TK}.cta.title`), description: t(`${TK}.cta.description`), button: t(`${TK}.cta.button`) },
   };

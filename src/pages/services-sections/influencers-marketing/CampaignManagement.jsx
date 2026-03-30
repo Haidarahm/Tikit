@@ -44,7 +44,7 @@ import {
   INFLUENCER_MARKETING_BASE,
   influencerMarketingSubServiceHrefs,
   influencerMarketingSubServiceIcons,
-  influencerMarketingSubServiceItems,
+  getInfluencerMarketingSubServiceItems,
 } from "./influencerMarketingSubServices";
 
 import "./influencerMarketing.css";
@@ -87,6 +87,8 @@ const CampaignManagement = () => {
   const { t } = useTranslation();
   const { isRtl } = useI18nLanguage();
   const dir = isRtl ? "rtl" : "ltr";
+
+  const subServices = getInfluencerMarketingSubServiceItems(t);
   const challengeCards = toArray(t(`${TK}.challenge.items`, { returnObjects: true })).map((item, i) => ({
     icon: challengeIcons[i],
     title: item?.title ?? "",
@@ -365,7 +367,7 @@ const CampaignManagement = () => {
         title={t("serviceSections.influencerMarketing.subServices.title")}
         description={t("serviceSections.influencerMarketing.subServices.description")}
         learnMoreText={t("serviceSections.influencerMarketing.subServices.learnMore")}
-        items={influencerMarketingSubServiceItems}
+        items={subServices}
         hrefs={influencerMarketingSubServiceHrefs}
         icons={influencerMarketingSubServiceIcons}
         dir={dir}

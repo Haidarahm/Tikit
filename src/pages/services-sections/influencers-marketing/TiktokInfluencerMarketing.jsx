@@ -75,7 +75,7 @@ const TiktokInfluencerMarketing = () => {
       cards: t(`${TK}.trust.cards`, { returnObjects: true }).map((card, i) => ({ ...card, icon: trustIcons[i] })),
       paragraph: t(`${TK}.trust.paragraph`),
     },
-    relatedPages: getInfluencerSubServiceRelatedPages(`${BASE}/tiktok-influencer-marketing`),
+    relatedPages: getInfluencerSubServiceRelatedPages(`${BASE}/tiktok-influencer-marketing`, t),
     faq: { title: t(`${TK}.faq.title`), items: t(`${TK}.faq.items`, { returnObjects: true }) },
     cta: { title: t(`${TK}.cta.title`), description: t(`${TK}.cta.description`), button: t(`${TK}.cta.button`) },
   };

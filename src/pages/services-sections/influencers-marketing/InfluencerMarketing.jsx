@@ -49,7 +49,7 @@ import InfComparisonTable from "./sub-components/InfComparisonTable";
 import {
   influencerMarketingSubServiceHrefs,
   influencerMarketingSubServiceIcons,
-  influencerMarketingSubServiceItems,
+  getInfluencerMarketingSubServiceItems,
 } from "./influencerMarketingSubServices";
 
 import "./influencerMarketing.css";
@@ -88,6 +88,8 @@ const InfluencerMarketing = () => {
   const { t } = useTranslation();
   const { isRtl } = useI18nLanguage();
   const dir = isRtl ? "rtl" : "ltr";
+
+  const subServices = getInfluencerMarketingSubServiceItems(t);
 
   const coreServices = toArray(t(`${TK}.coreServices.items`, { returnObjects: true })).map((item, i) => ({
     icon: coreServiceIcons[i],
@@ -296,7 +298,7 @@ const InfluencerMarketing = () => {
         title={t(`${TK}.subServices.title`)}
         description={t(`${TK}.subServices.description`)}
         learnMoreText={t(`${TK}.subServices.learnMore`)}
-        items={influencerMarketingSubServiceItems}
+        items={subServices}
         hrefs={influencerMarketingSubServiceHrefs}
         icons={influencerMarketingSubServiceIcons}
         dir={dir}
