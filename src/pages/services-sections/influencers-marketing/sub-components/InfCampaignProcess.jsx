@@ -18,7 +18,7 @@ const InfCampaignProcess = forwardRef(({ label, title, description, steps }, ref
               <div className="inf-step__number">{idx + 1}</div>
               <div className="flex-1">
                 <h3 className="inf-service-card__title">{step.title}</h3>
-                <p className="inf-service-card__text">{step.description}</p>
+                {step.description ? <p className="inf-service-card__text">{step.description}</p> : null}
               </div>
             </div>
           ))}

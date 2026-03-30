@@ -21,7 +21,7 @@ const InfIconCardGrid = forwardRef(({ label, title, description, items, columns 
               <div className="inf-type-card__badge">{item.icon}</div>
               <div className="flex-1">
                 <h3 className="inf-service-card__title">{item.title}</h3>
-                <p className="inf-service-card__text">{item.description}</p>
+                {item.description ? <p className="inf-service-card__text">{item.description}</p> : null}
               </div>
             </div>
           ))}

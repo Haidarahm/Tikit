@@ -43,6 +43,9 @@ const CampaignManagement = lazy(() =>
 const LuxuryInfluencerMarketing = lazy(() =>
   import("./pages/services-sections/influencers-marketing/LuxuryInfluencerMarketing")
 );
+const MicroInfluencerMarketing = lazy(() =>
+  import("./pages/services-sections/influencers-marketing/MicroInfluencerMarketing")
+);
 const ROIAnalytics = lazy(() =>
   import("./pages/services-sections/influencers-marketing/ROIAnalytics")
 );
@@ -172,6 +175,7 @@ function App() {
               {/* Service Sections - Influencer Marketing Hub & Sub-pages */}
               <Route path="/influencer-marketing-agency-dubai" element={<InfluencerMarketing />} />
               <Route path="/influencer-marketing-agency-dubai/campaign-management-dubai" element={<CampaignManagement />} />
+              <Route path="/influencer-marketing-agency-dubai/micro-influencer-marketing-dubai" element={<MicroInfluencerMarketing />} />
               <Route path="/influencer-marketing-agency-dubai/luxury-influencer-marketing" element={<LuxuryInfluencerMarketing />} />
               <Route path="/influencer-marketing-agency-dubai/roi-analytics" element={<ROIAnalytics />} />
               <Route path="/influencer-marketing-agency-dubai/instagram-influencer-marketing" element={<InstagramInfluencerMarketing />} />
