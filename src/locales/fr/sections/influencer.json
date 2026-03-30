@@ -122,6 +122,250 @@
   "serviceSections": {
     "influencerMarketing": {
       "badge": "Agence de marketing d'influence à Dubaï",
+      "seo": {
+        "title": "Agence de marketing d'influence à Dubaï | Campagnes d'influenceurs",
+        "description": "Agence de marketing d'influence de premier plan à Dubaï aidant les marques à collaborer avec des créateurs de confiance et à gérer des campagnes d'influenceurs sur Instagram, TikTok et YouTube.",
+        "keywords": "agence marketing influence dubaï",
+        "serviceType": "Agence de marketing d'influence à Dubaï"
+      },
+      "hero": {
+        "title": "Campagnes d'influenceurs à fort impact à",
+        "mainWord": "Dubaï",
+        "description": "Dubaï est devenu un marché solide pour les collaborations avec les influenceurs, où les marques travaillent avec des créateurs pour atteindre des audiences engagées en ligne. Une agence de marketing d'influence de confiance aide les entreprises à se connecter avec les bons influenceurs et à construire des partenariats qui augmentent la visibilité de la marque."
+      },
+      "coreServices": {
+        "label": "Nos services",
+        "title": "Services de marketing d'influence à Dubaï",
+        "description": "Nos services de marketing d'influence aident les marques à collaborer avec des créateurs capables d'atteindre le bon public sur les plateformes de réseaux sociaux. Nous nous concentrons sur la construction de partenariats qui renforcent la visibilité et l'engagement de la marque.",
+        "items": [
+          {
+            "title": "Recherche et découverte d'influenceurs",
+            "description": "Notre processus de recherche et découverte identifie les créateurs dont l'audience, l'engagement et le contenu correspondent à votre marque."
+          },
+          {
+            "title": "Gestion des partenariats avec les influenceurs",
+            "description": "Nous gérons la communication, les accords de campagne et les calendriers de collaboration pour assurer le bon déroulement des partenariats."
+          },
+          {
+            "title": "Stratégie et planification de campagnes",
+            "description": "Notre stratégie et planification se concentrent sur la définition des objectifs de campagne, des audiences cibles et de la direction du contenu pour un engagement maximal."
+          },
+          {
+            "title": "Collaboration de contenu avec les influenceurs",
+            "description": "Nous veillons à ce que le message de la marque reste naturel tout en se connectant avec l'audience de l'influenceur pour bâtir la confiance et l'engagement."
+          },
+          {
+            "title": "Gestion de campagne et suivi des performances",
+            "description": "Notre processus de gestion de campagne surveille la portée, l'engagement et la réponse de l'audience avec des rapports détaillés."
+          }
+        ]
+      },
+      "fullService": {
+        "label": "Agence complète",
+        "title": "Agence de marketing d'influence complète à Dubaï",
+        "description": "Nous aidons les marques à planifier, lancer et gérer des campagnes d'influenceurs sur les principales plateformes de réseaux sociaux, en connectant les entreprises avec des créateurs capables d'atteindre le bon public.",
+        "items": [
+          {
+            "title": "Développement stratégique de campagnes d'influenceurs",
+            "description": "Nous définissons les objectifs de campagne, identifions les influenceurs appropriés et planifions du contenu aligné avec votre marque pour des résultats constants."
+          },
+          {
+            "title": "Accès à des influenceurs vérifiés aux EAU",
+            "description": "Chaque créateur est sélectionné en fonction de la pertinence de l'audience et de la qualité de l'engagement pour garantir une portée réelle et active."
+          },
+          {
+            "title": "Gestion complète des campagnes d'influenceurs",
+            "description": "De la coordination des influenceurs au suivi des campagnes, nous gérons toutes les activités clés à chaque étape."
+          }
+        ]
+      },
+      "platforms": {
+        "label": "Plateformes",
+        "title": "Plateformes de marketing d'influence sur les réseaux sociaux",
+        "description": "Nos campagnes de marketing d'influence se concentrent sur les plateformes où les audiences sont les plus actives, aidant les marques à se connecter avec des clients potentiels grâce à du contenu authentique.",
+        "items": [
+          {
+            "title": "Campagnes de marketing d'influence sur Instagram",
+            "description": "Largement utilisé par les marques de mode, lifestyle, beauté et e-commerce. Les influenceurs partagent des expériences produits via des publications, stories et reels.",
+            "tags": ["Publications", "Stories", "Reels", "IGTV"]
+          },
+          {
+            "title": "Marketing d'influence TikTok pour la croissance de marque",
+            "description": "Aide les marques à atteindre des audiences grâce à des vidéos courtes et engageantes avec une exposition rapide et une interaction avec l'audience.",
+            "tags": ["Vidéo courte", "Tendances", "Duos", "Défis"]
+          },
+          {
+            "title": "Partenariats d'influenceurs YouTube",
+            "description": "Permet aux marques de partager du contenu détaillé comme des avis produits, des tutoriels et des expériences de marque pour une confiance plus profonde.",
+            "tags": ["Avis", "Tutoriels", "Vlogs", "Shorts"]
+          }
+        ]
+      },
+      "influencerTypes": {
+        "label": "Catégories d'influenceurs",
+        "title": "Types d'influenceurs pour les campagnes marketing",
+        "description": "Différentes catégories d'influenceurs aident les marques à atteindre des audiences spécifiques. Le choix du bon type dépend des objectifs de campagne, du budget et du ciblage d'audience.",
+        "items": [
+          {
+            "title": "Nano-influenceurs pour la promotion de marques de niche",
+            "description": "Des audiences plus petites mais très engagées. Idéal pour les marchés de niche et les entreprises locales qui construisent la confiance dans des communautés spécifiques."
+          },
+          {
+            "title": "Micro-influenceurs pour des campagnes ciblées",
+            "description": "Fort engagement et abonnés fidèles. Parfait pour promouvoir des produits auprès d'une audience ciblée partageant des intérêts similaires."
+          },
+          {
+            "title": "Macro-influenceurs pour des campagnes à grande échelle",
+            "description": "Une portée plus large pour aider les marques à accroître leur visibilité. Couramment utilisé pour les lancements de produits et les campagnes de notoriété."
+          },
+          {
+            "title": "Influenceurs célébrités pour une portée maximale",
+            "description": "De grandes audiences et une forte reconnaissance de marque. Utilisé pour les campagnes majeures visant une exposition maximale."
+          }
+        ]
+      },
+      "process": {
+        "label": "Notre processus",
+        "title": "Processus de campagne de marketing d'influence",
+        "description": "Un processus de campagne structuré garantit que les collaborations avec les influenceurs produisent des résultats constants. Chaque étape se concentre sur la pertinence de l'audience et la performance de la campagne.",
+        "steps": [
+          {
+            "title": "Recherche d'audience et de marché",
+            "description": "Comprendre le public cible est la première étape. La recherche aide à identifier les préférences, les tendances du secteur et les stratégies adaptées."
+          },
+          {
+            "title": "Identification et sélection des influenceurs",
+            "description": "Les créateurs sont évalués selon les données démographiques, les taux d'engagement et la qualité du contenu pour garantir la bonne adéquation."
+          },
+          {
+            "title": "Développement de la stratégie de campagne",
+            "description": "Une stratégie de campagne définit les objectifs, les messages et la direction du contenu alignés avec les objectifs marketing de la marque."
+          },
+          {
+            "title": "Collaboration avec les influenceurs et création de contenu",
+            "description": "Les influenceurs créent du contenu qui intègre naturellement le message de la marque avec leur style narratif pour l'authenticité."
+          },
+          {
+            "title": "Lancement de campagne et suivi des performances",
+            "description": "Une fois en ligne, les performances sont suivies pour mesurer l'engagement, la portée et l'interaction avec l'audience pour une optimisation continue."
+          }
+        ]
+      },
+      "industries": {
+        "label": "Secteurs que nous servons",
+        "title": "Secteurs utilisant le marketing d'influence à Dubaï et aux EAU",
+        "description": "Le marketing d'influence est largement utilisé dans plusieurs secteurs aux EAU. Les marques utilisent des créateurs pour promouvoir des produits et services à travers du contenu engageant.",
+        "items": [
+          { "title": "Marques de mode et beauté" },
+          { "title": "Restaurants et hôtellerie" },
+          { "title": "Entreprises de voyage et tourisme" },
+          { "title": "Marques e-commerce et retail" },
+          { "title": "Immobilier et lifestyle" }
+        ]
+      },
+      "whyChooseUs": {
+        "label": "Pourquoi nous choisir",
+        "title": "Pourquoi les entreprises choisissent notre agence de marketing d'influence à Dubaï",
+        "description": "Les entreprises s'associent à notre agence de marketing d'influence pour gérer leurs campagnes avec une approche professionnelle et structurée.",
+        "items": [
+          {
+            "title": "Réseau d'influenceurs de confiance aux EAU",
+            "description": "Nous travaillons avec des influenceurs vérifiés dans plusieurs secteurs et plateformes de réseaux sociaux."
+          },
+          {
+            "title": "Stratégies basées sur les données",
+            "description": "Les décisions de campagne sont fondées sur les insights d'audience, les données d'engagement et les métriques de performance."
+          },
+          {
+            "title": "Rapports de campagne transparents",
+            "description": "Les marques reçoivent des rapports clairs montrant la portée, l'engagement et l'interaction de l'audience."
+          },
+          {
+            "title": "Expérience prouvée en campagnes",
+            "description": "Notre équipe a de l'expérience dans la gestion de collaborations d'influenceurs dans divers secteurs."
+          }
+        ]
+      },
+      "comparison": {
+        "label": "Comparaison",
+        "title": "Agence de marketing d'influence vs publicité traditionnelle",
+        "description": "Découvrez comment le marketing d'influence se compare aux méthodes publicitaires traditionnelles.",
+        "headerFeature": "Caractéristique",
+        "headerInfluencer": "Marketing d'influence",
+        "headerTraditional": "Publicité traditionnelle",
+        "rows": [
+          {
+            "feature": "Confiance de l'audience",
+            "influencer": "Élevée grâce à la crédibilité du créateur",
+            "traditional": "Plus faible comparé au contenu d'influenceur"
+          },
+          {
+            "feature": "Engagement",
+            "influencer": "Forte interaction via les réseaux sociaux",
+            "traditional": "Interaction limitée avec l'audience"
+          },
+          {
+            "feature": "Ciblage",
+            "influencer": "Portée d'audience hautement ciblée",
+            "traditional": "Ciblage large et moins précis"
+          },
+          {
+            "feature": "Style de contenu",
+            "influencer": "Authentique et relatable",
+            "traditional": "Promotionnel et orienté marque"
+          },
+          {
+            "feature": "Efficacité des coûts",
+            "influencer": "Budgets flexibles pour différentes campagnes",
+            "traditional": "Nécessite souvent des budgets plus élevés"
+          }
+        ],
+        "footer": "Le marketing d'influence permet aux marques d'atteindre des audiences via des créateurs de confiance, tandis que la publicité traditionnelle se concentre sur des messages promotionnels directs."
+      },
+      "faq": {
+        "title": "Questions fréquentes sur le marketing d'influence à Dubaï",
+        "items": [
+          {
+            "question": "Que fait une agence de marketing d'influence ?",
+            "answer": "Une agence de marketing d'influence aide les marques à collaborer avec des créateurs de réseaux sociaux pour promouvoir des produits ou services. L'agence gère la sélection des influenceurs, la planification des campagnes, les partenariats et le suivi des performances pour garantir que les campagnes atteignent leurs objectifs marketing."
+          },
+          {
+            "question": "Pourquoi les entreprises devraient-elles travailler avec une agence de marketing d'influence à Dubaï ?",
+            "answer": "Travailler avec une agence à Dubaï aide les entreprises à se connecter avec des créateurs ayant de fortes audiences locales. Les agences gèrent également la stratégie de campagne, la communication avec les influenceurs et la gestion de campagne, rendant le marketing d'influence plus organisé et efficace."
+          },
+          {
+            "question": "Combien coûte le marketing d'influence à Dubaï ?",
+            "answer": "Les coûts varient selon la taille de l'audience de l'influenceur, la plateforme et la portée de la campagne. Les nano et micro-influenceurs facturent généralement moins, tandis que les macro-influenceurs ou les célébrités peuvent nécessiter des budgets plus importants."
+          },
+          {
+            "question": "Comment les marques trouvent-elles les bons influenceurs pour leurs campagnes ?",
+            "answer": "Les marques identifient généralement les influenceurs en analysant les données démographiques, les taux d'engagement et la qualité du contenu. Une agence aide à évaluer ces facteurs pour s'assurer que les influenceurs correspondent à l'audience cible et aux objectifs de la campagne."
+          },
+          {
+            "question": "Quelles plateformes de réseaux sociaux sont les meilleures pour le marketing d'influence ?",
+            "answer": "Instagram, TikTok et YouTube sont les plateformes les plus utilisées. Chaque plateforme offre différents formats de contenu et types d'audience, permettant aux marques de choisir le meilleur canal pour leurs objectifs marketing."
+          },
+          {
+            "question": "Quels secteurs bénéficient le plus du marketing d'influence ?",
+            "answer": "Des secteurs comme la mode, la beauté, le voyage, la restauration, l'e-commerce et l'immobilier bénéficient souvent du marketing d'influence. Les influenceurs aident ces entreprises à présenter leurs produits et services à travers du contenu authentique atteignant des audiences engagées."
+          },
+          {
+            "question": "Combien de temps dure une campagne de marketing d'influence ?",
+            "answer": "La durée dépend des objectifs et de la portée de la collaboration. Certaines campagnes durent quelques semaines, tandis que des partenariats à long terme avec des influenceurs peuvent durer plusieurs mois."
+          },
+          {
+            "question": "Comment le marketing d'influence peut-il aider à développer une marque ?",
+            "answer": "Le marketing d'influence aide les marques à augmenter leur visibilité, atteindre des audiences ciblées et bâtir la confiance grâce au contenu authentique des créateurs. Lorsque les influenceurs partagent des expériences genuines avec leurs abonnés, cela peut améliorer l'engagement et encourager les clients potentiels à explorer la marque."
+          }
+        ]
+      },
+      "cta": {
+        "sectionLabel": "Commencez",
+        "title": "Lancez votre campagne de marketing d'influence avec une agence leader à Dubaï",
+        "description": "Si votre entreprise souhaite collaborer avec des influenceurs, notre équipe aide les marques à planifier des campagnes, se connecter avec des créateurs de confiance et gérer des campagnes qui renforcent la visibilité et l'engagement.",
+        "primaryButtonText": "Lancez votre campagne",
+        "secondaryButtonText": "Appelez-nous"
+      },
       "subPages": {
         "microInfluencer": {
           "seo": {

@@ -1,7 +1,7 @@
 import { forwardRef } from "react";
 import { useFontClass } from "../../../../hooks/useFontClass";
 
-const InfComparisonTable = forwardRef(({ label, title, description, rows, footer }, ref) => {
+const InfComparisonTable = forwardRef(({ label, title, description, rows, footer, headerFeature = "Feature", headerInfluencer = "Influencer Marketing", headerTraditional = "Traditional Advertising" }, ref) => {
   const { fontHeading } = useFontClass();
 
   return (
@@ -15,9 +15,9 @@ const InfComparisonTable = forwardRef(({ label, title, description, rows, footer
           <table className="inf-table">
             <thead>
               <tr>
-                <th>Feature</th>
-                <th>Influencer Marketing</th>
-                <th>Traditional Advertising</th>
+                <th>{headerFeature}</th>
+                <th>{headerInfluencer}</th>
+                <th>{headerTraditional}</th>
               </tr>
             </thead>
             <tbody>
