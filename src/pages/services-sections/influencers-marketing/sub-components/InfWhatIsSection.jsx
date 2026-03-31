@@ -3,7 +3,21 @@ import { FiCheckCircle, FiTarget, FiTrendingUp, FiArrowRightCircle } from "react
 import { useFontClass } from "../../../../hooks/useFontClass";
 
 const InfWhatIsSection = forwardRef(
-  ({ label, title, description, prioritiesIntro, priorities = [], resultsIntro, results = [], ctaText, dir }, ref) => {
+  (
+    {
+      label,
+      title,
+      description,
+      prioritiesIntro,
+      priorities = [],
+      resultsIntro,
+      results = [],
+      ctaText,
+      ctaHref = "/contact-us",
+      dir,
+    },
+    ref
+  ) => {
     const { fontHeading } = useFontClass();
     const isRtl = dir === "rtl";
 
@@ -50,12 +64,18 @@ const InfWhatIsSection = forwardRef(
             </article>
           </div>
 
-          <article className="inf-type-card inf-reveal mt-5">
-            <div className="inf-type-card__badge">
-              <FiArrowRightCircle />
-            </div>
-            <p className="inf-service-card__title mb-0">{ctaText}</p>
-          </article>
+          <a
+            href={ctaHref}
+            className="block inf-reveal mt-5 rounded-[inherit] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--secondary)]"
+            aria-label={ctaText}
+          >
+            <article className="inf-type-card cursor-pointer transition-opacity duration-200 hover:opacity-90">
+              <div className="inf-type-card__badge">
+                <FiArrowRightCircle />
+              </div>
+              <p className="inf-service-card__title mb-0">{ctaText}</p>
+            </article>
+          </a>
         </div>
       </section>
     );
