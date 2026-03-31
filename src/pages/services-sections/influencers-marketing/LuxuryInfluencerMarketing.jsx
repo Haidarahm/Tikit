@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useTranslation } from "react-i18next";
@@ -255,6 +256,8 @@ const LuxuryInfluencerMarketing = () => {
   const growthCtaRef = useRef(null);
   const marketRef = useRef(null);
   const whyUsRef = useRef(null);
+  const positioningRef = useRef(null);
+  const getStartedRef = useRef(null);
   const subServicesRef = useRef(null);
   const ctaRef = useRef(null);
 
@@ -276,6 +279,8 @@ const LuxuryInfluencerMarketing = () => {
       revealChildren(marketRef, ".inf-reveal", 0.1);
       revealChildren(marketRef, ".inf-industry-tag", 0.1);
       revealChildren(whyUsRef, ".inf-reveal", 0.1);
+      revealChildren(positioningRef, ".inf-reveal", 0.12);
+      revealChildren(getStartedRef, ".inf-reveal", 0.12);
       revealChildren(subServicesRef, ".im-subservice-card", 0.08);
       revealChildren(ctaRef, ".im-reveal", 0.12);
     });
@@ -339,7 +344,19 @@ const LuxuryInfluencerMarketing = () => {
         subtle
         label="Our Offer"
         title="Aligned with Luxury Buyer Psychology"
-        description="Our influencer marketing services are designed to match luxury buyer behavior in the UAE — helping premium brands protect positioning while driving qualified demand."
+        description={
+          <>
+            Our{" "}
+            <Link
+              to="/influencer-marketing-agency-dubai"
+              className="font-semibold underline underline-offset-4 hover:opacity-80"
+              style={{ color: "var(--secondary)" }}
+            >
+              Influencer Marketing services
+            </Link>{" "}
+            are designed to align with luxury buyer psychology and the UAE market.
+          </>
+        }
         buttonText="Build Elite Influence"
       />
 
@@ -390,6 +407,23 @@ const LuxuryInfluencerMarketing = () => {
         title="Why Tikit.ae is Different"
         description="We combine luxury category understanding with disciplined execution to deliver measurable value."
         reasons={whyUs}
+      />
+
+      <InfInlineCTA
+        ref={positioningRef}
+        subtle
+        label="Luxury Positioning"
+        title="Let’s Position Your Brand Where It Belongs"
+        description="Luxury is not about being seen everywhere — it is about being seen by the right people. With Tikit.ae, your brand connects with audiences who value quality, exclusivity, and trust."
+        buttonText="Start Your Luxury Campaign Today"
+      />
+
+      <InfInlineCTA
+        ref={getStartedRef}
+        label="Get Started"
+        title="Ready to Attract High-Value Customers?"
+        description="If you are ready to elevate your brand positioning in Dubai and the UAE, let’s build a luxury influencer campaign tailored to your goals."
+        buttonText="Get Started"
       />
 
       <FAQ items={faqItems} title="Frequently Asked Questions" />
