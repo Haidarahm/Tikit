@@ -42,6 +42,7 @@ import InfFeatureCardsList from "./sub-components/InfFeatureCardsList";
 import InfIndustries from "./sub-components/InfIndustries";
 import InfWhyChooseUs from "./sub-components/InfWhyChooseUs";
 import InfInlineCTA from "./sub-components/InfInlineCTA";
+import InfSplitCTA from "./sub-components/InfSplitCTA";
 import {
   INFLUENCER_MARKETING_BASE,
   influencerMarketingSubServiceHrefs,
@@ -385,12 +386,17 @@ const LuxuryInfluencerMarketing = () => {
         dir={dir}
       />
 
-      <InfInlineCTA
+      <InfSplitCTA
         ref={growthCtaRef}
         label="Campaign Momentum"
         title="Drive Premium Growth"
         description="From visibility to verified affluent engagement, we optimize campaigns for outcomes that strengthen both revenue and brand equity."
-        buttonText="Drive Premium Growth"
+        primaryText="Drive Premium Growth"
+        highlights={[
+          "Audience quality-first strategy",
+          "Premium brand-safety controls",
+          "Campaign optimization for high-value leads",
+        ]}
       />
 
       <InfIndustries
