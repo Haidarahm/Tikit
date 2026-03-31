@@ -2,7 +2,7 @@ import { useRef, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
 import { useNavColor } from "./hooks/useNavColor.js";
-
+import PointIcon from "../../assets/icons/point.svg";
 /**
  * NavDropdown — reusable nav dropdown for desktop & mobile.
  *
@@ -85,23 +85,29 @@ export default function NavDropdown({ label, items = [], isMobile = false, onClo
     menuItems.map((item, index) => {
       const itemKey = `${parentKey}-${index}`;
       const hasChildren = Array.isArray(item.children) && item.children.length > 0;
-      const isExpanded = !!expandedKeys[itemKey];
+      const isExpanded = isMobile ? !!expandedKeys[itemKey] : true;
 
       return (
         <div
           key={`${item.to || item.label}-${itemKey}`}
-          className={isMobile ? "w-full" : level === 0 ? "inline-block" : "w-full"}
+          className={
+            isMobile
+              ? "w-full"
+              : level === 0
+              ? "inline-block align-top min-w-[230px] px-2"
+              : "w-full"
+          }
         >
           <button
             onClick={() => {
-              if (hasChildren) {
+              if (hasChildren && isMobile) {
                 toggleItem(itemKey);
                 return;
               }
               if (item.to) handleItemClick(item.to);
             }}
             className={`${
-              isMobile ? "w-full" : level === 0 ? "w-auto" : "w-full"
+              isMobile ? "w-full" : "w-full"
             } flex items-center justify-between text-left transition-all duration-200 rounded-lg ${
               isMobile
                 ? `text-xl md:text-2xl font-light uppercase tracking-wider py-3 px-5 ${
@@ -109,7 +115,7 @@ export default function NavDropdown({ label, items = [], isMobile = false, onClo
                       ? "ms-4 md:ms-6 text-lg md:text-xl normal-case tracking-normal font-normal opacity-90"
                       : "font-medium"
                   }`
-                : `py-3.5 px-5 ${
+                : `py-3.5 px-2 ${
                     level > 0
                       ? "ms-3 text-[13px] font-normal opacity-90"
                       : "text-sm font-semibold uppercase tracking-wide"
@@ -117,22 +123,28 @@ export default function NavDropdown({ label, items = [], isMobile = false, onClo
             } text-[var(--foreground)] hover:bg-[var(--container-bg)] dark:hover:bg-[var(--container-bg)]`}
           >
             <span className="inline-flex items-center gap-2">
-              {level > 0 ? <span className="w-1.5 h-1.5 rounded-full bg-[var(--secondary)]/70" /> : null}
+              {level > 0 ? <img src={PointIcon} alt="chevron-right" className="w-3 h-3" /> : null}
               {item.label}
             </span>
-            {hasChildren ? <Chevron rotated={isExpanded} /> : null}
+            {hasChildren && isMobile ? <Chevron rotated={isExpanded} /> : null}
           </button>
 
           {hasChildren ? (
-            <div
-              className={`overflow-hidden transition-all duration-300 ease-out ${
-                isExpanded ? "max-h-[1000px] opacity-100 mt-1" : "max-h-0 opacity-0 mt-0"
-              }`}
-            >
-              <div className={`${isMobile ? "flex flex-col gap-2" : "flex flex-col gap-1"} pb-1`}>
+            isMobile ? (
+              <div
+                className={`overflow-hidden transition-all duration-300 ease-out ${
+                  isExpanded ? "max-h-[1000px] opacity-100 mt-1" : "max-h-0 opacity-0 mt-0"
+                }`}
+              >
+                <div className="flex flex-col gap-2 pb-1">
+                  {renderItems(item.children, level + 1, itemKey)}
+                </div>
+              </div>
+            ) : (
+              <div className="mt-1 flex flex-col gap-1 pb-1">
                 {renderItems(item.children, level + 1, itemKey)}
               </div>
-            </div>
+            )
           ) : null}
         </div>
       );
@@ -198,7 +210,9 @@ export default function NavDropdown({ label, items = [], isMobile = false, onClo
             : "opacity-0 -translate-y-2 pointer-events-none"
         } bg-[var(--background)] dark:bg-[var(--container-bg)] backdrop-blur-md border border-[var(--foreground)]/20 dark:border-white/20 shadow-lg`}
       >
-        <div className="py-1 flex flex-row items-stretch gap-1">{renderItems(items)}</div>
+        <div className="py-3 px-2 flex flex-row items-stretch gap-4">
+          {renderItems(items)}
+        </div>
       </div>
     </div>
   );
