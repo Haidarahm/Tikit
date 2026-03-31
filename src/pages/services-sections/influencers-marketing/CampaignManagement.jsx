@@ -46,6 +46,7 @@ import {
   influencerMarketingSubServiceIcons,
   getInfluencerMarketingSubServiceItems,
 } from "./influencerMarketingSubServices";
+import { revealChildren, toArray } from "./influencerUtils";
 
 import "./influencerMarketing.css";
 
@@ -53,7 +54,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 const BASE = INFLUENCER_MARKETING_BASE;
 const TK = "serviceSections.influencerMarketing.campaignManagement";
-const toArray = (val) => (Array.isArray(val) ? val : []);
 
 const challengeIcons = [<FiTarget key="ch1" />, <FiClock key="ch2" />, <FiPieChart key="ch3" />];
 const whyMattersIcons = [<FiTrendingDown key="wm1" />, <FiUsers key="wm2" />, <FiEye key="wm3" />];
@@ -64,24 +64,6 @@ const insightIcons = [<FiInstagram key="in1" />, <FiUsers key="in2" />, <FiLayer
 const nicheIcons = [<HiSparkles key="ni1" />, <FiAward key="ni2" />, <FiGlobe key="ni3" />];
 const whyUsIcons = [<FiMapPin key="wu1" />, <FiUsers key="wu2" />, <FiBarChart2 key="wu3" />, <FiFileText key="wu4" />];
 const platformIcons = [<FaInstagram key="pl1" />, <FaTiktok key="pl2" />, <FaYoutube key="pl3" />];
-
-function revealChildren(containerRef, selector, staggerVal = 0.1) {
-  if (!containerRef.current) return;
-  const els = containerRef.current.querySelectorAll(selector);
-  if (!els.length) return;
-  gsap.fromTo(
-    els,
-    { opacity: 0, y: 36 },
-    {
-      opacity: 1,
-      y: 0,
-      duration: 0.75,
-      stagger: staggerVal,
-      ease: "power3.out",
-      scrollTrigger: { trigger: containerRef.current, start: "top 82%" },
-    }
-  );
-}
 
 const CampaignManagement = () => {
   const { t } = useTranslation();

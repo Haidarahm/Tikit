@@ -25,13 +25,13 @@ import InfComparisonTable from "./sub-components/InfComparisonTable";
 import InfIndustries from "./sub-components/InfIndustries";
 import InfWhyChooseUs from "./sub-components/InfWhyChooseUs";
 import InfCaseStudyBlock from "./sub-components/InfCaseStudyBlock";
+import { revealChildren, toArray } from "./influencerUtils";
 
 import "./influencerMarketing.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const TK = "serviceSections.influencerMarketing.microInfluencerMarketing";
-const toArray = (val) => (Array.isArray(val) ? val : []);
 const splitTextToCards = (text) =>
   (typeof text === "string" ? text : "")
     .split(/(?<=[.!?])\s+/)
@@ -126,33 +126,15 @@ const MicroInfluencerMarketing = () => {
         );
       }
 
-      const reveal = (ref, selector, staggerVal = 0.1) => {
-        if (!ref.current) return;
-        const els = ref.current.querySelectorAll(selector);
-        if (!els.length) return;
-        gsap.fromTo(
-          els,
-          { opacity: 0, y: 36 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.75,
-            stagger: staggerVal,
-            ease: "power3.out",
-            scrollTrigger: { trigger: ref.current, start: "top 82%" },
-          }
-        );
-      };
-
-      reveal(whatRef, ".inf-reveal", 0.06);
-      reveal(strategyRef, ".inf-reveal", 0.08);
-      reveal(platformsRef, ".inf-reveal", 0.10);
-      reveal(campaignTypesRef, ".inf-reveal", 0.08);
-      reveal(costRef, ".inf-reveal", 0.06);
-      reveal(resultsRef, ".inf-reveal", 0.08);
-      reveal(keyInsightsRef, ".inf-reveal", 0.06);
-      reveal(nichesRef, ".inf-reveal", 0.06);
-      reveal(whyRef, ".inf-reveal", 0.06);
+      revealChildren(whatRef, ".inf-reveal", 0.06);
+      revealChildren(strategyRef, ".inf-reveal", 0.08);
+      revealChildren(platformsRef, ".inf-reveal", 0.10);
+      revealChildren(campaignTypesRef, ".inf-reveal", 0.08);
+      revealChildren(costRef, ".inf-reveal", 0.06);
+      revealChildren(resultsRef, ".inf-reveal", 0.08);
+      revealChildren(keyInsightsRef, ".inf-reveal", 0.06);
+      revealChildren(nichesRef, ".inf-reveal", 0.06);
+      revealChildren(whyRef, ".inf-reveal", 0.06);
 
       if (ctaRef.current) {
         gsap.fromTo(

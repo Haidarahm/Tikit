@@ -51,13 +51,13 @@ import {
   influencerMarketingSubServiceIcons,
   getInfluencerMarketingSubServiceItems,
 } from "./influencerMarketingSubServices";
+import { revealChildren, toArray } from "./influencerUtils";
 
 import "./influencerMarketing.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const TK = "serviceSections.influencerMarketing";
-const toArray = (val) => (Array.isArray(val) ? val : []);
 
 const coreServiceIcons = [<FiSearch key="cs1" />, <FiUsers key="cs2" />, <FiTarget key="cs3" />, <FiEdit3 key="cs4" />, <FiBarChart2 key="cs5" />];
 const fullServiceIcons = [<FiLayers key="fs1" />, <FiCheckCircle key="fs2" />, <FiZap key="fs3" />];
@@ -65,24 +65,6 @@ const platformIcons = [<FaInstagram key="pl1" />, <FaTiktok key="pl2" />, <FaYou
 const influencerTypeIcons = [<FiStar key="it1" />, <FiUsers key="it2" />, <FiTrendingUp key="it3" />, <FiAward key="it4" />];
 const industryIcons = [<HiSparkles key="ind1" />, <HiCamera key="ind2" />, <HiGlobe key="ind3" />, <HiShoppingCart key="ind4" />, <HiHome key="ind5" />];
 const whyUsIcons = [<FiUsers key="wu1" />, <FiDatabase key="wu2" />, <FiFileText key="wu3" />, <FiShield key="wu4" />];
-
-function revealChildren(containerRef, selector, staggerVal = 0.1) {
-  if (!containerRef.current) return;
-  const els = containerRef.current.querySelectorAll(selector);
-  if (!els.length) return;
-  gsap.fromTo(
-    els,
-    { opacity: 0, y: 36 },
-    {
-      opacity: 1,
-      y: 0,
-      duration: 0.75,
-      stagger: staggerVal,
-      ease: "power3.out",
-      scrollTrigger: { trigger: containerRef.current, start: "top 82%" },
-    }
-  );
-}
 
 const InfluencerMarketing = () => {
   const { t } = useTranslation();
