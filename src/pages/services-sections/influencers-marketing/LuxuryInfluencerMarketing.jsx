@@ -43,6 +43,8 @@ import InfIndustries from "./sub-components/InfIndustries";
 import InfWhyChooseUs from "./sub-components/InfWhyChooseUs";
 import InfInlineCTA from "./sub-components/InfInlineCTA";
 import InfSplitCTA from "./sub-components/InfSplitCTA";
+import InfPositioningStatement from "./sub-components/InfPositioningStatement";
+import InfGetStartedSection from "./sub-components/InfGetStartedSection";
 import {
   INFLUENCER_MARKETING_BASE,
   influencerMarketingSubServiceHrefs,
@@ -406,13 +408,6 @@ const LuxuryInfluencerMarketing = () => {
         description="Dubai is one of the strongest luxury markets globally, where influencer campaigns can directly reach qualified premium buyers when strategy is precise."
         industries={marketReasons}
       />
-<InfInlineCTA
-        ref={getStartedRef}
-        label="Get Started"
-        title="Ready to Attract High-Value Customers?"
-        description="If you are ready to elevate your brand positioning in Dubai and the UAE, let’s build a luxury influencer campaign tailored to your goals."
-        buttonText="Get Started"
-      />
       <InfWhyChooseUs
         ref={whyUsRef}
         label="Why Tikit.ae"
@@ -421,13 +416,19 @@ const LuxuryInfluencerMarketing = () => {
         reasons={whyUs}
       />
 
-      <InfInlineCTA
+      <InfPositioningStatement
         ref={positioningRef}
-        subtle
         label="Luxury Positioning"
         title="Let’s Position Your Brand Where It Belongs"
         description="Luxury is not about being seen everywhere — it is about being seen by the right people. With Tikit.ae, your brand connects with audiences who value quality, exclusivity, and trust."
-        buttonText="Start Your Luxury Campaign Today"
+      />
+
+      <InfGetStartedSection
+        ref={getStartedRef}
+        label="Get Started"
+        title="Ready to Attract High-Value Customers?"
+        description="If you are ready to elevate your brand positioning in Dubai and the UAE, let’s build a luxury influencer campaign tailored to your goals."
+        buttonText="Let's Talk"
       />
 
       
