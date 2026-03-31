@@ -37,9 +37,10 @@ import {
 } from "../../../components/services-sections";
 
 import InfIconCardGrid from "./sub-components/InfIconCardGrid";
-import InfServicesGrid from "./sub-components/InfServicesGrid";
+import InfFeatureCardsList from "./sub-components/InfFeatureCardsList";
 import InfIndustries from "./sub-components/InfIndustries";
 import InfWhyChooseUs from "./sub-components/InfWhyChooseUs";
+import InfInlineCTA from "./sub-components/InfInlineCTA";
 import {
   INFLUENCER_MARKETING_BASE,
   influencerMarketingSubServiceHrefs,
@@ -56,7 +57,8 @@ const BASE = INFLUENCER_MARKETING_BASE;
 const problemIcons = [<FiUsers key="p1" />, <FiClock key="p2" />, <FiEdit3 key="p3" />];
 const principleIcons = [<FiStar key="pr1" />, <FiTarget key="pr2" />, <FiShield key="pr3" />];
 const serviceIcons = [<FiSearch key="s1" />, <FiLayers key="s2" />, <FiVideo key="s3" />, <FiBriefcase key="s4" />, <FiBarChart2 key="s5" />];
-const industryIcons = [<FiHome key="i1" />, <FiAward key="i2" />, <FiWatch key="i3" />, <FiTruck key="i4" />, <FiGlobe key="i5" />, <FiActivity key="i6" />];
+const industryIcons = [<FiHome key="i1" />, <FiAward key="i2" />, <FiWatch key="i3" />, <FiTruck key="i4" />, <FiGlobe key="i5" />, <FiActivity key="i6" />, <FiUsers key="i7" />];
+const marketIcons = [<FiUsers key="m1" />, <FiGlobe key="m2" />, <FiStar key="m3" />];
 const whyUsIcons = [<FiGlobe key="w1" />, <FiUsers key="w2" />, <FiCheckCircle key="w3" />, <FiTrendingUp key="w4" />];
 
 function revealChildren(containerRef, selector, staggerVal = 0.1) {
@@ -121,27 +123,57 @@ const LuxuryInfluencerMarketing = () => {
     {
       icon: serviceIcons[0],
       title: "High-End Influencer Identification & Vetting",
-      description: "We source Dubai and international creators with verified affluent audience profiles and authentic engagement.",
+      description: "We source influencers who align with luxury positioning, not just category fit.",
+      features: [
+        "Dubai-based luxury influencers",
+        "International creators with UAE audiences",
+        "Verified high-net-worth audience profiles",
+        "Deep engagement and authenticity analysis",
+      ],
     },
     {
       icon: serviceIcons[1],
       title: "Luxury Campaign Strategy & Positioning",
-      description: "Audience segmentation, platform strategy, and campaign narrative built for premium buyers.",
+      description: "Every campaign starts with strategic clarity to attract premium buyers, not general traffic.",
+      features: [
+        "Affluent audience segmentation",
+        "Luxury consumer behavior insights",
+        "Platform selection based on buyer intent",
+        "Campaign narrative development",
+      ],
     },
     {
       icon: serviceIcons[2],
       title: "Premium Content Creation & Storytelling",
-      description: "Editorial visuals, high-end video, and experience-led campaigns crafted for luxury perception.",
+      description: "Luxury marketing is visual, emotional, and experience-driven across every content touchpoint.",
+      features: [
+        "High-end video production",
+        "Editorial-style photography",
+        "Lifestyle storytelling",
+        "Experience-based campaigns (events, private access, launches)",
+      ],
     },
     {
       icon: serviceIcons[3],
       title: "Influencer Campaign Management",
-      description: "Outreach, negotiations, exclusivity agreements, execution, and quality control handled end to end.",
+      description: "We manage campaign operations with precision, consistency, and strong brand safety.",
+      features: [
+        "Influencer outreach and negotiation",
+        "Contract handling and exclusivity agreements",
+        "Campaign execution and coordination",
+        "Brand safety and quality control",
+      ],
     },
     {
       icon: serviceIcons[4],
       title: "Performance Tracking & Optimization",
-      description: "High-value engagement, audience quality, premium conversion signals, and ROI optimization.",
+      description: "Luxury campaigns still need measurable outcomes, especially for high-value growth.",
+      features: [
+        "High-value engagement metrics",
+        "Audience quality insights",
+        "Conversion tracking for premium products",
+        "ROI analysis and campaign scaling",
+      ],
     },
   ];
 
@@ -152,6 +184,13 @@ const LuxuryInfluencerMarketing = () => {
     { icon: industryIcons[3], title: "Premium Automotive" },
     { icon: industryIcons[4], title: "Luxury Hotels & Resorts" },
     { icon: industryIcons[5], title: "Aesthetic & Cosmetic Clinics" },
+    { icon: industryIcons[6], title: "Private Aviation & Yacht Services" },
+  ];
+
+  const marketReasons = [
+    { icon: marketIcons[0], title: "High-net-worth individuals" },
+    { icon: marketIcons[1], title: "International investors" },
+    { icon: marketIcons[2], title: "Luxury-focused consumers" },
   ];
 
   const stats = [
@@ -210,8 +249,11 @@ const LuxuryInfluencerMarketing = () => {
   const problemsRef = useRef(null);
   const principlesRef = useRef(null);
   const servicesRef = useRef(null);
+  const approachCtaRef = useRef(null);
   const industriesRef = useRef(null);
   const statsRef = useRef(null);
+  const growthCtaRef = useRef(null);
+  const marketRef = useRef(null);
   const whyUsRef = useRef(null);
   const subServicesRef = useRef(null);
   const ctaRef = useRef(null);
@@ -226,9 +268,13 @@ const LuxuryInfluencerMarketing = () => {
 
       revealChildren(problemsRef, ".im-problem-card", 0.12);
       revealChildren(principlesRef, ".inf-reveal", 0.1);
+      revealChildren(approachCtaRef, ".inf-reveal", 0.12);
       revealChildren(servicesRef, ".inf-reveal", 0.08);
       revealChildren(industriesRef, ".inf-industry-tag", 0.08);
       revealChildren(statsRef, ".im-stat-card", 0.12);
+      revealChildren(growthCtaRef, ".inf-reveal", 0.12);
+      revealChildren(marketRef, ".inf-reveal", 0.1);
+      revealChildren(marketRef, ".inf-industry-tag", 0.1);
       revealChildren(whyUsRef, ".inf-reveal", 0.1);
       revealChildren(subServicesRef, ".im-subservice-card", 0.08);
       revealChildren(ctaRef, ".im-reveal", 0.12);
@@ -272,7 +318,7 @@ const LuxuryInfluencerMarketing = () => {
         ref={problemsRef}
         sectionLabel="The Problem"
         title="The Problem with Traditional Influencer Marketing"
-        description="Luxury campaigns often underperform when strategy prioritizes scale over exclusivity, audience quality, and brand control."
+        description="Luxury campaigns often underperform when strategy prioritizes scale over exclusivity, audience quality, and brand control. In Dubai and the UAE, affluent buyers engage with brands that feel aspirational, credible, and exclusive."
         items={problemItems}
         icons={problemIcons}
         dir={dir}
@@ -288,12 +334,21 @@ const LuxuryInfluencerMarketing = () => {
         columns={3}
       />
 
-      <InfServicesGrid
+      <InfInlineCTA
+        ref={approachCtaRef}
+        subtle
+        label="Our Offer"
+        title="Aligned with Luxury Buyer Psychology"
+        description="Our influencer marketing services are designed to match luxury buyer behavior in the UAE — helping premium brands protect positioning while driving qualified demand."
+        buttonText="Build Elite Influence"
+      />
+
+      <InfFeatureCardsList
         ref={servicesRef}
         label="Our Services"
         title="Our Luxury Influencer Marketing Services"
         description="From elite creator vetting to campaign optimization, every step is built for premium brands."
-        services={services}
+        items={services}
       />
 
       <InfIndustries
@@ -311,6 +366,22 @@ const LuxuryInfluencerMarketing = () => {
         description="We focus on outcomes that matter to luxury brands: qualified demand, premium positioning, and profitable growth."
         items={stats}
         dir={dir}
+      />
+
+      <InfInlineCTA
+        ref={growthCtaRef}
+        label="Campaign Momentum"
+        title="Drive Premium Growth"
+        description="From visibility to verified affluent engagement, we optimize campaigns for outcomes that strengthen both revenue and brand equity."
+        buttonText="Drive Premium Growth"
+      />
+
+      <InfIndustries
+        ref={marketRef}
+        label="Dubai Market Advantage"
+        title="Why Luxury Influencer Marketing Works in Dubai"
+        description="Dubai is one of the strongest luxury markets globally, where influencer campaigns can directly reach qualified premium buyers when strategy is precise."
+        industries={marketReasons}
       />
 
       <InfWhyChooseUs
