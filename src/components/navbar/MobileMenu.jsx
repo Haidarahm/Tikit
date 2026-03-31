@@ -13,7 +13,9 @@ export default function MobileMenu({
 }) {
   const { t } = useTranslation();
 
-  const regularLinks = NAV_LINKS.filter((link) => link.to !== "/influencer");
+  const regularLinks = NAV_LINKS.filter(
+    (link) => link.to !== "/influencer" && link.to !== "/services"
+  );
 
   return (
     <div
@@ -32,6 +34,40 @@ export default function MobileMenu({
             {t(key)}
           </Link>
         ))}
+
+        <NavDropdown
+          label={t("nav.services")}
+          items={[
+            {
+              label: t("nav.servicesSections.influencerMarketing"),
+              children: [
+                {
+                  label: t("nav.servicesSections.influencerMarketingAgencyDubai"),
+                  to: "/influencer-marketing-agency-dubai",
+                },
+                {
+                  label: t("nav.servicesSections.campaignManagement"),
+                  to: "/influencer-marketing-agency-dubai/campaign-management-dubai",
+                },
+                {
+                  label: t("nav.servicesSections.microInfluencerMarketing"),
+                  to: "/influencer-marketing-agency-dubai/micro-influencer-marketing-dubai",
+                },
+                {
+                  label: t("nav.servicesSections.luxuryInfluencerMarketing"),
+                  to: "/influencer-marketing-agency-dubai/luxury-influencer-marketing",
+                },
+              ],
+            },
+            {
+              label: t("serviceSections.digitalMarketing.seo.serviceType"),
+              to: "/digital-marketing-agency-dubai",
+            },
+            { label: t("nav.servicesSections.branding"), to: "/branding-agency-dubai" },
+          ]}
+          isMobile
+          onClose={() => setIsMobileMenuOpen(false)}
+        />
 
         {/* Influencer Dropdown */}
         <NavDropdown

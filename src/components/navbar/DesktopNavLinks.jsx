@@ -62,6 +62,10 @@ export default function DesktopNavLinks({ language }) {
                   label: t("nav.servicesSections.microInfluencerMarketing"),
                   to: "/influencer-marketing-agency-dubai/micro-influencer-marketing-dubai",
                 },
+                {
+                  label: t("nav.servicesSections.luxuryInfluencerMarketing"),
+                  to: "/influencer-marketing-agency-dubai/luxury-influencer-marketing",
+                },
               ],
             },
             {
