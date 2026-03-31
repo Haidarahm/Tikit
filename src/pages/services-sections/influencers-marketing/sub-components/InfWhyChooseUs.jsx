@@ -13,7 +13,7 @@ const InfWhyChooseUs = forwardRef(({ label, title, description, reasons, footerC
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {reasons.map((reason, idx) => (
-            <div key={idx} className="inf-why-card inf-reveal">
+            <div key={reason?.title || reason?.description || JSON.stringify(reason) || `reason-${idx}`} className="inf-why-card inf-reveal">
               <div className="inf-why-card__icon">{reason.icon}</div>
               <h3 className="inf-service-card__title">{reason.title}</h3>
               <p className="inf-service-card__text">{reason.description}</p>

@@ -37,7 +37,7 @@ const InfWhatIsSection = forwardRef(
                 <h3 className="inf-service-card__title">{prioritiesIntro}</h3>
                 <ul className="mt-3 space-y-2">
                   {priorities.map((item, idx) => (
-                    <li key={idx} className={`flex items-start gap-2 text-sm ${isRtl ? "text-right" : "text-left"}`}>
+                    <li key={`priority-${item || idx}`} className={`flex items-start gap-2 text-sm ${isRtl ? "text-right" : "text-left"}`}>
                       <FiCheckCircle className="mt-0.5 shrink-0 text-[var(--secondary)]" />
                       <span className="inf-service-card__text">{item}</span>
                     </li>
@@ -54,7 +54,7 @@ const InfWhatIsSection = forwardRef(
                 <h3 className="inf-service-card__title">{resultsIntro}</h3>
                 <ul className="mt-3 space-y-2">
                   {results.map((item, idx) => (
-                    <li key={idx} className={`flex items-start gap-2 text-sm ${isRtl ? "text-right" : "text-left"}`}>
+                    <li key={`result-${item || idx}`} className={`flex items-start gap-2 text-sm ${isRtl ? "text-right" : "text-left"}`}>
                       <FiCheckCircle className="mt-0.5 shrink-0 text-[var(--secondary)]" />
                       <span className="inf-service-card__text">{item}</span>
                     </li>

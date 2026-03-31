@@ -14,7 +14,7 @@ const InfFullService = forwardRef(({ label, title, description, items }, ref) =>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {items.map((item, idx) => (
             <div
-              key={idx}
+              key={item?.title || `item-${idx}`}
               className="inf-service-card inf-reveal group"
               style={{ borderLeftWidth: "3px", borderLeftColor: "var(--secondary)" }}
             >

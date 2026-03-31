@@ -15,7 +15,7 @@ const InfInfluencerTypes = forwardRef(({ label, title, description, types }, ref
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           {types.map((type, idx) => (
-            <div key={idx} className="inf-type-card inf-reveal">
+            <div key={type?.title || `type-${idx}`} className="inf-type-card inf-reveal">
               <div className="inf-type-card__badge">{type.icon}</div>
               <div className="flex-1">
                 <h3 className="inf-service-card__title">{type.title}</h3>

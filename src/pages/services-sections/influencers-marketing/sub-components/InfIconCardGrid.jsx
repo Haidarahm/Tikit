@@ -17,7 +17,7 @@ const InfIconCardGrid = forwardRef(({ label, title, description, items, columns 
 
         <div className={gridClass}>
           {items.map((item, idx) => (
-            <div key={idx} className="inf-type-card inf-reveal">
+            <div key={item?.title || item?.description || JSON.stringify(item) || `icon-card-${idx}`} className="inf-type-card inf-reveal">
               <div className="inf-type-card__badge">{item.icon}</div>
               <div className="flex-1">
                 <h3 className="inf-service-card__title">{item.title}</h3>

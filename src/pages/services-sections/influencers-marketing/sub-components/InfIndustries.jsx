@@ -13,7 +13,7 @@ const InfIndustries = forwardRef(({ label, title, description, industries }, ref
 
         <div className="flex flex-wrap gap-4">
           {industries.map((industry, idx) => (
-            <div key={idx} className="inf-industry-tag inf-reveal">
+            <div key={industry?.title || JSON.stringify(industry) || `industry-${idx}`} className="inf-industry-tag inf-reveal">
               <span className="text-lg">{industry.icon}</span>
               <span>{industry.title}</span>
             </div>

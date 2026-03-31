@@ -150,7 +150,7 @@ const InfluencerSubPage = ({ pageData }) => {
                   </h3>
                   <ul className="space-y-3">
                     {pageData.definition.benefits.map((item, idx) => (
-                      <li key={idx} className="im-check-item">
+                      <li key={`benefit-${item || idx}`} className="im-check-item">
                         <HiCheckCircle className="im-check-icon" />
                         <span className="im-text-sm" style={{ fontSize: "1rem" }}>{item}</span>
                       </li>
@@ -166,7 +166,7 @@ const InfluencerSubPage = ({ pageData }) => {
                   </h3>
                   <ol className="space-y-3">
                     {pageData.definition.processSteps.map((step, idx) => (
-                      <li key={idx} className="im-number-item">
+                      <li key={`process-step-${step || idx}`} className="im-number-item">
                         <span className="im-number-badge">{idx + 1}</span>
                         <span className="im-text-sm" style={{ fontSize: "1rem" }}>{step}</span>
                       </li>
@@ -201,7 +201,7 @@ const InfluencerSubPage = ({ pageData }) => {
                   {pageData.imageSection.highlights && (
                     <ul className="space-y-3">
                       {pageData.imageSection.highlights.map((item, idx) => (
-                        <li key={idx} className="im-check-item">
+                        <li key={`highlight-${item || idx}`} className="im-check-item">
                           <HiCheckCircle className="im-check-icon" />
                           <span style={{ color: "color-mix(in srgb, var(--foreground) 80%, transparent)" }}>{item}</span>
                         </li>
@@ -225,7 +225,7 @@ const InfluencerSubPage = ({ pageData }) => {
                 pageData.stats.length === 4 ? "grid-cols-2 md:grid-cols-4" : "grid-cols-2 md:grid-cols-3"
               }`}>
                 {pageData.stats.map((stat, idx) => (
-                  <div key={idx} className="im-stat-card">
+                  <div key={`${stat?.value || "stat"}-${stat?.label || idx}`} className="im-stat-card">
                     <h3 className="im-stat-value">{stat.value}</h3>
                     <p className="im-stat-label">{stat.label}</p>
                   </div>
@@ -248,7 +248,7 @@ const InfluencerSubPage = ({ pageData }) => {
                 {pageData.features.items.map((item, idx) => {
                   const Icon = item.icon;
                   return (
-                    <div key={idx} className="im-card">
+                    <div key={item?.title || `feature-${idx}`} className="im-card">
                       <div className="im-card-icon">
                         <Icon className="w-8 h-8 text-white" />
                       </div>
@@ -273,7 +273,7 @@ const InfluencerSubPage = ({ pageData }) => {
               <p className="im-section-subtitle">{pageData.process.subtitle}</p>
               <div className="space-y-8">
                 {pageData.process.steps.map((step, idx) => (
-                  <div key={idx} className="im-process-card">
+                  <div key={step?.title || `step-${idx}`} className="im-process-card">
                     <div className="im-step-number">{idx + 1}</div>
                     <div className="flex-1 text-center md:text-left">
                       <h3 className="im-step-title">{step.title}</h3>
@@ -299,7 +299,7 @@ const InfluencerSubPage = ({ pageData }) => {
                 {pageData.trust.cards.map((card, idx) => {
                   const Icon = card.icon;
                   return (
-                    <div key={idx} className="im-trust-card">
+                    <div key={card?.title || `trust-${idx}`} className="im-trust-card">
                       <div className="im-trust-icon"><Icon /></div>
                       <h3 className="im-trust-title">{card.title}</h3>
                       <p className="im-trust-desc">{card.description}</p>
@@ -331,7 +331,7 @@ const InfluencerSubPage = ({ pageData }) => {
                 {pageData.relatedPages.map((page, idx) => {
                   const Icon = page.icon;
                   return (
-                    <Link key={idx} to={page.path} className="im-link-card">
+                    <Link key={page?.path || page?.title || `related-${idx}`} to={page.path} className="im-link-card">
                       <div className="im-link-card-icon"><Icon /></div>
                       <h3 className="im-link-card-title">{page.title}</h3>
                       <p className="im-link-card-desc">{page.description}</p>

@@ -22,7 +22,7 @@ const InfComparisonTable = forwardRef(({ label, title, description, rows, footer
             </thead>
             <tbody>
               {rows.map((row, idx) => (
-                <tr key={idx}>
+                <tr key={row?.feature || `row-${idx}`}>
                   <td className="font-semibold" style={{ color: "var(--foreground)" }}>
                     {row.feature}
                   </td>

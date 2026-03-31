@@ -13,7 +13,7 @@ const InfCampaignProcess = forwardRef(({ label, title, description, steps }, ref
 
         <div className="space-y-0">
           {steps.map((step, idx) => (
-            <div key={idx} className="inf-step inf-reveal pb-8">
+            <div key={step?.title || step?.description || JSON.stringify(step) || `step-${idx}`} className="inf-step inf-reveal pb-8">
               {idx < steps.length - 1 && <div className="inf-step__line" />}
               <div className="inf-step__number">{idx + 1}</div>
               <div className="flex-1">
