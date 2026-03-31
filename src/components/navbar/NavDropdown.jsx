@@ -88,7 +88,10 @@ export default function NavDropdown({ label, items = [], isMobile = false, onClo
       const isExpanded = !!expandedKeys[itemKey];
 
       return (
-        <div key={`${item.to || item.label}-${itemKey}`} className="w-full">
+        <div
+          key={`${item.to || item.label}-${itemKey}`}
+          className={isMobile ? "w-full" : level === 0 ? "inline-block" : "w-full"}
+        >
           <button
             onClick={() => {
               if (hasChildren) {
@@ -97,7 +100,9 @@ export default function NavDropdown({ label, items = [], isMobile = false, onClo
               }
               if (item.to) handleItemClick(item.to);
             }}
-            className={`w-full flex items-center justify-between text-left transition-all duration-200 rounded-lg ${
+            className={`${
+              isMobile ? "w-full" : level === 0 ? "w-auto" : "w-full"
+            } flex items-center justify-between text-left transition-all duration-200 rounded-lg ${
               isMobile
                 ? `text-xl md:text-2xl font-light uppercase tracking-wider py-3 px-5 ${
                     level > 0
@@ -193,7 +198,7 @@ export default function NavDropdown({ label, items = [], isMobile = false, onClo
             : "opacity-0 -translate-y-2 pointer-events-none"
         } bg-[var(--background)] dark:bg-[var(--container-bg)] backdrop-blur-md border border-[var(--foreground)]/20 dark:border-white/20 shadow-lg`}
       >
-        <div className="py-1">{renderItems(items)}</div>
+        <div className="py-1 flex flex-row items-stretch gap-1">{renderItems(items)}</div>
       </div>
     </div>
   );
