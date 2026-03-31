@@ -3,6 +3,34 @@ import { Link } from "react-router-dom";
 import { FiArrowRight, FiCheckCircle } from "react-icons/fi";
 import { useFontClass } from "../../../../hooks/useFontClass";
 
+const outerCardStyle = {
+  borderColor: "color-mix(in srgb, var(--secondary) 26%, transparent)",
+  background:
+    "radial-gradient(120% 120% at 0% 0%, color-mix(in srgb, var(--secondary) 20%, transparent), var(--background) 65%)",
+};
+
+const panelCardStyle = {
+  borderColor: "color-mix(in srgb, var(--secondary) 20%, transparent)",
+  background:
+    "linear-gradient(165deg, color-mix(in srgb, var(--secondary) 10%, white) 0%, color-mix(in srgb, var(--secondary) 4%, var(--background) 96%) 100%)",
+  boxShadow:
+    "0 18px 48px -28px color-mix(in srgb, var(--secondary) 45%, transparent), inset 0 1px 0 color-mix(in srgb, white 65%, transparent)",
+};
+
+const secondaryButtonStyle = {
+  borderColor: "color-mix(in srgb, var(--secondary) 42%, transparent)",
+  color: "var(--foreground)",
+  background: "color-mix(in srgb, var(--background) 88%, white)",
+};
+
+const highlightsListStyle = {
+  borderColor: "color-mix(in srgb, var(--secondary) 18%, transparent)",
+};
+
+const checkIconStyle = {
+  color: "color-mix(in srgb, var(--secondary) 72%, white)",
+};
+
 const InfSplitCTA = forwardRef(
   (
     {
@@ -24,11 +52,7 @@ const InfSplitCTA = forwardRef(
         <div className="inf-container">
           <div
             className="inf-reveal rounded-3xl border p-6 md:p-10"
-            style={{
-              borderColor: "color-mix(in srgb, var(--secondary) 26%, transparent)",
-              background:
-                "radial-gradient(120% 120% at 0% 0%, color-mix(in srgb, var(--secondary) 20%, transparent), var(--background) 65%)",
-            }}
+            style={outerCardStyle}
           >
             <div className="grid gap-6 md:grid-cols-[1.25fr_0.75fr] md:items-center">
               <div>
@@ -39,13 +63,7 @@ const InfSplitCTA = forwardRef(
 
               <div
                 className="rounded-2xl border p-5 md:p-6"
-                style={{
-                  borderColor: "color-mix(in srgb, var(--secondary) 20%, transparent)",
-                  background:
-                    "linear-gradient(165deg, color-mix(in srgb, var(--secondary) 10%, white) 0%, color-mix(in srgb, var(--secondary) 4%, var(--background) 96%) 100%)",
-                  boxShadow:
-                    "0 18px 48px -28px color-mix(in srgb, var(--secondary) 45%, transparent), inset 0 1px 0 color-mix(in srgb, white 65%, transparent)",
-                }}
+                style={panelCardStyle}
               >
                 <div className="mb-4">
                   <p className="text-xs uppercase tracking-[0.18em] opacity-70">Start your campaign</p>
@@ -62,11 +80,7 @@ const InfSplitCTA = forwardRef(
                   <Link
                     to={secondaryHref}
                     className="inline-flex items-center justify-center rounded-xl border px-4 py-3 text-sm font-semibold transition hover:-translate-y-0.5 hover:opacity-90"
-                    style={{
-                      borderColor: "color-mix(in srgb, var(--secondary) 42%, transparent)",
-                      color: "var(--foreground)",
-                      background: "color-mix(in srgb, var(--background) 88%, white)",
-                    }}
+                    style={secondaryButtonStyle}
                   >
                     {secondaryText}
                   </Link>
@@ -75,14 +89,11 @@ const InfSplitCTA = forwardRef(
                 {highlights.length ? (
                   <ul
                     className="mt-5 space-y-2.5 border-t pt-4"
-                    style={{ borderColor: "color-mix(in srgb, var(--secondary) 18%, transparent)" }}
+                    style={highlightsListStyle}
                   >
                     {highlights.map((item) => (
                       <li key={item} className="flex items-start gap-2.5 text-sm leading-relaxed">
-                        <FiCheckCircle
-                          className="mt-0.5 shrink-0"
-                          style={{ color: "color-mix(in srgb, var(--secondary) 72%, white)" }}
-                        />
+                        <FiCheckCircle className="mt-0.5 shrink-0" style={checkIconStyle} />
                         <span className="opacity-90">{item}</span>
                       </li>
                     ))}

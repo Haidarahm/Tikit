@@ -2,6 +2,17 @@ import { forwardRef } from "react";
 import { Link } from "react-router-dom";
 import { useFontClass } from "../../../../hooks/useFontClass";
 
+const subtleContainerStyle = {
+  borderColor: "color-mix(in srgb, var(--secondary) 22%, transparent)",
+  background: "color-mix(in srgb, var(--secondary) 8%, var(--background) 92%)",
+};
+
+const defaultContainerStyle = {
+  borderColor: "color-mix(in srgb, var(--secondary) 22%, transparent)",
+  background:
+    "linear-gradient(135deg, color-mix(in srgb, var(--secondary) 18%, transparent), color-mix(in srgb, var(--secondary) 4%, var(--background) 96%))",
+};
+
 const InfInlineCTA = forwardRef(
   ({ label, title, description, buttonText, buttonHref = "/contact-us", subtle = false }, ref) => {
     const { fontHeading } = useFontClass();
@@ -11,12 +22,7 @@ const InfInlineCTA = forwardRef(
         <div className="inf-container">
           <div
             className="inf-reveal rounded-2xl border p-6 md:p-8 text-center"
-            style={{
-              borderColor: "color-mix(in srgb, var(--secondary) 22%, transparent)",
-              background: subtle
-                ? "color-mix(in srgb, var(--secondary) 8%, var(--background) 92%)"
-                : "linear-gradient(135deg, color-mix(in srgb, var(--secondary) 18%, transparent), color-mix(in srgb, var(--secondary) 4%, var(--background) 96%))",
-            }}
+            style={subtle ? subtleContainerStyle : defaultContainerStyle}
           >
             {label ? <span className="inf-label mb-4">{label}</span> : null}
             {title ? <h3 className={`inf-heading text-2xl md:text-3xl mb-3 ${fontHeading}`}>{title}</h3> : null}
