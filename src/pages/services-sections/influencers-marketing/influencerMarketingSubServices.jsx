@@ -1,4 +1,4 @@
-import { FiBarChart2, FiAward, FiTrendingUp, FiFileText, FiUsers } from "react-icons/fi";
+import { FiBarChart2, FiTrendingUp, FiFileText, FiUsers } from "react-icons/fi";
 import { FaInstagram, FaTiktok } from "react-icons/fa";
 
 export const INFLUENCER_MARKETING_BASE = "/influencer-marketing-agency-dubai";
@@ -32,10 +32,8 @@ const fallbackInfluencerMarketingSubServiceItems = [
 ];
 
 function pickInfluencerMarketingItemsFromI18n(allItems) {
-  // NOTE:
-  // Locale `subServices.items` contains 7 entries (including "Micro Influencer Marketing UAE"),
-  // and we expose all 7 routes (hrefs/icons) below.
-  const indicesToKeep = [0, 1, 2, 3, 4, 5, 6];
+  // Skip "Luxury Influencer Marketing" (index 2) because its page was removed.
+  const indicesToKeep = [0, 1, 3, 4, 5, 6];
   return indicesToKeep.map((idx) => allItems?.[idx]).filter(Boolean);
 }
 
@@ -58,7 +56,6 @@ export function getInfluencerMarketingSubServiceItems(t) {
 export const influencerMarketingSubServiceHrefs = [
   `${INFLUENCER_MARKETING_BASE}/campaign-management-dubai`,
   `${INFLUENCER_MARKETING_BASE}/micro-influencer-marketing-dubai`,
-  `${INFLUENCER_MARKETING_BASE}/luxury-influencer-marketing`,
   `${INFLUENCER_MARKETING_BASE}/roi-analytics`,
   `${INFLUENCER_MARKETING_BASE}/instagram-influencer-marketing`,
   `${INFLUENCER_MARKETING_BASE}/tiktok-influencer-marketing`,
@@ -68,7 +65,6 @@ export const influencerMarketingSubServiceHrefs = [
 export const influencerMarketingSubServiceIcons = [
   <FiBarChart2 key="influencer-sub-cm" />,
   <FiUsers key="influencer-sub-micro" />,
-  <FiAward key="influencer-sub-luxury" />,
   <FiTrendingUp key="influencer-sub-roi" />,
   <FaInstagram key="influencer-sub-ig" />,
   <FaTiktok key="influencer-sub-tt" />,
