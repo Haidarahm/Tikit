@@ -316,9 +316,9 @@ const LuxuryInfluencerMarketing = () => {
         imageAlt="Luxury Influencer Marketing Agency Dubai"
         badge="Luxury Influencer Marketing"
         badgeVariant="pulse"
-        title="Luxury Influencer Marketing Agency in Dubai"
-        mainWord="Connect with High-Net-Worth Audiences"
-        description="We help premium brands in Dubai and the UAE grow through exclusive influencer partnerships, elevated storytelling, and measurable campaign execution."
+        title="Luxury Influencer Marketing Agency "
+        mainWord="in Dubai"
+        description="Connect with High-Net-Worth Audiences. We help premium brands in Dubai and the UAE grow through exclusive influencer partnerships, elevated storytelling, and measurable campaign execution."
         dataNavColor="black"
       />
 
