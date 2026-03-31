@@ -587,6 +587,145 @@
           }
         ]
       },
+      "luxuryInfluencerMarketing": {
+        "breadcrumb": "Marketing d'influence luxe",
+        "seo": {
+          "title": "Agence de marketing d'influence luxe à Dubaï | Tikit.ae UAE",
+          "description": "Marketing d'influence luxe à Dubaï et aux Émirats. Tikit.ae aide les marques premium à atteindre des audiences à forte valeur grâce à des campagnes d'influence élites et un storytelling stratégique.",
+          "keywords": "luxury influencer marketing, luxury influencer marketing agency dubai, luxury influencer campaign uae",
+          "serviceType": "Luxury Influencer Marketing Agency Dubai"
+        },
+        "hero": {
+          "badge": "Marketing d'influence luxe",
+          "title": "Agence de marketing d'influence luxe à Dubaï",
+          "description": "Connectez-vous aux audiences à forte valeur. Nous aidons les marques premium à Dubaï et aux Émirats à croître grâce à des partenariats exclusifs, un storytelling haut de gamme et une exécution mesurable."
+        },
+        "problems": {
+          "sectionLabel": "Le problème",
+          "title": "Le problème du marketing d'influence traditionnel",
+          "description": "Les campagnes luxe sous-performent souvent quand la portée passe avant l'exclusivité, la qualité d'audience et le contrôle de marque.",
+          "items": [
+            { "title": "Nombre d'abonnés vs qualité d'acheteurs", "text": "Beaucoup de campagnes visent de gros chiffres mais manquent les audiences à forte valeur qui convertissent." },
+            { "title": "Portée court terme vs valeur de marque", "text": "Les marques luxe ont besoin d'un positionnement long terme, pas de pics de visibilité temporaires." },
+            { "title": "Contenu générique vs storytelling premium", "text": "Un contenu de masse peut affaiblir l'exclusivité et diluer la perception luxe." }
+          ]
+        },
+        "approach": {
+          "label": "Notre approche",
+          "title": "Comment nous construisons l'influence luxe aux Émirats",
+          "description": "Notre stratégie est conçue pour un positionnement premium et l'acquisition de clients à forte valeur."
+        },
+        "principles": {
+          "items": [
+            { "title": "Exclusivité", "description": "Partenariats limités et qualitatifs avec des influenceurs alignés à votre positionnement." },
+            { "title": "Pertinence", "description": "Ciblage d'audiences aisées et à forte intention à Dubaï et aux Émirats." },
+            { "title": "Contrôle", "description": "Protection de l'image de marque sur la création, les collaborations et la publication." }
+          ]
+        },
+        "offer": {
+          "label": "Notre offre",
+          "title": "Alignée avec la psychologie d'achat luxe",
+          "descriptionBefore": "Nos",
+          "linkText": "services de marketing d'influence",
+          "descriptionAfter": "sont conçus pour s'aligner avec la psychologie d'achat luxe et le marché des Émirats.",
+          "buttonText": "Construire une influence élite"
+        },
+        "services": {
+          "label": "Nos services",
+          "title": "Nos services de marketing d'influence luxe",
+          "description": "De la sélection d'influenceurs à l'optimisation des campagnes, chaque étape est pensée pour les marques premium.",
+          "items": [
+            { "title": "Identification et vérification d'influenceurs premium", "description": "Nous sélectionnons des influenceurs alignés avec votre positionnement luxe.", "features": ["Influenceurs luxe basés à Dubaï", "Créateurs internationaux avec audience UAE", "Profils d'audience à forte valeur vérifiés", "Analyse approfondie engagement/authenticité"] },
+            { "title": "Stratégie et positionnement de campagne luxe", "description": "Chaque campagne démarre avec une clarté stratégique pour attirer des acheteurs premium.", "features": ["Segmentation d'audience aisée", "Insights comportement consommateur luxe", "Choix des plateformes selon l'intention", "Développement narratif de campagne"] },
+            { "title": "Création de contenu premium et storytelling", "description": "Le marketing luxe est visuel, émotionnel et expérientiel.", "features": ["Production vidéo haut de gamme", "Photographie éditoriale", "Storytelling lifestyle", "Campagnes expérientielles"] },
+            { "title": "Gestion de campagnes influenceurs", "description": "Nous gérons l'exécution avec précision, cohérence et sécurité de marque.", "features": ["Prospection et négociation", "Gestion des contrats et exclusivité", "Coordination opérationnelle", "Contrôle qualité et brand safety"] },
+            { "title": "Suivi de performance et optimisation", "description": "Les campagnes luxe doivent aussi générer des résultats mesurables.", "features": ["Métriques d'engagement à forte valeur", "Insights qualité d'audience", "Suivi des conversions premium", "Analyse ROI et scale"] }
+          ]
+        },
+        "industries": {
+          "label": "Secteurs",
+          "title": "Secteurs que nous servons à Dubaï et aux Émirats",
+          "description": "Nous travaillons avec des secteurs où confiance, perception et prestige impactent directement le revenu.",
+          "items": [
+            { "title": "Immobilier de luxe" },
+            { "title": "Mode haut de gamme" },
+            { "title": "Bijoux et montres" },
+            { "title": "Automobile premium" },
+            { "title": "Hôtels et resorts de luxe" },
+            { "title": "Cliniques esthétiques" },
+            { "title": "Aviation privée et yachting" }
+          ]
+        },
+        "results": {
+          "sectionLabel": "Résultats",
+          "title": "Résultats de campagnes réels",
+          "description": "Nous nous concentrons sur les résultats qui comptent pour les marques luxe.",
+          "items": [
+            { "value": "3x+", "label": "ROI pour campagnes luxe UAE" },
+            { "value": "100%+", "label": "Hausse de leads qualifiés" },
+            { "value": "Verified", "label": "Engagement d'audience aisée vérifié" }
+          ]
+        },
+        "growthCta": {
+          "label": "Momentum de campagne",
+          "title": "Accélérez la croissance premium",
+          "description": "De la visibilité à l'engagement aisé vérifié, nous optimisons les campagnes pour renforcer revenus et capital de marque.",
+          "primaryText": "Accélérez la croissance premium",
+          "highlights": [
+            "Stratégie orientée qualité d'audience",
+            "Contrôles premium de brand safety",
+            "Optimisation pour leads à forte valeur"
+          ]
+        },
+        "whyUs": {
+          "label": "Pourquoi Tikit.ae",
+          "title": "Pourquoi Tikit.ae est différent",
+          "description": "Nous combinons compréhension du luxe et exécution disciplinée pour délivrer une valeur mesurable.",
+          "items": [
+            { "title": "Connaissance approfondie du marché luxe", "description": "Nous comprenons comment les audiences aisées évaluent, font confiance et achètent à Dubaï." },
+            { "title": "Accès à des influenceurs premium", "description": "Nous privilégions les créateurs qui influencent les acheteurs, pas seulement les abonnés." },
+            { "title": "Stratégie + exécution dans une seule équipe", "description": "Planification, création, coordination et optimisation avec cohérence totale." },
+            { "title": "Focus sur la valeur de marque long terme", "description": "Nous construisons une autorité durable, pas des pics temporaires." }
+          ]
+        },
+        "market": {
+          "label": "Avantage marché de Dubaï",
+          "title": "Pourquoi le marketing d'influence luxe fonctionne à Dubaï",
+          "description": "Dubaï est l'un des marchés du luxe les plus forts au monde, où les campagnes d'influence atteignent directement des acheteurs qualifiés.",
+          "items": [
+            { "title": "Personnes à haut patrimoine" },
+            { "title": "Investisseurs internationaux" },
+            { "title": "Consommateurs orientés luxe" }
+          ]
+        },
+        "faq": {
+          "title": "Questions fréquentes",
+          "items": [
+            { "question": "Qu'est-ce que le marketing d'influence luxe ?", "answer": "Il promeut les marques premium via des créateurs qui attirent des audiences aisées, avec un focus sur exclusivité et positionnement." },
+            { "question": "Différence avec le marketing d'influence classique ?", "answer": "Priorité à la qualité d'audience, l'adéquation premium et le storytelling plutôt qu'à la portée de masse." },
+            { "question": "Comment garantissez-vous la qualité des influenceurs ?", "answer": "Nous analysons démographie, authenticité, qualité d'engagement, collaborations passées et alignement marque." },
+            { "question": "Quelles plateformes sont les plus efficaces aux UAE ?", "answer": "Instagram et TikTok pour la visibilité, YouTube pour un storytelling plus profond." }
+          ]
+        },
+        "positioning": {
+          "label": "Positionnement luxe",
+          "title": "Positionnons votre marque là où elle doit être",
+          "description": "Le luxe n'est pas d'être vu partout, mais d'être vu par les bonnes personnes."
+        },
+        "getStarted": {
+          "label": "Commencer",
+          "title": "Prêt à attirer des clients à forte valeur ?",
+          "description": "Si vous êtes prêt à élever votre positionnement à Dubaï et aux Émirats, construisons une campagne luxe adaptée à vos objectifs.",
+          "buttonText": "Parlons-en"
+        },
+        "finalCta": {
+          "sectionLabel": "Commencer",
+          "title": "Positionnons votre marque là où elle doit être",
+          "description": "Attirez des clients à forte valeur à Dubaï et aux Émirats grâce à des campagnes luxe orientées croissance.",
+          "primaryButtonText": "Lancez votre campagne luxe aujourd'hui",
+          "secondaryButtonText": "Appelez-nous"
+        }
+      },
       "microInfluencerMarketing": {
         "badge": "Agence de marketing d'influence micro à Dubaï",
         "seo": {
