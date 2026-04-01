@@ -14,6 +14,10 @@ import TikitTitle from "../TikitTitle";
  * @param {string} [props.heroClassName] - Extra class for section
  * @param {string} [props.dataNavColor] - e.g. "black" for data-nav-color
  * @param {string} [props.classPrefix="im"] - CSS class prefix (e.g. "br" for Branding) so UI stays the same
+ * @param {number} [props.imageWidth=1920] - Intrinsic image width for layout stability
+ * @param {number} [props.imageHeight=1080] - Intrinsic image height for layout stability
+ * @param {string} [props.imageSizes] - Responsive sizes attribute for hero image
+ * @param {string} [props.imageSrcSet] - Responsive srcset for hero image
  */
 const ServiceHeroSection = forwardRef((props, ref) => {
   const {
@@ -27,6 +31,10 @@ const ServiceHeroSection = forwardRef((props, ref) => {
     heroClassName = "",
     dataNavColor,
     classPrefix = "im",
+    imageWidth = 1920,
+    imageHeight = 1080,
+    imageSizes,
+    imageSrcSet,
   } = props;
   const p = classPrefix;
 
@@ -36,7 +44,18 @@ const ServiceHeroSection = forwardRef((props, ref) => {
       {...(dataNavColor != null ? { "data-nav-color": dataNavColor } : {})}
     >
       <div className={`${p}-hero__image-wrapper`}>
-        <img src={imageSrc} alt={imageAlt} className={`${p}-hero__image`} />
+        <img
+          src={imageSrc}
+          alt={imageAlt}
+          className={`${p}-hero__image`}
+          width={imageWidth}
+          height={imageHeight}
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
+          {...(imageSizes ? { sizes: imageSizes } : {})}
+          {...(imageSrcSet ? { srcSet: imageSrcSet } : {})}
+        />
         <div className={`${p}-hero__overlay`} />
         <div className={`${p}-hero__mesh`} />
         <div className={`${p}-hero__orb ${p}-hero__orb--one`} />
