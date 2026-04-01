@@ -27,6 +27,7 @@ const ServiceCTASection = forwardRef((props, ref) => {
     classPrefix = "im",
   } = props;
   const p = classPrefix;
+  const isSecondaryExternal = typeof secondaryHref === "string" && secondaryHref.startsWith("http");
 
   return (
     <section ref={ref} className={`${p}-cta`} dir={dir}>
@@ -41,10 +42,11 @@ const ServiceCTASection = forwardRef((props, ref) => {
             <FiArrowRight />
             {primaryButtonText}
           </a>
-          <a  href="https://wa.me/971568881133"
-                  target="_blank"
-                  rel="noreferrer noopener"
-                   className={`${p}-btn-secondary`}>
+          <a
+            href={secondaryHref}
+            {...(isSecondaryExternal ? { target: "_blank", rel: "noreferrer noopener" } : {})}
+            className={`${p}-btn-secondary`}
+          >
             <FiPhone />
             {secondaryButtonText}
           </a>
