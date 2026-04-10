@@ -24,7 +24,7 @@ const Hero = ({ caseData, loading }) => {
     const heroRef = useRef(null);
     const [imageStatus, setImageStatus] = useState("idle");
     
-    const heroImage = toImageUrl(caseData?.logo);
+    const heroImage = toImageUrl(caseData?.main_image);
     const isImageLoaded = imageStatus === "loaded";
     const isImageLoading = imageStatus === "loading";
 
@@ -144,7 +144,7 @@ const Hero = ({ caseData, loading }) => {
             isImageLoaded ? "opacity-100" : "opacity-0"
           }`}
           src={heroImage}
-          alt={title || "Project logo"}
+          alt={title || "Project image"}
           width={1920}
           height={1080}
           loading="eager"

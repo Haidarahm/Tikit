@@ -55,10 +55,11 @@ const ShowCase = () => {
     return cases.map((item) => ({
       id: item.id,
       slug: item.slug,
-      img:
-        (Array.isArray(item.media) && item.media.length > 0
-          ? item.media[0]
-          : item.logo) || "",
+      img: item.main_image || "",
+
+        // (Array.isArray(item.media) && item.media.length > 0
+        //   ? item.media[0]
+        //   : item.logo) || "",
       title: item.title,
       subtitle: item.subtitle,
       size: "small",
