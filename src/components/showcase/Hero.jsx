@@ -24,7 +24,7 @@ const Hero = ({ caseData, loading }) => {
     const heroRef = useRef(null);
     const [imageStatus, setImageStatus] = useState("idle");
     
-    const heroImage = toImageUrl(caseData?.main_image);
+    const heroImage = toImageUrl(caseData?.main_image || caseData?.logo);
     const isImageLoaded = imageStatus === "loaded";
     const isImageLoading = imageStatus === "loading";
 
