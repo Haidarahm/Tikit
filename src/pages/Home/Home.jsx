@@ -4,6 +4,7 @@ import SEOHead from "../../components/SEOHead";
 import LogoIntro from "../../components/LogoIntro";
 import { useIntro } from "../../store/IntroContext";
 import LazySection from "../../components/LazySection";
+import WhyTikitSection from "./WhyTikitSection";
 
 const ShowCase = lazy(() => import("./ShowCase"));
 const Numbers = lazy(() => import("./Numbers"));
@@ -174,6 +175,10 @@ function Home() {
 
         <LazySection minHeight="400px">
           <ShowCase />
+        </LazySection>
+
+        <LazySection minHeight="560px">
+          <WhyTikitSection />
         </LazySection>
 
         <LazySection minHeight="300px">

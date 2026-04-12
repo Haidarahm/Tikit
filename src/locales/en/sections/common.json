@@ -119,6 +119,42 @@
       "descriptionLink": "influencer marketing agency",
       "descriptionAfter": ". Whether you want to shift perceptions or create scroll-stopping content, we do it better than anyone."
     },
+    "whyTikit": {
+      "title": "Why Tikit?",
+      "subtitle": "A focused partner for brands that want clarity, craft, and measurable outcomes.",
+      "cards": [
+        {
+          "iconKey": "target",
+          "title": "Strategy that converts",
+          "description": "Campaigns built on audience insight and clear KPIs — not vanity metrics. We align creators, channels, and messaging with your commercial goals."
+        },
+        {
+          "iconKey": "zap",
+          "title": "Creative + performance, together",
+          "description": "From production to paid and organic, one team owns the story and the results. Less handoff, faster iteration, stronger creative consistency."
+        },
+        {
+          "iconKey": "globe",
+          "title": "Built for MENA & beyond",
+          "description": "Multilingual execution and on-the-ground experience across the Gulf and wider region — with the polish global brands expect."
+        },
+        {
+          "iconKey": "barChart",
+          "title": "Reporting you can act on",
+          "description": "Clear dashboards and updates tied to funnel impact — not noise. We optimize with measurable milestones and honest readouts."
+        },
+        {
+          "iconKey": "layers",
+          "title": "Full stack, one team",
+          "description": "Strategy, creators, production, and media working as a single unit — fewer handoffs, tighter timelines, and creative that stays on-brand."
+        },
+        {
+          "iconKey": "award",
+          "title": "Partners, not vendors",
+          "description": "We go deep on your category and stakeholders. Most clients scale with us campaign after campaign because trust compounds results."
+        }
+      ]
+    },
     "numbers": {
       "headline": "The true measure of",
       "mainWord": "Success",

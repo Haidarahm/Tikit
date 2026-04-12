@@ -114,6 +114,42 @@
       "descriptionLink": "agence mondiale de marketing d'influence",
       "descriptionAfter": " maintes fois récompensée. Que vous souhaitiez changer les perceptions ou créer du contenu qui arrête le défilement, nous le faisons mieux que quiconque."
     },
+    "whyTikit": {
+      "title": "Pourquoi Tikit ?",
+      "subtitle": "Un partenaire concentré pour les marques qui veulent clarté, exigence créative et résultats mesurables.",
+      "cards": [
+        {
+          "iconKey": "target",
+          "title": "Une stratégie orientée conversion",
+          "description": "Des campagnes fondées sur la connaissance des audiences et des indicateurs clairs — pas sur les métriques de façade. Nous alignons créateurs, canaux et message sur vos objectifs business."
+        },
+        {
+          "iconKey": "zap",
+          "title": "Création et performance réunies",
+          "description": "De la production au organique et paid, une seule équipe porte le récit et les résultats. Moins de friction, des itérations plus rapides, une création plus cohérente."
+        },
+        {
+          "iconKey": "globe",
+          "title": "Pensé pour le MENA et au-delà",
+          "description": "Exécution multilingue et ancrage régional dans le Golfe et au-delà — avec le niveau d'exigence des marques internationales."
+        },
+        {
+          "iconKey": "barChart",
+          "title": "Des reportings actionnables",
+          "description": "Tableaux de bord et points d'étape clairs, liés à l'impact funnel — pas au bruit. Nous optimisons avec des jalons mesurables et une lecture honnête."
+        },
+        {
+          "iconKey": "layers",
+          "title": "Pile complète, une seule équipe",
+          "description": "Stratégie, créateurs, production et média dans le même flux — moins de friction, des délais plus serrés, une création fidèle à la marque."
+        },
+        {
+          "iconKey": "award",
+          "title": "Partenaires, pas prestataires",
+          "description": "Nous investissons dans votre secteur et vos enjeux. La plupart de nos clients grandissent avec nous campagne après campagne, parce que la confiance amplifie les résultats."
+        }
+      ]
+    },
     "numbers": {
       "headline": "La vraie mesure du",
       "mainWord": "Succès",
