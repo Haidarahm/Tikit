@@ -121,37 +121,37 @@
     },
     "whyTikit": {
       "title": "Why Tikit?",
-      "subtitle": "A focused partner for brands that want clarity, craft, and measurable outcomes.",
+      "subtitle": "Campaign strategy, influencer marketing, and social media management — built for brands that want reach, relevance, and measurable outcomes.",
       "cards": [
         {
           "iconKey": "target",
-          "title": "Strategy that converts",
-          "description": "Campaigns built on audience insight and clear KPIs — not vanity metrics. We align creators, channels, and messaging with your commercial goals."
+          "title": "Campaign strategy tied to your goals",
+          "description": "We start with objectives, audiences, and channel roles — then design phased influencer and social plans so every activation ladders up to real business outcomes, not vanity metrics."
         },
         {
           "iconKey": "zap",
-          "title": "Creative + performance, together",
-          "description": "From production to paid and organic, one team owns the story and the results. Less handoff, faster iteration, stronger creative consistency."
+          "title": "Influencer marketing that feels native",
+          "description": "Creator vetting, clear briefs, and creative direction so collaborations read as authentic recommendations — we match talent to your category, tone, and campaign KPIs."
         },
         {
           "iconKey": "globe",
-          "title": "Built for MENA & beyond",
-          "description": "Multilingual execution and on-the-ground experience across the Gulf and wider region — with the polish global brands expect."
+          "title": "Social media management, always on-brand",
+          "description": "Content pillars, calendars, and community voice across Instagram, TikTok, and the platforms that matter — consistent storytelling between campaign spikes and day-to-day presence."
         },
         {
           "iconKey": "barChart",
-          "title": "Reporting you can act on",
-          "description": "Clear dashboards and updates tied to funnel impact — not noise. We optimize with measurable milestones and honest readouts."
+          "title": "Optimize campaigns with honest data",
+          "description": "Dashboards and readouts on reach, engagement, saves, traffic, and conversions — so influencer pushes and social programs improve sprint over sprint."
         },
         {
           "iconKey": "layers",
-          "title": "Full stack, one team",
-          "description": "Strategy, creators, production, and media working as a single unit — fewer handoffs, tighter timelines, and creative that stays on-brand."
+          "title": "Influencers + owned social, one narrative",
+          "description": "We align creator campaigns with your organic posts, stories, and replies — one playbook so launches land harder and your feed reinforces the same message."
         },
         {
           "iconKey": "award",
-          "title": "Partners, not vendors",
-          "description": "We go deep on your category and stakeholders. Most clients scale with us campaign after campaign because trust compounds results."
+          "title": "From always-on SMM to big launches",
+          "description": "Ongoing community management, creator waves, and paid/organic social — we plan, produce, and refine so your influencer and social engine scales with you."
         }
       ]
     },

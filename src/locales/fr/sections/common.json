@@ -116,37 +116,37 @@
     },
     "whyTikit": {
       "title": "Pourquoi Tikit ?",
-      "subtitle": "Un partenaire concentré pour les marques qui veulent clarté, exigence créative et résultats mesurables.",
+      "subtitle": "Stratégie de campagnes, marketing d'influence et community management — pour les marques qui veulent portée, pertinence et résultats mesurables.",
       "cards": [
         {
           "iconKey": "target",
-          "title": "Une stratégie orientée conversion",
-          "description": "Des campagnes fondées sur la connaissance des audiences et des indicateurs clairs — pas sur les métriques de façade. Nous alignons créateurs, canaux et message sur vos objectifs business."
+          "title": "Une stratégie de campagnes alignée sur vos objectifs",
+          "description": "Nous partons de vos buts, audiences et rôles par canal, puis concevons des plans influence et social par phases — chaque activation soutient vos enjeux business, pas seulement des vanity metrics."
         },
         {
           "iconKey": "zap",
-          "title": "Création et performance réunies",
-          "description": "De la production au organique et paid, une seule équipe porte le récit et les résultats. Moins de friction, des itérations plus rapides, une création plus cohérente."
+          "title": "Du marketing d'influence qui sonne authentique",
+          "description": "Sélection de créateurs, briefs clairs et direction créative pour des collaborations crédibles — nous alignons talents, ton de marque et indicateurs de campagne."
         },
         {
           "iconKey": "globe",
-          "title": "Pensé pour le MENA et au-delà",
-          "description": "Exécution multilingue et ancrage régional dans le Golfe et au-delà — avec le niveau d'exigence des marques internationales."
+          "title": "Gestion des réseaux, toujours dans votre voix",
+          "description": "Piliers éditoriaux, calendriers et ton communautaire sur Instagram, TikTok et les plateformes qui comptent — une narration cohérente entre pics de campagne et présence au quotidien."
         },
         {
           "iconKey": "barChart",
-          "title": "Des reportings actionnables",
-          "description": "Tableaux de bord et points d'étape clairs, liés à l'impact funnel — pas au bruit. Nous optimisons avec des jalons mesurables et une lecture honnête."
+          "title": "Optimiser les campagnes avec des données utiles",
+          "description": "Tableaux de bord sur portée, engagement, enregistrements, trafic et conversions — pour faire progresser influence et social à chaque itération."
         },
         {
           "iconKey": "layers",
-          "title": "Pile complète, une seule équipe",
-          "description": "Stratégie, créateurs, production et média dans le même flux — moins de friction, des délais plus serrés, une création fidèle à la marque."
+          "title": "Influenceurs + social édité, une seule histoire",
+          "description": "Nous harmonisons les campagnes créateurs avec posts, stories et réponses — un même playbook pour des lancements plus forts et un feed qui renforce le message."
         },
         {
           "iconKey": "award",
-          "title": "Partenaires, pas prestataires",
-          "description": "Nous investissons dans votre secteur et vos enjeux. La plupart de nos clients grandissent avec nous campagne après campagne, parce que la confiance amplifie les résultats."
+          "title": "Du social « always-on » aux grands lancements",
+          "description": "Animation de communauté, vagues d'influenceurs, social organique et paid — nous planifions, produisons et ajustons pour faire grandir votre moteur influence & social."
         }
       ]
     },
