@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo, useRef } from "react";
-import influencerPlaceholder from "../../../assets/influncer/1.png";
+import { FiUser } from "react-icons/fi";
 import {
   FaInstagram,
   FaYoutube,
@@ -173,7 +173,7 @@ const Influencers = () => {
         influencer?.role ||
         "",
       secondarySubtitle: influencer?.secondary_subtitle || "",
-      image: influencer?.image || influencerPlaceholder,
+      image: influencer?.image || null,
       followers: influencer?.followers,
       socialLinks: normalizeSocialLinks(influencer?.links),
     }));
@@ -358,16 +358,23 @@ const Influencers = () => {
                   <SwiperSlide key={inf.id}>
                     <div className="flex flex-col items-center justify-center text-center h-full">
                       {/* Influencer Image */}
-                      <div className="relative w-28 h-28 sm:w-40 sm:h-40 md:w-48 md:h-48 mb-3 sm:mb-4 rounded-full overflow-hidden bg-gradient-to-br from-[#52C3C5]/20 to-[#5269C5]/20 shadow-xl transition-all duration-500 overflow- hover:shadow-2xl hover:shadow-[#52C3C5]/30 mx-auto">
-                        <img
-                          src={inf.image}
-                          alt={inf.name}
-                          width={300}
-                          height={400}
-                          className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
-                          loading="lazy"
-                          draggable="false"
-                        />
+                      <div className="relative w-28 h-28 sm:w-40 sm:h-40 md:w-48 md:h-48 mb-3 sm:mb-4 rounded-full overflow-hidden bg-gradient-to-br from-[#52C3C5]/20 to-[#5269C5]/20 shadow-xl transition-all duration-500 overflow- hover:shadow-2xl hover:shadow-[#52C3C5]/30 mx-auto flex items-center justify-center">
+                        {inf.image ? (
+                          <img
+                            src={inf.image}
+                            alt={inf.name}
+                            width={300}
+                            height={400}
+                            className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                            loading="lazy"
+                            draggable="false"
+                          />
+                        ) : (
+                          <FiUser
+                            className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 text-[var(--foreground)]/30"
+                            aria-hidden
+                          />
+                        )}
                       </div>
 
                       {/* Name */}

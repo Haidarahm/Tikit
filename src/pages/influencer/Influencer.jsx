@@ -14,8 +14,6 @@ import "swiper/css/pagination";
 import { debounce } from "../../utils/debounce";
 import Hero from "./Hero";
 import { InfluencerDetails } from "./InfluencerDetails";
-import influencer1 from "../../assets/influncer/1.png";
-import influencer2 from "../../assets/influncer/2.png";
 import SEOHead from "../../components/SEOHead";
 import { useInfluencersStore } from "../../store/influencersStore";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
@@ -29,6 +27,7 @@ import {
   FaFacebookF,
   FaSnapchatGhost,
 } from "react-icons/fa";
+import { FiUser } from "react-icons/fi";
 import ContactUs from "../Home/ContactUs.jsx";
 
 // Register ScrollTrigger plugin
@@ -459,7 +458,7 @@ export const Influencer = () => {
         influencer?.avatar ||
         influencer?.photo ||
         fallbackImages[idx % fallbackImages.length] ||
-        influencer1,
+        null,
       socialLinks: normalizeSocialLinks(
         influencer?.socialLinks ||
           influencer?.social_links ||
@@ -608,10 +607,7 @@ export const Influencer = () => {
             ref={mainContentRef}
           >
             {normalizedSections.map((section, index) => {
-              const influencers = getInfluencersForSection(section.key, [
-                influencer1,
-                influencer2,
-              ]);
+              const influencers = getInfluencersForSection(section.key, []);
               const hasLoaded = !allInfluencersLoading;
               const isLoadingSection = allInfluencersLoading;
 
@@ -678,10 +674,7 @@ export const Influencer = () => {
             {(() => {
               const activeSection = normalizedSections[activeIndex];
               if (!activeSection) return null;
-              const influencers = getInfluencersForSection(activeSection.key, [
-                influencer1,
-                influencer2,
-              ]);
+              const influencers = getInfluencersForSection(activeSection.key, []);
               const hasLoaded = !allInfluencersLoading;
               const isLoadingSection = allInfluencersLoading;
 
@@ -720,16 +713,25 @@ export const Influencer = () => {
                           data-phone-card-index={cardIndex}
                         >
                           <div className="flex items-center gap-4">
-                            <div className="relative w-20 h-20 rounded-2xl overflow-hidden">
-                              <img
-                                src={influencer.image}
-                                alt={influencer.name}
-                                width={80}
-                                height={80}
-                                className="w-full h-full object-cover object-center"
-                                loading="lazy"
-                              />
-                              <div className="absolute inset-0 rounded-2xl border border-white/10 pointer-events-none"></div>
+                            <div className="relative w-20 h-20 rounded-2xl overflow-hidden bg-gradient-to-br from-[#52C3C5]/25 to-[#5269C5]/20 flex items-center justify-center shrink-0">
+                              {influencer.image ? (
+                                <>
+                                  <img
+                                    src={influencer.image}
+                                    alt={influencer.name}
+                                    width={80}
+                                    height={80}
+                                    className="w-full h-full object-cover object-center"
+                                    loading="lazy"
+                                  />
+                                  <div className="absolute inset-0 rounded-2xl border border-white/10 pointer-events-none" />
+                                </>
+                              ) : (
+                                <FiUser
+                                  className="w-10 h-10 text-[var(--foreground)]/35"
+                                  aria-hidden
+                                />
+                              )}
                             </div>
                             <div>
                               <h2 className="text-xl font-semibold text-[var(--foreground)]">

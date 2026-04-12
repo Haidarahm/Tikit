@@ -12,7 +12,7 @@ import {
   FaLinkedinIn,
   FaSnapchatGhost,
 } from "react-icons/fa";
-import influencer from "../../assets/influncer/1.png";
+import { FiUser } from "react-icons/fi";
 import overlay from "../../assets/tick-overlay.webp";
 import overlayDark from "../../assets/tick-overlay-dark.webp";
 
@@ -53,7 +53,7 @@ export const InfluencerDetails = ({
   name = "Sarah Johnson",
   primarySubtitle = "Digital Content Creator",
   secondarySubtitle = "Lifestyle & Fashion Influencer",
-  image = influencer,
+  image = null,
   socialLinks = [
     { platform: "instagram", href: "https://instagram.com/sarahjohnson" },
     { platform: "youtube", href: "https://youtube.com/@sarahjohnson" },
@@ -203,24 +203,35 @@ export const InfluencerDetails = ({
           isReversed ? "justify-start" : "justify-end"
         }`}
       >
-        <img
-          src={image}
-          alt={`${name} - ${primarySubtitle}`}
-          width={400}
-          height={400}
-          className=" w-full h-full px-[1px] lg:px-[2px]"
-          loading="lazy"
-        />
-        <img
-          src={theme === "dark" ? overlayDark : overlay}
-          alt="overlay"
-          width={400}
-          height={267}
-          className={`absolute w-full bottom-4 md:-bottom-2 md:h-2/3  ${
-            isReversed ? "left-0" : "right-0"
-          }`}
-          loading="lazy"
-        />
+        {image ? (
+          <>
+            <img
+              src={image}
+              alt={`${name} - ${primarySubtitle}`}
+              width={400}
+              height={400}
+              className=" w-full h-full px-[1px] lg:px-[2px] object-cover rounded-2xl"
+              loading="lazy"
+            />
+            <img
+              src={theme === "dark" ? overlayDark : overlay}
+              alt=""
+              width={400}
+              height={267}
+              className={`absolute w-full bottom-4 md:-bottom-2 md:h-2/3  ${
+                isReversed ? "left-0" : "right-0"
+              }`}
+              loading="lazy"
+            />
+          </>
+        ) : (
+          <div className="w-full h-full rounded-2xl bg-gradient-to-br from-[var(--secondary)]/20 to-[var(--foreground)]/10 flex items-center justify-center">
+            <FiUser
+              className="w-24 h-24 md:w-32 md:h-32 text-[var(--foreground)]/25"
+              aria-hidden
+            />
+          </div>
+        )}
       </div>
     </section>
   );
