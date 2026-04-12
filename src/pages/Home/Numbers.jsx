@@ -14,11 +14,10 @@ const Numbers = memo(() => {
   const data = [
     {
       count: 300,
-      text1: t("home.numbers.items.happyClients.text1"),
-      text2: t("home.numbers.items.happyClients.text2"),
+      text1: t("home.numbers.items.clients.text1"),
+      text2: t("home.numbers.items.clients.text2"),
       plus: true,
       color: "#e84b4326",
-      // lightColor: "#E84B43/15",
       lightColor: "#e84b4326",
     },
     {
@@ -31,17 +30,18 @@ const Numbers = memo(() => {
       lightColor: "#F3A67A26",
     },
     {
-      count: 500,
-      text1: t("home.numbers.items.projects.text1"),
-      text2: t("home.numbers.items.projects.text2"),
+      count: 2000,
+      text1: t("home.numbers.items.campaigns.text1"),
+      text2: t("home.numbers.items.campaigns.text2"),
       plus: true,
       color: "#35D5D026",
       lightColor: "#35D5D026",
     },
     {
-      count: 98,
-      text1: t("home.numbers.items.awards.text1"),
-      text2: t("home.numbers.items.awards.text2"),
+      count: 25,
+      suffix: "K",
+      text1: t("home.numbers.items.influencersOnboarded.text1"),
+      text2: t("home.numbers.items.influencersOnboarded.text2"),
       bottom: true,
       color: "#25252590",
       lightColor: "#25252526",
@@ -71,7 +71,7 @@ const Numbers = memo(() => {
           <div className="grid grid-cols-2 gap-4 sm:gap-6 md:hidden">
             {data.map(
               (
-                { count, text1, text2, bottom, plus, color, lightColor },
+                { count, text1, text2, bottom, plus, suffix, color, lightColor },
                 idx
               ) => (
                 <div
@@ -90,10 +90,16 @@ const Numbers = memo(() => {
                       duration={1}
                       className="count-up-text"
                     />
+                    {suffix ? suffix : ""}
                     {plus ? "+" : ""}
                   </span>
                   <h2 className="text-xs sm:text-sm leading-tight mt-1 text-[var(--foreground)]">
-                    {text1} <br /> {text2}
+                    {text1}
+                    {text2?.trim() ? (
+                      <>
+                        <br /> {text2}
+                      </>
+                    ) : null}
                   </h2>
                 </div>
               )
@@ -110,6 +116,7 @@ const Numbers = memo(() => {
                   text2,
                   bottom,
                   plus,
+                  suffix,
                   color,
                   lightColor,
                   borderColor,
@@ -134,10 +141,16 @@ const Numbers = memo(() => {
                       duration={1}
                       className="count-up-text"
                     />
+                    {suffix ? suffix : ""}
                     {plus ? "+" : ""}
                   </span>
                   <h2 className="text-sm lg:text-base xl:text-[16px] leading-tight text-[var(--foreground)]">
-                    {text1} <br /> {text2}
+                    {text1}
+                    {text2?.trim() ? (
+                      <>
+                        <br /> {text2}
+                      </>
+                    ) : null}
                   </h2>
                 </div>
               )

@@ -119,21 +119,21 @@
       "mainWord": "النجاح",
       "subheadline": "عملاء يعودون إلينا. معظمهم يبقون معنا طويلاً بعد المشروع الأول.",
       "items": {
-        "happyClients": {
+        "clients": {
           "text1": "عملاء",
-          "text2": "سعداء"
+          "text2": ""
         },
         "years": {
           "text1": "سنوات",
           "text2": "من الخبرة"
         },
-        "projects": {
-          "text1": "مشاريع",
-          "text2": "مكتملة"
+        "campaigns": {
+          "text1": "حملات",
+          "text2": "ناجحة"
         },
-        "awards": {
-          "text1": "جوائز",
-          "text2": "وإنجازات"
+        "influencersOnboarded": {
+          "text1": "مؤثرون",
+          "text2": "منضمون"
         }
       }
     },

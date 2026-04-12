@@ -124,21 +124,21 @@
       "mainWord": "Success",
       "subheadline": "Clients who come back. Most of ours stay long after the first project.",
       "items": {
-        "happyClients": {
-          "text1": "Happy",
-          "text2": "Clients"
+        "clients": {
+          "text1": "Clients",
+          "text2": ""
         },
         "years": {
           "text1": "Years",
           "text2": "Of Experiences"
         },
-        "projects": {
-          "text1": "Completed",
-          "text2": "Projects"
+        "campaigns": {
+          "text1": "Successful",
+          "text2": "Campaigns"
         },
-        "awards": {
-          "text1": "Award",
-          "text2": "Achievements"
+        "influencersOnboarded": {
+          "text1": "Influencers",
+          "text2": "Onboarded"
         }
       }
     },
