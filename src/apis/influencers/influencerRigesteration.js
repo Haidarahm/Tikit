@@ -66,7 +66,7 @@ export const registerInfluencer = async (data) => {
     formData.append("media", data.media);
   }
 
-  const response = await api.post("/influencers/register", formData, {
+  const response = await api.post("/creators/register", formData, {
     headers: {
       "Content-Type": "multipart/form-data",
     },
