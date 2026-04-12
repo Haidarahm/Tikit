@@ -309,16 +309,6 @@ const Footer = ({ className }) => {
                   </Link>
                 ))}
               </nav>
-              <Link
-                to="/careers"
-                className={`inline-flex items-center justify-center px-4 py-2 rounded-full font-semibold text-sm transition-all duration-300 mt-4 ${
-                  theme === "dark"
-                    ? "bg-[var(--secondary)] text-[var(--background)] hover:bg-[var(--secondary)]/90"
-                    : "bg-[var(--secondary)] text-white hover:bg-[var(--secondary)]/90"
-                }`}
-              >
-                Join Our Team
-              </Link>
             </div>
 
             {/* Contact Info */}

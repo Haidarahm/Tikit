@@ -56,7 +56,6 @@ const pages = [
   { url: '/influencer-register', changefreq: 'monthly', priority: '0.7' },
   { url: '/contact-us', changefreq: 'monthly', priority: '0.8' },
   { url: '/faq', changefreq: 'monthly', priority: '0.8' },
-  { url: '/careers', changefreq: 'monthly', priority: '0.7' },
   { url: '/influencer-marketing-dubai', changefreq: 'monthly', priority: '0.9' },
   { url: '/influencer-marketing-saudi-arabia', changefreq: 'monthly', priority: '0.9' },
   { url: '/privacy-policy', changefreq: 'yearly', priority: '0.3' },
