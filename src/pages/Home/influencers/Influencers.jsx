@@ -144,9 +144,9 @@ const Influencers = () => {
   }, [sections]);
 
   useEffect(() => {
-    if (!activeSectionId) return;
-    if (influencersBySection[activeSectionId]) {
-      // Reset Swiper to first slide when section changes
+    if (activeSectionId == null || activeSectionId === "") return;
+    const cacheKey = String(activeSectionId);
+    if (Object.prototype.hasOwnProperty.call(influencersBySection, cacheKey)) {
       if (swiperInstance) {
         swiperInstance.slideTo(0);
       }
@@ -156,8 +156,9 @@ const Influencers = () => {
   }, [activeSectionId, influencersBySection, loadInfluencers, language]);
 
   const influencers = useMemo(() => {
-    if (!activeSectionId) return [];
-    const list = influencersBySection[activeSectionId] || [];
+    if (activeSectionId == null || activeSectionId === "") return [];
+    const cacheKey = String(activeSectionId);
+    const list = influencersBySection[cacheKey] || [];
     if (!Array.isArray(list)) return [];
     return list.map((influencer, index) => ({
       id: influencer?.id ?? `${activeSectionId}-${index}`,

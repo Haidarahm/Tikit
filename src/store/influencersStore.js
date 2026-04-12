@@ -5,6 +5,9 @@ import {
   getInfluencers,
 } from "../apis/influencers/influencers";
 
+const toSectionCacheKey = (sectionId) =>
+  sectionId == null || sectionId === "" ? "" : String(sectionId);
+
 const initialState = {
   sections: [],
   sectionsPagination: null,
@@ -69,7 +72,8 @@ export const useInfluencersStore = create((set) => ({
   },
 
   loadInfluencers: async (sectionId, params = {}) => {
-    if (!sectionId) return;
+    const cacheKey = toSectionCacheKey(sectionId);
+    if (!cacheKey) return;
 
     set({ influencersLoading: true, influencersError: null });
     try {
@@ -82,11 +86,11 @@ export const useInfluencersStore = create((set) => ({
       set((state) => ({
         influencersBySection: {
           ...state.influencersBySection,
-          [sectionId]: items,
+          [cacheKey]: items,
         },
         influencersPagination: {
           ...state.influencersPagination,
-          [sectionId]: response?.pagination ?? null,
+          [cacheKey]: response?.pagination ?? null,
         },
         influencersLoading: false,
       }));
@@ -99,16 +103,17 @@ export const useInfluencersStore = create((set) => ({
   },
 
   clearSection: (sectionId) => {
-    if (!sectionId) {
+    if (sectionId == null || sectionId === "") {
       set({ influencersBySection: {}, influencersPagination: {} });
       return;
     }
 
+    const key = toSectionCacheKey(sectionId);
     set((state) => {
       const nextInfluencers = { ...state.influencersBySection };
       const nextPagination = { ...state.influencersPagination };
-      delete nextInfluencers[sectionId];
-      delete nextPagination[sectionId];
+      delete nextInfluencers[key];
+      delete nextPagination[key];
       return {
         influencersBySection: nextInfluencers,
         influencersPagination: nextPagination,

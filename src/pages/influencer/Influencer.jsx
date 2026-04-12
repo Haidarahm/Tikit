@@ -109,15 +109,18 @@ export const Influencer = () => {
     });
   }, [sections]);
 
-  // Distribute allInfluencers by section (match section_title to section label)
+  // Distribute allInfluencers by section: API uses section_id; legacy payloads may use section_title
   const influencersBySection = useMemo(() => {
     const list = Array.isArray(allInfluencers) ? allInfluencers : [];
     const map = {};
     for (const section of normalizedSections) {
       const label = (section.label || "").trim().toLowerCase();
       map[section.key] = list.filter((inf) => {
+        if (inf?.section_id != null && section.requestId != null) {
+          return String(inf.section_id) === String(section.requestId);
+        }
         const infSection = (inf?.section_title || "").trim().toLowerCase();
-        return infSection === label || infSection.startsWith(label + " ");
+        return infSection === label || infSection.startsWith(`${label} `);
       });
     }
     return map;
