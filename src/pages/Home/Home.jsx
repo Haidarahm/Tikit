@@ -1,22 +1,20 @@
-import { lazy } from "react";
 import Hero from "./Hero";
 import SEOHead from "../../components/SEOHead";
 import LogoIntro from "../../components/LogoIntro";
 import { useIntro } from "../../store/IntroContext";
 import LazySection from "../../components/LazySection";
 import WhyTikitSection from "./WhyTikitSection";
-
-const ShowCase = lazy(() => import("./ShowCase"));
-const Numbers = lazy(() => import("./Numbers"));
-const Goals = lazy(() => import("./Goals"));
-const Influencers = lazy(() => import("./influencers/Influencers"));
-const Services = lazy(() => import("./Services"));
-const Connections = lazy(() => import("./Connections"));
-const WorkSection = lazy(() => import("./WorkSection"));
-const Map = lazy(() => import("./map/Map"));
-const PinnedSection = lazy(() => import("./PinnedSection"));
-const Blogs = lazy(() => import("./Blogs"));
-const ContactUs = lazy(() => import("./ContactUs"));
+import ShowCase from "./ShowCase";
+import Numbers from "./Numbers";
+import Goals from "./Goals";
+import Influencers from "./influencers/Influencers";
+import Services from "./Services";
+import Connections from "./Connections";
+import WorkSection from "./WorkSection";
+import Map from "./map/Map";
+import PinnedSection from "./PinnedSection";
+import Blogs from "./Blogs";
+import ContactUs from "./ContactUs";
 
 
 
