@@ -67,6 +67,7 @@ const CreativeDetails = () => {
       className={`creative-details min-h-screen ${
         isRtl ? "font-cairo" : "font-hero-light"
       }`}
+      data-nav-color="black"
     >
       <SEOHead
         title={
