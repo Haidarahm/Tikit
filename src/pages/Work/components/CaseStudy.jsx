@@ -3,6 +3,7 @@ import Hero from "../../../components/showcase/Hero";
 import CaseNumbers from "../../../components/showcase/CaseNumbers";
 import Images from "../../../components/showcase/Images";
 import CaseStudySection from "../../../components/showcase/CaseStudy";
+import CreativeBrandImages from "../../workDetails/creative/components/CreativeBrandImages";
 
 /**
  * Map API work item (influence/social/creative etc.) to caseData for CaseStudy.
@@ -30,12 +31,23 @@ export const workItemToCaseData = (item) => {
  * Work case study block: composes showcase Hero, CaseNumbers, Images, and CaseStudy.
  * Pass caseData (and optional loading) from Work detail pages or parent.
  */
-const CaseStudy = ({ caseData, loading = false }) => {
+const CaseStudy = ({
+  caseData,
+  loading = false,
+  brandImages = [],
+  brandTitle = "",
+  showBrandImages = false,
+}) => {
   return (
     <section data-nav-color="black" className="min-h-screen">
       <Hero caseData={caseData} loading={loading} />
       <CaseNumbers caseData={caseData} loading={loading} />
       <Images images={caseData?.images} />
+      {showBrandImages && (
+        <div className="w-full px-4 md:px-10 py-12 ">
+          <CreativeBrandImages images={brandImages} title={brandTitle} />
+        </div>
+      )}
       <CaseStudySection caseData={caseData} videos={caseData?.videos} />
     </section>
   );

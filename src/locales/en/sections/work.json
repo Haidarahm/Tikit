@@ -34,7 +34,15 @@
         "title": "Creative Detail",
         "campaign": "Creative Campaign",
         "back": "Back",
+        "reach": "Reach",
+        "views": "Views",
+        "engagementRate": "Engagement Rate",
+        "objective": "Objective",
+        "brief": "Brief",
+        "strategy": "Strategy",
+        "approach": "Approach",
         "brandImages": "Brand Images",
+        "brandIdentity": "Brand identity",
         "noMedia": "No media available for this work item.",
         "notAvailable": "Creative details not available."
       }
@@ -106,6 +114,10 @@
     },
     "videos": {
       "title": "Campaign Videos"
+    },
+    "images": {
+      "label": "Gallery",
+      "title": "Campaign imagery"
     }
   }
 }

@@ -49,13 +49,7 @@ const CATEGORY_CONFIG = {
     fetcher: fetchWorkCreative,
     transform: (response) => {
       const payload = response?.data ?? {};
-      const media = Array.isArray(payload?.media)
-        ? payload.media
-        : [
-            payload?.brand_image_1,
-            payload?.brand_image_2,
-            payload?.brand_image_3,
-          ].filter(Boolean);
+      const media = Array.isArray(payload?.media) ? payload.media : [];
       return {
         item: payload ?? null,
         media,

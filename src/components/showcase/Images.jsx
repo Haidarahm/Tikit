@@ -1,10 +1,13 @@
 import React, { memo, useEffect, useMemo, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { useTranslation } from "react-i18next";
+import { useI18nLanguage } from "../../store/I18nLanguageContext";
 import "swiper/css";
 
-// Optional: can accept props later if you want to pass custom images/columns
-const Images = memo(({ images = [], columns = 3 }) => {
+const Images = memo(({ images = [], columns = 3, title, sectionLabel }) => {
+  const { t } = useTranslation();
+  const { isRtl } = useI18nLanguage();
   const items = useMemo(
     () => (Array.isArray(images) ? images.filter(Boolean) : []),
     [images]
@@ -126,10 +129,29 @@ const Images = memo(({ images = [], columns = 3 }) => {
   const slidePeekClass =
     "!w-[calc(100%_-_24px)] sm:!w-[calc(100%_-_32px)] lg:!w-[calc(100%_-_56px)]";
 
+  const headingLabel = sectionLabel ?? t("caseStudy.images.label");
+  const headingTitle = title ?? t("caseStudy.images.title");
+  const showHeading = items.length > 0;
+
   return (
     <section data-nav-color="white" className="py-4  h-[180vh] md:h-screen">
-      <div className=" h-full w-full mx-auto px-4 md:px-12">
-        <div ref={containerRef} className="h-full w-full">
+      <div className=" h-full w-full mx-auto px-4 md:px-12 flex flex-col">
+        {showHeading && (
+          <div
+            className="shrink-0 mb-6 md:mb-8 text-center max-w-4xl mx-auto"
+            dir={isRtl ? "rtl" : "ltr"}
+          >
+            <span className="text-sm font-semibold tracking-[0.2em] uppercase text-[#52C3C5] inline-flex items-center justify-center gap-2">
+              <span className="w-8 h-px bg-[#52C3C5]/40 shrink-0" aria-hidden />
+              {headingLabel}
+              <span className="w-8 h-px bg-[#52C3C5]/40 shrink-0" aria-hidden />
+            </span>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[var(--foreground)] mt-3">
+              {headingTitle}
+            </h2>
+          </div>
+        )}
+        <div ref={containerRef} className="h-full w-full min-h-0 flex-1">
           {isLoaded ? (
             shouldEnableSwipe ? (
               <Swiper

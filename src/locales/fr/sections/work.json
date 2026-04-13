@@ -34,7 +34,15 @@
         "title": "Détail Créatif",
         "campaign": "Campagne Créative",
         "back": "Retour",
-        "brandImages": "Images de Marque",
+        "reach": "Portée",
+        "views": "Vues",
+        "engagementRate": "Taux d'engagement",
+        "objective": "Objectif",
+        "brief": "Brief",
+        "strategy": "Stratégie",
+        "approach": "Approche",
+        "brandImages": "Images de marque",
+        "brandIdentity": "Identité de marque",
         "noMedia": "Aucun média disponible pour ce travail.",
         "notAvailable": "Détails créatifs non disponibles."
       }
@@ -106,6 +114,10 @@
     },
     "videos": {
       "title": "Vidéos de campagne"
+    },
+    "images": {
+      "label": "Galerie",
+      "title": "Visuels de la campagne"
     }
   }
 }

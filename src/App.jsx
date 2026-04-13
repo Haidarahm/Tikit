@@ -14,6 +14,7 @@ import AIAssistButton from "./components/AIAssistButton";
 import { IntroProvider } from "./store/IntroContext";
 import ErrorBoundary from "./components/ErrorBoundary";
 import Footer from "./components/Footer";
+import CreativeDetails from "./pages/workDetails/creative/CreativeDetails.jsx";
 
 // Lazy load components
 const NewsletterPopup = lazy(() => import("./components/NewsletterPopup"));
@@ -92,11 +93,6 @@ const InfluenceDetails = lazy(() =>
 );
 const SocialDetails = lazy(() =>
   import("./pages/workDetails/SocialDetails.jsx").then((module) => ({
-    default: module.default,
-  }))
-);
-const CreativeDetails = lazy(() =>
-  import("./pages/workDetails/creative/CreativeDetails.jsx").then((module) => ({
     default: module.default,
   }))
 );
