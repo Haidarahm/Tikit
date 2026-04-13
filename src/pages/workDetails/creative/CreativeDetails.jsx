@@ -6,9 +6,9 @@ import { useI18nLanguage } from "../../../store/I18nLanguageContext.jsx";
 import { useTheme } from "../../../store/ThemeContext.jsx";
 import SEOHead from "../../../components/SEOHead.jsx";
 import ContactUs from "../../Home/ContactUs.jsx";
+import Loader from "../../../components/Loader.jsx";
 import CreativeHero from "./components/CreativeHero.jsx";
 import CreativeMediaShowcase from "./components/CreativeMediaShowcase.jsx";
-import CreativeLoading from "./components/CreativeLoading.jsx";
 import CreativeNoMedia from "./components/CreativeNoMedia.jsx";
 import "./creative.css";
 
@@ -80,7 +80,7 @@ const CreativeDetails = () => {
       />
 
       {creative.loading ? (
-        <CreativeLoading />
+        <Loader />
       ) : itemData ? (
         <div className="px-4 md:px-10 pb-20 pt-28">
           <div className="space-y-12">
