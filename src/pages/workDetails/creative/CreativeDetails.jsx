@@ -397,41 +397,12 @@ const CreativeDetails = () => {
 
               {/* Text Column */}
               <div className="flex flex-col gap-6">
-                {objective && (
-                  <div
-                    data-text-card
-                    className="relative h-fit overflow-hidden rounded-[28px] border border-[var(--foreground)]/10 bg-[var(--container-bg)] p-8 md:p-10 shadow-xl"
-                  >
-                    <div className="relative space-y-4">
-                      <h2 className="text-xs font-semibold uppercase tracking-[0.6em] text-[var(--foreground)]/60">
-                        {t("work.details.creative.objective")}
-                      </h2>
-                      <p className="text-base leading-relaxed md:text-lg text-[var(--foreground)]">
-                        {objective}
-                      </p>
-                    </div>
-                  </div>
-                )}
 
-                {narrativeBlocks.map(({ key, label, text }) => (
-                  <div
-                    key={key}
-                    data-text-card
-                    className="relative h-fit overflow-hidden rounded-[28px] border border-[var(--foreground)]/10 bg-[var(--container-bg)] p-8 md:p-10 shadow-xl"
-                  >
-                    <div className="relative space-y-4">
-                      <h2 className="text-xs font-semibold uppercase tracking-[0.6em] text-[var(--foreground)]/60">
-                        {label}
-                      </h2>
-                      <p className="text-base leading-relaxed md:text-lg text-[var(--foreground)]">
-                        {String(text).trim()}
-                      </p>
-                    </div>
-                  </div>
-                ))}
+                {brandImages.length > 0 && (
+                  <CreativeBrandImages images={brandImages} title={title} />
+                )}
               </div>
             </div>
-
           </div>
         </div>
       ) : (
