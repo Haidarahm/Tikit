@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SEOHead from "../../components/SEOHead";
@@ -85,15 +85,8 @@ const normalizeArticleHtml = (fullHtml, pageTitle, pageSubtitle) => {
   });
   removableTopNodes.forEach((node) => node.remove());
 
-  // The page already has an H1 in the header component, keep article hierarchy below it.
-  body.querySelectorAll("h1").forEach((h1) => {
-    const h2 = doc.createElement("h2");
-    h2.innerHTML = h1.innerHTML;
-    h1.replaceWith(h2);
-  });
-
-  // Build heading ids and TOC map (H2/H3) after normalization.
-  body.querySelectorAll("h2, h3").forEach((heading) => {
+  // Build heading ids and TOC map (H1/H2/H3) after normalization.
+  body.querySelectorAll("h1, h2, h3").forEach((heading) => {
     const title = heading.textContent?.trim();
     if (!title) return;
 
@@ -110,7 +103,8 @@ const normalizeArticleHtml = (fullHtml, pageTitle, pageSubtitle) => {
     toc.push({
       id,
       title,
-      level: heading.tagName === "H2" ? 2 : 3,
+      level:
+        heading.tagName === "H1" ? 1 : heading.tagName === "H2" ? 2 : 3,
     });
   });
 
@@ -119,6 +113,8 @@ const normalizeArticleHtml = (fullHtml, pageTitle, pageSubtitle) => {
 
 const Top10InfluencerMarketingAgenciesinDubai2026G = () => {
   const [activeHeadingId, setActiveHeadingId] = useState("");
+  const activeHeadingRef = useRef("");
+  const articleContentRef = useRef(null);
   const [tocAsideEl, setTocAsideEl] = useState(null);
   const [articleColEl, setArticleColEl] = useState(null);
   const { html: articleBodyHtml, toc: tocItems } = useMemo(
@@ -133,33 +129,60 @@ const Top10InfluencerMarketingAgenciesinDubai2026G = () => {
 
   useEffect(() => {
     if (!tocItems.length) return;
+    let rafId = 0;
 
-    const headingElements = tocItems
-      .map((item) => document.getElementById(item.id))
-      .filter(Boolean);
-    if (!headingElements.length) return;
+    const setActive = (id) => {
+      if (!id || activeHeadingRef.current === id) return;
+      activeHeadingRef.current = id;
+      setActiveHeadingId(id);
+    };
 
-    setActiveHeadingId(tocItems[0].id);
+    const getLiveHeadingElements = () => {
+      const root = articleContentRef.current;
+      if (!root) return [];
+      return tocItems
+        .map((item) => document.getElementById(item.id))
+        .filter((el) => el && root.contains(el))
+        .filter(Boolean);
+    };
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visibleEntries = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+    const computeActiveHeading = () => {
+      const headingElements = getLiveHeadingElements();
+      if (!headingElements.length) return;
 
-        if (visibleEntries.length > 0) {
-          setActiveHeadingId(visibleEntries[0].target.id);
-        }
-      },
-      {
-        root: null,
-        rootMargin: "-20% 0px -60% 0px",
-        threshold: [0.1, 0.35, 0.6],
+      const markerDocY = window.scrollY + window.innerHeight * 0.24;
+      let currentHeading = headingElements[0];
+
+      for (const heading of headingElements) {
+        const top = heading.getBoundingClientRect().top + window.scrollY;
+        if (top <= markerDocY) currentHeading = heading;
+        else break;
       }
-    );
 
-    headingElements.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
+      setActive(currentHeading.id);
+    };
+
+    const onScrollOrResize = () => {
+      if (rafId) return;
+      rafId = window.requestAnimationFrame(() => {
+        rafId = 0;
+        computeActiveHeading();
+      });
+    };
+
+    // Run after paint, then bind listeners.
+    rafId = window.requestAnimationFrame(() => {
+      rafId = 0;
+      computeActiveHeading();
+    });
+    window.addEventListener("scroll", onScrollOrResize, { passive: true });
+    window.addEventListener("resize", onScrollOrResize);
+
+    return () => {
+      if (rafId) window.cancelAnimationFrame(rafId);
+      window.removeEventListener("scroll", onScrollOrResize);
+      window.removeEventListener("resize", onScrollOrResize);
+    };
   }, [tocItems]);
 
   useEffect(() => {
@@ -183,6 +206,8 @@ const Top10InfluencerMarketingAgenciesinDubai2026G = () => {
   }, [tocAsideEl, articleColEl]);
 
   const handleTocClick = (id) => {
+    activeHeadingRef.current = id;
+    setActiveHeadingId(id);
     const target = document.getElementById(id);
     if (!target) return;
     target.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -224,6 +249,7 @@ const Top10InfluencerMarketingAgenciesinDubai2026G = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
             <div className="paragraph-item lg:col-span-8" ref={setArticleColEl}>
               <div
+                ref={articleContentRef}
                 className="paragraph-description news-detail-html text-sm sm:text-base md:text-lg text-[var(--foreground)]/80 leading-relaxed mb-6 sm:mb-8 md:mb-10 lg:mb-12 [&_h2]:scroll-mt-28 [&_h2]:text-2xl sm:[&_h2]:text-3xl [&_h2]:font-bold [&_h2]:text-[var(--foreground)] [&_h2]:mt-10 [&_h2]:mb-4 [&_h3]:scroll-mt-28 [&_h3]:text-xl sm:[&_h3]:text-2xl [&_h3]:font-semibold [&_h3]:text-[var(--foreground)] [&_h3]:mt-8 [&_h3]:mb-3 [&_p]:mb-4 [&_p:last-child]:mb-0 [&_ul]:list-disc [&_ul]:pl-6 sm:[&_ul]:pl-8 [&_ul]:my-4 [&_ul]:space-y-1 [&_ol]:list-decimal [&_ol]:pl-6 sm:[&_ol]:pl-8 [&_ol]:my-4 [&_ol]:space-y-1 [&_li]:mb-1 [&_li_p]:mb-1 [&_li_p:last-child]:mb-0 [&_a]:text-[var(--secondary)] [&_a]:underline [&_a]:underline-offset-2 [&_a]:hover:opacity-90 [&_a]:break-words [&_i]:italic [&_b]:font-bold [&_hr]:my-8 [&_table]:w-full [&_table]:border-collapse [&_table]:my-6 [&_table_td]:border [&_table_td]:border-[var(--foreground)]/20 [&_table_td]:p-2 [&_table_th]:border [&_table_th]:border-[var(--foreground)]/20 [&_table_th]:p-2"
                 dangerouslySetInnerHTML={{ __html: articleBodyHtml }}
               />
@@ -247,7 +273,7 @@ const Top10InfluencerMarketingAgenciesinDubai2026G = () => {
                           type="button"
                           onClick={() => handleTocClick(item.id)}
                           className={`w-full text-left rounded-lg px-3 py-2 text-sm transition ${
-                            item.level === 3 ? "ml-3" : ""
+                            item.level === 3 ? "ml-6" : item.level === 2 ? "ml-3" : ""
                           } ${
                             isActive
                               ? "bg-[var(--secondary)]/20 text-[var(--foreground)] font-semibold"
