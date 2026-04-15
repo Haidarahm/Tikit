@@ -179,6 +179,10 @@ const NewsHero = () => {
           )}
         </p>
       </div>
+
+      <div className="im-hero__scroll-indicator" aria-hidden="true">
+        <span className="im-hero__scroll-line" />
+      </div>
     </section>
   );
 };

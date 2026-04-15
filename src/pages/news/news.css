@@ -292,3 +292,45 @@
   }
 }
 
+/* ---------- Hero Scroll Indicator ---------- */
+.im-hero__scroll-indicator {
+  position: absolute;
+  left: 50%;
+  bottom: 22px;
+  transform: translateX(-50%);
+  margin: 0 auto;
+  height: 32px;
+  width: 20px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--secondary) 40%, transparent);
+  z-index: 20;
+  pointer-events: none;
+}
+
+.im-hero__scroll-line {
+  position: absolute;
+  left: 50%;
+  top: 4px;
+  display: block;
+  height: 8px;
+  width: 4px;
+  border-radius: 999px;
+  transform: translateX(-50%);
+  background: var(--secondary);
+  animation: imHeroScroll 1.6s ease-in-out infinite;
+}
+
+@keyframes imHeroScroll {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(0);
+  }
+  35% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(14px);
+  }
+}
+
