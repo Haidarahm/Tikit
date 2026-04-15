@@ -135,11 +135,7 @@ export function getBlogSEOProps(blog, slug) {
 // ======================
 const Card = ({ item }) => {
   const imgSrc = item?.images || item?.image || null;
-  const blogUrl = item.slug
-    ? item?.html_file
-      ? `/blogs/${item.slug}/html`
-      : `/blogs/${item.slug}`
-    : null;
+  const blogUrl = item.slug ? `/blogs/${item.slug}` : null;
 
   const handleCardClick = (e) => {
     // Allow Link to handle navigation, but also support programmatic navigation as fallback

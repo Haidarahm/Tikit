@@ -24,8 +24,9 @@ const AboutUs = lazy(() => import("./pages/about/AboutUs"));
 const Services = lazy(() => import("./pages/services/Services.jsx"));
 const Contact = lazy(() => import("./pages/contact/Contact"));
 const Blogs = lazy(() => import("./pages/news/Blogs"));
-const NewsDetails = lazy(() => import("./pages/newsDetails/NewsDetails.jsx"));
-const BlogDetails = lazy(() => import("./pages/newsDetails/BlogDetails.jsx"));
+const BlogDetailsSwitcher = lazy(() =>
+  import("./pages/newsDetails/BlogDetailsSwitcher.jsx")
+);
 const Influencer = lazy(() =>
   import("./pages/influencer/Influencer.jsx").then((module) => ({
     default: module.Influencer,
@@ -153,8 +154,7 @@ function App() {
               <Route path="/about-us" element={<AboutUs />} />
               <Route path="/services" element={<Services />} />
               <Route path="/blogs" element={<Blogs />} />
-              <Route path="/blogs/:slug/html" element={<BlogDetails />} />
-              <Route path="/blogs/:slug" element={<NewsDetails />} />
+              <Route path="/blogs/:slug" element={<BlogDetailsSwitcher />} />
             <Route path="/contact-us/:contact?" element={<Contact />} />
               <Route path="/influencer" element={<Influencer />} />
               <Route

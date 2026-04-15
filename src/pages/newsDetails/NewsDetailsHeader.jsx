@@ -291,7 +291,7 @@ const NewsDetailsHeader = ({ newsData: propNewsData, loading: propLoading }) => 
       className="relative w-full mt-16 sm:mt-20 md:mt-24 lg:mt-[104px] py-4 sm:py-6 md:py-8"
       dir={isRtl ? "rtl" : "ltr"}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-8">
+      <div className="max-w-8xl mx-auto px-4 sm:px-6 md:px-12 ">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-start">
           {/* Image Container - Takes 8 columns on large screens */}
           <div className="lg:col-span-8">

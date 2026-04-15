@@ -342,7 +342,7 @@ const BlogDetails = () => {
       <div data-nav-color="black" className="news-details w-full overflow-x-hidden">
         <NewsDetailsHeader newsData={newsData} loading={loadingHeader} />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 my-8 sm:my-10 md:my-12 lg:my-16">
+        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-12 md:px-8 my-8 sm:my-10 md:my-12 lg:my-16">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
             <div className="paragraph-item lg:col-span-8" ref={setArticleColEl}>
               {loadingHtml ? (
