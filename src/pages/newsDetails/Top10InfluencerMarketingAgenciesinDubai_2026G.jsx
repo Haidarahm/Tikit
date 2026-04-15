@@ -115,6 +115,7 @@ const Top10InfluencerMarketingAgenciesinDubai2026G = () => {
   const [activeHeadingId, setActiveHeadingId] = useState("");
   const activeHeadingRef = useRef("");
   const articleContentRef = useRef(null);
+  const tocNavRef = useRef(null);
   const [tocAsideEl, setTocAsideEl] = useState(null);
   const [articleColEl, setArticleColEl] = useState(null);
   const { html: articleBodyHtml, toc: tocItems } = useMemo(
@@ -184,6 +185,20 @@ const Top10InfluencerMarketingAgenciesinDubai2026G = () => {
       window.removeEventListener("resize", onScrollOrResize);
     };
   }, [tocItems]);
+
+  useEffect(() => {
+    if (!activeHeadingId || !tocNavRef.current) return;
+    const activeButton = tocNavRef.current.querySelector(
+      `[data-toc-id="${activeHeadingId}"]`
+    );
+    if (!activeButton) return;
+
+    activeButton.scrollIntoView({
+      behavior: "smooth",
+      block: "nearest",
+      inline: "nearest",
+    });
+  }, [activeHeadingId]);
 
   useEffect(() => {
     if (!tocAsideEl || !articleColEl) return;
@@ -260,16 +275,21 @@ const Top10InfluencerMarketingAgenciesinDubai2026G = () => {
                 className="hidden lg:block lg:col-span-4 self-start"
                 ref={setTocAsideEl}
               >
-                <div className="rounded-2xl border border-[var(--foreground)]/10 bg-[var(--container-bg)]/50 backdrop-blur-sm p-4 max-h-[70vh] overflow-auto">
+                <div className="rounded-2xl border border-[var(--foreground)]/10 bg-[var(--container-bg)]/50 backdrop-blur-sm p-4 max-h-[70vh] overflow-y-auto overflow-x-hidden">
                   <p className="text-xs uppercase tracking-[0.35em] text-[var(--foreground)]/60 mb-4">
                     On this page
                   </p>
-                  <nav aria-label="Article table of contents" className="space-y-1">
+                  <nav
+                    ref={tocNavRef}
+                    aria-label="Article table of contents"
+                    className="space-y-1"
+                  >
                     {tocItems.map((item) => {
                       const isActive = activeHeadingId === item.id;
                       return (
                         <button
                           key={item.id}
+                          data-toc-id={item.id}
                           type="button"
                           onClick={() => handleTocClick(item.id)}
                           className={`w-full text-left rounded-lg px-3 py-2 text-sm transition ${
