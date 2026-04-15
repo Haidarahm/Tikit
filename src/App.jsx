@@ -25,6 +25,7 @@ const Services = lazy(() => import("./pages/services/Services.jsx"));
 const Contact = lazy(() => import("./pages/contact/Contact"));
 const Blogs = lazy(() => import("./pages/news/Blogs"));
 const NewsDetails = lazy(() => import("./pages/newsDetails/NewsDetails.jsx"));
+const BlogDetails = lazy(() => import("./pages/newsDetails/BlogDetails.jsx"));
 const Top10InfluencerMarketingAgenciesinDubai2026G = lazy(() =>
   import("./pages/newsDetails/Top10InfluencerMarketingAgenciesinDubai_2026G.jsx")
 );
@@ -155,11 +156,12 @@ function App() {
               <Route path="/about-us" element={<AboutUs />} />
               <Route path="/services" element={<Services />} />
               <Route path="/blogs" element={<Blogs />} />
-              <Route path="/blogs/:slug" element={<NewsDetails />} />
               <Route
                 path="/blogs/top-10-influencer-marketing-agencies-in-dubai-2026-guide"
                 element={<Top10InfluencerMarketingAgenciesinDubai2026G />}
               />
+              <Route path="/blogs/:slug/html" element={<BlogDetails />} />
+              <Route path="/blogs/:slug" element={<NewsDetails />} />
             <Route path="/contact-us/:contact?" element={<Contact />} />
               <Route path="/influencer" element={<Influencer />} />
               <Route

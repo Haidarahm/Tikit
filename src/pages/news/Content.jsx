@@ -1,5 +1,5 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { getAllNewsItems } from "../../apis/news";
@@ -134,9 +134,12 @@ export function getBlogSEOProps(blog, slug) {
 // Card Component
 // ======================
 const Card = ({ item }) => {
-  const navigate = useNavigate();
   const imgSrc = item?.images || item?.image || null;
-  const blogUrl = item.slug ? `/blogs/${item.slug}` : null;
+  const blogUrl = item.slug
+    ? item?.html_file
+      ? `/blogs/${item.slug}/html`
+      : `/blogs/${item.slug}`
+    : null;
 
   const handleCardClick = (e) => {
     // Allow Link to handle navigation, but also support programmatic navigation as fallback
