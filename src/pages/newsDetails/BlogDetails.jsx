@@ -354,11 +354,34 @@ const BlogDetails = () => {
                   Failed to load article content.
                 </div>
               ) : articleBodyHtml ? (
-                <div
-                  ref={articleContentRef}
-                  className="paragraph-description news-detail-html text-sm sm:text-base md:text-lg text-[var(--foreground)]/80 leading-relaxed mb-6 sm:mb-8 md:mb-10 lg:mb-12 [&_h2]:scroll-mt-28 [&_h2]:text-2xl sm:[&_h2]:text-3xl [&_h2]:font-bold [&_h2]:text-[var(--foreground)] [&_h2]:mt-10 [&_h2]:mb-4 [&_h3]:scroll-mt-28 [&_h3]:text-xl sm:[&_h3]:text-2xl [&_h3]:font-semibold [&_h3]:text-[var(--foreground)] [&_h3]:mt-8 [&_h3]:mb-3 [&_p]:mb-4 [&_p:last-child]:mb-0 [&_ul]:list-disc [&_ul]:pl-6 sm:[&_ul]:pl-8 [&_ul]:my-4 [&_ul]:space-y-1 [&_ol]:list-decimal [&_ol]:pl-6 sm:[&_ol]:pl-8 [&_ol]:my-4 [&_ol]:space-y-1 [&_li]:mb-1 [&_li_p]:mb-1 [&_li_p:last-child]:mb-0 [&_a]:text-[var(--secondary)] [&_a]:underline [&_a]:underline-offset-2 [&_a]:hover:opacity-90 [&_a]:break-words [&_i]:italic [&_b]:font-bold [&_hr]:my-8 [&_table]:w-full [&_table]:border-collapse [&_table]:my-6 [&_table_td]:border [&_table_td]:border-[var(--foreground)]/20 [&_table_td]:p-2 [&_table_th]:border [&_table_th]:border-[var(--foreground)]/20 [&_table_th]:p-2"
-                  dangerouslySetInnerHTML={{ __html: articleBodyHtml }}
-                />
+                <>
+                  <div
+                    ref={articleContentRef}
+                    className="paragraph-description news-detail-html text-sm sm:text-base md:text-lg text-[var(--foreground)]/80 leading-relaxed mb-6 sm:mb-8 md:mb-10 lg:mb-12 [&_h2]:scroll-mt-28 [&_h2]:text-2xl sm:[&_h2]:text-3xl [&_h2]:font-bold [&_h2]:text-[var(--foreground)] [&_h2]:mt-10 [&_h2]:mb-4 [&_h3]:scroll-mt-28 [&_h3]:text-xl sm:[&_h3]:text-2xl [&_h3]:font-semibold [&_h3]:text-[var(--foreground)] [&_h3]:mt-8 [&_h3]:mb-3 [&_p]:mb-4 [&_p:last-child]:mb-0 [&_ul]:list-disc [&_ul]:pl-6 sm:[&_ul]:pl-8 [&_ul]:my-4 [&_ul]:space-y-1 [&_ol]:list-decimal [&_ol]:pl-6 sm:[&_ol]:pl-8 [&_ol]:my-4 [&_ol]:space-y-1 [&_li]:mb-1 [&_li_p]:mb-1 [&_li_p:last-child]:mb-0 [&_a]:text-[var(--secondary)] [&_a]:underline [&_a]:underline-offset-2 [&_a]:hover:opacity-90 [&_a]:break-words [&_i]:italic [&_b]:font-bold [&_hr]:my-8 [&_table]:w-full [&_table]:border-collapse [&_table]:my-6 [&_table_td]:border [&_table_td]:border-[var(--foreground)]/20 [&_table_td]:p-2 [&_table_th]:border [&_table_th]:border-[var(--foreground)]/20 [&_table_th]:p-2"
+                    dangerouslySetInnerHTML={{ __html: articleBodyHtml }}
+                  />
+
+                  {newsData?.written_by && (
+                    <div className="mt-6 rounded-2xl border border-[var(--foreground)]/10 bg-[var(--container-bg)]/50 p-5">
+                      <p className="text-xs uppercase tracking-[0.3em] text-[var(--foreground)]/60 mb-2">
+                        Written by
+                      </p>
+                      <p className="text-lg font-semibold text-[var(--foreground)] mb-4">
+                        {newsData.written_by}
+                      </p>
+                      {newsData?.writer_link && (
+                        <a
+                          href={newsData.writer_link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 rounded-full border border-[var(--foreground)]/15 bg-[var(--background)] px-4 py-2 text-sm font-semibold text-[var(--foreground)] transition hover:bg-[var(--foreground)] hover:text-[var(--background)]"
+                        >
+                          Visit Writer Profile
+                        </a>
+                      )}
+                    </div>
+                  )}
+                </>
               ) : (
                 <div className="text-[var(--foreground)]/70 text-base">
                   No article content available.
