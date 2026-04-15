@@ -6,10 +6,40 @@ import SEOHead from "../../components/SEOHead";
 import NewsDetailsHeader from "./NewsDetailsHeader";
 import { useNewsStore } from "../../store/newsStore";
 import { useI18nLanguage } from "../../store/I18nLanguageContext";
+import { api, BASE_URL as API_BASE_URL } from "../../config/backend";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const BASE_URL = "https://tikit.ae";
+const API_ORIGIN = (() => {
+  try {
+    if (!API_BASE_URL) return "";
+    const apiUrl = new URL(API_BASE_URL);
+    return `${apiUrl.protocol}//${apiUrl.host}`;
+  } catch {
+    return "";
+  }
+})();
+
+const resolveHtmlFileUrl = (htmlFile) => {
+  if (!htmlFile) return "";
+  try {
+    const parsed = new URL(htmlFile);
+    // Backend may return local URLs; remap to configured API origin.
+    const isLocalHost =
+      parsed.hostname === "127.0.0.1" || parsed.hostname === "localhost";
+    if (isLocalHost && API_ORIGIN) {
+      return `${API_ORIGIN}${parsed.pathname}${parsed.search}`;
+    }
+    return parsed.toString();
+  } catch {
+    // Handle relative paths like /news_html/file.html
+    if (htmlFile.startsWith("/") && API_ORIGIN) {
+      return `${API_ORIGIN}${htmlFile}`;
+    }
+    return htmlFile;
+  }
+};
 
 const normalizeText = (value = "") =>
   String(value)
@@ -147,15 +177,22 @@ const BlogDetails = () => {
       setLoadingHtml(true);
       setHtmlError(null);
       try {
-        const response = await fetch(newsData.html_file);
-        if (!response.ok) {
-          throw new Error(`Failed to load html file: ${response.status}`);
-        }
-        const html = await response.text();
+        const resolvedHtmlUrl = resolveHtmlFileUrl(newsData.html_file);
+        const response = await api.get(resolvedHtmlUrl, {
+          responseType: "text",
+          headers: { Accept: "text/html,*/*" },
+        });
+        const html = typeof response?.data === "string" ? response.data : "";
+        if (!html) throw new Error("Empty html file response");
         if (!mounted) return;
         setRawHtml(html);
       } catch (error) {
         if (!mounted) return;
+        console.error("Failed to load blog html_file", {
+          html_file: newsData?.html_file,
+          resolved: resolveHtmlFileUrl(newsData?.html_file),
+          error,
+        });
         setHtmlError(error);
         setRawHtml("");
       } finally {
