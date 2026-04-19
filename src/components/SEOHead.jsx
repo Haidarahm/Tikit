@@ -52,7 +52,7 @@ const SEOHead = ({
     ? skipTitleSuffix || hasSiteNameInTitle
       ? title
       : `${title} | ${siteName}`
-    : `Marketing Agency in Dubai | Creative & Performance-Driven Growth | ${siteName}`;
+    : "Dubai Influencer Marketing Agency | Tikit – Creative Campaigns That Convert";
   const fullDescription =
     description ||
     t(

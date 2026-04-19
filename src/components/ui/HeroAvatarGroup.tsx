@@ -6,6 +6,12 @@ import {
   AvatarGroupTooltip,
 } from "../animate-ui/components/animate/avatar-group";
 import { cn } from "../../lib/utils";
+import influencer1 from "../../assets/influencers/influencer-1.webp";
+import influencer2 from "../../assets/influencers/influencer-2.webp";
+import influencer3 from "../../assets/influencers/influencer-3.webp";
+import influencer4 from "../../assets/influencers/influencer-4.webp";
+import influencer5 from "../../assets/influencers/influencer-5.webp";
+import influencer6 from "../../assets/influencers/influencer-6.webp";
 
 type AvatarStatus = "idle" | "loading" | "loaded" | "error";
 
@@ -84,34 +90,34 @@ function AvatarFallback({
 
 const AVATARS = [
   {
-    src: "https://i.pinimg.com/webp/1200x/65/7c/e1/657ce19e18e65061190c7927400947cf.webp",
+    src: influencer1,
     fallback: "AL",
     tooltip: "André Luis",
   },
   {
-    src: "https://i.pinimg.com/webp/1200x/72/2c/91/722c912d31ec627c640127d08314eb7b.webp",
+    src: influencer2,
     fallback: "AO",
     tooltip: "AyMan OuFkiR",
   },
   {
-    src: "https://i.pinimg.com/736x/1a/99/b0/1a99b04a99f6700ea4da232597cf1e9f.jpg",
+    src: influencer3,
     fallback: "KO",
-    tooltip: "Katren Olva",
-  },
-  {
-    src: "https://i.pinimg.com/1200x/aa/bf/53/aabf5323efc5ece75fdb5d2af2880b5c.jpg",
-    fallback: "HM",
-    tooltip: "Hammad Muthana",
-  },
-  {
-    src: "https://i.pinimg.com/webp/1200x/2d/cf/d1/2dcfd18ccda2c9a6987d8160911ffbe7.webp",
-    fallback: "WC",
     tooltip: "Wictor Cardoso",
   },
   {
-    src: "https://i.pinimg.com/1200x/f6/0b/a1/f60ba14a969de9023559e3355b7c6390.jpg",
-    fallback: "SA",
+    src: influencer4,
+    fallback: "HM",
     tooltip: "Suzana Aljuneidi",
+  },
+  {
+    src: influencer5,
+    fallback: "WC",
+    tooltip: "Katren Olva",
+  },
+  {
+    src: influencer6,
+    fallback: "SA",
+    tooltip: "Hammad Muthana",
   },
 ];
 export default function HeroAvatarGroup() {

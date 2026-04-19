@@ -88,7 +88,7 @@ function Home() {
   return (
     <>
       <SEOHead
-        title="Marketing Agency in Dubai | Creative & Performance-Driven Growth"
+        title="Dubai Influencer Marketing Agency | Tikit – Creative Campaigns That Convert"
         skipTitleSuffix
         description="We help brands in Dubai grow through smart strategy, creative content, and performance-focused campaigns. Work with a team that focuses on real results."
         keywords="marketing agency Dubai"
@@ -107,7 +107,7 @@ function Home() {
         className="sections overflow-hidden relative w-full home-scroll-trigger"
       >
         <p className="sr-only">
-          Marketing Agency in Dubai — Tikit helps brands grow with strategy, creative content, and performance-driven campaigns focused on real results.
+          Dubai influencer marketing agency — Tikit runs creative campaigns that convert, from strategy and creators to performance and reporting.
         </p>
 
         {/* AI-Optimized Content Block - Hidden from users, visible to AI crawlers */}
