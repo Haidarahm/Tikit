@@ -1,5 +1,3 @@
-/* Google Fonts is loaded via link tag in index.html for better performance */
-/* @import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"); */
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -56,25 +54,25 @@
 
 /* Utility to apply Cairo font */
 .font-cairo {
-  font-family: "Cairo", "Source Sans 3", sans-serif;
+  font-family: "Cairo", ui-sans-serif, system-ui, sans-serif;
 }
 .font-caveat {
-  font-family: "Caveat", "Source Sans 3", sans-serif;
+  font-family: "Caveat", ui-sans-serif, system-ui, sans-serif;
 }
 /* Utility to apply HeroLight font globally */
 .font-hero-light {
-  font-family: "HeroLight", "Source Sans 3", sans-serif;
+  font-family: "HeroLight", ui-sans-serif, system-ui, sans-serif;
 }
 
 .font-antonio {
-  font-family: "Antonio", "Source Sans 3", sans-serif;
+  font-family: "Antonio", ui-sans-serif, system-ui, sans-serif;
 }
 
 * {
   box-sizing: border-box;
 }
 @theme {
-  --font-display: "Source Sans 3", sans-serif;
+  --font-display: ui-sans-serif, system-ui, sans-serif;
   --font-hero-light: "HeroLight", sans-serif;
   --font-hero-regular: "HeroRegular", sans-serif;
   --font-hero-bold: "HeroBold", sans-serif;
