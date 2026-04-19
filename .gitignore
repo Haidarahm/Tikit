@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# i18n prune script output
+scripts/unused-i18n-report.txt
+scripts/.i18n-backup-*/

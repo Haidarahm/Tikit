@@ -9,7 +9,9 @@
     "postbuild": "node scripts/react-snap-with-showcase.js",
     "lint": "eslint .",
     "preview": "vite preview --host",
-    "generate-sitemap": "node scripts/generate-sitemap.js"
+    "generate-sitemap": "node scripts/generate-sitemap.js",
+    "i18n:check-unused": "node scripts/check-unused-translations.mjs",
+    "i18n:prune-unused": "node scripts/check-unused-translations.mjs --apply"
   },
   "reactSnap": {
     "source": "dist",

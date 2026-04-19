@@ -187,17 +187,32 @@
           {
             "title": "Instagram Influencer Marketing Campaigns",
             "description": "Widely used by brands in fashion, lifestyle, beauty, and e-commerce. Influencers share product experiences through posts, stories, and reels.",
-            "tags": ["Posts", "Stories", "Reels", "IGTV"]
+            "tags": [
+              "Posts",
+              "Stories",
+              "Reels",
+              "IGTV"
+            ]
           },
           {
             "title": "TikTok Influencer Marketing for Brand Growth",
             "description": "Helps brands reach audiences through short and engaging video content with rapid exposure and audience interaction.",
-            "tags": ["Short Video", "Trends", "Duets", "Challenges"]
+            "tags": [
+              "Short Video",
+              "Trends",
+              "Duets",
+              "Challenges"
+            ]
           },
           {
             "title": "YouTube Influencer Partnerships",
             "description": "Allows brands to share detailed content such as product reviews, tutorials, and brand experiences for deeper trust.",
-            "tags": ["Reviews", "Tutorials", "Vlogs", "Shorts"]
+            "tags": [
+              "Reviews",
+              "Tutorials",
+              "Vlogs",
+              "Shorts"
+            ]
           }
         ]
       },
@@ -256,11 +271,21 @@
         "title": "Industries Using Influencer Marketing in Dubai and the UAE",
         "description": "Influencer marketing is widely used across multiple industries in the UAE. Brands use creators to promote products and services through engaging content.",
         "items": [
-          { "title": "Fashion and Beauty Brands" },
-          { "title": "Restaurants and Hospitality" },
-          { "title": "Travel and Tourism Companies" },
-          { "title": "E-commerce and Retail Brands" },
-          { "title": "Real Estate and Lifestyle" }
+          {
+            "title": "Fashion and Beauty Brands"
+          },
+          {
+            "title": "Restaurants and Hospitality"
+          },
+          {
+            "title": "Travel and Tourism Companies"
+          },
+          {
+            "title": "E-commerce and Retail Brands"
+          },
+          {
+            "title": "Real Estate and Lifestyle"
+          }
         ]
       },
       "whyChooseUs": {
@@ -404,42 +429,16 @@
       },
       "subPages": {
         "microInfluencer": {
-          "seo": {
-            "title": "B2B Influencer Marketing in Dubai – Drive Measurable Results with Tikit",
-            "description": "Forget generic campaigns and empty promises. Tikit helps Dubai businesses harness the power of B2B influencer marketing to reach the right decision-makers, boost brand authority, and generate measurable leads - fast. Trusted by 200+ Dubai businesses to deliver results that actually move the needle.",
-            "keywords": "b2b influencer marketing dubai, influencer marketing for b2b, b2b marketing influencers, b2b influencer marketing strategy, dubai b2b marketing",
-            "serviceType": "B2B Influencer Marketing Dubai"
-          },
-          "badge": "B2B Influencer Marketing Dubai",
-          "hero": {
-            "title": "B2B Influencer Marketing in Dubai",
-            "mainWord": "Drive Measurable Results with Tikit",
-            "description": "Forget generic campaigns and empty promises. Tikit helps Dubai businesses harness the power of B2B influencer marketing to reach the right decision-makers, boost brand authority, and generate measurable leads - fast. Trusted by 200+ Dubai businesses to deliver results that actually move the needle."
-          },
           "audience": {
-            "sectionLabel": "The Challenge",
-            "title": "Struggling to Get Your Message to the Right B2B Audience?",
             "paragraphs": [
-              "You know your product is solid. Your team works tirelessly. But despite investing in marketing, you are still struggling to get the attention of the companies that matter most. Traditional campaigns are not delivering measurable ROI. Cold outreach is not converting. And competitors are already leveraging B2B marketing influencers to dominate the conversation.",
               "That frustration is not your fault. The Dubai B2B market is crowded, decision-makers are busy, and generic campaigns fail to stand out."
             ]
           },
           "problems": {
-            "sectionLabel": "The Challenge",
-            "title": "Why B2B Brands Struggle to Reach the Right Buyers",
-            "description": "Most campaigns are too generic for Dubai's competitive B2B market.",
             "items": [
-              {
-                "title": "Hard to identify credible B2B influencers",
-                "text": "Many creators have visibility but little impact on business buyers."
-              },
               {
                 "title": "Low engagement with decision-makers",
                 "text": "Content often misses executives and stakeholders who can approve deals."
-              },
-              {
-                "title": "Lack of measurable ROI",
-                "text": "Budgets get spent without clear attribution to leads and revenue."
               },
               {
                 "title": "Generic strategy mismatch",
@@ -448,24 +447,11 @@
             ]
           },
           "process": {
-            "sectionLabel": "Our Framework",
-            "title": "How Tikit Delivers Measurable Results",
-            "description": "A simple 4-step framework focused on outcomes, not vanity metrics.",
             "steps": [
-              {
-                "n": "01",
-                "title": "Analysis",
-                "text": "We assess audience, competitors, and market trends to identify the influencers that can move your business forward."
-              },
               {
                 "n": "02",
                 "title": "Strategy",
                 "text": "We build a campaign around your goals, from lead generation to authority building, with clear KPIs."
-              },
-              {
-                "n": "03",
-                "title": "Execution",
-                "text": "We coordinate creators, content, approvals, and publishing so your message reaches the right B2B buyers."
               },
               {
                 "n": "04",
@@ -475,66 +461,30 @@
             ]
           },
           "outcomes": {
-            "sectionLabel": "Tikit Promise",
-            "title": "Measurable B2B Growth with Tikit",
-            "description": "With Tikit, you don’t just run campaigns. You build measurable B2B growth through influencer marketing. Most clients see measurable results within 60 days.",
             "items": [
-              {
-                "value": "Increased Visibility",
-                "label": "among key decision-makers"
-              },
               {
                 "value": "Higher-Quality Leads",
                 "label": "that actually convert"
-              },
-              {
-                "value": "Accelerated Authority",
-                "label": "and credibility in your niche"
               }
             ]
           },
           "features": {
-            "sectionLabel": "What You Get",
-            "title": "When You Work with Tikit?",
-            "description": "Every part of the engagement is designed around measurable B2B growth. Every feature is designed to give you a measurable outcome, fast.",
             "items": [
-              {
-                "title": "Dedicated account manager",
-                "text": "You always know what is happening and what comes next."
-              },
               {
                 "title": "Custom influencer network",
                 "text": "We match your brand with relevant voices in your niche."
               },
               {
-                "title": "Full campaign reporting",
-                "text": "Track performance and ROI through transparent dashboards."
-              },
-              {
                 "title": "Transparent pricing",
                 "text": "Clear packages with no hidden costs or surprises."
-              },
-              {
-                "title": "Local Dubai expertise",
-                "text": "Campaigns are adapted to business culture and buyer behavior in Dubai."
               }
             ]
           },
           "whyUs": {
-            "sectionLabel": "Why Tikit",
-            "title": "Why Choose Tikit as a Partner?",
             "items": [
-              {
-                "title": "No cookie-cutter plans",
-                "text": "Each strategy is tailored to your business model and revenue goals."
-              },
               {
                 "title": "Data-driven decisions",
                 "text": "Every action is informed by measurable insights and performance data."
-              },
-              {
-                "title": "Direct communication",
-                "text": "Work directly with your account team without delays or handoffs."
               },
               {
                 "title": "Transparent operations",
@@ -543,47 +493,21 @@
             ]
           },
           "localAuthority": {
-            "sectionLabel": "Local Authority",
-            "title": "Why Tikit is Different",
-            "description": "We don’t run cookie-cutter campaigns. Tikit understands Dubai’s business culture, buyer behavior, and multilingual market dynamics. That means your campaigns resonate locally while staying scalable for growth.",
             "items": [
-              "Deep knowledge of Dubai B2B market trends",
-              "Expertise in B2B marketing influencers who influence decision-makers",
-              "Multilingual capabilities for regional outreach"
-            ],
-            "footer": "You’re not just getting an agency. You’re getting a partner who knows how business works in Dubai."
+              "Expertise in B2B marketing influencers who influence decision-makers"
+            ]
           },
           "faq": {
-            "title": "Frequently Asked Questions",
             "items": [
-              {
-                "question": "How much does a B2B influencer campaign cost?",
-                "answer": "Pricing depends on campaign scope, number of influencers, and your objectives. Tikit provides transparent packages with no hidden fees."
-              },
               {
                 "question": "How long until we see results?",
                 "answer": "Most clients see measurable engagement and qualified leads within 60 days."
               },
               {
-                "question": "Do we need a long-term contract?",
-                "answer": "No. We offer flexible agreements based on your business needs and growth stage."
-              },
-              {
                 "question": "How often do we get updates?",
                 "answer": "You receive weekly reporting and dashboard visibility with ongoing optimization updates."
-              },
-              {
-                "question": "Who will we work with directly?",
-                "answer": "A dedicated account manager coordinates the entire campaign and remains your direct point of contact."
               }
             ]
-          },
-          "cta": {
-            "sectionLabel": "Ready to Grow?",
-            "title": "Reach the Right Decision-Makers in Dubai",
-            "description": "Book a free consultation and get a focused B2B influencer strategy designed for measurable lead and revenue impact.",
-            "primaryButton": "Book Free Consultation",
-            "secondaryButton": "Call Us Now"
           }
         }
       },
@@ -710,13 +634,27 @@
           "title": "Industries We Serve in Dubai & UAE",
           "description": "We work with sectors where trust, perception, and brand prestige directly impact revenue.",
           "items": [
-            { "title": "Luxury Real Estate" },
-            { "title": "High-End Fashion & Couture" },
-            { "title": "Jewelry & Watches" },
-            { "title": "Premium Automotive" },
-            { "title": "Luxury Hotels & Resorts" },
-            { "title": "Aesthetic & Cosmetic Clinics" },
-            { "title": "Private Aviation & Yacht Services" }
+            {
+              "title": "Luxury Real Estate"
+            },
+            {
+              "title": "High-End Fashion & Couture"
+            },
+            {
+              "title": "Jewelry & Watches"
+            },
+            {
+              "title": "Premium Automotive"
+            },
+            {
+              "title": "Luxury Hotels & Resorts"
+            },
+            {
+              "title": "Aesthetic & Cosmetic Clinics"
+            },
+            {
+              "title": "Private Aviation & Yacht Services"
+            }
           ]
         },
         "results": {
@@ -724,9 +662,18 @@
           "title": "Real Campaign Results",
           "description": "We focus on outcomes that matter to luxury brands: qualified demand, premium positioning, and profitable growth.",
           "items": [
-            { "value": "3x+", "label": "ROI for UAE luxury campaigns" },
-            { "value": "100%+", "label": "Increase in qualified leads" },
-            { "value": "Verified", "label": "Affluent audience engagement" }
+            {
+              "value": "3x+",
+              "label": "ROI for UAE luxury campaigns"
+            },
+            {
+              "value": "100%+",
+              "label": "Increase in qualified leads"
+            },
+            {
+              "value": "Verified",
+              "label": "Affluent audience engagement"
+            }
           ]
         },
         "growthCta": {
@@ -768,9 +715,15 @@
           "title": "Why Luxury Influencer Marketing Works in Dubai",
           "description": "Dubai is one of the strongest luxury markets globally, where influencer campaigns can directly reach qualified premium buyers when strategy is precise.",
           "items": [
-            { "title": "High-net-worth individuals" },
-            { "title": "International investors" },
-            { "title": "Luxury-focused consumers" }
+            {
+              "title": "High-net-worth individuals"
+            },
+            {
+              "title": "International investors"
+            },
+            {
+              "title": "Luxury-focused consumers"
+            }
           ]
         },
         "faq": {
@@ -1199,17 +1152,32 @@
             {
               "title": "Instagram campaign management in Dubai",
               "description": "Best for brand awareness, lifestyle content, and visual engagement—stories, reels, and curated feeds that feel native to the platform.",
-              "tags": ["Awareness", "Lifestyle", "Reels", "Stories"]
+              "tags": [
+                "Awareness",
+                "Lifestyle",
+                "Reels",
+                "Stories"
+              ]
             },
             {
               "title": "TikTok campaign management UAE",
               "description": "Ideal for viral reach, fast engagement, and younger audiences through short-form creative that matches trends and culture.",
-              "tags": ["Short-form", "Trends", "Reach", "Engagement"]
+              "tags": [
+                "Short-form",
+                "Trends",
+                "Reach",
+                "Engagement"
+              ]
             },
             {
               "title": "YouTube influencer campaigns UAE",
               "description": "Great for detailed content, product reviews, and long-term trust building through longer storytelling and search-friendly assets.",
-              "tags": ["Reviews", "Tutorials", "Long-form", "Trust"]
+              "tags": [
+                "Reviews",
+                "Tutorials",
+                "Long-form",
+                "Trust"
+              ]
             }
           ]
         },
@@ -1304,9 +1272,15 @@
           "title": "Popular niches in the UAE",
           "description": "Campaigns that align with local audience behavior consistently perform better.",
           "items": [
-            { "title": "Fashion and lifestyle" },
-            { "title": "Beauty and skincare" },
-            { "title": "Food and hospitality" }
+            {
+              "title": "Fashion and lifestyle"
+            },
+            {
+              "title": "Beauty and skincare"
+            },
+            {
+              "title": "Food and hospitality"
+            }
           ]
         },
         "whyChooseUs": {

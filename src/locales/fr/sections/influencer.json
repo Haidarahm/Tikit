@@ -187,17 +187,32 @@
           {
             "title": "Campagnes de marketing d'influence sur Instagram",
             "description": "Largement utilisé par les marques de mode, lifestyle, beauté et e-commerce. Les influenceurs partagent des expériences produits via des publications, stories et reels.",
-            "tags": ["Publications", "Stories", "Reels", "IGTV"]
+            "tags": [
+              "Publications",
+              "Stories",
+              "Reels",
+              "IGTV"
+            ]
           },
           {
             "title": "Marketing d'influence TikTok pour la croissance de marque",
             "description": "Aide les marques à atteindre des audiences grâce à des vidéos courtes et engageantes avec une exposition rapide et une interaction avec l'audience.",
-            "tags": ["Vidéo courte", "Tendances", "Duos", "Défis"]
+            "tags": [
+              "Vidéo courte",
+              "Tendances",
+              "Duos",
+              "Défis"
+            ]
           },
           {
             "title": "Partenariats d'influenceurs YouTube",
             "description": "Permet aux marques de partager du contenu détaillé comme des avis produits, des tutoriels et des expériences de marque pour une confiance plus profonde.",
-            "tags": ["Avis", "Tutoriels", "Vlogs", "Shorts"]
+            "tags": [
+              "Avis",
+              "Tutoriels",
+              "Vlogs",
+              "Shorts"
+            ]
           }
         ]
       },
@@ -256,11 +271,21 @@
         "title": "Secteurs utilisant le marketing d'influence à Dubaï et aux EAU",
         "description": "Le marketing d'influence est largement utilisé dans plusieurs secteurs aux EAU. Les marques utilisent des créateurs pour promouvoir des produits et services à travers du contenu engageant.",
         "items": [
-          { "title": "Marques de mode et beauté" },
-          { "title": "Restaurants et hôtellerie" },
-          { "title": "Entreprises de voyage et tourisme" },
-          { "title": "Marques e-commerce et retail" },
-          { "title": "Immobilier et lifestyle" }
+          {
+            "title": "Marques de mode et beauté"
+          },
+          {
+            "title": "Restaurants et hôtellerie"
+          },
+          {
+            "title": "Entreprises de voyage et tourisme"
+          },
+          {
+            "title": "Marques e-commerce et retail"
+          },
+          {
+            "title": "Immobilier et lifestyle"
+          }
         ]
       },
       "whyChooseUs": {
@@ -368,42 +393,16 @@
       },
       "subPages": {
         "microInfluencer": {
-          "seo": {
-            "title": "Marketing d'influence B2B à Dubaï – des résultats mesurables avec Tikit",
-            "description": "Oubliez les campagnes génériques et les promesses vides. Tikit aide les entreprises à Dubaï à exploiter le marketing d'influence B2B pour toucher les bons décideurs, renforcer l'autorité de la marque et générer des leads mesurables rapidement. Plus de 200 entreprises à Dubaï nous font confiance pour des résultats concrets.",
-            "keywords": "b2b influencer marketing dubai, influencer marketing for b2b, b2b marketing influencers, b2b influencer marketing strategy, dubai b2b marketing",
-            "serviceType": "Marketing d'influence B2B à Dubaï"
-          },
-          "badge": "Marketing d'influence B2B à Dubaï",
-          "hero": {
-            "title": "Marketing d'influence B2B à Dubaï",
-            "mainWord": "Des résultats mesurables avec Tikit",
-            "description": "Oubliez les campagnes génériques et les promesses vides. Tikit aide les entreprises à Dubaï à exploiter le marketing d'influence B2B pour toucher les bons décideurs, renforcer l'autorité de la marque et générer des leads mesurables rapidement. Plus de 200 entreprises à Dubaï nous font confiance pour des résultats concrets."
-          },
           "audience": {
-            "sectionLabel": "Le défi",
-            "title": "Votre message peine à atteindre la bonne audience B2B ?",
             "paragraphs": [
-              "Vous savez que votre produit est solide et que votre équipe s'investit, mais malgré le marketing vous peinez à capter l'attention des entreprises qui comptent vraiment. Les campagnes classiques ne montrent pas de ROI clair, la prospection froide ne convertit pas, et vos concurrents utilisent déjà des influenceurs B2B pour dominer la conversation.",
               "Ce n'est pas de votre faute : le marché B2B à Dubaï est saturé, les décideurs sont sollicités, et les campagnes génériques passent inaperçues."
             ]
           },
           "problems": {
-            "sectionLabel": "Le défi",
-            "title": "Pourquoi les marques B2B peinent à joindre les bons acheteurs",
-            "description": "La plupart des campagnes sont trop génériques pour le marché B2B compétitif de Dubaï.",
             "items": [
-              {
-                "title": "Difficile d'identifier des influenceurs B2B crédibles",
-                "text": "Beaucoup de créateurs ont de la visibilité mais peu d'impact sur les acheteurs professionnels."
-              },
               {
                 "title": "Faible engagement des décideurs",
                 "text": "Le contenu rate souvent les dirigeants et parties prenantes qui valident les contrats."
-              },
-              {
-                "title": "ROI peu mesurable",
-                "text": "Les budgets partent sans attribution claire aux leads et au chiffre d'affaires."
               },
               {
                 "title": "Stratégie générique inadaptée",
@@ -412,24 +411,11 @@
             ]
           },
           "process": {
-            "sectionLabel": "Notre cadre",
-            "title": "Comment Tikit livre des résultats mesurables",
-            "description": "Un cadre en 4 étapes centré sur les résultats, pas sur les vanity metrics.",
             "steps": [
-              {
-                "n": "01",
-                "title": "Analyse",
-                "text": "Nous évaluons audience, concurrents et tendances pour repérer les influenceurs qui font avancer votre business."
-              },
               {
                 "n": "02",
                 "title": "Stratégie",
                 "text": "Nous construisons une campagne alignée sur vos objectifs — génération de leads, autorité — avec des KPI clairs."
-              },
-              {
-                "n": "03",
-                "title": "Exécution",
-                "text": "Nous coordonnons créateurs, contenus, validations et publication pour toucher les acheteurs B2B ciblés."
               },
               {
                 "n": "04",
@@ -439,66 +425,30 @@
             ]
           },
           "outcomes": {
-            "sectionLabel": "La promesse Tikit",
-            "title": "Une croissance B2B mesurable avec Tikit",
-            "description": "Avec Tikit, vous ne faites pas que lancer des campagnes : vous construisez une croissance B2B mesurable via l'influence. La plupart des clients voient des résultats en 60 jours.",
             "items": [
-              {
-                "value": "Visibilité accrue",
-                "label": "auprès des décideurs clés"
-              },
               {
                 "value": "Leads de meilleure qualité",
                 "label": "qui se transforment réellement"
-              },
-              {
-                "value": "Autorité renforcée",
-                "label": "et crédibilité dans votre niche"
               }
             ]
           },
           "features": {
-            "sectionLabel": "Ce que vous obtenez",
-            "title": "Quand vous travaillez avec Tikit ?",
-            "description": "Chaque étape est pensée pour une croissance B2B mesurable — chaque livrable vise un résultat concret, rapidement.",
             "items": [
-              {
-                "title": "Account manager dédié",
-                "text": "Vous savez toujours où vous en êtes et la prochaine étape."
-              },
               {
                 "title": "Réseau d'influenceurs sur mesure",
                 "text": "Nous associons votre marque aux voix pertinentes de votre secteur."
               },
               {
-                "title": "Reporting campagne complet",
-                "text": "Suivez performance et ROI via des tableaux de bord transparents."
-              },
-              {
                 "title": "Tarification transparente",
                 "text": "Des offres claires, sans frais cachés ni surprises."
-              },
-              {
-                "title": "Expertise locale à Dubaï",
-                "text": "Des campagnes adaptées à la culture d'affaires et au comportement d'achat à Dubaï."
               }
             ]
           },
           "whyUs": {
-            "sectionLabel": "Pourquoi Tikit",
-            "title": "Pourquoi choisir Tikit comme partenaire ?",
             "items": [
-              {
-                "title": "Pas de plans toutes tailles",
-                "text": "Chaque stratégie est adaptée à votre modèle économique et vos objectifs de revenus."
-              },
               {
                 "title": "Décisions data-driven",
                 "text": "Chaque action s'appuie sur des insights et des données de performance."
-              },
-              {
-                "title": "Communication directe",
-                "text": "Vous travaillez directement avec votre équipe compte, sans intermédiaires."
               },
               {
                 "title": "Opérations transparentes",
@@ -507,47 +457,21 @@
             ]
           },
           "localAuthority": {
-            "sectionLabel": "Autorité locale",
-            "title": "Pourquoi Tikit est différent",
-            "description": "Pas de campagnes toutes faites : Tikit comprend la culture d'affaires à Dubaï, les comportements d'achat et la dynamique multilingue. Vos campagnes résonnent localement tout en restant scalables.",
             "items": [
-              "Connaissance approfondie des tendances B2B à Dubaï",
-              "Expertise des influenceurs B2B qui touchent les décideurs",
-              "Capacités multilingues pour l'outreach régional"
-            ],
-            "footer": "Vous n'obtenez pas seulement une agence — vous gagnez un partenaire qui sait comment les affaires se font à Dubaï."
+              "Expertise des influenceurs B2B qui touchent les décideurs"
+            ]
           },
           "faq": {
-            "title": "Questions fréquentes",
             "items": [
-              {
-                "question": "Combien coûte une campagne d'influence B2B ?",
-                "answer": "Cela dépend du périmètre, du nombre d'influenceurs et de vos objectifs. Tikit propose des offres transparentes sans frais cachés."
-              },
               {
                 "question": "Combien de temps avant de voir des résultats ?",
                 "answer": "La plupart des clients constatent un engagement mesurable et des leads qualifiés sous 60 jours."
               },
               {
-                "question": "Faut-il un contrat longue durée ?",
-                "answer": "Non. Nous proposons des accords flexibles selon vos besoins et votre stade de croissance."
-              },
-              {
                 "question": "À quelle fréquence avons-nous des mises à jour ?",
                 "answer": "Reporting hebdomadaire et visibilité sur les dashboards, avec optimisations en continu."
-              },
-              {
-                "question": "Avec qui travaillons-nous directement ?",
-                "answer": "Un account manager dédié pilote toute la campagne et reste votre interlocuteur unique."
               }
             ]
-          },
-          "cta": {
-            "sectionLabel": "Prêt à croître ?",
-            "title": "Touchez les bons décideurs à Dubaï",
-            "description": "Réservez une consultation gratuite et obtenez une stratégie B2B influence focalisée sur leads et revenus mesurables.",
-            "primaryButton": "Consultation gratuite",
-            "secondaryButton": "Appelez-nous"
           }
         }
       },
@@ -605,9 +529,18 @@
           "title": "Le problème du marketing d'influence traditionnel",
           "description": "Les campagnes luxe sous-performent souvent quand la portée passe avant l'exclusivité, la qualité d'audience et le contrôle de marque.",
           "items": [
-            { "title": "Nombre d'abonnés vs qualité d'acheteurs", "text": "Beaucoup de campagnes visent de gros chiffres mais manquent les audiences à forte valeur qui convertissent." },
-            { "title": "Portée court terme vs valeur de marque", "text": "Les marques luxe ont besoin d'un positionnement long terme, pas de pics de visibilité temporaires." },
-            { "title": "Contenu générique vs storytelling premium", "text": "Un contenu de masse peut affaiblir l'exclusivité et diluer la perception luxe." }
+            {
+              "title": "Nombre d'abonnés vs qualité d'acheteurs",
+              "text": "Beaucoup de campagnes visent de gros chiffres mais manquent les audiences à forte valeur qui convertissent."
+            },
+            {
+              "title": "Portée court terme vs valeur de marque",
+              "text": "Les marques luxe ont besoin d'un positionnement long terme, pas de pics de visibilité temporaires."
+            },
+            {
+              "title": "Contenu générique vs storytelling premium",
+              "text": "Un contenu de masse peut affaiblir l'exclusivité et diluer la perception luxe."
+            }
           ]
         },
         "approach": {
@@ -617,9 +550,18 @@
         },
         "principles": {
           "items": [
-            { "title": "Exclusivité", "description": "Partenariats limités et qualitatifs avec des influenceurs alignés à votre positionnement." },
-            { "title": "Pertinence", "description": "Ciblage d'audiences aisées et à forte intention à Dubaï et aux Émirats." },
-            { "title": "Contrôle", "description": "Protection de l'image de marque sur la création, les collaborations et la publication." }
+            {
+              "title": "Exclusivité",
+              "description": "Partenariats limités et qualitatifs avec des influenceurs alignés à votre positionnement."
+            },
+            {
+              "title": "Pertinence",
+              "description": "Ciblage d'audiences aisées et à forte intention à Dubaï et aux Émirats."
+            },
+            {
+              "title": "Contrôle",
+              "description": "Protection de l'image de marque sur la création, les collaborations et la publication."
+            }
           ]
         },
         "offer": {
@@ -635,11 +577,56 @@
           "title": "Nos services de marketing d'influence luxe",
           "description": "De la sélection d'influenceurs à l'optimisation des campagnes, chaque étape est pensée pour les marques premium.",
           "items": [
-            { "title": "Identification et vérification d'influenceurs premium", "description": "Nous sélectionnons des influenceurs alignés avec votre positionnement luxe.", "features": ["Influenceurs luxe basés à Dubaï", "Créateurs internationaux avec audience UAE", "Profils d'audience à forte valeur vérifiés", "Analyse approfondie engagement/authenticité"] },
-            { "title": "Stratégie et positionnement de campagne luxe", "description": "Chaque campagne démarre avec une clarté stratégique pour attirer des acheteurs premium.", "features": ["Segmentation d'audience aisée", "Insights comportement consommateur luxe", "Choix des plateformes selon l'intention", "Développement narratif de campagne"] },
-            { "title": "Création de contenu premium et storytelling", "description": "Le marketing luxe est visuel, émotionnel et expérientiel.", "features": ["Production vidéo haut de gamme", "Photographie éditoriale", "Storytelling lifestyle", "Campagnes expérientielles"] },
-            { "title": "Gestion de campagnes influenceurs", "description": "Nous gérons l'exécution avec précision, cohérence et sécurité de marque.", "features": ["Prospection et négociation", "Gestion des contrats et exclusivité", "Coordination opérationnelle", "Contrôle qualité et brand safety"] },
-            { "title": "Suivi de performance et optimisation", "description": "Les campagnes luxe doivent aussi générer des résultats mesurables.", "features": ["Métriques d'engagement à forte valeur", "Insights qualité d'audience", "Suivi des conversions premium", "Analyse ROI et scale"] }
+            {
+              "title": "Identification et vérification d'influenceurs premium",
+              "description": "Nous sélectionnons des influenceurs alignés avec votre positionnement luxe.",
+              "features": [
+                "Influenceurs luxe basés à Dubaï",
+                "Créateurs internationaux avec audience UAE",
+                "Profils d'audience à forte valeur vérifiés",
+                "Analyse approfondie engagement/authenticité"
+              ]
+            },
+            {
+              "title": "Stratégie et positionnement de campagne luxe",
+              "description": "Chaque campagne démarre avec une clarté stratégique pour attirer des acheteurs premium.",
+              "features": [
+                "Segmentation d'audience aisée",
+                "Insights comportement consommateur luxe",
+                "Choix des plateformes selon l'intention",
+                "Développement narratif de campagne"
+              ]
+            },
+            {
+              "title": "Création de contenu premium et storytelling",
+              "description": "Le marketing luxe est visuel, émotionnel et expérientiel.",
+              "features": [
+                "Production vidéo haut de gamme",
+                "Photographie éditoriale",
+                "Storytelling lifestyle",
+                "Campagnes expérientielles"
+              ]
+            },
+            {
+              "title": "Gestion de campagnes influenceurs",
+              "description": "Nous gérons l'exécution avec précision, cohérence et sécurité de marque.",
+              "features": [
+                "Prospection et négociation",
+                "Gestion des contrats et exclusivité",
+                "Coordination opérationnelle",
+                "Contrôle qualité et brand safety"
+              ]
+            },
+            {
+              "title": "Suivi de performance et optimisation",
+              "description": "Les campagnes luxe doivent aussi générer des résultats mesurables.",
+              "features": [
+                "Métriques d'engagement à forte valeur",
+                "Insights qualité d'audience",
+                "Suivi des conversions premium",
+                "Analyse ROI et scale"
+              ]
+            }
           ]
         },
         "industries": {
@@ -647,13 +634,27 @@
           "title": "Secteurs que nous servons à Dubaï et aux Émirats",
           "description": "Nous travaillons avec des secteurs où confiance, perception et prestige impactent directement le revenu.",
           "items": [
-            { "title": "Immobilier de luxe" },
-            { "title": "Mode haut de gamme" },
-            { "title": "Bijoux et montres" },
-            { "title": "Automobile premium" },
-            { "title": "Hôtels et resorts de luxe" },
-            { "title": "Cliniques esthétiques" },
-            { "title": "Aviation privée et yachting" }
+            {
+              "title": "Immobilier de luxe"
+            },
+            {
+              "title": "Mode haut de gamme"
+            },
+            {
+              "title": "Bijoux et montres"
+            },
+            {
+              "title": "Automobile premium"
+            },
+            {
+              "title": "Hôtels et resorts de luxe"
+            },
+            {
+              "title": "Cliniques esthétiques"
+            },
+            {
+              "title": "Aviation privée et yachting"
+            }
           ]
         },
         "results": {
@@ -661,9 +662,18 @@
           "title": "Résultats de campagnes réels",
           "description": "Nous nous concentrons sur les résultats qui comptent pour les marques luxe.",
           "items": [
-            { "value": "3x+", "label": "ROI pour campagnes luxe UAE" },
-            { "value": "100%+", "label": "Hausse de leads qualifiés" },
-            { "value": "Verified", "label": "Engagement d'audience aisée vérifié" }
+            {
+              "value": "3x+",
+              "label": "ROI pour campagnes luxe UAE"
+            },
+            {
+              "value": "100%+",
+              "label": "Hausse de leads qualifiés"
+            },
+            {
+              "value": "Verified",
+              "label": "Engagement d'audience aisée vérifié"
+            }
           ]
         },
         "growthCta": {
@@ -682,10 +692,22 @@
           "title": "Pourquoi Tikit.ae est différent",
           "description": "Nous combinons compréhension du luxe et exécution disciplinée pour délivrer une valeur mesurable.",
           "items": [
-            { "title": "Connaissance approfondie du marché luxe", "description": "Nous comprenons comment les audiences aisées évaluent, font confiance et achètent à Dubaï." },
-            { "title": "Accès à des influenceurs premium", "description": "Nous privilégions les créateurs qui influencent les acheteurs, pas seulement les abonnés." },
-            { "title": "Stratégie + exécution dans une seule équipe", "description": "Planification, création, coordination et optimisation avec cohérence totale." },
-            { "title": "Focus sur la valeur de marque long terme", "description": "Nous construisons une autorité durable, pas des pics temporaires." }
+            {
+              "title": "Connaissance approfondie du marché luxe",
+              "description": "Nous comprenons comment les audiences aisées évaluent, font confiance et achètent à Dubaï."
+            },
+            {
+              "title": "Accès à des influenceurs premium",
+              "description": "Nous privilégions les créateurs qui influencent les acheteurs, pas seulement les abonnés."
+            },
+            {
+              "title": "Stratégie + exécution dans une seule équipe",
+              "description": "Planification, création, coordination et optimisation avec cohérence totale."
+            },
+            {
+              "title": "Focus sur la valeur de marque long terme",
+              "description": "Nous construisons une autorité durable, pas des pics temporaires."
+            }
           ]
         },
         "market": {
@@ -693,18 +715,36 @@
           "title": "Pourquoi le marketing d'influence luxe fonctionne à Dubaï",
           "description": "Dubaï est l'un des marchés du luxe les plus forts au monde, où les campagnes d'influence atteignent directement des acheteurs qualifiés.",
           "items": [
-            { "title": "Personnes à haut patrimoine" },
-            { "title": "Investisseurs internationaux" },
-            { "title": "Consommateurs orientés luxe" }
+            {
+              "title": "Personnes à haut patrimoine"
+            },
+            {
+              "title": "Investisseurs internationaux"
+            },
+            {
+              "title": "Consommateurs orientés luxe"
+            }
           ]
         },
         "faq": {
           "title": "Questions fréquentes",
           "items": [
-            { "question": "Qu'est-ce que le marketing d'influence luxe ?", "answer": "Il promeut les marques premium via des créateurs qui attirent des audiences aisées, avec un focus sur exclusivité et positionnement." },
-            { "question": "Différence avec le marketing d'influence classique ?", "answer": "Priorité à la qualité d'audience, l'adéquation premium et le storytelling plutôt qu'à la portée de masse." },
-            { "question": "Comment garantissez-vous la qualité des influenceurs ?", "answer": "Nous analysons démographie, authenticité, qualité d'engagement, collaborations passées et alignement marque." },
-            { "question": "Quelles plateformes sont les plus efficaces aux UAE ?", "answer": "Instagram et TikTok pour la visibilité, YouTube pour un storytelling plus profond." }
+            {
+              "question": "Qu'est-ce que le marketing d'influence luxe ?",
+              "answer": "Il promeut les marques premium via des créateurs qui attirent des audiences aisées, avec un focus sur exclusivité et positionnement."
+            },
+            {
+              "question": "Différence avec le marketing d'influence classique ?",
+              "answer": "Priorité à la qualité d'audience, l'adéquation premium et le storytelling plutôt qu'à la portée de masse."
+            },
+            {
+              "question": "Comment garantissez-vous la qualité des influenceurs ?",
+              "answer": "Nous analysons démographie, authenticité, qualité d'engagement, collaborations passées et alignement marque."
+            },
+            {
+              "question": "Quelles plateformes sont les plus efficaces aux UAE ?",
+              "answer": "Instagram et TikTok pour la visibilité, YouTube pour un storytelling plus profond."
+            }
           ]
         },
         "positioning": {
@@ -1112,17 +1152,32 @@
             {
               "title": "Gestion de campagnes sur Instagram à Dubaï",
               "description": "Idéal pour la notoriété, le lifestyle et l’engagement visuel : stories, reels et feeds soigneusement sélectionnés.",
-              "tags": ["Notoriété", "Style de vie", "Reels", "Stories"]
+              "tags": [
+                "Notoriété",
+                "Style de vie",
+                "Reels",
+                "Stories"
+              ]
             },
             {
               "title": "Gestion de campagnes sur TikTok aux EAU",
               "description": "Parfait pour la portée virale, l’engagement rapide et un public plus jeune grâce à des formats courts alignés avec les tendances et la culture.",
-              "tags": ["Formats courts", "Tendances", "Portée", "Engagement"]
+              "tags": [
+                "Formats courts",
+                "Tendances",
+                "Portée",
+                "Engagement"
+              ]
             },
             {
               "title": "Campagnes influenceurs sur YouTube aux EAU",
               "description": "Excellent pour les contenus détaillés, les reviews produits et la construction de confiance sur la durée grâce à une narration plus longue et des contenus recherchables.",
-              "tags": ["Avis", "Tutoriels", "Formats longs", "Confiance"]
+              "tags": [
+                "Avis",
+                "Tutoriels",
+                "Formats longs",
+                "Confiance"
+              ]
             }
           ]
         },
@@ -1217,9 +1272,15 @@
           "title": "Niches populaires aux Émirats arabes unis",
           "description": "Les campagnes alignées sur le comportement de l’audience locale performent mieux de façon constante.",
           "items": [
-            { "title": "Mode et lifestyle" },
-            { "title": "Beauté et skincare" },
-            { "title": "Food et hospitality" }
+            {
+              "title": "Mode et lifestyle"
+            },
+            {
+              "title": "Beauté et skincare"
+            },
+            {
+              "title": "Food et hospitality"
+            }
           ]
         },
         "whyChooseUs": {
@@ -1272,12 +1333,6 @@
           "description": "Si vous voulez des campagnes qui génèrent des résultats—pas seulement des impressions—vous avez besoin de la bonne stratégie et de la bonne exécution. Nous vous aidons à planifier, piloter et scaler vos campagnes avec clarté et confiance.",
           "primaryButtonText": "Réserver un appel gratuit",
           "secondaryButtonText": "Appelez-nous"
-        },
-        "hubLink": {
-          "before": "Si vous visez une croissance long terme, il est utile de dépasser une campagne isolée. Notre",
-          "linkText": "offre de services d'influence à Dubaï",
-          "after": "porte des stratégies scalables qui relient vos campagnes à des objectifs business réels.",
-          "secondLine": "Une campagne bien gérée n’est pas seulement de la promotion—c’est un canal de croissance."
         }
       }
     },

@@ -1,7 +1,6 @@
 {
   "work": {
     "title": "Travaux en vedette",
-    "description": "Page des travaux",
     "specialTitle": "ce qui nous rend spéciaux",
     "specialDescription": "Nous adoptons une approche similaire pour concevoir commercial que nous faisons de manière impactante, via le flux de travail de maquette conviviale.",
     "viewWork": "Voir le travail",
@@ -37,7 +36,6 @@
         "reach": "Portée",
         "views": "Vues",
         "engagementRate": "Taux d'engagement",
-        "objective": "Objectif",
         "brief": "Brief",
         "strategy": "Stratégie",
         "approach": "Approche",

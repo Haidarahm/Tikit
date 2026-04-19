@@ -20,37 +20,7 @@
   },
   "seo": {
     "defaultDescription": "We help brands in Dubai grow through smart strategy, creative content, and performance-focused campaigns. Work with a team that focuses on real results.",
-    "defaultKeywords": "marketing agency Dubai, creative marketing Dubai, performance marketing UAE, branding agency Dubai, digital marketing Dubai",
-    "home": {
-      "title": "Dubai Influencer Marketing Agency | Tikit – Creative Campaigns That Convert",
-      "description": "We help brands in Dubai grow through smart strategy, creative content, and performance-focused campaigns. Work with a team that focuses on real results.",
-      "keywords": "marketing agency Dubai"
-    },
-    "about": {
-      "title": "About Tikit Agency - Leading Influencer Marketing Agency UAE",
-      "description": "Tikit Agency is a Dubai-based influencer marketing agency with 50+ team members and offices in UAE, Saudi Arabia, and Syria. Learn about our journey helping 300+ brands achieve measurable results.",
-      "keywords": "about Tikit Agency, influencer agency Dubai team, marketing agency UAE, influencer marketing company Saudi Arabia, Dubai marketing agency"
-    },
-    "services": {
-      "title": "Influencer Marketing Services Dubai & Saudi Arabia",
-      "description": "Explore Tikit Agency's marketing services: Influencer Marketing, Talent Management, Social Media Marketing, Branding, and Production. Serving Dubai, Abu Dhabi, Riyadh, Jeddah, and the GCC.",
-      "keywords": "influencer marketing services Dubai, talent management UAE, social media agency Saudi Arabia, branding agency Dubai, production company GCC, digital marketing Riyadh"
-    },
-    "work": {
-      "title": "Influencer Marketing Case Studies - Tikit Agency Dubai",
-      "description": "View Tikit Agency's portfolio of successful influencer marketing campaigns in Dubai and Saudi Arabia. See how we've helped 300+ brands achieve measurable ROI through creator partnerships.",
-      "keywords": "influencer marketing case studies, Dubai marketing campaigns, Saudi Arabia brand campaigns, influencer campaign results, GCC marketing portfolio"
-    },
-    "contact": {
-      "title": "Contact Tikit Agency Dubai - Influencer Marketing Experts",
-      "description": "Contact Tikit Agency at +971 4 577 4042 or Holla@tikit.ae. Our main office is in The Burlington Tower, Marasi Drive, Dubai – Office 309 with offices in Saudi Arabia. Get a free consultation for influencer marketing.",
-      "keywords": "contact Tikit Agency, influencer agency Dubai contact, marketing agency phone UAE, Dubai marketing consultation, Saudi Arabia influencer agency"
-    },
-    "influencer": {
-      "title": "Join Tikit Agency - Influencer & Creator Management",
-      "description": "Join Tikit Agency's roster of influencers and content creators. We offer talent management, brand deal negotiations, and career growth opportunities across Dubai, Saudi Arabia, and the GCC.",
-      "keywords": "join influencer agency Dubai, influencer management UAE, content creator agency, talent management Saudi Arabia, become managed influencer"
-    }
+    "defaultKeywords": "marketing agency Dubai, creative marketing Dubai, performance marketing UAE, branding agency Dubai, digital marketing Dubai"
   },
   "faq": {
     "title": "Frequently Asked Questions",
@@ -104,11 +74,8 @@
     }
   },
   "home": {
-    "title": "Home",
-    "description": "Home page",
     "hero": {
       "tagline": "Marketing Agency",
-      "title": "ROI REBELS",
       "subtitle": "Fueling brands with influence",
       "clients": "+300 Happy Clients"
     },
@@ -220,14 +187,7 @@
       "title": "Meet The",
       "mainWord": "Creators",
       "subtitle": "Connect with influential voices across diverse categories",
-      "loadingCategories": "Loading categories...",
-      "categoriesError": "Failed to load categories.",
-      "noCategories": "No categories available right now.",
-      "loadingInfluencers": "Loading influencers...",
-      "influencersError": "Failed to load influencers.",
-      "noInfluencers": "We couldn't find influencers for this category yet. Please check back soon.",
-      "showAll": "Show All",
-      "followersLabel": "{{count}} Followers"
+      "showAll": "Show All"
     },
     "connections": {
       "question": "Are you an influencer?",
@@ -240,10 +200,7 @@
       "title": "Case Studies",
       "explore": "Explore Case Studies",
       "viewWork": "View Work",
-      "noWorks": "No works found.",
-      "prev": "Prev",
-      "next": "Next",
-      "page": "Page"
+      "noWorks": "No works found."
     },
     "goals": {
       "items": [
@@ -265,14 +222,8 @@
         }
       ]
     },
-    "aboutUs": {
-      "title": "Who We Are",
-      "description": "We create and innovate digital experiences through strategic collaboration and creativity. Each project engages and inspires, aiming to drive impactful results."
-    },
     "contactUs": {
       "subtitle": "Kick it off with Tikit!",
-      "title": "Holla at us",
-      "mainWord": "Now!",
       "description": "We want to hear from you. let's us know",
       "description2": "how we can help!",
       "helpText": "let's us know how we can help!",
@@ -288,67 +239,33 @@
       "title": "Tikit Agency",
       "titleHighlight": "Worldwide",
       "description": "From Dubai to London, we connect brands with audiences across the globe. Our strategic locations enable us to deliver culturally relevant campaigns that resonate with diverse markets.",
-      "hoverHint": "Hover over the pins to explore our locations",
       "stats": [
         {
-          "text": "5+ Global Offices"
-        },
-        {
           "text": "200+ Countries Served"
-        },
-        {
-          "text": "500M+ Audience Reach"
         }
       ],
       "locations": [
-        {
-          "title": "Dubai, UAE",
-          "description": "Our headquarters in the heart of the Middle East, driving innovation in social media marketing."
-        },
         {
           "title": "Riyadh, KSA",
           "description": "Expanding our reach across Saudi Arabia with cutting-edge influencer campaigns."
         },
         {
-          "title": "Cairo, Egypt",
-          "description": "Connecting brands with millions across North Africa through creative storytelling."
-        },
-        {
           "title": "London, UK",
           "description": "European hub for global brand partnerships and celebrity management."
-        },
-        {
-          "title": "Mumbai, India",
-          "description": "Tapping into the world's largest digital audience with localized strategies."
         }
       ]
     },
     "reviews": {
       "testimonials": [
         {
-          "name": "Sophia Martinez",
-          "company": "Global Enterprises Ltd.",
-          "text": "AtomWallet has completely transformed how we manage international payments. Transactions are fast, secure, and effortless."
-        },
-        {
           "name": "David Lee",
           "company": "TechBridge Solutions",
           "text": "Sending money to partners abroad has never been this smooth. AtomWallet's real-time tracking gives us complete peace of mind."
         },
         {
-          "name": "Amira Hassan",
-          "company": "FinEdge Capital",
-          "text": "The security features are outstanding. Multi-layer protection ensures our business transactions remain private and protected."
-        },
-        {
           "name": "Liam Anderson",
           "company": "Anderson Trading Co.",
           "text": "With AtomWallet, I can pay vendors and receive funds globally without worrying about hidden fees. Transparent and reliable!"
-        },
-        {
-          "name": "Chen Wei",
-          "company": "BrightPath Logistics",
-          "text": "The interface is so intuitive. Within minutes, my team was making international payments without any training required."
         }
       ]
     },
@@ -359,18 +276,12 @@
     }
   },
   "about": {
-    "title": "About",
-    "description": "About page",
     "hero": {
       "title": "We are",
       "mainWord": "Tikit!",
       "title2": "Driven by insight, powered by creativity",
       "sectionTitle": "About us",
       "description": "Driven by insight and creativity: the story behind \"Tikit\" — a global agency powering brands, building trust, and delivering results."
-    },
-    "images": {
-      "clients": "We have +300 satisfied clients",
-      "funding": "We helped our clients get +100M funding"
     },
     "strategy": {
       "title": "No fluff.",
@@ -413,19 +324,6 @@
         }
       ]
     },
-    "contactUs": {
-      "subtitle": "Kick it off with Tikit!",
-      "title": "Holla at us Now",
-      "description": "We want to hear from you. let's us know",
-      "description2": "how we can help!",
-      "helpText": "let's us know how we can help!",
-      "client": "Client",
-      "influencer": "Influencer",
-      "name": "Name",
-      "email": "Email",
-      "button": "Holla at us",
-      "brandsTrust": "200+ Brands Trust Us"
-    },
     "animatedText": {
       "line1": {
         "text1": "Relevance",
@@ -435,7 +333,6 @@
       "line2": {
         "text1": "Create",
         "text2": "Influence",
-        "text3": "y",
         "text4": "Grow"
       }
     },
@@ -518,8 +415,6 @@
     }
   },
   "contact": {
-    "title": "Contact",
-    "description": "Contact page",
     "hero": {
       "title": "Any questions? simply ask us.",
       "subtitle": "This is you, home!"
@@ -558,12 +453,7 @@
     }
   },
   "services": {
-    "title": "Services",
-    "description": "Services page",
     "hero": {
-      "title": "We make design that",
-      "subtitle": "lead and inspire",
-      "description": "Our exclusive services",
       "subdescription": "We partner with brands that want to lead — those ready to break through the noise and bring real value to people's lives."
     },
     "page": {
@@ -603,18 +493,6 @@
       "kicker": "Latest Insights",
       "title": "Stories That Shape Success",
       "description": "Discover strategies, insights, and breakthroughs from our team of marketing experts."
-    },
-    "content": {
-      "category1": "Strategy",
-      "title1": "How to Scale Your Influencer Campaigns",
-      "excerpt1": "A deep dive into proven strategies for scaling influencer partnerships across platforms.",
-      "category2": "Creative",
-      "title2": "7 Creative Patterns That Drive Results",
-      "excerpt2": "Discover the visual and messaging patterns that consistently outperform in social campaigns.",
-      "category3": "Data",
-      "title3": "Attribution in 2025: What Actually Matters",
-      "excerpt3": "How modern marketers measure success in an era of signal loss and privacy changes.",
-      "readMore": "Read more"
     },
     "showMore": "Show More",
     "loading": "Loading...",
