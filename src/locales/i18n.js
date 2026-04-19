@@ -1,41 +1,82 @@
-import i18n from 'i18next';
-import { initReactI18next } from 'react-i18next';
+import i18n from "i18next";
+import { initReactI18next } from "react-i18next";
 
-import enCommon from "./en/sections/common.json";
-import enWork from "./en/sections/work.json";
-import enInfluencer from "./en/sections/influencer.json";
+function readStoredLanguage() {
+  try {
+    const v = localStorage.getItem("language");
+    if (v === "en" || v === "ar" || v === "fr") return v;
+    return "en";
+  } catch {
+    return "en";
+  }
+}
 
-import arCommon from "./ar/sections/common.json";
-import arWork from "./ar/sections/work.json";
-import arInfluencer from "./ar/sections/influencer.json";
+function loadLangBundle(lang) {
+  if (lang === "ar") {
+    return Promise.all([
+      import("./ar/sections/common.json"),
+      import("./ar/sections/work.json"),
+      import("./ar/sections/influencer.json"),
+    ]).then(([c, w, inf]) => ({
+      ...c.default,
+      ...w.default,
+      ...inf.default,
+    }));
+  }
+  if (lang === "fr") {
+    return Promise.all([
+      import("./fr/sections/common.json"),
+      import("./fr/sections/work.json"),
+      import("./fr/sections/influencer.json"),
+    ]).then(([c, w, inf]) => ({
+      ...c.default,
+      ...w.default,
+      ...inf.default,
+    }));
+  }
+  return Promise.all([
+    import("./en/sections/common.json"),
+    import("./en/sections/work.json"),
+    import("./en/sections/influencer.json"),
+  ]).then(([c, w, inf]) => ({
+    ...c.default,
+    ...w.default,
+    ...inf.default,
+  }));
+}
 
-import frCommon from "./fr/sections/common.json";
-import frWork from "./fr/sections/work.json";
-import frInfluencer from "./fr/sections/influencer.json";
+/**
+ * Loads only the active locale (+ English when not English, for fallbackLng).
+ * Keeps unused translation JSON out of the initial JS chunk vs static imports of all languages.
+ */
+export async function initI18n() {
+  const lng = readStoredLanguage();
 
+  let resources;
+  if (lng === "en") {
+    resources = { en: { translation: await loadLangBundle("en") } };
+  } else {
+    const [primary, english] = await Promise.all([
+      loadLangBundle(lng),
+      loadLangBundle("en"),
+    ]);
+    resources = {
+      en: { translation: english },
+      [lng]: { translation: primary },
+    };
+  }
 
-i18n.use(initReactI18next).init({
-  resources: {
-    en: { translation: { ...enCommon, ...enWork, ...enInfluencer } },
-    ar: { translation: { ...arCommon, ...arWork, ...arInfluencer } },
-    fr: { translation: { ...frCommon, ...frWork, ...frInfluencer } },
-  },
-
-lng: (() => {
-    try {
-      return localStorage.getItem("language") || "en";
-    } catch {
-      return "en";
-    }
-  })(),
-  // Use English for missing keys so partial ar/fr translations do not show raw key paths.
-  fallbackLng: "en",
-  interpolation: {
-    escapeValue: false,
-  },
-  react: {
-    useSuspense: false,
-  },
-});
+  await i18n.use(initReactI18next).init({
+    resources,
+    lng,
+    fallbackLng: "en",
+    interpolation: {
+      escapeValue: false,
+    },
+    react: {
+      useSuspense: false,
+    },
+  });
+}
 
 export default i18n;

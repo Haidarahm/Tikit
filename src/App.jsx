@@ -8,15 +8,14 @@ import { useScrollToTopOnRouteChange } from "./hooks/useScrollToTopOnRouteChange
 import AOSRefresher from "./components/AOSRefresher";
 import ScrollToHash from "./components/ScrollToHash";
 import Loader from "./components/Loader.jsx";
-import Home from "./pages/Home/Home";
 import { ToastContainer } from "./components/ui/Toast";
 import AIAssistButton from "./components/AIAssistButton";
 import { IntroProvider } from "./store/IntroContext";
 import ErrorBoundary from "./components/ErrorBoundary";
 import Footer from "./components/Footer";
-import CreativeDetails from "./pages/workDetails/creative/CreativeDetails.jsx";
 
-// Lazy load components
+// Lazy load components (Home + heavy routes stay out of the entry chunk)
+const Home = lazy(() => import("./pages/Home/Home"));
 const NewsletterPopup = lazy(() => import("./components/NewsletterPopup"));
 const CaseDetails = lazy(() => import("./pages/showcase/CaseDetails.jsx"));
 const Work = lazy(() => import("./pages/Work/Work"));
@@ -102,6 +101,9 @@ const EventDetails = lazy(() =>
   import("./pages/workDetails/EventDetails.jsx").then((module) => ({
     default: module.default,
   }))
+);
+const CreativeDetails = lazy(() =>
+  import("./pages/workDetails/creative/CreativeDetails.jsx")
 );
 
 // AI-Targeted Landing Pages

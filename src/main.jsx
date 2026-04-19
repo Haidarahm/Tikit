@@ -1,11 +1,10 @@
-import { StrictMode } from "react";
 import { createRoot, hydrateRoot } from "react-dom/client";
 import "./index.css";
 /* AOS styles bundled locally (same as npm aos); JS stays lazy in AOSRefresher */
 import "aos/dist/aos.css";
-import App from "./App.jsx";
 import { BrowserRouter } from "react-router-dom";
-import "./locales/i18n";
+import i18n, { initI18n } from "./locales/i18n";
+import { initReactI18next } from "react-i18next";
 import { I18nLanguageProvider } from "./store/I18nLanguageContext.jsx";
 
 if (typeof window !== "undefined") {
@@ -30,17 +29,39 @@ if (!rootElement) {
   throw new Error("Root element not found");
 }
 
-const app = (
-  <BrowserRouter>
-        <I18nLanguageProvider>
-          <App />
-        </I18nLanguageProvider>
-  </BrowserRouter>
-);
+function mountApp(App) {
+  const app = (
+    <BrowserRouter>
+      <I18nLanguageProvider>
+        <App />
+      </I18nLanguageProvider>
+    </BrowserRouter>
+  );
 
-// Use hydrateRoot if HTML was pre-rendered, otherwise use createRoot
-if (rootElement.hasChildNodes()) {
-  hydrateRoot(rootElement, app);
-} else {
-  createRoot(rootElement).render(app);
+  if (rootElement.hasChildNodes()) {
+    hydrateRoot(rootElement, app);
+  } else {
+    createRoot(rootElement).render(app);
+  }
 }
+
+async function bootstrap() {
+  try {
+    await initI18n();
+  } catch (err) {
+    console.error("initI18n failed", err);
+    if (!i18n.isInitialized) {
+      await i18n.use(initReactI18next).init({
+        lng: "en",
+        fallbackLng: "en",
+        resources: { en: { translation: {} } },
+        interpolation: { escapeValue: false },
+        react: { useSuspense: false },
+      });
+    }
+  }
+  const { default: App } = await import("./App.jsx");
+  mountApp(App);
+}
+
+bootstrap();
