@@ -8,6 +8,10 @@ import { gsap } from "gsap";
 import FloatingInput from "./ui/FloatingInput";
 import { X } from "lucide-react";
 
+const HOME_POPUP_STORAGE_KEY = "tikit_newsletter_home_popup_shown";
+/** Delay before showing on home only (ms) */
+const HOME_POPUP_DELAY_MS = 8000;
+
 const NewsletterPopup = () => {
   const { t } = useTranslation();
   const { isRtl } = useI18nLanguage();
@@ -24,12 +28,12 @@ const NewsletterPopup = () => {
   const tlRef = useRef(null);
 
   useEffect(() => {
-    // Don't show on intro page
-    if (location.pathname === "/") {
+    // Only ever schedule on the main (home) page
+    if (location.pathname !== "/") {
+      setIsVisible(false);
       return;
     }
 
-// Check if user has already subscribed
     try {
       const userSigned = localStorage.getItem("userSigned");
       if (userSigned === "true") {
@@ -39,25 +43,22 @@ const NewsletterPopup = () => {
       console.warn("Failed to read userSigned from localStorage:", error);
     }
 
-    // Check if popup has already been shown in this session
     try {
-      const sessionShown = sessionStorage.getItem("newsletterShownSession");
-      if (sessionShown === "true") {
+      if (localStorage.getItem(HOME_POPUP_STORAGE_KEY) === "true") {
         return;
       }
     } catch (error) {
-      console.warn("Failed to read newsletterShownSession from sessionStorage:", error);
+      console.warn("Failed to read newsletter home flag from localStorage:", error);
     }
 
-    // Show popup after a short delay for better UX
     const timer = setTimeout(() => {
       setIsVisible(true);
       try {
-        sessionStorage.setItem("newsletterShownSession", "true");
+        localStorage.setItem(HOME_POPUP_STORAGE_KEY, "true");
       } catch (error) {
-        console.warn("Failed to write newsletterShownSession to sessionStorage:", error);
+        console.warn("Failed to write newsletter home flag to localStorage:", error);
       }
-    }, 1500);
+    }, HOME_POPUP_DELAY_MS);
 
     return () => clearTimeout(timer);
   }, [location.pathname]);
@@ -126,8 +127,11 @@ const NewsletterPopup = () => {
     const closeTl = gsap.timeline({
       onComplete: () => {
         setIsVisible(false);
-        // Store that user closed the popup (optional - you might want to show it again later)
-        // localStorage.setItem("userSigned", "true");
+        try {
+          localStorage.setItem(HOME_POPUP_STORAGE_KEY, "true");
+        } catch {
+          // ignore
+        }
       },
     });
 
@@ -199,11 +203,10 @@ if (success) {
       {/* Popup */}
       <div
         ref={popupRef}
-        className={`fixed ${
-          isRtl ? "right-0 " : "left-0  "
-        } bottom-0 w-full max-w-md mx-auto z-[9999] bg-[var(--background)] border-t md:border border-[var(--foreground)]/20 shadow-2xl rounded-t-3xl md:rounded-3xl p-6 md:p-8`}
+        className="fixed left-1/2 bottom-0 z-[9999] w-[calc(100%-1.5rem)] max-w-md -translate-x-1/2 rounded-t-3xl border border-[var(--foreground)]/15 border-b-0 bg-[var(--background)] p-6 shadow-2xl md:bottom-6 md:rounded-3xl md:border-b md:p-8"
         style={{
-          boxShadow: "0 -10px 40px rgba(0, 0, 0, 0.2)",
+          boxShadow:
+            "0 -12px 48px rgba(0, 0, 0, 0.18), 0 0 0 1px rgba(255,255,255,0.04) inset",
         }}
       >
         {/* Close Button */}
