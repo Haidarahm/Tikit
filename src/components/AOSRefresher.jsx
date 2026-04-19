@@ -18,11 +18,8 @@ export default function AOSRefresher() {
       }
 
       try {
-        // Dynamically load AOS and its CSS only when needed
-        const [{ default: AOS }] = await Promise.all([
-          import("aos"),
-          import("aos/dist/aos.css"),
-        ]);
+        // CSS is imported in main.jsx; load JS only here to keep initial bundle smaller
+        const { default: AOS } = await import("aos");
 
         if (!isMounted) return;
 

@@ -9,21 +9,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Resource Hints -->
-  <link rel="preconnect" href="https://unpkg.com" crossorigin />
-  <link rel="dns-prefetch" href="https://unpkg.com" />
   <!-- Preconnect to Twitter CDN for avatar images (low priority) -->
   <link rel="dns-prefetch" href="https://pbs.twimg.com" />
   <!-- Preconnect to backend for API-served images -->
   <link rel="preconnect" href="https://back.tikit.ae" crossorigin />
   <link rel="dns-prefetch" href="https://back.tikit.ae" />
-
-  <!-- Load AOS CSS asynchronously (non-critical for initial render) -->
-  <link rel="preload" href="https://unpkg.com/aos@2.3.4/dist/aos.css" as="style" crossorigin="anonymous" />
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" media="print"
-    onload="this.media='all';this.onload=null;" crossorigin="anonymous" />
-  <noscript>
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" crossorigin="anonymous" />
-  </noscript>
 
   <!-- Preload Critical Resources -->
   <link rel="preload" href="/showcase-cover.webp" as="image" fetchpriority="high" />

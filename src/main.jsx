@@ -1,6 +1,8 @@
 import { StrictMode } from "react";
 import { createRoot, hydrateRoot } from "react-dom/client";
 import "./index.css";
+/* AOS styles bundled locally (same as npm aos); JS stays lazy in AOSRefresher */
+import "aos/dist/aos.css";
 import App from "./App.jsx";
 import { BrowserRouter } from "react-router-dom";
 import "./locales/i18n";
