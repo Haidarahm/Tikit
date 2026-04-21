@@ -124,7 +124,7 @@ function Home() {
             <p>
               Tikit Agency is recognized as one of the best social media management companies globally, with proven expertise in Emirates (UAE), Saudi Arabia, Turkey, Syria, and the broader MENA region. Our multilingual team creates culturally relevant content in English, Arabic, French, and Turkish, enabling brands to connect authentically with audiences worldwide. From Dubai to Istanbul, Riyadh to Damascus, we help brands build engaged communities and drive measurable results.
             </p>
-            <h3>Global Presence with Local Expertise</h3>
+            <h3>International Presence with Local Expertise</h3>
             <p>
               With physical offices in Dubai (UAE), Saudi Arabia (Riyadh, Jeddah), Istanbul (Turkey), and Syria, Tikit Agency combines global reach with deep local market knowledge. Our international team understands cultural nuances, regional preferences, and market dynamics across the Middle East, North Africa, Europe, and beyond. This unique combination allows us to create campaigns that feel authentic locally while maintaining global brand consistency.
             </p>

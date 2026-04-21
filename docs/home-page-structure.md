@@ -96,7 +96,7 @@
 
 ## 9. Map
 
-**Badge:** Global Presence
+**Badge:** International Presence
 
 **Title:** Tikit Agency **Worldwide**
 
