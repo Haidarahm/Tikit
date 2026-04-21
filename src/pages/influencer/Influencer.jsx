@@ -475,7 +475,7 @@ export const Influencer = () => {
   return (
     <div className="influencers-section w-full">
       <SEOHead
-        title="UAE Influencer Network | 500+ Creators - Tikit Agency Dubai"
+        title="Influencers | Tikit Agency Dubai"
         description="Discover Tikit Agency's network of 500+ UAE influencers. Fashion, beauty, lifestyle, tech & travel creators in Dubai, Abu Dhabi & Saudi Arabia."
         keywords="UAE influencers, Dubai content creators, Saudi Arabia influencers, Instagram influencers UAE, TikTok creators Dubai, influencer partnerships GCC"
         canonicalUrl="/influencer"

@@ -334,7 +334,7 @@ const Services = () => {
   return (
     <>
       <SEOHead
-        title="Marketing Services Dubai | Influencer, Social Media & Branding"
+        title="Services | Tikit Agency Dubai"
         description="Tikit Agency services: influencer marketing, social media management, branding & production in Dubai & UAE. Full-service marketing solutions."
         keywords="marketing services Dubai, influencer marketing UAE, social media management Dubai, branding services UAE, video production Dubai, digital marketing agency"
         canonicalUrl="/services"

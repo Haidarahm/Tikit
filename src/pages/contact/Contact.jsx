@@ -55,7 +55,7 @@ const Contact = () => {
   return (
     <div data-nav-color="black" className="contact-section snap-mandatory snap-y w-full    font-hero-light">
       <SEOHead
-        title="Contact Us | Tikit Agency Dubai - Call +971 4 577 4042"
+        title="Contact Us | Tikit Agency Dubai"
         description="Contact Tikit Agency Dubai. Call +971 4 577 4042 or email Holla@tikit.ae. Office: Burlington Tower, Marasi Drive. Free marketing consultation."
         keywords="contact Tikit Agency, marketing agency Dubai contact, influencer agency phone, UAE agency consultation, Dubai marketing office"
         canonicalUrl="/contact-us"

@@ -40,7 +40,7 @@ export const Blogs = () => {
       className={`news-page ${theme === "dark" ? "dark-mode" : "light-mode"}`}
     >
       <SEOHead
-        title="Blogs & Insights"
+        title="Blogs | Tikit Agency Dubai"
         description="Stay updated with the latest blogs, insights, and updates from Tikit Agency. Discover industry trends, marketing tips, and our latest achievements."
         keywords="blogs, digital marketing insights, agency updates, marketing trends, industry news, Tikit Agency blogs"
         canonicalUrl="/blogs"

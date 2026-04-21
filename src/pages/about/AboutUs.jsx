@@ -63,7 +63,7 @@ const AboutUs = () => {
       className="about-us-section overflow-hidden w-full min-h-screen font-hero-light"
     >
       <SEOHead
-        title="About Tikit Agency | Marketing Agency Dubai - 50+ Experts"
+        title="About Us | Tikit Agency Dubai"
         description="About Tikit Agency Dubai. Founded 2020, 50+ team members, 300+ clients. Leading influencer marketing & social media agency in UAE & Saudi Arabia."
         keywords="about Tikit Agency, Dubai marketing agency, UAE influencer agency team, marketing company Dubai, social media agency history"
         canonicalUrl="/about-us"
