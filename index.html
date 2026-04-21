@@ -28,7 +28,10 @@
   <!-- Prefetch Likely Next Pages (Low Priority) -->
   <link rel="prefetch" href="/work" fetchpriority="low" />
   <link rel="prefetch" href="/services" fetchpriority="low" />
-  <link rel="prefetch" href="/about" fetchpriority="low" />
+  <link rel="prefetch" href="/about-us" fetchpriority="low" />
+  <link rel="prefetch" href="/blogs" fetchpriority="low" />
+  <link rel="prefetch" href="/influencer" fetchpriority="low" />
+  <link rel="prefetch" href="/contact-us" fetchpriority="low" />
   <title>Dubai Influencer Marketing Agency | Tikit – Creative Campaigns That Convert</title>
   <meta name="description"
     content="We help brands in Dubai grow through smart strategy, creative content, and performance-focused campaigns. Work with a team that focuses on real results." />
@@ -68,6 +71,62 @@
   <meta property="og:image:height" content="630" />
 
   <meta name="twitter:image" content="https://tikit.ae/cover-image.png" />
+  <!-- JSON-LD Website + Main Navigation (helps Google understand primary sitelinks) -->
+  <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://tikit.ae/#website",
+            "url": "https://tikit.ae/",
+            "name": "Tikit Agency",
+            "inLanguage": "en",
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": "https://tikit.ae/blogs?search={search_term_string}",
+              "query-input": "required name=search_term_string"
+            }
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "@id": "https://tikit.ae/#main-nav-home",
+            "name": "Home",
+            "url": "https://tikit.ae/"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "@id": "https://tikit.ae/#main-nav-about-us",
+            "name": "About Us",
+            "url": "https://tikit.ae/about-us"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "@id": "https://tikit.ae/#main-nav-blogs",
+            "name": "Blogs",
+            "url": "https://tikit.ae/blogs"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "@id": "https://tikit.ae/#main-nav-services",
+            "name": "Services",
+            "url": "https://tikit.ae/services"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "@id": "https://tikit.ae/#main-nav-influencers",
+            "name": "Influencers",
+            "url": "https://tikit.ae/influencer"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "@id": "https://tikit.ae/#main-nav-contact-us",
+            "name": "Contact Us",
+            "url": "https://tikit.ae/contact-us"
+          }
+        ]
+      }
+    </script>
   <!-- JSON-LD Organization Schema -->
   <script type="application/ld+json">
       {
