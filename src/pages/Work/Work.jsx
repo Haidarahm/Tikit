@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useTheme } from "../../store/ThemeContext.jsx";
 import "./work.css";
@@ -26,6 +26,9 @@ const TYPE_KEY_MAP = {
 
 gsap.registerPlugin(ScrollTrigger);
 
+// Keep section-item cache across Work page unmount/remount.
+const sectionItemsCache = new Map();
+
 const Work = () => {
   const { theme } = useTheme();
   const navigate = useNavigate();
@@ -47,12 +50,12 @@ const Work = () => {
     loadCreativeItems,
     loadDigitalItems,
     loadEventItems,
-    resetCategory,
     resetAll,
   } = useWorkItemsStore();
   const { language, isRtl } = useI18nLanguage();
   const { fontBody } = useFontClass();
   const { t } = useTranslation();
+  const sectionItemsCacheRef = useRef(sectionItemsCache);
   const [activeSectionSlug, setActiveSectionSlug] = useState(null);
   const [activeType, setActiveType] = useState(null);
   useEffect(() => {
@@ -150,14 +153,6 @@ const Work = () => {
   useEffect(() => {
     if (!activeSectionSlug || !activeType) return;
 
-    const key = TYPE_KEY_MAP[activeType];
-    if (!key) return;
-    resetCategory(key);
-  }, [activeSectionSlug, activeType, resetCategory]);
-
-  useEffect(() => {
-    if (!activeSectionSlug || !activeType) return;
-
     const loaderMap = {
       influence: loadInfluenceItems,
       social: loadSocialItems,
@@ -169,6 +164,8 @@ const Work = () => {
 
     const loader = loaderMap[activeType];
     if (!loader) return;
+    const cacheKey = `${activeType}:${language}:${activeSectionSlug}`;
+    if (sectionItemsCacheRef.current.has(cacheKey)) return;
 
     loader({
       lang: language,
@@ -197,13 +194,16 @@ const Work = () => {
 
   const activeKey = TYPE_KEY_MAP[activeType] ?? null;
   const activeState = activeKey ? stateMap[activeKey] : null;
-  const currentItems = activeState?.items ?? [];
-  const requestId = activeState?.requestId;
-  const waitingForFetch =
-    Boolean(activeKey) &&
-    (!requestId || String(requestId).startsWith("reset-"));
-  const itemsLoading = Boolean(activeState?.loading) || waitingForFetch;
-  const itemsError = activeState?.error;
+  const cacheKey =
+    activeType && activeSectionSlug
+      ? `${activeType}:${language}:${activeSectionSlug}`
+      : null;
+  const cachedSectionState = cacheKey
+    ? sectionItemsCacheRef.current.get(cacheKey)
+    : null;
+  const currentItems = cachedSectionState?.items ?? activeState?.items ?? [];
+  const itemsLoading = !cachedSectionState && Boolean(activeState?.loading);
+  const itemsError = cachedSectionState?.error ?? activeState?.error;
   const isDigitalActive = activeKey === "digital";
   const selectedSection =
     sections?.find((section) => section.slug === activeSectionSlug) ?? null;
@@ -213,6 +213,18 @@ const Work = () => {
     if (detailId == null) return;
     navigate(`/details/${encodeURIComponent(detailId)}`);
   };
+
+  useEffect(() => {
+    if (!cacheKey || !activeSectionSlug || !activeType || !activeState) return;
+    if (activeState.loading) return;
+    if (activeState.activeWorkSlug !== activeSectionSlug) return;
+    if (!activeState.requestId) return;
+
+    sectionItemsCacheRef.current.set(cacheKey, {
+      items: activeState.items ?? [],
+      error: activeState.error ?? null,
+    });
+  }, [cacheKey, activeSectionSlug, activeType, activeState]);
 
   return (
     <div
