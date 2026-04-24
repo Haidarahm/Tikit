@@ -1,7 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useFontClass } from "../../../hooks/useFontClass";
 
-const NonDigitalWorkCard = ({ innerRef, normalized, t, onViewDetails }) => {
+const NonDigitalWorkCard = ({
+  innerRef,
+  normalized,
+  t,
+  onViewDetails,
+  itemHref,
+}) => {
   const { fontHeading } = useFontClass();
   const cardImage =
     normalized.hasReels && normalized.logo ? normalized.logo : normalized.image;
@@ -52,12 +59,22 @@ const NonDigitalWorkCard = ({ innerRef, normalized, t, onViewDetails }) => {
           >
             {normalized.objective}
           </p>}
-        <button
-          className="rounded-full border mt-4 border-white bg-transparent px-4 py-2 text-white transition hover:bg-white hover:text-black"
-          onClick={() => onViewDetails(normalized.detailId, normalized)}
-        >
-          {t("work.viewWork")}
-        </button>
+        {itemHref ? (
+          <Link
+            className="rounded-full border mt-4 border-white bg-transparent px-4 py-2 text-white transition hover:bg-white hover:text-black"
+            to={itemHref}
+            onClick={() => onViewDetails(normalized.detailId, normalized)}
+          >
+            {t("work.viewWork")}
+          </Link>
+        ) : (
+          <button
+            className="rounded-full border mt-4 border-white bg-transparent px-4 py-2 text-white transition hover:bg-white hover:text-black"
+            onClick={() => onViewDetails(normalized.detailId, normalized)}
+          >
+            {t("work.viewWork")}
+          </button>
+        )}
       </div>
     </div>
   );

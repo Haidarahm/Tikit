@@ -8,22 +8,71 @@
   <!-- blogs -->
   <url>
     <loc>https://tikit.ae/blogs</loc>
-    <lastmod>2026-03-12</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
-  <!-- Blog Posts (26 posts) -->
+  <!-- Blog Posts (33 posts) -->
   <url>
-    <loc>https://tikit.ae/blogs/dubais-leading-digital-marketing-agencies-driving-growth-in-2026</loc>
-    <lastmod>2026-03-12</lastmod>
+    <loc>https://tikit.ae/blogs/why-dubai-businesses-fail-at-marketing-and-how-to-fix-it</loc>
+    <lastmod>2026-04-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://tikit.ae/blogs/why-is-dubai-a-hub-for-influencer-marketing</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://tikit.ae/blogs/future-of-social-media-marketing-in-uae-2026-guide</loc>
+    <lastmod>2026-04-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://tikit.ae/blogs/top-10-influencer-marketing-agencies-in-dubai-2026-guide</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://tikit.ae/blogs/top-social-media-platforms-for-uae-business-growth</loc>
+    <lastmod>2026-04-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://tikit.ae/blogs/digital-marketing-trends-in-uae-for-2026-growth</loc>
+    <lastmod>2026-04-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://tikit.ae/blogs/influencer-marketing-reach-the-right-audience-fast</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://tikit.ae/blogs/top-marketing-strategies-for-startups-in-dubai-growth-guide</loc>
+    <lastmod>2026-03-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://tikit.ae/blogs/influencer-marketing-myths-brands-should-ignore</loc>
-    <lastmod>2026-03-03</lastmod>
+    <lastmod>2026-03-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>

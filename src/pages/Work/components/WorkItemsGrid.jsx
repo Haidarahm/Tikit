@@ -235,6 +235,7 @@ const WorkItemsGrid = ({
   loading,
   error,
   onViewDetails,
+  getItemHref,
   t,
   containerKey,
 }) => {
@@ -370,6 +371,7 @@ const WorkItemsGrid = ({
                   }}
                   normalized={normalized}
                   t={t}
+                  itemHref={getItemHref?.(normalized.detailId) ?? null}
                   onViewDetails={onViewDetails}
                 />
               );

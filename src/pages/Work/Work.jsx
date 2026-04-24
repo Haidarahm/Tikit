@@ -209,9 +209,21 @@ const Work = () => {
     sections?.find((section) => section.slug === activeSectionSlug) ?? null;
   const containerKey = `${activeKey ?? "none"}-${activeSectionSlug ?? "none"}`;
 
+  const getWorkItemHref = (detailId) => {
+    if (detailId == null) return null;
+    const encodedId = encodeURIComponent(detailId);
+
+    if (activeKey === "influence") return `/work/influence/${encodedId}`;
+    if (activeKey === "social") return `/work/social/${encodedId}`;
+    if (activeKey === "creative") return `/work/creative/${encodedId}`;
+    if (activeKey === "events") return `/work/event/${encodedId}`;
+    return `/details/${encodedId}`;
+  };
+
   const handleViewDetails = (detailId) => {
-    if (detailId == null) return;
-    navigate(`/details/${encodeURIComponent(detailId)}`);
+    const targetHref = getWorkItemHref(detailId);
+    if (!targetHref) return;
+    navigate(targetHref);
   };
 
   useEffect(() => {
@@ -268,6 +280,7 @@ const Work = () => {
         loading={itemsLoading}
         error={itemsError}
         language={language}
+        getItemHref={getWorkItemHref}
         onViewDetails={(detailId, itemMeta) => {
           if (detailId == null) return;
           if (activeKey === "influence") {
