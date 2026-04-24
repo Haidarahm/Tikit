@@ -28,6 +28,29 @@ const defaultInclude = [
   '/contact-us',
 ];
 
+const WORK_CATEGORY_CONFIG = [
+  {
+    type: "influence",
+    sectionEndpoint: "/work-influences",
+    detailPrefix: "/work/influence",
+  },
+  {
+    type: "social",
+    sectionEndpoint: "/work-socials",
+    detailPrefix: "/work/social",
+  },
+  {
+    type: "creative",
+    sectionEndpoint: "/work-creatives",
+    detailPrefix: "/work/creative",
+  },
+  {
+    type: "events",
+    sectionEndpoint: "/work-events",
+    detailPrefix: "/work/event",
+  },
+];
+
 async function fetchShowcaseSlugs() {
   try {
     const response = await axios.get(`${API_BASE}/showcase-projects/get`, {
@@ -52,12 +75,95 @@ async function fetchShowcaseSlugs() {
   }
 }
 
+async function fetchWorkSections() {
+  try {
+    const response = await axios.get(`${API_BASE}/works/get`, {
+      params: {
+        page: 1,
+        per_page: 100,
+        lang: "en",
+      },
+      timeout: 15000,
+    });
+    const data = Array.isArray(response?.data?.data) ? response.data.data : [];
+    return data;
+  } catch (err) {
+    console.warn(
+      "⚠️  Could not fetch work sections for react-snap:",
+      err.message
+    );
+    return [];
+  }
+}
+
+async function fetchWorkItemsBySection(endpoint, sectionSlug) {
+  try {
+    const response = await axios.get(
+      `${API_BASE}${endpoint}/${encodeURIComponent(sectionSlug)}`,
+      {
+        params: {
+          page: 1,
+          per_page: 200,
+          lang: "en",
+        },
+        timeout: 15000,
+      }
+    );
+    const data = Array.isArray(response?.data?.data) ? response.data.data : [];
+    return data;
+  } catch (err) {
+    console.warn(
+      `⚠️  Could not fetch items for section "${sectionSlug}" (${endpoint}):`,
+      err.message
+    );
+    return [];
+  }
+}
+
+async function fetchWorkDetailUrls() {
+  const sections = await fetchWorkSections();
+  if (!sections.length) return [];
+
+  const sectionsByType = sections.reduce((acc, section) => {
+    const type = section?.type;
+    const slug = section?.slug;
+    if (!type || !slug) return acc;
+    if (!acc[type]) acc[type] = [];
+    acc[type].push(slug);
+    return acc;
+  }, {});
+
+  const urls = new Set();
+
+  for (const category of WORK_CATEGORY_CONFIG) {
+    const sectionSlugs = sectionsByType[category.type] ?? [];
+    for (const sectionSlug of sectionSlugs) {
+      const items = await fetchWorkItemsBySection(
+        category.sectionEndpoint,
+        sectionSlug
+      );
+      items.forEach((item) => {
+        if (!item?.slug) return;
+        urls.add(`${category.detailPrefix}/${item.slug}`);
+      });
+    }
+  }
+
+  return Array.from(urls);
+}
+
 async function main() {
   console.log('📡 Fetching showcase slugs for react-snap...');
   const showcaseUrls = await fetchShowcaseSlugs();
   console.log(`✅ Found ${showcaseUrls.length} showcase case(s) to pre-render`);
 
-  const include = [...new Set([...defaultInclude, ...showcaseUrls])];
+  console.log("📡 Fetching work detail URLs for react-snap...");
+  const workDetailUrls = await fetchWorkDetailUrls();
+  console.log(`✅ Found ${workDetailUrls.length} work detail page(s) to pre-render`);
+
+  const include = [
+    ...new Set([...defaultInclude, ...showcaseUrls, ...workDetailUrls]),
+  ];
 
   const pkgPath = join(__dirname, '../package.json');
   const pkg = JSON.parse(readFileSync(pkgPath, 'utf8'));
