@@ -313,7 +313,7 @@ const BlogDetails = () => {
     newsData?.meta_description ||
     newsData?.description ||
     "Read this article on Tikit Agency blog.";
-  const canonicalPath = `/blogs/${slug}/html`;
+  const canonicalPath = `/blogs/${slug}`;
 
   return (
     <>
