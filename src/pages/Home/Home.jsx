@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import Hero from "./Hero";
 import SEOHead from "../../components/SEOHead";
 import LogoIntro from "../../components/LogoIntro";
@@ -84,6 +85,37 @@ const homepageSchema = {
 
 function Home() {
   const { introDone, setIntroDone } = useIntro();
+  const [isMobileView, setIsMobileView] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return window.matchMedia("(max-width: 767px)").matches;
+  });
+
+  useEffect(() => {
+    if (typeof window === "undefined") return undefined;
+
+    const mediaQuery = window.matchMedia("(max-width: 767px)");
+    const updateIsMobile = (event) => {
+      setIsMobileView(event.matches);
+    };
+
+    setIsMobileView(mediaQuery.matches);
+    mediaQuery.addEventListener("change", updateIsMobile);
+
+    return () => {
+      mediaQuery.removeEventListener("change", updateIsMobile);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isMobileView || introDone) return;
+
+    setIntroDone(true);
+    try {
+      sessionStorage.setItem("logoIntroSeen", "true");
+    } catch (_) {
+      // ignore storage failures
+    }
+  }, [introDone, isMobileView, setIntroDone]);
 
   return (
     <>
@@ -96,7 +128,7 @@ function Home() {
         structuredData={homepageSchema}
       />
 
-      {!introDone && (
+      {!introDone && !isMobileView && (
         <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-[var(--background)]">
           <LogoIntro onComplete={() => setIntroDone(true)} />
         </div>
