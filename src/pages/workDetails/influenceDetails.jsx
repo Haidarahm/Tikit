@@ -75,6 +75,8 @@ const InfluenceDetails = () => {
   const media = influence.media || [];
   const hasReels = Array.isArray(itemData?.reels) && itemData.reels.length > 0;
   const prefersCaseStudy = Boolean(location.state?.prefersCaseStudy);
+  const shouldUseCaseStudyLoader =
+    prefersCaseStudy || location.pathname.startsWith("/work/influence/");
   const caseData = useMemo(
     () => (hasReels ? workItemToCaseData(itemData) : null),
     [hasReels, itemData]
@@ -198,7 +200,7 @@ const InfluenceDetails = () => {
         canonicalUrl={`/work/influence/${slug}`}
       />
 
-      {influence.loading && prefersCaseStudy ? (
+      {influence.loading && shouldUseCaseStudyLoader ? (
         <CaseStudy caseData={caseData} loading />
       ) : influence.loading ? (
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8 px-4 md:px-6 pt-28 pb-10">

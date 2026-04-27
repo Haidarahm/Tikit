@@ -63,6 +63,9 @@ const NonDigitalWorkCard = ({
           <Link
             className="rounded-full border mt-4 border-white bg-transparent px-4 py-2 text-white transition hover:bg-white hover:text-black"
             to={itemHref}
+            state={{
+              prefersCaseStudy: Boolean(normalized?.hasReels),
+            }}
           >
             {t("work.viewWork")}
           </Link>
