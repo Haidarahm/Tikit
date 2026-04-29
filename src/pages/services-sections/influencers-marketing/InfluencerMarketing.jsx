@@ -50,7 +50,7 @@ import {
   influencerMarketingSubServiceHrefs,
   influencerMarketingSubServiceIcons,
   getInfluencerMarketingSubServiceItems,
-} from "./influencerMarketingSubServices";
+} from "./sub-components/influencerMarketingSubServices";
 import { revealChildren, toArray } from "./influencerUtils";
 
 import "./influencerMarketing.css";
