@@ -44,6 +44,15 @@
   color: color-mix(in srgb, var(--foreground) 70%, transparent);
 }
 
+.dm-hero-kicker {
+  @apply text-center text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] mb-2 max-w-3xl mx-auto px-4;
+  color: #52c3c5;
+}
+
+.dm-benefits-label {
+  color: var(--foreground);
+}
+
 /* Section */
 .dm-section {
   @apply py-16 md:py-20 px-4 md:px-6;
@@ -350,6 +359,31 @@
 /* Feature grid */
 .dm-feature-grid {
   @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8;
+}
+
+.dm-feature-grid--pillars {
+  @apply lg:grid-cols-2;
+}
+
+.dm-pillar-bullets {
+  @apply list-none pl-0;
+}
+
+.dm-pillar-bullet-item {
+  @apply flex gap-3 items-start text-left;
+}
+
+.dm-pillar-bullet-dot {
+  @apply mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full;
+  background-color: #52c3c5;
+}
+
+.dm-industry-card {
+  @apply flex items-center justify-center min-h-[5.5rem] text-center p-5;
+}
+
+.dm-industry-card__text {
+  @apply text-sm md:text-base leading-snug;
 }
 
 /* Two-column layout */

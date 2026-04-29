@@ -1648,90 +1648,115 @@
       },
       "seoServices": {
         "badge": "Services SEO Dubaï",
+        "heroTagline": "Dominez le marché des EAU avec une croissance organique durable",
         "hero": {
-          "title": "Services SEO Experts",
-          "mainWord": "à Dubaï",
-          "description": "Boostez votre visibilité organique avec SEO technique, optimisation on-page et stratégies de contenu."
+          "title": "Élevez votre présence dans les résultats avec un",
+          "mainWord": "SEO de premier plan",
+          "description": "Chez Tikit.ae, nous dépassons les vanity metrics : stratégies SEO performantes pour des positions solides, du trafic à forte intention et des revenus scalables — pensées pour la concurrence à Dubaï. Votre marque reste visible bien après le premier clic."
         },
+        "heroCta": "Construire votre feuille de route SEO",
         "definition": {
-          "whatIsTitle": "Qu'est-ce que le SEO ?",
-          "paragraph": "Le SEO (Search Engine Optimization) est la pratique d'optimiser les sites web pour mieux se classer dans les résultats de recherche.",
+          "whatIsTitle": "Pourquoi le SEO est votre actif digital le plus précieux",
+          "paragraph": "Sur un marché saturé comme Dubaï, figurer sur la première page n'est pas un luxe — c'est indispensable. Contrairement au média payant, le SEO offre un rendement composé en établissant votre marque comme référence dans votre niche.",
+          "benefitsLabel": "Avantages stratégiques :",
           "benefitsList": [
-            "Croissance durable du trafic organique",
-            "Crédibilité accrue dans les résultats de recherche",
-            "Meilleure expérience utilisateur",
-            "ROI long terme qui se cumule",
-            "Trafic ciblé de chercheurs actifs"
+            "CAC réduit : capter l'intention sans payer chaque clic.",
+            "Autorité de marché : les tops résultats renforcent la confiance aux Émirats.",
+            "Visibilité persistante : présence 24/7 sans limite « pay-to-play ».",
+            "UX renforcée : optimisations techniques pour un site plus rapide et fluide."
           ]
         },
         "services": {
-          "title": "Nos Services SEO",
-          "subtitle": "Solutions SEO complètes pour le marché des EAU",
+          "title": "Le cadre Tikit.ae : réussite search pilotée par les données",
+          "subtitle": "Pas de SEO « one-size-fits-all ». Nous combinons intelligence marché et rigueur technique pour dépasser vos concurrents.",
           "items": {
-            "technicalSeo": {
-              "title": "SEO Technique",
-              "description": "Architecture du site, crawlabilité, Core Web Vitals et optimisation technique."
+            "precisionTechnical": {
+              "title": "SEO technique de précision",
+              "description": "Le socle de toute campagne réussie. Nous sécurisons une architecture impeccable pour que les moteurs indexent pleinement votre valeur.",
+              "bullets": [
+                "Core Web Vitals : vitesse et stabilité.",
+                "Indexation mobile-first : expérience premium sur tous les appareils.",
+                "Architecture & logique : URLs propres, sitemaps XML et Schema."
+              ]
             },
-            "onPage": {
-              "title": "SEO On-Page",
-              "description": "Optimisation du contenu, balises meta, liens internes et ciblage de mots-clés."
+            "keywordIntelligence": {
+              "title": "Intelligence mots-clés stratégique",
+              "description": "Au-delà du volume : nous ciblons les « money keywords » — les requêtes des acheteurs prêts à convertir.",
+              "bullets": [
+                "Cartographie d'intention : distinguer navigation informative et intention commerciale.",
+                "Analyse d'écart concurrentiel : où vos rivaux gagnent et comment les dépasser.",
+                "Ciblage hyper-local : Dubaï, Abu Dhabi et la région GCC."
+              ]
             },
-            "linkBuilding": {
-              "title": "Link Building",
-              "description": "Acquisition stratégique de backlinks de qualité depuis des sites autoritaires."
+            "contentAuthority": {
+              "title": "Contenu et autorité thématique",
+              "description": "Les moteurs récompensent l'expertise. Nous créons du contenu à forte valeur qui répond aux questions du marché UAE et vous positionne comme leader.",
+              "bullets": [
+                "Landing pages orientées conversion.",
+                "Clusters thématiques : profondeur et cohérence.",
+                "Localisation : messages adaptés au public de Dubaï."
+              ]
             },
-            "contentStrategy": {
-              "title": "Stratégie de Contenu",
-              "description": "Planification et création de contenu data-driven aligné sur l'intention de recherche."
-            },
-            "localSeo": {
-              "title": "SEO Local",
-              "description": "Optimisation Google Business Profile et stratégies géo-ciblées pour Dubaï."
-            },
-            "seoAudits": {
-              "title": "Audits SEO",
-              "description": "Audits techniques et de contenu complets avec recommandations actionnables."
+            "localMaps": {
+              "title": "SEO local et domination Maps",
+              "description": "Pour les entreprises à Dubaï, Google Maps est critique. Nous optimisons votre empreinte locale pour les recherches « près de moi ».",
+              "bullets": [
+                "Gestion GBusiness : optimisation complète du profil Google Business.",
+                "Citations : cohérence NAP sur le web.",
+                "Signaux de confiance locaux : avis et pertinence locale."
+              ]
             }
           }
         },
         "process": {
-          "title": "Notre Processus SEO",
+          "title": "Votre ascension : notre processus",
+          "subtitle": "De la découverte à l'optimisation — une feuille de route transparente et mesurable.",
           "steps": {
+            "discovery": {
+              "title": "Découverte et intelligence",
+              "description": "Immersion dans vos objectifs et la concurrence."
+            },
             "audit": {
-              "title": "Audit Complet",
-              "description": "Analyse de la santé technique, qualité du contenu et profil de backlinks."
+              "title": "Audit complet",
+              "description": "Identifier les freins techniques et contenu qui limitent la visibilité."
             },
-            "keywords": {
-              "title": "Recherche de Mots-Clés",
-              "description": "Identification des mots-clés à forte valeur et intention commerciale."
+            "roadmap": {
+              "title": "Feuille de route de croissance",
+              "description": "Plan d'action mois par mois, transparent."
             },
-            "optimize": {
-              "title": "Optimisation On-Site",
-              "description": "Corrections techniques, optimisation du contenu et amélioration de la structure."
+            "implementation": {
+              "title": "Mise en œuvre active",
+              "description": "Correctifs techniques à l'échelle et déploiement de contenus."
             },
-            "monitor": {
-              "title": "Suivi & Affinement",
-              "description": "Tracking des classements, trafic et conversions avec optimisation continue."
+            "refinement": {
+              "title": "Affinement",
+              "description": "Ajustements data-driven via analytics mensuels pour maximiser le ROI."
             }
           }
         },
-        "faqTitle": "FAQ Services SEO",
+        "industries": {
+          "title": "Expertise sectorielle",
+          "subtitle": "Nous adaptons la recherche aux spécificités de votre secteur :",
+          "items": [
+            "Immobilier & promotion : mots-clés à forte concurrence.",
+            "Luxe & lifestyle : intention HNW.",
+            "B2B & services professionnels : leads entreprise.",
+            "Santé & cliniques : confiance et visibilité patient locale."
+          ]
+        },
+        "faqTitle": "Questions fréquentes",
         "faqItems": [
           {
-            "question": "Combien de temps pour des résultats SEO ?",
-            "answer": "Le SEO est une stratégie long terme. Améliorations initiales en semaines, classements significatifs en 3-6 mois, croissance majeure en 6-12 mois."
+            "question": "Combien de temps avant des résultats ?",
+            "answer": "Le SEO est un marathon. Les correctifs techniques peuvent donner des gains rapides ; une croissance organique significative prend souvent 3 à 6 mois pendant que votre autorité se consolide."
           },
           {
-            "question": "Combien coûte le SEO à Dubaï ?",
-            "answer": "Les forfaits basiques démarrent à 5 000 AED/mois. Les industries compétitives nécessitent 10 000-25 000 AED/mois."
+            "question": "Garantissez-vous la page 1 ?",
+            "answer": "Aucune agence sérieuse ne garantit un rang précis — Google le déconseille. Notre historique à Dubaï place régulièrement les clients en tête pour leurs mots-clés les plus précieux."
           },
           {
-            "question": "Le SEO vaut-il l'investissement à Dubaï ?",
-            "answer": "Absolument. Avec plus de 90% des expériences en ligne commençant par un moteur de recherche."
-          },
-          {
-            "question": "Différence entre SEO on-page et off-page ?",
-            "answer": "Le SEO on-page concerne les éléments de votre site. Le SEO off-page inclut les activités externes comme le link building."
+            "question": "Ai-je encore besoin de Google Ads ?",
+            "answer": "Le SEO apporte de la stabilité long terme ; beaucoup combinent une stratégie hybride : Ads pour le volume immédiat pendant que le SEO construit la domination durable."
           }
         ]
       },
