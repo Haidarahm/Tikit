@@ -13,7 +13,7 @@ import {
   HiUserGroup,
 } from "react-icons/hi";
 import { HiPresentationChartBar } from "react-icons/hi2";
-import { getInfluencerSubServiceRelatedPages, INFLUENCER_MARKETING_BASE as BASE } from "./influencerMarketingSubServices";
+import { getInfluencerSubServiceRelatedPages, INFLUENCER_MARKETING_BASE as BASE } from "./sub-components/influencerMarketingSubServices";
 const TK = "serviceSections.influencerMarketing.subPages.roiAnalytics";
 
 const ROIAnalytics = () => {

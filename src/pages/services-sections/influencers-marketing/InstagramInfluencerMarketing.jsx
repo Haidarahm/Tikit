@@ -13,7 +13,7 @@ import {
   HiHeart,
 } from "react-icons/hi";
 import { FaInstagram } from "react-icons/fa";
-import { getInfluencerSubServiceRelatedPages, INFLUENCER_MARKETING_BASE as BASE } from "./influencerMarketingSubServices";
+import { getInfluencerSubServiceRelatedPages, INFLUENCER_MARKETING_BASE as BASE } from "./sub-components/influencerMarketingSubServices";
 const TK = "serviceSections.influencerMarketing.subPages.instagramInfluencer";
 
 const InstagramInfluencerMarketing = () => {

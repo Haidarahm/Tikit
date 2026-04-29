@@ -7,7 +7,7 @@ import HeroWithBadge from "../../../components/HeroWithBadge";
 import SEOHead from "../../../components/SEOHead";
 import FAQ from "../../../components/FAQ";
 import { HiCheckCircle, HiArrowRight } from "react-icons/hi";
-import "./influencersMarketing.css";
+import "./influencerMarketing.css";
 
 gsap.registerPlugin(ScrollTrigger);
 

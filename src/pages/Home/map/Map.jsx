@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next'
 import { useI18nLanguage } from '../../../store/I18nLanguageContext'
 import { useFontClass } from '../../../hooks/useFontClass'
 import { useTheme } from '../../../store/ThemeContext'
+import { useHomeGsapScope } from '../HomeGsapScope'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -19,6 +20,33 @@ const Map = () => {
   const animationRef = useRef(null)
   const [mapXml, setMapXml] = useState('')
   const [isLoading, setIsLoading] = useState(true)
+  const homeGsapScopeRef = useHomeGsapScope()
+
+  useEffect(() => {
+    if (!sectionRef.current || !homeGsapScopeRef?.current) return undefined
+    const infoElements = sectionRef.current.querySelectorAll(".map-info-animate")
+    if (!infoElements.length) return undefined
+    const tween = gsap.fromTo(
+      infoElements,
+      { opacity: 0, y: 24 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.75,
+        stagger: 0.1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 85%",
+          toggleActions: "play none none none",
+        },
+      },
+    )
+    return () => {
+      tween.scrollTrigger?.kill()
+      tween.kill()
+    }
+  }, [])
 
   // Load map XML dynamically when component is about to be visible
   useEffect(() => {
@@ -54,7 +82,7 @@ const Map = () => {
   }, [mapXml])
 
   useEffect(() => {
-    if (!mapContainerRef.current || !mapXml) return
+    if (!mapContainerRef.current || !mapXml || !homeGsapScopeRef?.current) return
     if (!sectionRef.current) return
 
     const section = sectionRef.current
@@ -84,98 +112,94 @@ const Map = () => {
         return
       }
 
-      // Clean up any existing ScrollTrigger instances for this element BEFORE creating new ones
-      ScrollTrigger.getAll().forEach((trigger) => {
-        if (trigger.trigger === section) {
-          try {
-            trigger.kill()
-          } catch (e) {
-            // Ignore errors during cleanup
+      // Clean up only the previous map timeline trigger (do not kill sibling section animations)
+      if (animationRef.current) {
+        try {
+          animationRef.current.scrollTrigger?.kill()
+          animationRef.current.kill()
+        } catch (e) {
+          // Ignore errors during cleanup
+        }
+        animationRef.current = null
+      }
+
+      // Initial state - hide everything (only if elements exist)
+      const allElements = [...mapStrokes, ...destinationLines, ...textLabels].filter(Boolean)
+      if (allElements.length > 0) {
+        gsap.set(allElements, { 
+          opacity: 0,
+          visibility: 'hidden'
+        })
+      }
+      
+      // Small markers: scale 0 for bounce effect
+      if (smallMarkers.length > 0) {
+        gsap.set(smallMarkers, { 
+          opacity: 0,
+          visibility: 'hidden',
+          scale: 0
+        })
+      }
+      // Large markers and pins: start below final position for fade-from-bottom
+      const markersAndPins = [...largeMarkers, ...pins].filter(Boolean)
+      if (markersAndPins.length > 0) {
+        gsap.set(markersAndPins, { 
+          opacity: 0,
+          visibility: 'hidden',
+          y: 28
+        })
+      }
+
+      // Prepare map stroke paths for draw animation
+      mapStrokes.forEach((path) => {
+        try {
+          if (path.getTotalLength && path.isConnected) {
+            const length = path.getTotalLength()
+            gsap.set(path, {
+              strokeDasharray: length,
+              strokeDashoffset: length,
+              opacity: 1,
+              visibility: 'visible'
+            })
+          }
+        } catch (e) {
+          if (path.isConnected) {
+            gsap.set(path, { opacity: 0, visibility: 'hidden' })
           }
         }
       })
 
-      // Use gsap.context for proper cleanup
-      const ctx = gsap.context(() => {
-        // Initial state - hide everything (only if elements exist)
-        const allElements = [...mapStrokes, ...destinationLines, ...textLabels].filter(Boolean)
-        if (allElements.length > 0) {
-          gsap.set(allElements, { 
-            opacity: 0,
-            visibility: 'hidden'
-          })
-        }
-        
-        // Small markers: scale 0 for bounce effect
-        if (smallMarkers.length > 0) {
-          gsap.set(smallMarkers, { 
-            opacity: 0,
-            visibility: 'hidden',
-            scale: 0
-          })
-        }
-        // Large markers and pins: start below final position for fade-from-bottom
-        const markersAndPins = [...largeMarkers, ...pins].filter(Boolean)
-        if (markersAndPins.length > 0) {
-          gsap.set(markersAndPins, { 
-            opacity: 0,
-            visibility: 'hidden',
-            y: 28
-          })
-        }
-
-        // Prepare map stroke paths for draw animation
-        mapStrokes.forEach((path) => {
-          try {
-            if (path.getTotalLength && path.isConnected) {
-              const length = path.getTotalLength()
-              gsap.set(path, {
-                strokeDasharray: length,
-                strokeDashoffset: length,
-                opacity: 1,
-                visibility: 'visible'
-              })
-            }
-          } catch (e) {
-            // For non-path elements like polygons
-            if (path.isConnected) {
-              gsap.set(path, { opacity: 0, visibility: 'hidden' })
-            }
+      // Prepare destination lines for draw animation
+      destinationLines.forEach((path) => {
+        try {
+          if (path.getTotalLength && path.isConnected) {
+            const length = path.getTotalLength()
+            path.style.strokeDasharray = length
+            path.style.strokeDashoffset = length
+            gsap.set(path, {
+              strokeDasharray: length,
+              strokeDashoffset: length,
+              opacity: 1,
+              visibility: 'visible'
+            })
           }
-        })
-
-        // Prepare destination lines for draw animation
-        destinationLines.forEach((path) => {
-          try {
-            if (path.getTotalLength && path.isConnected) {
-              const length = path.getTotalLength()
-              // Clear any existing stroke-dasharray from original SVG before animating
-              path.style.strokeDasharray = length
-              path.style.strokeDashoffset = length
-              gsap.set(path, {
-                strokeDasharray: length,
-                strokeDashoffset: length,
-                opacity: 1,
-                visibility: 'visible'
-              })
-            }
-          } catch (e) {
-            if (path.isConnected) {
-              gsap.set(path, { opacity: 0, visibility: 'hidden' })
-            }
+        } catch (e) {
+          if (path.isConnected) {
+            gsap.set(path, { opacity: 0, visibility: 'hidden' })
           }
-        })
+        }
+      })
 
-        // Create main timeline
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: section,
-            start: 'top 70%',
-            toggleActions: 'play none none none',
-            once: true,
-            refreshPriority: 0, // Default priority
-          }
-        })
+      // Create main timeline
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: 'top 70%',
+          toggleActions: 'play none none none',
+          once: true,
+          refreshPriority: 0,
+        }
+      })
 
         // Phase 1: Draw map strokes smoothly
         if (mapStrokes.length > 0) {
@@ -262,13 +286,7 @@ const Map = () => {
           }, pins.length > 0 ? '-=0.35' : '+=0')
         }
 
-        animationRef.current = tl
-      }, sectionRef)
-      
-      // Store context reference after it's created
-      if (animationRef.current) {
-        animationRef.current.context = ctx
-      }
+      animationRef.current = tl
     }
 
     // Small delay to ensure SVG content is fully rendered
@@ -278,9 +296,6 @@ const Map = () => {
 
     return () => {
       clearTimeout(timeoutId)
-      
-      // Store context reference before nulling animationRef
-      const contextToRevert = animationRef.current?.context
       
       // Kill timeline first
       if (animationRef.current) {
@@ -294,31 +309,8 @@ const Map = () => {
         animationRef.current = null
       }
       
-      // Get current section reference (may have changed)
-      const currentSection = sectionRef.current
+      // Do not kill all section triggers here; they may belong to other animations (left info panel, etc.)
       
-      // Kill ScrollTrigger instances FIRST
-      ScrollTrigger.getAll().forEach((trigger) => {
-        const triggerElement = trigger.trigger
-        if (triggerElement === section || triggerElement === currentSection) {
-          try {
-            trigger.kill()
-          } catch (e) {
-            // Ignore errors during cleanup
-          }
-        }
-      })
-      
-      // Revert GSAP context if it exists
-      if (contextToRevert) {
-        try {
-          if (section?.isConnected) {
-            contextToRevert.revert()
-          }
-        } catch (e) {
-          // Ignore errors during cleanup
-        }
-      }
     }
   }, [mapXml])
 
@@ -403,21 +395,17 @@ const Map = () => {
           {/* Left Section - Agency Info */}
           <div
             className={`w-full lg:w-2/5 flex flex-col justify-center ${isRtl === "true" ? 'text-right' : ''}`}
-            data-aos="fade-up"
-            data-aos-duration="600"
-            data-aos-once="true"
-            data-aos-mirror="false"
           >
-            <span className='animate-text text-[#4ec0c3] text-sm md:text-base font-medium tracking-widest uppercase mb-4'>
+            <span className='map-info-animate animate-text text-[#4ec0c3] text-sm md:text-base font-medium tracking-widest uppercase mb-4'>
               {t('home.map.badge')}
             </span>
             
-            <h2 className={`animate-text text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--foreground)] mb-6 leading-tight ${fontHeading}`}>
+            <h2 className={`map-info-animate animate-text text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--foreground)] mb-6 leading-tight ${fontHeading}`}>
               {t('home.map.title')}
               <span className='block text-[#4ec0c3]'>{t('home.map.titleHighlight')}</span>
             </h2>
             
-            <p className='animate-text text-gray-400 text-base md:text-lg leading-relaxed mb-8 max-w-md'>
+            <p className='map-info-animate animate-text text-gray-400 text-base md:text-lg leading-relaxed mb-8 max-w-md'>
               {t('home.map.description')}
             </p>
           </div>

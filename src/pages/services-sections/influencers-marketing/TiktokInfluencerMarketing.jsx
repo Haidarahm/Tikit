@@ -13,7 +13,7 @@ import {
   HiSparkles,
 } from "react-icons/hi";
 import { FaTiktok } from "react-icons/fa";
-import { getInfluencerSubServiceRelatedPages, INFLUENCER_MARKETING_BASE as BASE } from "./influencerMarketingSubServices";
+import { getInfluencerSubServiceRelatedPages, INFLUENCER_MARKETING_BASE as BASE } from "./sub-components/influencerMarketingSubServices";
 const TK = "serviceSections.influencerMarketing.subPages.tiktokInfluencer";
 
 const TiktokInfluencerMarketing = () => {

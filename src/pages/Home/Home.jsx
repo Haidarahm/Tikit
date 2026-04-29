@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { gsap } from "gsap";
 import Hero from "./Hero";
 import SEOHead from "../../components/SEOHead";
 import LogoIntro from "../../components/LogoIntro";
@@ -16,6 +17,7 @@ import Map from "./map/Map";
 import PinnedSection from "./PinnedSection";
 import Blogs from "./Blogs";
 import ContactUs from "./ContactUs";
+import { HomeGsapScopeProvider } from "./HomeGsapScope";
 
 
 
@@ -84,6 +86,7 @@ const homepageSchema = {
 };
 
 function Home() {
+  const homeGsapScopeRef = useRef(null);
   const { introDone, setIntroDone } = useIntro();
   const [isMobileView, setIsMobileView] = useState(() => {
     if (typeof window === "undefined") return false;
@@ -117,6 +120,12 @@ function Home() {
     }
   }, [introDone, isMobileView, setIntroDone]);
 
+  useEffect(() => {
+    if (!homeGsapScopeRef.current) return undefined;
+    const homeCtx = gsap.context(() => {}, homeGsapScopeRef);
+    return () => homeCtx.revert();
+  }, []);
+
   return (
     <>
       <SEOHead
@@ -134,7 +143,9 @@ function Home() {
         </div>
       )}
 
+      <HomeGsapScopeProvider value={homeGsapScopeRef}>
       <div
+        ref={homeGsapScopeRef}
         id="home"
         className="sections overflow-hidden relative w-full home-scroll-trigger"
       >
@@ -253,6 +264,7 @@ function Home() {
         </LazySection>
         
       </div>
+      </HomeGsapScopeProvider>
     </>
   );
 }

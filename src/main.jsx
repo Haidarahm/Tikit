@@ -1,7 +1,5 @@
 import { createRoot, hydrateRoot } from "react-dom/client";
 import "./index.css";
-/* AOS styles bundled locally (same as npm aos); JS stays lazy in AOSRefresher */
-import "aos/dist/aos.css";
 import { BrowserRouter } from "react-router-dom";
 import i18n, { initI18n } from "./locales/i18n";
 import { initReactI18next } from "react-i18next";

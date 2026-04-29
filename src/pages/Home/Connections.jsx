@@ -13,17 +13,20 @@ import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
 import { useFontClass } from "../../hooks/useFontClass";
 import TikitTitle from "../../components/TikitTitle.jsx";
+import { useHomeGsapScope } from "./HomeGsapScope";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Connections = memo(() => {
   const navigate = useNavigate();
   const sectionContainerRef = useRef(null);
+  const contentRef = useRef(null);
   const { theme } = useTheme();
   const { setClientType } = useClient();
   const { t } = useTranslation();
   const { isRtl } = useI18nLanguage();
   const { fontBody } = useFontClass();
+  const homeGsapScopeRef = useHomeGsapScope();
 
   // Define gradient colors based on theme
   const gradientColors =
@@ -34,59 +37,79 @@ const Connections = memo(() => {
   // GSAP animations scoped to section container
   useEffect(() => {
     const scrollerEl = sectionContainerRef.current;
-    if (!scrollerEl) return;
+    if (!scrollerEl || !homeGsapScopeRef?.current) return;
+    const element1 = scrollerEl.querySelector(".element1-c");
+    const element2 = scrollerEl.querySelector(".element2-c");
+    const contentElements = contentRef.current?.querySelectorAll(".connections-animate");
 
-    const element1Tween = gsap.to(".element1-c", {
-      top: "400px",
-      left: "1000px",
-      rotation: 100,
-      duration: 1.5,
-      filter: "blur(5px)",
-      ease: "power1.inOut",
-      scrollTrigger: {
-        trigger: scrollerEl,
-        start: "top 0%",
-        end: "bottom 0%",
-        scrub: 1.5,
-        refreshPriority: 0, // Default priority
-      },
-    });
+    const tweens = [];
 
-    const element2Tween = gsap.to(".element2-c", {
-      top: "50vh",
-      right: "70%",
-      rotation: 100,
-      duration: 1.5,
-      filter: "blur(5px)",
-      ease: "power1.inOut",
-      scrollTrigger: {
-        trigger: scrollerEl,
-        start: "top 0%",
-        end: "bottom 0%",
-        scrub: 1.5,
-        refreshPriority: 0, // Default priority
-      },
-    });
+    if (element1) {
+      tweens.push(
+        gsap.to(element1, {
+        top: "400px",
+        left: "1000px",
+        rotation: 100,
+        duration: 1.5,
+        filter: "blur(5px)",
+        ease: "power1.inOut",
+        scrollTrigger: {
+          trigger: scrollerEl,
+          start: "top 0%",
+          end: "bottom 0%",
+          scrub: 1.5,
+          refreshPriority: 0,
+        },
+      }),
+      );
+    }
 
-    // Don't refresh immediately - let ScrollTrigger handle it naturally
-    // Multiple refresh calls can cause conflicts between components
+    if (element2) {
+      tweens.push(
+        gsap.to(element2, {
+        top: "50vh",
+        right: "70%",
+        rotation: 100,
+        duration: 1.5,
+        filter: "blur(5px)",
+        ease: "power1.inOut",
+        scrollTrigger: {
+          trigger: scrollerEl,
+          start: "top 0%",
+          end: "bottom 0%",
+          scrub: 1.5,
+          refreshPriority: 0,
+        },
+      }),
+      );
+    }
+
+    if (contentElements?.length) {
+      tweens.push(
+        gsap.fromTo(
+          contentElements,
+        { opacity: 0, y: 26 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          stagger: 0.12,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: contentRef.current,
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+        },
+      ),
+      );
+    }
 
     return () => {
-      // Kill ScrollTrigger instances FIRST
-      if (element1Tween?.scrollTrigger) {
-        try {
-          element1Tween.scrollTrigger.kill();
-        } catch (e) {
-          // Ignore errors during cleanup
-        }
-      }
-      if (element2Tween?.scrollTrigger) {
-        try {
-          element2Tween.scrollTrigger.kill();
-        } catch (e) {
-          // Ignore errors during cleanup
-        }
-      }
+      tweens.forEach((tween) => {
+        tween.scrollTrigger?.kill();
+        tween.kill();
+      });
     };
   }, []);
 
@@ -113,7 +136,10 @@ const Connections = memo(() => {
         className="element2-c absolute hidden md:block top-[40vh] right-12  dark:grayscale-75 rotate-90 z-0 w-auto h-auto max-w-[300px] max-h-[300px] object-contain"
         loading="lazy"
       />
-      <div className="flex items-center flex-col justify-center relative z-10 w-[90vw] md:w-[80vw] mx-auto text-center">
+      <div
+        ref={contentRef}
+        className="flex items-center flex-col justify-center relative z-10 w-[90vw] md:w-[80vw] mx-auto text-center"
+      >
         {isRtl ? (
           <h2 className="text-[24px] md:h-[55px] md:text-[35px] pointer-events-none max-w-[600px] text-[var(--foreground)] dark:text-white">
             {t("home.connections.question")}
@@ -130,28 +156,18 @@ const Connections = memo(() => {
             {t("home.connections.question")}
           </ScrollFloat>
         )}
-        <div 
-          data-aos={isRtl ? "fade-right" : "fade-left"}
-          data-aos-duration="900"
-          data-aos-easing="ease-out-cubic"
-          data-aos-once="false"
-          data-aos-offset="120"
-        >
+        <div className="connections-animate">
           <TikitTitle title={t("home.connections.headline")} mainWord={t("home.connections.mainWord")} />
           
         </div>
 
         <p
-          className="description pointer-events-none text-[16px] md:text-[32px] font-light leading-[35px] md:mt-[20px] text-[var(--foreground)] dark:text-white"
-          data-aos="fade-right"
-          data-aos-duration="900"
-          data-aos-easing="ease-out-cubic"
-          data-aos-once="false"
-          data-aos-offset="120"
+          className="connections-animate description pointer-events-none text-[16px] md:text-[32px] font-light leading-[35px] md:mt-[20px] text-[var(--foreground)] dark:text-white"
         >
           {t("home.connections.description")}
         </p>
         <button
+className="connections-animate bg-transparent mt-8 hover:text-[var(--background)] shadow-lg shadow-[#52C3C5]/30 font-bold dark:shadow-[#000]/30 hover:bg-[var(--secondary)] border-[var(--secondary)] text-[var(--secondary)] transition duration-75 ease-in border px-6 h-8 md:h-10 text-[14px] rounded-full uppercase"
 onClick={() => {
             setClientType("influencer");
             // Set flag to scroll to action section
@@ -162,8 +178,6 @@ onClick={() => {
             }
             navigate("/contact-us");
           }}
-          className="bg-transparent mt-8 hover:text-[var(--background)] shadow-lg shadow-[#52C3C5]/30 font-bold dark:shadow-[#000]/30 hover:bg-[var(--secondary)] border-[var(--secondary)] text-[var(--secondary)] transition duration-75 ease-in border px-6 h-8 md:h-10 text-[14px] rounded-full uppercase"
-
         >
           {t("home.connections.joinNow")}
         </button>

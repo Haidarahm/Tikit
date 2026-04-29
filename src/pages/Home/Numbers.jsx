@@ -1,16 +1,23 @@
-import React, { memo } from "react";
+import React, { memo, useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
 import { useFontClass } from "../../hooks/useFontClass";
 import CountUp from "../../components/CountUp";
 import TikitTitle from "../../components/TikitTitle.jsx";
 import  {useTheme } from "../../store/ThemeContext.jsx";
+import { useHomeGsapScope } from "./HomeGsapScope";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Numbers = memo(() => {
   const {theme} = useTheme();
   const { t } = useTranslation();
   const { isRtl } = useI18nLanguage();
   const { fontBody } = useFontClass();
+  const sectionRef = useRef(null);
+  const homeGsapScopeRef = useHomeGsapScope();
   const data = [
     {
       count: 300,
@@ -48,8 +55,62 @@ const Numbers = memo(() => {
     },
   ];
 
+  useEffect(() => {
+    if (!sectionRef.current) return undefined;
+    if (!homeGsapScopeRef?.current) return undefined;
+    const subtitle = sectionRef.current.querySelector(".numbers-subheadline");
+    const circles = sectionRef.current.querySelectorAll(".numbers-circle");
+
+    let subtitleTween;
+    if (subtitle) {
+      subtitleTween = gsap.fromTo(
+        subtitle,
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: subtitle,
+            start: "top 90%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
+    }
+
+    let circlesTween;
+    if (circles.length) {
+      circlesTween = gsap.fromTo(
+        circles,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          stagger: 0.12,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
+    }
+
+    return () => {
+      subtitleTween?.scrollTrigger?.kill();
+      subtitleTween?.kill();
+      circlesTween?.scrollTrigger?.kill();
+      circlesTween?.kill();
+    };
+  }, []);
+
   return (
     <div
+      ref={sectionRef}
       data-nav-color="black"
       className={`section ${fontBody} my-10 md:my-0 flex flex-col mx-auto md:h-screen z-10 w-[98%] sm:w-[95%] md:w-6/7 justify-center px-4 md:px-0`}
     >
@@ -59,9 +120,7 @@ const Numbers = memo(() => {
           mainWord={t("home.numbers.mainWord")}
         />
         <h2
-          className="text-sm sm:text-base md:text-lg lg:text-[25px] font-light px-4 md:px-0 max-w-4xl mx-auto text-[var(--foreground)]"
-          data-aos="fade-up"
-          data-aos-delay="100"
+          className="numbers-subheadline text-sm sm:text-base md:text-lg lg:text-[25px] font-light px-4 md:px-0 max-w-4xl mx-auto text-[var(--foreground)]"
         >
           {t("home.numbers.subheadline")}
         </h2>
@@ -77,9 +136,7 @@ const Numbers = memo(() => {
                 <div
                   key={idx}
                   style={{backgroundColor: theme==="light"?lightColor:color}}
-                  className={`circle w-full  aspect-square max-w-[140px]  sm:max-w-[160px] mx-auto rounded-full text-center flex flex-col items-center justify-center backdrop-blur-lg   `}
-                  data-aos="fade-up"
-                  data-aos-delay={idx * 100}
+                  className={`numbers-circle circle w-full  aspect-square max-w-[140px]  sm:max-w-[160px] mx-auto rounded-full text-center flex flex-col items-center justify-center backdrop-blur-lg   `}
                 >
                   <span className="font-light  text-center flex items-center text-2xl sm:text-3xl text-[var(--foreground)] ">
                     <CountUp
@@ -126,11 +183,9 @@ const Numbers = memo(() => {
                 <div
                   key={idx}
                   style={{backgroundColor: theme==="light"?lightColor:color}}
-                  className={`circle shadow-2xl w-[160px] h-[160px] lg:w-[180px] lg:h-[180px] xl:w-[200px] xl:h-[200px] rounded-full text-center flex flex-col items-center justify-center backdrop-blur-lg    ${
+                  className={`numbers-circle circle shadow-2xl w-[160px] h-[160px] lg:w-[180px] lg:h-[180px] xl:w-[200px] xl:h-[200px] rounded-full text-center flex flex-col items-center justify-center backdrop-blur-lg    ${
                     bottom ? "self-end" : "self-start"
                   }`}
-                  data-aos="fade-up"
-                  data-aos-delay={idx * 200}
                 >
                   <span className="font-light text-center h-[50px] lg:h-[60px] xl:h-[65px] flex items-center text-3xl lg:text-4xl xl:text-[46px] text-[var(--foreground)]">
                     <CountUp

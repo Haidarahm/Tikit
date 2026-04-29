@@ -1,4 +1,6 @@
-import React, { useMemo, memo } from "react";
+import React, { useMemo, memo, useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ScrollStack, { ScrollStackItem } from "../../components/ScrollStackItem";
 import image1 from "../../assets/images/goal-image-1.webp";
 import image2 from "../../assets/images/goal-image-2.webp";
@@ -9,12 +11,17 @@ import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
 import { useFontClass } from "../../hooks/useFontClass";
 import TikitTitle from "../../components/TikitTitle.jsx";
+import { useHomeGsapScope } from "./HomeGsapScope";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Goals = memo(() => {
   const { theme } = useTheme();
   const { t } = useTranslation();
   const { isRtl } = useI18nLanguage();
   const { fontHeading, fontBody } = useFontClass();
+  const mobileContainerRef = useRef(null);
+  const homeGsapScopeRef = useHomeGsapScope();
 
   const fallback = [
     {
@@ -66,6 +73,33 @@ const Goals = memo(() => {
   const getBackgroundClass = (goal) =>
     theme === "dark" ? goal.backgroundColor : goal.backgroundColorLight;
 
+  useEffect(() => {
+    if (!mobileContainerRef.current) return undefined;
+    if (!homeGsapScopeRef?.current) return undefined;
+    const cards = mobileContainerRef.current.querySelectorAll(".goals-mobile-card");
+    if (!cards.length) return undefined;
+    const tween = gsap.fromTo(
+      cards,
+      { opacity: 0, y: 30 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.7,
+        stagger: 0.12,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: mobileContainerRef.current,
+          start: "top 85%",
+          toggleActions: "play none none none",
+        },
+      },
+    );
+    return () => {
+      tween.scrollTrigger?.kill();
+      tween.kill();
+    };
+  }, []);
+
   return (
     <div
       data-nav-color="black"
@@ -109,27 +143,15 @@ const Goals = memo(() => {
       </ScrollStack>
 
       {/* Mobile / small screens */}
-      <div className="container-goals w-full overflow-hidden block md:hidden">
+      <div
+        ref={mobileContainerRef}
+        className="container-goals w-full overflow-hidden block md:hidden"
+      >
         {goalsData.map((goal, index) => {
-          const animationDirection = isRtl
-            ? index % 2 === 0
-              ? "fade-left"
-              : "fade-right"
-            : index % 2 === 0
-            ? "fade-right"
-            : "fade-left";
-          const animationDelay = index * 200;
-
           return (
             <div
               key={goal.id}
-              className={`flex my-6 md:my-12 mx-[4px] p-4 rounded-[10px] items-center overflow-hidden ${getBackgroundClass(goal)}`}
-              data-aos={animationDirection}
-              data-aos-delay={animationDelay}
-              data-aos-duration="800"
-              data-aos-easing="ease-out-cubic"
-              data-aos-once="false"
-              data-aos-mirror="true"
+              className={`goals-mobile-card flex my-6 md:my-12 mx-[4px] p-4 rounded-[10px] items-center overflow-hidden ${getBackgroundClass(goal)}`}
             >
               <div className="text">
                 <h2

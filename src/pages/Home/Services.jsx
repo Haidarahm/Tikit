@@ -1,9 +1,12 @@
-import React, { useMemo, memo, useCallback } from "react";
+import React, { useMemo, memo, useCallback, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
 import { useFontClass } from "../../hooks/useFontClass";
 import { useTranslation } from "react-i18next";
 import TikitTitle from "../../components/TikitTitle.jsx";
+import { useHomeGsapScope } from "./HomeGsapScope";
 import influencerMarketing from "../../assets/services/Influencer-Marketing.webp";
 import socialMedia from "../../assets/services/Social-Media.webp";
 import production from "../../assets/services/production.webp";
@@ -29,14 +32,12 @@ const SERVICE_ROUTES = [
   "/web-development-dubai",
 ];
 
-const ServiceCard = memo(({ service, index, onClick, isRtl, t }) => (
+gsap.registerPlugin(ScrollTrigger);
+
+const ServiceCard = memo(({ service, onClick, isRtl, t }) => (
   <div
     onClick={onClick}
-    className="group cursor-pointer"
-    data-aos="fade-up"
-    data-aos-delay={index * 100}
-    data-aos-duration="600"
-    data-aos-easing="ease-out"
+    className="services-card group cursor-pointer"
   >
     <div className="h-full rounded-xl overflow-hidden border border-[var(--foreground)]/10 bg-[var(--background)] transition-shadow duration-200 hover:shadow-md">
       <div className="relative aspect-[16/10] overflow-hidden">
@@ -92,6 +93,8 @@ const Services = memo(() => {
   const { isRtl } = useI18nLanguage();
   const { fontBody } = useFontClass();
   const { t } = useTranslation();
+  const sectionRef = useRef(null);
+  const homeGsapScopeRef = useHomeGsapScope();
 
   const handleCardClick = useCallback((link) => navigate(link), [navigate]);
 
@@ -107,14 +110,68 @@ const Services = memo(() => {
     }));
   }, [t]);
 
+  useEffect(() => {
+    if (!sectionRef.current) return undefined;
+    if (!homeGsapScopeRef?.current) return undefined;
+    const intro = sectionRef.current.querySelector(".services-intro");
+    const cards = sectionRef.current.querySelectorAll(".services-card");
+
+    let introTween;
+    if (intro) {
+      introTween = gsap.fromTo(
+        intro,
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: intro,
+            start: "top 90%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
+    }
+
+    let cardsTween;
+    if (cards.length) {
+      cardsTween = gsap.fromTo(
+        cards,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          stagger: 0.1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
+    }
+
+    return () => {
+      introTween?.scrollTrigger?.kill();
+      introTween?.kill();
+      cardsTween?.scrollTrigger?.kill();
+      cardsTween?.kill();
+    };
+  }, []);
+
   return (
     <div
+      ref={sectionRef}
       data-nav-color="black"
       className={`section my-6 md:my-10 ${fontBody} flex flex-col mx-auto z-10 w-[95vw] md:w-[90%] max-w-[1200px]`}
       dir={isRtl ? "rtl" : "ltr"}
     >
       <div className="flex flex-col lg:flex-row gap-8 lg:gap-14 items-start">
-        <div className="w-full lg:w-[28%] flex flex-col gap-3 px-1" data-aos="fade-up" data-aos-duration="500">
+        <div className="services-intro w-full lg:w-[28%] flex flex-col gap-3 px-1">
           <TikitTitle title={t("home.services.title")} mainWord="" disableAnimation />
           <p className="text-[var(--foreground)]/70 text-[14px] md:text-[15px] leading-relaxed max-w-[320px]">
             {t("services.hero.subdescription")}
@@ -132,7 +189,6 @@ const Services = memo(() => {
             <ServiceCard
               key={`${service.link}-${index}`}
               service={service}
-              index={index}
               isRtl={isRtl}
               t={t}
               onClick={() => handleCardClick(service.link)}

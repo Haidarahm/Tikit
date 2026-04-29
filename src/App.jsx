@@ -5,7 +5,6 @@ import { ClientProvider } from "./store/ClientContext.jsx";
 import Navbar from "./components/navbar/Navbar.jsx";
 import { Outlet } from "react-router-dom";
 import { useScrollToTopOnRouteChange } from "./hooks/useScrollToTopOnRouteChange";
-import AOSRefresher from "./components/AOSRefresher";
 import ScrollToHash from "./components/ScrollToHash";
 import Loader from "./components/Loader.jsx";
 import { ToastContainer } from "./components/ui/Toast";
@@ -132,7 +131,6 @@ const Layout = () => {
   return (
     <>
       <ScrollToHash />
-    <AOSRefresher />
     <div className="relative w-full min-h-full">
       <Navbar />
       <main>

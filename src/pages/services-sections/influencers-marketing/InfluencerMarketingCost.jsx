@@ -13,7 +13,7 @@ import {
   HiChartBar,
   HiCheckCircle,
 } from "react-icons/hi";
-import { getInfluencerSubServiceRelatedPages, INFLUENCER_MARKETING_BASE as BASE } from "./influencerMarketingSubServices";
+import { getInfluencerSubServiceRelatedPages, INFLUENCER_MARKETING_BASE as BASE } from "./sub-components/influencerMarketingSubServices";
 const TK = "serviceSections.influencerMarketing.subPages.influencerCost";
 
 const InfluencerMarketingCost = () => {
