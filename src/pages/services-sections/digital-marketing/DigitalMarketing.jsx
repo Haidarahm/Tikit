@@ -24,7 +24,7 @@ import {
   FiAward,
 } from "react-icons/fi";
 
-import influencerHero from "../../../assets/services/Influencer-Marketing.webp";
+import digitalMarketingHero from "../../../assets/services/digital_marketing.webp";
 import SEOHead from "../../../components/SEOHead";
 import FAQ from "../../../components/FAQ";
 import {
@@ -160,7 +160,7 @@ const DigitalMarketing = () => {
   const breadcrumbs = [
     { name: t("serviceSections.digitalMarketing.breadcrumb.home", { defaultValue: "Home" }), url: "/" },
     { name: t("serviceSections.digitalMarketing.breadcrumb.services", { defaultValue: "Services" }), url: "/services" },
-    { name: t("serviceSections.digitalMarketing.seo.serviceType"), url: "/influencer-marketing-agency-dubai" },
+    { name: t("serviceSections.digitalMarketing.seo.serviceType"), url: "/digital-marketing-agency-dubai" },
   ];
 
   const dir = isRtl ? "rtl" : "ltr";
@@ -234,14 +234,19 @@ const DigitalMarketing = () => {
       <SEOHead
         title={t("serviceSections.digitalMarketing.seo.title")}
         description={t("serviceSections.digitalMarketing.seo.description")}
+        keywords={t("serviceSections.digitalMarketing.seo.keywords", {
+          defaultValue:
+            "digital marketing agency dubai, digital marketing services uae, performance marketing dubai, seo and paid ads dubai",
+        })}
         serviceType={t("serviceSections.digitalMarketing.seo.serviceType")}
+        canonicalUrl="/digital-marketing-agency-dubai"
         breadcrumbs={breadcrumbs}
         faqItems={faqItems}
       />
 
       <ServiceHeroSection
         ref={heroRef}
-        imageSrc={influencerHero}
+        imageSrc={digitalMarketingHero}
         imageAlt={t("serviceSections.digitalMarketing.seo.serviceType")}
         badge={t("serviceSections.digitalMarketing.hero.badge")}
         badgeVariant="pulse"
