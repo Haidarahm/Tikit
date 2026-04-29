@@ -5,6 +5,7 @@ import {
   HiSearchCircle,
   HiCurrencyDollar,
   HiTrendingUp,
+  HiLightningBolt,
 } from "react-icons/hi";
 import { useI18nLanguage } from "../../../../store/I18nLanguageContext";
 
@@ -20,6 +21,10 @@ const SERVICES_CONFIG = {
   conversionOptimization: {
     icon: HiTrendingUp,
     path: "/digital-marketing-agency-dubai/conversion-optimization",
+  },
+  performanceMarketing: {
+    icon: HiLightningBolt,
+    path: "/digital-marketing-agency-dubai/performance-marketing",
   },
 };
 

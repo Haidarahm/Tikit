@@ -1515,6 +1515,10 @@
         "conversionOptimization": {
           "title": "Conversion Optimisation",
           "description": "Maximise revenue from existing traffic through A/B testing and UX analysis."
+        },
+        "performanceMarketing": {
+          "title": "Performance Marketing",
+          "description": "Drive measurable growth with data-backed paid media, CRO, tracking, and ROI-focused campaigns."
         }
       },
       "faq": {
@@ -1564,8 +1568,124 @@
         "sectionLabel": "Ready to Grow?",
         "title": "Ready to Work with a Leading Digital Marketing Agency in Dubai?",
         "description": "Book a free strategy consultation. Get a roadmap to scale in Dubai and UAE — and stop wasting a single dirham.",
+        "button": "Book Free Consultation",
         "primaryButton": "Book Free Consultation",
         "secondaryButton": "Call Us Now"
+      },
+      "performanceMarketing": {
+        "badge": "Performance Marketing Agency Dubai",
+        "hero": {
+          "title": "Drive Measurable Growth with",
+          "mainWord": "Performance Marketing",
+          "description": "At Tikit, we build performance marketing campaigns that focus on one thing: results. We help brands in Dubai and across the UAE generate qualified leads, conversions, and revenue through paid media, CRO, tracking, and continuous optimisation."
+        },
+        "definition": {
+          "whatIsTitle": "Why Performance Marketing Matters",
+          "paragraph": "Performance marketing works when every channel is measured against a business outcome. Instead of paying for visibility alone, you invest in campaigns that are tracked, tested, and optimised for return on investment.",
+          "benefitsList": [
+            "More qualified leads from intent-driven channels.",
+            "Better conversion rates across the full funnel.",
+            "Lower customer acquisition costs over time.",
+            "Clear reporting and end-to-end ROI visibility.",
+            "Continuous testing and scaling of what works."
+          ]
+        },
+        "services": {
+          "title": "Performance Marketing Services",
+          "subtitle": "Full-funnel performance systems built around audience strategy, creative testing, and conversion tracking.",
+          "items": {
+            "paidAds": {
+              "title": "Paid Ads Management",
+              "description": "We manage campaigns across Google Ads, Meta Ads, TikTok Ads, and other paid media channels to drive measurable outcomes."
+            },
+            "conversionOptimization": {
+              "title": "Conversion Optimisation",
+              "description": "We improve the parts of your funnel that affect results most — landing pages, forms, calls to action, and user flow."
+            },
+            "trackingAnalytics": {
+              "title": "Tracking and Analytics",
+              "description": "We set up accurate tracking so every lead, sale, and conversion can be measured, attributed, and optimised."
+            },
+            "creativeTesting": {
+              "title": "Creative Testing",
+              "description": "We produce and test ad creatives to identify which messages, formats, and visuals convert best for your audience."
+            },
+            "retargeting": {
+              "title": "Retargeting Campaigns",
+              "description": "We re-engage visitors and warm audiences with tailored campaigns designed to lift conversion rates."
+            }
+          }
+        },
+        "process": {
+          "title": "Our Approach",
+          "subtitle": "We do not run disconnected ad campaigns. We build full-funnel systems that improve results over time.",
+          "steps": {
+            "research": {
+              "title": "Research & Competitor Analysis",
+              "description": "We map your audience, market, and competitors to identify the channels and angles with the highest ROI potential."
+            },
+            "strategy": {
+              "title": "Paid Ads Strategy",
+              "description": "We design a media plan, campaign structure, and budget allocation aligned with your business goals."
+            },
+            "creative": {
+              "title": "Creative Development",
+              "description": "We produce high-converting ad creatives — copy, visuals, and video — ready to be tested at scale."
+            },
+            "optimize": {
+              "title": "Analytics, Reporting & Scaling",
+              "description": "We continuously optimise landing pages, audiences, and creatives, then scale the combinations that deliver."
+            }
+          }
+        },
+        "industries": {
+          "title": "Industries We Serve",
+          "subtitle": "We support brands that need measurable growth in competitive markets across Dubai and the UAE.",
+          "items": [
+            "Real Estate",
+            "Luxury Brands",
+            "E-commerce",
+            "Hospitality",
+            "Healthcare",
+            "B2B Services",
+            "Automotive",
+            "Education"
+          ]
+        },
+        "whyUs": {
+          "title": "Why Tikit",
+          "subtitle": "Tikit combines strategy, creative execution, and performance measurement under one roof.",
+          "items": [
+            "Strategy-led execution across every channel.",
+            "Creative that supports conversions, not just views.",
+            "Transparent reporting tied to business outcomes.",
+            "Deep local market understanding of Dubai and the UAE.",
+            "Scalable campaign structure built to grow with you."
+          ]
+        },
+        "faqTitle": "Frequently Asked Questions About Performance Marketing",
+        "faqItems": [
+          {
+            "question": "What is performance marketing?",
+            "answer": "Performance marketing is a results-focused marketing approach where campaigns are optimised for measurable actions like leads, sales, or bookings."
+          },
+          {
+            "question": "Which channels work best in Dubai?",
+            "answer": "The best channels depend on your goals, but Google Ads, Meta Ads, and retargeting campaigns are often effective for lead generation and conversions in the UAE market."
+          },
+          {
+            "question": "How do you measure success?",
+            "answer": "We measure success through KPIs such as qualified leads, conversion rate, ROAS, cost per lead, and revenue contribution."
+          },
+          {
+            "question": "Do you handle both strategy and execution?",
+            "answer": "Yes. Tikit can manage planning, creative, media buying, tracking, and optimisation together — under one accountable team."
+          },
+          {
+            "question": "How much budget should I start with?",
+            "answer": "We typically recommend a minimum of AED 5,000–10,000 per month in media spend to gather meaningful data, with scaling based on performance and your target ROAS."
+          }
+        ]
       }
     },
     "socialMediaManagement": {

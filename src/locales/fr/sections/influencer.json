@@ -1387,6 +1387,10 @@
         "conversionOptimization": {
           "title": "Optimisation des Conversions",
           "description": "Maximisez les revenus du trafic existant grâce aux tests A/B et à l'analyse UX."
+        },
+        "performanceMarketing": {
+          "title": "Marketing à la Performance",
+          "description": "Stimulez une croissance mesurable grâce à des médias payants pilotés par la donnée, au CRO, au tracking et à des campagnes axées sur le ROI."
         }
       },
       "process": {
@@ -1906,6 +1910,121 @@
           {
             "question": "Faut-il beaucoup de trafic pour le CRO ?",
             "answer": "Nous recommandons au moins 10 000 visiteurs mensuels. Pour les sites à faible trafic, nous nous concentrons sur la recherche qualitative."
+          }
+        ]
+      },
+      "performanceMarketing": {
+        "badge": "Agence de Marketing à la Performance Dubaï",
+        "hero": {
+          "title": "Stimulez une Croissance Mesurable avec",
+          "mainWord": "le Marketing à la Performance",
+          "description": "Chez Tikit, nous concevons des campagnes de marketing à la performance centrées sur une seule chose : les résultats. Nous aidons les marques à Dubaï et dans les EAU à générer des leads qualifiés, des conversions et du chiffre d'affaires grâce aux médias payants, au CRO, au tracking et à l'optimisation continue."
+        },
+        "definition": {
+          "whatIsTitle": "Pourquoi le Marketing à la Performance Compte",
+          "paragraph": "Le marketing à la performance fonctionne lorsque chaque canal est mesuré par rapport à un résultat business. Au lieu de payer uniquement pour la visibilité, vous investissez dans des campagnes suivies, testées et optimisées pour le retour sur investissement.",
+          "benefitsList": [
+            "Plus de leads qualifiés issus de canaux à forte intention.",
+            "De meilleurs taux de conversion sur l'ensemble du funnel.",
+            "Des coûts d'acquisition client réduits dans le temps.",
+            "Reporting transparent et visibilité ROI de bout en bout.",
+            "Tests et scaling continus de ce qui fonctionne."
+          ]
+        },
+        "services": {
+          "title": "Services de Marketing à la Performance",
+          "subtitle": "Des systèmes performance full-funnel construits autour de la stratégie d'audience, des tests créatifs et du suivi des conversions.",
+          "items": {
+            "paidAds": {
+              "title": "Gestion des Publicités Payantes",
+              "description": "Nous gérons les campagnes sur Google Ads, Meta Ads, TikTok Ads et autres canaux médias pour générer des résultats mesurables."
+            },
+            "conversionOptimization": {
+              "title": "Optimisation des Conversions",
+              "description": "Nous améliorons les zones du funnel les plus impactantes : landing pages, formulaires, CTAs et parcours utilisateur."
+            },
+            "trackingAnalytics": {
+              "title": "Tracking et Analytics",
+              "description": "Nous mettons en place un tracking précis pour mesurer, attribuer et optimiser chaque lead, vente et conversion."
+            },
+            "creativeTesting": {
+              "title": "Tests Créatifs",
+              "description": "Nous produisons et testons les créatifs publicitaires pour identifier les messages, formats et visuels qui convertissent le mieux."
+            },
+            "retargeting": {
+              "title": "Campagnes de Retargeting",
+              "description": "Nous réengageons les visiteurs et audiences chaudes avec des campagnes sur mesure pour augmenter les conversions."
+            }
+          }
+        },
+        "process": {
+          "title": "Notre Approche",
+          "subtitle": "Nous ne lançons pas de campagnes isolées. Nous construisons des systèmes full-funnel qui s'améliorent dans le temps.",
+          "steps": {
+            "research": {
+              "title": "Recherche & Analyse Concurrentielle",
+              "description": "Nous cartographions votre audience, votre marché et vos concurrents pour identifier les canaux à plus fort potentiel de ROI."
+            },
+            "strategy": {
+              "title": "Stratégie d'Acquisition Payante",
+              "description": "Nous définissons un plan média, une structure de campagnes et une allocation budgétaire alignés avec vos objectifs business."
+            },
+            "creative": {
+              "title": "Développement Créatif",
+              "description": "Nous produisons des créatifs publicitaires à fort taux de conversion — copy, visuels, vidéo — prêts à être testés à grande échelle."
+            },
+            "optimize": {
+              "title": "Analytics, Reporting & Scaling",
+              "description": "Nous optimisons en continu les landing pages, audiences et créatifs, puis nous scalons les combinaisons gagnantes."
+            }
+          }
+        },
+        "industries": {
+          "title": "Secteurs que Nous Servons",
+          "subtitle": "Nous accompagnons les marques qui ont besoin d'une croissance mesurable sur les marchés concurrentiels de Dubaï et des EAU.",
+          "items": [
+            "Immobilier",
+            "Marques de Luxe",
+            "E-commerce",
+            "Hôtellerie",
+            "Santé",
+            "Services B2B",
+            "Automobile",
+            "Éducation"
+          ]
+        },
+        "whyUs": {
+          "title": "Pourquoi Tikit",
+          "subtitle": "Tikit réunit stratégie, exécution créative et mesure de performance sous un même toit.",
+          "items": [
+            "Une exécution pilotée par la stratégie sur chaque canal.",
+            "Des créatifs qui soutiennent les conversions, pas seulement la visibilité.",
+            "Un reporting transparent lié aux résultats business.",
+            "Une connaissance approfondie du marché de Dubaï et des EAU.",
+            "Une structure de campagnes scalable, qui grandit avec vous."
+          ]
+        },
+        "faqTitle": "Questions Fréquentes sur le Marketing à la Performance",
+        "faqItems": [
+          {
+            "question": "Qu'est-ce que le marketing à la performance ?",
+            "answer": "Le marketing à la performance est une approche centrée sur les résultats où les campagnes sont optimisées pour des actions mesurables comme les leads, les ventes ou les réservations."
+          },
+          {
+            "question": "Quels canaux fonctionnent le mieux à Dubaï ?",
+            "answer": "Les meilleurs canaux dépendent de vos objectifs, mais Google Ads, Meta Ads et les campagnes de retargeting sont souvent efficaces pour la génération de leads et les conversions sur le marché des EAU."
+          },
+          {
+            "question": "Comment mesurez-vous le succès ?",
+            "answer": "Nous mesurons le succès via des KPIs comme les leads qualifiés, le taux de conversion, le ROAS, le coût par lead et la contribution au chiffre d'affaires."
+          },
+          {
+            "question": "Gérez-vous à la fois la stratégie et l'exécution ?",
+            "answer": "Oui. Tikit peut gérer la planification, le créatif, l'achat média, le tracking et l'optimisation ensemble — sous une seule équipe responsable."
+          },
+          {
+            "question": "Quel budget faut-il prévoir pour démarrer ?",
+            "answer": "Nous recommandons généralement un investissement média minimum de 5 000 à 10 000 AED par mois pour collecter des données significatives, puis une montée en puissance basée sur la performance et le ROAS cible."
           }
         ]
       }

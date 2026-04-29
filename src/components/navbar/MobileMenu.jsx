@@ -61,7 +61,28 @@ export default function MobileMenu({
             },
             {
               label: t("serviceSections.digitalMarketing.seo.serviceType"),
-              to: "/digital-marketing-agency-dubai",
+              children: [
+                {
+                  label: t("serviceSections.digitalMarketing.seo.serviceType"),
+                  to: "/digital-marketing-agency-dubai",
+                },
+                {
+                  label: t("serviceSections.digitalMarketing.subServices.seoServices.title"),
+                  to: "/digital-marketing-agency-dubai/seo-services",
+                },
+                {
+                  label: t("serviceSections.digitalMarketing.subServices.paidAds.title"),
+                  to: "/digital-marketing-agency-dubai/paid-ads-management",
+                },
+                {
+                  label: t("serviceSections.digitalMarketing.subServices.conversionOptimization.title"),
+                  to: "/digital-marketing-agency-dubai/conversion-optimization",
+                },
+                {
+                  label: t("serviceSections.digitalMarketing.subServices.performanceMarketing.title"),
+                  to: "/digital-marketing-agency-dubai/performance-marketing",
+                },
+              ],
             },
             { label: t("nav.servicesSections.branding"), to: "/branding-agency-dubai" },
           ]}

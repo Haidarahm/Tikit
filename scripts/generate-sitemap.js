@@ -52,6 +52,7 @@ const servicesPages = [
   { url: '/digital-marketing-agency-dubai/seo-services', changefreq: 'monthly', priority: '0.7' },
   { url: '/digital-marketing-agency-dubai/paid-ads-management', changefreq: 'monthly', priority: '0.7' },
   { url: '/digital-marketing-agency-dubai/conversion-optimization', changefreq: 'monthly', priority: '0.7' },
+  { url: '/digital-marketing-agency-dubai/performance-marketing', changefreq: 'monthly', priority: '0.7' },
 ];
 
 const pages = [

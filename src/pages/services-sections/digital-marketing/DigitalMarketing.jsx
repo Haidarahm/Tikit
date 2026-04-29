@@ -21,6 +21,7 @@ import {
   FiInstagram,
   FiVideo,
   FiTag,
+  FiAward,
 } from "react-icons/fi";
 
 import influencerHero from "../../../assets/services/Influencer-Marketing.webp";
@@ -45,12 +46,18 @@ const problemIcons = [<FiTarget key="1" />, <FiDollarSign key="2" />, <FiBarChar
 const benefitIcons = [<FiTrendingUp key="1" />, <FiBarChart2 key="2" />, <FiZap key="3" />, <FiGlobe key="4" />];
 const whyUsIcons = [<FiLayers key="1" />, <FiShield key="2" />, <FiSearch key="3" />, <FiMessageSquare key="4" />];
 const marketExpertiseIcons = [<FiGlobe key="me1" />, <FiMessageSquare key="me2" />, <FiUsers key="me3" />];
-const subServiceIcons = [<FiSearch key="1" />, <FiTrendingUp key="2" />, <FiActivity key="3" />];
+const subServiceIcons = [
+  <FiSearch key="1" />,
+  <FiTrendingUp key="2" />,
+  <FiActivity key="3" />,
+  <FiAward key="4" />,
+];
 
 const subServiceHrefs = [
   "/digital-marketing-agency-dubai/seo-services",
   "/digital-marketing-agency-dubai/paid-ads-management",
   "/digital-marketing-agency-dubai/conversion-optimization",
+  "/digital-marketing-agency-dubai/performance-marketing",
 ];
 
 function revealChildren(containerRef, selector, fromVars = {}, staggerVal = 0.1) {
@@ -115,6 +122,15 @@ const DigitalMarketing = () => {
       }),
       desc: t("serviceSections.digitalMarketing.subServices.conversionOptimization.description", {
         defaultValue: "Turn more visitors into customers through CRO audits, testing, and landing-page performance improvements.",
+      }),
+    },
+    {
+      title: t("serviceSections.digitalMarketing.subServices.performanceMarketing.title", {
+        defaultValue: "Performance Marketing",
+      }),
+      desc: t("serviceSections.digitalMarketing.subServices.performanceMarketing.description", {
+        defaultValue:
+          "Drive measurable growth with data-backed paid media, CRO, tracking, and ROI-focused campaigns across Google, Meta, and TikTok.",
       }),
     },
   ];

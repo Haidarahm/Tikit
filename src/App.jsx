@@ -86,6 +86,9 @@ const PaidAdsManagement = lazy(() =>
 const ConversionOptimization = lazy(() =>
   import("./pages/services-sections/digital-marketing/ConversionOptimization")
 );
+const PerformanceMarketing = lazy(() =>
+  import("./pages/services-sections/digital-marketing/PerformanceMarketing")
+);
 
 const InfluenceDetails = lazy(() =>
   import("./pages/workDetails/influenceDetails.jsx").then((module) => ({
@@ -189,6 +192,7 @@ function App() {
               <Route path="/digital-marketing-agency-dubai/seo-services" element={<SEOServices />} />
               <Route path="/digital-marketing-agency-dubai/paid-ads-management" element={<PaidAdsManagement />} />
               <Route path="/digital-marketing-agency-dubai/conversion-optimization" element={<ConversionOptimization />} />
+              <Route path="/digital-marketing-agency-dubai/performance-marketing" element={<PerformanceMarketing />} />
               {/* AI-Targeted Landing Pages */}
               <Route path="/influencer-marketing-dubai" element={<InfluencerMarketingDubai />} />
               <Route path="/influencer-marketing-saudi-arabia" element={<InfluencerMarketingSaudiArabia />} />
