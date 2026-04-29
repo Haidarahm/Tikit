@@ -164,25 +164,37 @@ const SEOHead = ({
     );
   };
 
-  // Generate Article Schema (for blog/news pages)
+  // Generate Article / BlogPosting Schema (for blog/news pages).
+  // Uses `BlogPosting` (more precise for AI engines) when this page is rendered as an article.
   const generateArticleSchema = () => {
     if (!articleData) return null;
-    return {
+
+    const articleUrl = articleData.url || fullCanonicalUrl;
+    const schemaType = ogType === "article" ? "BlogPosting" : "Article";
+
+    const schema = {
       "@context": "https://schema.org",
-      "@type": "Article",
+      "@type": schemaType,
       "headline": articleData.title || title,
       "description": articleData.description || fullDescription,
       "image": articleData.image || fullOgImage,
-      "url": articleData.url || fullCanonicalUrl, // Add URL for better indexing
+      "url": articleUrl,
+      "inLanguage": isRtl ? "ar" : "en",
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": articleData.url || fullCanonicalUrl
+        "@id": articleUrl
       },
-      "author": {
-        "@type": "Organization",
-        "name": siteName,
-        "url": baseUrl
-      },
+      "author": articleData.author
+        ? {
+            "@type": "Person",
+            "name": articleData.author,
+            ...(articleData.authorUrl ? { url: articleData.authorUrl } : {}),
+          }
+        : {
+            "@type": "Organization",
+            "name": siteName,
+            "url": baseUrl,
+          },
       "publisher": {
         "@type": "Organization",
         "name": siteName,
@@ -194,8 +206,20 @@ const SEOHead = ({
         }
       },
       "datePublished": articleData.publishDate,
-      "dateModified": articleData.modifiedDate || articleData.publishDate
+      "dateModified": articleData.modifiedDate || articleData.publishDate,
     };
+
+    if (fullKeywords) {
+      schema.keywords = fullKeywords;
+    }
+
+    if (Array.isArray(articleData.articleSection) && articleData.articleSection.length) {
+      schema.articleSection = articleData.articleSection;
+    } else if (typeof articleData.articleSection === "string" && articleData.articleSection) {
+      schema.articleSection = articleData.articleSection;
+    }
+
+    return schema;
   };
 
   useEffect(() => {

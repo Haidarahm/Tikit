@@ -16,7 +16,13 @@ import { dirname, join } from 'path';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const API_BASE = process.env.VITE_BASE_URL || 'https://back.tikit.ae/public/index.php/api';
+const API_BASE_CANDIDATES = [
+  process.env.VITE_BASE_URL,
+  'https://back.tikit.ae/api',
+  'https://back.tikit.ae/public/index.php/api',
+].filter(Boolean);
+
+let API_BASE = API_BASE_CANDIDATES[0];
 
 const defaultInclude = [
   '/',
@@ -50,6 +56,60 @@ const WORK_CATEGORY_CONFIG = [
     detailPrefix: "/work/event",
   },
 ];
+
+async function resolveApiBase() {
+  for (const candidate of API_BASE_CANDIDATES) {
+    try {
+      const res = await axios.get(`${candidate}/works/get`, {
+        params: { page: 1, per_page: 1, lang: 'en' },
+        timeout: 10000,
+      });
+      if (res.status === 200) {
+        API_BASE = candidate;
+        console.log(`✅ Using API base: ${candidate}`);
+        return candidate;
+      }
+    } catch (err) {
+      console.log(`❌ API candidate failed: ${candidate} (${err.message})`);
+    }
+  }
+  console.warn('⚠️  No API base reachable; falling back to default static include only.');
+  return API_BASE;
+}
+
+async function fetchAllBlogSlugs() {
+  const slugs = new Set();
+  let page = 1;
+  const perPage = 100;
+  // Hard cap to avoid infinite loops on a misbehaving API.
+  const MAX_PAGES = 50;
+
+  while (page <= MAX_PAGES) {
+    try {
+      const response = await axios.get(`${API_BASE}/blogs/get`, {
+        params: { page, per_page: perPage, lang: 'en' },
+        timeout: 15000,
+      });
+      const data = response?.data?.data ?? [];
+      if (!Array.isArray(data) || data.length === 0) break;
+
+      data.forEach((item) => {
+        if (item?.slug) slugs.add(`/blogs/${item.slug}`);
+      });
+
+      if (data.length < perPage) break;
+      page += 1;
+    } catch (err) {
+      console.warn(
+        `⚠️  Could not fetch blog slugs page ${page} for react-snap:`,
+        err.message
+      );
+      break;
+    }
+  }
+
+  return Array.from(slugs);
+}
 
 async function fetchShowcaseSlugs() {
   try {
@@ -153,6 +213,9 @@ async function fetchWorkDetailUrls() {
 }
 
 async function main() {
+  console.log('🔍 Resolving API base for react-snap pre-render...');
+  await resolveApiBase();
+
   console.log('📡 Fetching showcase slugs for react-snap...');
   const showcaseUrls = await fetchShowcaseSlugs();
   console.log(`✅ Found ${showcaseUrls.length} showcase case(s) to pre-render`);
@@ -161,8 +224,17 @@ async function main() {
   const workDetailUrls = await fetchWorkDetailUrls();
   console.log(`✅ Found ${workDetailUrls.length} work detail page(s) to pre-render`);
 
+  console.log('📡 Fetching blog slugs for react-snap...');
+  const blogUrls = await fetchAllBlogSlugs();
+  console.log(`✅ Found ${blogUrls.length} blog post(s) to pre-render`);
+
   const include = [
-    ...new Set([...defaultInclude, ...showcaseUrls, ...workDetailUrls]),
+    ...new Set([
+      ...defaultInclude,
+      ...showcaseUrls,
+      ...workDetailUrls,
+      ...blogUrls,
+    ]),
   ];
 
   const pkgPath = join(__dirname, '../package.json');

@@ -331,6 +331,9 @@ const BlogDetails = () => {
           publishDate: newsData?.created_at,
           modifiedDate: newsData?.updated_at || newsData?.created_at,
           url: `${BASE_URL}${canonicalPath}`,
+          author: newsData?.written_by || undefined,
+          authorUrl: newsData?.writer_link || undefined,
+          articleSection: newsData?.category || undefined,
         }}
         breadcrumbs={[
           { name: "Home", url: "/" },
