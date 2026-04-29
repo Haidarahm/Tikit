@@ -1348,6 +1348,8 @@
         "mainWord": "Dubai",
         "description": "We don't just promise traffic. We deliver profit you can count, campaigns you can measure, and growth you can see — trusted by local and international brands across the UAE."
       },
+      "hubLinkTitle": "Digital Marketing Hub",
+      "relatedTitle": "Explore Related Services",
       "problems": {
         "sectionLabel": "The Problem",
         "title": "Why Do Most Businesses Struggle to Scale?",
@@ -1571,6 +1573,95 @@
         "button": "Book Free Consultation",
         "primaryButton": "Book Free Consultation",
         "secondaryButton": "Call Us Now"
+      },
+      "seoServices": {
+        "badge": "SEO Services Dubai",
+        "hero": {
+          "title": "Expert SEO Services",
+          "mainWord": "in Dubai",
+          "description": "Boost your organic visibility with technical SEO, on-page optimization, link building, and content strategy built for UAE market competition."
+        },
+        "definition": {
+          "whatIsTitle": "What Is SEO?",
+          "paragraph": "Search engine optimization (SEO) improves your website's visibility in search results so you attract qualified organic traffic and long-term growth.",
+          "benefitsList": [
+            "Sustainable organic traffic growth without constant ad spend.",
+            "Higher trust and credibility from top search visibility.",
+            "Better user experience through technical improvements.",
+            "Compounding long-term ROI.",
+            "More qualified traffic from active search intent."
+          ]
+        },
+        "services": {
+          "title": "Our SEO Services",
+          "subtitle": "Comprehensive SEO solutions tailored to Dubai and UAE businesses",
+          "items": {
+            "technicalSeo": {
+              "title": "Technical SEO",
+              "description": "Site architecture, crawlability, Core Web Vitals, schema markup, and technical fixes."
+            },
+            "onPage": {
+              "title": "On-Page SEO",
+              "description": "Content optimization, metadata, internal linking, and keyword relevance."
+            },
+            "linkBuilding": {
+              "title": "Link Building",
+              "description": "Strategic acquisition of high-quality backlinks from trusted domains."
+            },
+            "contentStrategy": {
+              "title": "Content Strategy",
+              "description": "Data-driven content planning and topic mapping aligned to search intent."
+            },
+            "localSeo": {
+              "title": "Local SEO",
+              "description": "Google Business Profile optimization, local citations, and map pack visibility."
+            },
+            "seoAudits": {
+              "title": "SEO Audits",
+              "description": "Comprehensive technical and content audits with actionable recommendations."
+            }
+          }
+        },
+        "process": {
+          "title": "Our SEO Process",
+          "steps": {
+            "audit": {
+              "title": "Comprehensive Audit",
+              "description": "We analyze your technical health, content quality, and search performance baselines."
+            },
+            "keywords": {
+              "title": "Keyword Research",
+              "description": "We identify high-value terms with strong commercial and local intent."
+            },
+            "optimize": {
+              "title": "On-Site Optimization",
+              "description": "We implement technical fixes, optimize pages, and improve content structure."
+            },
+            "monitor": {
+              "title": "Monitor & Refine",
+              "description": "We track rankings, traffic, and conversions, then refine continuously."
+            }
+          }
+        },
+        "faqTitle": "SEO Services FAQ",
+        "faqItems": [
+          {
+            "question": "How long does SEO take to show results?",
+            "answer": "SEO is a long-term strategy. Early improvements can appear in weeks, while meaningful ranking gains typically take 3-6 months."
+          },
+          {
+            "question": "How much do SEO services cost in Dubai?",
+            "answer": "Pricing depends on industry competition and scope. Most businesses start with monthly retainers and scale based on goals."
+          },
+          {
+            "question": "Is SEO worth it for Dubai businesses?",
+            "answer": "Yes. SEO helps capture high-intent traffic, reduces dependency on paid ads, and builds durable visibility."
+          },
+          {
+            "question": "What is the difference between on-page and off-page SEO?",
+            "answer": "On-page SEO improves elements within your website; off-page SEO focuses on external authority signals such as backlinks."
+          }
+        ]
       },
       "performanceMarketing": {
         "badge": "Performance Marketing Agency Dubai",
