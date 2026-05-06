@@ -1,5 +1,5 @@
-import React, { useMemo, memo, useCallback, useRef, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useMemo, memo, useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
@@ -34,11 +34,8 @@ const SERVICE_ROUTES = [
 
 gsap.registerPlugin(ScrollTrigger);
 
-const ServiceCard = memo(({ service, onClick, isRtl, t }) => (
-  <div
-    onClick={onClick}
-    className="services-card group cursor-pointer"
-  >
+const ServiceCard = memo(({ service, isRtl, t }) => (
+  <Link to={service.link} className="services-card group cursor-pointer">
     <div className="h-full rounded-xl overflow-hidden border border-[var(--foreground)]/10 bg-[var(--background)] transition-shadow duration-200 hover:shadow-md">
       <div className="relative aspect-[16/10] overflow-hidden">
         <img
@@ -75,7 +72,7 @@ const ServiceCard = memo(({ service, onClick, isRtl, t }) => (
         </p>
       </div>
     </div>
-  </div>
+  </Link>
 ));
 ServiceCard.displayName = "ServiceCard";
 
@@ -89,14 +86,11 @@ const FALLBACK_ITEMS = [
 ];
 
 const Services = memo(() => {
-  const navigate = useNavigate();
   const { isRtl } = useI18nLanguage();
   const { fontBody } = useFontClass();
   const { t } = useTranslation();
   const sectionRef = useRef(null);
   const homeGsapScopeRef = useHomeGsapScope();
-
-  const handleCardClick = useCallback((link) => navigate(link), [navigate]);
 
   const items = useMemo(() => {
     const translated = t("home.services.items", { returnObjects: true });
@@ -176,12 +170,12 @@ const Services = memo(() => {
           <p className="text-[var(--foreground)]/70 text-[14px] md:text-[15px] leading-relaxed max-w-[320px]">
             {t("services.hero.subdescription")}
           </p>
-          <button
-            onClick={() => navigate("/services")}
+          <Link
+            to="/services"
             className="w-fit mt-2 text-[13px] font-medium text-[#52C3C5] hover:underline focus:outline-none"
           >
             {t("home.services.explore")} {isRtl ? "←" : "→"}
-          </button>
+          </Link>
         </div>
 
         <div className="w-full lg:w-[72%] grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -191,7 +185,6 @@ const Services = memo(() => {
               service={service}
               isRtl={isRtl}
               t={t}
-              onClick={() => handleCardClick(service.link)}
             />
           ))}
         </div>

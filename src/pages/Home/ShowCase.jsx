@@ -4,7 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
 import { useShowcaseStore } from "../../store/showcaseStore";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import HeroWithBadge from "../../components/HeroWithBadge";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -15,7 +15,6 @@ const ShowCase = () => {
   const { t } = useTranslation();
   const { language } = useI18nLanguage();
   const { cases, loadCases, loading } = useShowcaseStore();
-  const navigate = useNavigate();
 
   /* =====================
      LOAD DATA - Deferred until component is near viewport
@@ -362,8 +361,8 @@ const ShowCase = () => {
                         {item.subtitle}
                       </h3>
                     </div>
-                    <button
-                      onClick={() => navigate(`/showcase/${item.slug}`)}
+                    <Link
+                      to={item.slug ? `/showcase/${item.slug}` : "/work"}
                       className="
                         text-[14px] sm:text-[15px] md:text-[20px]
                         px-[10px] py-[5px]
@@ -373,7 +372,7 @@ const ShowCase = () => {
                       "
                     >
                       View Project
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>

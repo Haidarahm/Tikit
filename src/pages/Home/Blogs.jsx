@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -11,7 +11,6 @@ import HeroWithBadge from "../../components/HeroWithBadge";
 gsap.registerPlugin(ScrollTrigger);
 
 const Blogs = () => {
-  const navigate = useNavigate();
   const { t } = useTranslation();
   const { language } = useI18nLanguage();
   const [visibleCards, setVisibleCards] = useState([]);
@@ -82,10 +81,6 @@ const Blogs = () => {
     };
   }, [newsItems]);
 
-  const handleCardClick = (item) => {
-    if (item.slug) navigate(`/blogs/${item.slug}`);
-  };
-
   const formatDate = (dateString) => {
     if (!dateString) return "";
     const date = new Date(dateString);
@@ -141,10 +136,13 @@ const Blogs = () => {
         {/* Blog Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
           {newsItems.slice(0, 4).map((item, index) => (
-            <article
+            <Link
               key={item.id}
+              to={item.slug ? `/blogs/${item.slug}` : "/blogs"}
+              className="block"
+            >
+            <article
               ref={(el) => (cardsRef.current[index] = el)}
-              onClick={() => item.slug && handleCardClick(item)}
               className={`group relative bg-[var(--primary)] dark:bg-[var(--container-bg)] rounded-xl overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500 ${
                 visibleCards.includes(index)
                   ? "opacity-100 translate-y-0"
@@ -212,18 +210,19 @@ const Blogs = () => {
                 <div className="absolute inset-0 bg-gradient-to-r from-[#6ACBCC]/20 to-[#1C6F6C]/20 rounded-xl" />
               </div>
             </article>
+            </Link>
           ))}
         </div>
 
         {/* View All Button */}
         <div className="mt-12 md:mt-16 text-center">
-          <button
-            onClick={() => navigate("/blogs")}
+          <Link
+            to="/blogs"
             className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#6ACBCC] to-[#1C6F6C] text-white font-semibold rounded-full hover:shadow-xl hover:scale-105 transition-all duration-300"
           >
             <span className="text-lg">View All Articles</span>
             <ArrowRight className="w-5 h-5 transform group-hover:translate-x-2 transition-transform duration-300" />
-          </button>
+          </Link>
         </div>
       </div>
     </section>

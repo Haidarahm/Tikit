@@ -12,7 +12,7 @@ import {
   FaChevronRight,
 } from "react-icons/fa";
 import { useInfluencersStore } from "../../../store/influencersStore";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../../store/I18nLanguageContext.jsx";
 import HeroWithBadge from "../../../components/HeroWithBadge.jsx";
@@ -72,7 +72,6 @@ const normalizeSocialLinks = (links) => {
 };
 
 const Influencers = () => {
-  const navigate = useNavigate();
   const [activeSectionId, setActiveSectionId] = useState(null);
   const [swiperInstance, setSwiperInstance] = useState(null);
   const sectionRef = useRef(null);
@@ -447,14 +446,13 @@ const Influencers = () => {
         </div>
 
         <div className=" flex justify-center">
-          <button
-            type="button"
-            onClick={() => navigate("/influencer")}
+          <Link
+            to="/influencer"
             className="inline-flex items-center gap-2 px-8 py-3 rounded-full border border-[#52C3C5] text-[#52C3C5] font-semibold tracking-wide uppercase text-sm transition-all duration-300 hover:bg-[#52C3C5] hover:text-white shadow-lg shadow-[#52C3C5]/30"
           >
             {t("home.influencers.showAll")}
             <span aria-hidden="true">{arrowIcon}</span>
-          </button>
+          </Link>
         </div>
       </div>
     </section>

@@ -8,7 +8,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useTheme } from "../../store/ThemeContext.jsx";
 import { useClient } from "../../store/ClientContext.jsx";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
 import { useFontClass } from "../../hooks/useFontClass";
@@ -18,7 +18,6 @@ import { useHomeGsapScope } from "./HomeGsapScope";
 gsap.registerPlugin(ScrollTrigger);
 
 const Connections = memo(() => {
-  const navigate = useNavigate();
   const sectionContainerRef = useRef(null);
   const contentRef = useRef(null);
   const { theme } = useTheme();
@@ -166,9 +165,10 @@ const Connections = memo(() => {
         >
           {t("home.connections.description")}
         </p>
-        <button
-className="connections-animate bg-transparent mt-8 hover:text-[var(--background)] shadow-lg shadow-[#52C3C5]/30 font-bold dark:shadow-[#000]/30 hover:bg-[var(--secondary)] border-[var(--secondary)] text-[var(--secondary)] transition duration-75 ease-in border px-6 h-8 md:h-10 text-[14px] rounded-full uppercase"
-onClick={() => {
+        <Link
+          to="/contact-us"
+          className="connections-animate inline-flex items-center bg-transparent mt-8 hover:text-[var(--background)] shadow-lg shadow-[#52C3C5]/30 font-bold dark:shadow-[#000]/30 hover:bg-[var(--secondary)] border-[var(--secondary)] text-[var(--secondary)] transition duration-75 ease-in border px-6 h-8 md:h-10 text-[14px] rounded-full uppercase"
+          onClick={() => {
             setClientType("influencer");
             // Set flag to scroll to action section
             try {
@@ -176,11 +176,10 @@ onClick={() => {
             } catch (error) {
               console.warn("Failed to write shouldScrollToAction to sessionStorage:", error);
             }
-            navigate("/contact-us");
           }}
         >
           {t("home.connections.joinNow")}
-        </button>
+        </Link>
       </div>
     </div>
   );

@@ -4,7 +4,7 @@ import { useWorksSectionsStore } from "../../store/work/worksSectionsStore";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
 import { useFontClass } from "../../hooks/useFontClass";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 // Image component with skeleton placeholder
 const ImageWithSkeleton = ({ src, alt, className, ...props }) => {
@@ -59,7 +59,6 @@ const WorkSection = memo(() => {
   const { language, isRtl } = useI18nLanguage();
   const { fontBody } = useFontClass();
   const { t } = useTranslation();
-  const navigate = useNavigate();
   const [isClient, setIsClient] = useState(false);
   const [retryCount, setRetryCount] = useState(0);
   const retryTimeoutRef = useRef(null);
@@ -226,23 +225,15 @@ const WorkSection = memo(() => {
                       {item.title && (
                         <h2 className="text-[20px] font-bold">{item.title}</h2>
                       )}
-                      <button
+                      <Link
+                        to={item.slug ? `/work/${encodeURIComponent(item.slug)}` : "/work"}
                         className="rounded-full border font-light 
                         border-[var(--secondary)] text-[var(--secondary)] text-[11px] uppercase 
                         px-4 py-1 
                         transition-colors"
-                        onClick={() => {
-                          try {
-                            if (item.slug) {
-                              navigate(`/work/${encodeURIComponent(item.slug)}`);
-                            } else {
-                              navigate("/work");
-                            }
-                          } catch (_) {}
-                        }}
                       >
                         {t("home.work.viewWork")}
-                      </button>
+                      </Link>
                     </div>
                     {item.subtitle ? (
                       <div className="subtitle text-[16px] opacity-80">
