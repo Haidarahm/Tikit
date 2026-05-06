@@ -334,9 +334,9 @@ const Services = () => {
   return (
     <>
       <SEOHead
-        title="Services | Tikit Agency Dubai"
-        description="Tikit Agency services: influencer marketing, social media management, branding & production in Dubai & UAE. Full-service marketing solutions."
-        keywords="marketing services Dubai, influencer marketing UAE, social media management Dubai, branding services UAE, video production Dubai, digital marketing agency"
+        title={t("seo.pages.services.title")}
+        description={t("seo.pages.services.description")}
+        keywords={t("seo.pages.services.keywords")}
         canonicalUrl="/services"
         breadcrumbs={[
           { name: "Home", url: "/" },

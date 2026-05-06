@@ -3,6 +3,7 @@ import Hero from "./Hero";
 import Action from "./Action";
 import "./contact.css";
 import SEOHead from "../../components/SEOHead";
+import { useTranslation } from "react-i18next";
 
 // ContactPage schema for rich results
 const contactPageSchema = {
@@ -52,12 +53,14 @@ const contactPageSchema = {
 };
 
 const Contact = () => {
+  const { t } = useTranslation();
+
   return (
     <div data-nav-color="black" className="contact-section snap-mandatory snap-y w-full    font-hero-light">
       <SEOHead
-        title="Contact Us | Tikit Agency Dubai"
-        description="Contact Tikit Agency Dubai. Call +971 4 577 4042 or email Holla@tikit.ae. Office: Burlington Tower, Marasi Drive. Free marketing consultation."
-        keywords="contact Tikit Agency, marketing agency Dubai contact, influencer agency phone, UAE agency consultation, Dubai marketing office"
+        title={t("seo.pages.contact.title")}
+        description={t("seo.pages.contact.description")}
+        keywords={t("seo.pages.contact.keywords")}
         canonicalUrl="/contact-us"
         structuredData={contactPageSchema}
       />

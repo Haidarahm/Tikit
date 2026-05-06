@@ -20,7 +20,39 @@
   },
   "seo": {
     "defaultDescription": "We help brands in Dubai grow through smart strategy, creative content, and performance-focused campaigns. Work with a team that focuses on real results.",
-    "defaultKeywords": "marketing agency Dubai, creative marketing Dubai, performance marketing UAE, branding agency Dubai, digital marketing Dubai"
+    "defaultKeywords": "marketing agency Dubai, creative marketing Dubai, performance marketing UAE, branding agency Dubai, digital marketing Dubai",
+    "pages": {
+      "blogs": {
+        "title": "Blogs | Tikit Agency Dubai",
+        "description": "Stay updated with the latest blogs, insights, and updates from Tikit Agency. Discover industry trends, marketing tips, and our latest achievements.",
+        "keywords": "blogs, digital marketing insights, agency updates, marketing trends, industry news, Tikit Agency blogs"
+      },
+      "services": {
+        "title": "Services | Tikit Agency Dubai",
+        "description": "Tikit Agency services: influencer marketing, social media management, branding & production in Dubai & UAE. Full-service marketing solutions.",
+        "keywords": "marketing services Dubai, influencer marketing UAE, social media management Dubai, branding services UAE, video production Dubai, digital marketing agency"
+      },
+      "contact": {
+        "title": "Contact Us | Tikit Agency Dubai",
+        "description": "Contact Tikit Agency Dubai. Call +971 4 577 4042 or email Holla@tikit.ae. Office: Burlington Tower, Marasi Drive. Free marketing consultation.",
+        "keywords": "contact Tikit Agency, marketing agency Dubai contact, influencer agency phone, UAE agency consultation, Dubai marketing office"
+      },
+      "about": {
+        "title": "About Us | Tikit Agency Dubai",
+        "description": "About Tikit Agency Dubai. Founded 2020, 50+ team members, 300+ clients. Leading influencer marketing & social media agency in UAE & Saudi Arabia.",
+        "keywords": "about Tikit Agency, Dubai marketing agency, UAE influencer agency team, marketing company Dubai, social media agency history"
+      },
+      "work": {
+        "title": "Case Studies & Portfolio | Tikit Agency Dubai - 300+ Projects",
+        "description": "Explore Tikit Agency's 300+ successful campaigns. Case studies in influencer marketing, social media & branding for brands across UAE & Saudi Arabia.",
+        "keywords": "marketing case studies Dubai, influencer campaign portfolio, social media project examples, UAE brand campaigns, Dubai agency portfolio, marketing ROI examples"
+      },
+      "influencer": {
+        "title": "Influencers | Tikit Agency Dubai",
+        "description": "Discover Tikit Agency's network of 500+ UAE influencers. Fashion, beauty, lifestyle, tech & travel creators in Dubai, Abu Dhabi & Saudi Arabia.",
+        "keywords": "UAE influencers, Dubai content creators, Saudi Arabia influencers, Instagram influencers UAE, TikTok creators Dubai, influencer partnerships GCC"
+      }
+    }
   },
   "faq": {
     "title": "Frequently Asked Questions",

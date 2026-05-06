@@ -46,6 +46,7 @@ function Loader() {
   return (
     <div
       ref={loaderRef}
+      data-nav-color="black"
       className="h-screen w-full flex justify-center items-center"
     >
       <div className="loader-logo">

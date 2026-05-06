@@ -107,6 +107,10 @@ const NewsHero = () => {
       },
       0.3
     );
+
+    return () => {
+      tl.kill();
+    };
   }, [isThemeReady]);
 
   const textColor = isDark ? "text-white" : "text-gray-900";
@@ -180,8 +184,8 @@ const NewsHero = () => {
         </p>
       </div>
 
-      <div className="im-hero__scroll-indicator" aria-hidden="true">
-        <span className="im-hero__scroll-line" />
+      <div className="news-hero__scroll-indicator" aria-hidden="true">
+        <span className="news-hero__scroll-line" />
       </div>
     </section>
   );

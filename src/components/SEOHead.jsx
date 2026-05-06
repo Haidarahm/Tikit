@@ -28,7 +28,7 @@ const SEOHead = ({
   articleData,
 }) => {
   const { t } = useTranslation();
-  const { isRtl } = useI18nLanguage();
+  const { isRtl, language } = useI18nLanguage();
   const location = useLocation();
 
   const siteName = "Tikit Agency";
@@ -95,6 +95,7 @@ const SEOHead = ({
   
   const fullCanonicalUrl = `${baseUrl}${getCanonicalPath()}`;
   const fullOgImage = ogImage || defaultImage;
+  const getLocalizedUrl = (lang) => `${baseUrl}${getCanonicalPath()}?lang=${lang}`;
 
   // Generate Service Schema if serviceType is provided
   const generateServiceSchema = () => {
@@ -115,6 +116,21 @@ const SEOHead = ({
       "serviceType": serviceType
     };
   };
+
+  // Generate base WebPage schema for consistent coverage across all routes
+  const generateWebPageSchema = () => ({
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": fullTitle,
+    "description": fullDescription,
+    "url": fullCanonicalUrl,
+    "inLanguage": isRtl ? "ar" : "en",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": siteName,
+      "url": baseUrl
+    }
+  });
 
   // Generate Breadcrumb Schema
   const generateBreadcrumbSchema = () => {
@@ -162,6 +178,14 @@ const SEOHead = ({
     return graph.some(
       (node) => node && typeof node === "object" && node["@type"] === "FAQPage"
     );
+  };
+
+  const hasSchemaType = (schema, type) => {
+    if (!schema || typeof schema !== "object") return false;
+    if (Array.isArray(schema)) return schema.some((item) => hasSchemaType(item, type));
+    if (schema["@type"] === type) return true;
+    const graph = Array.isArray(schema["@graph"]) ? schema["@graph"] : [];
+    return graph.some((node) => node && typeof node === "object" && node["@type"] === type);
   };
 
   // Generate Article / BlogPosting Schema (for blog/news pages).
@@ -253,6 +277,20 @@ const SEOHead = ({
       return link;
     };
 
+    const setAlternateLink = (hreflang, href) => {
+      if (!href) return;
+      let link = document.head.querySelector(`link[rel="alternate"][hreflang="${hreflang}"]`);
+      if (!link) {
+        link = document.createElement("link");
+        link.setAttribute("rel", "alternate");
+        link.setAttribute("hreflang", hreflang);
+        link.setAttribute("data-seo-hreflang", "true");
+        document.head.appendChild(link);
+      }
+      link.setAttribute("href", href);
+      return link;
+    };
+
     const previous = [];
 
     const metaEntries = [
@@ -316,6 +354,12 @@ const SEOHead = ({
     });
 
     const canonicalTag = setLink("canonical", fullCanonicalUrl);
+    const alternates = [
+      setAlternateLink("en", getLocalizedUrl("en")),
+      setAlternateLink("fr", getLocalizedUrl("fr")),
+      setAlternateLink("ar", getLocalizedUrl("ar")),
+      setAlternateLink("x-default", getLocalizedUrl("en")),
+    ].filter(Boolean);
     const htmlEl = document.documentElement;
     const prevLang = htmlEl.lang;
     const prevDir = htmlEl.dir;
@@ -331,71 +375,12 @@ const SEOHead = ({
     
     if (structuredData) {
       schemas.push(structuredData);
-    } else {
-      // Default Organization schema optimized for AI engines
-      const defaultSchema = {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": siteName,
-        "description": fullDescription,
-        "url": baseUrl,
-        "logo": {
-          "@type": "ImageObject",
-          "url": `${baseUrl}/logo-light.png`,
-          "width": 200,
-          "height": 60
-        },
-        "image": `${baseUrl}/cover-image.png`,
-        "telephone": businessInfo.phone,
-        "email": businessInfo.email,
-        "sameAs": [
-          businessInfo.instagram
-        ],
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "telephone": businessInfo.phone,
-          "contactType": "customer service",
-          "email": businessInfo.email,
-          "availableLanguage": ["English", "Arabic", "French"],
-          "areaServed": ["AE", "SA", "TR", "SY"]
-        },
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "The Burlington Tower, Marasi Drive, Office 309",
-          "addressLocality": "Dubai",
-          "addressCountry": "AE"
-        },
-        "foundingDate": "2020",
-        "numberOfEmployees": {
-          "@type": "QuantitativeValue",
-          "minValue": 50
-        },
-        "areaServed": ["United Arab Emirates", "Saudi Arabia", "Turkey", "GCC Region", "MENA Region"],
-        "knowsAbout": [
-          "Influencer Marketing",
-          "Talent Management", 
-          "Social Media Marketing",
-          "Social Media Management",
-          "Branding",
-          "Brand Identity Design",
-          "Content Production",
-          "Digital Marketing",
-          "Community Management",
-          "Brand Strategy"
-        ],
-        "alternateName": [
-          "Influencer Marketing Agency in Emirates",
-          "Best Influencer Marketing Agency in Emirates",
-          "Influencer Marketing Agency Emirates",
-          "Best Social Media Management Company Emirates",
-          "Best Social Media Management Company Saudi Arabia",
-          "Best Influencer Marketing Company Emirates",
-          "Best Branding Company UAE",
-          "Social Media Agency Dubai",
-          "Influencer Marketing Agency Dubai"
-        ]
-      };
-      schemas.push(defaultSchema);
+    }
+
+    // Ensure every route has at least one page-level schema entity.
+    // Skip if caller already provides a WebPage node.
+    if (!schemas.some((schema) => hasSchemaType(schema, "WebPage"))) {
+      schemas.push(generateWebPageSchema());
     }
 
     // Add service schema if applicable
@@ -417,24 +402,28 @@ const SEOHead = ({
     if (articleSchema) schemas.push(articleSchema);
 
     // Inject all schemas
-    if (!scriptTag) {
-      scriptTag = document.createElement("script");
-      scriptTag.id = scriptId;
-      scriptTag.type = "application/ld+json";
-      document.head.appendChild(scriptTag);
-    }
-    
-    // If multiple schemas, wrap in @graph; otherwise use single schema
-    if (schemas.length > 1) {
-      scriptTag.textContent = JSON.stringify({
-        "@context": "https://schema.org",
-        "@graph": schemas.map(s => {
-          const { "@context": _, ...rest } = s;
-          return rest;
-        })
-      });
-    } else {
-      scriptTag.textContent = JSON.stringify(schemas[0]);
+    if (schemas.length > 0) {
+      if (!scriptTag) {
+        scriptTag = document.createElement("script");
+        scriptTag.id = scriptId;
+        scriptTag.type = "application/ld+json";
+        document.head.appendChild(scriptTag);
+      }
+
+      // If multiple schemas, wrap in @graph; otherwise use single schema
+      if (schemas.length > 1) {
+        scriptTag.textContent = JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": schemas.map(s => {
+            const { "@context": _, ...rest } = s;
+            return rest;
+          })
+        });
+      } else {
+        scriptTag.textContent = JSON.stringify(schemas[0]);
+      }
+    } else if (scriptTag) {
+      scriptTag.remove();
     }
 
     return () => {
@@ -451,6 +440,11 @@ const SEOHead = ({
       if (canonicalTag && !canonicalTag.getAttribute("href")) {
         canonicalTag.remove();
       }
+      alternates.forEach((link) => {
+        if (link?.getAttribute("data-seo-hreflang") === "true") {
+          link.remove();
+        }
+      });
       htmlEl.lang = prevLang;
       htmlEl.dir = prevDir;
     };
@@ -464,8 +458,13 @@ const SEOHead = ({
     siteName,
     isRtl,
     structuredData,
+    serviceType,
+    breadcrumbs,
+    faqItems,
+    articleData,
     location.pathname,
     canonicalUrl,
+    language,
   ]);
 
   return null;

@@ -5,9 +5,11 @@ import SEOHead from "../../components/SEOHead";
 import Content from "./Content";
 import { useTheme } from "../../store/ThemeContext.jsx";
 import ContactUs from "../Home/ContactUs.jsx";
+import { useTranslation } from "react-i18next";
 
 export const Blogs = () => {
   const { theme } = useTheme();
+  const { t } = useTranslation();
   const [isReady, setIsReady] = useState(false);
 
   // Check if theme is ready before rendering
@@ -40,9 +42,9 @@ export const Blogs = () => {
       className={`news-page ${theme === "dark" ? "dark-mode" : "light-mode"}`}
     >
       <SEOHead
-        title="Blogs | Tikit Agency Dubai"
-        description="Stay updated with the latest blogs, insights, and updates from Tikit Agency. Discover industry trends, marketing tips, and our latest achievements."
-        keywords="blogs, digital marketing insights, agency updates, marketing trends, industry news, Tikit Agency blogs"
+        title={t("seo.pages.blogs.title")}
+        description={t("seo.pages.blogs.description")}
+        keywords={t("seo.pages.blogs.keywords")}
         canonicalUrl="/blogs"
       />
       <NewsHero />

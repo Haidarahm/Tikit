@@ -8,6 +8,7 @@ import Growth from "./Growth";
 import SEOHead from "../../components/SEOHead";
 import ContactUs from "../Home/ContactUs";
 import Details from "./Details";
+import { useTranslation } from "react-i18next";
 
 // Organization schema for About page
 const aboutSchema = {
@@ -57,15 +58,17 @@ const aboutSchema = {
 };
 
 const AboutUs = () => {
+  const { t } = useTranslation();
+
   return (
     <div
       data-nav-color="black"
       className="about-us-section overflow-hidden w-full min-h-screen font-hero-light"
     >
       <SEOHead
-        title="About Us | Tikit Agency Dubai"
-        description="About Tikit Agency Dubai. Founded 2020, 50+ team members, 300+ clients. Leading influencer marketing & social media agency in UAE & Saudi Arabia."
-        keywords="about Tikit Agency, Dubai marketing agency, UAE influencer agency team, marketing company Dubai, social media agency history"
+        title={t("seo.pages.about.title")}
+        description={t("seo.pages.about.description")}
+        keywords={t("seo.pages.about.keywords")}
         canonicalUrl="/about-us"
         structuredData={aboutSchema}
       />

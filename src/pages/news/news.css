@@ -293,7 +293,7 @@
 }
 
 /* ---------- Hero Scroll Indicator ---------- */
-.im-hero__scroll-indicator {
+.news-hero__scroll-indicator {
   position: absolute;
   left: 50%;
   bottom: 22px;
@@ -307,7 +307,7 @@
   pointer-events: none;
 }
 
-.im-hero__scroll-line {
+.news-hero__scroll-line {
   position: absolute;
   left: 50%;
   top: 4px;
@@ -317,10 +317,10 @@
   border-radius: 999px;
   transform: translateX(-50%);
   background: var(--secondary);
-  animation: imHeroScroll 1.6s ease-in-out infinite;
+  animation: newsHeroScroll 1.6s ease-in-out infinite;
 }
 
-@keyframes imHeroScroll {
+@keyframes newsHeroScroll {
   0% {
     opacity: 0;
     transform: translateX(-50%) translateY(0);

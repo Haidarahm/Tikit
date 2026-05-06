@@ -20,7 +20,39 @@
   },
   "seo": {
     "defaultDescription": "Nous sommes Tikit — une agence de marketing complète guidée par l'insight et la créativité. Nous nous associons aux marques pour livrer des résultats grâce à une stratégie experte, une puissance créative et une exécution impeccable.",
-    "defaultKeywords": "agence marketing, marketing numérique, marketing d'influence, gestion des médias sociaux, branding, production, agence créative, stratégie marketing"
+    "defaultKeywords": "agence marketing, marketing numérique, marketing d'influence, gestion des médias sociaux, branding, production, agence créative, stratégie marketing",
+    "pages": {
+      "blogs": {
+        "title": "Blog | Tikit Agency Dubaï",
+        "description": "Restez à jour avec les derniers articles, insights et actualités de Tikit Agency. Découvrez les tendances du secteur et des conseils marketing.",
+        "keywords": "blog marketing, insights marketing digital, tendances marketing, actualités agence, Tikit Agency blog"
+      },
+      "services": {
+        "title": "Services | Tikit Agency Dubaï",
+        "description": "Services Tikit Agency : marketing d'influence, gestion des réseaux sociaux, branding et production à Dubaï et aux EAU.",
+        "keywords": "services marketing Dubaï, marketing d'influence EAU, gestion réseaux sociaux Dubaï, branding EAU, production vidéo Dubaï"
+      },
+      "contact": {
+        "title": "Contact | Tikit Agency Dubaï",
+        "description": "Contactez Tikit Agency à Dubaï. Appelez le +971 4 577 4042 ou écrivez à Holla@tikit.ae pour une consultation marketing.",
+        "keywords": "contact Tikit Agency, agence marketing Dubaï contact, consultation marketing EAU"
+      },
+      "about": {
+        "title": "À propos | Tikit Agency Dubaï",
+        "description": "Découvrez Tikit Agency à Dubaï : fondée en 2020, 50+ experts et 300+ clients, leader en marketing d'influence et réseaux sociaux.",
+        "keywords": "à propos Tikit Agency, agence marketing Dubaï, équipe marketing EAU, agence réseaux sociaux"
+      },
+      "work": {
+        "title": "Études de Cas & Portfolio | Tikit Agency Dubaï",
+        "description": "Explorez 300+ campagnes réussies de Tikit Agency en marketing d'influence, social media et branding aux EAU et en Arabie Saoudite.",
+        "keywords": "études de cas marketing Dubaï, portfolio campagnes influence, exemples projets social media"
+      },
+      "influencer": {
+        "title": "Influenceurs | Tikit Agency Dubaï",
+        "description": "Découvrez le réseau Tikit Agency de 500+ influenceurs aux EAU et en Arabie Saoudite dans la mode, beauté, lifestyle, tech et voyage.",
+        "keywords": "influenceurs EAU, créateurs Dubaï, influenceurs Arabie Saoudite, partenariat influence GCC"
+      }
+    }
   },
   "faq": {
     "title": "Questions Fréquemment Posées",

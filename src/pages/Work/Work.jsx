@@ -244,9 +244,9 @@ const Work = () => {
       className={`work-section min-h-[100vh] flex flex-col ${fontBody}`}
     >
       <SEOHead
-        title="Case Studies & Portfolio | Tikit Agency Dubai - 300+ Projects"
-        description="Explore Tikit Agency's 300+ successful campaigns. Case studies in influencer marketing, social media & branding for brands across UAE & Saudi Arabia."
-        keywords="marketing case studies Dubai, influencer campaign portfolio, social media project examples, UAE brand campaigns, Dubai agency portfolio, marketing ROI examples"
+        title={t("seo.pages.work.title")}
+        description={t("seo.pages.work.description")}
+        keywords={t("seo.pages.work.keywords")}
         canonicalUrl="/work"
         breadcrumbs={[
           { name: "Home", url: "/" },
