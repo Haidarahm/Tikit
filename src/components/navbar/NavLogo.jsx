@@ -1,10 +1,10 @@
-import { useNavigate } from "react-router-dom";
 import SVGComponent from "../../assets/logo.jsx";
 import { useTheme } from "../../store/ThemeContext.jsx";
 import { useNavColor } from "./hooks/useNavColor";
+import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
 
 export default function NavLogo({ logoRef }) {
-  const navigate = useNavigate();
+  const { localizedNavigate } = useI18nLanguage();
   const { theme } = useTheme();
   const navColor = useNavColor();
 
@@ -14,7 +14,7 @@ export default function NavLogo({ logoRef }) {
   return (
     <div className={`h-10 md:h-12 flex items-center justify-center `}>
       <div
-        onClick={() => navigate("/")}
+        onClick={() => localizedNavigate("/")}
         ref={logoRef}
         className="h-10 md:h-12 transform-gpu cursor-pointer"
         role="button"
@@ -23,7 +23,7 @@ export default function NavLogo({ logoRef }) {
         onKeyDown={(e) => {
           if (e.key === "Enter" || e.key === " ") {
             e.preventDefault();
-            navigate("/");
+            localizedNavigate("/");
           }
         }}
       >

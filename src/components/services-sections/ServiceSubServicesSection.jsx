@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { Link } from "react-router-dom";
+import { LocaleLink as Link } from "@/components/LocaleLink.jsx";
 import { FiArrowRight } from "react-icons/fi";
 
 /**

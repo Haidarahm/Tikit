@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { LocaleLink as Link } from "@/components/LocaleLink.jsx";
 import { FiArrowRight, FiPhone } from "react-icons/fi";
 import HeroWithBadge from "../../../components/HeroWithBadge";
 import SEOHead from "../../../components/SEOHead";
@@ -64,7 +64,7 @@ const WebDevelopment = () => {
             Tell us about your project. We'll scope it clearly and get back to you within 48 hours.
           </p>
           <div className="wd-cta__buttons">
-            <Link to="/contact" className="wd-btn-primary">
+            <Link to="/contact-us" className="wd-btn-primary">
               <FiArrowRight />
               Discuss Your Project
             </Link>

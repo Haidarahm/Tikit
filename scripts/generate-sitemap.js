@@ -25,7 +25,24 @@ const BASE_URL_CANDIDATES = [
   'https://back.tikit.ae/public/index.php/api',
 ].filter(Boolean);
 
-let BASE_URL = null;const SITE_URL = 'https://tikit.ae';
+let BASE_URL = null;
+const SITE_URL = 'https://tikit.ae';
+const LOCALES = ['en', 'fr', 'ar'];
+
+function localizePath(url, locale) {
+  if (!url || url === '/') return `/${locale}`;
+  return `/${locale}${url.startsWith('/') ? url : `/${url}`}`;
+}
+
+function localizedEntries(entries) {
+  return entries.flatMap((entry) =>
+    LOCALES.map((locale) => ({
+      ...entry,
+      url: localizePath(entry.url, locale),
+      locale,
+    }))
+  );
+}
 
 // Output sitemap paths
 const SITEMAP_INDEX_PATH = path.join(__dirname, '../public/sitemap.xml');
@@ -249,7 +266,7 @@ function generateBlogsSitemap(blogs, today) {
 `;
 
   // Blog listing pages
-  blogListingPages.forEach((page) => {
+  localizedEntries(blogListingPages).forEach((page) => {
     const label = page.url.replace('/', '').replace(/-/g, ' ');
     xml += `  <!-- ${label} -->\n`;
     xml += `  <url>\n`;
@@ -265,12 +282,14 @@ function generateBlogsSitemap(blogs, today) {
     blogs.forEach((blog) => {
       if (blog.slug) {
         const lastmod = formatDate(blog.updated_at || blog.created_at);
-        xml += `  <url>\n`;
-        xml += `    <loc>${SITE_URL}/blogs/${blog.slug}</loc>\n`;
-        xml += `    <lastmod>${lastmod}</lastmod>\n`;
-        xml += `    <changefreq>weekly</changefreq>\n`;
-        xml += `    <priority>0.6</priority>\n`;
-        xml += `  </url>\n\n`;
+        LOCALES.forEach((locale) => {
+          xml += `  <url>\n`;
+          xml += `    <loc>${SITE_URL}${localizePath(`/blogs/${blog.slug}`, locale)}</loc>\n`;
+          xml += `    <lastmod>${lastmod}</lastmod>\n`;
+          xml += `    <changefreq>weekly</changefreq>\n`;
+          xml += `    <priority>0.6</priority>\n`;
+          xml += `  </url>\n\n`;
+        });
       }
     });
   }
@@ -292,12 +311,14 @@ function generateWorkSitemap(workUrls, today) {
   if (workUrls.length > 0) {
     xml += `  <!-- Work Details (${workUrls.length} pages) -->\n`;
     workUrls.forEach((url) => {
-      xml += `  <url>\n`;
-      xml += `    <loc>${SITE_URL}${url}</loc>\n`;
-      xml += `    <lastmod>${today}</lastmod>\n`;
-      xml += `    <changefreq>weekly</changefreq>\n`;
-      xml += `    <priority>0.7</priority>\n`;
-      xml += `  </url>\n\n`;
+      LOCALES.forEach((locale) => {
+        xml += `  <url>\n`;
+        xml += `    <loc>${SITE_URL}${localizePath(url, locale)}</loc>\n`;
+        xml += `    <lastmod>${today}</lastmod>\n`;
+        xml += `    <changefreq>weekly</changefreq>\n`;
+        xml += `    <priority>0.7</priority>\n`;
+        xml += `  </url>\n\n`;
+      });
     });
   }
 
@@ -353,11 +374,11 @@ async function main() {
   const today = new Date().toISOString().split('T')[0];
 
   console.log('📄 Generating pages sitemap...');
-  const pagesXml = generateStaticSitemap(pages, today);
+  const pagesXml = generateStaticSitemap(localizedEntries(pages), today);
   fs.writeFileSync(SITEMAP_PAGES_PATH, pagesXml, 'utf8');
 
   console.log('🧩 Generating services sitemap...');
-  const servicesXml = generateStaticSitemap(servicesPages, today);
+  const servicesXml = generateStaticSitemap(localizedEntries(servicesPages), today);
   fs.writeFileSync(SITEMAP_SERVICES_PATH, servicesXml, 'utf8');
 
   console.log('📡 Fetching blog posts from API...');
@@ -388,8 +409,8 @@ async function main() {
   fs.writeFileSync(SITEMAP_INDEX_PATH, indexXml, 'utf8');
 
   const totalStatic =
-    pages.length + servicesPages.length + blogListingPages.length;
-  const totalUrls = totalStatic + blogs.length + workDetailUrls.length;
+    (pages.length + servicesPages.length + blogListingPages.length) * LOCALES.length;
+  const totalUrls = totalStatic + (blogs.length * LOCALES.length) + (workDetailUrls.length * LOCALES.length);
 
   console.log('✅ Sitemaps generated successfully!');
   console.log(`   - Pages (static): ${pages.length}`);

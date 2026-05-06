@@ -1,5 +1,5 @@
 import React, { useMemo, memo, useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { LocaleLink as Link } from "@/components/LocaleLink.jsx";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";

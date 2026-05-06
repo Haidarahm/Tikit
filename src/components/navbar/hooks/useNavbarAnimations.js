@@ -2,11 +2,13 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { gsap } from "gsap";
 import { useIntro } from "../../../store/IntroContext";
+import { stripLocalePrefix } from "../../../utils/localePaths";
 
 export function useNavbarAnimations(logoRef, navRef) {
   const { introDone } = useIntro();
   const { pathname } = useLocation();
-  const isHome = pathname === "/";
+  const basePath = stripLocalePrefix(pathname);
+  const isHome = basePath === "/";
 
   // Wait for intro to finish on the home page before animating navbar
   const shouldAnimate = isHome ? introDone : true;

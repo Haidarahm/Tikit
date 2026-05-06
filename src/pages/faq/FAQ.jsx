@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { 
   FaQuestionCircle, 
   FaCogs, 
@@ -16,13 +16,11 @@ import Accordion from "../../components/ui/Accordion";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
 import { useFontClass } from "../../hooks/useFontClass";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
 
 const FAQ = () => {
-  const { isRtl, language } = useI18nLanguage();
+  const { isRtl, localizedNavigate } = useI18nLanguage();
   const { fontHeading, fontBody } = useFontClass();
   const { t } = useTranslation();
-  const navigate = useNavigate();
 
   // Icons for each question
   const icons = [
@@ -149,7 +147,7 @@ const FAQ = () => {
                 )}
               </p>
               <button
-                onClick={() => navigate("/contact-us")}
+                onClick={() => localizedNavigate("/contact-us")}
                 className="group inline-flex items-center gap-3 bg-[var(--secondary)] hover:bg-[var(--secondary)]/90 text-[var(--background)] font-semibold px-10 py-4 rounded-full transition-all duration-300 shadow-lg shadow-[var(--secondary)]/30 hover:shadow-[var(--secondary)]/50 hover:scale-105"
               >
                 <span className="text-lg">{t("faq.cta.button", "Contact Us")}</span>

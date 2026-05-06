@@ -1,6 +1,5 @@
 // StickyPinnedSection.jsx
 import React, { useLayoutEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useTranslation } from "react-i18next";
@@ -23,9 +22,8 @@ export default function StickyPinnedSection({
   const stickyRef = useRef(null);
   const mediaRefs = useRef([]);
   const textRefs = useRef([]);
-  const navigate = useNavigate();
+  const { isRtl, localizedNavigate } = useI18nLanguage();
   const { t } = useTranslation();
-  const { isRtl } = useI18nLanguage();
   const { fontBody } = useFontClass();
 
   const count = items?.length ?? 0;
@@ -403,7 +401,7 @@ export default function StickyPinnedSection({
             )}
           </div>
           <button
-            onClick={() => navigate("/work")}
+            onClick={() => localizedNavigate("/work")}
             className="bg-transparent hover:text-[var(--background)] shadow-lg shadow-[#52C3C5]/30 font-bold dark:shadow-[#000]/30 hover:bg-[var(--secondary)] border-[var(--secondary)] text-[var(--secondary)] transition duration-75 ease-in border px-6 h-8 md:h-10 text-[14px] rounded-full uppercase"
 
           >
@@ -469,7 +467,7 @@ export default function StickyPinnedSection({
                   onClick={() => {
                     const slug = items?.[i]?.slug;
                     if (slug != null) {
-                      navigate(`/work/${encodeURIComponent(slug)}`);
+                      localizedNavigate(`/work/${encodeURIComponent(slug)}`);
                     }
                   }}
                 >
@@ -521,7 +519,7 @@ export default function StickyPinnedSection({
                 }}
                 onClick={() => {
                   const slug = items?.[i]?.slug;
-                  if (slug != null) navigate(`/work/${encodeURIComponent(slug)}`);
+                  if (slug != null) localizedNavigate(`/work/${encodeURIComponent(slug)}`);
                 }}
               >
                 {it.media ?? (

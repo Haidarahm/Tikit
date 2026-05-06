@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { LocaleLink as Link } from "@/components/LocaleLink.jsx";
 import SEOHead from "../components/SEOHead";
 import { useI18nLanguage } from "../store/I18nLanguageContext";
 

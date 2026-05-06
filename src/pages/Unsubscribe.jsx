@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { unsubscribe } from "../apis/unsubscribe";
 import { CheckCircleOutlined, HomeOutlined, LoadingOutlined } from "@ant-design/icons";
 import { Spin } from "antd";
+import { useI18nLanguage } from "../store/I18nLanguageContext.jsx";
 
 const Unsubscribe = () => {
   const { token } = useParams();
-  const navigate = useNavigate();
+  const { localizedNavigate } = useI18nLanguage();
   const [loading, setLoading] = useState(true);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(null);
@@ -80,7 +81,7 @@ const Unsubscribe = () => {
                 We're sorry to see you go. If you change your mind, you can always subscribe again anytime.
               </p>
               <button
-                onClick={() => navigate("/")}
+                onClick={() => localizedNavigate("/")}
                 className="inline-flex items-center gap-2 bg-[var(--secondary)] hover:bg-[var(--secondary)]/90 text-[var(--background)] font-semibold px-8 py-3 rounded-full transition-all duration-300 shadow-lg shadow-[var(--secondary)]/30 hover:shadow-[var(--secondary)]/50"
               >
                 <HomeOutlined />
@@ -104,7 +105,7 @@ const Unsubscribe = () => {
                 {error || "Something went wrong. Please try again later."}
               </p>
               <button
-                onClick={() => navigate("/")}
+                onClick={() => localizedNavigate("/")}
                 className="inline-flex items-center gap-2 bg-[var(--secondary)] hover:bg-[var(--secondary)]/90 text-[var(--background)] font-semibold px-8 py-3 rounded-full transition-all duration-300 shadow-lg shadow-[var(--secondary)]/30 hover:shadow-[var(--secondary)]/50"
               >
                 <HomeOutlined />

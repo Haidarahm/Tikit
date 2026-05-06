@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { LocaleLink as Link } from "@/components/LocaleLink.jsx";
 import { useFontClass } from "../../../hooks/useFontClass";
 
 const NonDigitalWorkCard = ({

@@ -1,5 +1,4 @@
 import { useRef, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
 import { useNavColor } from "./hooks/useNavColor.js";
 import PointIcon from "../../assets/icons/point.svg";
@@ -30,8 +29,7 @@ import PointIcon from "../../assets/icons/point.svg";
  *   />
  */
 export default function NavDropdown({ label, items = [], isMobile = false, onClose }) {
-  const { isRtl } = useI18nLanguage();
-  const navigate = useNavigate();
+  const { isRtl, localizedNavigate } = useI18nLanguage();
   const dropdownRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
   const [expandedKeys, setExpandedKeys] = useState({});
@@ -51,7 +49,7 @@ export default function NavDropdown({ label, items = [], isMobile = false, onClo
   }, [isOpen, isMobile]);
 
   const handleItemClick = (to) => {
-    navigate(to);
+    localizedNavigate(to);
     setIsOpen(false);
     setExpandedKeys({});
     if (onClose) onClose();

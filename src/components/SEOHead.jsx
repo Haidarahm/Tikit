@@ -2,6 +2,10 @@ import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
 import { useI18nLanguage } from "../store/I18nLanguageContext";
+import {
+  stripLocalePrefix,
+  withLocalePrefix,
+} from "../utils/localePaths";
 
 /**
  * SEOHead Component - AI Engine Optimization Ready
@@ -28,8 +32,13 @@ const SEOHead = ({
   articleData,
 }) => {
   const { t } = useTranslation();
-  const { isRtl, language } = useI18nLanguage();
+  const { isRtl, language, localizedPath } = useI18nLanguage();
   const location = useLocation();
+
+  const schemaLang =
+    language === "ar" ? "ar" : language === "fr" ? "fr" : "en";
+  const ogLocale =
+    language === "ar" ? "ar_SA" : language === "fr" ? "fr_FR" : "en_US";
 
   const siteName = "Tikit Agency";
   const baseUrl = "https://tikit.ae";
@@ -66,36 +75,39 @@ const SEOHead = ({
       "marketing agency Dubai, creative marketing Dubai, performance marketing UAE, branding agency Dubai, digital marketing Dubai"
     );
   
-  // Use provided canonicalUrl, or fallback to current location pathname
-  // Remove trailing slashes and ensure it starts with /
   const getCanonicalPath = () => {
-    const currentPath = location.pathname;
-    const normalizedCurrentPath = currentPath === '/' ? '/' : currentPath.replace(/\/$/, '');
-    
-    // Homepage routes that should canonicalize to /
-    const homepageRoutes = ['/'];
-    const isHomepageRoute = homepageRoutes.includes(normalizedCurrentPath);
-    
-    // If canonicalUrl is explicitly provided
+    const raw =
+      location.pathname === "/"
+        ? "/"
+        : location.pathname.replace(/\/$/, "") || "/";
+    const suffix = stripLocalePrefix(raw);
+    const isHomeRoute = suffix === "/" || suffix === "";
+
     if (canonicalUrl !== undefined && canonicalUrl !== null) {
-      const normalizedCanonical = canonicalUrl.startsWith('/') ? canonicalUrl : `/${canonicalUrl}`;
-      
-      // If canonicalUrl is "/" but we're not on a homepage route, use current path instead
-      if (normalizedCanonical === '/' && !isHomepageRoute) {
-        return normalizedCurrentPath;
+      const normalizedCanonical = canonicalUrl.startsWith("/")
+        ? canonicalUrl
+        : `/${canonicalUrl}`;
+      if (normalizedCanonical === "/" && !isHomeRoute) {
+        return localizedPath(suffix === "/" ? "/" : suffix);
       }
-      
-      return normalizedCanonical;
+      return localizedPath(normalizedCanonical);
     }
-    
-    // No canonicalUrl provided - use current pathname
-    // For homepage routes, use "/", otherwise use the actual path
-    return isHomepageRoute ? '/' : normalizedCurrentPath;
+
+    if (isHomeRoute) {
+      return withLocalePrefix(language, "/");
+    }
+    return raw;
   };
-  
-  const fullCanonicalUrl = `${baseUrl}${getCanonicalPath()}`;
+
+  const canonicalPathStr = getCanonicalPath();
+  const fullCanonicalUrl = `${baseUrl}${canonicalPathStr}`;
   const fullOgImage = ogImage || defaultImage;
-  const getLocalizedUrl = (lang) => `${baseUrl}${getCanonicalPath()}?lang=${lang}`;
+
+  const restForHreflang = stripLocalePrefix(canonicalPathStr);
+  const getLocalizedUrl = (lng) =>
+    `${baseUrl}${
+      restForHreflang === "/" ? `/${lng}` : `/${lng}${restForHreflang}`
+    }`;
 
   // Generate Service Schema if serviceType is provided
   const generateServiceSchema = () => {
@@ -124,7 +136,7 @@ const SEOHead = ({
     "name": fullTitle,
     "description": fullDescription,
     "url": fullCanonicalUrl,
-    "inLanguage": isRtl ? "ar" : "en",
+    "inLanguage": schemaLang,
     "isPartOf": {
       "@type": "WebSite",
       "name": siteName,
@@ -142,7 +154,7 @@ const SEOHead = ({
         "@type": "ListItem",
         "position": index + 1,
         "name": crumb.name,
-        "item": `${baseUrl}${crumb.url}`
+        "item": `${baseUrl}${localizedPath(crumb.url)}`
       }))
     };
   };
@@ -203,7 +215,7 @@ const SEOHead = ({
       "description": articleData.description || fullDescription,
       "image": articleData.image || fullOgImage,
       "url": articleUrl,
-      "inLanguage": isRtl ? "ar" : "en",
+      "inLanguage": schemaLang,
       "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": articleUrl
@@ -298,7 +310,7 @@ const SEOHead = ({
       ["keywords", fullKeywords],
       ["author", "Tikit Agency"],
       ["robots", "index, follow"],
-      ["language", isRtl ? "ar" : "en"],
+      ["language", schemaLang],
       ["revisit-after", "7 days"],
       ["viewport", "width=device-width, initial-scale=1.0"],
       ["theme-color", "#52C3C5"],
@@ -322,7 +334,7 @@ const SEOHead = ({
       ["og:url", fullCanonicalUrl],
       ["og:type", ogType],
       ["og:site_name", siteName],
-      ["og:locale", isRtl ? "ar_SA" : "en_US"],
+      ["og:locale", ogLocale],
     ];
 
     ogEntries.forEach(([prop, value]) => {
@@ -363,7 +375,7 @@ const SEOHead = ({
     const htmlEl = document.documentElement;
     const prevLang = htmlEl.lang;
     const prevDir = htmlEl.dir;
-    htmlEl.lang = isRtl ? "ar" : "en";
+    htmlEl.lang = language;
     htmlEl.dir = isRtl ? "rtl" : "ltr";
 
     // Handle structured data - support multiple schemas

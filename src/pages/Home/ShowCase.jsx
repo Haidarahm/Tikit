@@ -4,7 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
 import { useShowcaseStore } from "../../store/showcaseStore";
-import { Link } from "react-router-dom";
+import { LocaleLink as Link } from "@/components/LocaleLink.jsx";
 import HeroWithBadge from "../../components/HeroWithBadge";
 
 gsap.registerPlugin(ScrollTrigger);

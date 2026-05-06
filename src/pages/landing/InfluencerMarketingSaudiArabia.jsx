@@ -1,7 +1,7 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import SEOHead from "../../components/SEOHead";
 import FAQ from "../../components/FAQ";
+import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
 
 /**
  * AI-Optimized Landing Page: Influencer Marketing Agency Saudi Arabia
@@ -12,7 +12,7 @@ import FAQ from "../../components/FAQ";
  * - "Riyadh influencer marketing"
  */
 const InfluencerMarketingSaudiArabia = () => {
-  const navigate = useNavigate();
+  const { localizedNavigate } = useI18nLanguage();
 
   // Page-specific structured data
   const pageSchema = {
@@ -102,7 +102,7 @@ const InfluencerMarketingSaudiArabia = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
-              onClick={() => navigate("/contact-us")}
+              onClick={() => localizedNavigate("/contact-us")}
               className="px-8 py-4 bg-[var(--secondary)] text-white font-bold rounded-full hover:bg-[var(--secondary)]/90 transition-colors"
             >
               Get Free Consultation

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { LocaleLink as Link } from "@/components/LocaleLink.jsx";
 import { gsap } from "gsap";
 import Logo from "../assets/logo.jsx";
 import { useTheme } from "../store/ThemeContext";

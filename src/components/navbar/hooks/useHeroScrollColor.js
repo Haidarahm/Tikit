@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { stripLocalePrefix } from "../../../utils/localePaths";
 
 export function useHeroScrollColor() {
   const [textColor, setTextColor] = useState("text-white");
   const { pathname } = useLocation();
+  const basePath = stripLocalePrefix(pathname);
 
   useEffect(() => {
     // Keep navbar text white across the immersive services experience (index + section pages)
@@ -16,7 +18,7 @@ export function useHeroScrollColor() {
       "/web-development-dubai",
       "/digital-marketing-agency-dubai",
     ];
-    const isServicePage = servicePaths.some((p) => pathname === p || pathname.startsWith(p + "/"));
+    const isServicePage = servicePaths.some((p) => basePath === p || basePath.startsWith(p + "/"));
     if (isServicePage) {
       setTextColor("text-white");
       return () => {};

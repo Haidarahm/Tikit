@@ -3,7 +3,6 @@ import gsap from "gsap";
 import { Observer } from "gsap/Observer";
 import { SplitText } from "gsap/SplitText";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
 import SEOHead from "../../components/SEOHead";
 import influencerMarketingImage from "../../assets/services/Influencer-Marketing.webp";
@@ -16,8 +15,7 @@ gsap.registerPlugin(Observer, SplitText);
 
 const Services = () => {
   const { t } = useTranslation();
-  const navigate = useNavigate();
-  const { language, isRtl } = useI18nLanguage();
+  const { localizedNavigate, language, isRtl } = useI18nLanguage();
   const isArabic = language === "ar";
   const sectionsRef = useRef([]);
   const imagesRef = useRef([]);
@@ -396,7 +394,7 @@ const Services = () => {
                 {service.route && (
                   <button
                     ref={(el) => (buttonsRef.current[index] = el)}
-                    onClick={() => navigate(service.route)}
+                    onClick={() => localizedNavigate(service.route)}
                     style={styles.discoverButton}
                     onMouseEnter={(e) => {
                       gsap.to(e.target, {

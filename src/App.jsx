@@ -1,9 +1,8 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate, Outlet, useParams, useLocation } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import { ThemeProvider } from "./store/ThemeContext.jsx";
 import { ClientProvider } from "./store/ClientContext.jsx";
 import Navbar from "./components/navbar/Navbar.jsx";
-import { Outlet } from "react-router-dom";
 import { useScrollToTopOnRouteChange } from "./hooks/useScrollToTopOnRouteChange";
 import ScrollToHash from "./components/ScrollToHash";
 import Loader from "./components/Loader.jsx";
@@ -12,6 +11,11 @@ import AIAssistButton from "./components/AIAssistButton";
 import { IntroProvider } from "./store/IntroContext";
 import ErrorBoundary from "./components/ErrorBoundary";
 import Footer from "./components/Footer";
+import {
+  DEFAULT_LOCALE,
+  LOCALE_CODES,
+  withLocalePrefix,
+} from "./utils/localePaths";
 
 // Lazy load components (Home + heavy routes stay out of the entry chunk)
 const Home = lazy(() => import("./pages/Home/Home"));
@@ -126,21 +130,34 @@ const NotFound = lazy(() => import("./pages/NotFound.jsx"));
 // Loading component
 const LoadingSpinner = () => <Loader />;
 
-const Layout = () => {
+function LangLayout() {
+  const { lang } = useParams();
+  const location = useLocation();
+
+  if (!LOCALE_CODES.includes(lang)) {
+    return (
+      <Navigate
+        to={withLocalePrefix(DEFAULT_LOCALE, location.pathname)}
+        replace
+      />
+    );
+  }
+
   useScrollToTopOnRouteChange();
+
   return (
     <>
       <ScrollToHash />
-    <div className="relative w-full min-h-full">
-      <Navbar />
-      <main>
-        <Outlet />
-      </main>
-    </div>
-    <Footer />
-  </>
+      <div className="relative w-full min-h-full">
+        <Navbar />
+        <main>
+          <Outlet />
+        </main>
+      </div>
+      <Footer />
+    </>
   );
-};
+}
 
 function App() {
   return (
@@ -151,55 +168,51 @@ function App() {
         <ErrorBoundary>
         <Suspense fallback={<LoadingSpinner />}>
           <Routes>
-            <Route element={<Layout />}>
+            <Route path="/" element={<Navigate to="/en" replace />} />
+            <Route path="/:lang" element={<LangLayout />}>
               <Route index element={<Home />} />
-              <Route path="/work/:workSlug?" element={<Work />} />
-              <Route path="/about-us" element={<AboutUs />} />
-              <Route path="/services" element={<Services />} />
-              <Route path="/blogs" element={<Blogs />} />
-              <Route path="/blogs/:slug" element={<BlogDetailsSwitcher />} />
-            <Route path="/contact-us/:contact?" element={<Contact />} />
-              <Route path="/influencer" element={<Influencer />} />
+              <Route path="work/:workSlug?" element={<Work />} />
+              <Route path="about-us" element={<AboutUs />} />
+              <Route path="services" element={<Services />} />
+              <Route path="blogs" element={<Blogs />} />
+              <Route path="blogs/:slug" element={<BlogDetailsSwitcher />} />
+              <Route path="contact-us/:contact?" element={<Contact />} />
+              <Route path="influencer" element={<Influencer />} />
               <Route
-                path="/influencer-register"
+                path="influencer-register"
                 element={<InfluencersRegister />}
               />
-              <Route path="/showcase/:slug" element={<CaseDetails />} />
+              <Route path="showcase/:slug" element={<CaseDetails />} />
               <Route
-                path="/work/influence/:slug"
+                path="work/influence/:slug"
                 element={<InfluenceDetails />}
               />
-              <Route path="/work/social/:slug" element={<SocialDetails />} />
-              <Route path="/work/creative/:slug" element={<CreativeDetails />} />
-              <Route path="/work/event/:slug" element={<EventDetails />} />
-              {/* Service Sections - Influencer Marketing Hub & Sub-pages */}
-              <Route path="/influencer-marketing-agency-dubai" element={<InfluencerMarketing />} />
-              <Route path="/influencer-marketing-agency-dubai/campaign-management-dubai" element={<CampaignManagement />} />
-              <Route path="/influencer-marketing-agency-dubai/micro-influencer-marketing-dubai" element={<MicroInfluencerMarketing />} />
-              <Route path="/influencer-marketing-agency-dubai/luxury-influencer-marketing" element={<LuxuryInfluencerMarketing />} />
-              <Route path="/influencer-marketing-agency-dubai/roi-analytics" element={<ROIAnalytics />} />
-              <Route path="/influencer-marketing-agency-dubai/instagram-influencer-marketing" element={<InstagramInfluencerMarketing />} />
-              <Route path="/influencer-marketing-agency-dubai/tiktok-influencer-marketing" element={<TiktokInfluencerMarketing />} />
-              <Route path="/influencer-marketing-agency-dubai/influencer-marketing-cost-uae" element={<InfluencerMarketingCost />} />
-              <Route path="/social-media-management" element={<SocialMediaManagement />} />
-              <Route path="/production" element={<Production />} />
-              <Route path="/branding-agency-dubai" element={<Branding />} />
-              <Route path="/web-development-dubai" element={<WebDevelopment />} />
-              {/* Service Sections - Digital Marketing Hub & Sub-pages */}
-              <Route path="/digital-marketing-agency-dubai" element={<DigitalMarketing />} />
-              <Route path="/digital-marketing-agency-dubai/seo-services" element={<SEOServices />} />
-              <Route path="/digital-marketing-agency-dubai/paid-ads-management" element={<PaidAdsManagement />} />
-              <Route path="/digital-marketing-agency-dubai/conversion-optimization" element={<ConversionOptimization />} />
-              <Route path="/digital-marketing-agency-dubai/performance-marketing" element={<PerformanceMarketing />} />
-              {/* AI-Targeted Landing Pages */}
-              <Route path="/influencer-marketing-dubai" element={<InfluencerMarketingDubai />} />
-              <Route path="/influencer-marketing-saudi-arabia" element={<InfluencerMarketingSaudiArabia />} />
-              {/* Legal Pages */}
-              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-              <Route path="/terms-of-service" element={<TermsOfService />} />
-              <Route path="/unsubscribe/:token" element={<Unsubscribe />} />
-              <Route path="/faq" element={<FAQ />} />
-              {/* 404 Page */}
+              <Route path="work/social/:slug" element={<SocialDetails />} />
+              <Route path="work/creative/:slug" element={<CreativeDetails />} />
+              <Route path="work/event/:slug" element={<EventDetails />} />
+              <Route path="influencer-marketing-agency-dubai" element={<InfluencerMarketing />} />
+              <Route path="influencer-marketing-agency-dubai/campaign-management-dubai" element={<CampaignManagement />} />
+              <Route path="influencer-marketing-agency-dubai/micro-influencer-marketing-dubai" element={<MicroInfluencerMarketing />} />
+              <Route path="influencer-marketing-agency-dubai/luxury-influencer-marketing" element={<LuxuryInfluencerMarketing />} />
+              <Route path="influencer-marketing-agency-dubai/roi-analytics" element={<ROIAnalytics />} />
+              <Route path="influencer-marketing-agency-dubai/instagram-influencer-marketing" element={<InstagramInfluencerMarketing />} />
+              <Route path="influencer-marketing-agency-dubai/tiktok-influencer-marketing" element={<TiktokInfluencerMarketing />} />
+              <Route path="influencer-marketing-agency-dubai/influencer-marketing-cost-uae" element={<InfluencerMarketingCost />} />
+              <Route path="social-media-management" element={<SocialMediaManagement />} />
+              <Route path="production" element={<Production />} />
+              <Route path="branding-agency-dubai" element={<Branding />} />
+              <Route path="web-development-dubai" element={<WebDevelopment />} />
+              <Route path="digital-marketing-agency-dubai" element={<DigitalMarketing />} />
+              <Route path="digital-marketing-agency-dubai/seo-services" element={<SEOServices />} />
+              <Route path="digital-marketing-agency-dubai/paid-ads-management" element={<PaidAdsManagement />} />
+              <Route path="digital-marketing-agency-dubai/conversion-optimization" element={<ConversionOptimization />} />
+              <Route path="digital-marketing-agency-dubai/performance-marketing" element={<PerformanceMarketing />} />
+              <Route path="influencer-marketing-dubai" element={<InfluencerMarketingDubai />} />
+              <Route path="influencer-marketing-saudi-arabia" element={<InfluencerMarketingSaudiArabia />} />
+              <Route path="privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="terms-of-service" element={<TermsOfService />} />
+              <Route path="unsubscribe/:token" element={<Unsubscribe />} />
+              <Route path="faq" element={<FAQ />} />
               <Route path="*" element={<NotFound />} />
             </Route>
           </Routes>

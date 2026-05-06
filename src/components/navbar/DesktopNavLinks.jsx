@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { LocaleLink as Link } from "@/components/LocaleLink.jsx";
 import { useTranslation } from "react-i18next";
 import { NAV_LINKS } from "./constants";
 import { useNavColor } from "./hooks/useNavColor";

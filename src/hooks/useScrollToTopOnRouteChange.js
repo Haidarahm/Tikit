@@ -1,6 +1,7 @@
 import { useEffect, useRef, useCallback } from "react";
 import { useLocation } from "react-router-dom";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { stripLocalePrefix } from "../utils/localePaths";
 
 /**
  * Unified scroll-to-top on route change.
@@ -14,9 +15,17 @@ export function useScrollToTopOnRouteChange() {
   const { pathname, state } = useLocation();
   const previousPathnameRef = useRef(pathname);
 
-  const isWorkDetailRoute = useCallback(
-    (path) => path?.match?.(/^\/work\/(influence|social|creative|event)\/\d+$/),
+  const pathWithoutLocale = useCallback(
+    (path) => stripLocalePrefix(path || ""),
     []
+  );
+
+  const isWorkDetailRoute = useCallback(
+    (path) => {
+      const p = pathWithoutLocale(path);
+      return p?.match?.(/^\/work\/(influence|social|creative|event)\/\d+$/);
+    },
+    [pathWithoutLocale]
   );
 
   const scrollToTop = useCallback(() => {
@@ -45,40 +54,47 @@ export function useScrollToTopOnRouteChange() {
     const currentPathname = pathname;
     const previousPathname = previousPathnameRef.current;
 
+    const prevBase = pathWithoutLocale(previousPathname);
+    const currBase = pathWithoutLocale(currentPathname);
+
     const isNavigatingBetweenWorkSections =
-      previousPathname.startsWith("/work/") &&
-      currentPathname.startsWith("/work/") &&
+      prevBase.startsWith("/work/") &&
+      currBase.startsWith("/work/") &&
       previousPathname !== currentPathname;
     const isNavigatingToWorkDetail = isWorkDetailRoute(currentPathname);
-    
-    // Always scroll to top when navigating to blog detail pages
-    const isBlogDetailRoute = currentPathname.startsWith("/blogs/") && currentPathname !== "/blogs";
-    
+
+    const isBlogDetailRoute =
+      currBase.startsWith("/blogs/") && currBase !== "/blogs";
+
     const shouldScroll =
       !isNavigatingBetweenWorkSections || isNavigatingToWorkDetail || isBlogDetailRoute;
-    
+
     if (shouldScroll) {
       scrollToTop();
     }
 
     previousPathnameRef.current = currentPathname;
-  }, [pathname, state, isWorkDetailRoute, scrollToTop]);
+  }, [pathname, state, isWorkDetailRoute, pathWithoutLocale, scrollToTop]);
 
   // Delayed scrolls for lazy load + ScrollTrigger refresh
   useEffect(() => {
-    if (pathname.startsWith("/contact-us")) return;
+    const basePath = pathWithoutLocale(pathname);
+    if (basePath.startsWith("/contact-us")) return;
     if (state?.preserveScroll) return;
 
     const previousPathname = previousPathnameRef.current;
+    const prevBase = pathWithoutLocale(previousPathname);
+    const currBase = basePath;
+
     const isNavigatingBetweenWorkSections =
-      previousPathname.startsWith("/work/") &&
-      pathname.startsWith("/work/") &&
+      prevBase.startsWith("/work/") &&
+      currBase.startsWith("/work/") &&
       previousPathname !== pathname;
     const isNavigatingToWorkDetail = isWorkDetailRoute(pathname);
-    
-    // Always scroll to top when navigating to blog detail pages
-    const isBlogDetailRoute = pathname.startsWith("/blogs/") && pathname !== "/blogs";
-    
+
+    const isBlogDetailRoute =
+      currBase.startsWith("/blogs/") && currBase !== "/blogs";
+
     const shouldScroll =
       !isNavigatingBetweenWorkSections || isNavigatingToWorkDetail || isBlogDetailRoute;
 
@@ -94,20 +110,14 @@ export function useScrollToTopOnRouteChange() {
         scrollToTop();
         try {
           if (ScrollTrigger && typeof ScrollTrigger.refresh === "function") {
-            // Only refresh if there are active triggers and DOM is stable
             const activeTriggers = ScrollTrigger.getAll().filter(t => t.vars && t.vars.trigger && t.vars.trigger.isConnected);
             if (activeTriggers.length > 0) {
               requestAnimationFrame(() => {
                 try {
-                  // Store scroll position before refresh
-                  const scrollBeforeRefresh = window.pageYOffset || document.documentElement.scrollTop;
-                  
                   ScrollTrigger.refresh();
-                  
-                  // Force scroll to top after refresh, especially for blog routes
+
                   requestAnimationFrame(() => {
                     scrollToTop();
-                    // Double-check and force again if needed
                     const scrollAfterRefresh = window.pageYOffset || document.documentElement.scrollTop;
                     if (scrollAfterRefresh !== 0) {
                       scrollToTop();
@@ -126,5 +136,5 @@ export function useScrollToTopOnRouteChange() {
     ];
 
     return () => timeouts.forEach((t) => clearTimeout(t));
-  }, [pathname, state, isWorkDetailRoute, scrollToTop]);
+  }, [pathname, state, isWorkDetailRoute, pathWithoutLocale, scrollToTop]);
 }

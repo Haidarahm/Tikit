@@ -1,5 +1,4 @@
 import { useRef, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "../../store/ThemeContext.jsx";
 import { useClient } from "../../store/ClientContext.jsx";
@@ -10,8 +9,7 @@ export default function ContactDropdown({ isMobile = false, onClose }) {
   const { t } = useTranslation();
   useTheme();
   const { setClientType } = useClient();
-  const { isRtl } = useI18nLanguage();
-  const navigate = useNavigate();
+  const { isRtl, localizedNavigate } = useI18nLanguage();
   const contactDropdownRef = useRef(null);
   const [isContactDropdownOpen, setIsContactDropdownOpen] = useState(false);
 
@@ -42,7 +40,7 @@ const handleClientClick = () => {
     } catch (error) {
       console.warn("Failed to write shouldScrollToAction to sessionStorage:", error);
     }
-    navigate("/contact-us", { state: { preserveScroll: true } });
+    localizedNavigate("/contact-us", { state: { preserveScroll: true } });
     setIsContactDropdownOpen(false);
     if (onClose) onClose();
   };
@@ -54,7 +52,7 @@ const handleClientClick = () => {
     } catch (error) {
       console.warn("Failed to write shouldScrollToAction to sessionStorage:", error);
     }
-    navigate("/contact-us", { state: { preserveScroll: true } });
+    localizedNavigate("/contact-us", { state: { preserveScroll: true } });
     setIsContactDropdownOpen(false);
     if (onClose) onClose();
   };

@@ -63,10 +63,15 @@ export function useNavColor() {
       };
 
       // Create IntersectionObserver with rootMargin targeting navbar area
+      const viewH =
+        typeof window !== "undefined" && Number.isFinite(window.innerHeight)
+          ? window.innerHeight
+          : 800;
+      const bottomShrink = Math.max(0, viewH - navbarHeight);
       observerRef.current = new IntersectionObserver(observerCallback, {
         root: null,
         // Observe only the area where the navbar is: from top to navbarHeight
-        rootMargin: `0px 0px -${window.innerHeight - navbarHeight}px 0px`,
+        rootMargin: `0px 0px -${bottomShrink}px 0px`,
         threshold: [0, 0.1, 0.25, 0.5, 0.75, 1],
       });
 

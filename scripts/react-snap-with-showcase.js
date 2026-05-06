@@ -22,16 +22,24 @@ const API_BASE_CANDIDATES = [
   'https://back.tikit.ae/public/index.php/api',
 ].filter(Boolean);
 
+/** Crawl prefix for static HTML generation — matches `/en` route segment */
+const SNAP_LOC = '/en';
+
+function snapPath(pathname) {
+  if (!pathname || pathname === '/') return SNAP_LOC;
+  const normalized = pathname.startsWith('/') ? pathname : `/${pathname}`;
+  return `${SNAP_LOC}${normalized}`;
+}
+
 let API_BASE = API_BASE_CANDIDATES[0];
 
 const defaultInclude = [
-  '/',
-  '/blogs',
-  '/about-us',
-  '/services',
-  '/work',
-  '/contact',
-  '/contact-us',
+  snapPath('/'),
+  snapPath('/blogs'),
+  snapPath('/about-us'),
+  snapPath('/services'),
+  snapPath('/work'),
+  snapPath('/contact-us'),
 ];
 
 const WORK_CATEGORY_CONFIG = [
@@ -94,7 +102,7 @@ async function fetchAllBlogSlugs() {
       if (!Array.isArray(data) || data.length === 0) break;
 
       data.forEach((item) => {
-        if (item?.slug) slugs.add(`/blogs/${item.slug}`);
+        if (item?.slug) slugs.add(snapPath(`/blogs/${item.slug}`));
       });
 
       if (data.length < perPage) break;
@@ -124,7 +132,7 @@ async function fetchShowcaseSlugs() {
         : response?.data?.data ?? [];
     const slugs = data
       .filter((item) => item?.slug)
-      .map((item) => `/showcase/${item.slug}`);
+      .map((item) => snapPath(`/showcase/${item.slug}`));
     return slugs;
   } catch (err) {
     console.warn(
@@ -204,7 +212,7 @@ async function fetchWorkDetailUrls() {
       );
       items.forEach((item) => {
         if (!item?.slug) return;
-        urls.add(`${category.detailPrefix}/${item.slug}`);
+        urls.add(snapPath(`${category.detailPrefix}/${item.slug}`));
       });
     }
   }
@@ -256,7 +264,9 @@ async function main() {
       shell: true,
     });
     if (result.status !== 0) {
-      process.exit(result.status ?? 1);
+      console.warn(
+        `⚠️  react-snap exited with code ${result.status} — dist/ is still usable; check prerender logs above.`
+      );
     }
   } finally {
     pkg.reactSnap = {

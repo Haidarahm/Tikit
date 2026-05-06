@@ -8,7 +8,7 @@ import {
   FaTiktok,
   FaWhatsapp,
 } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { LocaleLink as Link } from "@/components/LocaleLink.jsx";
 import SVGComponent from "../assets/logo";
 import { useTheme } from "../store/ThemeContext.jsx";
 import { useSubscriptionStore } from "../store/subscriptionStore";

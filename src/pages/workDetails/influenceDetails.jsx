@@ -10,6 +10,7 @@ import { Skeleton } from "antd";
 import { useTranslation } from "react-i18next";
 import { useWorkItemDetailsStore } from "../../store/work/workItemDetailsStore";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
+import { stripLocalePrefix } from "../../utils/localePaths";
 import { useTheme } from "../../store/ThemeContext.jsx";
 import SEOHead from "../../components/SEOHead";
 import ContactUs from "../Home/ContactUs";
@@ -76,7 +77,7 @@ const InfluenceDetails = () => {
   const hasReels = Array.isArray(itemData?.reels) && itemData.reels.length > 0;
   const prefersCaseStudy = Boolean(location.state?.prefersCaseStudy);
   const shouldUseCaseStudyLoader =
-    prefersCaseStudy || location.pathname.startsWith("/work/influence/");
+    prefersCaseStudy || stripLocalePrefix(location.pathname).startsWith("/work/influence/");
   const caseData = useMemo(
     () => (hasReels ? workItemToCaseData(itemData) : null),
     [hasReels, itemData]

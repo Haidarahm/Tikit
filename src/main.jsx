@@ -5,6 +5,35 @@ import i18n, { initI18n } from "./locales/i18n";
 import { initReactI18next } from "react-i18next";
 import { I18nLanguageProvider } from "./store/I18nLanguageContext.jsx";
 
+// react-snap's headless Chromium may lack Intl.Segmenter (also affects very old browsers).
+if (typeof Intl !== "undefined" && typeof Intl.Segmenter !== "function") {
+  Intl.Segmenter = class {
+    constructor() {}
+    segment(input) {
+      const str = String(input ?? "");
+      const segments = [];
+      for (let i = 0; i < str.length; i++) {
+        segments.push({ segment: str[i], index: i, input: str });
+      }
+      return {
+        containing(idx) {
+          const i = Math.min(Math.max(Number(idx) || 0, 0), Math.max(0, segments.length - 1));
+          return segments[i] ?? { segment: "", index: 0, input: str };
+        },
+        [Symbol.iterator]() {
+          let i = 0;
+          return {
+            next() {
+              if (i < segments.length) return { value: segments[i++], done: false };
+              return { done: true };
+            },
+          };
+        },
+      };
+    }
+  };
+}
+
 if (typeof window !== "undefined") {
   window.addEventListener('error', (e) => {
     if (

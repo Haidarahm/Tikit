@@ -4,7 +4,7 @@ import { useWorksSectionsStore } from "../../store/work/worksSectionsStore";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
 import { useFontClass } from "../../hooks/useFontClass";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { LocaleLink as Link } from "@/components/LocaleLink.jsx";
 
 // Image component with skeleton placeholder
 const ImageWithSkeleton = ({ src, alt, className, ...props }) => {

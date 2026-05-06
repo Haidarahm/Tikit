@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
 import { useI18nLanguage } from "../store/I18nLanguageContext";
+import { stripLocalePrefix } from "../utils/localePaths";
 import { useTheme } from "../store/ThemeContext";
 import { useSubscriptionStore } from "../store/subscriptionStore";
 import { gsap } from "gsap";
@@ -29,7 +30,8 @@ const NewsletterPopup = () => {
 
   useEffect(() => {
     // Only ever schedule on the main (home) page
-    if (location.pathname !== "/") {
+    const pathWithoutLocale = stripLocalePrefix(location.pathname);
+    if (pathWithoutLocale !== "/") {
       setIsVisible(false);
       return;
     }

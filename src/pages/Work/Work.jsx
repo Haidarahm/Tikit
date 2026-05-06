@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useTheme } from "../../store/ThemeContext.jsx";
 import "./work.css";
 import { gsap } from "gsap";
@@ -31,7 +31,7 @@ const sectionItemsCache = new Map();
 
 const Work = () => {
   const { theme } = useTheme();
-  const navigate = useNavigate();
+  const { localizedNavigate, language, isRtl } = useI18nLanguage();
   const { workSlug } = useParams();
   const {
     sections,
@@ -52,7 +52,6 @@ const Work = () => {
     loadEventItems,
     resetAll,
   } = useWorkItemsStore();
-  const { language, isRtl } = useI18nLanguage();
   const { fontBody } = useFontClass();
   const { t } = useTranslation();
   const sectionItemsCacheRef = useRef(sectionItemsCache);
@@ -139,7 +138,7 @@ const Work = () => {
     if (!fallback) return;
 
     if (workSlug == null || String(workSlug).trim() === "" || String(workSlug) !== String(fallback.slug)) {
-      navigate(`/work/${encodeURIComponent(fallback.slug)}`, { replace: true });
+      localizedNavigate(`/work/${encodeURIComponent(fallback.slug)}`, { replace: true });
     }
 
     if (activeSectionSlug !== fallback.slug) {
@@ -148,7 +147,7 @@ const Work = () => {
     if (activeType !== fallback.type) {
       setActiveType(fallback.type);
     }
-  }, [sections, workSlug, activeSectionSlug, activeType, navigate]);
+  }, [sections, workSlug, activeSectionSlug, activeType, localizedNavigate]);
 
   useEffect(() => {
     if (!activeSectionSlug || !activeType) return;
@@ -223,7 +222,7 @@ const Work = () => {
   const handleViewDetails = (detailId) => {
     const targetHref = getWorkItemHref(detailId);
     if (!targetHref) return;
-    navigate(targetHref);
+    localizedNavigate(targetHref);
   };
 
   useEffect(() => {
@@ -263,7 +262,7 @@ const Work = () => {
         onSelect={(section) => {
           if (section.slug === activeSectionSlug) return;
           // Navigate with preserveScroll flag to prevent scroll-to-top from triggering
-          navigate(`/work/${encodeURIComponent(section.slug)}`, {
+          localizedNavigate(`/work/${encodeURIComponent(section.slug)}`, {
             state: { preserveScroll: true }
           });
         }}
@@ -284,17 +283,17 @@ const Work = () => {
         onViewDetails={(detailId, itemMeta) => {
           if (detailId == null) return;
           if (activeKey === "influence") {
-            navigate(`/work/influence/${encodeURIComponent(detailId)}`, {
+            localizedNavigate(`/work/influence/${encodeURIComponent(detailId)}`, {
               state: {
                 prefersCaseStudy: Boolean(itemMeta?.hasReels),
               },
             });
           } else if (activeKey === "social") {
-            navigate(`/work/social/${encodeURIComponent(detailId)}`);
+            localizedNavigate(`/work/social/${encodeURIComponent(detailId)}`);
           } else if (activeKey === "creative") {
-            navigate(`/work/creative/${encodeURIComponent(detailId)}`);
+            localizedNavigate(`/work/creative/${encodeURIComponent(detailId)}`);
           } else if (activeKey === "events") {
-            navigate(`/work/event/${encodeURIComponent(detailId)}`);
+            localizedNavigate(`/work/event/${encodeURIComponent(detailId)}`);
           } else {
             handleViewDetails(detailId);
           }

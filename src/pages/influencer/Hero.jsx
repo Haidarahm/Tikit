@@ -4,8 +4,6 @@ import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../store/I18nLanguageContext";
 import { useTheme } from "../../store/ThemeContext";
 import LightRays from "../../components/LightRays";
-
-// Import all influencer images
 import abdullahBinDfna from "../../assets/influencers/Abdullah-Bin-Dfna.webp";
 import ahmedBenChaibah from "../../assets/influencers/ahmed-ben-chaibah.webp";
 import amiraMohamed from "../../assets/influencers/amira-mohamed.webp";
@@ -27,7 +25,6 @@ import thaerAlTurkmani from "../../assets/influencers/thaer-al-turkmani.webp";
 import yousifAlhammadi from "../../assets/influencers/yousif-alhammadi.webp";
 import yousufSaleh from "../../assets/influencers/yousuf-saleh.webp";
 import InfiniteScroller from "./InfiniteScroller";
-import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
   const h1WrapRef = useRef(null);
@@ -35,9 +32,8 @@ const Hero = () => {
   const h2WrapRef = useRef(null);
   const h2Ref = useRef(null);
   const { t } = useTranslation();
-  const { isRtl } = useI18nLanguage();
+  const { isRtl, localizedNavigate } = useI18nLanguage();
   const { theme } = useTheme();
-  const navigate = useNavigate();
   // Create influencers images array
   const influencersImages = useMemo(
     () => [
@@ -155,7 +151,7 @@ const Hero = () => {
             transition-all duration-300
              hover:bg-[#52C3C5] hover:text-white
               shadow-lg shadow-[#52C3C5]/30"
-            onClick={() => navigate("/influencer-register")}
+            onClick={() => localizedNavigate("/influencer-register")}
           >
             {t("influencer.hero.registerNow")}
           </button>

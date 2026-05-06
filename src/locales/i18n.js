@@ -1,14 +1,27 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
+import { getLocaleFromPathname } from "../utils/localePaths";
 
-function readStoredLanguage() {
-  try {
-    const v = localStorage.getItem("language");
-    if (v === "en" || v === "ar" || v === "fr") return v;
-    return "en";
-  } catch {
-    return "en";
+const SUPPORTED_LANGS = new Set(["en", "fr", "ar"]);
+
+function readLanguageFromUrl() {
+  if (typeof window === "undefined") return null;
+  const urlLang = new URLSearchParams(window.location.search).get("lang");
+  return SUPPORTED_LANGS.has(urlLang) ? urlLang : null;
+}
+
+function resolveInitialLanguage() {
+  if (typeof window !== "undefined") {
+    const fromPath = getLocaleFromPathname(window.location.pathname);
+    if (fromPath) return fromPath;
   }
+  const fromUrl = readLanguageFromUrl();
+  if (fromUrl) return fromUrl;
+  if (typeof document !== "undefined") {
+    const htmlLang = document.documentElement.lang?.toLowerCase?.();
+    if (SUPPORTED_LANGS.has(htmlLang)) return htmlLang;
+  }
+  return "en";
 }
 
 function loadLangBundle(lang) {
@@ -45,12 +58,19 @@ function loadLangBundle(lang) {
   }));
 }
 
+export async function ensureLanguageLoaded(lang) {
+  if (!SUPPORTED_LANGS.has(lang)) return;
+  if (i18n.hasResourceBundle(lang, "translation")) return;
+  const bundle = await loadLangBundle(lang);
+  i18n.addResourceBundle(lang, "translation", bundle, true, true);
+}
+
 /**
  * Loads only the active locale (+ English when not English, for fallbackLng).
  * Keeps unused translation JSON out of the initial JS chunk vs static imports of all languages.
  */
 export async function initI18n() {
-  const lng = readStoredLanguage();
+  const lng = resolveInitialLanguage();
 
   let resources;
   if (lng === "en") {
