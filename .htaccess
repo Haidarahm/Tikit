@@ -42,6 +42,36 @@ RewriteCond %{REQUEST_URI} ^/blog(/.*)?$ [NC]
 RewriteRule ^blog/(.*)$ /blogs/$1 [R=301,L]
 RewriteRule ^blog$ /blogs [R=301,L]
 
+# 4. Locale routing (multilingual)
+# - Root auto-redirect by preferred_locale cookie, then browser language, fallback /en
+# - Canonicalize non-localized app routes to /en/* (permanent)
+RewriteCond %{REQUEST_URI} ^/$
+RewriteCond %{HTTP:Cookie} (^|;\s*)preferred_locale=ar(;|$) [NC]
+RewriteRule ^$ /ar [R=302,L]
+
+RewriteCond %{REQUEST_URI} ^/$
+RewriteCond %{HTTP:Cookie} (^|;\s*)preferred_locale=fr(;|$) [NC]
+RewriteRule ^$ /fr [R=302,L]
+
+RewriteCond %{REQUEST_URI} ^/$
+RewriteCond %{HTTP:Cookie} (^|;\s*)preferred_locale=en(;|$) [NC]
+RewriteRule ^$ /en [R=302,L]
+
+RewriteCond %{REQUEST_URI} ^/$
+RewriteCond %{HTTP:Accept-Language} ^ar [NC]
+RewriteRule ^$ /ar [R=302,L]
+
+RewriteCond %{REQUEST_URI} ^/$
+RewriteCond %{HTTP:Accept-Language} ^fr [NC]
+RewriteRule ^$ /fr [R=302,L]
+
+RewriteRule ^$ /en [R=302,L]
+
+# Canonical fallback for any route missing locale prefix
+RewriteCond %{REQUEST_URI} !^/(en|fr|ar)(/|$) [NC]
+RewriteCond %{REQUEST_URI} !\.[A-Za-z0-9]{1,8}$ [NC]
+RewriteRule ^(.+)$ /en/$1 [R=301,L]
+
 # 3. Remove query parameters (OPTIONAL)
 # ⚠️ احذف هذا الجزء إذا تستخدم UTM أو tracking
 # RewriteCond %{QUERY_STRING} .+

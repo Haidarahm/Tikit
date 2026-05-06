@@ -1,0 +1,74 @@
+{
+  "redirects": [
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "preferred_locale",
+          "value": "ar"
+        }
+      ],
+      "destination": "/ar",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "preferred_locale",
+          "value": "fr"
+        }
+      ],
+      "destination": "/fr",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "preferred_locale",
+          "value": "en"
+        }
+      ],
+      "destination": "/en",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "(?i).*(^|,|\\s)ar(-[A-Z]{2})?(,|;|$).*"
+        }
+      ],
+      "destination": "/ar",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "(?i).*(^|,|\\s)fr(-[A-Z]{2})?(,|;|$).*"
+        }
+      ],
+      "destination": "/fr",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "destination": "/en",
+      "permanent": false
+    },
+    {
+      "source": "/:path((?!en/|fr/|ar/|.*\\..*).+)",
+      "destination": "/en/:path",
+      "permanent": true
+    }
+  ]
+}

@@ -15,6 +15,15 @@ import {
   withLocalePrefix,
 } from "../utils/localePaths";
 
+const LOCALE_COOKIE_NAME = "preferred_locale";
+
+function persistPreferredLocaleCookie(lang) {
+  if (typeof document === "undefined") return;
+  if (!["en", "fr", "ar"].includes(lang)) return;
+  const oneYear = 60 * 60 * 24 * 365;
+  document.cookie = `${LOCALE_COOKIE_NAME}=${lang}; Max-Age=${oneYear}; Path=/; SameSite=Lax`;
+}
+
 const I18nLanguageContext = createContext({
   language: DEFAULT_LOCALE,
   isRtl: false,
@@ -74,6 +83,10 @@ export function I18nLanguageProvider({ children }) {
     }
   }, [language]);
 
+  useEffect(() => {
+    persistPreferredLocaleCookie(language);
+  }, [language]);
+
   const localizedPath = useCallback(
     (path) => {
       if (path == null || typeof path !== "string") return path;
@@ -112,6 +125,7 @@ export function I18nLanguageProvider({ children }) {
       const search = params.toString() ? `?${params.toString()}` : "";
 
       setLanguageState(lang);
+      persistPreferredLocaleCookie(lang);
       if (i18n.language !== lang) {
         await i18n.changeLanguage(lang);
       }
