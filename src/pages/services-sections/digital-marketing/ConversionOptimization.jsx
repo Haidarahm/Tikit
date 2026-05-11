@@ -1,6 +1,4 @@
-import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../../store/I18nLanguageContext";
 import {
@@ -21,8 +19,6 @@ import ServiceCard from "../../../components/ServiceCard";
 import DMCTA from "./components/DMCTA";
 import DMRelatedServices from "./components/DMRelatedServices";
 import "./digitalMarketing.css";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const SERVICE_KEYS = [
   "croAudit",
@@ -48,17 +44,32 @@ const SERVICE_ICONS = [
 
 const PROCESS_KEYS = ["discover", "diagnose", "design", "test", "implement"];
 
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.06,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+const viewport = { once: true, amount: 0.15, margin: "0px 0px -8% 0px" };
+
 const toArray = (value) => (Array.isArray(value) ? value : []);
 
 const ConversionOptimization = () => {
   const { t } = useTranslation();
   const { isRtl, language } = useI18nLanguage();
-  const heroRef = useRef(null);
-  const servicesRef = useRef(null);
-  const processRef = useRef(null);
-  const expectationsRef = useRef(null);
-  const insightRef = useRef(null);
-  const linksRef = useRef(null);
 
   const faqItems = toArray(
     t("serviceSections.digitalMarketing.conversionOptimization.faqItems", {
@@ -78,58 +89,6 @@ const ConversionOptimization = () => {
     ),
   );
   const fontClass = language === "ar" ? "font-cairo" : "font-antonio";
-
-  useEffect(() => {
-    let ctx;
-    const timeout = setTimeout(() => {
-      ctx = gsap.context(() => {
-        const animate = (ref, selector, vars = {}) => {
-          if (!ref.current) return;
-          const els = ref.current.querySelectorAll(selector);
-          if (!els.length) return;
-          gsap.fromTo(
-            els,
-            { opacity: 0, y: vars.y ?? 40 },
-            {
-              opacity: 1,
-              y: 0,
-              duration: vars.duration ?? 0.8,
-              stagger: vars.stagger ?? 0.12,
-              ease: vars.ease ?? "power2.out",
-              scrollTrigger: {
-                trigger: ref.current,
-                start: vars.start ?? "top 85%",
-                toggleActions: "play none none none",
-              },
-            },
-          );
-        };
-
-        animate(heroRef, ".hero-animate", {
-          y: 60,
-          duration: 1,
-          stagger: 0.2,
-          ease: "power3.out",
-        });
-        animate(servicesRef, ".service-card", { y: 50, stagger: 0.15 });
-        animate(processRef, ".dm-process-card", {
-          stagger: 0.15,
-          ease: "power3.out",
-        });
-        animate(expectationsRef, ".dm-check-item", { y: 24, stagger: 0.08 });
-        animate(insightRef, ".dm-insight-block", { y: 24, stagger: 0.1 });
-        animate(linksRef, ".dm-link-card", {
-          y: 30,
-          duration: 0.6,
-          stagger: 0.1,
-        });
-      });
-    }, 100);
-    return () => {
-      clearTimeout(timeout);
-      if (ctx) ctx.revert();
-    };
-  }, []);
 
   return (
     <div
@@ -156,47 +115,64 @@ const ConversionOptimization = () => {
       />
 
       {/* Hero */}
-      <section ref={heroRef} className="dm-hero">
+      <section className="dm-hero">
         <div className="dm-hero-overlay">
           <div className="dm-hero-gradient" />
         </div>
-        <div className="dm-hero-content relative z-10">
-          <p className="hero-animate dm-hero-kicker">
+        <motion.div
+          className="dm-hero-content relative z-10"
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+          variants={containerVariants}
+        >
+          <motion.p
+            variants={itemVariants}
+            className="dm-hero-kicker"
+          >
             {t(
               "serviceSections.digitalMarketing.conversionOptimization.heroTagline",
             )}
-          </p>
-          <HeroWithBadge
-            badge={t(
-              "serviceSections.digitalMarketing.conversionOptimization.badge",
-            )}
-            title={t(
-              "serviceSections.digitalMarketing.conversionOptimization.hero.title",
-            )}
-            mainWord={t(
-              "serviceSections.digitalMarketing.conversionOptimization.hero.mainWord",
-            )}
-            description={t(
-              "serviceSections.digitalMarketing.conversionOptimization.hero.description",
-            )}
-            titleClassName="hero-animate block"
-            descriptionClassName="hero-animate dm-hero-desc"
-            contentClassName="relative z-10 max-w-6xl mx-auto text-center mt-6"
-            disableAnimation
-          />
-          <p className="hero-animate dm-hero-desc dm-hero-desc--secondary mt-6">
+          </motion.p>
+          <motion.div variants={itemVariants}>
+            <HeroWithBadge
+              badge={t(
+                "serviceSections.digitalMarketing.conversionOptimization.badge",
+              )}
+              title={t(
+                "serviceSections.digitalMarketing.conversionOptimization.hero.title",
+              )}
+              mainWord={t(
+                "serviceSections.digitalMarketing.conversionOptimization.hero.mainWord",
+              )}
+              description={t(
+                "serviceSections.digitalMarketing.conversionOptimization.hero.description",
+              )}
+              titleClassName="block"
+              descriptionClassName="dm-hero-desc"
+              contentClassName="relative z-10 max-w-6xl mx-auto text-center mt-6"
+              disableAnimation
+            />
+          </motion.div>
+          <motion.p
+            variants={itemVariants}
+            className="dm-hero-desc dm-hero-desc--secondary mt-6"
+          >
             {t(
               "serviceSections.digitalMarketing.conversionOptimization.heroSecondary",
             )}
-          </p>
-          <div className="hero-animate mt-10 flex justify-center">
+          </motion.p>
+          <motion.div
+            variants={itemVariants}
+            className="mt-10 flex justify-center"
+          >
             <a href="/contact-us" className="dm-cta-btn">
               {t(
                 "serviceSections.digitalMarketing.conversionOptimization.heroCta",
               )}
             </a>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </section>
 
       <div className="dm-divider-wrap">
@@ -242,37 +218,47 @@ const ConversionOptimization = () => {
       </div>
 
       {/* Services */}
-      <section ref={servicesRef} className="dm-section dm-section-alt">
-        <div className="dm-container-wide">
-          <h2 className={`dm-section-title ${fontClass}`}>
+      <section className="dm-section dm-section-alt">
+        <motion.div
+          className="dm-container-wide"
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+          variants={containerVariants}
+        >
+          <motion.h2
+            variants={itemVariants}
+            className={`dm-section-title ${fontClass}`}
+          >
             {t(
               "serviceSections.digitalMarketing.conversionOptimization.services.title",
             )}
-          </h2>
-          <p className="dm-section-subtitle">
+          </motion.h2>
+          <motion.p variants={itemVariants} className="dm-section-subtitle">
             {t(
               "serviceSections.digitalMarketing.conversionOptimization.services.subtitle",
             )}
-          </p>
+          </motion.p>
           <div className="dm-feature-grid">
             {SERVICE_KEYS.map((key, idx) => (
-              <ServiceCard
-                key={key}
-                icon={SERVICE_ICONS[idx]}
-                title={t(
-                  `serviceSections.digitalMarketing.conversionOptimization.services.items.${key}.title`,
-                )}
-                description={t(
-                  `serviceSections.digitalMarketing.conversionOptimization.services.items.${key}.description`,
-                )}
-                iconWrapperClassName="dm-card-icon"
-                iconClassName="w-8 h-8 text-white"
-                titleClassName="dm-card-title"
-                descriptionClassName="dm-card-desc"
-              />
+              <motion.div key={key} variants={itemVariants}>
+                <ServiceCard
+                  icon={SERVICE_ICONS[idx]}
+                  title={t(
+                    `serviceSections.digitalMarketing.conversionOptimization.services.items.${key}.title`,
+                  )}
+                  description={t(
+                    `serviceSections.digitalMarketing.conversionOptimization.services.items.${key}.description`,
+                  )}
+                  iconWrapperClassName="dm-card-icon"
+                  iconClassName="w-8 h-8 text-white"
+                  titleClassName="dm-card-title"
+                  descriptionClassName="dm-card-desc"
+                />
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </section>
 
       <div className="dm-divider-wrap">
@@ -280,21 +266,30 @@ const ConversionOptimization = () => {
       </div>
 
       {/* Process */}
-      <section ref={processRef} className="dm-section">
-        <div className="dm-container">
-          <h2 className={`dm-section-title ${fontClass}`}>
+      <section className="dm-section">
+        <motion.div
+          className="dm-container"
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+          variants={containerVariants}
+        >
+          <motion.h2
+            variants={itemVariants}
+            className={`dm-section-title ${fontClass}`}
+          >
             {t(
               "serviceSections.digitalMarketing.conversionOptimization.process.title",
             )}
-          </h2>
-          <p className="dm-section-subtitle">
+          </motion.h2>
+          <motion.p variants={itemVariants} className="dm-section-subtitle">
             {t(
               "serviceSections.digitalMarketing.conversionOptimization.process.subtitle",
             )}
-          </p>
+          </motion.p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
             {PROCESS_KEYS.map((step, idx) => (
-              <div key={step} className="dm-process-card">
+              <motion.div key={step} variants={itemVariants} className="dm-process-card">
                 <div className="dm-step-number">
                   {String(idx + 1).padStart(2, "0")}
                 </div>
@@ -308,10 +303,10 @@ const ConversionOptimization = () => {
                     `serviceSections.digitalMarketing.conversionOptimization.process.steps.${step}.description`,
                   )}
                 </p>
-              </div>
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </section>
 
       <div className="dm-divider-wrap">
@@ -319,27 +314,40 @@ const ConversionOptimization = () => {
       </div>
 
       {/* Expectations */}
-      <section ref={expectationsRef} className="dm-section dm-section-alt">
-        <div className="dm-container">
-          <h2 className={`dm-section-title ${fontClass}`}>
+      <section className="dm-section dm-section-alt">
+        <motion.div
+          className="dm-container"
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+          variants={containerVariants}
+        >
+          <motion.h2
+            variants={itemVariants}
+            className={`dm-section-title ${fontClass}`}
+          >
             {t(
               "serviceSections.digitalMarketing.conversionOptimization.expectations.title",
             )}
-          </h2>
-          <p className="dm-section-subtitle">
+          </motion.h2>
+          <motion.p variants={itemVariants} className="dm-section-subtitle">
             {t(
               "serviceSections.digitalMarketing.conversionOptimization.expectations.subtitle",
             )}
-          </p>
+          </motion.p>
           <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-10">
             {expectationsList.map((item, idx) => (
-              <li key={idx} className="dm-check-item">
+              <motion.li
+                key={idx}
+                variants={itemVariants}
+                className="dm-check-item"
+              >
                 <HiCheckCircle className="dm-check-icon" />
                 <span className="dm-text-sm">{item}</span>
-              </li>
+              </motion.li>
             ))}
           </ul>
-        </div>
+        </motion.div>
       </section>
 
       <div className="dm-divider-wrap">
@@ -347,24 +355,33 @@ const ConversionOptimization = () => {
       </div>
 
       {/* Market insight */}
-      <section ref={insightRef} className="dm-section">
-        <div className="dm-container">
-          <h2 className={`dm-section-title ${fontClass}`}>
+      <section className="dm-section">
+        <motion.div
+          className="dm-container"
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+          variants={containerVariants}
+        >
+          <motion.h2
+            variants={itemVariants}
+            className={`dm-section-title ${fontClass}`}
+          >
             {t(
               "serviceSections.digitalMarketing.conversionOptimization.marketInsight.title",
             )}
-          </h2>
-          <p className="dm-text dm-insight-block">
+          </motion.h2>
+          <motion.p variants={itemVariants} className="dm-text dm-insight-block">
             {t(
               "serviceSections.digitalMarketing.conversionOptimization.marketInsight.paragraph",
             )}
-          </p>
-          <p className="dm-text dm-insight-block">
+          </motion.p>
+          <motion.p variants={itemVariants} className="dm-text dm-insight-block">
             {t(
               "serviceSections.digitalMarketing.conversionOptimization.marketInsight.paragraph2",
             )}
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
       </section>
 
       <div className="dm-divider-wrap">
@@ -379,9 +396,14 @@ const ConversionOptimization = () => {
       />
 
       {/* Related services */}
-      <section ref={linksRef}>
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={viewport}
+        variants={itemVariants}
+      >
         <DMRelatedServices current="conversionOptimization" />
-      </section>
+      </motion.section>
 
       <DMCTA />
     </div>
