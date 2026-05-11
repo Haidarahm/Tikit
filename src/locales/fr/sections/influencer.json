@@ -1761,91 +1761,140 @@
         ]
       },
       "paidAds": {
-        "badge": "Gestion Publicités Dubaï",
+        "badge": "Gestion des publicités payantes à Dubaï & UAE",
         "hero": {
-          "title": "Gestion Experte",
-          "mainWord": "des Publicités",
-          "description": "Nous gérons des campagnes publicitaires performantes sur Google, Facebook, LinkedIn et TikTok."
+          "title": "Gestion des publicités payantes à Dubaï &",
+          "mainWord": "UAE",
+          "description": "Arrêtez de payer des clics qui ne convertissent pas. Chez Tikit, la gestion des publicités payantes s'adresse aux marques des EAU qui veulent une croissance mesurable, pas des vanity metrics. Google Ads, Meta, TikTok ou Snapchat : notre équipe performance pilote chaque dirham avec précision, créativité et optimisation continue."
         },
+        "heroSecondary": "Plus de 300 clients à Dubaï, Riyad et Djeddah ont transformé le paid media en levier de croissance majeur. À vous de jouer.",
+        "heroCta": "Obtenir un audit publicitaire gratuit",
         "definition": {
-          "whatIsTitle": "Qu'est-ce que la Gestion des Publicités ?",
-          "paragraph": "La gestion des publicités payantes implique la planification stratégique, l'exécution et l'optimisation des campagnes publicitaires sur les plateformes digitales.",
+          "whatIsTitle": "Pourquoi la publicité payante aux EAU exige une expertise pointue",
+          "paragraph": "Le marché publicitaire digital émirien est compétitif, rapide et coûteux si vous improvisez. Les CPC figurent parmi les plus élevés de MENA et les audiences attendent des créations premium et culturellement pertinentes — les campagnes génériques ne suffisent pas.",
+          "paragraph2": "Chez Tikit, nous dépassons la simple mise en ligne. Nous construisons des écosystèmes publicitaires — architecture d'audience, stratégie créative, enchères et expérience post-clic — pour que chaque annonce ait une chance réelle de générer des résultats.",
+          "benefitsLabel": "Ce que vous obtenez dès le premier jour :",
           "benefitsList": [
-            "Visibilité immédiate dès le lancement",
-            "Ciblage précis de l'audience",
-            "Contrôle total des budgets",
-            "Résultats mesurables avec attribution claire",
-            "Tests et itérations rapides"
+            "Une stratégie de canaux alignée sur vos objectifs, pas sur les vanity metrics.",
+            "Des campagnes qui associent ciblage et créations adaptées aux audiences UAE.",
+            "Une optimisation continue des enchères, audiences et tests créatifs.",
+            "Un tracking qui relie les dépenses aux leads, ventes et ROAS.",
+            "Des reportings clairs exploitables chaque semaine."
           ]
         },
         "services": {
-          "title": "Plateformes Gérées",
-          "subtitle": "Gestion publicitaire experte sur toutes les plateformes majeures",
+          "title": "Nos services de gestion des publicités payantes",
+          "subtitle": "Six expertises plateforme réunies au sein d'une seule équipe performance pour Dubaï et le GCC.",
           "items": {
             "googleAds": {
-              "title": "Google Ads",
-              "description": "Campagnes Search, Display, Shopping et YouTube pour un trafic à forte intention."
+              "title": "Google Ads & campagnes Search",
+              "description": "Capturez les acheteurs à forte intention au moment de la recherche. Groupes d'annonces serrés, copy convaincante et tests continus pour baisser le CPA tout en montant en volume — du Shopping au Performance Max sur tout l'écosystème Google."
             },
-            "facebookAds": {
-              "title": "Facebook & Instagram Ads",
-              "description": "Publicité sociale full-funnel avec ciblage avancé."
-            },
-            "linkedinAds": {
-              "title": "LinkedIn Ads",
-              "description": "Publicité B2B avec ciblage professionnel précis."
+            "metaAds": {
+              "title": "Meta Ads (Facebook & Instagram)",
+              "description": "Meta reste le canal le plus puissant pour notoriété et direct response aux EAU. Nous combinons intelligence d'audience et créations qui arrêtent le scroll — awareness, leads, e-commerce — affinées quotidiennement avec les données live."
             },
             "tiktokAds": {
               "title": "TikTok Ads",
-              "description": "Publicité vidéo engageante pour atteindre les jeunes audiences."
+              "description": "TikTok est où se forment les décisions d'achat. Nous produisons des vidéos natives, Spark Ads et formats à fort impact qui s'intègrent au feed, sonnent authentiques et convertissent."
             },
-            "displayAds": {
-              "title": "Display Advertising",
-              "description": "Campagnes display programmatiques via éditeurs premium."
+            "snapchatAds": {
+              "title": "Publicité Snapchat",
+              "description": "Avec une pénétration Snapchat parmi les plus élevées au monde, les EAU sont idéales pour Snap Ads. Créations plein écran, storytelling pour audiences jeunes et solvables — tracking et reporting intégrés."
             },
-            "remarketing": {
-              "title": "Remarketing",
-              "description": "Campagnes stratégiques de réengagement des visiteurs."
+            "linkedinAds": {
+              "title": "LinkedIn Ads",
+              "description": "Touchez les décideurs B2B. Sponsored Content, Lead Gen Forms et InMail pour placer votre marque devant les profils qui comptent vraiment."
+            },
+            "programmaticDisplay": {
+              "title": "Programmatique & display",
+              "description": "Visibilité sur inventaires premium UAE. Retargeting des audiences chaudes, notoriété à l'échelle, présence partout où vos acheteurs naviguent."
             }
           }
+        },
+        "included": {
+          "title": "Qu'est-ce qui est inclus dans notre gestion des publicités payantes ?",
+          "subtitle": "Tout le nécessaire pour piloter un paid media discipliné et transparent.",
+          "items": [
+            "Configuration complète du compte et architecture des campagnes — ou audit et reprise de comptes existants",
+            "Recherche d'audience, personas et stratégie de ciblage",
+            "Briefs créatifs et support de production (statique, vidéo, carrousel)",
+            "Tests A/B des textes, visuels, landing pages et CTA",
+            "Gestion quotidienne des enchères et optimisation des budgets",
+            "Mise en place du tracking conversions via GA4, Meta Pixel et tags spécifiques",
+            "Rapports hebdomadaires avec commentaires clairs et actions prioritaires",
+            "Revues stratégiques mensuelles avec recommandations prospectives"
+          ]
+        },
+        "whyChoose": {
+          "title": "Pourquoi les marques choisissent Tikit pour le paid media ?",
+          "items": [
+            {
+              "title": "La performance est notre seule métrique",
+              "description": "Nous ne brandissons pas les impressions comme un succès. Nous suivons leads, ventes, CPA et ROAS — chaque décision relie la dépense à votre résultat business."
+            },
+            {
+              "title": "Des créations qui fonctionnent vraiment aux EAU",
+              "description": "Les annonces échouent d'abord sur le créatif, pas sur le budget. Notre équipe maîtrise les nuances culturelles, les usages plateforme et les attentes visuelles des audiences émiriennes."
+            },
+            {
+              "title": "Reporting transparent, sans jargon",
+              "description": "Vous savez toujours où va votre budget : ce qui marche, ce qui bloque, et ce que nous changeons ensuite — en langage clair."
+            },
+            {
+              "title": "Une équipe qui va vite",
+              "description": "Les tendances et mises à jour plateforme évoluent chaque semaine. Nous anticipons et pivotons sans attendre les revues trimestrielles."
+            }
+          ]
         },
         "process": {
-          "title": "Notre Processus Publicitaire",
+          "title": "Comment nous pilotons le paid media chez Tikit",
+          "subtitle": "Quatre phases disciplinées — chacune reliée à des résultats mesurables.",
           "steps": {
             "audit": {
-              "title": "Audit du Compte",
-              "description": "Revue approfondie des campagnes existantes et identification des opportunités."
+              "title": "Audit & découverte",
+              "description": "Nous passons en revue comptes, funnels et marché pour repérer gaspillages, audiences manquantes et lacunes créatives avant d'accélérer les dépenses."
             },
             "setup": {
-              "title": "Configuration",
-              "description": "Structure stratégique avec ciblage, textes et créatifs optimisés."
+              "title": "Construction & lancement",
+              "description": "Nous architecturons campagnes, audiences, créatifs et tracking pour des lancements pensés pour apprendre — pas pour deviner."
             },
             "optimize": {
-              "title": "Optimisation Quotidienne",
-              "description": "Gestion continue des enchères et tests créatifs."
+              "title": "Optimisation & tests",
+              "description": "Enchères quotidiennes, rotation créative et expériences landing pour pousser les KPIs dans la bonne direction."
             },
             "report": {
-              "title": "Reporting & Analyse",
-              "description": "Rapports transparents avec insights actionnables."
+              "title": "Reporting & projection",
+              "description": "Dashboards hebdo et sessions mensuelles transforment les résultats en prochaine vague de croissance scalable."
             }
           }
         },
-        "faqTitle": "FAQ Publicités Payantes",
+        "finalCta": {
+          "title": "Prêt à faire compter chaque dirham publicitaire ?",
+          "description": "Construisons une stratégie paid media qui tient ses promesses. Échangez avec notre équipe aujourd'hui pour un audit gratuit de vos comptes — avec des recommandations immédiatement actionnables.",
+          "button": "Obtenir un audit publicitaire gratuit"
+        },
+        "faqTitle": "Questions fréquentes",
         "faqItems": [
           {
-            "question": "Combien investir en publicité à Dubaï ?",
-            "answer": "Nous recommandons un minimum de 5 000-10 000 AED/mois. Les industries compétitives nécessitent 20 000-50 000 AED/mois."
+            "question": "Combien de temps avant de voir des résultats ?",
+            "answer": "Cela dépend des objectifs et du secteur, mais la plupart des campagnes produisent des signaux mesurables sous deux semaines. E-commerce et lead gen montrent souvent un ROI net sous 30 jours lorsque créatif et ciblage sont calibrés."
           },
           {
-            "question": "Quelle plateforme pour mon entreprise ?",
-            "answer": "Google pour l'intention de recherche, Facebook pour la notoriété, LinkedIn pour le B2B, TikTok pour les jeunes."
+            "question": "Sur quelles plateformes dois-je annoncer ?",
+            "answer": "Tout dépend de l'audience, du produit et des objectifs. L'onboarding inclut un audit marché et un mix recommandé — beaucoup de marques UAE gagnent avec Google Search + Meta."
           },
           {
-            "question": "Qu'est-ce qu'un bon ROAS ?",
-            "answer": "Varie selon l'industrie. L'e-commerce vise 3-5x. Nous définissons des benchmarks selon votre secteur."
+            "question": "Gérez-vous le créatif ou seulement les campagnes ?",
+            "answer": "Les deux. Nous pouvons brief, produire et livrer le créatif dans le rétainer — ou collaborer avec votre équipe interne. Dans tous les cas, les annonces respectent les best practices plateforme et les standards de conversion."
           },
           {
-            "question": "Comment optimisez-vous les campagnes ?",
-            "answer": "Tests A/B, affinement d'audience, optimisation des enchères, gestion des mots-clés négatifs."
+            "question": "Quel budget prévoir pour la publicité aux EAU ?",
+            "answer": "Les niveaux varient selon la compétition et l'ambition. Nous accompagnons plusieurs paliers et posons des attentes honnêtes — transparence plutôt que promesses excessives."
+          },
+          {
+            "question": "Imposez-vous des contrats longue durée ?",
+            "answer": "Non. Les accords privilégient la flexibilité. Les clients restent pour la croissance réelle — pas parce qu'ils sont enfermés dans des clauses rigides."
           }
         ]
       },

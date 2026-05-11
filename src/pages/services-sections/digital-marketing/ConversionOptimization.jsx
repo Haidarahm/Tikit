@@ -1,6 +1,15 @@
-import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../../store/I18nLanguageContext";
+import {
+  MotionDiv,
+  MotionP,
+  MotionH2,
+  MotionLi,
+  MotionSection,
+  dmContainerVariants as containerVariants,
+  dmItemVariants as itemVariants,
+  dmViewport as viewport,
+} from "./dmMotion";
 import {
   HiCheckCircle,
   HiSearchCircle,
@@ -19,12 +28,6 @@ import ServiceCard from "../../../components/ServiceCard";
 import DMCTA from "./components/DMCTA";
 import DMRelatedServices from "./components/DMRelatedServices";
 import "./digitalMarketing.css";
-
-const MotionDiv = motion.div;
-const MotionP = motion.p;
-const MotionH2 = motion.h2;
-const MotionLi = motion.li;
-const MotionSection = motion.section;
 
 const SERVICE_KEYS = [
   "croAudit",
@@ -49,27 +52,6 @@ const SERVICE_ICONS = [
 ];
 
 const PROCESS_KEYS = ["discover", "diagnose", "design", "test", "implement"];
-
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.12,
-      delayChildren: 0.06,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
-  },
-};
-
-const viewport = { once: true, amount: 0.15, margin: "0px 0px -8% 0px" };
 
 const toArray = (value) => (Array.isArray(value) ? value : []);
 

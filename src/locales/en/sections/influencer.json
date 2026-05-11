@@ -1820,6 +1820,144 @@
           }
         ]
       },
+      "paidAds": {
+        "badge": "Paid Ads Management Dubai & UAE",
+        "hero": {
+          "title": "Paid Ads Management in Dubai &",
+          "mainWord": "UAE",
+          "description": "Stop paying for clicks that don't convert. Tikit's Paid Ads Management is built for brands in the UAE that want measurable growth, not vanity metrics. Whether you run Google Ads, Meta, TikTok, or Snapchat, our performance team manages every dirham with precision, creativity, and relentless optimisation."
+        },
+        "heroSecondary": "We've helped 300+ clients across Dubai, Riyadh, and Jeddah turn paid media into their most powerful growth channel. Now it's your turn.",
+        "heroCta": "Get Your Free Paid Ads Audit",
+        "definition": {
+          "whatIsTitle": "Why Paid Advertising in the UAE Demands an Expert Hand",
+          "paragraph": "The UAE digital advertising landscape is competitive, fast-moving, and expensive if you don't know what you're doing. With cost-per-click rates among the highest in MENA and audiences that expect premium, culturally relevant creative, generic campaigns won't cut it.",
+          "paragraph2": "At Tikit, we go beyond campaign setup. We build paid advertising ecosystems—from audience architecture and creative strategy to bid management and post-click experience—so every ad you run has a real chance of returning results.",
+          "benefitsLabel": "What you get from day one:",
+          "benefitsList": [
+            "Channel strategy matched to your goals—not vanity metrics.",
+            "Campaign builds that pair targeting with UAE-ready creative.",
+            "Always-on optimisation across bids, audiences, and creative tests.",
+            "Tracking that ties spend to leads, sales, and ROAS.",
+            "Clear reporting you can act on every week."
+          ]
+        },
+        "services": {
+          "title": "Our Paid Ads Management Services",
+          "subtitle": "Six platform specialists working as one performance team for brands in Dubai and across the GCC.",
+          "items": {
+            "googleAds": {
+              "title": "Google Ads & Search Campaigns",
+              "description": "Capture high-intent buyers the moment they search. We build tightly themed ad groups, compelling copy, and continuous tests to lower CPA while scaling volume—from Shopping to Performance Max across the full Google ecosystem."
+            },
+            "metaAds": {
+              "title": "Meta Ads (Facebook & Instagram)",
+              "description": "Meta remains the UAE's most powerful channel for brand building and direct response. We combine audience intelligence with scroll-stopping creative across awareness, lead gen, and e-commerce objectives—refined daily with live data."
+            },
+            "tiktokAds": {
+              "title": "TikTok Ads",
+              "description": "TikTok is where purchase decisions are forming right now. We produce native-style video, Spark Ads, and high-impact placements that fit the feed, feel authentic, and convert."
+            },
+            "snapchatAds": {
+              "title": "Snapchat Advertising",
+              "description": "With world-leading Snapchat penetration, the UAE is ideal for Snap Ads. We craft story-led, full-screen creative for young, high-spending audiences—with tracking and performance reporting baked in."
+            },
+            "linkedinAds": {
+              "title": "LinkedIn Ads",
+              "description": "Reach decision-makers in B2B contexts. We run Sponsored Content, Lead Gen Forms, and InMail campaigns that put your brand in front of the professionals who matter most."
+            },
+            "programmaticDisplay": {
+              "title": "Programmatic & Display Advertising",
+              "description": "Stay visible across premium UAE inventory. Our programmatic approach retargets warm audiences, builds familiarity at scale, and keeps your brand everywhere your buyers browse."
+            }
+          }
+        },
+        "included": {
+          "title": "What's Included in Our Paid Ads Management?",
+          "subtitle": "Everything required to run disciplined, transparent paid media.",
+          "items": [
+            "Full account setup and campaign architecture—or audit and takeover of existing accounts",
+            "Audience research, persona development, and targeting strategy",
+            "Ad creative briefing and production support (static, video, and carousel formats)",
+            "A/B testing of ad copy, visuals, landing pages, and CTAs",
+            "Daily bid management and budget optimisation",
+            "Conversion tracking via GA4, Meta Pixel, and platform-specific tags",
+            "Weekly performance reports with clear commentary and action items",
+            "Monthly strategy reviews with forward-looking recommendations"
+          ]
+        },
+        "whyChoose": {
+          "title": "Why Do Brands Choose Tikit for Paid Media?",
+          "items": [
+            {
+              "title": "Performance Is Our Only Metric",
+              "description": "We don't report impressions and call it a win. We're obsessed with leads, sales, CPA, and ROAS—every decision ties back to your bottom line."
+            },
+            {
+              "title": "Creative That Actually Works in the UAE",
+              "description": "Ads fail on creative long before they fail on budget. Our team understands cultural nuance, platform behaviour, and visual expectations across Emirates audiences."
+            },
+            {
+              "title": "Transparent Reporting, No Jargon",
+              "description": "You always know where your budget goes. Plain-English breakdowns of what's working, what isn't, and what we're changing next."
+            },
+            {
+              "title": "A Team That Moves Fast",
+              "description": "Trends shift and platforms change weekly. We stay ahead of updates and pivot strategy without waiting for quarterly reviews."
+            }
+          ]
+        },
+        "process": {
+          "title": "How We Run Paid Media at Tikit",
+          "subtitle": "Four disciplined phases—each tied to measurable outcomes.",
+          "steps": {
+            "audit": {
+              "title": "Audit & Discover",
+              "description": "We review accounts, funnels, and market dynamics to find wasted spend, missed audiences, and creative gaps before we invest further."
+            },
+            "setup": {
+              "title": "Build & Launch",
+              "description": "We architect campaigns, audiences, creatives, and tracking so launches are structured for learning—not guessing."
+            },
+            "optimize": {
+              "title": "Optimise & Test",
+              "description": "Daily bid management, creative rotation, and landing-page experiments keep performance trending toward your KPIs."
+            },
+            "report": {
+              "title": "Report & Plan Ahead",
+              "description": "Weekly dashboards plus monthly strategy sessions translate results into the next wave of scalable growth."
+            }
+          }
+        },
+        "finalCta": {
+          "title": "Ready to Make Every Ad Dirham Count?",
+          "description": "Let's build a paid media strategy that actually delivers. Talk to our team today for a free audit of your current ad accounts—with recommendations you can act on immediately.",
+          "button": "Get Your Free Paid Ads Audit"
+        },
+        "faqTitle": "Frequently Asked Questions",
+        "faqItems": [
+          {
+            "question": "How quickly will I see results from paid ads?",
+            "answer": "Timelines depend on objectives and industry, but most campaigns produce measurable signals inside two weeks. E-commerce and lead-generation programmes often show clear ROI within 30 days when creative and targeting are dialled in."
+          },
+          {
+            "question": "Which platforms should my business advertise on?",
+            "answer": "It depends on audience, product, and goals. Onboarding includes a market audit and recommended channel mix—many UAE brands win with Google Search paired with Meta."
+          },
+          {
+            "question": "Do you manage the creative, or just the campaigns?",
+            "answer": "Both. We can brief, produce, and ship creative inside the retainer—or collaborate with your in-house team. Either way, ads meet platform best practices and conversion standards."
+          },
+          {
+            "question": "How much should I budget for paid ads in the UAE?",
+            "answer": "Investment levels vary with competition and ambition. We work across multiple tiers and set honest expectations about what's achievable—preferring transparency over overpromising."
+          },
+          {
+            "question": "Do you lock clients into long-term contracts?",
+            "answer": "No. Agreements prioritise flexibility. Clients stay because the growth is real—not because they're trapped in rigid terms."
+          }
+        ]
+      },
       "performanceMarketing": {
         "badge": "Performance Marketing Agency Dubai",
         "hero": {
