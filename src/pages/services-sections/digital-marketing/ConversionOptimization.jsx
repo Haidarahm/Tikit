@@ -85,18 +85,43 @@ const ConversionOptimization = () => {
       dir={isRtl ? "rtl" : "ltr"}
     >
       <SEOHead
-        title="Conversion Rate Optimisation Dubai & UAE | CRO Agency | Tikit"
-        description="Turn more visitors into customers with Tikit's CRO services in Dubai & UAE. Audit, A/B testing, landing page, funnel, mobile, and WhatsApp conversion optimisation."
-        keywords="conversion rate optimisation Dubai, CRO agency UAE, A/B testing Dubai, landing page optimisation, funnel optimisation, mobile CRO, WhatsApp conversion"
+        title={t(
+          "serviceSections.digitalMarketing.conversionOptimization.seo.title",
+        )}
+        description={t(
+          "serviceSections.digitalMarketing.conversionOptimization.seo.description",
+        )}
+        keywords={t(
+          "serviceSections.digitalMarketing.conversionOptimization.seo.keywords",
+        )}
         canonicalUrl="/digital-marketing-agency-dubai/conversion-optimization"
-        serviceType="Conversion Rate Optimisation"
+        serviceType={t(
+          "serviceSections.digitalMarketing.conversionOptimization.seo.serviceType",
+        )}
         faqItems={faqItems}
         breadcrumbs={[
-          { name: "Home", url: "/" },
-          { name: "Services", url: "/services" },
-          { name: "Digital Marketing", url: "/digital-marketing-agency-dubai" },
           {
-            name: "Conversion Optimisation",
+            name: t("serviceSections.digitalMarketing.breadcrumb.home", {
+              defaultValue: "Home",
+            }),
+            url: "/",
+          },
+          {
+            name: t("serviceSections.digitalMarketing.breadcrumb.services", {
+              defaultValue: "Services",
+            }),
+            url: "/services",
+          },
+          {
+            name: t("serviceSections.digitalMarketing.breadcrumb.hub", {
+              defaultValue: "Digital Marketing",
+            }),
+            url: "/digital-marketing-agency-dubai",
+          },
+          {
+            name: t(
+              "serviceSections.digitalMarketing.conversionOptimization.seo.breadcrumbLabel",
+            ),
             url: "/digital-marketing-agency-dubai/conversion-optimization",
           },
         ]}

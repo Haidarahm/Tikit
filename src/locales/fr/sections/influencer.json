@@ -1340,7 +1340,13 @@
       "seo": {
         "title": "Agence de marketing digital de premier plan à Dubaï",
         "description": "Une agence publicitaire et de marketing digital basée aux EAU, proposant des solutions sur mesure pour stimuler une croissance mesurable, générer des leads et augmenter les revenus.",
+        "keywords": "agence marketing digital Dubaï, services marketing digital EAU, marketing performance Dubaï, SEO et publicité payante Dubaï, agence marketing UAE",
         "serviceType": "Agence Marketing Digital Dubaï"
+      },
+      "breadcrumb": {
+        "home": "Accueil",
+        "services": "Services",
+        "hub": "Marketing digital"
       },
       "badge": "Agence Marketing Digital Dubaï",
       "hero": {
@@ -1648,6 +1654,13 @@
       },
       "seoServices": {
         "badge": "Services SEO Dubaï",
+        "seo": {
+          "title": "Services SEO Dubaï | Agence orientée résultats",
+          "description": "Transformez votre présence organique avec Tikit.ae : SEO technique, contenu et autorité à Dubaï et dans les EAU pour capter du trafic à forte intention.",
+          "keywords": "services SEO Dubaï, agence SEO EAU, SEO professionnel Dubaï, stratégie SEO local, croissance organique Dubaï",
+          "serviceType": "Services SEO",
+          "breadcrumbLabel": "Services SEO"
+        },
         "heroTagline": "Dominez le marché des EAU avec une croissance organique durable",
         "hero": {
           "title": "Élevez votre présence dans les résultats avec un",
@@ -1762,6 +1775,13 @@
       },
       "paidAds": {
         "badge": "Gestion des publicités payantes à Dubaï & UAE",
+        "seo": {
+          "title": "Gestion des publicités payantes à Dubaï & UAE | Google, Meta & TikTok",
+          "description": "Gestion des publicités payantes à Dubaï et dans les EAU : Google Ads, Meta, TikTok, Snapchat, LinkedIn et programmatique. Précision, créativité et optimisation pour une croissance mesurable.",
+          "keywords": "gestion publicités payantes Dubaï, agence PPC EAU, Google Ads Dubaï, Meta ads UAE, TikTok ads Dubaï, Snapchat ads UAE, LinkedIn ads Dubaï",
+          "serviceType": "Gestion des publicités payantes",
+          "breadcrumbLabel": "Gestion des publicités payantes"
+        },
         "hero": {
           "title": "Gestion des publicités payantes à Dubaï &",
           "mainWord": "UAE",
@@ -1900,6 +1920,13 @@
       },
       "conversionOptimization": {
         "badge": "Optimisation des Conversions à Dubaï & UAE",
+        "seo": {
+          "title": "Optimisation du taux de conversion à Dubaï & UAE | Agence CRO",
+          "description": "Convertissez davantage de visiteurs avec le CRO Tikit à Dubaï et dans les EAU : audit, tests A/B, landing pages, funnels, mobile et WhatsApp.",
+          "keywords": "optimisation conversion Dubaï, agence CRO EAU, tests A/B Dubaï, landing pages, funnel optimisation, CRO mobile, conversion WhatsApp",
+          "serviceType": "Optimisation des conversions",
+          "breadcrumbLabel": "Optimisation des conversions"
+        },
         "hero": {
           "title": "Optimisation des Conversions à Dubaï &",
           "mainWord": "UAE",
@@ -2032,6 +2059,13 @@
       },
       "performanceMarketing": {
         "badge": "Agence de Marketing à la Performance Dubaï",
+        "seo": {
+          "title": "Agence de marketing à la performance à Dubaï | EAU",
+          "description": "Stimulez une croissance mesurable avec le marketing à la performance Tikit : médias payants, CRO, tracking et campagnes ROI sur Google, Meta et TikTok.",
+          "keywords": "marketing performance Dubaï, agence performance EAU, gestion publicités Dubaï, optimisation conversion Dubaï, marketing ROI UAE",
+          "serviceType": "Marketing à la performance",
+          "breadcrumbLabel": "Marketing à la performance"
+        },
         "hero": {
           "title": "Stimulez une Croissance Mesurable avec",
           "mainWord": "le Marketing à la Performance",

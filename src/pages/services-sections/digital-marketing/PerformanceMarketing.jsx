@@ -144,18 +144,43 @@ const PerformanceMarketing = () => {
       dir={isRtl ? "rtl" : "ltr"}
     >
       <SEOHead
-        title="Performance Marketing Agency Dubai | Tikit Agency UAE"
-        description="Drive measurable growth with Tikit performance marketing in Dubai. Paid ads, conversion optimization, tracking, and ROI-focused digital campaigns across Google, Meta, and TikTok."
-        keywords="performance marketing Dubai, performance marketing agency Dubai, paid ads management Dubai, conversion optimization Dubai, ROI marketing UAE"
+        title={t(
+          "serviceSections.digitalMarketing.performanceMarketing.seo.title",
+        )}
+        description={t(
+          "serviceSections.digitalMarketing.performanceMarketing.seo.description",
+        )}
+        keywords={t(
+          "serviceSections.digitalMarketing.performanceMarketing.seo.keywords",
+        )}
         canonicalUrl="/digital-marketing-agency-dubai/performance-marketing"
-        serviceType="Performance Marketing"
+        serviceType={t(
+          "serviceSections.digitalMarketing.performanceMarketing.seo.serviceType",
+        )}
         faqItems={faqItems}
         breadcrumbs={[
-          { name: "Home", url: "/" },
-          { name: "Services", url: "/services" },
-          { name: "Digital Marketing", url: "/digital-marketing-agency-dubai" },
           {
-            name: "Performance Marketing",
+            name: t("serviceSections.digitalMarketing.breadcrumb.home", {
+              defaultValue: "Home",
+            }),
+            url: "/",
+          },
+          {
+            name: t("serviceSections.digitalMarketing.breadcrumb.services", {
+              defaultValue: "Services",
+            }),
+            url: "/services",
+          },
+          {
+            name: t("serviceSections.digitalMarketing.breadcrumb.hub", {
+              defaultValue: "Digital Marketing",
+            }),
+            url: "/digital-marketing-agency-dubai",
+          },
+          {
+            name: t(
+              "serviceSections.digitalMarketing.performanceMarketing.seo.breadcrumbLabel",
+            ),
             url: "/digital-marketing-agency-dubai/performance-marketing",
           },
         ]}

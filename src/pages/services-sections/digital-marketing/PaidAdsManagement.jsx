@@ -87,18 +87,39 @@ const PaidAdsManagement = () => {
       dir={isRtl ? "rtl" : "ltr"}
     >
       <SEOHead
-        title="Paid Ads Management Dubai & UAE | Google, Meta & TikTok | Tikit"
-        description="Paid ads management in Dubai and the UAE: Google Ads, Meta, TikTok, Snapchat, LinkedIn, and programmatic. Precision, creative, and optimisation—built for measurable growth."
-        keywords="paid ads management Dubai, PPC agency UAE, Google Ads Dubai, Meta ads UAE, TikTok ads Dubai, Snapchat ads UAE, LinkedIn ads Dubai"
+        title={t("serviceSections.digitalMarketing.paidAds.seo.title")}
+        description={t(
+          "serviceSections.digitalMarketing.paidAds.seo.description",
+        )}
+        keywords={t("serviceSections.digitalMarketing.paidAds.seo.keywords")}
         canonicalUrl="/digital-marketing-agency-dubai/paid-ads-management"
-        serviceType="Paid Ads Management"
+        serviceType={t(
+          "serviceSections.digitalMarketing.paidAds.seo.serviceType",
+        )}
         faqItems={faqItems}
         breadcrumbs={[
-          { name: "Home", url: "/" },
-          { name: "Services", url: "/services" },
-          { name: "Digital Marketing", url: "/digital-marketing-agency-dubai" },
           {
-            name: "Paid Ads Management",
+            name: t("serviceSections.digitalMarketing.breadcrumb.home", {
+              defaultValue: "Home",
+            }),
+            url: "/",
+          },
+          {
+            name: t("serviceSections.digitalMarketing.breadcrumb.services", {
+              defaultValue: "Services",
+            }),
+            url: "/services",
+          },
+          {
+            name: t("serviceSections.digitalMarketing.breadcrumb.hub", {
+              defaultValue: "Digital Marketing",
+            }),
+            url: "/digital-marketing-agency-dubai",
+          },
+          {
+            name: t(
+              "serviceSections.digitalMarketing.paidAds.seo.breadcrumbLabel",
+            ),
             url: "/digital-marketing-agency-dubai/paid-ads-management",
           },
         ]}

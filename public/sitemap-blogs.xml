@@ -8,7 +8,7 @@
   <!-- en/blogs -->
   <url>
     <loc>https://tikit.ae/en/blogs</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -16,7 +16,7 @@
   <!-- fr/blogs -->
   <url>
     <loc>https://tikit.ae/fr/blogs</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -24,12 +24,33 @@
   <!-- ar/blogs -->
   <url>
     <loc>https://tikit.ae/ar/blogs</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
-  <!-- Blog Posts (36 posts) -->
+  <!-- Blog Posts (37 posts) -->
+  <url>
+    <loc>https://tikit.ae/en/blogs/influencer-marketing-cost-in-uae-2026-real-aed-rates-by-platform-tikit</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://tikit.ae/fr/blogs/influencer-marketing-cost-in-uae-2026-real-aed-rates-by-platform-tikit</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://tikit.ae/ar/blogs/influencer-marketing-cost-in-uae-2026-real-aed-rates-by-platform-tikit</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
   <url>
     <loc>https://tikit.ae/en/blogs/how-ai-simplifies-influencer-selection-influencer-agency-dubai-guide</loc>
     <lastmod>2026-05-04</lastmod>
@@ -53,21 +74,21 @@
 
   <url>
     <loc>https://tikit.ae/en/blogs/ai-influencer-scoring-system-dubai-marketing-agency</loc>
-    <lastmod>2026-05-04</lastmod>
+    <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://tikit.ae/fr/blogs/ai-influencer-scoring-system-dubai-marketing-agency</loc>
-    <lastmod>2026-05-04</lastmod>
+    <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://tikit.ae/ar/blogs/ai-influencer-scoring-system-dubai-marketing-agency</loc>
-    <lastmod>2026-05-04</lastmod>
+    <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>

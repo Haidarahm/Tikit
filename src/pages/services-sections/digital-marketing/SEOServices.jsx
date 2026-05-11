@@ -105,18 +105,39 @@ const SEOServicesPage = () => {
       dir={isRtl ? "rtl" : "ltr"}
     >
       <SEOHead
-        title="SEO Services Dubai | Results-Driven SEO Agency | Tikit.ae"
-        description="Transform your organic presence with Tikit.ae. Expert SEO services in Dubai focused on technical excellence, content authority, and lead generation."
-        keywords="SEO services Dubai, SEO agency UAE, professional SEO Dubai, local SEO strategy, organic growth Dubai"
+        title={t("serviceSections.digitalMarketing.seoServices.seo.title")}
+        description={t(
+          "serviceSections.digitalMarketing.seoServices.seo.description",
+        )}
+        keywords={t("serviceSections.digitalMarketing.seoServices.seo.keywords")}
         canonicalUrl="/digital-marketing-agency-dubai/seo-services"
-        serviceType="SEO Services"
+        serviceType={t(
+          "serviceSections.digitalMarketing.seoServices.seo.serviceType",
+        )}
         faqItems={faqItems}
         breadcrumbs={[
-          { name: "Home", url: "/" },
-          { name: "Services", url: "/services" },
-          { name: "Digital Marketing", url: "/digital-marketing-agency-dubai" },
           {
-            name: "SEO Services",
+            name: t("serviceSections.digitalMarketing.breadcrumb.home", {
+              defaultValue: "Home",
+            }),
+            url: "/",
+          },
+          {
+            name: t("serviceSections.digitalMarketing.breadcrumb.services", {
+              defaultValue: "Services",
+            }),
+            url: "/services",
+          },
+          {
+            name: t("serviceSections.digitalMarketing.breadcrumb.hub", {
+              defaultValue: "Digital Marketing",
+            }),
+            url: "/digital-marketing-agency-dubai",
+          },
+          {
+            name: t(
+              "serviceSections.digitalMarketing.seoServices.seo.breadcrumbLabel",
+            ),
             url: "/digital-marketing-agency-dubai/seo-services",
           },
         ]}

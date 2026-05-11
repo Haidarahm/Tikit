@@ -158,9 +158,24 @@ const DigitalMarketing = () => {
   }));
 
   const breadcrumbs = [
-    { name: t("serviceSections.digitalMarketing.breadcrumb.home", { defaultValue: "Home" }), url: "/" },
-    { name: t("serviceSections.digitalMarketing.breadcrumb.services", { defaultValue: "Services" }), url: "/services" },
-    { name: t("serviceSections.digitalMarketing.seo.serviceType"), url: "/digital-marketing-agency-dubai" },
+    {
+      name: t("serviceSections.digitalMarketing.breadcrumb.home", {
+        defaultValue: "Home",
+      }),
+      url: "/",
+    },
+    {
+      name: t("serviceSections.digitalMarketing.breadcrumb.services", {
+        defaultValue: "Services",
+      }),
+      url: "/services",
+    },
+    {
+      name: t("serviceSections.digitalMarketing.breadcrumb.hub", {
+        defaultValue: "Digital Marketing",
+      }),
+      url: "/digital-marketing-agency-dubai",
+    },
   ];
 
   const dir = isRtl ? "rtl" : "ltr";
@@ -236,7 +251,7 @@ const DigitalMarketing = () => {
         description={t("serviceSections.digitalMarketing.seo.description")}
         keywords={t("serviceSections.digitalMarketing.seo.keywords", {
           defaultValue:
-            "digital marketing agency dubai, digital marketing services uae, performance marketing dubai, seo and paid ads dubai",
+            "digital marketing agency Dubai, digital marketing services UAE, performance marketing Dubai, SEO and paid ads Dubai",
         })}
         serviceType={t("serviceSections.digitalMarketing.seo.serviceType")}
         canonicalUrl="/digital-marketing-agency-dubai"

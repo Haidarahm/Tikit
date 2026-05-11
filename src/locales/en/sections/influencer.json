@@ -1340,7 +1340,13 @@
       "seo": {
         "title": "Leading Digital Marketing Agency in Dubai",
         "description": "A leading UAE-based advertising and digital marketing agency, delivering tailored solutions to drive measurable business growth, leads, and revenue.",
+        "keywords": "digital marketing agency Dubai, digital marketing services UAE, performance marketing Dubai, SEO and paid ads Dubai, marketing agency UAE",
         "serviceType": "Digital Marketing Agency Dubai"
+      },
+      "breadcrumb": {
+        "home": "Home",
+        "services": "Services",
+        "hub": "Digital Marketing"
       },
       "hero": {
         "badge": "🚀 Dubai's Growth Engine",
@@ -1576,6 +1582,13 @@
       },
       "seoServices": {
         "badge": "SEO Services Dubai",
+        "seo": {
+          "title": "SEO Services Dubai | Results-Driven SEO Agency",
+          "description": "Transform your organic presence with Tikit.ae. Expert SEO services in Dubai focused on technical excellence, content authority, and lead generation.",
+          "keywords": "SEO services Dubai, SEO agency UAE, professional SEO Dubai, local SEO strategy, organic growth Dubai",
+          "serviceType": "SEO Services",
+          "breadcrumbLabel": "SEO Services"
+        },
         "heroTagline": "Dominate the UAE Market with Sustainable Organic Growth",
         "hero": {
           "title": "Elevate Your Search Presence with",
@@ -1690,6 +1703,13 @@
       },
       "conversionOptimization": {
         "badge": "Conversion Optimisation Dubai & UAE",
+        "seo": {
+          "title": "Conversion Rate Optimisation Dubai & UAE | CRO Agency",
+          "description": "Turn more visitors into customers with Tikit's CRO services in Dubai and the UAE. Audit, A/B testing, landing pages, funnels, mobile, and WhatsApp conversion optimisation.",
+          "keywords": "conversion rate optimisation Dubai, CRO agency UAE, A/B testing Dubai, landing page optimisation, funnel optimisation, mobile CRO, WhatsApp conversion",
+          "serviceType": "Conversion Rate Optimisation",
+          "breadcrumbLabel": "Conversion Optimisation"
+        },
         "hero": {
           "title": "Conversion Optimisation in Dubai &",
           "mainWord": "UAE",
@@ -1822,6 +1842,13 @@
       },
       "paidAds": {
         "badge": "Paid Ads Management Dubai & UAE",
+        "seo": {
+          "title": "Paid Ads Management Dubai & UAE | Google, Meta & TikTok",
+          "description": "Paid ads management in Dubai and the UAE: Google Ads, Meta, TikTok, Snapchat, LinkedIn, and programmatic. Precision, creative, and optimisation—built for measurable growth.",
+          "keywords": "paid ads management Dubai, PPC agency UAE, Google Ads Dubai, Meta ads UAE, TikTok ads Dubai, Snapchat ads UAE, LinkedIn ads Dubai",
+          "serviceType": "Paid Ads Management",
+          "breadcrumbLabel": "Paid Ads Management"
+        },
         "hero": {
           "title": "Paid Ads Management in Dubai &",
           "mainWord": "UAE",
@@ -1960,6 +1987,13 @@
       },
       "performanceMarketing": {
         "badge": "Performance Marketing Agency Dubai",
+        "seo": {
+          "title": "Performance Marketing Agency Dubai | UAE",
+          "description": "Drive measurable growth with Tikit performance marketing in Dubai. Paid ads, conversion optimisation, tracking, and ROI-focused digital campaigns across Google, Meta, and TikTok.",
+          "keywords": "performance marketing Dubai, performance marketing agency Dubai, paid ads management Dubai, conversion optimisation Dubai, ROI marketing UAE",
+          "serviceType": "Performance Marketing",
+          "breadcrumbLabel": "Performance Marketing"
+        },
         "hero": {
           "title": "Drive Measurable Growth with",
           "mainWord": "Performance Marketing",
