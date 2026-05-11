@@ -132,14 +132,6 @@ const ConversionOptimization = () => {
           viewport={viewport}
           variants={containerVariants}
         >
-          <MotionP
-            variants={itemVariants}
-            className="dm-hero-kicker"
-          >
-            {t(
-              "serviceSections.digitalMarketing.conversionOptimization.heroTagline",
-            )}
-          </MotionP>
           <MotionDiv variants={itemVariants}>
             <HeroWithBadge
               badge={t(
