@@ -94,6 +94,26 @@ export function useNavbarAnimations(logoRef, navRef) {
         ease: "power2.in",
       });
     };
+
+    const resetAllNavUnderlines = () => {
+      queryNavItems().forEach((el) => {
+        const underline = el.querySelector(".nav-underline");
+        if (underline) leave(underline);
+      });
+    };
+
+    // While the pointer stays over a sticky nav link, `mouseleave` does not fire when
+    // the page scrolls (e.g. hash / section navigation). Clear the GSAP underline on scroll.
+    let scrollCollapseRaf = null;
+    const onWindowScroll = () => {
+      if (scrollCollapseRaf != null) return;
+      scrollCollapseRaf = requestAnimationFrame(() => {
+        scrollCollapseRaf = null;
+        resetAllNavUnderlines();
+      });
+    };
+    window.addEventListener("scroll", onWindowScroll, { passive: true });
+
     // attach listeners
     items.forEach((el) => {
       const underline = el.querySelector(".nav-underline");
@@ -110,6 +130,8 @@ export function useNavbarAnimations(logoRef, navRef) {
     });
 
     return () => {
+      if (scrollCollapseRaf != null) cancelAnimationFrame(scrollCollapseRaf);
+      window.removeEventListener("scroll", onWindowScroll);
       tl.kill();
       // cleanup hover listeners
       const cleanupItems = queryNavItems();
