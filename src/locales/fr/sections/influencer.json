@@ -1850,91 +1850,135 @@
         ]
       },
       "conversionOptimization": {
-        "badge": "Optimisation des Conversions Dubaï",
+        "badge": "Optimisation des Conversions à Dubaï & UAE",
+        "heroTagline": "Service",
         "hero": {
-          "title": "Maximisez Vos Conversions",
-          "mainWord": "& Revenus",
-          "description": "Tests A/B, analyse UX et stratégies data-driven pour convertir plus de visiteurs en clients."
+          "title": "Optimisation des Conversions à Dubaï &",
+          "mainWord": "UAE",
+          "description": "Vous obtenez du trafic. Mais obtenez-vous des clients ? L'optimisation du taux de conversion (CRO) est la discipline qui transforme vos visiteurs actuels en acheteurs, leads ou abonnés — sans dépenser un dirham de plus en publicité. Chez Tikit, nous combinons données, psychologie et design thinking pour combler l'écart entre les clics et les conversions."
         },
+        "heroSecondary": "Nos spécialistes CRO accompagnent les marques aux Émirats, en Arabie Saoudite et dans le Golfe pour identifier précisément où vos visiteurs décrochent — et ce qu'il faut pour les retenir.",
+        "heroCta": "Réserver un appel CRO gratuit",
         "definition": {
-          "whatIsTitle": "Qu'est-ce que l'Optimisation des Conversions ?",
-          "paragraph": "L'optimisation du taux de conversion (CRO) est le processus systématique d'augmentation du pourcentage de visiteurs qui effectuent une action souhaitée.",
+          "whatIsTitle": "Qu'est-ce que l'Optimisation des Conversions et pourquoi est-ce important ?",
+          "paragraph": "L'optimisation du taux de conversion (CRO) est le processus systématique d'amélioration de votre site, de vos landing pages et de vos funnels digitaux pour augmenter la part des visiteurs qui effectuent une action souhaitée — achat, formulaire, appel ou téléchargement d'application.",
+          "paragraph2": "Pour les marques émiriennes qui investissent en SEO, en média payant et en campagnes d'influence, le CRO est ce qui fait travailler ce trafic plus efficacement. Une amélioration de 1 % du taux de conversion peut doubler vos revenus sans augmenter votre budget marketing. C'est l'un des leviers les plus puissants du marketing digital — et l'un des plus sous-exploités.",
+          "benefitsLabel": "Pourquoi le CRO compte :",
           "benefitsList": [
-            "Augmentation des revenus sans budget pub supplémentaire",
-            "Amélioration de l'expérience utilisateur",
-            "Décisions basées sur les données et les tests",
-            "Réduction du coût d'acquisition client",
-            "Croissance cumulative dans le temps"
+            "Augmentez les revenus issus du trafic existant sans dépenses publicitaires supplémentaires.",
+            "Réduisez le coût d'acquisition client sur tous vos canaux payants.",
+            "Bénéficiez d'améliorations cumulatives dans le temps — chaque test gagnant s'ajoute aux précédents.",
+            "Prenez des décisions produit et marketing étayées par des preuves.",
+            "Construisez des expériences digitales auxquelles votre audience UAE fait réellement confiance."
           ]
         },
         "services": {
-          "title": "Nos Services CRO",
-          "subtitle": "Optimisation data-driven pour maximiser votre ROI digital",
+          "title": "Nos Services d'Optimisation des Conversions",
+          "subtitle": "Huit chantiers ciblés pour transformer une plus grande part de votre trafic actuel en clients qualifiés.",
           "items": {
+            "croAudit": {
+              "title": "Audit & Analyse CRO",
+              "description": "Chaque engagement commence par un audit complet de vos points de contact digitaux. Grâce aux enregistrements de sessions, heatmaps, analytics funnel et données comportementales, nous identifions où et pourquoi vos utilisateurs partent — puis construisons une feuille de route priorisée."
+            },
+            "landingPage": {
+              "title": "Optimisation des Landing Pages",
+              "description": "Votre landing page est l'endroit où votre budget pub paie ou s'évapore. Nous redessinons et testons les pages pensées pour l'audience UAE — hiérarchie de messages, visuels culturellement pertinents, design mobile-first et formulaires sans friction qui maximisent les conversions sur chaque campagne."
+            },
             "abTesting": {
-              "title": "Tests A/B & Multivariés",
-              "description": "Tests rigoureux des éléments de page pour identifier les combinaisons gagnantes."
+              "title": "Tests A/B et Multivariés",
+              "description": "Les opinions sont intéressantes. Les données sont décisives. Nous menons des tests A/B rigoureux sur les titres, CTA, layouts, visuels et structures de page pour comprendre ce qui pousse réellement votre audience à agir. Chaque test est conçu avec rigueur statistique."
             },
-            "uxAudit": {
-              "title": "Audit UX & Analyse",
-              "description": "Évaluation complète avec heatmaps, enregistrements de sessions et recherche utilisateur."
+            "userJourney": {
+              "title": "Cartographie du parcours utilisateur",
+              "description": "Nous traçons le parcours complet du client, du premier contact jusqu'à la conversion finale — pour identifier les frictions, les ruptures de confiance et les opportunités manquées à chaque étape. Puis nous corrigeons, systématiquement."
             },
-            "landingPages": {
-              "title": "Landing Pages",
-              "description": "Conception et optimisation de landing pages à haute conversion."
+            "uxFunnel": {
+              "title": "Refonte UX & Funnel",
+              "description": "Parfois, l'optimisation incrémentale ne suffit pas. Lorsque les données pointent un problème structurel, nous refondons des funnels entiers — de l'accueil au checkout — pour bâtir des parcours de conversion alignés avec la façon dont les utilisateurs UAE naviguent, décident et achètent réellement."
             },
-            "funnelOptimization": {
-              "title": "Optimisation du Funnel",
-              "description": "Identification et correction des points de friction dans le parcours de conversion."
+            "formCheckout": {
+              "title": "Optimisation des formulaires & du checkout",
+              "description": "Aux Émirats, confiance et simplicité sont des leviers critiques de conversion. Nous réduisons la friction des formulaires, fluidifions les parcours de paiement et intégrons des signaux de confiance — avis, garanties, badges de paiement — qui suppriment l'hésitation entre intention et action."
             },
-            "speedOptimization": {
-              "title": "Optimisation de la Vitesse",
-              "description": "Amélioration des temps de chargement et Core Web Vitals."
+            "mobile": {
+              "title": "Optimisation des conversions mobiles",
+              "description": "Avec le mobile qui représente l'écrasante majorité de la navigation digitale aux Émirats, une mauvaise expérience mobile n'est pas un détail — c'est une fuite massive de revenus. Nous auditons et optimisons chaque point de contact mobile pour ne rien perdre entre desktop et device."
             },
-            "behavioralAnalysis": {
-              "title": "Analyse Comportementale",
-              "description": "Analyse approfondie des comportements utilisateurs."
+            "whatsappChat": {
+              "title": "Intégration WhatsApp & Chat",
+              "description": "Le consommateur émirien fait confiance à WhatsApp. Nous intégrons des parcours de conversion centrés sur la conversation dans votre expérience digitale — pour permettre aux visiteurs intéressés de contacter, obtenir une réponse et convertir via leur canal préféré."
             }
           }
         },
         "process": {
           "title": "Notre Processus CRO",
+          "subtitle": "Un système reproductible en cinq étapes qui transforme les insights en gains mesurables de revenus.",
           "steps": {
-            "analyze": {
-              "title": "Analyse des Données",
-              "description": "Collecte et analyse de données quantitatives et qualitatives."
+            "discover": {
+              "title": "Découverte",
+              "description": "Nous collectons et analysons les données quantitatives (analytics, rapports funnel) et qualitatives (enregistrements de sessions, heatmaps, sondages utilisateurs) pour obtenir une vue complète de votre paysage de conversion."
             },
-            "hypothesize": {
-              "title": "Hypothèses",
-              "description": "Création d'hypothèses basées sur les preuves et priorisées par impact."
+            "diagnose": {
+              "title": "Diagnostic",
+              "description": "Nous identifions les freins spécifiques qui empêchent les visiteurs de convertir — qu'ils soient techniques, psychologiques, design ou liés au message — et les priorisons selon leur impact potentiel."
+            },
+            "design": {
+              "title": "Conception & Hypothèses",
+              "description": "Notre équipe conçoit les variantes de test et formule des hypothèses claires : « Si on change X, on s'attend à Y, parce que Z ». Chaque changement repose sur une logique ancrée dans les données comportementales."
             },
             "test": {
-              "title": "Test & Validation",
-              "description": "Tests A/B statistiquement significatifs pour valider les hypothèses."
+              "title": "Test & Mesure",
+              "description": "Nous menons des expériences contrôlées — tests A/B, multivariés ou sessions d'usabilité — avec une allocation correcte du trafic et des seuils de confiance statistique. Pas de feeling, pas de devinette."
             },
             "implement": {
-              "title": "Implémentation & Itération",
-              "description": "Déploiement des variantes gagnantes et poursuite du cycle d'optimisation."
+              "title": "Implémentation & Mise à l'échelle",
+              "description": "Les variantes gagnantes sont déployées et les résultats documentés. Puis nous capitalisons sur chaque victoire — en lançant la prochaine vague de tests pour composer continuellement vos gains de conversion."
             }
           }
         },
-        "faqTitle": "FAQ Optimisation des Conversions",
+        "expectations": {
+          "title": "Ce que vous obtenez en travaillant avec Tikit sur le CRO",
+          "subtitle": "Des livrables clairs, une communication transparente et un impact mesurable sur les revenus.",
+          "items": [
+            "Un audit CRO détaillé livré dans les deux premières semaines d'engagement.",
+            "Une roadmap de tests priorisée et directement liée à vos objectifs de revenus et de leads.",
+            "Des logs de test transparents pour toujours savoir ce qui est en ligne et ce que nous apprenons.",
+            "Des rapports de performance mensuels montrant l'évolution du taux de conversion et l'impact sur les revenus.",
+            "Une équipe qui collabore avec vos partenaires média, SEO et créa pour un alignement full-funnel.",
+            "Une compréhension culturelle et linguistique de ce qui crée la confiance auprès des audiences UAE et GCC."
+          ]
+        },
+        "marketInsight": {
+          "title": "Pourquoi le CRO est particulièrement puissant sur le marché UAE",
+          "paragraph": "Les consommateurs émiriens sont digitalement sophistiqués, mobile-first et habitués à des expériences premium. Ils comparent vite, décident vite, et partent encore plus vite si quelque chose cloche. L'écart entre 2 % et 4 % de taux de conversion, c'est la différence entre lutter et croître.",
+          "paragraph2": "Chez Tikit, nous comprenons les signaux de confiance, les préférences de contenu et les comportements d'achat propres aux audiences de Dubaï, Abu Dhabi, Riyad et Djeddah. Cette connaissance du marché — combinée à une méthodologie CRO rigoureuse — distingue nos résultats des agences d'optimisation génériques."
+        },
+        "finalCta": {
+          "title": "Transformez votre trafic en revenus — dès aujourd'hui",
+          "description": "Si vos visiteurs viennent sans convertir, vous laissez de vrais revenus sur la table. Laissez l'équipe CRO de Tikit identifier précisément où vous les perdez — et bâtir la stratégie pour les reconquérir.",
+          "button": "Réserver un appel CRO gratuit"
+        },
+        "faqTitle": "Questions Fréquentes",
         "faqItems": [
           {
-            "question": "Qu'est-ce qu'un bon taux de conversion ?",
-            "answer": "Les sites e-commerce voient généralement 2-4%. Les pages de lead gen peuvent atteindre 5-15%. L'objectif est l'amélioration continue."
+            "question": "Combien de temps avant de voir des résultats CRO ?",
+            "answer": "Contrairement au paid, le CRO est une discipline cumulative. Les premiers gains — corrections de frictions évidentes — apparaissent souvent dans les 30 à 60 premiers jours. Les améliorations structurelles et le testing continu apportent des gains de plus en plus significatifs sur 3 à 6 mois de travail constant."
           },
           {
-            "question": "Combien de temps pour des résultats CRO ?",
-            "answer": "Gains rapides en quelques semaines. Tests A/B en 2-4 semaines. Programme CRO complet en 2-3 mois."
+            "question": "Faut-il beaucoup de trafic pour que le CRO fonctionne ?",
+            "answer": "Plus de trafic signifie des résultats de test plus rapides et plus fiables statistiquement. Cela dit, des améliorations significatives peuvent commencer même à des volumes modérés, en se concentrant sur les pages à fort impact et les insights qualitatifs plutôt que sur le seul test A/B à grande échelle."
           },
           {
-            "question": "Quels outils utilisez-vous ?",
-            "answer": "Google Analytics 4, Hotjar, Microsoft Clarity, Optimizely et dashboards personnalisés."
+            "question": "Travaillez-vous avec notre site actuel ou faut-il une refonte ?",
+            "answer": "Nous partons de votre configuration existante. Le CRO consiste fondamentalement à itérer — nous testons et faisons évoluer plutôt que de reconstruire à partir de zéro, sauf si l'audit révèle des problèmes structurels rendant le test incrémental inefficace."
           },
           {
-            "question": "Faut-il beaucoup de trafic pour le CRO ?",
-            "answer": "Nous recommandons au moins 10 000 visiteurs mensuels. Pour les sites à faible trafic, nous nous concentrons sur la recherche qualitative."
+            "question": "Comment mesurez-vous l'amélioration du taux de conversion ?",
+            "answer": "Nous suivons le taux de conversion comme KPI principal — soit le pourcentage de visiteurs qui complètent l'action souhaitée. En parallèle, nous surveillons des métriques de soutien : panier moyen, revenu par visiteur, taux de rebond, durée de session. Tous les résultats sont rattachés à des résultats business tangibles."
+          },
+          {
+            "question": "Travaillez-vous avec l'e-commerce et les services ?",
+            "answer": "Oui. Notre travail CRO couvre les marques e-commerce, sites de lead gen, plateformes SaaS, portails immobiliers, marques hôtelières et services professionnels aux Émirats et en Arabie Saoudite."
           }
         ]
       },

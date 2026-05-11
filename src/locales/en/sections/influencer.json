@@ -1688,6 +1688,139 @@
           }
         ]
       },
+      "conversionOptimization": {
+        "badge": "Conversion Optimisation Dubai & UAE",
+        "heroTagline": "Service",
+        "hero": {
+          "title": "Conversion Optimisation in Dubai &",
+          "mainWord": "UAE",
+          "description": "You're getting traffic. But are you getting customers? Conversion Rate Optimisation (CRO) is the discipline of turning your existing visitors into buyers, leads, or subscribers — without spending an extra dirham on ads. At Tikit, we apply data, psychology, and design thinking to close the gap between clicks and conversions."
+        },
+        "heroSecondary": "Our CRO specialists work with brands across the UAE, Saudi Arabia, and the wider GCC to identify exactly where visitors are dropping off — and what it takes to change that.",
+        "heroCta": "Book a Free CRO Discovery Call",
+        "definition": {
+          "whatIsTitle": "What Is Conversion Optimisation and Why Does It Matter?",
+          "paragraph": "Conversion Rate Optimisation (CRO) is the systematic process of improving your website, landing pages, and digital funnels to increase the percentage of visitors who take a desired action — whether that's a purchase, form submission, phone call, or app download.",
+          "paragraph2": "For UAE brands investing in SEO, paid media, and influencer campaigns, CRO is what makes that traffic investment work harder. A 1% improvement in conversion rate can double your revenue without increasing your marketing budget. It's one of the highest-leverage activities in digital marketing — and one of the most under-invested.",
+          "benefitsLabel": "Why CRO Matters:",
+          "benefitsList": [
+            "Increase revenue from existing traffic without higher ad spend.",
+            "Lower customer acquisition costs across every paid channel.",
+            "Compound improvements over time — every winning test stacks on the last.",
+            "Make smarter, evidence-backed product and marketing decisions.",
+            "Build digital experiences your UAE audience actually trusts."
+          ]
+        },
+        "services": {
+          "title": "Our Conversion Optimisation Services",
+          "subtitle": "Eight focused workstreams that turn more of your existing traffic into qualified customers.",
+          "items": {
+            "croAudit": {
+              "title": "CRO Audit & Analysis",
+              "description": "We start every engagement with a comprehensive audit of your current digital touchpoints. Using session recordings, heatmaps, funnel analytics, and user behaviour data, we identify exactly where and why users are leaving — and build a prioritised roadmap of improvements."
+            },
+            "landingPage": {
+              "title": "Landing Page Optimisation",
+              "description": "Your landing page is where ad spend either pays off or leaks away. We redesign and test landing pages with the UAE audience in mind — right messaging hierarchy, culturally resonant imagery, mobile-first design, and friction-free forms that maximise conversion rates across every campaign."
+            },
+            "abTesting": {
+              "title": "A/B and Multivariate Testing",
+              "description": "Opinions are interesting. Data is decisive. We run rigorous A/B tests across headlines, CTAs, layouts, imagery, and page structure to understand exactly what drives your audience to act. Every test is designed with statistical rigour, so you can trust the results."
+            },
+            "userJourney": {
+              "title": "User Journey Mapping",
+              "description": "We trace the full path a customer takes from first touch to final conversion — identifying friction points, trust gaps, and missed opportunities at every stage. Then we fix them, systematically."
+            },
+            "uxFunnel": {
+              "title": "Website UX & Funnel Redesign",
+              "description": "Sometimes incremental testing isn't enough. When the data points to a structural problem, we redesign entire funnels — from homepage through checkout — to build conversion pathways that align with how UAE users actually browse, decide, and buy."
+            },
+            "formCheckout": {
+              "title": "Form & Checkout Optimisation",
+              "description": "In the UAE, trust and simplicity are critical conversion factors. We reduce form friction, streamline checkout flows, and implement trust signals — reviews, guarantees, payment badges — that remove the hesitation between intent and action."
+            },
+            "mobile": {
+              "title": "Mobile Conversion Optimisation",
+              "description": "With mobile accounting for the overwhelming majority of digital browsing in the UAE, a poor mobile experience isn't a minor issue — it's a major revenue leak. We audit and optimise every touchpoint for mobile users, ensuring nothing is lost in translation from desktop to device."
+            },
+            "whatsappChat": {
+              "title": "WhatsApp & Chat Conversion Integration",
+              "description": "UAE consumers trust WhatsApp. We integrate chat-first conversion flows into your digital experience — making it effortless for interested visitors to reach out, get answers, and convert through their preferred channel."
+            }
+          }
+        },
+        "process": {
+          "title": "Our CRO Process",
+          "subtitle": "A repeatable five-stage system that turns insight into measurable revenue lift.",
+          "steps": {
+            "discover": {
+              "title": "Discover",
+              "description": "We collect and analyse quantitative data (analytics, funnel reports) alongside qualitative insight (session recordings, heatmaps, user surveys) to form a complete picture of your conversion landscape."
+            },
+            "diagnose": {
+              "title": "Diagnose",
+              "description": "We identify the specific barriers stopping visitors from converting — whether technical, psychological, design-based, or messaging-related — and prioritise them by potential impact."
+            },
+            "design": {
+              "title": "Design & Hypothesise",
+              "description": "Our team designs test variants and develops clear hypotheses: \"If we change X, we expect Y, because Z.\" Every change has a rationale grounded in user behaviour data."
+            },
+            "test": {
+              "title": "Test & Measure",
+              "description": "We run controlled experiments — A/B tests, multivariate tests, or usability sessions — with proper traffic allocation and statistical confidence thresholds. No gut-feel, no guesswork."
+            },
+            "implement": {
+              "title": "Implement & Scale",
+              "description": "Winning variants are implemented and results are documented. We then build on each win — running the next round of tests to continuously compound your conversion rate improvements."
+            }
+          }
+        },
+        "expectations": {
+          "title": "What You Can Expect Working With Tikit on CRO",
+          "subtitle": "Clear deliverables, transparent communication, and measurable revenue impact.",
+          "items": [
+            "A detailed CRO audit delivered within the first two weeks of engagement.",
+            "A prioritised test roadmap tied directly to your revenue and lead generation goals.",
+            "Transparent testing logs so you always know what's live and what we're learning.",
+            "Monthly performance reports showing conversion rate movement and revenue impact.",
+            "A team that collaborates with your paid media, SEO, and creative partners for full-funnel alignment.",
+            "Cultural and linguistic insight into what builds trust with UAE and GCC audiences."
+          ]
+        },
+        "marketInsight": {
+          "title": "Why CRO Is Especially Powerful in the UAE Market",
+          "paragraph": "UAE consumers are digitally sophisticated, mobile-first, and accustomed to premium experiences. They compare quickly, decide quickly, and leave even quicker if something feels off. The gap between a 2% conversion rate and a 4% conversion rate is the difference between struggling and scaling.",
+          "paragraph2": "At Tikit, we understand the unique trust signals, content preferences, and purchasing behaviours of audiences in Dubai, Abu Dhabi, Riyadh, and Jeddah. This market knowledge — combined with rigorous CRO methodology — is what sets our results apart from generic optimisation agencies."
+        },
+        "finalCta": {
+          "title": "Turn Your Traffic Into Revenue — Starting Today",
+          "description": "If people are visiting your website but not converting, you're leaving real money on the table. Let Tikit's CRO team find exactly where you're losing them — and build the strategy to win them back.",
+          "button": "Book a Free CRO Discovery Call"
+        },
+        "faqTitle": "Frequently Asked Questions",
+        "faqItems": [
+          {
+            "question": "How long does CRO take to show results?",
+            "answer": "Unlike paid ads, CRO is a compounding discipline. Early wins — quick fixes to obvious friction points — often appear within the first 30 to 60 days. Structural improvements and ongoing testing deliver increasingly significant gains over 3 to 6 months of consistent work."
+          },
+          {
+            "question": "Do I need a lot of traffic for CRO to work?",
+            "answer": "More traffic means faster, more statistically reliable test results. That said, meaningful improvements can begin even at moderate traffic volumes by focusing on high-impact pages and qualitative insights rather than large-scale A/B testing alone."
+          },
+          {
+            "question": "Can you work with our existing website, or do we need a redesign?",
+            "answer": "We start with your existing setup. CRO is fundamentally about iterative improvement — we test and evolve rather than rebuild from scratch, unless the audit reveals fundamental structural issues that make incremental testing ineffective."
+          },
+          {
+            "question": "How do you measure conversion rate improvement?",
+            "answer": "We track conversion rate as the primary KPI — the percentage of visitors who complete the desired action. Alongside this, we monitor supporting metrics including average order value, revenue per visitor, bounce rate, and session duration. All results are tied to tangible business outcomes."
+          },
+          {
+            "question": "Do you work with e-commerce and service businesses?",
+            "answer": "Yes. Our CRO work spans e-commerce brands, lead generation websites, SaaS platforms, real estate portals, hospitality brands, and professional services businesses across the UAE and Saudi Arabia."
+          }
+        ]
+      },
       "performanceMarketing": {
         "badge": "Performance Marketing Agency Dubai",
         "hero": {
