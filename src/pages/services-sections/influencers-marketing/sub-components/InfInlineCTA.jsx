@@ -1,7 +1,5 @@
 import { forwardRef } from "react";
-import { motion as Motion } from "framer-motion";
 import { LocaleLink as Link } from "@/components/LocaleLink.jsx";
-import { influencerRevealPanel } from "@/helpers/framerMotion";
 import { useFontClass } from "../../../../hooks/useFontClass";
 
 const subtleContainerStyle = {
@@ -22,10 +20,9 @@ const InfInlineCTA = forwardRef(
     return (
       <section ref={ref} className={`inf-section ${subtle ? "inf-section--alt" : ""}`}>
         <div className="inf-container">
-          <Motion.div
+          <div
             className="rounded-2xl border p-6 md:p-8 text-center"
             style={subtle ? subtleContainerStyle : defaultContainerStyle}
-            {...influencerRevealPanel}
           >
             {label ? <span className="inf-label mb-4">{label}</span> : null}
             {title ? <h3 className={`inf-heading text-2xl md:text-3xl mb-3 ${fontHeading}`}>{title}</h3> : null}
@@ -33,7 +30,7 @@ const InfInlineCTA = forwardRef(
             <Link to={buttonHref} className="im-cta-btn inline-flex">
               {buttonText}
             </Link>
-          </Motion.div>
+          </div>
         </div>
       </section>
     );

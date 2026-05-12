@@ -1,7 +1,5 @@
-import { motion as Motion } from "framer-motion";
 import { LocaleLink as Link } from "@/components/LocaleLink.jsx";
 import { useTranslation } from "react-i18next";
-import { influencerHubLinkLine, serviceHeroFramerHero } from "@/helpers/framerMotion";
 import { useI18nLanguage } from "../../../store/I18nLanguageContext";
 import {
   FiTarget,
@@ -154,7 +152,6 @@ const CampaignManagement = () => {
         mainWord={t(`${TK}.hero.mainWord`)}
         description={t(`${TK}.hero.description`)}
         dataNavColor="black"
-        framerHero={serviceHeroFramerHero}
       />
 
       <InfServicesGrid
@@ -180,16 +177,16 @@ const CampaignManagement = () => {
 
       <section className="inf-section inf-section--alt" dir={dir}>
         <div className="inf-container">
-          <Motion.p className="inf-desc mb-4 max-w-3xl" {...influencerHubLinkLine(0)}>
+          <p className="inf-desc mb-4 max-w-3xl">
             {t(`${TK}.hubLink.before`)}{" "}
             <Link to={BASE} className="font-semibold underline underline-offset-4 hover:opacity-80" style={{ color: "var(--secondary)" }}>
               {t(`${TK}.hubLink.linkText`)}
             </Link>{" "}
             {t(`${TK}.hubLink.after`)}
-          </Motion.p>
-          <Motion.p className="inf-desc mb-0 max-w-3xl" {...influencerHubLinkLine(1)}>
+          </p>
+          <p className="inf-desc mb-0 max-w-3xl">
             {t(`${TK}.hubLink.secondLine`)}
-          </Motion.p>
+          </p>
         </div>
       </section>
 
@@ -267,7 +264,6 @@ const CampaignManagement = () => {
         icons={influencerMarketingSubServiceIcons}
         dir={dir}
         classPrefix="im"
-        framer
       />
 
       <FAQ items={faqItems} title={t(`${TK}.faq.title`)} />
@@ -282,7 +278,6 @@ const CampaignManagement = () => {
         secondaryButtonText={t(`${TK}.cta.secondaryButtonText`)}
         secondaryHref="tel:+97145774042"
         dir={dir}
-        framer
       />
     </>
   );

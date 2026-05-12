@@ -1,6 +1,4 @@
 import { forwardRef } from "react";
-import { motion as Motion } from "framer-motion";
-import { influencerRevealItem } from "@/helpers/framerMotion";
 import { useFontClass } from "../../../../hooks/useFontClass";
 
 const InfIconCardGrid = forwardRef(({ label, title, description, items, columns = 2 }, ref) => {
@@ -19,17 +17,16 @@ const InfIconCardGrid = forwardRef(({ label, title, description, items, columns 
 
         <div className={gridClass}>
           {items.map((item, idx) => (
-            <Motion.div
+            <div
               key={item?.title || item?.description || JSON.stringify(item) || `icon-card-${idx}`}
               className="inf-type-card"
-              {...influencerRevealItem(idx, 0.1)}
             >
               <div className="inf-type-card__badge">{item.icon}</div>
               <div className="flex-1">
                 <h3 className="inf-service-card__title">{item.title}</h3>
                 {item.description ? <p className="inf-service-card__text">{item.description}</p> : null}
               </div>
-            </Motion.div>
+            </div>
           ))}
         </div>
       </div>

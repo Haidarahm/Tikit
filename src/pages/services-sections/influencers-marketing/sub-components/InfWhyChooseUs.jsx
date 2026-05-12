@@ -1,11 +1,4 @@
 import { forwardRef } from "react";
-import { motion as Motion } from "framer-motion";
-import {
-  influencerCardGridContainer,
-  influencerCardGridItem,
-  influencerSectionIntro,
-  VIEWPORT_INFLUENCER_CARDS,
-} from "@/helpers/framerMotion";
 import { useFontClass } from "../../../../hooks/useFontClass";
 
 const InfWhyChooseUs = forwardRef(({ label, title, description, reasons, footerContent }, ref) => {
@@ -14,31 +7,22 @@ const InfWhyChooseUs = forwardRef(({ label, title, description, reasons, footerC
   return (
     <section ref={ref} className="inf-section">
       <div className="inf-container">
-        <Motion.div {...influencerSectionIntro}>
-          <span className="inf-label">{label}</span>
-          <h2 className={`inf-heading ${fontHeading}`}>{title}</h2>
-          <p className="inf-desc">{description}</p>
-        </Motion.div>
+        <span className="inf-label">{label}</span>
+        <h2 className={`inf-heading ${fontHeading}`}>{title}</h2>
+        <p className="inf-desc">{description}</p>
 
-        <Motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
-          initial="hidden"
-          whileInView="visible"
-          viewport={VIEWPORT_INFLUENCER_CARDS}
-          variants={influencerCardGridContainer}
-        >
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {reasons.map((reason, idx) => (
-            <Motion.div
+            <div
               key={reason?.title || reason?.description || JSON.stringify(reason) || `reason-${idx}`}
               className="inf-why-card"
-              variants={influencerCardGridItem}
             >
               <div className="inf-why-card__icon">{reason.icon}</div>
               <h3 className="inf-service-card__title">{reason.title}</h3>
               <p className="inf-service-card__text">{reason.description}</p>
-            </Motion.div>
+            </div>
           ))}
-        </Motion.div>
+        </div>
 
         {footerContent ? (
           <div className="mt-12">

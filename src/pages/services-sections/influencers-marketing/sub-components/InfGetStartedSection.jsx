@@ -1,8 +1,6 @@
 import { forwardRef } from "react";
-import { motion as Motion } from "framer-motion";
 import { LocaleLink as Link } from "@/components/LocaleLink.jsx";
 import { FiArrowRight } from "react-icons/fi";
-import { influencerRevealPanel } from "@/helpers/framerMotion";
 import { useFontClass } from "../../../../hooks/useFontClass";
 
 const InfGetStartedSection = forwardRef(
@@ -12,7 +10,7 @@ const InfGetStartedSection = forwardRef(
     return (
       <section ref={ref} className="inf-section">
         <div className="inf-container">
-          <Motion.div className="mx-auto max-w-4xl text-center" {...influencerRevealPanel}>
+          <div className="mx-auto max-w-4xl text-center">
             {label ? <span className="inf-label mb-4">{label}</span> : null}
             {title ? <h3 className={`inf-heading text-2xl md:text-4xl mb-4 ${fontHeading}`}>{title}</h3> : null}
             {description ? <p className="inf-desc mx-auto mb-6 max-w-3xl">{description}</p> : null}
@@ -20,7 +18,7 @@ const InfGetStartedSection = forwardRef(
               {buttonText}
               <FiArrowRight />
             </Link>
-          </Motion.div>
+          </div>
         </div>
       </section>
     );

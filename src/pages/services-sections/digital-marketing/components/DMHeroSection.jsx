@@ -1,9 +1,3 @@
-import { motion } from "framer-motion";
-import {
-  dmSubpageContainerVariants as containerVariants,
-  dmSubpageItemVariants as itemVariants,
-  VIEWPORT_DM_SUBPAGE as viewport,
-} from "@/helpers/framerMotion";
 import HeroWithBadge from "../../../../components/HeroWithBadge";
 
 /**
@@ -23,14 +17,8 @@ export default function DMHeroSection({
       <div className="dm-hero-overlay">
         <div className="dm-hero-gradient" />
       </div>
-      <motion.div
-        className="dm-hero-content relative z-10"
-        initial="hidden"
-        whileInView="visible"
-        viewport={viewport}
-        variants={containerVariants}
-      >
-        <motion.div variants={itemVariants}>
+      <div className="dm-hero-content relative z-10">
+        <div>
           <HeroWithBadge
             badge={badge}
             title={title}
@@ -41,23 +29,18 @@ export default function DMHeroSection({
             contentClassName="relative z-10 max-w-6xl mx-auto text-center mt-6"
             disableAnimation
           />
-        </motion.div>
+        </div>
         {heroSecondary ? (
-          <motion.p
-            variants={itemVariants}
-            className="dm-hero-desc dm-hero-desc--secondary mt-6"
-          >
-            {heroSecondary}
-          </motion.p>
+          <p className="dm-hero-desc dm-hero-desc--secondary mt-6">{heroSecondary}</p>
         ) : null}
         {heroCta ? (
-          <motion.div variants={itemVariants} className="mt-10 flex justify-center">
+          <div className="mt-10 flex justify-center">
             <a href={ctaHref} className="dm-cta-btn">
               {heroCta}
             </a>
-          </motion.div>
+          </div>
         ) : null}
-      </motion.div>
+      </div>
     </section>
   );
 }

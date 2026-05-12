@@ -1,11 +1,5 @@
 import React from "react";
-import { motion as Motion } from "framer-motion";
 import { LocaleLink as Link } from "@/components/LocaleLink.jsx";
-import {
-  influencerImageReveal,
-  influencerRevealItem,
-  serviceHeroFramerHero,
-} from "@/helpers/framerMotion";
 import { useI18nLanguage } from "../../../store/I18nLanguageContext";
 import HeroWithBadge from "../../../components/HeroWithBadge";
 import SEOHead from "../../../components/SEOHead";
@@ -55,7 +49,7 @@ const InfluencerSubPage = ({ pageData }) => {
             <div className="absolute inset-0 bg-gradient-to-tr from-[#52C3C5]/30 via-transparent to-[#1C6F6C]/30" />
           </div>
         )}
-        <Motion.div {...serviceHeroFramerHero}>
+        <div>
           <HeroWithBadge
             badge={pageData.badge}
             title={pageData.hero.title}
@@ -66,7 +60,7 @@ const InfluencerSubPage = ({ pageData }) => {
             contentClassName="im-hero-content"
             disableAnimation
           />
-        </Motion.div>
+        </div>
       </section>
 
       <div className="im-divider-wrap"><div className="im-divider" /></div>
@@ -122,7 +116,7 @@ const InfluencerSubPage = ({ pageData }) => {
           <section className="im-section">
             <div className="im-container">
               <div className="im-two-col">
-                <Motion.div className="im-image-wrap aspect-[4/3]" {...influencerImageReveal}>
+                <div className="im-image-wrap aspect-[4/3]">
                   <img
                     src={pageData.imageSection.image}
                     alt={pageData.imageSection.imageAlt}
@@ -130,7 +124,7 @@ const InfluencerSubPage = ({ pageData }) => {
                     height={600}
                     loading="lazy"
                   />
-                </Motion.div>
+                </div>
                 <div>
                   <h2 className={`im-heading ${fontClass}`}>{pageData.imageSection.title}</h2>
                   <p className="im-text">{pageData.imageSection.description}</p>
@@ -161,14 +155,13 @@ const InfluencerSubPage = ({ pageData }) => {
                 pageData.stats.length === 4 ? "grid-cols-2 md:grid-cols-4" : "grid-cols-2 md:grid-cols-3"
               }`}>
                 {pageData.stats.map((stat, idx) => (
-                  <Motion.div
+                  <div
                     key={`${stat?.value || "stat"}-${stat?.label || idx}`}
                     className="im-stat-card"
-                    {...influencerRevealItem(idx, 0.12)}
                   >
                     <h3 className="im-stat-value">{stat.value}</h3>
                     <p className="im-stat-label">{stat.label}</p>
-                  </Motion.div>
+                  </div>
                 ))}
               </div>
             </div>
@@ -188,13 +181,13 @@ const InfluencerSubPage = ({ pageData }) => {
                 {pageData.features.items.map((item, idx) => {
                   const Icon = item.icon;
                   return (
-                    <Motion.div key={item?.title || `feature-${idx}`} className="im-card" {...influencerRevealItem(idx, 0.15)}>
+                    <div key={item?.title || `feature-${idx}`} className="im-card">
                       <div className="im-card-icon">
                         <Icon className="w-8 h-8 text-white" />
                       </div>
                       <h3 className="im-card-title">{item.title}</h3>
                       <p className="im-card-desc">{item.description}</p>
-                    </Motion.div>
+                    </div>
                   );
                 })}
               </div>
@@ -213,17 +206,16 @@ const InfluencerSubPage = ({ pageData }) => {
               <p className="im-section-subtitle">{pageData.process.subtitle}</p>
               <div className="space-y-8">
                 {pageData.process.steps.map((step, idx) => (
-                  <Motion.div
+                  <div
                     key={step?.title || `step-${idx}`}
                     className="im-process-card"
-                    {...influencerRevealItem(idx, 0.2)}
                   >
                     <div className="im-step-number">{idx + 1}</div>
                     <div className="flex-1 text-center md:text-left">
                       <h3 className="im-step-title">{step.title}</h3>
                       <p className="im-step-desc">{step.description}</p>
                     </div>
-                  </Motion.div>
+                  </div>
                 ))}
               </div>
             </div>
@@ -275,10 +267,9 @@ const InfluencerSubPage = ({ pageData }) => {
                 {pageData.relatedPages.map((page, idx) => {
                   const Icon = page.icon;
                   return (
-                    <Motion.div
+                    <div
                       key={page?.path || page?.title || `related-${idx}`}
                       className="h-full min-h-0"
-                      {...influencerRevealItem(idx, 0.1)}
                     >
                       <Link to={page.path} className="im-link-card">
                         <div className="im-link-card-icon"><Icon /></div>
@@ -288,7 +279,7 @@ const InfluencerSubPage = ({ pageData }) => {
                           Learn More <HiArrowRight className="w-4 h-4" />
                         </span>
                       </Link>
-                    </Motion.div>
+                    </div>
                   );
                 })}
               </div>

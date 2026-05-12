@@ -1,6 +1,4 @@
-import { motion as Motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
-import { influencerRevealItem, serviceHeroFramerHero } from "@/helpers/framerMotion";
 import { useI18nLanguage } from "../../../store/I18nLanguageContext";
 
 import { FiUsers, FiTarget, FiBarChart2, FiTrendingUp, FiZap, FiShield, FiClock, FiFileText, FiGlobe, FiLayers } from "react-icons/fi";
@@ -136,7 +134,6 @@ const MicroInfluencerMarketing = () => {
         mainWord={t(`${TK}.hero.mainWord`, { defaultValue: "in Dubai" })}
         description={heroShortDescription}
         dataNavColor="black"
-        framerHero={serviceHeroFramerHero}
       />
 
       <ServiceAudiencePainSection
@@ -245,26 +242,26 @@ const MicroInfluencerMarketing = () => {
         reasons={whyReasons}
         footerContent={
           <>
-            <Motion.p className="inf-desc mb-0" {...influencerRevealItem(0, 0.06)}>
+            <p className="inf-desc mb-0">
               {t(`${TK}.whyChooseUs.extra1.before`)}{" "}
               <a href={t(`${TK}.whyChooseUs.extra1.href`)} className="text-[var(--secondary)] font-bold">
                 {t(`${TK}.whyChooseUs.extra1.linkText`)}
               </a>{" "}
               {t(`${TK}.whyChooseUs.extra1.after`)}
-            </Motion.p>
-            <Motion.p className="inf-desc" style={{ marginBottom: 10 }} {...influencerRevealItem(1, 0.06)}>
+            </p>
+            <p className="inf-desc" style={{ marginBottom: 10 }}>
               {t(`${TK}.whyChooseUs.extra2.before`)}{" "}
               <a href={t(`${TK}.whyChooseUs.extra2.href`)} className="text-[var(--secondary)] font-bold">
                 {t(`${TK}.whyChooseUs.extra2.linkText`)}
               </a>{" "}
               {t(`${TK}.whyChooseUs.extra2.after`)}
-            </Motion.p>
+            </p>
 
-            <Motion.p className="mt-10 mb-0" {...influencerRevealItem(2, 0.06)}>
+            <p className="mt-10 mb-0">
               <a href={CTA_HREF} className="text-[var(--secondary)] font-bold">
                 {t(`${TK}.whyChooseUs.ctaText`)}
               </a>
-            </Motion.p>
+            </p>
           </>
         }
       />
@@ -288,7 +285,6 @@ const MicroInfluencerMarketing = () => {
         primaryHref={CTA_HREF}
         secondaryButtonText={t(`${TK}.cta.secondaryButtonText`)}
         secondaryHref={CTA_HREF}
-        framer
       />
     </div>
   );

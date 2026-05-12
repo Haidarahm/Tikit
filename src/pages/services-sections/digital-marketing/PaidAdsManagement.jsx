@@ -235,7 +235,7 @@ const PaidAdsManagement = () => {
         title={t("serviceSections.digitalMarketing.paidAds.faqTitle")}
       />
 
-      <DMRelatedServices current="paidAds" withScrollReveal />
+      <DMRelatedServices current="paidAds" />
 
       <DMCTA />
     </div>

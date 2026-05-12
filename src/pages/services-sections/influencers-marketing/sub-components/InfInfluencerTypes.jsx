@@ -1,11 +1,4 @@
 import { forwardRef } from "react";
-import { motion as Motion } from "framer-motion";
-import {
-  influencerCardGridContainer,
-  influencerCardGridItem,
-  influencerSectionIntro,
-  VIEWPORT_INFLUENCER_CARDS,
-} from "@/helpers/framerMotion";
 import { useFontClass } from "../../../../hooks/useFontClass";
 
 const sizeLabels = ["1K–10K", "10K–100K", "100K–1M", "1M+"];
@@ -16,21 +9,13 @@ const InfInfluencerTypes = forwardRef(({ label, title, description, types }, ref
   return (
     <section ref={ref} className="inf-section inf-section--alt">
       <div className="inf-container">
-        <Motion.div {...influencerSectionIntro}>
-          <span className="inf-label">{label}</span>
-          <h2 className={`inf-heading ${fontHeading}`}>{title}</h2>
-          <p className="inf-desc">{description}</p>
-        </Motion.div>
+        <span className="inf-label">{label}</span>
+        <h2 className={`inf-heading ${fontHeading}`}>{title}</h2>
+        <p className="inf-desc">{description}</p>
 
-        <Motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 gap-5"
-          initial="hidden"
-          whileInView="visible"
-          viewport={VIEWPORT_INFLUENCER_CARDS}
-          variants={influencerCardGridContainer}
-        >
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           {types.map((type, idx) => (
-            <Motion.div key={type?.title || `type-${idx}`} className="inf-type-card" variants={influencerCardGridItem}>
+            <div key={type?.title || `type-${idx}`} className="inf-type-card">
               <div className="inf-type-card__badge">{type.icon}</div>
               <div className="flex-1">
                 <h3 className="inf-service-card__title">{type.title}</h3>
@@ -45,9 +30,9 @@ const InfInfluencerTypes = forwardRef(({ label, title, description, types }, ref
                   {sizeLabels[idx]}
                 </span>
               </div>
-            </Motion.div>
+            </div>
           ))}
-        </Motion.div>
+        </div>
       </div>
     </section>
   );

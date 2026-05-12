@@ -1,6 +1,5 @@
 import { LocaleLink as Link } from "@/components/LocaleLink.jsx";
 import { useTranslation } from "react-i18next";
-import { serviceHeroFramerHero } from "@/helpers/framerMotion";
 import { useI18nLanguage } from "../../../store/I18nLanguageContext";
 import {
   FiUsers,
@@ -124,7 +123,6 @@ const LuxuryInfluencerMarketing = () => {
         title={t(`${TK}.hero.title`)}
         description={t(`${TK}.hero.description`)}
         dataNavColor="black"
-        framerHero={serviceHeroFramerHero}
       />
 
       <ServiceProblemsSection
@@ -135,7 +133,6 @@ const LuxuryInfluencerMarketing = () => {
         icons={problemIcons}
         dir={dir}
         classPrefix="im"
-        framer
       />
 
       <InfIconCardGrid
@@ -186,7 +183,6 @@ const LuxuryInfluencerMarketing = () => {
         description={t(`${TK}.results.description`)}
         items={stats}
         dir={dir}
-        framer
       />
 
       <InfSplitCTA
@@ -236,7 +232,6 @@ const LuxuryInfluencerMarketing = () => {
         icons={influencerMarketingSubServiceIcons}
         dir={dir}
         classPrefix="im"
-        framer
       />
 
       <ServiceCTASection
@@ -249,7 +244,6 @@ const LuxuryInfluencerMarketing = () => {
         secondaryButtonText={t(`${TK}.finalCta.secondaryButtonText`)}
         secondaryHref="tel:+97145774042"
         dir={dir}
-        framer
       />
     </>
   );

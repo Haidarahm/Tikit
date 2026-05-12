@@ -187,12 +187,6 @@
   box-shadow: 0 8px 30px color-mix(in srgb, var(--secondary) 30%, transparent);
 }
 
-/* ─── Scroll-reveal utility ──────────────────────────────────── */
-.inf-reveal {
-  opacity: 0;
-  transform: translateY(32px);
-}
-
 /* Shared CTA button used in influencer sub-pages and inline CTA blocks */
 .im-cta-btn {
   @apply inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl text-sm md:text-base font-semibold transition-all duration-300;

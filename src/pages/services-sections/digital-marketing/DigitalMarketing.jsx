@@ -1,5 +1,3 @@
-import { motion as Motion } from "framer-motion";
-import { faqSectionReveal, serviceHeroFramerHero } from "@/helpers/framerMotion";
 import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../../store/I18nLanguageContext";
 import {
@@ -157,7 +155,6 @@ const DigitalMarketing = () => {
       />
 
       <ServiceHeroSection
-        framerHero={serviceHeroFramerHero}
         imageSrc={digitalMarketingHero}
         imageAlt={t("serviceSections.digitalMarketing.seo.serviceType")}
         badge={t("serviceSections.digitalMarketing.hero.badge")}
@@ -169,7 +166,6 @@ const DigitalMarketing = () => {
       />
 
       <ServiceProblemsSection
-        framer
         sectionLabel={t("serviceSections.digitalMarketing.problems.sectionLabel")}
         title={t("serviceSections.digitalMarketing.problems.title")}
         description={t("serviceSections.digitalMarketing.problems.description")}
@@ -179,7 +175,6 @@ const DigitalMarketing = () => {
       />
 
       <ServiceProcessSection
-        framer
         sectionLabel={t("serviceSections.digitalMarketing.process.sectionLabel")}
         title={t("serviceSections.digitalMarketing.process.title")}
         description={t("serviceSections.digitalMarketing.process.description")}
@@ -188,7 +183,6 @@ const DigitalMarketing = () => {
       />
 
       <ServiceBenefitsSection
-        framer
         sectionLabel={t("serviceSections.digitalMarketing.benefits.sectionLabel")}
         title={t("serviceSections.digitalMarketing.benefits.title")}
         description={t("serviceSections.digitalMarketing.benefits.description")}
@@ -198,7 +192,6 @@ const DigitalMarketing = () => {
       />
 
       <ServiceCaseStudySection
-        framer
         sectionLabel={t("serviceSections.digitalMarketing.caseStudy.sectionLabel")}
         title={t("serviceSections.digitalMarketing.caseStudy.title")}
         tag={t("serviceSections.digitalMarketing.caseStudy.tag")}
@@ -210,7 +203,6 @@ const DigitalMarketing = () => {
       />
 
       <ServiceWhyUsSection
-        framer
         sectionLabel={t("serviceSections.digitalMarketing.marketExpertise.sectionLabel")}
         title={t("serviceSections.digitalMarketing.marketExpertise.title")}
         items={marketExpertiseItems}
@@ -220,7 +212,6 @@ const DigitalMarketing = () => {
       />
 
       <ServiceWhyUsSection
-        framer
         sectionLabel={t("serviceSections.digitalMarketing.whyUs.sectionLabel")}
         title={t("serviceSections.digitalMarketing.whyUs.title")}
         items={whyUsItems}
@@ -230,7 +221,6 @@ const DigitalMarketing = () => {
       />
 
       <ServiceSubServicesSection
-        framer
         sectionLabel={t("serviceSections.digitalMarketing.subServices.sectionLabel", { defaultValue: "Sub-Services" })}
         title={t("serviceSections.digitalMarketing.subServices.title", {
           defaultValue: "Explore Digital Marketing Sub-Services",
@@ -246,12 +236,9 @@ const DigitalMarketing = () => {
         dir={dir}
       />
 
-      <Motion.div {...faqSectionReveal}>
-        <FAQ items={faqItems} title={t("serviceSections.digitalMarketing.faq.title")} />
-      </Motion.div>
+      <FAQ items={faqItems} title={t("serviceSections.digitalMarketing.faq.title")} />
 
       <ServiceMultiCTASection
-        framer
         title={t("serviceSections.digitalMarketing.finalCta.title")}
         cards={finalCtaCards}
         finalLine={t("serviceSections.digitalMarketing.finalCta.finalLine")}

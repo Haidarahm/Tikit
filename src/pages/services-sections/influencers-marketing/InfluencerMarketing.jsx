@@ -1,6 +1,4 @@
-import { motion as Motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
-import { faqSectionReveal, serviceHeroFramerHero } from "@/helpers/framerMotion";
 import { useI18nLanguage } from "../../../store/I18nLanguageContext";
 import {
   FiSearch,
@@ -139,7 +137,6 @@ const InfluencerMarketing = () => {
         mainWord={t(`${TK}.hero.mainWord`)}
         description={t(`${TK}.hero.description`)}
         dataNavColor="black"
-        framerHero={serviceHeroFramerHero}
       />
 
       <InfServicesGrid
@@ -212,12 +209,9 @@ const InfluencerMarketing = () => {
         icons={influencerMarketingSubServiceIcons}
         dir={dir}
         classPrefix="im"
-        framer
       />
 
-      <Motion.div {...faqSectionReveal}>
-        <FAQ items={faqItems} title={t(`${TK}.faq.title`)} />
-      </Motion.div>
+      <FAQ items={faqItems} title={t(`${TK}.faq.title`)} />
 
       <ServiceCTASection
         classPrefix="im"
@@ -229,7 +223,6 @@ const InfluencerMarketing = () => {
         secondaryButtonText={t(`${TK}.cta.secondaryButtonText`)}
         secondaryHref="tel:+97145774042"
         dir={dir}
-        framer
       />
     </>
   );

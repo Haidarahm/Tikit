@@ -1,6 +1,4 @@
 import { forwardRef } from "react";
-import { motion as Motion } from "framer-motion";
-import { influencerRevealPanel } from "@/helpers/framerMotion";
 import { useFontClass } from "../../../../hooks/useFontClass";
 
 const statementCardStyle = {
@@ -15,15 +13,14 @@ const InfPositioningStatement = forwardRef(({ label, title, description }, ref) 
   return (
     <section ref={ref} className="inf-section inf-section--alt">
       <div className="inf-container">
-        <Motion.div
+        <div
           className="rounded-2xl border px-6 py-8 md:px-10 md:py-12 text-center"
           style={statementCardStyle}
-          {...influencerRevealPanel}
         >
           {label ? <span className="inf-label mb-4">{label}</span> : null}
           {title ? <h3 className={`inf-heading text-2xl md:text-4xl mb-4 ${fontHeading}`}>{title}</h3> : null}
           {description ? <p className="inf-desc mx-auto max-w-3xl">{description}</p> : null}
-        </Motion.div>
+        </div>
       </div>
     </section>
   );

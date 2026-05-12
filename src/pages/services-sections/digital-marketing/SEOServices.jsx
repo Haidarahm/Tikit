@@ -1,13 +1,4 @@
-import { motion as Motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
-import {
-  benefitsSection,
-  faqSectionReveal,
-  problemsSection,
-  processSection,
-  seoServicesHeroChildVariants,
-  seoServicesHeroContainerVariants,
-} from "@/helpers/framerMotion";
 import { useI18nLanguage } from "../../../store/I18nLanguageContext";
 import {
   HiCheckCircle,
@@ -111,13 +102,8 @@ const SEOServicesPage = () => {
         <div className="dm-hero-overlay">
           <div className="dm-hero-gradient" />
         </div>
-        <Motion.div
-          className="dm-hero-content relative z-10"
-          initial="hidden"
-          animate="visible"
-          variants={seoServicesHeroContainerVariants}
-        >
-          <Motion.div variants={seoServicesHeroChildVariants}>
+        <div className="dm-hero-content relative z-10">
+          <div>
             <HeroWithBadge
               badge={t("serviceSections.digitalMarketing.seoServices.badge")}
               title={t("serviceSections.digitalMarketing.seoServices.hero.title")}
@@ -132,16 +118,13 @@ const SEOServicesPage = () => {
               contentClassName="relative z-10 max-w-6xl mx-auto text-center mt-6"
               disableAnimation
             />
-          </Motion.div>
-          <Motion.div
-            variants={seoServicesHeroChildVariants}
-            className="mt-10 flex justify-center"
-          >
+          </div>
+          <div className="mt-10 flex justify-center">
             <a href="/contact-us" className="dm-cta-btn">
               {t("serviceSections.digitalMarketing.seoServices.heroCta")}
             </a>
-          </Motion.div>
-        </Motion.div>
+          </div>
+        </div>
       </section>
 
       <div className="dm-divider-wrap">
@@ -149,7 +132,7 @@ const SEOServicesPage = () => {
       </div>
 
       <section className="dm-section">
-        <Motion.div className="dm-container" {...benefitsSection.headerWrap}>
+        <div className="dm-container">
           <h2 className={`dm-heading ${fontClass}`}>
             {t(
               "serviceSections.digitalMarketing.seoServices.definition.whatIsTitle",
@@ -173,7 +156,7 @@ const SEOServicesPage = () => {
               </li>
             ))}
           </ul>
-        </Motion.div>
+        </div>
       </section>
 
       <div className="dm-divider-wrap">
@@ -182,17 +165,17 @@ const SEOServicesPage = () => {
 
       <section className="dm-section dm-section-alt">
         <div className="dm-container-wide">
-          <Motion.div {...problemsSection.header}>
+          <div>
             <h2 className={`dm-section-title ${fontClass}`}>
               {t("serviceSections.digitalMarketing.seoServices.services.title")}
             </h2>
             <p className="dm-section-subtitle">
               {t("serviceSections.digitalMarketing.seoServices.services.subtitle")}
             </p>
-          </Motion.div>
+          </div>
           <div
             className="dm-feature-grid dm-feature-grid--pillars"
-            style={{ perspective: problemsSection.gridPerspectivePx }}
+            style={{ perspective: 1000 }}
           >
             {SERVICE_KEYS.map((key, idx) => {
               const bullets = toArray(
@@ -202,7 +185,7 @@ const SEOServicesPage = () => {
                 ),
               );
               return (
-                <Motion.div key={key} {...problemsSection.card(idx)}>
+                <div key={key}>
                   <ServiceCard
                     icon={SERVICE_ICONS[idx]}
                     title={t(
@@ -227,7 +210,7 @@ const SEOServicesPage = () => {
                       </ul>
                     ) : null}
                   </ServiceCard>
-                </Motion.div>
+                </div>
               );
             })}
           </div>
@@ -240,7 +223,7 @@ const SEOServicesPage = () => {
 
       <section className="dm-section">
         <div className="dm-container">
-          <Motion.div {...processSection.header}>
+          <div>
             <h2 className={`dm-section-title ${fontClass}`}>
               {t("serviceSections.digitalMarketing.seoServices.process.title")}
             </h2>
@@ -249,17 +232,11 @@ const SEOServicesPage = () => {
                 "serviceSections.digitalMarketing.seoServices.process.subtitle",
               )}
             </p>
-          </Motion.div>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
             {PROCESS_KEYS.map((step, idx) => (
-              <Motion.div
-                key={step}
-                className="dm-process-card"
-                {...processSection.stepCard(idx)}
-              >
-                <Motion.div className="dm-step-number" {...processSection.stepNumber(idx)}>
-                  {String(idx + 1).padStart(2, "0")}
-                </Motion.div>
+              <div key={step} className="dm-process-card">
+                <div className="dm-step-number">{String(idx + 1).padStart(2, "0")}</div>
                 <h3 className="dm-step-title">
                   {t(
                     `serviceSections.digitalMarketing.seoServices.process.steps.${step}.title`,
@@ -270,7 +247,7 @@ const SEOServicesPage = () => {
                     `serviceSections.digitalMarketing.seoServices.process.steps.${step}.description`,
                   )}
                 </p>
-              </Motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -282,7 +259,7 @@ const SEOServicesPage = () => {
 
       <section className="dm-section">
         <div className="dm-container">
-          <Motion.div {...benefitsSection.headerWrap}>
+          <div>
             <h2 className={`dm-section-title ${fontClass}`}>
               {t(
                 "serviceSections.digitalMarketing.seoServices.industries.title",
@@ -293,18 +270,17 @@ const SEOServicesPage = () => {
                 "serviceSections.digitalMarketing.seoServices.industries.subtitle",
               )}
             </p>
-          </Motion.div>
+          </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-10">
             {industryItems.map((item, idx) => (
-              <Motion.div
+              <div
                 key={idx}
                 className="dm-trust-card dm-industry-card"
-                {...benefitsSection.item(idx)}
               >
                 <span className="dm-trust-title dm-industry-card__text">
                   {item}
                 </span>
-              </Motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -314,12 +290,10 @@ const SEOServicesPage = () => {
         <div className="dm-divider" />
       </div>
 
-      <Motion.div {...faqSectionReveal}>
-        <FAQ
-          items={faqItems}
-          title={t("serviceSections.digitalMarketing.seoServices.faqTitle")}
-        />
-      </Motion.div>
+      <FAQ
+        items={faqItems}
+        title={t("serviceSections.digitalMarketing.seoServices.faqTitle")}
+      />
 
       <section>
         <DMRelatedServices current="seoServices" />

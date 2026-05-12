@@ -1,11 +1,4 @@
 import { forwardRef } from "react";
-import { motion as Motion } from "framer-motion";
-import {
-  influencerCardGridContainer,
-  influencerCardGridItem,
-  influencerSectionIntro,
-  VIEWPORT_INFLUENCER_CARDS,
-} from "@/helpers/framerMotion";
 import { useFontClass } from "../../../../hooks/useFontClass";
 
 const InfCampaignProcess = forwardRef(({ label, title, description, steps }, ref) => {
@@ -14,24 +7,15 @@ const InfCampaignProcess = forwardRef(({ label, title, description, steps }, ref
   return (
     <section ref={ref} className="inf-section">
       <div className="inf-container">
-        <Motion.div {...influencerSectionIntro}>
-          <span className="inf-label">{label}</span>
-          <h2 className={`inf-heading ${fontHeading}`}>{title}</h2>
-          <p className="inf-desc">{description}</p>
-        </Motion.div>
+        <span className="inf-label">{label}</span>
+        <h2 className={`inf-heading ${fontHeading}`}>{title}</h2>
+        <p className="inf-desc">{description}</p>
 
-        <Motion.div
-          className="space-y-0"
-          initial="hidden"
-          whileInView="visible"
-          viewport={VIEWPORT_INFLUENCER_CARDS}
-          variants={influencerCardGridContainer}
-        >
+        <div className="space-y-0">
           {steps.map((step, idx) => (
-            <Motion.div
+            <div
               key={step?.title || step?.description || JSON.stringify(step) || `step-${idx}`}
               className="inf-step pb-8"
-              variants={influencerCardGridItem}
             >
               {idx < steps.length - 1 && <div className="inf-step__line" />}
               <div className="inf-step__number">{idx + 1}</div>
@@ -39,9 +23,9 @@ const InfCampaignProcess = forwardRef(({ label, title, description, steps }, ref
                 <h3 className="inf-service-card__title">{step.title}</h3>
                 {step.description ? <p className="inf-service-card__text">{step.description}</p> : null}
               </div>
-            </Motion.div>
+            </div>
           ))}
-        </Motion.div>
+        </div>
       </div>
     </section>
   );

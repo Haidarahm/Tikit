@@ -1,6 +1,4 @@
 import { forwardRef } from "react";
-import { motion as Motion } from "framer-motion";
-import { problemsSection } from "@/helpers/framerMotion";
 
 /**
  * Reusable "problems / why struggle" section with label, title, description, and card grid.
@@ -12,10 +10,9 @@ import { problemsSection } from "@/helpers/framerMotion";
  * @param {React.ReactNode[]} props.icons - Icons for each card (same length as items)
  * @param {string} [props.dir] - "ltr" | "rtl"
  * @param {string} [props.classPrefix="im"] - CSS class prefix (e.g. "br")
- * @param {boolean} [props.framer] - Use Framer Motion for scroll reveals instead of page-level GSAP
  */
 const ServiceProblemsSection = forwardRef((props, ref) => {
-  const { sectionLabel, title, description, items = [], icons = [], dir, classPrefix = "im", framer } = props;
+  const { sectionLabel, title, description, items = [], icons = [], dir, classPrefix = "im" } = props;
   const p = classPrefix;
 
   const header = (
@@ -26,51 +23,19 @@ const ServiceProblemsSection = forwardRef((props, ref) => {
     </>
   );
 
-  const grid = (
-    <>
-      {Array.isArray(items) &&
-        items.map((item, i) => (
-          <div key={i} className={`${p}-problem-card`}>
-            <div className={`${p}-problem-card__icon`}>{icons[i] ?? item.icon}</div>
-            <h3 className={`${p}-problem-card__title font-antonio`}>{item.title}</h3>
-            <p className={`${p}-problem-card__text`}>{item.text}</p>
-          </div>
-        ))}
-    </>
-  );
-
-  if (framer) {
-    return (
-      <section className={`${p}-section ${p}-problems-section`} dir={dir}>
-        <div className={`${p}-container`}>
-          <Motion.div className="text-center max-w-2xl mx-auto mb-2" {...problemsSection.header}>
-            {header}
-          </Motion.div>
-          <div
-            ref={ref}
-            className={`${p}-problems-grid`}
-            style={{ perspective: problemsSection.gridPerspectivePx }}
-          >
-            {Array.isArray(items) &&
-              items.map((item, i) => (
-                <Motion.div key={i} className={`${p}-problem-card`} {...problemsSection.card(i)}>
-                  <div className={`${p}-problem-card__icon`}>{icons[i] ?? item.icon}</div>
-                  <h3 className={`${p}-problem-card__title font-antonio`}>{item.title}</h3>
-                  <p className={`${p}-problem-card__text`}>{item.text}</p>
-                </Motion.div>
-              ))}
-          </div>
-        </div>
-      </section>
-    );
-  }
-
   return (
     <section className={`${p}-section ${p}-problems-section`} dir={dir}>
       <div className={`${p}-container`}>
         <div className="text-center max-w-2xl mx-auto mb-2">{header}</div>
         <div ref={ref} className={`${p}-problems-grid`}>
-          {grid}
+          {Array.isArray(items) &&
+            items.map((item, i) => (
+              <div key={i} className={`${p}-problem-card`}>
+                <div className={`${p}-problem-card__icon`}>{icons[i] ?? item.icon}</div>
+                <h3 className={`${p}-problem-card__title font-antonio`}>{item.title}</h3>
+                <p className={`${p}-problem-card__text`}>{item.text}</p>
+              </div>
+            ))}
         </div>
       </div>
     </section>

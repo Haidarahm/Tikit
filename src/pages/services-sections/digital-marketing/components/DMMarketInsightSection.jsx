@@ -1,10 +1,3 @@
-import { motion } from "framer-motion";
-import {
-  dmSubpageContainerVariants as containerVariants,
-  dmSubpageItemVariants as itemVariants,
-  VIEWPORT_DM_SUBPAGE as viewport,
-} from "@/helpers/framerMotion";
-
 /**
  * Title + two prose paragraphs (e.g. market / insight copy). Uses `dm-insight-block` styling.
  */
@@ -16,23 +9,11 @@ export default function DMMarketInsightSection({
 }) {
   return (
     <section className="dm-section">
-      <motion.div
-        className="dm-container"
-        initial="hidden"
-        whileInView="visible"
-        viewport={viewport}
-        variants={containerVariants}
-      >
-        <motion.h2 variants={itemVariants} className={`dm-section-title ${fontClass}`}>
-          {title}
-        </motion.h2>
-        <motion.p variants={itemVariants} className="dm-text dm-insight-block">
-          {paragraph}
-        </motion.p>
-        <motion.p variants={itemVariants} className="dm-text dm-insight-block">
-          {paragraph2}
-        </motion.p>
-      </motion.div>
+      <div className="dm-container">
+        <h2 className={`dm-section-title ${fontClass}`}>{title}</h2>
+        <p className="dm-text dm-insight-block">{paragraph}</p>
+        <p className="dm-text dm-insight-block">{paragraph2}</p>
+      </div>
     </section>
   );
 }

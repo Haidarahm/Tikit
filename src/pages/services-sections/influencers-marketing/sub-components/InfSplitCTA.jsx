@@ -1,8 +1,6 @@
 import { forwardRef } from "react";
-import { motion as Motion } from "framer-motion";
 import { LocaleLink as Link } from "@/components/LocaleLink.jsx";
 import { FiArrowRight, FiCheckCircle } from "react-icons/fi";
-import { influencerRevealPanel } from "@/helpers/framerMotion";
 import { useFontClass } from "../../../../hooks/useFontClass";
 
 const outerCardStyle = {
@@ -52,7 +50,7 @@ const InfSplitCTA = forwardRef(
     return (
       <section ref={ref} className="inf-section">
         <div className="inf-container">
-          <Motion.div className="rounded-3xl border p-6 md:p-10" style={outerCardStyle} {...influencerRevealPanel}>
+          <div className="rounded-3xl border p-6 md:p-10" style={outerCardStyle}>
             <div className="grid gap-6 md:grid-cols-[1.25fr_0.75fr] md:items-center">
               <div>
                 {label ? <span className="inf-label mb-3">{label}</span> : null}
@@ -100,7 +98,7 @@ const InfSplitCTA = forwardRef(
                 ) : null}
               </div>
             </div>
-          </Motion.div>
+          </div>
         </div>
       </section>
     );

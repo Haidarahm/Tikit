@@ -1,14 +1,5 @@
-import { motion as Motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../../store/I18nLanguageContext";
-import {
-  benefitsSection,
-  faqSectionReveal,
-  problemsSection,
-  processSection,
-  seoServicesHeroChildVariants,
-  seoServicesHeroContainerVariants,
-} from "@/helpers/framerMotion";
 import {
   HiCheckCircle,
   HiCurrencyDollar,
@@ -121,13 +112,8 @@ const PerformanceMarketing = () => {
         <div className="dm-hero-overlay">
           <div className="dm-hero-gradient" />
         </div>
-        <Motion.div
-          className="dm-hero-content relative z-10"
-          initial="hidden"
-          animate="visible"
-          variants={seoServicesHeroContainerVariants}
-        >
-          <Motion.div variants={seoServicesHeroChildVariants}>
+        <div className="dm-hero-content relative z-10">
+          <div>
             <HeroWithBadge
               badge={t(
                 "serviceSections.digitalMarketing.performanceMarketing.badge",
@@ -146,8 +132,8 @@ const PerformanceMarketing = () => {
               contentClassName="relative z-10 max-w-6xl mx-auto text-center mt-6"
               disableAnimation
             />
-          </Motion.div>
-        </Motion.div>
+          </div>
+        </div>
       </section>
 
       <div className="dm-divider-wrap">
@@ -155,7 +141,7 @@ const PerformanceMarketing = () => {
       </div>
 
       <section className="dm-section">
-        <Motion.div className="dm-container" {...benefitsSection.headerWrap}>
+        <div className="dm-container">
           <h2 className={`dm-heading ${fontClass}`}>
             {t(
               "serviceSections.digitalMarketing.performanceMarketing.definition.whatIsTitle",
@@ -179,7 +165,7 @@ const PerformanceMarketing = () => {
               </li>
             ))}
           </ul>
-        </Motion.div>
+        </div>
       </section>
 
       <div className="dm-divider-wrap">
@@ -188,7 +174,7 @@ const PerformanceMarketing = () => {
 
       <section className="dm-section">
         <div className="dm-container-wide">
-          <Motion.div {...problemsSection.header}>
+          <div>
             <h2 className={`dm-section-title ${fontClass}`}>
               {t(
                 "serviceSections.digitalMarketing.performanceMarketing.services.title",
@@ -199,13 +185,10 @@ const PerformanceMarketing = () => {
                 "serviceSections.digitalMarketing.performanceMarketing.services.subtitle",
               )}
             </p>
-          </Motion.div>
-          <div
-            className="dm-feature-grid"
-            style={{ perspective: problemsSection.gridPerspectivePx }}
-          >
+          </div>
+          <div className="dm-feature-grid" style={{ perspective: 1000 }}>
             {SERVICE_KEYS.map((key, idx) => (
-              <Motion.div key={key} {...problemsSection.card(idx)}>
+              <div key={key}>
                 <ServiceCard
                   icon={SERVICE_ICONS[idx]}
                   title={t(
@@ -219,7 +202,7 @@ const PerformanceMarketing = () => {
                   titleClassName="dm-card-title"
                   descriptionClassName="dm-card-desc"
                 />
-              </Motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -231,7 +214,7 @@ const PerformanceMarketing = () => {
 
       <section className="dm-section">
         <div className="dm-container">
-          <Motion.div {...processSection.header}>
+          <div>
             <h2 className={`dm-section-title ${fontClass}`}>
               {t(
                 "serviceSections.digitalMarketing.performanceMarketing.process.title",
@@ -242,17 +225,11 @@ const PerformanceMarketing = () => {
                 "serviceSections.digitalMarketing.performanceMarketing.process.subtitle",
               )}
             </p>
-          </Motion.div>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
             {PROCESS_KEYS.map((step, idx) => (
-              <Motion.div
-                key={step}
-                className="dm-process-card"
-                {...processSection.stepCard(idx)}
-              >
-                <Motion.div className="dm-step-number" {...processSection.stepNumber(idx)}>
-                  {String(idx + 1).padStart(2, "0")}
-                </Motion.div>
+              <div key={step} className="dm-process-card">
+                <div className="dm-step-number">{String(idx + 1).padStart(2, "0")}</div>
                 <h3 className="dm-step-title">
                   {t(
                     `serviceSections.digitalMarketing.performanceMarketing.process.steps.${step}.title`,
@@ -263,7 +240,7 @@ const PerformanceMarketing = () => {
                     `serviceSections.digitalMarketing.performanceMarketing.process.steps.${step}.description`,
                   )}
                 </p>
-              </Motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -275,7 +252,7 @@ const PerformanceMarketing = () => {
 
       <section className="dm-section">
         <div className="dm-container">
-          <Motion.div {...benefitsSection.headerWrap}>
+          <div>
             <h2 className={`dm-section-title ${fontClass}`}>
               {t(
                 "serviceSections.digitalMarketing.performanceMarketing.industries.title",
@@ -286,16 +263,12 @@ const PerformanceMarketing = () => {
                 "serviceSections.digitalMarketing.performanceMarketing.industries.subtitle",
               )}
             </p>
-          </Motion.div>
+          </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-8">
             {industryItems.map((item, idx) => (
-              <Motion.div
-                key={idx}
-                className="dm-trust-card text-center"
-                {...benefitsSection.item(idx)}
-              >
+              <div key={idx} className="dm-trust-card text-center">
                 <span className="dm-trust-title">{item}</span>
-              </Motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -307,7 +280,7 @@ const PerformanceMarketing = () => {
 
       <section className="dm-section">
         <div className="dm-container">
-          <Motion.div {...benefitsSection.headerWrap}>
+          <div>
             <h2 className={`dm-section-title ${fontClass}`}>
               {t(
                 "serviceSections.digitalMarketing.performanceMarketing.whyUs.title",
@@ -318,17 +291,13 @@ const PerformanceMarketing = () => {
                 "serviceSections.digitalMarketing.performanceMarketing.whyUs.subtitle",
               )}
             </p>
-          </Motion.div>
+          </div>
           <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
             {whyUsItems.map((item, idx) => (
-              <Motion.li
-                key={idx}
-                className="dm-check-item"
-                {...benefitsSection.item(idx)}
-              >
+              <li key={idx} className="dm-check-item">
                 <HiLightningBolt className="dm-check-icon" />
                 <span className="dm-text-sm">{item}</span>
-              </Motion.li>
+              </li>
             ))}
           </ul>
         </div>
@@ -338,14 +307,12 @@ const PerformanceMarketing = () => {
         <div className="dm-divider" />
       </div>
 
-      <Motion.div {...faqSectionReveal}>
-        <FAQ
-          items={faqItems}
-          title={t(
-            "serviceSections.digitalMarketing.performanceMarketing.faqTitle",
-          )}
-        />
-      </Motion.div>
+      <FAQ
+        items={faqItems}
+        title={t(
+          "serviceSections.digitalMarketing.performanceMarketing.faqTitle",
+        )}
+      />
 
       <section>
         <DMRelatedServices current="performanceMarketing" />

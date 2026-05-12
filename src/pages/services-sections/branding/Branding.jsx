@@ -1,7 +1,4 @@
-import { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   FiAlertCircle,
   FiLayout,
@@ -33,44 +30,13 @@ import {
 
 import "./Branding.css";
 
-gsap.registerPlugin(ScrollTrigger);
-
 const problemIcons = [<FiAlertCircle key="1" />, <FiLayout key="2" />, <FiCompass key="3" />];
 const benefitIcons = [<FiCompass key="1" />, <FiGlobe key="2" />, <FiShield key="3" />, <FiLink key="4" />];
 const subServiceIcons = [<FiBookOpen key="1" />, <FiEdit3 key="2" />, <FiRefreshCw key="3" />, <FiMap key="4" />];
 
-function revealChildren(containerRef, selector, fromVars = {}, staggerVal = 0.1) {
-  if (!containerRef.current) return;
-  const els = containerRef.current.querySelectorAll(selector);
-  if (!els.length) return;
-  gsap.fromTo(
-    els,
-    { opacity: 0, y: 36, ...fromVars },
-    {
-      opacity: 1,
-      y: 0,
-      duration: 0.75,
-      stagger: staggerVal,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top 82%",
-      },
-    }
-  );
-}
-
 const TK = "serviceSections.branding.page";
 const Branding = () => {
   const { t } = useTranslation();
-  const heroRef = useRef(null);
-  const problemsRef = useRef(null);
-  const processRef = useRef(null);
-  const statsRef = useRef(null);
-  const benefitsRef = useRef(null);
-  const caseRef = useRef(null);
-  const subServicesRef = useRef(null);
-  const ctaRef = useRef(null);
 
   const breadcrumbsRaw = t(`${TK}.breadcrumbs`, { returnObjects: true });
   const breadcrumbs = Array.isArray(breadcrumbsRaw) ? breadcrumbsRaw : [];
@@ -92,78 +58,6 @@ const Branding = () => {
   const caseStudyPills = t(`${TK}.caseStudy.pills`, { returnObjects: true });
   const pillsArray = Array.isArray(caseStudyPills) ? caseStudyPills : [];
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        heroRef.current,
-        { opacity: 0, y: 24 },
-        { opacity: 1, y: 0, duration: 1.1, ease: "power3.out", delay: 0.15 }
-      );
-
-      revealChildren(problemsRef, ".im-problem-card", {}, 0.12);
-      revealChildren(processRef, ".im-step-card", {}, 0.1);
-      revealChildren(statsRef, ".im-stat-card", {}, 0.12);
-      revealChildren(benefitsRef, ".im-benefit-item", {}, 0.11);
-      revealChildren(subServicesRef, ".im-subservice-card", {}, 0.08);
-
-      if (caseRef.current) {
-        gsap.fromTo(
-          caseRef.current,
-          { opacity: 0, x: -50 },
-          {
-            opacity: 1,
-            x: 0,
-            duration: 0.9,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: caseRef.current,
-              start: "top 80%",
-            },
-          }
-        );
-
-        const statEls = caseRef.current.querySelectorAll(".im-case-study__stat-value[data-target]");
-        statEls.forEach((el) => {
-          const target = parseFloat(el.dataset.target);
-          const suffix = el.dataset.suffix || "";
-          const counter = { val: 0 };
-          gsap.to(counter, {
-            val: target,
-            duration: 1.8,
-            ease: "power2.out",
-            onUpdate: () => {
-              el.textContent = `${Math.round(counter.val)}${suffix}`;
-            },
-            scrollTrigger: {
-              trigger: caseRef.current,
-              start: "top 78%",
-            },
-          });
-        });
-      }
-
-      if (ctaRef.current) {
-        gsap.fromTo(
-          ctaRef.current.querySelectorAll(".im-reveal"),
-          { opacity: 0, y: 28 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            stagger: 0.12,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: ctaRef.current,
-              start: "top 85%",
-            },
-          }
-        );
-      }
-    });
-
-    return () => ctx.revert();
-  }, []);
-
   return (
     <>
       <SEOHead
@@ -175,7 +69,6 @@ const Branding = () => {
       />
 
       <ServiceHeroSection
-        ref={heroRef}
         classPrefix="im"
         dataNavColor="black"
         imageSrc={brandingHero}
@@ -188,7 +81,6 @@ const Branding = () => {
       />
 
       <ServiceProblemsSection
-        ref={problemsRef}
         classPrefix="im"
         sectionLabel={t(`${TK}.problems.label`)}
         title={t(`${TK}.problems.title`)}
@@ -198,7 +90,6 @@ const Branding = () => {
       />
 
       <ServiceProcessSection
-        ref={processRef}
         classPrefix="im"
         sectionLabel={t(`${TK}.process.label`)}
         title={t(`${TK}.process.title`)}
@@ -207,7 +98,6 @@ const Branding = () => {
       />
 
       <ServiceStatsSection
-        ref={statsRef}
         classPrefix="im"
         sectionLabel={t(`${TK}.stats.label`)}
         title={t(`${TK}.stats.title`)}
@@ -216,7 +106,6 @@ const Branding = () => {
       />
 
       <ServiceCaseStudySection
-        ref={caseRef}
         classPrefix="im"
         sectionLabel={t(`${TK}.caseStudy.label`)}
         title={t(`${TK}.caseStudy.title`)}
@@ -228,7 +117,6 @@ const Branding = () => {
       />
 
       <ServiceBenefitsSection
-        ref={benefitsRef}
         classPrefix="im"
         sectionLabel={t(`${TK}.benefits.label`)}
         title={t(`${TK}.benefits.title`)}
@@ -238,7 +126,6 @@ const Branding = () => {
       />
 
       <ServiceSubServicesSection
-        ref={subServicesRef}
         classPrefix="im"
         sectionLabel={t(`${TK}.subServices.label`)}
         title={t(`${TK}.subServices.title`)}
@@ -255,7 +142,6 @@ const Branding = () => {
       />
 
       <ServiceCTASection
-        ref={ctaRef}
         classPrefix="im"
         sectionLabel={t(`${TK}.cta.label`)}
         title={t(`${TK}.cta.title`)}

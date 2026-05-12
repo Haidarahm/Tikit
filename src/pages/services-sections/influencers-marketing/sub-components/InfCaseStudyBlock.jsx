@@ -1,6 +1,4 @@
 import { forwardRef } from "react";
-import { motion as Motion } from "framer-motion";
-import { influencerRevealPanel, influencerSectionIntro } from "@/helpers/framerMotion";
 import { useFontClass } from "../../../../hooks/useFontClass";
 
 const InfCaseStudyBlock = forwardRef(
@@ -24,15 +22,14 @@ const InfCaseStudyBlock = forwardRef(
     return (
       <section ref={ref} className="inf-section">
         <div className="inf-container">
-          <Motion.div {...influencerSectionIntro}>
+          <div>
             <span className="inf-label">{label}</span>
             <h2 className={`inf-heading ${fontHeading}`}>{title}</h2>
             <p className="inf-desc">{description}</p>
-          </Motion.div>
+          </div>
 
-          <Motion.div
+          <div
             className="rounded-2xl border p-6 md:p-8"
-            {...influencerRevealPanel}
             style={{
               borderColor: "color-mix(in srgb, var(--foreground) 10%, transparent)",
               background: "color-mix(in srgb, var(--secondary) 4%, var(--background) 96%)",
@@ -59,7 +56,7 @@ const InfCaseStudyBlock = forwardRef(
                 <li key={i}>{line}</li>
               ))}
             </ul>
-          </Motion.div>
+          </div>
 
           {footer ? <p className="inf-desc mt-8 mb-0 max-w-3xl">{footer}</p> : null}
         </div>
