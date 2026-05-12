@@ -1,7 +1,6 @@
 import { forwardRef } from "react";
 import { motion as Motion } from "framer-motion";
-
-const viewport = { once: true, amount: 0.32, margin: "0px 0px -10% 0px" };
+import { whyUsSection } from "@/helpers/framerMotion";
 
 /**
  * Reusable "Why Us" section: label, title, grid of cards (icon + title + text).
@@ -24,67 +23,19 @@ const ServiceWhyUsSection = forwardRef((props, ref) => {
     return (
       <section className={`${p}-section`} dir={dir}>
         <div className={`${p}-container `}>
-          <Motion.div
-            className="text-center max-w-2xl mx-auto mb-2"
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewport}
-            variants={{
-              hidden: {},
-              visible: {
-                transition: { staggerChildren: 0.09, delayChildren: 0.04 },
-              },
-            }}
-          >
-            <Motion.span
-              className={`${p}-label`}
-              variants={{
-                hidden: { opacity: 0, y: 14 },
-                visible: {
-                  opacity: 1,
-                  y: 0,
-                  transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
-                },
-              }}
-            >
+          <Motion.div className="text-center max-w-2xl mx-auto mb-2" {...whyUsSection.headerContainer}>
+            <Motion.span className={`${p}-label`} variants={whyUsSection.labelVariants}>
               {sectionLabel}
             </Motion.span>
-            <Motion.h2
-              className={`${p}-title font-antonio`}
-              variants={{
-                hidden: { opacity: 0, y: 22 },
-                visible: {
-                  opacity: 1,
-                  y: 0,
-                  transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] },
-                },
-              }}
-            >
+            <Motion.h2 className={`${p}-title font-antonio`} variants={whyUsSection.titleVariants}>
               {title}
             </Motion.h2>
           </Motion.div>
           <div ref={ref} className="im-whyus-grid">
             {Array.isArray(items) &&
               items.map((w, i) => (
-                <Motion.div
-                  key={i}
-                  className="im-whyus-card"
-                  initial={{ opacity: 0, y: 44 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={viewport}
-                  transition={{
-                    duration: 0.55,
-                    delay: i * 0.08,
-                    ease: [0.34, 1.56, 0.64, 1],
-                  }}
-                >
-                  <Motion.div
-                    className="im-whyus-card__icon"
-                    initial={{ scale: 0.6, rotate: -25 }}
-                    whileInView={{ scale: 1, rotate: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ type: "spring", stiffness: 260, damping: 18, delay: 0.12 + i * 0.06 }}
-                  >
+                <Motion.div key={i} className="im-whyus-card" {...whyUsSection.card(i)}>
+                  <Motion.div className="im-whyus-card__icon" {...whyUsSection.cardIcon(i)}>
                     {icons[i]}
                   </Motion.div>
                   <h3 className="im-whyus-card__title font-antonio">{w.title}</h3>
@@ -93,12 +44,7 @@ const ServiceWhyUsSection = forwardRef((props, ref) => {
               ))}
           </div>
           {footer ? (
-            <Motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={viewport}
-              transition={{ duration: 0.55, delay: 0.15 }}
-            >
+            <Motion.div {...whyUsSection.footer}>
               {footer}
             </Motion.div>
           ) : null}

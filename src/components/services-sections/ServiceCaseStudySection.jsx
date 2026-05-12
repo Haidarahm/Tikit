@@ -1,7 +1,6 @@
 import { forwardRef, useEffect, useRef, useState } from "react";
 import { animate, motion as Motion, useInView } from "framer-motion";
-
-const viewport = { once: true, amount: 0.35, margin: "0px 0px -8% 0px" };
+import { caseStudySection, statCounterTween } from "@/helpers/framerMotion";
 
 function FramerStatValue({ stat, className }) {
   const ref = useRef(null);
@@ -18,8 +17,7 @@ function FramerStatValue({ stat, className }) {
     const isXLocal = suffix === "x";
 
     const ctrl = animate(0, target, {
-      duration: 1.85,
-      ease: [0.22, 1, 0.36, 1],
+      ...statCounterTween,
       onUpdate: (v) => {
         const r = Math.round(v);
         setDisplay(isXLocal ? `${r}x` : suffix === "%" ? `${r}%` : `${r}`);
@@ -32,9 +30,8 @@ function FramerStatValue({ stat, className }) {
     <Motion.span
       ref={ref}
       className={className}
-      initial={{ opacity: 0.25, y: 16 }}
+      {...caseStudySection.statMotion}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.45 }}
     >
       {display}
     </Motion.span>
@@ -73,13 +70,7 @@ const ServiceCaseStudySection = forwardRef((props, ref) => {
               {framer && stat.dataTarget != null ? (
                 <FramerStatValue stat={stat} className={`${p}-case-study__stat-value`} />
               ) : framer ? (
-                <Motion.span
-                  className={`${p}-case-study__stat-value`}
-                  initial={{ opacity: 0, y: 14 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.45 }}
-                >
+                <Motion.span className={`${p}-case-study__stat-value`} {...caseStudySection.statPlain}>
                   {stat.value}
                 </Motion.span>
               ) : (
@@ -119,24 +110,11 @@ const ServiceCaseStudySection = forwardRef((props, ref) => {
     return (
       <section className={`${p}-section--alt`} dir={dir}>
         <div className={`${p}-container`}>
-          <Motion.div
-            className="text-center max-w-2xl mx-auto mb-10"
-            initial={{ opacity: 0, scale: 0.97 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={viewport}
-            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-          >
+          <Motion.div className="text-center max-w-2xl mx-auto mb-10" {...caseStudySection.heading}>
             <span className={`${p}-label`}>{sectionLabel}</span>
             <h2 className={`${p}-title font-antonio`}>{title}</h2>
           </Motion.div>
-          <Motion.div
-            ref={ref}
-            className={`${p}-case-study`}
-            initial={{ opacity: 0, x: -56, scale: 0.985 }}
-            whileInView={{ opacity: 1, x: 0, scale: 1 }}
-            viewport={viewport}
-            transition={{ type: "spring", stiffness: 82, damping: 21 }}
-          >
+          <Motion.div ref={ref} className={`${p}-case-study`} {...caseStudySection.panel}>
             {inner}
           </Motion.div>
         </div>

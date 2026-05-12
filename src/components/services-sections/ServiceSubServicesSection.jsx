@@ -2,8 +2,7 @@ import { forwardRef } from "react";
 import { motion as Motion } from "framer-motion";
 import { LocaleLink as Link } from "@/components/LocaleLink.jsx";
 import { FiArrowRight } from "react-icons/fi";
-
-const viewport = { once: true, amount: 0.25, margin: "0px 0px -12% 0px" };
+import { subServicesSection } from "@/helpers/framerMotion";
 
 /**
  * Reusable sub-services grid: label, title, description, link cards (icon, title, desc, CTA text, href).
@@ -28,41 +27,24 @@ const ServiceSubServicesSection = forwardRef((props, ref) => {
     return (
       <section className={`${p}-section--alt`} dir={dir}>
         <div className={`${p}-container`}>
-          <Motion.div
-            className="text-center max-w-2xl mx-auto mb-2"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={viewport}
-            transition={{ duration: 0.68, ease: [0.22, 1, 0.36, 1] }}
-          >
+          <Motion.div className="text-center max-w-2xl mx-auto mb-2" {...subServicesSection.header}>
             <span className={`${p}-label`}>{sectionLabel}</span>
             <h2 className={`${p}-title font-antonio`}>{title}</h2>
-            <Motion.p
-              className={`${p}-desc`}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={viewport}
-              transition={{ duration: 0.5, delay: 0.08 }}
-            >
+            <Motion.p className={`${p}-desc`} {...subServicesSection.description}>
               {description}
             </Motion.p>
           </Motion.div>
-          <div ref={ref} className={`${p}-subservices-grid`} style={{ perspective: 1400 }}>
+          <div
+            ref={ref}
+            className={`${p}-subservices-grid`}
+            style={{ perspective: subServicesSection.gridPerspectivePx }}
+          >
             {Array.isArray(items) &&
               items.map((s, i) => (
                 <Motion.div
                   key={hrefs[i] ?? s.href ?? i}
-                  initial={{ opacity: 0, y: 52, rotateX: 12, z: -40 }}
-                  whileInView={{ opacity: 1, y: 0, rotateX: 0, z: 0 }}
-                  viewport={viewport}
-                  transition={{
-                    type: "spring",
-                    stiffness: 76,
-                    damping: 19,
-                    delay: i * 0.07,
-                  }}
-                  style={{ transformStyle: "preserve-3d" }}
                   className="h-full min-h-0"
+                  {...subServicesSection.card(i)}
                 >
                   <Link
                     to={hrefs[i] ?? s.href ?? "#"}

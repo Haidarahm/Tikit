@@ -1,7 +1,6 @@
 import { forwardRef } from "react";
 import { motion as Motion } from "framer-motion";
-
-const viewport = { once: true, amount: 0.28, margin: "0px 0px -15% 0px" };
+import { multiCtaSection } from "@/helpers/framerMotion";
 
 /**
  * Multi-CTA section with 3 text cards + a final closing line.
@@ -15,36 +14,14 @@ const ServiceMultiCTASection = forwardRef((props, ref) => {
     return (
       <section ref={ref} className={`${p}-multi-cta`} dir={dir}>
         <div className={`${p}-multi-cta__inner`}>
-          <Motion.h2
-            className={`${p}-multi-cta__title font-antonio`}
-            initial={{ opacity: 0, y: 36, filter: "blur(12px)" }}
-            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            viewport={viewport}
-            transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
-          >
+          <Motion.h2 className={`${p}-multi-cta__title font-antonio`} {...multiCtaSection.title}>
             {title}
           </Motion.h2>
 
           <div className={`${p}-multi-cta__grid`}>
             {Array.isArray(cards) &&
               cards.map((c, i) => (
-                <Motion.div
-                  key={i}
-                  className={`${p}-multi-cta__card`}
-                  initial={{ opacity: 0, y: 48, scale: 0.94 }}
-                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                  viewport={viewport}
-                  transition={{
-                    type: "spring",
-                    stiffness: 88,
-                    damping: 17,
-                    delay: i * 0.12,
-                  }}
-                  whileHover={{
-                    y: -6,
-                    transition: { type: "spring", stiffness: 400, damping: 22 },
-                  }}
-                >
+                <Motion.div key={i} className={`${p}-multi-cta__card`} {...multiCtaSection.card(i)}>
                   <h3 className={`${p}-multi-cta__card-title font-antonio`}>{c.title}</h3>
                   <p className={`${p}-multi-cta__card-desc`}>{c.description}</p>
                 </Motion.div>
@@ -52,13 +29,7 @@ const ServiceMultiCTASection = forwardRef((props, ref) => {
           </div>
 
           {finalLine ? (
-            <Motion.p
-              className={`${p}-multi-cta__final`}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={viewport}
-              transition={{ duration: 0.6, delay: 0.35 }}
-            >
+            <Motion.p className={`${p}-multi-cta__final`} {...multiCtaSection.finalLine}>
               {finalLine}
             </Motion.p>
           ) : null}

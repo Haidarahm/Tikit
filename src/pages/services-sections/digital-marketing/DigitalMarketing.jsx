@@ -1,4 +1,5 @@
 import { motion as Motion } from "framer-motion";
+import { faqSectionReveal, serviceHeroFramerHero } from "@/helpers/framerMotion";
 import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../../store/I18nLanguageContext";
 import {
@@ -156,11 +157,7 @@ const DigitalMarketing = () => {
       />
 
       <ServiceHeroSection
-        framerHero={{
-          initial: { opacity: 0, y: 40 },
-          animate: { opacity: 1, y: 0 },
-          transition: { duration: 1.05, ease: [0.16, 1, 0.3, 1], delay: 0.12 },
-        }}
+        framerHero={serviceHeroFramerHero}
         imageSrc={digitalMarketingHero}
         imageAlt={t("serviceSections.digitalMarketing.seo.serviceType")}
         badge={t("serviceSections.digitalMarketing.hero.badge")}
@@ -249,12 +246,7 @@ const DigitalMarketing = () => {
         dir={dir}
       />
 
-      <Motion.div
-        initial={{ opacity: 0, y: 36 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.18 }}
-        transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-      >
+      <Motion.div {...faqSectionReveal}>
         <FAQ items={faqItems} title={t("serviceSections.digitalMarketing.faq.title")} />
       </Motion.div>
 
