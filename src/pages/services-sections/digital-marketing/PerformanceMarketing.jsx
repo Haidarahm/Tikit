@@ -9,12 +9,20 @@ import {
   HiRefresh,
   HiSparkles,
 } from "react-icons/hi";
-import HeroWithBadge from "../../../components/HeroWithBadge";
 import SEOHead from "../../../components/SEOHead";
 import FAQ from "../../../components/FAQ";
 import ServiceCard from "../../../components/ServiceCard";
+import {
+  AnimatedSection,
+  AnimatedTitle,
+  AnimatedText,
+  AnimatedGroup,
+  AnimatedCard,
+} from "@/components/animations";
 import DMCTA from "./components/DMCTA";
 import DMRelatedServices from "./components/DMRelatedServices";
+import DMHeroSection from "./components/DMHeroSection";
+import { DMDivider } from "./components/DMDivider";
 import "./digitalMarketing.css";
 
 const SERVICE_ICONS = [
@@ -58,6 +66,13 @@ const PerformanceMarketing = () => {
     }),
   );
   const fontClass = language === "ar" ? "font-cairo" : "font-antonio";
+
+  const definitionLines = toArray(
+    t(
+      "serviceSections.digitalMarketing.performanceMarketing.definition.benefitsList",
+      { returnObjects: true },
+    ),
+  );
 
   return (
     <div
@@ -108,87 +123,70 @@ const PerformanceMarketing = () => {
         ]}
       />
 
-      <section className="dm-hero">
-        <div className="dm-hero-overlay">
-          <div className="dm-hero-gradient" />
-        </div>
-        <div className="dm-hero-content relative z-10">
-          <div>
-            <HeroWithBadge
-              badge={t(
-                "serviceSections.digitalMarketing.performanceMarketing.badge",
-              )}
-              title={t(
-                "serviceSections.digitalMarketing.performanceMarketing.hero.title",
-              )}
-              mainWord={t(
-                "serviceSections.digitalMarketing.performanceMarketing.hero.mainWord",
-              )}
-              description={t(
-                "serviceSections.digitalMarketing.performanceMarketing.hero.description",
-              )}
-              titleClassName="block"
-              descriptionClassName="dm-hero-desc"
-              contentClassName="relative z-10 max-w-6xl mx-auto text-center mt-6"
-              disableAnimation
-            />
-          </div>
-        </div>
-      </section>
+      <DMHeroSection
+        badge={t(
+          "serviceSections.digitalMarketing.performanceMarketing.badge",
+        )}
+        title={t(
+          "serviceSections.digitalMarketing.performanceMarketing.hero.title",
+        )}
+        mainWord={t(
+          "serviceSections.digitalMarketing.performanceMarketing.hero.mainWord",
+        )}
+        description={t(
+          "serviceSections.digitalMarketing.performanceMarketing.hero.description",
+        )}
+      />
 
-      <div className="dm-divider-wrap">
-        <div className="dm-divider" />
-      </div>
+      <DMDivider />
 
-      <section className="dm-section">
+      <AnimatedSection className="dm-section">
         <div className="dm-container">
-          <h2 className={`dm-heading ${fontClass}`}>
+          <AnimatedTitle as="h2" className={`dm-heading ${fontClass}`}>
             {t(
               "serviceSections.digitalMarketing.performanceMarketing.definition.whatIsTitle",
             )}
-          </h2>
-          <p className="dm-text">
+          </AnimatedTitle>
+          <AnimatedText className="dm-text" delay={0.05}>
             {t(
               "serviceSections.digitalMarketing.performanceMarketing.definition.paragraph",
             )}
-          </p>
-          <ul className="space-y-3">
-            {toArray(
-              t(
-                "serviceSections.digitalMarketing.performanceMarketing.definition.benefitsList",
-                { returnObjects: true },
-              ),
-            ).map((item, idx) => (
-              <li key={idx} className="dm-check-item">
+          </AnimatedText>
+          <AnimatedGroup as="ul" className="space-y-3 mt-4" stagger={0.06}>
+            {definitionLines.map((item, idx) => (
+              <AnimatedCard as="li" key={idx} className="dm-check-item">
                 <HiCheckCircle className="dm-check-icon" />
                 <span className="dm-text-sm">{item}</span>
-              </li>
+              </AnimatedCard>
             ))}
-          </ul>
+          </AnimatedGroup>
         </div>
-      </section>
+      </AnimatedSection>
 
-      <div className="dm-divider-wrap">
-        <div className="dm-divider" />
-      </div>
+      <DMDivider />
 
-      <section className="dm-section">
+      <AnimatedSection className="dm-section">
         <div className="dm-container-wide">
           <div>
-            <h2 className={`dm-section-title ${fontClass}`}>
+            <AnimatedTitle as="h2" className={`dm-section-title ${fontClass}`}>
               {t(
                 "serviceSections.digitalMarketing.performanceMarketing.services.title",
               )}
-            </h2>
-            <p className="dm-section-subtitle">
+            </AnimatedTitle>
+            <AnimatedText className="dm-section-subtitle" delay={0.05}>
               {t(
                 "serviceSections.digitalMarketing.performanceMarketing.services.subtitle",
               )}
-            </p>
+            </AnimatedText>
           </div>
-          <div className="dm-feature-grid" style={{ perspective: 1000 }}>
+          <AnimatedGroup
+            as="div"
+            className="dm-feature-grid"
+            style={{ perspective: 1000 }}
+            stagger={0.1}
+          >
             {SERVICE_KEYS.map((key, idx) => (
-              <div key={key}>
+              <AnimatedCard key={key}>
                 <ServiceCard
                   icon={SERVICE_ICONS[idx]}
                   title={t(
@@ -202,33 +200,35 @@ const PerformanceMarketing = () => {
                   titleClassName="dm-card-title"
                   descriptionClassName="dm-card-desc"
                 />
-              </div>
+              </AnimatedCard>
             ))}
-          </div>
+          </AnimatedGroup>
         </div>
-      </section>
+      </AnimatedSection>
 
-      <div className="dm-divider-wrap">
-        <div className="dm-divider" />
-      </div>
+      <DMDivider />
 
-      <section className="dm-section">
+      <AnimatedSection className="dm-section">
         <div className="dm-container">
           <div>
-            <h2 className={`dm-section-title ${fontClass}`}>
+            <AnimatedTitle as="h2" className={`dm-section-title ${fontClass}`}>
               {t(
                 "serviceSections.digitalMarketing.performanceMarketing.process.title",
               )}
-            </h2>
-            <p className="dm-section-subtitle">
+            </AnimatedTitle>
+            <AnimatedText className="dm-section-subtitle" delay={0.05}>
               {t(
                 "serviceSections.digitalMarketing.performanceMarketing.process.subtitle",
               )}
-            </p>
+            </AnimatedText>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+          <AnimatedGroup
+            as="div"
+            className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12"
+            stagger={0.1}
+          >
             {PROCESS_KEYS.map((step, idx) => (
-              <div key={step} className="dm-process-card">
+              <AnimatedCard key={step} className="dm-process-card">
                 <div className="dm-step-number">{String(idx + 1).padStart(2, "0")}</div>
                 <h3 className="dm-step-title">
                   {t(
@@ -240,72 +240,74 @@ const PerformanceMarketing = () => {
                     `serviceSections.digitalMarketing.performanceMarketing.process.steps.${step}.description`,
                   )}
                 </p>
-              </div>
+              </AnimatedCard>
             ))}
-          </div>
+          </AnimatedGroup>
         </div>
-      </section>
+      </AnimatedSection>
 
-      <div className="dm-divider-wrap">
-        <div className="dm-divider" />
-      </div>
+      <DMDivider />
 
-      <section className="dm-section">
+      <AnimatedSection className="dm-section">
         <div className="dm-container">
           <div>
-            <h2 className={`dm-section-title ${fontClass}`}>
+            <AnimatedTitle as="h2" className={`dm-section-title ${fontClass}`}>
               {t(
                 "serviceSections.digitalMarketing.performanceMarketing.industries.title",
               )}
-            </h2>
-            <p className="dm-section-subtitle">
+            </AnimatedTitle>
+            <AnimatedText className="dm-section-subtitle" delay={0.05}>
               {t(
                 "serviceSections.digitalMarketing.performanceMarketing.industries.subtitle",
               )}
-            </p>
+            </AnimatedText>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-8">
+          <AnimatedGroup
+            as="div"
+            className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-8"
+            stagger={0.08}
+          >
             {industryItems.map((item, idx) => (
-              <div key={idx} className="dm-trust-card text-center">
+              <AnimatedCard key={idx} className="dm-trust-card text-center">
                 <span className="dm-trust-title">{item}</span>
-              </div>
+              </AnimatedCard>
             ))}
-          </div>
+          </AnimatedGroup>
         </div>
-      </section>
+      </AnimatedSection>
 
-      <div className="dm-divider-wrap">
-        <div className="dm-divider" />
-      </div>
+      <DMDivider />
 
-      <section className="dm-section">
+      <AnimatedSection className="dm-section">
         <div className="dm-container">
           <div>
-            <h2 className={`dm-section-title ${fontClass}`}>
+            <AnimatedTitle as="h2" className={`dm-section-title ${fontClass}`}>
               {t(
                 "serviceSections.digitalMarketing.performanceMarketing.whyUs.title",
               )}
-            </h2>
-            <p className="dm-section-subtitle">
+            </AnimatedTitle>
+            <AnimatedText className="dm-section-subtitle" delay={0.05}>
               {t(
                 "serviceSections.digitalMarketing.performanceMarketing.whyUs.subtitle",
               )}
-            </p>
+            </AnimatedText>
           </div>
-          <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+          <AnimatedGroup
+            as="ul"
+            className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4"
+            stagger={0.06}
+          >
             {whyUsItems.map((item, idx) => (
-              <li key={idx} className="dm-check-item">
+              <AnimatedCard as="li" key={idx} className="dm-check-item">
                 <HiLightningBolt className="dm-check-icon" />
                 <span className="dm-text-sm">{item}</span>
-              </li>
+              </AnimatedCard>
             ))}
-          </ul>
+          </AnimatedGroup>
         </div>
-      </section>
+      </AnimatedSection>
 
-      <div className="dm-divider-wrap">
-        <div className="dm-divider" />
-      </div>
+      <DMDivider />
 
       <FAQ
         items={faqItems}
