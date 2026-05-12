@@ -1,12 +1,10 @@
-import ServiceCard from "../../../../components/ServiceCard";
+import { motion } from "framer-motion";
 import {
-  MotionDiv,
-  MotionH2,
-  MotionP,
-  dmContainerVariants as containerVariants,
-  dmItemVariants as itemVariants,
-  dmViewport as viewport,
-} from "../dmMotion";
+  dmSubpageContainerVariants as containerVariants,
+  dmSubpageItemVariants as itemVariants,
+  VIEWPORT_DM_SUBPAGE as viewport,
+} from "@/helpers/framerMotion";
+import ServiceCard from "../../../../components/ServiceCard";
 
 /**
  * Grid of `ServiceCard` pillars with animated header (DM feature grid).
@@ -18,24 +16,24 @@ export default function DMServicePillarsSection({ title, subtitle, pillars, font
 
   return (
     <section className="dm-section dm-section-alt">
-      <MotionDiv
+      <motion.div
         className="dm-container-wide"
         initial="hidden"
         whileInView="visible"
         viewport={viewport}
         variants={containerVariants}
       >
-        <MotionH2 variants={itemVariants} className={`dm-section-title ${fontClass}`}>
+        <motion.h2 variants={itemVariants} className={`dm-section-title ${fontClass}`}>
           {title}
-        </MotionH2>
-        <MotionP variants={itemVariants} className="dm-section-subtitle">
+        </motion.h2>
+        <motion.p variants={itemVariants} className="dm-section-subtitle">
           {subtitle}
-        </MotionP>
+        </motion.p>
         <div className="dm-feature-grid">
           {list.map((pillar) => {
             const Icon = pillar.icon;
             return (
-              <MotionDiv key={pillar.key} variants={itemVariants}>
+              <motion.div key={pillar.key} variants={itemVariants}>
                 <ServiceCard
                   icon={Icon}
                   title={pillar.title}
@@ -45,11 +43,11 @@ export default function DMServicePillarsSection({ title, subtitle, pillars, font
                   titleClassName="dm-card-title"
                   descriptionClassName="dm-card-desc"
                 />
-              </MotionDiv>
+              </motion.div>
             );
           })}
         </div>
-      </MotionDiv>
+      </motion.div>
     </section>
   );
 }

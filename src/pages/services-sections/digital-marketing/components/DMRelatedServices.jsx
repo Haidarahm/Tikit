@@ -1,12 +1,12 @@
 import { motion as Motion } from "framer-motion";
 import { LocaleLink as Link } from "@/components/LocaleLink.jsx";
-import { benefitsSection, dmRelatedLinkCard } from "@/helpers/framerMotion";
-import { useTranslation } from "react-i18next";
 import {
-  MotionSection,
-  dmItemVariants as itemVariants,
-  dmViewport as viewport,
-} from "../dmMotion";
+  benefitsSection,
+  dmRelatedLinkCard,
+  dmSubpageItemVariants as itemVariants,
+  VIEWPORT_DM_SUBPAGE as viewport,
+} from "@/helpers/framerMotion";
+import { useTranslation } from "react-i18next";
 import {
   HiChartBar,
   HiSearchCircle,
@@ -99,14 +99,14 @@ const DMRelatedServices = ({ current, withScrollReveal = false }) => {
 
   if (withScrollReveal) {
     return (
-      <MotionSection
+      <Motion.section
         initial="hidden"
         whileInView="visible"
         viewport={viewport}
         variants={itemVariants}
       >
         {inner}
-      </MotionSection>
+      </Motion.section>
     );
   }
 

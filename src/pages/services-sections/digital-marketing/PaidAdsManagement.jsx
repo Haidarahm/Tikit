@@ -10,7 +10,7 @@ import {
 } from "react-icons/fa";
 import SEOHead from "../../../components/SEOHead";
 import FAQ from "../../../components/FAQ";
-import { DMDivider } from "./dmMotion";
+import { DMDivider } from "./components/DMDivider.jsx";
 import DMHeroSection from "./components/DMHeroSection";
 import DMDefinitionSection from "./components/DMDefinitionSection";
 import DMServicePillarsSection from "./components/DMServicePillarsSection";

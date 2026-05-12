@@ -1,4 +1,4 @@
-export { DMDivider } from "../dmMotion";
+export { DMDivider } from "./DMDivider.jsx";
 export { default as DMHeroSection } from "./DMHeroSection";
 export { default as DMDefinitionSection } from "./DMDefinitionSection";
 export { default as DMServicePillarsSection } from "./DMServicePillarsSection";

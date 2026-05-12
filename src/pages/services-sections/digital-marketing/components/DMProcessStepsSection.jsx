@@ -1,11 +1,9 @@
+import { motion } from "framer-motion";
 import {
-  MotionDiv,
-  MotionH2,
-  MotionP,
-  dmContainerVariants as containerVariants,
-  dmItemVariants as itemVariants,
-  dmViewport as viewport,
-} from "../dmMotion";
+  dmSubpageContainerVariants as containerVariants,
+  dmSubpageItemVariants as itemVariants,
+  VIEWPORT_DM_SUBPAGE as viewport,
+} from "@/helpers/framerMotion";
 
 /**
  * Numbered process steps in a responsive grid.
@@ -17,22 +15,22 @@ export default function DMProcessStepsSection({ title, subtitle, steps, fontClas
 
   return (
     <section className="dm-section">
-      <MotionDiv
+      <motion.div
         className="dm-container"
         initial="hidden"
         whileInView="visible"
         viewport={viewport}
         variants={containerVariants}
       >
-        <MotionH2 variants={itemVariants} className={`dm-section-title ${fontClass}`}>
+        <motion.h2 variants={itemVariants} className={`dm-section-title ${fontClass}`}>
           {title}
-        </MotionH2>
-        <MotionP variants={itemVariants} className="dm-section-subtitle">
+        </motion.h2>
+        <motion.p variants={itemVariants} className="dm-section-subtitle">
           {subtitle}
-        </MotionP>
+        </motion.p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
           {list.map((step, idx) => (
-            <MotionDiv
+            <motion.div
               key={step.id}
               variants={itemVariants}
               className="dm-process-card"
@@ -42,10 +40,10 @@ export default function DMProcessStepsSection({ title, subtitle, steps, fontClas
               </div>
               <h3 className="dm-step-title">{step.title}</h3>
               <p className="dm-step-desc">{step.description}</p>
-            </MotionDiv>
+            </motion.div>
           ))}
         </div>
-      </MotionDiv>
+      </motion.div>
     </section>
   );
 }

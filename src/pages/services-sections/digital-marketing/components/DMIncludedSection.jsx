@@ -1,13 +1,10 @@
-import { HiCheckCircle } from "react-icons/hi";
+import { motion } from "framer-motion";
 import {
-  MotionDiv,
-  MotionH2,
-  MotionP,
-  MotionLi,
-  dmContainerVariants as containerVariants,
-  dmItemVariants as itemVariants,
-  dmViewport as viewport,
-} from "../dmMotion";
+  dmSubpageContainerVariants as containerVariants,
+  dmSubpageItemVariants as itemVariants,
+  VIEWPORT_DM_SUBPAGE as viewport,
+} from "@/helpers/framerMotion";
+import { HiCheckCircle } from "react-icons/hi";
 
 /**
  * Two-column checklist section (included / scope items).
@@ -23,28 +20,28 @@ export default function DMIncludedSection({
 
   return (
     <section className={sectionClassName}>
-      <MotionDiv
+      <motion.div
         className="dm-container"
         initial="hidden"
         whileInView="visible"
         viewport={viewport}
         variants={containerVariants}
       >
-        <MotionH2 variants={itemVariants} className={`dm-section-title ${fontClass}`}>
+        <motion.h2 variants={itemVariants} className={`dm-section-title ${fontClass}`}>
           {title}
-        </MotionH2>
-        <MotionP variants={itemVariants} className="dm-section-subtitle">
+        </motion.h2>
+        <motion.p variants={itemVariants} className="dm-section-subtitle">
           {subtitle}
-        </MotionP>
+        </motion.p>
         <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-10">
           {lines.map((item, idx) => (
-            <MotionLi key={idx} variants={itemVariants} className="dm-check-item">
+            <motion.li key={idx} variants={itemVariants} className="dm-check-item">
               <HiCheckCircle className="dm-check-icon" />
               <span className="dm-text-sm">{item}</span>
-            </MotionLi>
+            </motion.li>
           ))}
         </ul>
-      </MotionDiv>
+      </motion.div>
     </section>
   );
 }

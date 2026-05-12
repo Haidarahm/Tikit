@@ -301,6 +301,26 @@ export const seoServicesHeroChildVariants = {
   },
 };
 
+/** DM subpages — stagger `whileInView` variants (replaces former `dmMotion.jsx`). */
+export const dmSubpageContainerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.06,
+    },
+  },
+};
+
+export const dmSubpageItemVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.55, ease: EASE_SMOOTH },
+  },
+};
+
 /**
  * `DMRelatedServices` link cards — matches former GSAP stagger on `.dm-link-card`.
  */

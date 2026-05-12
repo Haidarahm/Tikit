@@ -52,3 +52,10 @@ export const VIEWPORT_FAQ = {
 };
 
 export const VIEWPORT_ONCE = { once: true };
+
+/** DM subpages — staggered section `whileInView` (Paid Ads, CRO, DM blocks) */
+export const VIEWPORT_DM_SUBPAGE = {
+  once: true,
+  amount: 0.15,
+  margin: "0px 0px -8% 0px",
+};
