@@ -1,6 +1,11 @@
 import { forwardRef } from "react";
 import { motion as Motion } from "framer-motion";
-import { influencerRevealItem, influencerSectionIntro } from "@/helpers/framerMotion";
+import {
+  influencerCardGridContainer,
+  influencerCardGridItem,
+  influencerSectionIntro,
+  VIEWPORT_INFLUENCER_CARDS,
+} from "@/helpers/framerMotion";
 import { useFontClass } from "../../../../hooks/useFontClass";
 
 const InfFullService = forwardRef(({ label, title, description, items }, ref) => {
@@ -15,20 +20,26 @@ const InfFullService = forwardRef(({ label, title, description, items }, ref) =>
           <p className="inf-desc">{description}</p>
         </Motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <Motion.div
+          className="grid grid-cols-1 md:grid-cols-3 gap-6"
+          initial="hidden"
+          whileInView="visible"
+          viewport={VIEWPORT_INFLUENCER_CARDS}
+          variants={influencerCardGridContainer}
+        >
           {items.map((item, idx) => (
             <Motion.div
               key={item?.title || `item-${idx}`}
               className="inf-service-card group"
               style={{ borderLeftWidth: "3px", borderLeftColor: "var(--secondary)" }}
-              {...influencerRevealItem(idx, 0.12)}
+              variants={influencerCardGridItem}
             >
               <div className="inf-service-card__icon">{item.icon}</div>
               <h3 className="inf-service-card__title">{item.title}</h3>
               <p className="inf-service-card__text">{item.description}</p>
             </Motion.div>
           ))}
-        </div>
+        </Motion.div>
       </div>
     </section>
   );

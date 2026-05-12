@@ -1,6 +1,11 @@
 import { forwardRef } from "react";
 import { motion as Motion } from "framer-motion";
-import { influencerRevealItem, influencerSectionIntro } from "@/helpers/framerMotion";
+import {
+  influencerCardGridContainer,
+  influencerCardGridItem,
+  influencerSectionIntro,
+  VIEWPORT_INFLUENCER_CARDS,
+} from "@/helpers/framerMotion";
 import { useFontClass } from "../../../../hooks/useFontClass";
 
 const InfWhyChooseUs = forwardRef(({ label, title, description, reasons, footerContent }, ref) => {
@@ -15,19 +20,25 @@ const InfWhyChooseUs = forwardRef(({ label, title, description, reasons, footerC
           <p className="inf-desc">{description}</p>
         </Motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <Motion.div
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+          initial="hidden"
+          whileInView="visible"
+          viewport={VIEWPORT_INFLUENCER_CARDS}
+          variants={influencerCardGridContainer}
+        >
           {reasons.map((reason, idx) => (
             <Motion.div
               key={reason?.title || reason?.description || JSON.stringify(reason) || `reason-${idx}`}
               className="inf-why-card"
-              {...influencerRevealItem(idx, 0.1)}
+              variants={influencerCardGridItem}
             >
               <div className="inf-why-card__icon">{reason.icon}</div>
               <h3 className="inf-service-card__title">{reason.title}</h3>
               <p className="inf-service-card__text">{reason.description}</p>
             </Motion.div>
           ))}
-        </div>
+        </Motion.div>
 
         {footerContent ? (
           <div className="mt-12">

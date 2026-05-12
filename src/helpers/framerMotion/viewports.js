@@ -60,6 +60,16 @@ export const VIEWPORT_DM_SUBPAGE = {
   margin: "0px 0px -8% 0px",
 };
 
+/**
+ * Influencer marketing — card/list grids using parent `variants` + `staggerChildren`.
+ * Slightly expanded root margin so the cascade starts a bit before cards fully enter (smoother than per-card `whileInView`).
+ */
+export const VIEWPORT_INFLUENCER_CARDS = {
+  once: true,
+  amount: 0.12,
+  margin: "0px 0px 18% 0px",
+};
+
 /** Work page `DigitalWorkCard` — ~ GSAP ScrollTrigger `start: "top 85%"` */
 export const VIEWPORT_WORK_DIGITAL_CARD = {
   once: true,

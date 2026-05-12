@@ -1,6 +1,11 @@
 import { forwardRef } from "react";
 import { motion as Motion } from "framer-motion";
-import { influencerRevealItem, influencerSectionIntro } from "@/helpers/framerMotion";
+import {
+  influencerCardGridContainer,
+  influencerCardGridItem,
+  influencerSectionIntro,
+  VIEWPORT_INFLUENCER_CARDS,
+} from "@/helpers/framerMotion";
 import { useFontClass } from "../../../../hooks/useFontClass";
 
 const sizeLabels = ["1K–10K", "10K–100K", "100K–1M", "1M+"];
@@ -17,9 +22,15 @@ const InfInfluencerTypes = forwardRef(({ label, title, description, types }, ref
           <p className="inf-desc">{description}</p>
         </Motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <Motion.div
+          className="grid grid-cols-1 sm:grid-cols-2 gap-5"
+          initial="hidden"
+          whileInView="visible"
+          viewport={VIEWPORT_INFLUENCER_CARDS}
+          variants={influencerCardGridContainer}
+        >
           {types.map((type, idx) => (
-            <Motion.div key={type?.title || `type-${idx}`} className="inf-type-card" {...influencerRevealItem(idx, 0.1)}>
+            <Motion.div key={type?.title || `type-${idx}`} className="inf-type-card" variants={influencerCardGridItem}>
               <div className="inf-type-card__badge">{type.icon}</div>
               <div className="flex-1">
                 <h3 className="inf-service-card__title">{type.title}</h3>
@@ -36,7 +47,7 @@ const InfInfluencerTypes = forwardRef(({ label, title, description, types }, ref
               </div>
             </Motion.div>
           ))}
-        </div>
+        </Motion.div>
       </div>
     </section>
   );

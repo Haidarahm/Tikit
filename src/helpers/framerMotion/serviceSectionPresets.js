@@ -353,6 +353,29 @@ export const influencerRevealItem = (index, stagger = 0.1) => ({
   transition: { duration: 0.55, ease: EASE_SMOOTH, delay: index * stagger },
 });
 
+/**
+ * Parent + children variants for influencer grids/lists — one `whileInView` drives a smooth stagger
+ * (avoids per-card intersection quirks that make motion feel snappy or uneven).
+ */
+export const influencerCardGridContainer = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.09,
+      delayChildren: 0.06,
+    },
+  },
+};
+
+export const influencerCardGridItem = {
+  hidden: { opacity: 0, y: 32 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.58, ease: EASE_SMOOTH },
+  },
+};
+
 export const influencerImageReveal = {
   initial: { opacity: 0, scale: 0.95 },
   whileInView: { opacity: 1, scale: 1 },

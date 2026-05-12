@@ -1,6 +1,11 @@
 import { forwardRef } from "react";
 import { motion as Motion } from "framer-motion";
-import { influencerRevealItem, influencerSectionIntro } from "@/helpers/framerMotion";
+import {
+  influencerCardGridContainer,
+  influencerCardGridItem,
+  influencerSectionIntro,
+  VIEWPORT_INFLUENCER_CARDS,
+} from "@/helpers/framerMotion";
 import { useFontClass } from "../../../../hooks/useFontClass";
 
 const InfCampaignProcess = forwardRef(({ label, title, description, steps }, ref) => {
@@ -15,12 +20,18 @@ const InfCampaignProcess = forwardRef(({ label, title, description, steps }, ref
           <p className="inf-desc">{description}</p>
         </Motion.div>
 
-        <div className="space-y-0">
+        <Motion.div
+          className="space-y-0"
+          initial="hidden"
+          whileInView="visible"
+          viewport={VIEWPORT_INFLUENCER_CARDS}
+          variants={influencerCardGridContainer}
+        >
           {steps.map((step, idx) => (
             <Motion.div
               key={step?.title || step?.description || JSON.stringify(step) || `step-${idx}`}
               className="inf-step pb-8"
-              {...influencerRevealItem(idx, 0.12)}
+              variants={influencerCardGridItem}
             >
               {idx < steps.length - 1 && <div className="inf-step__line" />}
               <div className="inf-step__number">{idx + 1}</div>
@@ -30,7 +41,7 @@ const InfCampaignProcess = forwardRef(({ label, title, description, steps }, ref
               </div>
             </Motion.div>
           ))}
-        </div>
+        </Motion.div>
       </div>
     </section>
   );

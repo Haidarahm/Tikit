@@ -1,6 +1,11 @@
 import { forwardRef } from "react";
 import { motion as Motion } from "framer-motion";
-import { influencerRevealItem, influencerSectionIntro } from "@/helpers/framerMotion";
+import {
+  influencerCardGridContainer,
+  influencerCardGridItem,
+  influencerSectionIntro,
+  VIEWPORT_INFLUENCER_CARDS,
+} from "@/helpers/framerMotion";
 import { useFontClass } from "../../../../hooks/useFontClass";
 
 const InfIndustries = forwardRef(({ label, title, description, industries }, ref) => {
@@ -15,18 +20,24 @@ const InfIndustries = forwardRef(({ label, title, description, industries }, ref
           <p className="inf-desc">{description}</p>
         </Motion.div>
 
-        <div className="flex flex-wrap gap-4">
+        <Motion.div
+          className="flex flex-wrap gap-4"
+          initial="hidden"
+          whileInView="visible"
+          viewport={VIEWPORT_INFLUENCER_CARDS}
+          variants={influencerCardGridContainer}
+        >
           {industries.map((industry, idx) => (
             <Motion.div
               key={industry?.title || JSON.stringify(industry) || `industry-${idx}`}
               className="inf-industry-tag"
-              {...influencerRevealItem(idx, 0.08)}
+              variants={influencerCardGridItem}
             >
               <span className="text-lg">{industry.icon}</span>
               <span>{industry.title}</span>
             </Motion.div>
           ))}
-        </div>
+        </Motion.div>
       </div>
     </section>
   );
