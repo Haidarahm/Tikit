@@ -272,6 +272,7 @@ const ShowCase = () => {
         className="flex flex-col w-full items-center min-h-[200px] px-4 text-center gap-4"
       >
         <HeroWithBadge
+          titleAs="h2"
           title={t("home.showcase.title")}
           mainWord={t("home.showcase.mainWord")}
           description={

@@ -6,10 +6,8 @@ import { useI18nLanguage } from "../../store/I18nLanguageContext";
 import { useFontClass } from "../../hooks/useFontClass";
 
 const Hero = () => {
-  const h1WrapRef = useRef(null);
-  const h1Ref = useRef(null);
-  const h2WrapRef = useRef(null);
-  const h2Ref = useRef(null);
+  const line1Ref = useRef(null);
+  const line2Ref = useRef(null);
   const { theme } = useTheme();
   const { t } = useTranslation();
   const { isRtl } = useI18nLanguage();
@@ -21,15 +19,15 @@ const Hero = () => {
       : ["#07D9F5", "#06AEC4", "#4E7CC6", "#CE88C6", "#FB8DEF"]; // Dark theme colors (original)
 
   useLayoutEffect(() => {
-    if (!h1Ref.current || !h2Ref.current) return;
+    if (!line1Ref.current || !line2Ref.current) return;
     const ctx = gsap.context(() => {
       gsap.fromTo(
-        h1Ref.current,
+        line1Ref.current,
         { y: "150%", autoAlpha: 1 },
         { y: 0, duration: 0.9, ease: "power2.out", delay: 0.1 }
       );
       gsap.fromTo(
-        h2Ref.current,
+        line2Ref.current,
         { y: "150%", autoAlpha: 1 },
         { y: 0, duration: 1, ease: "power2.out", delay: 0.3 }
       );
@@ -44,27 +42,26 @@ const Hero = () => {
       dir={isRtl ? "rtl" : "ltr"}
     >
       <div className="text-center mt-[104px]">
-        <div ref={h1WrapRef} className="overflow-hidden">
-          <h1
-            ref={h1Ref}
-            style={{fontFamily: isRtl ? "" : "Antonio"}}
-
-            className="text-[32px] leading-tight md:text-[50px] xl:text-[70px] 2xl:text-[80px] capitalize  will-change-transform"
-          >
-            {t("contact.hero.title")}
-          </h1>
-        </div>
-        <div ref={h2WrapRef} className="overflow-hidden">
-          <div ref={h2Ref} className="will-change-transform translate-y-full">
-            <h1
-                        style={{fontFamily: isRtl ? "" : "Caveat"}}
-
-            className="text-[32px] leading-tight  font-[700] mx-auto md:text-[50px]  xl:text-[80px] 2xl:text-[90px] mb-8 capitalize  tikit-gradient will-change-transform"
+        <h1 className="flex flex-col items-center">
+          <div className="overflow-hidden w-full">
+            <span
+              ref={line1Ref}
+              style={{ fontFamily: isRtl ? "" : "Antonio" }}
+              className="block text-[32px] leading-tight md:text-[50px] xl:text-[70px] 2xl:text-[80px] capitalize will-change-transform"
+            >
+              {t("contact.hero.title")}
+            </span>
+          </div>
+          <div className="overflow-hidden w-full">
+            <span
+              ref={line2Ref}
+              style={{ fontFamily: isRtl ? "" : "Caveat" }}
+              className="block will-change-transform translate-y-full text-[32px] leading-tight font-[700] mx-auto md:text-[50px] xl:text-[80px] 2xl:text-[90px] mb-8 capitalize tikit-gradient"
             >
               {t("contact.hero.subtitle")}
-            </h1>
+            </span>
           </div>
-        </div>
+        </h1>
       </div>
     </section>
   );

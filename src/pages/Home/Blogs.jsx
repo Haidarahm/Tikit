@@ -123,6 +123,7 @@ const Blogs = () => {
         {/* Header */}
         <div ref={titleSectionRef} className="mb-12 md:mb-16">
           <HeroWithBadge
+            titleAs="h2"
             title={t("home.blogs.title")}
             mainWord={t("home.blogs.mainWord")}
             description={t("home.blogs.description")}

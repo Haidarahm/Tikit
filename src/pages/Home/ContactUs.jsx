@@ -17,7 +17,6 @@ import {
   FaSnapchat,
   FaLink,
 } from "react-icons/fa";
-import TikitTitle2 from "../../components/TikitTitle2.jsx";
 import ReactCountryFlag from "react-country-flag";
 import CountryList from "country-list-with-dial-code-and-flag";
 

@@ -90,16 +90,16 @@ const Hero = ({ introDone = true }) => {
       >
         {/* Title */}
         <div className="flex flex-col items-center text-center text-white">
-          <h2
+          <p
             data-hero-animate
-            className="font-[100] text-lg sm:text-xl md:text-2xl lg:text-[27px]"
+            className="font-[100] text-lg sm:text-xl md:text-2xl lg:text-[27px] m-0"
             style={{
               textShadow:
                 "0 2px 8px rgba(0, 0, 0, 0.8), 0 4px 16px rgba(0, 0, 0, 0.6)",
             }}
           >
             {t("home.hero.tagline")}
-          </h2>
+          </p>
 
           <h1
             data-hero-animate
@@ -115,15 +115,15 @@ const Hero = ({ introDone = true }) => {
 
         {/* Subtitle */}
         <div data-hero-animate className="mt-4 md:mt-6">
-          <h3
-            className="font-[400] tracking-widest text-white text-xl sm:text-2xl md:text-3xl lg:text-[36px] text-center px-4"
+          <p
+            className="font-[400] tracking-widest text-white text-xl sm:text-2xl md:text-3xl lg:text-[36px] text-center px-4 m-0"
             style={{
               textShadow:
                 "0 2px 8px rgba(0, 0, 0, 0.8), 0 4px 16px rgba(0, 0, 0, 0.6)",
             }}
           >
             {t("home.hero.subtitle")}
-          </h3>
+          </p>
         </div>
 
         {/* Avatars */}

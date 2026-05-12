@@ -10,7 +10,6 @@ import { useTheme } from "../../store/ThemeContext.jsx";
 import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
 import { useFontClass } from "../../hooks/useFontClass";
-import TikitTitle from "../../components/TikitTitle.jsx";
 import { useHomeGsapScope } from "./HomeGsapScope";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -121,8 +120,12 @@ const Goals = memo(() => {
             itemClassName={`flex backdrop-blur-lg relative items-center overflow-hidden ${getBackgroundClass(goal)}`}
           >
             <div className="text w-2/3">
-              <h1  dir={isRtl ? "rtl" : "ltr"}
-      className={`${fontHeading} tikit-title`}>{goal.title}</h1>
+              <h2
+                dir={isRtl ? "rtl" : "ltr"}
+                className={`${fontHeading} tikit-title`}
+              >
+                {goal.title}
+              </h2>
               <p className="font-light text-[var(--foreground)] text-[14px] md:text-[32px] leading-[20px] md:leading-[45px]">
                 {goal.description}
               </p>

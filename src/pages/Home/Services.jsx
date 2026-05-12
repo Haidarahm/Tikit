@@ -166,7 +166,7 @@ const Services = memo(() => {
     >
       <div className="flex flex-col lg:flex-row gap-8 lg:gap-14 items-start">
         <div className="services-intro w-full lg:w-[28%] flex flex-col gap-3 px-1">
-          <TikitTitle title={t("home.services.title")} mainWord="" disableAnimation />
+          <TikitTitle as="h2" title={t("home.services.title")} mainWord="" disableAnimation />
           <p className="text-[var(--foreground)]/70 text-[14px] md:text-[15px] leading-relaxed max-w-[320px]">
             {t("services.hero.subdescription")}
           </p>

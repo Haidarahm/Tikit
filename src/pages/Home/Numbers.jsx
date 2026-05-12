@@ -116,14 +116,13 @@ const Numbers = memo(() => {
     >
       <div className="texts text-center ">
         <TikitTitle
+          as="h2"
           title={t("home.numbers.headline")}
           mainWord={t("home.numbers.mainWord")}
         />
-        <h2
-          className="numbers-subheadline text-sm sm:text-base md:text-lg lg:text-[25px] font-light px-4 md:px-0 max-w-4xl mx-auto text-[var(--foreground)]"
-        >
+        <p className="numbers-subheadline text-sm sm:text-base md:text-lg lg:text-[25px] font-light px-4 md:px-0 max-w-4xl mx-auto text-[var(--foreground)] m-0">
           {t("home.numbers.subheadline")}
-        </h2>
+        </p>
 
         <div className="numbers relative mt-6 md:mt-8">
           {/* Mobile Layout - 2x2 Grid */}

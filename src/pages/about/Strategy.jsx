@@ -157,7 +157,7 @@ const Strategy = () => {
         {t("about.strategy.title")}
         <div className="flex justify-center text-[var(--foreground)] md:h-[75px] items-center">
           <span className="transition">{t("about.strategy.subtitle")}</span>
-          <h1 className=" font-bold  overflow-hidden flex items-center ml-4 mr-4">
+          <span className="font-bold overflow-hidden inline-flex items-center ml-4 mr-4">
             <TextChanger
               texts={
                 t("about.strategy.rotatingTexts", { returnObjects: true }) || []
@@ -166,7 +166,7 @@ const Strategy = () => {
               diagonal={false}
               textClassName={`bg-gradient-to-r ${isRtl ? "font-cairo" : "font-antonio"} font-bold from-[#07D9F5] to-[#E84B43] bg-clip-text text-transparent`}
             />
-          </h1>
+          </span>
         </div>
       </div>
       {/* <div className="container-cards grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6 md:mt-10 px-4 md:px-6">

@@ -109,14 +109,14 @@ const DetailsHeader = () => {
       <div className="relative z-10 text-center">
         {/* Overflow-hidden wrapper for title animation */}
         <div className="overflow-hidden inline-block">
-          <h1
+          <h2
             ref={titleRef}
             className={`text-5xl md:text-7xl lg:text-[100px] font-bold text-[var(--foreground)] uppercase leading-none ${
               isRtl ? "font-cairo" : "font-antonio"
             }`}
           >
             {t("about.details.header.title")}
-          </h1>
+          </h2>
         </div>
         <p
           ref={subtitleRef}

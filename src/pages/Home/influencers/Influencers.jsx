@@ -212,6 +212,7 @@ const Influencers = () => {
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
         <HeroWithBadge
+          titleAs="h2"
           badge={t("home.influencers.badge")}
           title={t("home.influencers.title")}
           mainWord={t("home.influencers.mainWord")}

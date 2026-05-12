@@ -282,8 +282,9 @@ const NewsDetails = () => {
       {/* Hidden SEO content for better indexing */}
       {blogData && (
         <section className="sr-only" aria-hidden="true">
-          <h1>{blogData.title || "Blog Post"}</h1>
-          {blogData.subtitle && <h2>{blogData.subtitle}</h2>}
+          {/* Plain text only: visible NewsDetailsHeader already exposes h1 + subtitle (avoid duplicate headings). */}
+          <p>{blogData.title || "Blog Post"}</p>
+          {blogData.subtitle && <p>{blogData.subtitle}</p>}
           <p>{blogData.description || seoProps.description}</p>
           <p>
             Read this article on Tikit Agency blog. {blogData.title && `Learn about ${blogData.title.toLowerCase()}.`} 

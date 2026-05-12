@@ -140,9 +140,9 @@ const Connections = memo(() => {
         className="flex items-center flex-col justify-center relative z-10 w-[90vw] md:w-[80vw] mx-auto text-center"
       >
         {isRtl ? (
-          <h2 className="text-[24px] md:h-[55px] md:text-[35px] pointer-events-none max-w-[600px] text-[var(--foreground)] dark:text-white">
+          <p className="text-[24px] md:h-[55px] md:text-[35px] pointer-events-none max-w-[600px] text-[var(--foreground)] dark:text-white m-0">
             {t("home.connections.question")}
-          </h2>
+          </p>
         ) : (
           <ScrollFloat
             animationDuration={1}
@@ -156,7 +156,7 @@ const Connections = memo(() => {
           </ScrollFloat>
         )}
         <div className="connections-animate">
-          <TikitTitle title={t("home.connections.headline")} mainWord={t("home.connections.mainWord")} />
+          <TikitTitle as="h2" title={t("home.connections.headline")} mainWord={t("home.connections.mainWord")} />
           
         </div>
 

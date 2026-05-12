@@ -21,6 +21,7 @@ const HeroWithBadge = ({
   description,
   badgeVariant = "default",
   titleClassName = "hero-animate block",
+  titleAs = "h1",
   descriptionClassName = "text-lg md:text-xl text-[var(--foreground)]/70 max-w-3xl mx-auto leading-relaxed",
   disableAnimation = false,
   contentClassName = "relative z-10 max-w-6xl mx-auto text-center mt-12",
@@ -54,6 +55,7 @@ const HeroWithBadge = ({
         title={title}
         mainWord={mainWord}
         disableAnimation={disableAnimation}
+        as={titleAs}
       />
       {description != null && description !== "" && (
         <p className={descriptionClassName}>{description}</p>

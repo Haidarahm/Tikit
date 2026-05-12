@@ -540,10 +540,10 @@ const Action = () => {
     >
       {/* Left Section */}
       <div className="w-full lg:w-1/2 flex flex-col justify-start items-start space-y-4 md:space-y-6">
-        <h2 className="text-base md:text-2xl mb-0 lg:text-3xl xl:text-4xl text-[var(--foreground)]/80">
+        <p className="text-base md:text-2xl mb-0 lg:text-3xl xl:text-4xl text-[var(--foreground)]/80 m-0">
           {t("contact.action.subtitle")}
-        </h2>
-       <TikitTitle title={t("contact.action.title")} mainWord={t("contact.action.mainWord")} />
+        </p>
+       <TikitTitle as="h2" title={t("contact.action.title")} mainWord={t("contact.action.mainWord")} />
         {/* text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight */}
         <p className="text-base md:text-lg lg:text-xl xl:text-2xl font-light text-[var(--foreground)]/90 leading-snug">
           {t("contact.action.description")}

@@ -146,6 +146,7 @@ const Hero = () => {
           <TikitTitle
            title={t("about.hero.title2")}
            disableAnimation
+           as="h2"
           />
         </div>
         <InfiniteScroll

@@ -348,13 +348,18 @@ const Services = () => {
         data-nav-color="white"
         dir={isRtl ? "rtl" : "ltr"}
       >
-        {/* SEO H1 - Hidden but readable by search engines */}
-        <h1 style={{ position: 'absolute', left: '-9999px', top: 'auto', width: '1px', height: '1px', overflow: 'hidden' }}>
-          Social Media Management, Influencer Marketing, Branding & Production Services - Tikit Agency Dubai & Saudi Arabia
-        </h1>
-        
         <header style={styles.header}>
-          <div>{t("services.page.header")}</div>
+          <h1
+            style={{
+              margin: 0,
+              font: "inherit",
+              letterSpacing: "inherit",
+              textTransform: "inherit",
+              fontWeight: "inherit",
+            }}
+          >
+            {t("services.page.header")}
+          </h1>
           <div style={styles.subtext}>{t("services.page.scrollHint")}</div>
         </header>
 

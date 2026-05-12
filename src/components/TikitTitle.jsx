@@ -3,7 +3,13 @@ import gsap from "gsap";
 import { useI18nLanguage } from "../store/I18nLanguageContext";
 import { useFontClass } from "../hooks/useFontClass";
 
-const TikitTitle = ({ title, className, mainWord, disableAnimation }) => {
+const TikitTitle = ({
+  title,
+  className,
+  mainWord,
+  disableAnimation,
+  as: Heading = "h1",
+}) => {
   const { isRtl } = useI18nLanguage();
   const { fontHeading } = useFontClass();
   const titleRef = useRef(null);
@@ -36,7 +42,7 @@ const TikitTitle = ({ title, className, mainWord, disableAnimation }) => {
   }, [disableAnimation]);
 
   return (
-    <h1
+    <Heading
       ref={titleRef}
       dir={isRtl ? "rtl" : "ltr"}
       className={`${className} ${fontHeading} tikit-title`}
@@ -54,7 +60,7 @@ const TikitTitle = ({ title, className, mainWord, disableAnimation }) => {
           </span>
         </>
       ) : null}
-    </h1>
+    </Heading>
   );
 };
 

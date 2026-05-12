@@ -101,12 +101,12 @@ const Growth = () => {
       dir={isRtl ? "rtl" : "ltr"}
     >
       <div className="left-section md:w-2/3 ">
-        <h1
+        <h2
           ref={titleRef}
           className="dark:text-white font-[600] font-antonio text-[var(--foreground)] title text-[22px] sm:text-[28px] md:text-[36px] capitalize loco-growth-text"
         >
           {t("about.growth.title")}
-        </h1>
+        </h2>
         <p
           ref={descriptionRef}
           className="text-[var(--foreground)] description text-[16px] sm:text-[20px] md:text-[26px] font-light loco-growth-text mt-3 md:mt-4 "
@@ -120,9 +120,9 @@ const Growth = () => {
           key={data[0].id}
           className="flex  items-center md:right-1/2 md:top-0 top-0 left-0 shadow-lg shadow-black/15 md:left-auto justify-center text-center flex-col w-[160px] h-[160px] md:w-[170px] md:h-[170px] rounded-full absolute bg-[#252525]/3 dark:bg-[#f2f2f2]/30 loco-growth-circle"
         >
-          <h1 className="text-[28px] md:text-[36px] font-bold text-[var(--foreground)]">
+          <p className="text-[28px] md:text-[36px] font-bold text-[var(--foreground)] m-0">
             {data[0].amount}+
-          </h1>
+          </p>
           <p className="text-[14px] md:text-[16px] font-light text-[var(--foreground)]">
             {data[0].title}
           </p>
@@ -132,9 +132,9 @@ const Growth = () => {
           key={data[1].id}
           className="flex px-4  bottom-0 md:bottom-0 md:left-1/2 left-auto right-0 items-center justify-center text-center flex-col w-[160px] h-[160px] md:w-[170px] md:h-[170px] rounded-full shadow-lg shadow-black/15  absolute bg-[#252525]/3 dark:bg-[#f2f2f2]/30 loco-growth-circle"
         >
-          <h1 className=" text-[var(--foreground)] text-[28px] md:text-[36px] font-bold">
+          <p className="text-[var(--foreground)] text-[28px] md:text-[36px] font-bold m-0">
             {data[1].amount}+
-          </h1>
+          </p>
           <p className="text-[14px] md:text-[16px] font-light text-[var(--foreground)]">
             {data[1].title}
           </p>
