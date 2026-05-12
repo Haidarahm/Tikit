@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 import { motion as Motion } from "framer-motion";
-import { influencerRevealItem } from "@/helpers/framerMotion";
+import { influencerRevealItem, influencerSectionIntro } from "@/helpers/framerMotion";
 import { useFontClass } from "../../../../hooks/useFontClass";
 
 const sizeLabels = ["1K–10K", "10K–100K", "100K–1M", "1M+"];
@@ -11,9 +11,11 @@ const InfInfluencerTypes = forwardRef(({ label, title, description, types }, ref
   return (
     <section ref={ref} className="inf-section inf-section--alt">
       <div className="inf-container">
-        <span className="inf-label">{label}</span>
-        <h2 className={`inf-heading ${fontHeading}`}>{title}</h2>
-        <p className="inf-desc">{description}</p>
+        <Motion.div {...influencerSectionIntro}>
+          <span className="inf-label">{label}</span>
+          <h2 className={`inf-heading ${fontHeading}`}>{title}</h2>
+          <p className="inf-desc">{description}</p>
+        </Motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           {types.map((type, idx) => (

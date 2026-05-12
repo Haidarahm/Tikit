@@ -1,5 +1,6 @@
+import { motion as Motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
-import { serviceHeroFramerHero } from "@/helpers/framerMotion";
+import { faqSectionReveal, serviceHeroFramerHero } from "@/helpers/framerMotion";
 import { useI18nLanguage } from "../../../store/I18nLanguageContext";
 import {
   FiSearch,
@@ -214,7 +215,9 @@ const InfluencerMarketing = () => {
         framer
       />
 
-      <FAQ items={faqItems} title={t(`${TK}.faq.title`)} />
+      <Motion.div {...faqSectionReveal}>
+        <FAQ items={faqItems} title={t(`${TK}.faq.title`)} />
+      </Motion.div>
 
       <ServiceCTASection
         classPrefix="im"

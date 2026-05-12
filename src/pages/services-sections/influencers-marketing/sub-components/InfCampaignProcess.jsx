@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 import { motion as Motion } from "framer-motion";
-import { influencerRevealItem } from "@/helpers/framerMotion";
+import { influencerRevealItem, influencerSectionIntro } from "@/helpers/framerMotion";
 import { useFontClass } from "../../../../hooks/useFontClass";
 
 const InfCampaignProcess = forwardRef(({ label, title, description, steps }, ref) => {
@@ -9,9 +9,11 @@ const InfCampaignProcess = forwardRef(({ label, title, description, steps }, ref
   return (
     <section ref={ref} className="inf-section">
       <div className="inf-container">
-        <span className="inf-label">{label}</span>
-        <h2 className={`inf-heading ${fontHeading}`}>{title}</h2>
-        <p className="inf-desc">{description}</p>
+        <Motion.div {...influencerSectionIntro}>
+          <span className="inf-label">{label}</span>
+          <h2 className={`inf-heading ${fontHeading}`}>{title}</h2>
+          <p className="inf-desc">{description}</p>
+        </Motion.div>
 
         <div className="space-y-0">
           {steps.map((step, idx) => (

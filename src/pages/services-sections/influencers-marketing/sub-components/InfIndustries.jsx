@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 import { motion as Motion } from "framer-motion";
-import { influencerRevealItem } from "@/helpers/framerMotion";
+import { influencerRevealItem, influencerSectionIntro } from "@/helpers/framerMotion";
 import { useFontClass } from "../../../../hooks/useFontClass";
 
 const InfIndustries = forwardRef(({ label, title, description, industries }, ref) => {
@@ -9,9 +9,11 @@ const InfIndustries = forwardRef(({ label, title, description, industries }, ref
   return (
     <section ref={ref} className="inf-section inf-section--alt">
       <div className="inf-container">
-        <span className="inf-label">{label}</span>
-        <h2 className={`inf-heading ${fontHeading}`}>{title}</h2>
-        <p className="inf-desc">{description}</p>
+        <Motion.div {...influencerSectionIntro}>
+          <span className="inf-label">{label}</span>
+          <h2 className={`inf-heading ${fontHeading}`}>{title}</h2>
+          <p className="inf-desc">{description}</p>
+        </Motion.div>
 
         <div className="flex flex-wrap gap-4">
           {industries.map((industry, idx) => (
