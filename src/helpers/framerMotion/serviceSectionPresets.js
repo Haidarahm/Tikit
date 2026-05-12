@@ -281,3 +281,36 @@ export const multiCtaSection = {
     transition: { duration: 0.6, delay: 0.35 },
   },
 };
+
+/**
+ * DM SEO / Performance / Paid Ads pages — hero inner stagger (mount, replaces GSAP `.hero-animate`).
+ */
+export const seoServicesHeroContainerVariants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.2, delayChildren: 0.1 },
+  },
+};
+
+export const seoServicesHeroChildVariants = {
+  hidden: { opacity: 0, y: 60 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 1, ease: EASE_SMOOTH },
+  },
+};
+
+/**
+ * `DMRelatedServices` link cards — matches former GSAP stagger on `.dm-link-card`.
+ */
+export const dmRelatedLinkCard = (index) => ({
+  initial: { opacity: 0, y: 30 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: VIEWPORT_PROBLEMS,
+  transition: {
+    duration: 0.6,
+    ease: EASE_SMOOTH,
+    delay: index * 0.1,
+  },
+});

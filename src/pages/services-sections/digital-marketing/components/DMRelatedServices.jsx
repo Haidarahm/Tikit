@@ -1,4 +1,6 @@
+import { motion as Motion } from "framer-motion";
 import { LocaleLink as Link } from "@/components/LocaleLink.jsx";
+import { benefitsSection, dmRelatedLinkCard } from "@/helpers/framerMotion";
 import { useTranslation } from "react-i18next";
 import {
   HiChartBar,
@@ -40,45 +42,49 @@ const DMRelatedServices = ({ current }) => {
   return (
     <section className="dm-section">
       <div className="dm-container-wide">
-        <h2 className={`dm-section-title ${fontClass}`}>
+        <Motion.h2 className={`dm-section-title ${fontClass}`} {...benefitsSection.headerWrap}>
           {t("serviceSections.digitalMarketing.relatedTitle")}
-        </h2>
+        </Motion.h2>
         <div className="dm-link-grid mt-10">
-          <Link
-            to="/digital-marketing-agency-dubai"
-            className="dm-link-card"
-          >
-            <div className="dm-link-card-icon">
-              <HiChartBar />
-            </div>
-            <h3 className="dm-link-card-title">
-              {t("serviceSections.digitalMarketing.hubLinkTitle")}
-            </h3>
-            <p className="dm-link-card-desc">
-              {t("serviceSections.digitalMarketing.hubLinkDesc")}
-            </p>
-            <span className="dm-link-card-arrow">View Hub →</span>
-          </Link>
+          <Motion.div className="min-h-0" {...dmRelatedLinkCard(0)}>
+            <Link
+              to="/digital-marketing-agency-dubai"
+              className="dm-link-card block h-full"
+            >
+              <div className="dm-link-card-icon">
+                <HiChartBar />
+              </div>
+              <h3 className="dm-link-card-title">
+                {t("serviceSections.digitalMarketing.hubLinkTitle")}
+              </h3>
+              <p className="dm-link-card-desc">
+                {t("serviceSections.digitalMarketing.hubLinkDesc")}
+              </p>
+              <span className="dm-link-card-arrow">View Hub →</span>
+            </Link>
+          </Motion.div>
 
-          {siblingKeys.map((key) => {
+          {siblingKeys.map((key, idx) => {
             const { icon: Icon, path } = SERVICES_CONFIG[key];
             return (
-              <Link key={key} to={path} className="dm-link-card">
-                <div className="dm-link-card-icon">
-                  <Icon />
-                </div>
-                <h3 className="dm-link-card-title">
-                  {t(`serviceSections.digitalMarketing.subServices.${key}.title`)}
-                </h3>
-                <p className="dm-link-card-desc">
-                  {t(
-                    `serviceSections.digitalMarketing.subServices.${key}.description`,
-                  )}
-                </p>
-                <span className="dm-link-card-arrow">
-                  {t("serviceSections.digitalMarketing.subServices.learnMore")} →
-                </span>
-              </Link>
+              <Motion.div key={key} className="min-h-0" {...dmRelatedLinkCard(idx + 1)}>
+                <Link to={path} className="dm-link-card block h-full">
+                  <div className="dm-link-card-icon">
+                    <Icon />
+                  </div>
+                  <h3 className="dm-link-card-title">
+                    {t(`serviceSections.digitalMarketing.subServices.${key}.title`)}
+                  </h3>
+                  <p className="dm-link-card-desc">
+                    {t(
+                      `serviceSections.digitalMarketing.subServices.${key}.description`,
+                    )}
+                  </p>
+                  <span className="dm-link-card-arrow">
+                    {t("serviceSections.digitalMarketing.subServices.learnMore")} →
+                  </span>
+                </Link>
+              </Motion.div>
             );
           })}
         </div>
