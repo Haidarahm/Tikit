@@ -10,18 +10,16 @@ import {
 } from "react-icons/fa";
 import SEOHead from "../../../components/SEOHead";
 import FAQ from "../../../components/FAQ";
-import {
-  DMDivider,
-  DMHeroSection,
-  DMDefinitionSection,
-  DMServicePillarsSection,
-  DMIncludedSection,
-  DMWhyChooseSection,
-  DMProcessStepsSection,
-  DMFinalCtaSection,
-  DMRelatedServices,
-  DMCTA,
-} from "./components";
+import { DMDivider } from "./dmMotion";
+import DMHeroSection from "./components/DMHeroSection";
+import DMDefinitionSection from "./components/DMDefinitionSection";
+import DMServicePillarsSection from "./components/DMServicePillarsSection";
+import DMIncludedSection from "./components/DMIncludedSection";
+import DMWhyChooseSection from "./components/DMWhyChooseSection";
+import DMProcessStepsSection from "./components/DMProcessStepsSection";
+import DMFinalCtaSection from "./components/DMFinalCtaSection";
+import DMRelatedServices from "./components/DMRelatedServices";
+import DMCTA from "./components/DMCTA";
 import "./digitalMarketing.css";
 
 const SERVICE_KEYS = [
