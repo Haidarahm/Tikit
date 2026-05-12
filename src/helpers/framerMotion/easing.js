@@ -9,3 +9,6 @@ export const EASE_OVERSHOOT = [0.34, 1.56, 0.64, 1];
 
 /** Stat counter & icon springs — reuse with framer animate() */
 export const EASE_COUNTER = EASE_SMOOTH;
+
+/** Strong ease-out — approx. GSAP `power4.out` (Work `DigitalWorkCard`) */
+export const EASE_POWER4_OUT = [0.13, 1, 0.31, 1];

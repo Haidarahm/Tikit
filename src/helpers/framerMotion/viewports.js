@@ -59,3 +59,10 @@ export const VIEWPORT_DM_SUBPAGE = {
   amount: 0.15,
   margin: "0px 0px -8% 0px",
 };
+
+/** Work page `DigitalWorkCard` — ~ GSAP ScrollTrigger `start: "top 85%"` */
+export const VIEWPORT_WORK_DIGITAL_CARD = {
+  once: true,
+  amount: 0.2,
+  margin: "0px 0px -18% 0px",
+};

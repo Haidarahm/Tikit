@@ -7,6 +7,7 @@ import {
   EASE_COUNTER,
   EASE_HERO_ENTRANCE,
   EASE_OVERSHOOT,
+  EASE_POWER4_OUT,
   EASE_SMOOTH,
 } from "./easing.js";
 import {
@@ -14,6 +15,7 @@ import {
   VIEWPORT_CASE_STUDY,
   VIEWPORT_DM_SUBPAGE,
   VIEWPORT_FAQ,
+  VIEWPORT_WORK_DIGITAL_CARD,
   VIEWPORT_MULTI_CTA,
   VIEWPORT_ONCE,
   VIEWPORT_PROBLEMS,
@@ -381,3 +383,66 @@ export const influencerRevealPanel = {
   viewport: VIEWPORT_DM_SUBPAGE,
   transition: { duration: 0.65, ease: EASE_SMOOTH },
 };
+
+/**
+ * Work page `DigitalWorkCard.jsx` — Framer replacements for former GSAP timeline.
+ * Use with `useInView(ref, digitalWorkCardInViewOptions)` + `animate` on children.
+ */
+export const digitalWorkCardInViewOptions = { ...VIEWPORT_WORK_DIGITAL_CARD };
+
+export const digitalWorkCardOuterHidden = {
+  opacity: 0,
+  y: 80,
+  rotateX: 8,
+  scale: 0.94,
+  filter: "blur(6px)",
+};
+
+export const digitalWorkCardOuterVisible = {
+  opacity: 1,
+  y: 0,
+  rotateX: 0,
+  scale: 1,
+  filter: "blur(0px)",
+};
+
+export const digitalWorkCardOuterTransition = {
+  duration: 1,
+  ease: EASE_POWER4_OUT,
+};
+
+/** Glow layer — keyframe targets (opacity sweep then fade) */
+export const digitalWorkCardGlowHidden = {
+  opacity: 0,
+  clipPath: "inset(0 100% 0 0)",
+};
+
+export const digitalWorkCardGlowVisibleKeyframes = {
+  opacity: [0, 0.35, 0],
+  clipPath: ["inset(0 100% 0 0)", "inset(0 0% 0 0)", "inset(0 0% 0 0)"],
+};
+
+export const digitalWorkCardGlowTransition = {
+  duration: 1.6,
+  times: [0, 0.45, 1],
+  ease: [EASE_SMOOTH, EASE_SMOOTH],
+  delay: 0.15,
+};
+
+export const digitalWorkCardMetricHidden = {
+  opacity: 0,
+  y: 24,
+  filter: "blur(8px)",
+};
+
+export const digitalWorkCardMetricVisible = {
+  opacity: 1,
+  y: 0,
+  filter: "blur(0px)",
+};
+
+export const digitalWorkCardMetricTransition = (index) => ({
+  duration: 0.5,
+  ease: EASE_SMOOTH,
+  delay: 0.4 + index * 0.08,
+});
