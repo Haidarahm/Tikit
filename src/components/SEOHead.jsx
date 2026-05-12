@@ -7,6 +7,7 @@ import {
   withLocalePrefix,
 } from "../utils/localePaths";
 import { generatePrimaryLocalBusinessSchema } from "../schema/primaryLocalBusinessJsonLd.js";
+import { TIKIT_DUBAI_POSTAL_ADDRESS } from "../schema/businessPostalAddress.js";
 
 /**
  * SEOHead Component - AI Engine Optimization Ready
@@ -136,7 +137,8 @@ const SEOHead = ({
         "name": siteName,
         "url": baseUrl,
         "telephone": businessInfo.phone,
-        "email": businessInfo.email
+        "email": businessInfo.email,
+        "address": TIKIT_DUBAI_POSTAL_ADDRESS,
       },
       "areaServed": ["Dubai", "Abu Dhabi", "Saudi Arabia", "Riyadh", "Jeddah", "Istanbul", "Turkey", "GCC"],
       "serviceType": serviceType

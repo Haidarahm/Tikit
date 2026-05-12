@@ -6,6 +6,8 @@
  * that uses `<SEOHead />` unless disabled or already present in `structuredData`.
  */
 
+import { TIKIT_DUBAI_POSTAL_ADDRESS } from "./businessPostalAddress.js";
+
 export function generatePrimaryLocalBusinessSchema() {
   return {
     "@context": "https://schema.org",
@@ -20,13 +22,7 @@ export function generatePrimaryLocalBusinessSchema() {
     image: "https://tikit.ae/cover-image.png",
     logo: "https://tikit.ae/logo-light.png",
     priceRange: "$$$",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "The Burlington Tower, Marasi Drive, Office 309",
-      addressLocality: "Dubai",
-      addressRegion: "Dubai",
-      addressCountry: "AE",
-    },
+    address: TIKIT_DUBAI_POSTAL_ADDRESS,
     geo: {
       "@type": "GeoCoordinates",
       latitude: 25.2048,
