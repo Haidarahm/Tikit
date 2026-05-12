@@ -148,9 +148,6 @@ const SEOServicesPage = () => {
           <div className="dm-hero-gradient" />
         </div>
         <div className="dm-hero-content relative z-10">
-          <p className="hero-animate dm-hero-kicker">
-            {t("serviceSections.digitalMarketing.seoServices.heroTagline")}
-          </p>
           <HeroWithBadge
             badge={t("serviceSections.digitalMarketing.seoServices.badge")}
             title={t("serviceSections.digitalMarketing.seoServices.hero.title")}
