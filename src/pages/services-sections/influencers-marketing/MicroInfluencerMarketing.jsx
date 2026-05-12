@@ -1,7 +1,6 @@
-import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { motion as Motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import { influencerRevealItem, serviceHeroFramerHero } from "@/helpers/framerMotion";
 import { useI18nLanguage } from "../../../store/I18nLanguageContext";
 
 import { FiUsers, FiTarget, FiBarChart2, FiTrendingUp, FiZap, FiShield, FiClock, FiFileText, FiGlobe, FiLayers } from "react-icons/fi";
@@ -25,11 +24,9 @@ import InfComparisonTable from "./sub-components/InfComparisonTable";
 import InfIndustries from "./sub-components/InfIndustries";
 import InfWhyChooseUs from "./sub-components/InfWhyChooseUs";
 import InfCaseStudyBlock from "./sub-components/InfCaseStudyBlock";
-import { revealChildren, toArray } from "./influencerUtils";
+import { toArray } from "./influencerUtils";
 
 import "./influencerMarketing.css";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const TK = "serviceSections.influencerMarketing.microInfluencerMarketing";
 const splitTextToCards = (text) =>
@@ -103,58 +100,6 @@ const MicroInfluencerMarketing = () => {
 
   const faqItems = toArray(t(`${TK}.faq.items`, { returnObjects: true }));
 
-  const heroRef = useRef(null);
-  const whatRef = useRef(null);
-  const strategyRef = useRef(null);
-  const platformsRef = useRef(null);
-  const campaignTypesRef = useRef(null);
-  const comparisonRef = useRef(null);
-  const costRef = useRef(null);
-  const resultsRef = useRef(null);
-  const keyInsightsRef = useRef(null);
-  const nichesRef = useRef(null);
-  const whyRef = useRef(null);
-  const ctaRef = useRef(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      if (heroRef.current) {
-        gsap.fromTo(
-          heroRef.current,
-          { opacity: 0, y: 24 },
-          { opacity: 1, y: 0, duration: 1.1, ease: "power3.out", delay: 0.15 }
-        );
-      }
-
-      revealChildren(whatRef, ".inf-reveal", 0.06);
-      revealChildren(strategyRef, ".inf-reveal", 0.08);
-      revealChildren(platformsRef, ".inf-reveal", 0.10);
-      revealChildren(campaignTypesRef, ".inf-reveal", 0.08);
-      revealChildren(costRef, ".inf-reveal", 0.06);
-      revealChildren(resultsRef, ".inf-reveal", 0.08);
-      revealChildren(keyInsightsRef, ".inf-reveal", 0.06);
-      revealChildren(nichesRef, ".inf-reveal", 0.06);
-      revealChildren(whyRef, ".inf-reveal", 0.06);
-
-      if (ctaRef.current) {
-        gsap.fromTo(
-          ctaRef.current.querySelectorAll(".im-reveal"),
-          { opacity: 0, y: 28 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            stagger: 0.12,
-            ease: "power3.out",
-            scrollTrigger: { trigger: ctaRef.current, start: "top 85%" },
-          }
-        );
-      }
-    });
-
-    return () => ctx.revert();
-  }, []);
-
   const breadcrumbs = [
     { name: t("nav.home"), url: "/" },
     { name: t("nav.services"), url: "/services" },
@@ -183,7 +128,6 @@ const MicroInfluencerMarketing = () => {
       />
 
       <ServiceHeroSection
-        ref={heroRef}
         imageSrc={influencerHero}
         imageAlt={t(`${TK}.seo.serviceType`)}
         badge={t(`${TK}.badge`)}
@@ -192,6 +136,7 @@ const MicroInfluencerMarketing = () => {
         mainWord={t(`${TK}.hero.mainWord`, { defaultValue: "in Dubai" })}
         description={heroShortDescription}
         dataNavColor="black"
+        framerHero={serviceHeroFramerHero}
       />
 
       <ServiceAudiencePainSection
@@ -205,7 +150,6 @@ const MicroInfluencerMarketing = () => {
       />
       {/* What is micro influencer marketing */}
       <InfWhatIsSection
-        ref={whatRef}
         dir={dir}
         label={t(`${TK}.whatIs.sectionLabel`)}
         title={t(`${TK}.whatIs.title`)}
@@ -219,7 +163,6 @@ const MicroInfluencerMarketing = () => {
 
       {/* Strategy */}
       <InfCampaignProcess
-        ref={strategyRef}
         label={t(`${TK}.strategy.sectionLabel`)}
         title={t(`${TK}.strategy.title`)}
         description={`${t(`${TK}.strategy.description`)} ${t(`${TK}.strategy.ctaText`)}`}
@@ -228,7 +171,6 @@ const MicroInfluencerMarketing = () => {
 
       {/* Platforms */}
       <InfPlatforms
-        ref={platformsRef}
         label={t(`${TK}.platforms.sectionLabel`)}
         title={t(`${TK}.platforms.title`)}
         description={`${t(`${TK}.platforms.description`)} ${t(`${TK}.platforms.ctaText`)}`}
@@ -237,7 +179,6 @@ const MicroInfluencerMarketing = () => {
 
       {/* Campaign types */}
       <InfIconCardGrid
-        ref={campaignTypesRef}
         label={t(`${TK}.campaignTypes.sectionLabel`)}
         title={t(`${TK}.campaignTypes.title`)}
         description={`${t(`${TK}.campaignTypes.description`)} ${t(`${TK}.campaignTypes.ctaText`)}`}
@@ -247,7 +188,6 @@ const MicroInfluencerMarketing = () => {
 
       {/* Comparison */}
       <InfComparisonTable
-        ref={comparisonRef}
         label={t(`${TK}.comparison.sectionLabel`)}
         title={t(`${TK}.comparison.title`)}
         description={`${t(`${TK}.comparison.description`)} ${t(`${TK}.comparison.ctaText`)}`}
@@ -260,7 +200,6 @@ const MicroInfluencerMarketing = () => {
 
       {/* Cost */}
       <InfIconCardGrid
-        ref={costRef}
         label={t(`${TK}.cost.sectionLabel`)}
         title={t(`${TK}.cost.title`)}
         description={`${t(`${TK}.cost.description`)} ${t(`${TK}.cost.ctaText`)}`}
@@ -270,7 +209,6 @@ const MicroInfluencerMarketing = () => {
 
       {/* Results (case study block style) */}
       <InfCaseStudyBlock
-        ref={resultsRef}
         label={t(`${TK}.results.sectionLabel`)}
         title={t(`${TK}.results.title`)}
         description={t(`${TK}.results.description`)}
@@ -285,7 +223,6 @@ const MicroInfluencerMarketing = () => {
 
       {/* Market insights */}
       <InfIconCardGrid
-        ref={keyInsightsRef}
         label={t(`${TK}.marketInsights.keyInsights.sectionLabel`)}
         title={t(`${TK}.marketInsights.keyInsights.title`)}
         description={t(`${TK}.marketInsights.keyInsights.description`)}
@@ -294,7 +231,6 @@ const MicroInfluencerMarketing = () => {
       />
 
       <InfIndustries
-        ref={nichesRef}
         label={t(`${TK}.marketInsights.popularNiches.sectionLabel`)}
         title={t(`${TK}.marketInsights.popularNiches.title`)}
         description={`${t(`${TK}.marketInsights.popularNiches.description`)} ${t(`${TK}.marketInsights.ctaText`)}`}
@@ -303,33 +239,32 @@ const MicroInfluencerMarketing = () => {
 
       {/* Why choose */}
       <InfWhyChooseUs
-        ref={whyRef}
         label={t(`${TK}.whyChooseUs.sectionLabel`)}
         title={t(`${TK}.whyChooseUs.title`)}
         description={t(`${TK}.whyChooseUs.description`)}
         reasons={whyReasons}
         footerContent={
           <>
-            <p className="inf-desc mb-0 inf-reveal">
+            <Motion.p className="inf-desc mb-0" {...influencerRevealItem(0, 0.06)}>
               {t(`${TK}.whyChooseUs.extra1.before`)}{" "}
               <a href={t(`${TK}.whyChooseUs.extra1.href`)} className="text-[var(--secondary)] font-bold">
                 {t(`${TK}.whyChooseUs.extra1.linkText`)}
               </a>{" "}
               {t(`${TK}.whyChooseUs.extra1.after`)}
-            </p>
-            <p className="inf-desc inf-reveal" style={{ marginBottom: 10 }}>
+            </Motion.p>
+            <Motion.p className="inf-desc" style={{ marginBottom: 10 }} {...influencerRevealItem(1, 0.06)}>
               {t(`${TK}.whyChooseUs.extra2.before`)}{" "}
               <a href={t(`${TK}.whyChooseUs.extra2.href`)} className="text-[var(--secondary)] font-bold">
                 {t(`${TK}.whyChooseUs.extra2.linkText`)}
               </a>{" "}
               {t(`${TK}.whyChooseUs.extra2.after`)}
-            </p>
+            </Motion.p>
 
-            <p className="inf-reveal mt-10 mb-0">
+            <Motion.p className="mt-10 mb-0" {...influencerRevealItem(2, 0.06)}>
               <a href={CTA_HREF} className="text-[var(--secondary)] font-bold">
                 {t(`${TK}.whyChooseUs.ctaText`)}
               </a>
-            </p>
+            </Motion.p>
           </>
         }
       />
@@ -344,7 +279,6 @@ const MicroInfluencerMarketing = () => {
 
       {/* Final CTA */}
       <ServiceCTASection
-        ref={ctaRef}
         classPrefix="im"
         dir={dir}
         sectionLabel={t(`${TK}.cta.sectionLabel`)}
@@ -354,6 +288,7 @@ const MicroInfluencerMarketing = () => {
         primaryHref={CTA_HREF}
         secondaryButtonText={t(`${TK}.cta.secondaryButtonText`)}
         secondaryHref={CTA_HREF}
+        framer
       />
     </div>
   );

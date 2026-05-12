@@ -12,6 +12,7 @@ import {
 import {
   VIEWPORT_BENEFITS,
   VIEWPORT_CASE_STUDY,
+  VIEWPORT_DM_SUBPAGE,
   VIEWPORT_FAQ,
   VIEWPORT_MULTI_CTA,
   VIEWPORT_ONCE,
@@ -334,3 +335,49 @@ export const dmRelatedLinkCard = (index) => ({
     delay: index * 0.1,
   },
 });
+
+/** Influencer marketing — scroll reveals (replaces GSAP `revealChildren` / ScrollTrigger) */
+export const influencerSectionIntro = {
+  initial: { opacity: 0, y: 28 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: VIEWPORT_DM_SUBPAGE,
+  transition: { duration: 0.6, ease: EASE_SMOOTH },
+};
+
+export const influencerRevealItem = (index, stagger = 0.1) => ({
+  initial: { opacity: 0, y: 36 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: VIEWPORT_DM_SUBPAGE,
+  transition: { duration: 0.55, ease: EASE_SMOOTH, delay: index * stagger },
+});
+
+export const influencerImageReveal = {
+  initial: { opacity: 0, scale: 0.95 },
+  whileInView: { opacity: 1, scale: 1 },
+  viewport: VIEWPORT_DM_SUBPAGE,
+  transition: { duration: 0.85, ease: EASE_SMOOTH },
+};
+
+/** `ServiceCTASection` — staggered lines (replaces GSAP on `.im-reveal`) */
+export const influencerCtaLine = (index) => ({
+  initial: { opacity: 0, y: 28 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: VIEWPORT_MULTI_CTA,
+  transition: { duration: 0.55, ease: EASE_SMOOTH, delay: index * 0.12 },
+});
+
+/** Campaign hub copy lines */
+export const influencerHubLinkLine = (index) => ({
+  initial: { opacity: 0, y: 24 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: VIEWPORT_DM_SUBPAGE,
+  transition: { duration: 0.55, ease: EASE_SMOOTH, delay: index * 0.08 },
+});
+
+/** Comparison table / wide panels */
+export const influencerRevealPanel = {
+  initial: { opacity: 0, y: 30 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: VIEWPORT_DM_SUBPAGE,
+  transition: { duration: 0.65, ease: EASE_SMOOTH },
+};

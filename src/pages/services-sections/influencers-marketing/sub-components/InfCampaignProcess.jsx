@@ -1,4 +1,6 @@
 import { forwardRef } from "react";
+import { motion as Motion } from "framer-motion";
+import { influencerRevealItem } from "@/helpers/framerMotion";
 import { useFontClass } from "../../../../hooks/useFontClass";
 
 const InfCampaignProcess = forwardRef(({ label, title, description, steps }, ref) => {
@@ -13,14 +15,18 @@ const InfCampaignProcess = forwardRef(({ label, title, description, steps }, ref
 
         <div className="space-y-0">
           {steps.map((step, idx) => (
-            <div key={step?.title || step?.description || JSON.stringify(step) || `step-${idx}`} className="inf-step inf-reveal pb-8">
+            <Motion.div
+              key={step?.title || step?.description || JSON.stringify(step) || `step-${idx}`}
+              className="inf-step pb-8"
+              {...influencerRevealItem(idx, 0.12)}
+            >
               {idx < steps.length - 1 && <div className="inf-step__line" />}
               <div className="inf-step__number">{idx + 1}</div>
               <div className="flex-1">
                 <h3 className="inf-service-card__title">{step.title}</h3>
                 {step.description ? <p className="inf-service-card__text">{step.description}</p> : null}
               </div>
-            </div>
+            </Motion.div>
           ))}
         </div>
       </div>

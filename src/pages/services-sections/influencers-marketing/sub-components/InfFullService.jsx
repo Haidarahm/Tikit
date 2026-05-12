@@ -1,4 +1,6 @@
 import { forwardRef } from "react";
+import { motion as Motion } from "framer-motion";
+import { influencerRevealItem } from "@/helpers/framerMotion";
 import { useFontClass } from "../../../../hooks/useFontClass";
 
 const InfFullService = forwardRef(({ label, title, description, items }, ref) => {
@@ -13,15 +15,16 @@ const InfFullService = forwardRef(({ label, title, description, items }, ref) =>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {items.map((item, idx) => (
-            <div
+            <Motion.div
               key={item?.title || `item-${idx}`}
-              className="inf-service-card inf-reveal group"
+              className="inf-service-card group"
               style={{ borderLeftWidth: "3px", borderLeftColor: "var(--secondary)" }}
+              {...influencerRevealItem(idx, 0.12)}
             >
               <div className="inf-service-card__icon">{item.icon}</div>
               <h3 className="inf-service-card__title">{item.title}</h3>
               <p className="inf-service-card__text">{item.description}</p>
-            </div>
+            </Motion.div>
           ))}
         </div>
       </div>

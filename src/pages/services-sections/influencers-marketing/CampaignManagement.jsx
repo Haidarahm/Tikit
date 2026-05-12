@@ -1,8 +1,7 @@
-import { useEffect, useRef } from "react";
+import { motion as Motion } from "framer-motion";
 import { LocaleLink as Link } from "@/components/LocaleLink.jsx";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useTranslation } from "react-i18next";
+import { influencerHubLinkLine, serviceHeroFramerHero } from "@/helpers/framerMotion";
 import { useI18nLanguage } from "../../../store/I18nLanguageContext";
 import {
   FiTarget,
@@ -46,11 +45,9 @@ import {
   influencerMarketingSubServiceIcons,
   getInfluencerMarketingSubServiceItems,
 } from "./sub-components/influencerMarketingSubServices";
-import { revealChildren, toArray } from "./influencerUtils";
+import { toArray } from "./influencerUtils";
 
 import "./influencerMarketing.css";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const BASE = INFLUENCER_MARKETING_BASE;
 const TK = "serviceSections.influencerMarketing.campaignManagement";
@@ -129,78 +126,6 @@ const CampaignManagement = () => {
 
   const faqItems = toArray(t(`${TK}.faq.items`, { returnObjects: true }));
 
-  const heroRef = useRef(null);
-  const challengesRef = useRef(null);
-  const unstructuredRef = useRef(null);
-  const structuredBenefitsRef = useRef(null);
-  const hubLinkRef = useRef(null);
-  const processRef = useRef(null);
-  const platformsRef = useRef(null);
-  const campaignTypesRef = useRef(null);
-  const costRef = useRef(null);
-  const caseStudyRef = useRef(null);
-  const insightsRef = useRef(null);
-  const nichesRef = useRef(null);
-  const whyUsRef = useRef(null);
-  const subServicesRef = useRef(null);
-  const ctaRef = useRef(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        heroRef.current,
-        { opacity: 0, y: 24 },
-        { opacity: 1, y: 0, duration: 1.1, ease: "power3.out", delay: 0.15 }
-      );
-
-      revealChildren(challengesRef, ".inf-reveal", 0.1);
-      revealChildren(unstructuredRef, ".inf-reveal", 0.12);
-      revealChildren(structuredBenefitsRef, ".inf-reveal", 0.1);
-
-      if (hubLinkRef.current) {
-        gsap.fromTo(
-          hubLinkRef.current.querySelectorAll(".inf-hub-link"),
-          { opacity: 0, y: 28 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.75,
-            stagger: 0.08,
-            ease: "power3.out",
-            scrollTrigger: { trigger: hubLinkRef.current, start: "top 82%" },
-          }
-        );
-      }
-
-      revealChildren(processRef, ".inf-reveal", 0.12);
-      revealChildren(platformsRef, ".inf-reveal", 0.15);
-      revealChildren(campaignTypesRef, ".inf-reveal", 0.1);
-      revealChildren(costRef, ".inf-reveal", 0.1);
-      revealChildren(caseStudyRef, ".inf-reveal", 0.12);
-      revealChildren(insightsRef, ".inf-reveal", 0.1);
-      revealChildren(nichesRef, ".inf-industry-tag", 0.08);
-      revealChildren(whyUsRef, ".inf-reveal", 0.1);
-      revealChildren(subServicesRef, ".im-subservice-card", 0.08);
-
-      if (ctaRef.current) {
-        gsap.fromTo(
-          ctaRef.current.querySelectorAll(".im-reveal"),
-          { opacity: 0, y: 28 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            stagger: 0.12,
-            ease: "power3.out",
-            scrollTrigger: { trigger: ctaRef.current, start: "top 85%" },
-          }
-        );
-      }
-    });
-
-    return () => ctx.revert();
-  }, []);
-
   const breadcrumbs = [
     { name: t("nav.home"), url: "/" },
     { name: t("nav.services"), url: "/services" },
@@ -221,7 +146,6 @@ const CampaignManagement = () => {
       />
 
       <ServiceHeroSection
-        ref={heroRef}
         imageSrc={influencerHero}
         imageAlt={t(`${TK}.seo.serviceType`)}
         badge={t(`${TK}.badge`)}
@@ -230,10 +154,10 @@ const CampaignManagement = () => {
         mainWord={t(`${TK}.hero.mainWord`)}
         description={t(`${TK}.hero.description`)}
         dataNavColor="black"
+        framerHero={serviceHeroFramerHero}
       />
 
       <InfServicesGrid
-        ref={challengesRef}
         label={t(`${TK}.challenge.label`)}
         title={t(`${TK}.challenge.title`)}
         description={t(`${TK}.challenge.description`)}
@@ -241,7 +165,6 @@ const CampaignManagement = () => {
       />
 
       <InfFullService
-        ref={unstructuredRef}
         label={t(`${TK}.whyMatters.label`)}
         title={t(`${TK}.whyMatters.title`)}
         description={t(`${TK}.whyMatters.description`)}
@@ -249,30 +172,28 @@ const CampaignManagement = () => {
       />
 
       <InfWhyChooseUs
-        ref={structuredBenefitsRef}
         label={t(`${TK}.structuredResults.label`)}
         title={t(`${TK}.structuredResults.title`)}
         description={t(`${TK}.structuredResults.description`)}
         reasons={structuredBenefits}
       />
 
-      <section ref={hubLinkRef} className="inf-section inf-section--alt" dir={dir}>
+      <section className="inf-section inf-section--alt" dir={dir}>
         <div className="inf-container">
-          <p className="inf-desc inf-hub-link mb-4 max-w-3xl">
+          <Motion.p className="inf-desc mb-4 max-w-3xl" {...influencerHubLinkLine(0)}>
             {t(`${TK}.hubLink.before`)}{" "}
             <Link to={BASE} className="font-semibold underline underline-offset-4 hover:opacity-80" style={{ color: "var(--secondary)" }}>
               {t(`${TK}.hubLink.linkText`)}
             </Link>{" "}
             {t(`${TK}.hubLink.after`)}
-          </p>
-          <p className="inf-desc inf-hub-link mb-0 max-w-3xl">
+          </Motion.p>
+          <Motion.p className="inf-desc mb-0 max-w-3xl" {...influencerHubLinkLine(1)}>
             {t(`${TK}.hubLink.secondLine`)}
-          </p>
+          </Motion.p>
         </div>
       </section>
 
       <InfCampaignProcess
-        ref={processRef}
         label={t(`${TK}.process.label`)}
         title={t(`${TK}.process.title`)}
         description={t(`${TK}.process.description`)}
@@ -280,7 +201,6 @@ const CampaignManagement = () => {
       />
 
       <InfPlatforms
-        ref={platformsRef}
         label={t(`${TK}.platforms.label`)}
         title={t(`${TK}.platforms.title`)}
         description={t(`${TK}.platforms.description`)}
@@ -288,7 +208,6 @@ const CampaignManagement = () => {
       />
 
       <InfIconCardGrid
-        ref={campaignTypesRef}
         label={t(`${TK}.campaignTypes.label`)}
         title={t(`${TK}.campaignTypes.title`)}
         description={t(`${TK}.campaignTypes.description`)}
@@ -297,7 +216,6 @@ const CampaignManagement = () => {
       />
 
       <InfServicesGrid
-        ref={costRef}
         label={t(`${TK}.pricing.label`)}
         title={t(`${TK}.pricing.title`)}
         description={t(`${TK}.pricing.description`)}
@@ -306,7 +224,6 @@ const CampaignManagement = () => {
       />
 
       <InfCaseStudyBlock
-        ref={caseStudyRef}
         label={t(`${TK}.caseStudy.label`)}
         title={t(`${TK}.caseStudy.title`)}
         description={t(`${TK}.caseStudy.description`)}
@@ -320,7 +237,6 @@ const CampaignManagement = () => {
       />
 
       <InfServicesGrid
-        ref={insightsRef}
         label={t(`${TK}.insights.label`)}
         title={t(`${TK}.insights.title`)}
         description={t(`${TK}.insights.description`)}
@@ -328,7 +244,6 @@ const CampaignManagement = () => {
       />
 
       <InfIndustries
-        ref={nichesRef}
         label={t(`${TK}.popularNiches.label`)}
         title={t(`${TK}.popularNiches.title`)}
         description={t(`${TK}.popularNiches.description`)}
@@ -336,7 +251,6 @@ const CampaignManagement = () => {
       />
 
       <InfWhyChooseUs
-        ref={whyUsRef}
         label={t(`${TK}.whyChooseUs.label`)}
         title={t(`${TK}.whyChooseUs.title`)}
         description={t(`${TK}.whyChooseUs.description`)}
@@ -344,7 +258,6 @@ const CampaignManagement = () => {
       />
 
       <ServiceSubServicesSection
-        ref={subServicesRef}
         sectionLabel={t("serviceSections.influencerMarketing.subServices.sectionLabel")}
         title={t("serviceSections.influencerMarketing.subServices.title")}
         description={t("serviceSections.influencerMarketing.subServices.description")}
@@ -354,12 +267,12 @@ const CampaignManagement = () => {
         icons={influencerMarketingSubServiceIcons}
         dir={dir}
         classPrefix="im"
+        framer
       />
 
       <FAQ items={faqItems} title={t(`${TK}.faq.title`)} />
 
       <ServiceCTASection
-        ref={ctaRef}
         classPrefix="im"
         sectionLabel={t(`${TK}.cta.sectionLabel`)}
         title={t(`${TK}.cta.title`)}
@@ -369,6 +282,7 @@ const CampaignManagement = () => {
         secondaryButtonText={t(`${TK}.cta.secondaryButtonText`)}
         secondaryHref="tel:+97145774042"
         dir={dir}
+        framer
       />
     </>
   );

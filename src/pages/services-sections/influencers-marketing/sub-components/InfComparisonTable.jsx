@@ -1,4 +1,6 @@
 import { forwardRef } from "react";
+import { motion as Motion } from "framer-motion";
+import { influencerRevealPanel, influencerSectionIntro } from "@/helpers/framerMotion";
 import { useFontClass } from "../../../../hooks/useFontClass";
 
 const InfComparisonTable = forwardRef(({ label, title, description, rows, footer, headerFeature = "Feature", headerInfluencer = "Influencer Marketing", headerTraditional = "Traditional Advertising" }, ref) => {
@@ -7,11 +9,13 @@ const InfComparisonTable = forwardRef(({ label, title, description, rows, footer
   return (
     <section ref={ref} className="inf-section inf-section--alt">
       <div className="inf-container">
-        <span className="inf-label">{label}</span>
-        <h2 className={`inf-heading ${fontHeading}`}>{title}</h2>
-        <p className="inf-desc">{description}</p>
+        <Motion.div {...influencerSectionIntro}>
+          <span className="inf-label">{label}</span>
+          <h2 className={`inf-heading ${fontHeading}`}>{title}</h2>
+          <p className="inf-desc">{description}</p>
+        </Motion.div>
 
-        <div className="overflow-x-auto">
+        <Motion.div className="overflow-x-auto" {...influencerRevealPanel}>
           <table className="inf-table">
             <thead>
               <tr>
@@ -32,7 +36,7 @@ const InfComparisonTable = forwardRef(({ label, title, description, rows, footer
               ))}
             </tbody>
           </table>
-        </div>
+        </Motion.div>
 
         {footer && (
           <p

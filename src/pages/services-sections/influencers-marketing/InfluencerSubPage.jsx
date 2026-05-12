@@ -1,7 +1,11 @@
-import React, { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import React from "react";
+import { motion as Motion } from "framer-motion";
 import { LocaleLink as Link } from "@/components/LocaleLink.jsx";
+import {
+  influencerImageReveal,
+  influencerRevealItem,
+  serviceHeroFramerHero,
+} from "@/helpers/framerMotion";
 import { useI18nLanguage } from "../../../store/I18nLanguageContext";
 import HeroWithBadge from "../../../components/HeroWithBadge";
 import SEOHead from "../../../components/SEOHead";
@@ -9,80 +13,10 @@ import FAQ from "../../../components/FAQ";
 import { HiCheckCircle, HiArrowRight } from "react-icons/hi";
 import "./influencerMarketing.css";
 
-gsap.registerPlugin(ScrollTrigger);
-
 const InfluencerSubPage = ({ pageData }) => {
   const { isRtl, language } = useI18nLanguage();
-  const heroRef = useRef(null);
-  const featuresRef = useRef(null);
-  const processRef = useRef(null);
-  const statsRef = useRef(null);
-  const imageRef = useRef(null);
-  const linksRef = useRef(null);
 
   const fontClass = language === "ar" ? "font-cairo" : "font-antonio";
-
-  useEffect(() => {
-    let ctx;
-    const timeout = setTimeout(() => {
-      ctx = gsap.context(() => {
-        const animateSection = (ref, selector, config = {}) => {
-          if (!ref.current) return;
-          const elements = ref.current.querySelectorAll(selector);
-          if (elements.length === 0) return;
-          gsap.fromTo(
-            elements,
-            { opacity: 0, y: config.y || 40 },
-            {
-              opacity: 1,
-              y: 0,
-              duration: config.duration || 0.8,
-              stagger: config.stagger || 0.15,
-              ease: config.ease || "power3.out",
-              scrollTrigger: {
-                trigger: ref.current,
-                start: "top 85%",
-                toggleActions: "play none none none",
-              },
-            }
-          );
-        };
-
-        animateSection(heroRef, ".hero-animate", { y: 60, duration: 1, stagger: 0.2 });
-        animateSection(featuresRef, ".im-card", { y: 50 });
-        animateSection(processRef, ".im-process-card", { y: 50, stagger: 0.2 });
-        animateSection(statsRef, ".im-stat-card", { y: 30 });
-        animateSection(linksRef, ".im-link-card", { y: 30, stagger: 0.1 });
-
-        if (imageRef.current) {
-          const images = imageRef.current.querySelectorAll(".im-image-wrap");
-          if (images.length > 0) {
-            gsap.fromTo(
-              images,
-              { opacity: 0, scale: 0.95 },
-              {
-                opacity: 1,
-                scale: 1,
-                duration: 1,
-                stagger: 0.2,
-                ease: "power2.out",
-                scrollTrigger: {
-                  trigger: imageRef.current,
-                  start: "top 85%",
-                  toggleActions: "play none none none",
-                },
-              }
-            );
-          }
-        }
-      });
-    }, 100);
-
-    return () => {
-      clearTimeout(timeout);
-      if (ctx) ctx.revert();
-    };
-  }, []);
 
   return (
     <div
@@ -102,7 +36,7 @@ const InfluencerSubPage = ({ pageData }) => {
       />
 
       {/* Hero */}
-      <section ref={heroRef} className="im-hero">
+      <section className="im-hero">
         {pageData.heroImage && (
           <div className="im-hero-overlay">
             <img
@@ -121,16 +55,18 @@ const InfluencerSubPage = ({ pageData }) => {
             <div className="absolute inset-0 bg-gradient-to-tr from-[#52C3C5]/30 via-transparent to-[#1C6F6C]/30" />
           </div>
         )}
-        <HeroWithBadge
-          badge={pageData.badge}
-          title={pageData.hero.title}
-          mainWord={pageData.hero.mainWord}
-          description={pageData.hero.description}
-          titleClassName="hero-animate block"
-          descriptionClassName="hero-animate im-hero-desc"
-          contentClassName="im-hero-content"
-          disableAnimation
-        />
+        <Motion.div {...serviceHeroFramerHero}>
+          <HeroWithBadge
+            badge={pageData.badge}
+            title={pageData.hero.title}
+            mainWord={pageData.hero.mainWord}
+            description={pageData.hero.description}
+            titleClassName="hero-animate block"
+            descriptionClassName="hero-animate im-hero-desc"
+            contentClassName="im-hero-content"
+            disableAnimation
+          />
+        </Motion.div>
       </section>
 
       <div className="im-divider-wrap"><div className="im-divider" /></div>
@@ -183,10 +119,10 @@ const InfluencerSubPage = ({ pageData }) => {
       {/* Image + Content Section */}
       {pageData.imageSection && (
         <>
-          <section ref={imageRef} className="im-section">
+          <section className="im-section">
             <div className="im-container">
               <div className="im-two-col">
-                <div className="im-image-wrap aspect-[4/3]">
+                <Motion.div className="im-image-wrap aspect-[4/3]" {...influencerImageReveal}>
                   <img
                     src={pageData.imageSection.image}
                     alt={pageData.imageSection.imageAlt}
@@ -194,7 +130,7 @@ const InfluencerSubPage = ({ pageData }) => {
                     height={600}
                     loading="lazy"
                   />
-                </div>
+                </Motion.div>
                 <div>
                   <h2 className={`im-heading ${fontClass}`}>{pageData.imageSection.title}</h2>
                   <p className="im-text">{pageData.imageSection.description}</p>
@@ -219,16 +155,20 @@ const InfluencerSubPage = ({ pageData }) => {
       {/* Stats */}
       {pageData.stats && (
         <>
-          <section ref={statsRef} className="im-section">
+          <section className="im-section">
             <div className="im-container-wide">
               <div className={`grid gap-6 md:gap-8 ${
                 pageData.stats.length === 4 ? "grid-cols-2 md:grid-cols-4" : "grid-cols-2 md:grid-cols-3"
               }`}>
                 {pageData.stats.map((stat, idx) => (
-                  <div key={`${stat?.value || "stat"}-${stat?.label || idx}`} className="im-stat-card">
+                  <Motion.div
+                    key={`${stat?.value || "stat"}-${stat?.label || idx}`}
+                    className="im-stat-card"
+                    {...influencerRevealItem(idx, 0.12)}
+                  >
                     <h3 className="im-stat-value">{stat.value}</h3>
                     <p className="im-stat-label">{stat.label}</p>
-                  </div>
+                  </Motion.div>
                 ))}
               </div>
             </div>
@@ -240,7 +180,7 @@ const InfluencerSubPage = ({ pageData }) => {
       {/* Features */}
       {pageData.features && (
         <>
-          <section ref={featuresRef} className="im-section">
+          <section className="im-section">
             <div className="im-container-wide">
               <h2 className={`im-section-title ${fontClass}`}>{pageData.features.title}</h2>
               <p className="im-section-subtitle">{pageData.features.subtitle}</p>
@@ -248,13 +188,13 @@ const InfluencerSubPage = ({ pageData }) => {
                 {pageData.features.items.map((item, idx) => {
                   const Icon = item.icon;
                   return (
-                    <div key={item?.title || `feature-${idx}`} className="im-card">
+                    <Motion.div key={item?.title || `feature-${idx}`} className="im-card" {...influencerRevealItem(idx, 0.15)}>
                       <div className="im-card-icon">
                         <Icon className="w-8 h-8 text-white" />
                       </div>
                       <h3 className="im-card-title">{item.title}</h3>
                       <p className="im-card-desc">{item.description}</p>
-                    </div>
+                    </Motion.div>
                   );
                 })}
               </div>
@@ -267,19 +207,23 @@ const InfluencerSubPage = ({ pageData }) => {
       {/* Process */}
       {pageData.process && (
         <>
-          <section ref={processRef} className="im-section">
+          <section className="im-section">
             <div className="im-container">
               <h2 className={`im-section-title ${fontClass}`}>{pageData.process.title}</h2>
               <p className="im-section-subtitle">{pageData.process.subtitle}</p>
               <div className="space-y-8">
                 {pageData.process.steps.map((step, idx) => (
-                  <div key={step?.title || `step-${idx}`} className="im-process-card">
+                  <Motion.div
+                    key={step?.title || `step-${idx}`}
+                    className="im-process-card"
+                    {...influencerRevealItem(idx, 0.2)}
+                  >
                     <div className="im-step-number">{idx + 1}</div>
                     <div className="flex-1 text-center md:text-left">
                       <h3 className="im-step-title">{step.title}</h3>
                       <p className="im-step-desc">{step.description}</p>
                     </div>
-                  </div>
+                  </Motion.div>
                 ))}
               </div>
             </div>
@@ -323,7 +267,7 @@ const InfluencerSubPage = ({ pageData }) => {
       {/* Related Pages */}
       {pageData.relatedPages && (
         <>
-          <section ref={linksRef} className="im-section">
+          <section className="im-section">
             <div className="im-container-wide">
               <h2 className={`im-section-title ${fontClass}`}>Explore More Services</h2>
               <p className="im-section-subtitle">Discover our full range of influencer marketing solutions</p>
@@ -331,14 +275,20 @@ const InfluencerSubPage = ({ pageData }) => {
                 {pageData.relatedPages.map((page, idx) => {
                   const Icon = page.icon;
                   return (
-                    <Link key={page?.path || page?.title || `related-${idx}`} to={page.path} className="im-link-card">
-                      <div className="im-link-card-icon"><Icon /></div>
-                      <h3 className="im-link-card-title">{page.title}</h3>
-                      <p className="im-link-card-desc">{page.description}</p>
-                      <span className="im-link-card-arrow">
-                        Learn More <HiArrowRight className="w-4 h-4" />
-                      </span>
-                    </Link>
+                    <Motion.div
+                      key={page?.path || page?.title || `related-${idx}`}
+                      className="h-full min-h-0"
+                      {...influencerRevealItem(idx, 0.1)}
+                    >
+                      <Link to={page.path} className="im-link-card">
+                        <div className="im-link-card-icon"><Icon /></div>
+                        <h3 className="im-link-card-title">{page.title}</h3>
+                        <p className="im-link-card-desc">{page.description}</p>
+                        <span className="im-link-card-arrow">
+                          Learn More <HiArrowRight className="w-4 h-4" />
+                        </span>
+                      </Link>
+                    </Motion.div>
                   );
                 })}
               </div>

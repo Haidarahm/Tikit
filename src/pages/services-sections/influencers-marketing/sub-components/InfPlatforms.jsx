@@ -1,4 +1,6 @@
 import { forwardRef } from "react";
+import { motion as Motion } from "framer-motion";
+import { influencerRevealItem } from "@/helpers/framerMotion";
 import { useFontClass } from "../../../../hooks/useFontClass";
 
 const InfPlatforms = forwardRef(({ label, title, description, platforms }, ref) => {
@@ -13,7 +15,11 @@ const InfPlatforms = forwardRef(({ label, title, description, platforms }, ref) 
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {platforms.map((platform, idx) => (
-            <div key={platform?.title || platform?.description || JSON.stringify(platform) || `platform-${idx}`} className="inf-platform-card inf-reveal">
+            <Motion.div
+              key={platform?.title || platform?.description || JSON.stringify(platform) || `platform-${idx}`}
+              className="inf-platform-card"
+              {...influencerRevealItem(idx, 0.15)}
+            >
               <div className="inf-platform-card__icon">{platform.icon}</div>
               <h3 className="inf-service-card__title">{platform.title}</h3>
               <p className="inf-service-card__text">{platform.description}</p>
@@ -31,7 +37,7 @@ const InfPlatforms = forwardRef(({ label, title, description, platforms }, ref) 
                   </span>
                 ))}
               </div>
-            </div>
+            </Motion.div>
           ))}
         </div>
       </div>

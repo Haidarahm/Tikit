@@ -1,4 +1,6 @@
 import { forwardRef } from "react";
+import { motion as Motion } from "framer-motion";
+import { influencerRevealItem } from "@/helpers/framerMotion";
 import { useFontClass } from "../../../../hooks/useFontClass";
 
 const InfWhyChooseUs = forwardRef(({ label, title, description, reasons, footerContent }, ref) => {
@@ -13,11 +15,15 @@ const InfWhyChooseUs = forwardRef(({ label, title, description, reasons, footerC
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {reasons.map((reason, idx) => (
-            <div key={reason?.title || reason?.description || JSON.stringify(reason) || `reason-${idx}`} className="inf-why-card inf-reveal">
+            <Motion.div
+              key={reason?.title || reason?.description || JSON.stringify(reason) || `reason-${idx}`}
+              className="inf-why-card"
+              {...influencerRevealItem(idx, 0.1)}
+            >
               <div className="inf-why-card__icon">{reason.icon}</div>
               <h3 className="inf-service-card__title">{reason.title}</h3>
               <p className="inf-service-card__text">{reason.description}</p>
-            </div>
+            </Motion.div>
           ))}
         </div>
 

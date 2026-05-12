@@ -1,5 +1,7 @@
 import { forwardRef } from "react";
+import { motion as Motion } from "framer-motion";
 import { FiCheckCircle, FiTarget, FiTrendingUp, FiArrowRightCircle } from "react-icons/fi";
+import { influencerRevealItem } from "@/helpers/framerMotion";
 import { useFontClass } from "../../../../hooks/useFontClass";
 
 const InfWhatIsSection = forwardRef(
@@ -24,12 +26,20 @@ const InfWhatIsSection = forwardRef(
     return (
       <section ref={ref} className="inf-section inf-section--alt" dir={dir}>
         <div className="inf-container">
-          <span className="inf-label inf-reveal">{label}</span>
-          <h2 className={`inf-heading inf-reveal ${fontHeading}`}>{title}</h2>
-          {description ? <p className="inf-desc inf-reveal">{description}</p> : null}
+          <Motion.span className="inf-label" {...influencerRevealItem(0, 0.06)}>
+            {label}
+          </Motion.span>
+          <Motion.h2 className={`inf-heading ${fontHeading}`} {...influencerRevealItem(1, 0.06)}>
+            {title}
+          </Motion.h2>
+          {description ? (
+            <Motion.p className="inf-desc" {...influencerRevealItem(2, 0.06)}>
+              {description}
+            </Motion.p>
+          ) : null}
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            <article className="inf-type-card inf-reveal">
+            <Motion.article className="inf-type-card" {...influencerRevealItem(3, 0.06)}>
               <div className="inf-type-card__badge">
                 <FiTarget />
               </div>
@@ -44,9 +54,9 @@ const InfWhatIsSection = forwardRef(
                   ))}
                 </ul>
               </div>
-            </article>
+            </Motion.article>
 
-            <article className="inf-type-card inf-reveal">
+            <Motion.article className="inf-type-card" {...influencerRevealItem(4, 0.06)}>
               <div className="inf-type-card__badge">
                 <FiTrendingUp />
               </div>
@@ -61,13 +71,14 @@ const InfWhatIsSection = forwardRef(
                   ))}
                 </ul>
               </div>
-            </article>
+            </Motion.article>
           </div>
 
-          <a
+          <Motion.a
             href={ctaHref}
-            className="block inf-reveal mt-5 rounded-[inherit] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--secondary)]"
+            className="block mt-5 rounded-[inherit] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--secondary)]"
             aria-label={ctaText}
+            {...influencerRevealItem(5, 0.06)}
           >
             <article className="inf-type-card cursor-pointer transition-opacity duration-200 hover:opacity-90">
               <div className="inf-type-card__badge">
@@ -75,7 +86,7 @@ const InfWhatIsSection = forwardRef(
               </div>
               <p className="inf-service-card__title mb-0">{ctaText}</p>
             </article>
-          </a>
+          </Motion.a>
         </div>
       </section>
     );

@@ -1,8 +1,6 @@
-import { useEffect, useRef } from "react";
 import { LocaleLink as Link } from "@/components/LocaleLink.jsx";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useTranslation } from "react-i18next";
+import { serviceHeroFramerHero } from "@/helpers/framerMotion";
 import { useI18nLanguage } from "../../../store/I18nLanguageContext";
 import {
   FiUsers,
@@ -51,11 +49,9 @@ import {
   influencerMarketingSubServiceIcons,
   getInfluencerMarketingSubServiceItems,
 } from "./sub-components/influencerMarketingSubServices";
-import { revealChildren, toArray } from "./influencerUtils";
+import { toArray } from "./influencerUtils";
 
 import "./influencerMarketing.css";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const BASE = INFLUENCER_MARKETING_BASE;
 const TK = "serviceSections.influencerMarketing.luxuryInfluencerMarketing";
@@ -101,48 +97,6 @@ const LuxuryInfluencerMarketing = () => {
   }));
   const faqItems = toArray(t(`${TK}.faq.items`, { returnObjects: true }));
 
-  const heroRef = useRef(null);
-  const problemsRef = useRef(null);
-  const principlesRef = useRef(null);
-  const servicesRef = useRef(null);
-  const approachCtaRef = useRef(null);
-  const industriesRef = useRef(null);
-  const statsRef = useRef(null);
-  const growthCtaRef = useRef(null);
-  const marketRef = useRef(null);
-  const whyUsRef = useRef(null);
-  const positioningRef = useRef(null);
-  const getStartedRef = useRef(null);
-  const subServicesRef = useRef(null);
-  const ctaRef = useRef(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        heroRef.current,
-        { opacity: 0, y: 24 },
-        { opacity: 1, y: 0, duration: 1.1, ease: "power3.out", delay: 0.15 }
-      );
-
-      revealChildren(problemsRef, ".im-problem-card", 0.12);
-      revealChildren(principlesRef, ".inf-reveal", 0.1);
-      revealChildren(approachCtaRef, ".inf-reveal", 0.12);
-      revealChildren(servicesRef, ".inf-reveal", 0.08);
-      revealChildren(industriesRef, ".inf-industry-tag", 0.08);
-      revealChildren(statsRef, ".im-stat-card", 0.12);
-      revealChildren(growthCtaRef, ".inf-reveal", 0.12);
-      revealChildren(marketRef, ".inf-reveal", 0.1);
-      revealChildren(marketRef, ".inf-industry-tag", 0.1);
-      revealChildren(whyUsRef, ".inf-reveal", 0.1);
-      revealChildren(positioningRef, ".inf-reveal", 0.12);
-      revealChildren(getStartedRef, ".inf-reveal", 0.12);
-      revealChildren(subServicesRef, ".im-subservice-card", 0.08);
-      revealChildren(ctaRef, ".im-reveal", 0.12);
-    });
-
-    return () => ctx.revert();
-  }, []);
-
   const breadcrumbs = [
     { name: t("nav.home"), url: "/" },
     { name: t("nav.services"), url: "/services" },
@@ -163,7 +117,6 @@ const LuxuryInfluencerMarketing = () => {
       />
 
       <ServiceHeroSection
-        ref={heroRef}
         imageSrc={influencerHero}
         imageAlt={t(`${TK}.seo.serviceType`)}
         badge={t(`${TK}.hero.badge`)}
@@ -171,10 +124,10 @@ const LuxuryInfluencerMarketing = () => {
         title={t(`${TK}.hero.title`)}
         description={t(`${TK}.hero.description`)}
         dataNavColor="black"
+        framerHero={serviceHeroFramerHero}
       />
 
       <ServiceProblemsSection
-        ref={problemsRef}
         sectionLabel={t(`${TK}.problems.sectionLabel`)}
         title={t(`${TK}.problems.title`)}
         description={t(`${TK}.problems.description`)}
@@ -182,10 +135,10 @@ const LuxuryInfluencerMarketing = () => {
         icons={problemIcons}
         dir={dir}
         classPrefix="im"
+        framer
       />
 
       <InfIconCardGrid
-        ref={principlesRef}
         label={t(`${TK}.approach.label`)}
         title={t(`${TK}.approach.title`)}
         description={t(`${TK}.approach.description`)}
@@ -194,7 +147,6 @@ const LuxuryInfluencerMarketing = () => {
       />
 
       <InfInlineCTA
-        ref={approachCtaRef}
         subtle
         label={t(`${TK}.offer.label`)}
         title={t(`${TK}.offer.title`)}
@@ -215,7 +167,6 @@ const LuxuryInfluencerMarketing = () => {
       />
 
       <InfFeatureCardsList
-        ref={servicesRef}
         label={t(`${TK}.services.label`)}
         title={t(`${TK}.services.title`)}
         description={t(`${TK}.services.description`)}
@@ -223,7 +174,6 @@ const LuxuryInfluencerMarketing = () => {
       />
 
       <InfIndustries
-        ref={industriesRef}
         label={t(`${TK}.industries.label`)}
         title={t(`${TK}.industries.title`)}
         description={t(`${TK}.industries.description`)}
@@ -231,16 +181,15 @@ const LuxuryInfluencerMarketing = () => {
       />
 
       <ServiceStatsSection
-        ref={statsRef}
         sectionLabel={t(`${TK}.results.sectionLabel`)}
         title={t(`${TK}.results.title`)}
         description={t(`${TK}.results.description`)}
         items={stats}
         dir={dir}
+        framer
       />
 
       <InfSplitCTA
-        ref={growthCtaRef}
         label={t(`${TK}.growthCta.label`)}
         title={t(`${TK}.growthCta.title`)}
         description={t(`${TK}.growthCta.description`)}
@@ -249,7 +198,6 @@ const LuxuryInfluencerMarketing = () => {
       />
 
       <InfWhyChooseUs
-        ref={whyUsRef}
         label={t(`${TK}.whyUs.label`)}
         title={t(`${TK}.whyUs.title`)}
         description={t(`${TK}.whyUs.description`)}
@@ -257,7 +205,6 @@ const LuxuryInfluencerMarketing = () => {
       />
 
       <InfIndustries
-        ref={marketRef}
         label={t(`${TK}.market.label`)}
         title={t(`${TK}.market.title`)}
         description={t(`${TK}.market.description`)}
@@ -267,14 +214,12 @@ const LuxuryInfluencerMarketing = () => {
       <FAQ items={faqItems} title={t(`${TK}.faq.title`)} />
 
       <InfPositioningStatement
-        ref={positioningRef}
         label={t(`${TK}.positioning.label`)}
         title={t(`${TK}.positioning.title`)}
         description={t(`${TK}.positioning.description`)}
       />
 
       <InfGetStartedSection
-        ref={getStartedRef}
         label={t(`${TK}.getStarted.label`)}
         title={t(`${TK}.getStarted.title`)}
         description={t(`${TK}.getStarted.description`)}
@@ -282,7 +227,6 @@ const LuxuryInfluencerMarketing = () => {
       />
 
       <ServiceSubServicesSection
-        ref={subServicesRef}
         sectionLabel={t("serviceSections.influencerMarketing.subServices.sectionLabel")}
         title={t("serviceSections.influencerMarketing.subServices.title")}
         description={t("serviceSections.influencerMarketing.subServices.description")}
@@ -292,10 +236,10 @@ const LuxuryInfluencerMarketing = () => {
         icons={influencerMarketingSubServiceIcons}
         dir={dir}
         classPrefix="im"
+        framer
       />
 
       <ServiceCTASection
-        ref={ctaRef}
         classPrefix="im"
         sectionLabel={t(`${TK}.finalCta.sectionLabel`)}
         title={t(`${TK}.finalCta.title`)}
@@ -305,6 +249,7 @@ const LuxuryInfluencerMarketing = () => {
         secondaryButtonText={t(`${TK}.finalCta.secondaryButtonText`)}
         secondaryHref="tel:+97145774042"
         dir={dir}
+        framer
       />
     </>
   );
