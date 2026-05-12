@@ -1,6 +1,4 @@
-import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { motion as Motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../../store/I18nLanguageContext";
 import {
@@ -16,11 +14,6 @@ import {
   FiDollarSign,
   FiUsers,
   FiActivity,
-  FiStar,
-  FiPieChart,
-  FiInstagram,
-  FiVideo,
-  FiTag,
   FiAward,
 } from "react-icons/fi";
 
@@ -40,8 +33,6 @@ import {
 
 import "../../../components/services-sections/ServiceSections.css";
 
-gsap.registerPlugin(ScrollTrigger);
-
 const problemIcons = [<FiTarget key="1" />, <FiDollarSign key="2" />, <FiBarChart2 key="3" />, <FiGlobe key="4" />];
 const benefitIcons = [<FiTrendingUp key="1" />, <FiBarChart2 key="2" />, <FiZap key="3" />, <FiGlobe key="4" />];
 const whyUsIcons = [<FiLayers key="1" />, <FiShield key="2" />, <FiSearch key="3" />, <FiMessageSquare key="4" />];
@@ -60,40 +51,9 @@ const subServiceHrefs = [
   "/digital-marketing-agency-dubai/performance-marketing",
 ];
 
-function revealChildren(containerRef, selector, fromVars = {}, staggerVal = 0.1) {
-  if (!containerRef.current) return;
-  const els = containerRef.current.querySelectorAll(selector);
-  if (!els.length) return;
-  gsap.fromTo(
-    els,
-    { opacity: 0, y: 36, ...fromVars },
-    {
-      opacity: 1,
-      y: 0,
-      duration: 0.75,
-      stagger: staggerVal,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top 82%",
-      },
-    }
-  );
-}
-
 const DigitalMarketing = () => {
   const { t } = useTranslation();
   const { isRtl } = useI18nLanguage();
-
-  const heroRef = useRef(null);
-  const problemsRef = useRef(null);
-  const stepsRef = useRef(null);
-  const benefitsRef = useRef(null);
-  const caseRef = useRef(null);
-  const marketExpertiseRef = useRef(null);
-  const whyRef = useRef(null);
-  const ctaRef = useRef(null);
-  const subServicesRef = useRef(null);
 
   const toArray = (val) => (Array.isArray(val) ? val : []);
 
@@ -180,70 +140,6 @@ const DigitalMarketing = () => {
 
   const dir = isRtl ? "rtl" : "ltr";
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        heroRef.current,
-        { opacity: 0, y: 24 },
-        { opacity: 1, y: 0, duration: 1.1, ease: "power3.out", delay: 0.15 }
-      );
-
-      revealChildren(problemsRef, ".im-problem-card", {}, 0.12);
-      revealChildren(stepsRef, ".im-step-card", {}, 0.1);
-      revealChildren(benefitsRef, ".im-benefit-item", {}, 0.11);
-      revealChildren(marketExpertiseRef, ".im-whyus-card", {}, 0.1);
-      revealChildren(whyRef, ".im-whyus-card", {}, 0.1);
-      revealChildren(subServicesRef, ".im-subservice-card", {}, 0.08);
-
-      if (caseRef.current) {
-        gsap.fromTo(
-          caseRef.current,
-          { opacity: 0, x: -50 },
-          {
-            opacity: 1,
-            x: 0,
-            duration: 0.9,
-            ease: "power3.out",
-            scrollTrigger: { trigger: caseRef.current, start: "top 80%" },
-          }
-        );
-
-        const statValues = caseRef.current.querySelectorAll(".im-case-study__stat-value[data-target]");
-        statValues.forEach((el) => {
-          const target = parseFloat(el.dataset.target);
-          const isMultiple = el.dataset.suffix === "x";
-          const counter = { val: 0 };
-          gsap.to(counter, {
-            val: target,
-            duration: 1.8,
-            ease: "power2.out",
-            onUpdate: () => {
-              el.textContent = isMultiple ? `${Math.round(counter.val)}x` : `${Math.round(counter.val)}`;
-            },
-            scrollTrigger: { trigger: caseRef.current, start: "top 78%" },
-          });
-        });
-      }
-
-      if (ctaRef.current) {
-        gsap.fromTo(
-          ctaRef.current.querySelectorAll(".im-reveal"),
-          { opacity: 0, y: 28 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            stagger: 0.12,
-            ease: "power3.out",
-            scrollTrigger: { trigger: ctaRef.current, start: "top 85%" },
-          }
-        );
-      }
-    });
-
-    return () => ctx.revert();
-  }, []);
-
   return (
     <>
       <SEOHead
@@ -260,7 +156,11 @@ const DigitalMarketing = () => {
       />
 
       <ServiceHeroSection
-        ref={heroRef}
+        framerHero={{
+          initial: { opacity: 0, y: 40 },
+          animate: { opacity: 1, y: 0 },
+          transition: { duration: 1.05, ease: [0.16, 1, 0.3, 1], delay: 0.12 },
+        }}
         imageSrc={digitalMarketingHero}
         imageAlt={t("serviceSections.digitalMarketing.seo.serviceType")}
         badge={t("serviceSections.digitalMarketing.hero.badge")}
@@ -272,7 +172,7 @@ const DigitalMarketing = () => {
       />
 
       <ServiceProblemsSection
-        ref={problemsRef}
+        framer
         sectionLabel={t("serviceSections.digitalMarketing.problems.sectionLabel")}
         title={t("serviceSections.digitalMarketing.problems.title")}
         description={t("serviceSections.digitalMarketing.problems.description")}
@@ -282,7 +182,7 @@ const DigitalMarketing = () => {
       />
 
       <ServiceProcessSection
-        ref={stepsRef}
+        framer
         sectionLabel={t("serviceSections.digitalMarketing.process.sectionLabel")}
         title={t("serviceSections.digitalMarketing.process.title")}
         description={t("serviceSections.digitalMarketing.process.description")}
@@ -291,7 +191,7 @@ const DigitalMarketing = () => {
       />
 
       <ServiceBenefitsSection
-        ref={benefitsRef}
+        framer
         sectionLabel={t("serviceSections.digitalMarketing.benefits.sectionLabel")}
         title={t("serviceSections.digitalMarketing.benefits.title")}
         description={t("serviceSections.digitalMarketing.benefits.description")}
@@ -301,7 +201,7 @@ const DigitalMarketing = () => {
       />
 
       <ServiceCaseStudySection
-        ref={caseRef}
+        framer
         sectionLabel={t("serviceSections.digitalMarketing.caseStudy.sectionLabel")}
         title={t("serviceSections.digitalMarketing.caseStudy.title")}
         tag={t("serviceSections.digitalMarketing.caseStudy.tag")}
@@ -313,7 +213,7 @@ const DigitalMarketing = () => {
       />
 
       <ServiceWhyUsSection
-        ref={marketExpertiseRef}
+        framer
         sectionLabel={t("serviceSections.digitalMarketing.marketExpertise.sectionLabel")}
         title={t("serviceSections.digitalMarketing.marketExpertise.title")}
         items={marketExpertiseItems}
@@ -323,7 +223,7 @@ const DigitalMarketing = () => {
       />
 
       <ServiceWhyUsSection
-        ref={whyRef}
+        framer
         sectionLabel={t("serviceSections.digitalMarketing.whyUs.sectionLabel")}
         title={t("serviceSections.digitalMarketing.whyUs.title")}
         items={whyUsItems}
@@ -333,7 +233,7 @@ const DigitalMarketing = () => {
       />
 
       <ServiceSubServicesSection
-        ref={subServicesRef}
+        framer
         sectionLabel={t("serviceSections.digitalMarketing.subServices.sectionLabel", { defaultValue: "Sub-Services" })}
         title={t("serviceSections.digitalMarketing.subServices.title", {
           defaultValue: "Explore Digital Marketing Sub-Services",
@@ -349,13 +249,17 @@ const DigitalMarketing = () => {
         dir={dir}
       />
 
-      <FAQ
-        items={faqItems}
-        title={t("serviceSections.digitalMarketing.faq.title")}
-      />
+      <Motion.div
+        initial={{ opacity: 0, y: 36 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.18 }}
+        transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <FAQ items={faqItems} title={t("serviceSections.digitalMarketing.faq.title")} />
+      </Motion.div>
 
       <ServiceMultiCTASection
-        ref={ctaRef}
+        framer
         title={t("serviceSections.digitalMarketing.finalCta.title")}
         cards={finalCtaCards}
         finalLine={t("serviceSections.digitalMarketing.finalCta.finalLine")}

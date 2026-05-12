@@ -1,4 +1,5 @@
 import { forwardRef } from "react";
+import { motion as Motion } from "framer-motion";
 import TikitTitle from "../TikitTitle";
 
 /**
@@ -18,6 +19,7 @@ import TikitTitle from "../TikitTitle";
  * @param {number} [props.imageHeight=1080] - Intrinsic image height for layout stability
  * @param {string} [props.imageSizes] - Responsive sizes attribute for hero image
  * @param {string} [props.imageSrcSet] - Responsive srcset for hero image
+ * @param {Object} [props.framerHero] - When set, inner content uses Framer Motion (no hidden opacity for GSAP).
  */
 const ServiceHeroSection = forwardRef((props, ref) => {
   const {
@@ -35,8 +37,14 @@ const ServiceHeroSection = forwardRef((props, ref) => {
     imageHeight = 1080,
     imageSizes,
     imageSrcSet,
+    framerHero,
   } = props;
   const p = classPrefix;
+
+  const HeroInner = framerHero ? Motion.div : "div";
+  const heroInnerProps = framerHero
+    ? { ...framerHero }
+    : { style: { opacity: 0 } };
 
   return (
     <section
@@ -61,7 +69,7 @@ const ServiceHeroSection = forwardRef((props, ref) => {
         <div className={`${p}-hero__orb ${p}-hero__orb--one`} />
         <div className={`${p}-hero__orb ${p}-hero__orb--two`} />
       </div>
-      <div ref={ref} className={`${p}-hero__inner`} style={{ opacity: 0 }}>
+      <HeroInner ref={ref} className={`${p}-hero__inner`} {...heroInnerProps}>
         <div className={`${p}-hero__content-card`}>
           {badge ? (
             <span className={`${p}-hero__badge ${badgeVariant === "pulse" ? `${p}-hero__badge--pulse` : ""}`}>
@@ -83,7 +91,7 @@ const ServiceHeroSection = forwardRef((props, ref) => {
             <span className={`${p}-hero__scroll-line`} />
           </div>
         </div>
-      </div>
+      </HeroInner>
     </section>
   );
 });
