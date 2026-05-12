@@ -1,29 +1,27 @@
 import { useTranslation } from "react-i18next";
 import { useI18nLanguage } from "../../../store/I18nLanguageContext";
-import { HiCheckCircle, HiGlobeAlt } from "react-icons/hi";
+import { HiGlobeAlt } from "react-icons/hi";
 import {
-  FaGoogle,
   FaFacebook,
-  FaTiktok,
-  FaSnapchatGhost,
+  FaGoogle,
   FaLinkedin,
+  FaSnapchatGhost,
+  FaTiktok,
 } from "react-icons/fa";
-import HeroWithBadge from "../../../components/HeroWithBadge";
 import SEOHead from "../../../components/SEOHead";
-import FAQ from "../../../components/FAQ";
-import ServiceCard from "../../../components/ServiceCard";
-import DMCTA from "./components/DMCTA";
-import DMRelatedServices from "./components/DMRelatedServices";
 import {
-  MotionDiv,
-  MotionP,
-  MotionH2,
-  MotionLi,
-  MotionSection,
-  dmContainerVariants as containerVariants,
-  dmItemVariants as itemVariants,
-  dmViewport as viewport,
-} from "./dmMotion";
+  DMDivider,
+  DMHeroSection,
+  DMDefinitionSection,
+  DMServicePillarsSection,
+  DMIncludedSection,
+  DMWhyChooseSection,
+  DMProcessStepsSection,
+  DMFinalCtaSection,
+  DMRelatedServicesReveal,
+  DMFaqBlock,
+  DMCTA,
+} from "./components";
 import "./digitalMarketing.css";
 
 const SERVICE_KEYS = [
@@ -80,6 +78,27 @@ const PaidAdsManagement = () => {
       typeof row.description === "string",
   );
 
+  const pillars = SERVICE_KEYS.map((key, idx) => ({
+    key,
+    icon: SERVICE_ICONS[idx],
+    title: t(
+      `serviceSections.digitalMarketing.paidAds.services.items.${key}.title`,
+    ),
+    description: t(
+      `serviceSections.digitalMarketing.paidAds.services.items.${key}.description`,
+    ),
+  }));
+
+  const processSteps = PROCESS_KEYS.map((step) => ({
+    id: step,
+    title: t(
+      `serviceSections.digitalMarketing.paidAds.process.steps.${step}.title`,
+    ),
+    description: t(
+      `serviceSections.digitalMarketing.paidAds.process.steps.${step}.description`,
+    ),
+  }));
+
   return (
     <div
       data-nav-color="black"
@@ -125,295 +144,100 @@ const PaidAdsManagement = () => {
         ]}
       />
 
-      <section className="dm-hero">
-        <div className="dm-hero-overlay">
-          <div className="dm-hero-gradient" />
-        </div>
-        <MotionDiv
-          className="dm-hero-content relative z-10"
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewport}
-          variants={containerVariants}
-        >
-          <MotionDiv variants={itemVariants}>
-            <HeroWithBadge
-              badge={t("serviceSections.digitalMarketing.paidAds.badge")}
-              title={t("serviceSections.digitalMarketing.paidAds.hero.title")}
-              mainWord={t(
-                "serviceSections.digitalMarketing.paidAds.hero.mainWord",
-              )}
-              description={t(
-                "serviceSections.digitalMarketing.paidAds.hero.description",
-              )}
-              titleClassName="block"
-              descriptionClassName="dm-hero-desc"
-              contentClassName="relative z-10 max-w-6xl mx-auto text-center mt-6"
-              disableAnimation
-            />
-          </MotionDiv>
-          <MotionP
-            variants={itemVariants}
-            className="dm-hero-desc dm-hero-desc--secondary mt-6"
-          >
-            {t("serviceSections.digitalMarketing.paidAds.heroSecondary")}
-          </MotionP>
-          <MotionDiv
-            variants={itemVariants}
-            className="mt-10 flex justify-center"
-          >
-            <a href="/contact-us" className="dm-cta-btn">
-              {t("serviceSections.digitalMarketing.paidAds.heroCta")}
-            </a>
-          </MotionDiv>
-        </MotionDiv>
-      </section>
+      <DMHeroSection
+        badge={t("serviceSections.digitalMarketing.paidAds.badge")}
+        title={t("serviceSections.digitalMarketing.paidAds.hero.title")}
+        mainWord={t("serviceSections.digitalMarketing.paidAds.hero.mainWord")}
+        description={t(
+          "serviceSections.digitalMarketing.paidAds.hero.description",
+        )}
+        heroSecondary={t(
+          "serviceSections.digitalMarketing.paidAds.heroSecondary",
+        )}
+        heroCta={t("serviceSections.digitalMarketing.paidAds.heroCta")}
+      />
 
-      <div className="dm-divider-wrap">
-        <div className="dm-divider" />
-      </div>
+      <DMDivider />
 
-      <section className="dm-section">
-        <div className="dm-container">
-          <h2 className={`dm-heading ${fontClass}`}>
-            {t(
-              "serviceSections.digitalMarketing.paidAds.definition.whatIsTitle",
-            )}
-          </h2>
-          <p className="dm-text">
-            {t(
-              "serviceSections.digitalMarketing.paidAds.definition.paragraph",
-            )}
-          </p>
-          <p className="dm-text">
-            {t(
-              "serviceSections.digitalMarketing.paidAds.definition.paragraph2",
-            )}
-          </p>
-          <p className="dm-benefits-label font-semibold mb-3 mt-6">
-            {t(
-              "serviceSections.digitalMarketing.paidAds.definition.benefitsLabel",
-            )}
-          </p>
-          <ul className="space-y-3">
-            {benefitsList.map((item, idx) => (
-              <li key={idx} className="dm-check-item">
-                <HiCheckCircle className="dm-check-icon" />
-                <span className="dm-text-sm">{item}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+      <DMDefinitionSection
+        title={t(
+          "serviceSections.digitalMarketing.paidAds.definition.whatIsTitle",
+        )}
+        paragraph={t(
+          "serviceSections.digitalMarketing.paidAds.definition.paragraph",
+        )}
+        paragraph2={t(
+          "serviceSections.digitalMarketing.paidAds.definition.paragraph2",
+        )}
+        benefitsLabel={t(
+          "serviceSections.digitalMarketing.paidAds.definition.benefitsLabel",
+        )}
+        benefitsList={benefitsList}
+        fontClass={fontClass}
+      />
 
-      <div className="dm-divider-wrap">
-        <div className="dm-divider" />
-      </div>
+      <DMDivider />
 
-      <section className="dm-section dm-section-alt">
-        <MotionDiv
-          className="dm-container-wide"
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewport}
-          variants={containerVariants}
-        >
-          <MotionH2
-            variants={itemVariants}
-            className={`dm-section-title ${fontClass}`}
-          >
-            {t("serviceSections.digitalMarketing.paidAds.services.title")}
-          </MotionH2>
-          <MotionP variants={itemVariants} className="dm-section-subtitle">
-            {t("serviceSections.digitalMarketing.paidAds.services.subtitle")}
-          </MotionP>
-          <div className="dm-feature-grid">
-            {SERVICE_KEYS.map((key, idx) => (
-              <MotionDiv key={key} variants={itemVariants}>
-                <ServiceCard
-                  icon={SERVICE_ICONS[idx]}
-                  title={t(
-                    `serviceSections.digitalMarketing.paidAds.services.items.${key}.title`,
-                  )}
-                  description={t(
-                    `serviceSections.digitalMarketing.paidAds.services.items.${key}.description`,
-                  )}
-                  iconWrapperClassName="dm-card-icon"
-                  iconClassName="w-8 h-8 text-white"
-                  titleClassName="dm-card-title"
-                  descriptionClassName="dm-card-desc"
-                />
-              </MotionDiv>
-            ))}
-          </div>
-        </MotionDiv>
-      </section>
+      <DMServicePillarsSection
+        title={t("serviceSections.digitalMarketing.paidAds.services.title")}
+        subtitle={t(
+          "serviceSections.digitalMarketing.paidAds.services.subtitle",
+        )}
+        pillars={pillars}
+        fontClass={fontClass}
+      />
 
-      <div className="dm-divider-wrap">
-        <div className="dm-divider" />
-      </div>
+      <DMDivider />
 
-      <section className="dm-section">
-        <MotionDiv
-          className="dm-container"
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewport}
-          variants={containerVariants}
-        >
-          <MotionH2
-            variants={itemVariants}
-            className={`dm-section-title ${fontClass}`}
-          >
-            {t("serviceSections.digitalMarketing.paidAds.included.title")}
-          </MotionH2>
-          <MotionP variants={itemVariants} className="dm-section-subtitle">
-            {t("serviceSections.digitalMarketing.paidAds.included.subtitle")}
-          </MotionP>
-          <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-10">
-            {includedItems.map((item, idx) => (
-              <MotionLi
-                key={idx}
-                variants={itemVariants}
-                className="dm-check-item"
-              >
-                <HiCheckCircle className="dm-check-icon" />
-                <span className="dm-text-sm">{item}</span>
-              </MotionLi>
-            ))}
-          </ul>
-        </MotionDiv>
-      </section>
+      <DMIncludedSection
+        title={t("serviceSections.digitalMarketing.paidAds.included.title")}
+        subtitle={t(
+          "serviceSections.digitalMarketing.paidAds.included.subtitle",
+        )}
+        items={includedItems}
+        fontClass={fontClass}
+      />
 
-      <div className="dm-divider-wrap">
-        <div className="dm-divider" />
-      </div>
+      <DMDivider />
 
-      <section className="dm-section dm-section-alt">
-        <MotionDiv
-          className="dm-container"
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewport}
-          variants={containerVariants}
-        >
-          <MotionH2
-            variants={itemVariants}
-            className={`dm-section-title ${fontClass}`}
-          >
-            {t("serviceSections.digitalMarketing.paidAds.whyChoose.title")}
-          </MotionH2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
-            {whyChooseItems.map((row, idx) => (
-              <MotionDiv
-                key={`${row.title}-${idx}`}
-                variants={itemVariants}
-                className="dm-process-card"
-              >
-                <h3 className="dm-step-title">{row.title}</h3>
-                <p className="dm-step-desc">{row.description}</p>
-              </MotionDiv>
-            ))}
-          </div>
-        </MotionDiv>
-      </section>
+      <DMWhyChooseSection
+        title={t("serviceSections.digitalMarketing.paidAds.whyChoose.title")}
+        rows={whyChooseItems}
+        fontClass={fontClass}
+      />
 
-      <div className="dm-divider-wrap">
-        <div className="dm-divider" />
-      </div>
+      <DMDivider />
 
-      <section className="dm-section">
-        <MotionDiv
-          className="dm-container"
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewport}
-          variants={containerVariants}
-        >
-          <MotionH2
-            variants={itemVariants}
-            className={`dm-section-title ${fontClass}`}
-          >
-            {t("serviceSections.digitalMarketing.paidAds.process.title")}
-          </MotionH2>
-          <MotionP variants={itemVariants} className="dm-section-subtitle">
-            {t("serviceSections.digitalMarketing.paidAds.process.subtitle")}
-          </MotionP>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
-            {PROCESS_KEYS.map((step, idx) => (
-              <MotionDiv
-                key={step}
-                variants={itemVariants}
-                className="dm-process-card"
-              >
-                <div className="dm-step-number">
-                  {String(idx + 1).padStart(2, "0")}
-                </div>
-                <h3 className="dm-step-title">
-                  {t(
-                    `serviceSections.digitalMarketing.paidAds.process.steps.${step}.title`,
-                  )}
-                </h3>
-                <p className="dm-step-desc">
-                  {t(
-                    `serviceSections.digitalMarketing.paidAds.process.steps.${step}.description`,
-                  )}
-                </p>
-              </MotionDiv>
-            ))}
-          </div>
-        </MotionDiv>
-      </section>
+      <DMProcessStepsSection
+        title={t("serviceSections.digitalMarketing.paidAds.process.title")}
+        subtitle={t(
+          "serviceSections.digitalMarketing.paidAds.process.subtitle",
+        )}
+        steps={processSteps}
+        fontClass={fontClass}
+      />
 
-      <div className="dm-divider-wrap">
-        <div className="dm-divider" />
-      </div>
+      <DMDivider />
 
-      <section className="dm-section dm-section-alt">
-        <MotionDiv
-          className="dm-container text-center"
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewport}
-          variants={containerVariants}
-        >
-          <MotionH2
-            variants={itemVariants}
-            className={`dm-section-title ${fontClass} max-w-3xl mx-auto`}
-          >
-            {t("serviceSections.digitalMarketing.paidAds.finalCta.title")}
-          </MotionH2>
-          <MotionP
-            variants={itemVariants}
-            className="dm-text max-w-2xl mx-auto mt-4"
-          >
-            {t("serviceSections.digitalMarketing.paidAds.finalCta.description")}
-          </MotionP>
-          <MotionDiv variants={itemVariants} className="mt-8 flex justify-center">
-            <a href="/contact-us" className="dm-cta-btn">
-              {t("serviceSections.digitalMarketing.paidAds.finalCta.button")}
-            </a>
-          </MotionDiv>
-        </MotionDiv>
-      </section>
+      <DMFinalCtaSection
+        title={t("serviceSections.digitalMarketing.paidAds.finalCta.title")}
+        description={t(
+          "serviceSections.digitalMarketing.paidAds.finalCta.description",
+        )}
+        buttonText={t(
+          "serviceSections.digitalMarketing.paidAds.finalCta.button",
+        )}
+        fontClass={fontClass}
+      />
 
-      <div className="dm-divider-wrap">
-        <div className="dm-divider" />
-      </div>
+      <DMDivider />
 
-      <FAQ
+      <DMFaqBlock
         items={faqItems}
         title={t("serviceSections.digitalMarketing.paidAds.faqTitle")}
       />
 
-      <MotionSection
-        initial="hidden"
-        whileInView="visible"
-        viewport={viewport}
-        variants={itemVariants}
-      >
-        <DMRelatedServices current="paidAds" />
-      </MotionSection>
+      <DMRelatedServicesReveal current="paidAds" />
 
       <DMCTA />
     </div>
