@@ -1,4 +1,11 @@
 import ServiceCard from "../../../../components/ServiceCard";
+import {
+  AnimatedSection,
+  AnimatedTitle,
+  AnimatedText,
+  AnimatedGroup,
+  AnimatedCard,
+} from "@/components/animations";
 
 /**
  * Grid of `ServiceCard` pillars (DM feature grid).
@@ -9,15 +16,15 @@ export default function DMServicePillarsSection({ title, subtitle, pillars, font
   const list = Array.isArray(pillars) ? pillars : [];
 
   return (
-    <section className="dm-section dm-section-alt">
+    <AnimatedSection className="dm-section dm-section-alt">
       <div className="dm-container-wide">
-        <h2 className={`dm-section-title ${fontClass}`}>{title}</h2>
-        <p className="dm-section-subtitle">{subtitle}</p>
-        <div className="dm-feature-grid">
+        <AnimatedTitle as="h2" className={`dm-section-title ${fontClass}`}>{title}</AnimatedTitle>
+        <AnimatedText className="dm-section-subtitle" delay={0.05}>{subtitle}</AnimatedText>
+        <AnimatedGroup as="div" className="dm-feature-grid" stagger={0.1}>
           {list.map((pillar) => {
             const Icon = pillar.icon;
             return (
-              <div key={pillar.key}>
+              <AnimatedCard key={pillar.key}>
                 <ServiceCard
                   icon={Icon}
                   title={pillar.title}
@@ -27,11 +34,11 @@ export default function DMServicePillarsSection({ title, subtitle, pillars, font
                   titleClassName="dm-card-title"
                   descriptionClassName="dm-card-desc"
                 />
-              </div>
+              </AnimatedCard>
             );
           })}
-        </div>
+        </AnimatedGroup>
       </div>
-    </section>
+    </AnimatedSection>
   );
 }

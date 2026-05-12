@@ -1,5 +1,11 @@
 import { forwardRef } from "react";
 import { useFontClass } from "../../../../hooks/useFontClass";
+import {
+  AnimatedSection,
+  AnimatedTitle,
+  AnimatedText,
+  AnimatedCard,
+} from "@/components/animations";
 
 const InfCaseStudyBlock = forwardRef(
   (
@@ -20,20 +26,21 @@ const InfCaseStudyBlock = forwardRef(
     const { fontHeading } = useFontClass();
 
     return (
-      <section ref={ref} className="inf-section">
+      <AnimatedSection ref={ref} className="inf-section">
         <div className="inf-container">
           <div>
-            <span className="inf-label">{label}</span>
-            <h2 className={`inf-heading ${fontHeading}`}>{title}</h2>
-            <p className="inf-desc">{description}</p>
+            <AnimatedText as="span" className="inf-label">{label}</AnimatedText>
+            <AnimatedTitle as="h2" className={`inf-heading ${fontHeading}`} delay={0.05}>{title}</AnimatedTitle>
+            <AnimatedText className="inf-desc" delay={0.1}>{description}</AnimatedText>
           </div>
 
-          <div
+          <AnimatedCard
             className="rounded-2xl border p-6 md:p-8"
             style={{
               borderColor: "color-mix(in srgb, var(--foreground) 10%, transparent)",
               background: "color-mix(in srgb, var(--secondary) 4%, var(--background) 96%)",
             }}
+            delay={0.15}
           >
             <h3 className="inf-service-card__title text-xl mb-4">{caseTitle}</h3>
             <p className="inf-service-card__text mb-4">
@@ -56,11 +63,11 @@ const InfCaseStudyBlock = forwardRef(
                 <li key={i}>{line}</li>
               ))}
             </ul>
-          </div>
+          </AnimatedCard>
 
-          {footer ? <p className="inf-desc mt-8 mb-0 max-w-3xl">{footer}</p> : null}
+          {footer ? <AnimatedText className="inf-desc mt-8 mb-0 max-w-3xl" delay={0.2}>{footer}</AnimatedText> : null}
         </div>
-      </section>
+      </AnimatedSection>
     );
   }
 );

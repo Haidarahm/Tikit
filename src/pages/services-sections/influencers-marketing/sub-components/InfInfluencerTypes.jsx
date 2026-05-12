@@ -1,5 +1,12 @@
 import { forwardRef } from "react";
 import { useFontClass } from "../../../../hooks/useFontClass";
+import {
+  AnimatedSection,
+  AnimatedTitle,
+  AnimatedText,
+  AnimatedGroup,
+  AnimatedCard,
+} from "@/components/animations";
 
 const sizeLabels = ["1K–10K", "10K–100K", "100K–1M", "1M+"];
 
@@ -7,15 +14,15 @@ const InfInfluencerTypes = forwardRef(({ label, title, description, types }, ref
   const { fontHeading } = useFontClass();
 
   return (
-    <section ref={ref} className="inf-section inf-section--alt">
+    <AnimatedSection ref={ref} className="inf-section inf-section--alt">
       <div className="inf-container">
-        <span className="inf-label">{label}</span>
-        <h2 className={`inf-heading ${fontHeading}`}>{title}</h2>
-        <p className="inf-desc">{description}</p>
+        <AnimatedText as="span" className="inf-label">{label}</AnimatedText>
+        <AnimatedTitle as="h2" className={`inf-heading ${fontHeading}`} delay={0.05}>{title}</AnimatedTitle>
+        <AnimatedText className="inf-desc" delay={0.1}>{description}</AnimatedText>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <AnimatedGroup as="div" className="grid grid-cols-1 sm:grid-cols-2 gap-5" stagger={0.1}>
           {types.map((type, idx) => (
-            <div key={type?.title || `type-${idx}`} className="inf-type-card">
+            <AnimatedCard key={type?.title || `type-${idx}`} className="inf-type-card">
               <div className="inf-type-card__badge">{type.icon}</div>
               <div className="flex-1">
                 <h3 className="inf-service-card__title">{type.title}</h3>
@@ -30,11 +37,11 @@ const InfInfluencerTypes = forwardRef(({ label, title, description, types }, ref
                   {sizeLabels[idx]}
                 </span>
               </div>
-            </div>
+            </AnimatedCard>
           ))}
-        </div>
+        </AnimatedGroup>
       </div>
-    </section>
+    </AnimatedSection>
   );
 });
 

@@ -1,6 +1,14 @@
 import { forwardRef } from "react";
 import { FiCheckCircle, FiTarget, FiTrendingUp, FiArrowRightCircle } from "react-icons/fi";
 import { useFontClass } from "../../../../hooks/useFontClass";
+import {
+  AnimatedSection,
+  AnimatedTitle,
+  AnimatedText,
+  AnimatedGroup,
+  AnimatedCard,
+  AnimatedButton,
+} from "@/components/animations";
 
 const InfWhatIsSection = forwardRef(
   (
@@ -22,16 +30,16 @@ const InfWhatIsSection = forwardRef(
     const isRtl = dir === "rtl";
 
     return (
-      <section ref={ref} className="inf-section inf-section--alt" dir={dir}>
+      <AnimatedSection ref={ref} className="inf-section inf-section--alt" dir={dir}>
         <div className="inf-container">
-          <span className="inf-label">{label}</span>
-          <h2 className={`inf-heading ${fontHeading}`}>{title}</h2>
+          <AnimatedText as="span" className="inf-label">{label}</AnimatedText>
+          <AnimatedTitle as="h2" className={`inf-heading ${fontHeading}`} delay={0.05}>{title}</AnimatedTitle>
           {description ? (
-            <p className="inf-desc">{description}</p>
+            <AnimatedText className="inf-desc" delay={0.1}>{description}</AnimatedText>
           ) : null}
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            <article className="inf-type-card">
+          <AnimatedGroup as="div" className="grid grid-cols-1 md:grid-cols-2 gap-5" stagger={0.12}>
+            <AnimatedCard as="article" className="inf-type-card">
               <div className="inf-type-card__badge">
                 <FiTarget />
               </div>
@@ -46,9 +54,9 @@ const InfWhatIsSection = forwardRef(
                   ))}
                 </ul>
               </div>
-            </article>
+            </AnimatedCard>
 
-            <article className="inf-type-card">
+            <AnimatedCard as="article" className="inf-type-card">
               <div className="inf-type-card__badge">
                 <FiTrendingUp />
               </div>
@@ -63,13 +71,15 @@ const InfWhatIsSection = forwardRef(
                   ))}
                 </ul>
               </div>
-            </article>
-          </div>
+            </AnimatedCard>
+          </AnimatedGroup>
 
-          <a
+          <AnimatedButton
+            as="a"
             href={ctaHref}
             className="block mt-5 rounded-[inherit] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--secondary)]"
             aria-label={ctaText}
+            delay={0.15}
           >
             <article className="inf-type-card cursor-pointer transition-opacity duration-200 hover:opacity-90">
               <div className="inf-type-card__badge">
@@ -77,9 +87,9 @@ const InfWhatIsSection = forwardRef(
               </div>
               <p className="inf-service-card__title mb-0">{ctaText}</p>
             </article>
-          </a>
+          </AnimatedButton>
         </div>
-      </section>
+      </AnimatedSection>
     );
   }
 );

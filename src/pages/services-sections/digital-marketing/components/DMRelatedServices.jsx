@@ -8,6 +8,12 @@ import {
   HiLightningBolt,
 } from "react-icons/hi";
 import { useI18nLanguage } from "../../../../store/I18nLanguageContext";
+import {
+  AnimatedSection,
+  AnimatedTitle,
+  AnimatedGroup,
+  AnimatedCard,
+} from "@/components/animations";
 
 const SERVICES_CONFIG = {
   seoServices: {
@@ -38,13 +44,13 @@ const DMRelatedServices = ({ current }) => {
   const siblingKeys = ALL_KEYS.filter((key) => key !== current);
 
   return (
-    <section className="dm-section">
+    <AnimatedSection className="dm-section">
       <div className="dm-container-wide">
-        <h2 className={`dm-section-title ${fontClass}`}>
+        <AnimatedTitle as="h2" className={`dm-section-title ${fontClass}`}>
           {t("serviceSections.digitalMarketing.relatedTitle")}
-        </h2>
-        <div className="dm-link-grid mt-10">
-          <div className="min-h-0">
+        </AnimatedTitle>
+        <AnimatedGroup as="div" className="dm-link-grid mt-10" stagger={0.1}>
+          <AnimatedCard className="min-h-0">
             <Link
               to="/digital-marketing-agency-dubai"
               className="dm-link-card block h-full"
@@ -60,12 +66,12 @@ const DMRelatedServices = ({ current }) => {
               </p>
               <span className="dm-link-card-arrow">View Hub →</span>
             </Link>
-          </div>
+          </AnimatedCard>
 
           {siblingKeys.map((key) => {
             const { icon: Icon, path } = SERVICES_CONFIG[key];
             return (
-              <div key={key} className="min-h-0">
+              <AnimatedCard key={key} className="min-h-0">
                 <Link to={path} className="dm-link-card block h-full">
                   <div className="dm-link-card-icon">
                     <Icon />
@@ -82,12 +88,12 @@ const DMRelatedServices = ({ current }) => {
                     {t("serviceSections.digitalMarketing.subServices.learnMore")} →
                   </span>
                 </Link>
-              </div>
+              </AnimatedCard>
             );
           })}
-        </div>
+        </AnimatedGroup>
       </div>
-    </section>
+    </AnimatedSection>
   );
 };
 

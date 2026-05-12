@@ -1,44 +1,40 @@
 import { forwardRef } from "react";
+import {
+  AnimatedSection,
+  AnimatedTitle,
+  AnimatedText,
+  AnimatedGroup,
+  AnimatedCard,
+} from "@/components/animations";
 
 /**
- * Reusable "problems / why struggle" section with label, title, description, and card grid.
- * @param {Object} props
- * @param {string} props.sectionLabel - Small label above title
- * @param {string} props.title - Section heading
- * @param {string} props.description - Paragraph below title
- * @param {Array<{ title: string, text: string }>} props.items - Problem cards
- * @param {React.ReactNode[]} props.icons - Icons for each card (same length as items)
- * @param {string} [props.dir] - "ltr" | "rtl"
- * @param {string} [props.classPrefix="im"] - CSS class prefix (e.g. "br")
+ * Reusable "problems / why struggle" section with label, title, description,
+ * and a card grid. Card grid uses `AnimatedGroup` so cards stagger in.
  */
 const ServiceProblemsSection = forwardRef((props, ref) => {
   const { sectionLabel, title, description, items = [], icons = [], dir, classPrefix = "im" } = props;
   const p = classPrefix;
 
-  const header = (
-    <>
-      <span className={`${p}-label`}>{sectionLabel}</span>
-      <h2 className={`${p}-title font-antonio`}>{title}</h2>
-      <p className={`${p}-desc`}>{description}</p>
-    </>
-  );
-
   return (
-    <section className={`${p}-section ${p}-problems-section`} dir={dir}>
+    <AnimatedSection className={`${p}-section ${p}-problems-section`} dir={dir}>
       <div className={`${p}-container`}>
-        <div className="text-center max-w-2xl mx-auto mb-2">{header}</div>
-        <div ref={ref} className={`${p}-problems-grid`}>
+        <div className="text-center max-w-2xl mx-auto mb-2">
+          <AnimatedText as="span" className={`${p}-label`}>{sectionLabel}</AnimatedText>
+          <AnimatedTitle as="h2" className={`${p}-title font-antonio`} delay={0.05}>{title}</AnimatedTitle>
+          <AnimatedText className={`${p}-desc`} delay={0.1}>{description}</AnimatedText>
+        </div>
+        <AnimatedGroup as="div" ref={ref} className={`${p}-problems-grid`} stagger={0.12}>
           {Array.isArray(items) &&
             items.map((item, i) => (
-              <div key={i} className={`${p}-problem-card`}>
+              <AnimatedCard key={i} className={`${p}-problem-card`}>
                 <div className={`${p}-problem-card__icon`}>{icons[i] ?? item.icon}</div>
                 <h3 className={`${p}-problem-card__title font-antonio`}>{item.title}</h3>
                 <p className={`${p}-problem-card__text`}>{item.text}</p>
-              </div>
+              </AnimatedCard>
             ))}
-        </div>
+        </AnimatedGroup>
       </div>
-    </section>
+    </AnimatedSection>
   );
 });
 

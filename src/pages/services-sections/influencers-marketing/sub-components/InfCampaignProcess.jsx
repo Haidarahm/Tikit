@@ -1,20 +1,27 @@
 import { forwardRef } from "react";
 import { useFontClass } from "../../../../hooks/useFontClass";
+import {
+  AnimatedSection,
+  AnimatedTitle,
+  AnimatedText,
+  AnimatedGroup,
+  AnimatedCard,
+} from "@/components/animations";
 
 const InfCampaignProcess = forwardRef(({ label, title, description, steps }, ref) => {
   const { fontHeading } = useFontClass();
 
   return (
-    <section ref={ref} className="inf-section">
+    <AnimatedSection ref={ref} className="inf-section">
       <div className="inf-container">
-        <span className="inf-label">{label}</span>
-        <h2 className={`inf-heading ${fontHeading}`}>{title}</h2>
-        <p className="inf-desc">{description}</p>
+        <AnimatedText as="span" className="inf-label">{label}</AnimatedText>
+        <AnimatedTitle as="h2" className={`inf-heading ${fontHeading}`} delay={0.05}>{title}</AnimatedTitle>
+        <AnimatedText className="inf-desc" delay={0.1}>{description}</AnimatedText>
 
-        <div className="space-y-0">
+        <AnimatedGroup as="div" className="space-y-0" stagger={0.12}>
           {steps.map((step, idx) => (
-            <div
-              key={step?.title || step?.description || JSON.stringify(step) || `step-${idx}`}
+            <AnimatedCard
+              key={step?.title || step?.description || `step-${idx}`}
               className="inf-step pb-8"
             >
               {idx < steps.length - 1 && <div className="inf-step__line" />}
@@ -23,11 +30,11 @@ const InfCampaignProcess = forwardRef(({ label, title, description, steps }, ref
                 <h3 className="inf-service-card__title">{step.title}</h3>
                 {step.description ? <p className="inf-service-card__text">{step.description}</p> : null}
               </div>
-            </div>
+            </AnimatedCard>
           ))}
-        </div>
+        </AnimatedGroup>
       </div>
-    </section>
+    </AnimatedSection>
   );
 });
 

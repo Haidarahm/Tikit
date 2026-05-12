@@ -1,19 +1,25 @@
 import { forwardRef } from "react";
 import { useFontClass } from "../../../../hooks/useFontClass";
+import {
+  AnimatedSection,
+  AnimatedTitle,
+  AnimatedText,
+  AnimatedCard,
+} from "@/components/animations";
 
 const InfComparisonTable = forwardRef(({ label, title, description, rows, footer, headerFeature = "Feature", headerInfluencer = "Influencer Marketing", headerTraditional = "Traditional Advertising" }, ref) => {
   const { fontHeading } = useFontClass();
 
   return (
-    <section ref={ref} className="inf-section inf-section--alt">
+    <AnimatedSection ref={ref} className="inf-section inf-section--alt">
       <div className="inf-container">
         <div>
-          <span className="inf-label">{label}</span>
-          <h2 className={`inf-heading ${fontHeading}`}>{title}</h2>
-          <p className="inf-desc">{description}</p>
+          <AnimatedText as="span" className="inf-label">{label}</AnimatedText>
+          <AnimatedTitle as="h2" className={`inf-heading ${fontHeading}`} delay={0.05}>{title}</AnimatedTitle>
+          <AnimatedText className="inf-desc" delay={0.1}>{description}</AnimatedText>
         </div>
 
-        <div className="overflow-x-auto">
+        <AnimatedCard as="div" className="overflow-x-auto" delay={0.15}>
           <table className="inf-table">
             <thead>
               <tr>
@@ -34,18 +40,19 @@ const InfComparisonTable = forwardRef(({ label, title, description, rows, footer
               ))}
             </tbody>
           </table>
-        </div>
+        </AnimatedCard>
 
         {footer && (
-          <p
+          <AnimatedText
             className="mt-6 text-sm leading-relaxed"
             style={{ color: "color-mix(in srgb, var(--foreground) 65%, transparent)" }}
+            delay={0.2}
           >
             {footer}
-          </p>
+          </AnimatedText>
         )}
       </div>
-    </section>
+    </AnimatedSection>
   );
 });
 

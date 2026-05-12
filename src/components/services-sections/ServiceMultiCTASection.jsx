@@ -1,4 +1,11 @@
 import { forwardRef } from "react";
+import {
+  AnimatedSection,
+  AnimatedTitle,
+  AnimatedText,
+  AnimatedGroup,
+  AnimatedCard,
+} from "@/components/animations";
 
 /**
  * Multi-CTA section with 3 text cards + a final closing line.
@@ -8,23 +15,23 @@ const ServiceMultiCTASection = forwardRef((props, ref) => {
   const p = classPrefix;
 
   return (
-    <section ref={ref} className={`${p}-multi-cta`} dir={dir}>
+    <AnimatedSection ref={ref} className={`${p}-multi-cta`} dir={dir}>
       <div className={`${p}-multi-cta__inner`}>
-        <h2 className={`${p}-multi-cta__title font-antonio`}>{title}</h2>
+        <AnimatedTitle as="h2" className={`${p}-multi-cta__title font-antonio`}>{title}</AnimatedTitle>
 
-        <div className={`${p}-multi-cta__grid`}>
+        <AnimatedGroup as="div" className={`${p}-multi-cta__grid`} stagger={0.12}>
           {Array.isArray(cards) &&
             cards.map((c, i) => (
-              <div key={i} className={`${p}-multi-cta__card`}>
+              <AnimatedCard key={i} className={`${p}-multi-cta__card`}>
                 <h3 className={`${p}-multi-cta__card-title font-antonio`}>{c.title}</h3>
                 <p className={`${p}-multi-cta__card-desc`}>{c.description}</p>
-              </div>
+              </AnimatedCard>
             ))}
-        </div>
+        </AnimatedGroup>
 
-        {finalLine ? <p className={`${p}-multi-cta__final`}>{finalLine}</p> : null}
+        {finalLine ? <AnimatedText className={`${p}-multi-cta__final`} delay={0.15}>{finalLine}</AnimatedText> : null}
       </div>
-    </section>
+    </AnimatedSection>
   );
 });
 

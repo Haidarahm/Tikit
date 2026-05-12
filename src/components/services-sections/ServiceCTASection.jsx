@@ -1,18 +1,18 @@
 import { forwardRef } from "react";
 import { FiArrowRight, FiPhone } from "react-icons/fi";
+import {
+  AnimatedSection,
+  AnimatedTitle,
+  AnimatedText,
+  AnimatedGroup,
+  AnimatedButton,
+} from "@/components/animations";
 
 /**
  * Reusable CTA section: label, title, description, primary + secondary buttons.
- * @param {Object} props
- * @param {string} props.sectionLabel
- * @param {string} props.title
- * @param {string} props.description
- * @param {string} props.primaryButtonText
- * @param {string} [props.primaryHref] - Default "/contact"
- * @param {string} props.secondaryButtonText
- * @param {string} [props.secondaryHref] - Default "tel:+97145774042"
- * @param {string} [props.dir]
- * @param {string} [props.classPrefix="im"]
+ *
+ * Buttons live inside an `AnimatedGroup` so they stagger in side-by-side
+ * once the section enters the viewport.
  */
 const ServiceCTASection = forwardRef((props, ref) => {
   const {
@@ -30,29 +30,28 @@ const ServiceCTASection = forwardRef((props, ref) => {
   const isSecondaryExternal = typeof secondaryHref === "string" && secondaryHref.startsWith("http");
 
   return (
-    <section ref={ref} className={`${p}-cta`} dir={dir}>
+    <AnimatedSection ref={ref} className={`${p}-cta`} dir={dir}>
       <div className={`${p}-cta__inner`}>
-        <p className={`${p}-label text-center mb-4 block`}>
-          {sectionLabel}
-        </p>
-        <h2 className={`${p}-cta__title font-antonio`}>{title}</h2>
-        <p className={`${p}-cta__desc`}>{description}</p>
-        <div className={`${p}-cta__buttons`}>
-          <a href={primaryHref} className={`${p}-btn-primary`}>
+        <AnimatedText as="p" className={`${p}-label text-center mb-4 block`}>{sectionLabel}</AnimatedText>
+        <AnimatedTitle as="h2" className={`${p}-cta__title font-antonio`} delay={0.05}>{title}</AnimatedTitle>
+        <AnimatedText className={`${p}-cta__desc`} delay={0.1}>{description}</AnimatedText>
+        <AnimatedGroup as="div" className={`${p}-cta__buttons`} stagger={0.1} delayChildren={0.15}>
+          <AnimatedButton as="a" href={primaryHref} className={`${p}-btn-primary`}>
             <FiArrowRight />
             {primaryButtonText}
-          </a>
-          <a
+          </AnimatedButton>
+          <AnimatedButton
+            as="a"
             href={secondaryHref}
             {...(isSecondaryExternal ? { target: "_blank", rel: "noreferrer noopener" } : {})}
             className={`${p}-btn-secondary`}
           >
             <FiPhone />
             {secondaryButtonText}
-          </a>
-        </div>
+          </AnimatedButton>
+        </AnimatedGroup>
       </div>
-    </section>
+    </AnimatedSection>
   );
 });
 

@@ -1,23 +1,19 @@
 import { forwardRef } from "react";
+import { motion, useReducedMotion } from "framer-motion";
+import { fadeIn, fadeUp, scaleIn, makeTransition, DURATION, EASE } from "@/animations";
 import TikitTitle from "../TikitTitle";
 
 /**
  * Reusable hero section for service pages.
- * @param {Object} props
- * @param {string} props.imageSrc - Hero background image
- * @param {string} props.imageAlt - Alt text for image
- * @param {string} props.badge - Badge text
- * @param {string} [props.badgeVariant] - "default" | "pulse"
- * @param {string} props.title - Title line (e.g. "Leading Digital Marketing Agency in")
- * @param {string} props.mainWord - Highlighted word (e.g. "Dubai")
- * @param {string} [props.description] - Optional description
- * @param {string} [props.heroClassName] - Extra class for section
- * @param {string} [props.dataNavColor] - e.g. "black" for data-nav-color
- * @param {string} [props.classPrefix="im"] - CSS class prefix (e.g. "br" for Branding) so UI stays the same
- * @param {number} [props.imageWidth=1920] - Intrinsic image width for layout stability
- * @param {number} [props.imageHeight=1080] - Intrinsic image height for layout stability
- * @param {string} [props.imageSizes] - Responsive sizes attribute for hero image
- * @param {string} [props.imageSrcSet] - Responsive srcset for hero image
+ *
+ * The hero is critical content (LCP), so it animates on mount — not on
+ * scroll. Everything is wired through the global animation system:
+ *   - background image: `scaleIn`
+ *   - badge:            `fadeIn`
+ *   - title:            `fadeUp`
+ *   - description:      `fadeUp` (delayed)
+ *
+ * @param {Object} props - See JSDoc inline.
  */
 const ServiceHeroSection = forwardRef((props, ref) => {
   const {
@@ -37,6 +33,12 @@ const ServiceHeroSection = forwardRef((props, ref) => {
     imageSrcSet,
   } = props;
   const p = classPrefix;
+  const prefersReducedMotion = useReducedMotion();
+
+  const mountAnim = (variant) =>
+    prefersReducedMotion
+      ? {}
+      : { variants: variant, initial: "hidden", animate: "visible" };
 
   return (
     <section
@@ -44,7 +46,7 @@ const ServiceHeroSection = forwardRef((props, ref) => {
       {...(dataNavColor != null ? { "data-nav-color": dataNavColor } : {})}
     >
       <div className={`${p}-hero__image-wrapper`}>
-        <img
+        <motion.img
           src={imageSrc}
           alt={imageAlt}
           className={`${p}-hero__image`}
@@ -55,6 +57,7 @@ const ServiceHeroSection = forwardRef((props, ref) => {
           decoding="async"
           {...(imageSizes ? { sizes: imageSizes } : {})}
           {...(imageSrcSet ? { srcSet: imageSrcSet } : {})}
+          {...mountAnim(scaleIn(0, DURATION.slower, 1.05))}
         />
         <div className={`${p}-hero__overlay`} />
         <div className={`${p}-hero__mesh`} />
@@ -64,20 +67,37 @@ const ServiceHeroSection = forwardRef((props, ref) => {
       <div ref={ref} className={`${p}-hero__inner`}>
         <div className={`${p}-hero__content-card`}>
           {badge ? (
-            <span className={`${p}-hero__badge ${badgeVariant === "pulse" ? `${p}-hero__badge--pulse` : ""}`}>
+            <motion.span
+              className={`${p}-hero__badge ${badgeVariant === "pulse" ? `${p}-hero__badge--pulse` : ""}`}
+              {...mountAnim(fadeIn(0.1))}
+            >
               <span className={`${p}-hero__badge-dot`} />
               {badge}
-            </span>
+            </motion.span>
           ) : null}
 
-          <TikitTitle
-            title={title}
-            mainWord={mainWord}
-            disableAnimation
-            className={`${p}-hero__title hero-animate block font-antonio`}
-          />
+          <motion.div
+            {...(prefersReducedMotion
+              ? {}
+              : {
+                  initial: { opacity: 0, y: 24 },
+                  animate: { opacity: 1, y: 0 },
+                  transition: makeTransition({ duration: DURATION.slow, delay: 0.2, ease: EASE.out }),
+                })}
+          >
+            <TikitTitle
+              title={title}
+              mainWord={mainWord}
+              disableAnimation
+              className={`${p}-hero__title hero-animate block font-antonio`}
+            />
+          </motion.div>
 
-          {description ? <p className={`${p}-hero__description`}>{description}</p> : null}
+          {description ? (
+            <motion.p className={`${p}-hero__description`} {...mountAnim(fadeUp(0.35))}>
+              {description}
+            </motion.p>
+          ) : null}
 
           <div className={`${p}-hero__scroll-indicator`} aria-hidden="true">
             <span className={`${p}-hero__scroll-line`} />

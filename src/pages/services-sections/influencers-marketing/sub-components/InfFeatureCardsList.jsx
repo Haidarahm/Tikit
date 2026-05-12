@@ -1,20 +1,27 @@
 import { forwardRef } from "react";
 import { useFontClass } from "../../../../hooks/useFontClass";
+import {
+  AnimatedSection,
+  AnimatedTitle,
+  AnimatedText,
+  AnimatedGroup,
+  AnimatedCard,
+} from "@/components/animations";
 
 const InfFeatureCardsList = forwardRef(({ label, title, description, items = [] }, ref) => {
   const { fontHeading } = useFontClass();
 
   return (
-    <section ref={ref} className="inf-section">
+    <AnimatedSection ref={ref} className="inf-section">
       <div className="inf-container">
-        <span className="inf-label">{label}</span>
-        <h2 className={`inf-heading ${fontHeading}`}>{title}</h2>
-        <p className="inf-desc">{description}</p>
+        <AnimatedText as="span" className="inf-label">{label}</AnimatedText>
+        <AnimatedTitle as="h2" className={`inf-heading ${fontHeading}`} delay={0.05}>{title}</AnimatedTitle>
+        <AnimatedText className="inf-desc" delay={0.1}>{description}</AnimatedText>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <AnimatedGroup as="div" className="grid grid-cols-1 md:grid-cols-2 gap-6" stagger={0.12}>
           {items.map((item, idx) => (
-            <div
-              key={item?.title || item?.description || JSON.stringify(item) || `feature-card-${idx}`}
+            <AnimatedCard
+              key={item?.title || `feature-card-${idx}`}
               className="inf-service-card"
             >
               <div className="inf-service-card__icon">{item.icon}</div>
@@ -27,11 +34,11 @@ const InfFeatureCardsList = forwardRef(({ label, title, description, items = [] 
                   ))}
                 </ul>
               ) : null}
-            </div>
+            </AnimatedCard>
           ))}
-        </div>
+        </AnimatedGroup>
       </div>
-    </section>
+    </AnimatedSection>
   );
 });
 

@@ -2,6 +2,14 @@ import { forwardRef } from "react";
 import { LocaleLink as Link } from "@/components/LocaleLink.jsx";
 import { FiArrowRight, FiCheckCircle } from "react-icons/fi";
 import { useFontClass } from "../../../../hooks/useFontClass";
+import {
+  AnimatedSection,
+  AnimatedCard,
+  AnimatedTitle,
+  AnimatedText,
+  AnimatedGroup,
+  AnimatedButton,
+} from "@/components/animations";
 
 const outerCardStyle = {
   borderColor: "color-mix(in srgb, var(--secondary) 26%, transparent)",
@@ -48,59 +56,68 @@ const InfSplitCTA = forwardRef(
     const { fontHeading } = useFontClass();
 
     return (
-      <section ref={ref} className="inf-section">
+      <AnimatedSection ref={ref} className="inf-section">
         <div className="inf-container">
-          <div className="rounded-3xl border p-6 md:p-10" style={outerCardStyle}>
+          <AnimatedCard className="rounded-3xl border p-6 md:p-10" style={outerCardStyle}>
             <div className="grid gap-6 md:grid-cols-[1.25fr_0.75fr] md:items-center">
               <div>
-                {label ? <span className="inf-label mb-3">{label}</span> : null}
-                {title ? <h3 className={`inf-heading text-2xl md:text-4xl mb-3 ${fontHeading}`}>{title}</h3> : null}
-                {description ? <p className="inf-desc max-w-2xl">{description}</p> : null}
+                {label ? <AnimatedText as="span" className="inf-label mb-3">{label}</AnimatedText> : null}
+                {title ? <AnimatedTitle as="h3" className={`inf-heading text-2xl md:text-4xl mb-3 ${fontHeading}`} delay={0.05}>{title}</AnimatedTitle> : null}
+                {description ? <AnimatedText className="inf-desc max-w-2xl" delay={0.1}>{description}</AnimatedText> : null}
               </div>
 
-              <div
+              <AnimatedCard
                 className="rounded-2xl border p-5 md:p-6"
                 style={panelCardStyle}
+                delay={0.15}
               >
                 <div className="mb-4">
                   <p className="text-xs uppercase tracking-[0.18em] opacity-70">Start your campaign</p>
                 </div>
 
-                <div className="flex flex-col gap-2.5">
-                  <Link
-                    to={primaryHref}
+                <AnimatedGroup as="div" className="flex flex-col gap-2.5" stagger={0.08}>
+                  <AnimatedButton
+                    as="a"
+                    href={primaryHref}
                     className="im-cta-btn inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm md:text-base"
                   >
                     {primaryText}
                     <FiArrowRight />
-                  </Link>
-                  <Link
-                    to={secondaryHref}
+                  </AnimatedButton>
+                  <AnimatedButton
+                    as="a"
+                    href={secondaryHref}
                     className="inline-flex items-center justify-center rounded-xl border px-4 py-3 text-sm font-semibold transition hover:-translate-y-0.5 hover:opacity-90"
                     style={secondaryButtonStyle}
                   >
                     {secondaryText}
-                  </Link>
-                </div>
+                  </AnimatedButton>
+                </AnimatedGroup>
 
                 {highlights.length ? (
-                  <ul
+                  <AnimatedGroup
+                    as="ul"
                     className="mt-5 space-y-2.5 border-t pt-4"
                     style={highlightsListStyle}
+                    stagger={0.06}
                   >
                     {highlights.map((item) => (
-                      <li key={item} className="flex items-start gap-2.5 text-sm leading-relaxed">
+                      <AnimatedCard
+                        as="li"
+                        key={item}
+                        className="flex items-start gap-2.5 text-sm leading-relaxed"
+                      >
                         <FiCheckCircle className="mt-0.5 shrink-0" style={checkIconStyle} />
                         <span className="opacity-90">{item}</span>
-                      </li>
+                      </AnimatedCard>
                     ))}
-                  </ul>
+                  </AnimatedGroup>
                 ) : null}
-              </div>
+              </AnimatedCard>
             </div>
-          </div>
+          </AnimatedCard>
         </div>
-      </section>
+      </AnimatedSection>
     );
   }
 );

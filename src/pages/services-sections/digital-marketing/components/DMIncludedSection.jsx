@@ -1,4 +1,11 @@
 import { HiCheckCircle } from "react-icons/hi";
+import {
+  AnimatedSection,
+  AnimatedTitle,
+  AnimatedText,
+  AnimatedGroup,
+  AnimatedCard,
+} from "@/components/animations";
 
 /**
  * Two-column checklist section (included / scope items).
@@ -13,19 +20,19 @@ export default function DMIncludedSection({
   const lines = Array.isArray(items) ? items : [];
 
   return (
-    <section className={sectionClassName}>
+    <AnimatedSection className={sectionClassName}>
       <div className="dm-container">
-        <h2 className={`dm-section-title ${fontClass}`}>{title}</h2>
-        <p className="dm-section-subtitle">{subtitle}</p>
-        <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-10">
+        <AnimatedTitle as="h2" className={`dm-section-title ${fontClass}`}>{title}</AnimatedTitle>
+        <AnimatedText className="dm-section-subtitle" delay={0.05}>{subtitle}</AnimatedText>
+        <AnimatedGroup as="ul" className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-10" stagger={0.06}>
           {lines.map((item, idx) => (
-            <li key={idx} className="dm-check-item">
+            <AnimatedCard as="li" key={idx} className="dm-check-item">
               <HiCheckCircle className="dm-check-icon" />
               <span className="dm-text-sm">{item}</span>
-            </li>
+            </AnimatedCard>
           ))}
-        </ul>
+        </AnimatedGroup>
       </div>
-    </section>
+    </AnimatedSection>
   );
 }
