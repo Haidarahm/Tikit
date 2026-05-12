@@ -3,6 +3,11 @@ import { LocaleLink as Link } from "@/components/LocaleLink.jsx";
 import { benefitsSection, dmRelatedLinkCard } from "@/helpers/framerMotion";
 import { useTranslation } from "react-i18next";
 import {
+  MotionSection,
+  dmItemVariants as itemVariants,
+  dmViewport as viewport,
+} from "../dmMotion";
+import {
   HiChartBar,
   HiSearchCircle,
   HiCurrencyDollar,
@@ -32,14 +37,14 @@ const SERVICES_CONFIG = {
 
 const ALL_KEYS = Object.keys(SERVICES_CONFIG);
 
-const DMRelatedServices = ({ current }) => {
+const DMRelatedServices = ({ current, withScrollReveal = false }) => {
   const { t } = useTranslation();
   const { language } = useI18nLanguage();
   const fontClass = language === "ar" ? "font-cairo" : "font-antonio";
 
   const siblingKeys = ALL_KEYS.filter((key) => key !== current);
 
-  return (
+  const inner = (
     <section className="dm-section">
       <div className="dm-container-wide">
         <Motion.h2 className={`dm-section-title ${fontClass}`} {...benefitsSection.headerWrap}>
@@ -91,6 +96,21 @@ const DMRelatedServices = ({ current }) => {
       </div>
     </section>
   );
+
+  if (withScrollReveal) {
+    return (
+      <MotionSection
+        initial="hidden"
+        whileInView="visible"
+        viewport={viewport}
+        variants={itemVariants}
+      >
+        {inner}
+      </MotionSection>
+    );
+  }
+
+  return inner;
 };
 
 export default DMRelatedServices;

@@ -12,11 +12,17 @@ import {
 /**
  * Two-column checklist section (included / scope items).
  */
-export default function DMIncludedSection({ title, subtitle, items, fontClass }) {
+export default function DMIncludedSection({
+  title,
+  subtitle,
+  items,
+  fontClass,
+  sectionClassName = "dm-section",
+}) {
   const lines = Array.isArray(items) ? items : [];
 
   return (
-    <section className="dm-section">
+    <section className={sectionClassName}>
       <MotionDiv
         className="dm-container"
         initial="hidden"

@@ -9,6 +9,7 @@ import {
   FaTiktok,
 } from "react-icons/fa";
 import SEOHead from "../../../components/SEOHead";
+import FAQ from "../../../components/FAQ";
 import {
   DMDivider,
   DMHeroSection,
@@ -18,8 +19,7 @@ import {
   DMWhyChooseSection,
   DMProcessStepsSection,
   DMFinalCtaSection,
-  DMRelatedServicesReveal,
-  DMFaqBlock,
+  DMRelatedServices,
   DMCTA,
 } from "./components";
 import "./digitalMarketing.css";
@@ -232,12 +232,12 @@ const PaidAdsManagement = () => {
 
       <DMDivider />
 
-      <DMFaqBlock
+      <FAQ
         items={faqItems}
         title={t("serviceSections.digitalMarketing.paidAds.faqTitle")}
       />
 
-      <DMRelatedServicesReveal current="paidAds" />
+      <DMRelatedServices current="paidAds" withScrollReveal />
 
       <DMCTA />
     </div>
