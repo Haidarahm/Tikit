@@ -71,6 +71,13 @@ const AboutUs = () => {
         keywords={t("seo.pages.about.keywords")}
         canonicalUrl="/about-us"
         structuredData={aboutSchema}
+        serviceType={t("seo.pages.about.serviceType", {
+          defaultValue: "Influencer Marketing Agency Dubai",
+        })}
+        breadcrumbs={[
+          { name: t("nav.home"), url: "/" },
+          { name: t("nav.about"), url: "/about-us" },
+        ]}
       />
       <Hero />
       <AnimatedText />

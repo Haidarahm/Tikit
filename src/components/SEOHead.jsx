@@ -6,14 +6,22 @@ import {
   stripLocalePrefix,
   withLocalePrefix,
 } from "../utils/localePaths";
+import { generatePrimaryLocalBusinessSchema } from "../schema/primaryLocalBusinessJsonLd.js";
 
 /**
  * SEOHead Component - AI Engine Optimization Ready
- * 
+ *
  * Provides comprehensive meta tags and structured data for:
  * - Search engines (Google, Bing)
  * - AI assistants (ChatGPT, Claude, Gemini, Perplexity)
  * - Social media platforms
+ *
+ * **JSON-LD (@graph via `#seo-structured-data`):**
+ * - `WebPage` — always (unless caller supplies one in `structuredData`)
+ * - `LocalBusiness` — Dubai HQ by default (`includePrimaryLocalBusiness`)
+ * - `Service` — when `serviceType` is set
+ * - `FAQPage` — when `faqItems` is non-empty
+ * - `BreadcrumbList` — when `breadcrumbs` is non-empty
  */
 const SEOHead = ({
   title,
@@ -30,6 +38,12 @@ const SEOHead = ({
   breadcrumbs,
   faqItems,
   articleData,
+  /**
+   * When true (default), merges primary Dubai `LocalBusiness` into JSON-LD unless
+   * `structuredData` already defines a LocalBusiness. Disable on rare pages that
+   * ship a conflicting custom graph.
+   */
+  includePrimaryLocalBusiness = true,
 }) => {
   const { t } = useTranslation();
   const { isRtl, language, localizedPath } = useI18nLanguage();
@@ -409,6 +423,14 @@ const SEOHead = ({
       schemas.push(faqSchema);
     }
 
+    // Primary LocalBusiness (Dubai HQ) — pairs with Service / FAQ / breadcrumbs on key pages
+    if (
+      includePrimaryLocalBusiness &&
+      !schemas.some((s) => hasSchemaType(s, "LocalBusiness"))
+    ) {
+      schemas.push(generatePrimaryLocalBusinessSchema());
+    }
+
     // Add article schema if applicable
     const articleSchema = generateArticleSchema();
     if (articleSchema) schemas.push(articleSchema);
@@ -474,6 +496,7 @@ const SEOHead = ({
     breadcrumbs,
     faqItems,
     articleData,
+    includePrimaryLocalBusiness,
     location.pathname,
     canonicalUrl,
     language,

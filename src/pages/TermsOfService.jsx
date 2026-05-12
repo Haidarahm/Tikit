@@ -81,6 +81,7 @@ The Burlington Tower, Marasi Drive, Dubai – Office 309
         description="Read Tikit Agency's Terms of Service. Understand the rules, guidelines, and legal agreement for using our influencer marketing and talent management services."
         keywords="Tikit Agency terms of service, legal terms, influencer agency agreement, marketing services terms"
         canonicalUrl="/terms-of-service"
+        serviceType="Influencer Marketing & Talent Management Services"
         breadcrumbs={[
           { name: "Home", url: "/" },
           { name: "Terms of Service", url: "/terms-of-service" }

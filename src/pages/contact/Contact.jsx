@@ -63,6 +63,13 @@ const Contact = () => {
         keywords={t("seo.pages.contact.keywords")}
         canonicalUrl="/contact-us"
         structuredData={contactPageSchema}
+        serviceType={t("seo.pages.contact.serviceType", {
+          defaultValue: "Influencer Marketing & Digital Marketing Agency",
+        })}
+        breadcrumbs={[
+          { name: t("nav.home"), url: "/" },
+          { name: t("nav.contact"), url: "/contact-us" },
+        ]}
       />
       <Hero />
       {/* <AnimatedLines /> */}

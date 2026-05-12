@@ -143,6 +143,7 @@ For data protection inquiries, please email Holla@tikit.ae with "Privacy" in the
         description="Read Tikit Agency's Privacy Policy. Learn how we collect, use, and protect your personal information when using our influencer marketing services."
         keywords="Tikit Agency privacy policy, data protection, personal information, influencer agency privacy"
         canonicalUrl="/privacy-policy"
+        serviceType="Marketing & Influencer Services"
         breadcrumbs={[
           { name: "Home", url: "/" },
           { name: "Privacy Policy", url: "/privacy-policy" }

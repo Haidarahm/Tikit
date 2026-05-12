@@ -215,6 +215,17 @@ const CreativeDetails = () => {
         }
         description={objective ?? subtitle ?? ""}
         canonicalUrl={`/work/creative/${slug}`}
+        serviceType={t("work.details.creative.serviceType", {
+          defaultValue: "Influencer Marketing & Creative Campaign Services",
+        })}
+        breadcrumbs={[
+          { name: t("nav.home"), url: "/" },
+          { name: t("nav.work"), url: "/work" },
+          {
+            name: title || slug || t("work.details.creative.title"),
+            url: `/work/creative/${slug}`,
+          },
+        ]}
       />
 
       {creative.loading ? (
