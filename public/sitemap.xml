@@ -2,18 +2,22 @@
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
     <loc>https://tikit.ae/sitemap-pages.xml</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://tikit.ae/sitemap-services.xml</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://tikit.ae/sitemap-blogs.xml</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://tikit.ae/sitemap-work.xml</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://tikit.ae/sitemap-case-studies.xml</loc>
+    <lastmod>2026-05-13</lastmod>
   </sitemap>
 </sitemapindex>

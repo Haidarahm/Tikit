@@ -13,6 +13,7 @@ import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
 import { stripLocalePrefix } from "../../utils/localePaths";
 import { useTheme } from "../../store/ThemeContext.jsx";
 import SEOHead from "../../components/SEOHead";
+import { buildCaseStudySeoPayload } from "../../utils/workCaseStudyJsonLd.js";
 import ContactUs from "../Home/ContactUs";
 import CaseStudy, { workItemToCaseData } from "../Work/components/CaseStudy";
 import { FiUsers, FiEye, FiActivity, FiArrowLeft } from "react-icons/fi";
@@ -91,6 +92,20 @@ const InfluenceDetails = () => {
   const objective = useMemo(() => {
     if (itemData?.objective) return itemData.objective;
   }, [itemData, language]);
+
+  const caseStudySeo = useMemo(
+    () =>
+      itemData
+        ? buildCaseStudySeoPayload({
+            category: "influence",
+            item: itemData,
+            media,
+            headline: title,
+            description: objective ?? "",
+          })
+        : null,
+    [itemData, media, title, objective],
+  );
 
   const metrics = useMemo(() => {
     if (!itemData) return [];
@@ -199,6 +214,7 @@ const InfluenceDetails = () => {
         }
         description={objective ?? ""}
         canonicalUrl={`/work/influence/${slug}`}
+        caseStudyData={caseStudySeo ?? undefined}
       />
 
       {influence.loading && shouldUseCaseStudyLoader ? (

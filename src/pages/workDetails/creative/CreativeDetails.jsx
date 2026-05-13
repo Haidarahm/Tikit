@@ -10,6 +10,7 @@ import { useTranslation } from "react-i18next";
 import { useWorkItemDetailsStore } from "../../../store/work/workItemDetailsStore.js";
 import { useI18nLanguage } from "../../../store/I18nLanguageContext.jsx";
 import SEOHead from "../../../components/SEOHead.jsx";
+import { buildCaseStudySeoPayload } from "../../../utils/workCaseStudyJsonLd.js";
 import ContactUs from "../../Home/ContactUs.jsx";
 import Loader from "../../../components/Loader.jsx";
 import CaseStudy, {
@@ -87,6 +88,21 @@ const CreativeDetails = () => {
   const objective = useMemo(() => {
     if (itemData?.objective) return itemData.objective;
   }, [itemData, language]);
+
+  const caseStudySeo = useMemo(
+    () =>
+      itemData
+        ? buildCaseStudySeoPayload({
+            category: "creative",
+            item: itemData,
+            media,
+            headline: title,
+            description: (objective || subtitle || "").trim() || undefined,
+            alternativeHeadline: subtitle || undefined,
+          })
+        : null,
+    [itemData, media, title, objective, subtitle],
+  );
 
   const metrics = useMemo(() => {
     if (!itemData) return [];
@@ -226,6 +242,7 @@ const CreativeDetails = () => {
             url: `/work/creative/${slug}`,
           },
         ]}
+        caseStudyData={caseStudySeo ?? undefined}
       />
 
       {creative.loading ? (

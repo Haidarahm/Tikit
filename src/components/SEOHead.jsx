@@ -3,6 +3,8 @@ import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
 import { useI18nLanguage } from "../store/I18nLanguageContext";
 import {
+  DEFAULT_LOCALE,
+  LOCALE_CODES,
   stripLocalePrefix,
   withLocalePrefix,
 } from "../utils/localePaths";
@@ -23,7 +25,36 @@ import { TIKIT_DUBAI_POSTAL_ADDRESS } from "../schema/businessPostalAddress.js";
  * - `Service` — when `serviceType` is set
  * - `FAQPage` — when `faqItems` is non-empty
  * - `BreadcrumbList` — when `breadcrumbs` is non-empty
+ * - `CaseStudy` — when `caseStudyData` is set (portfolio / work detail pages)
+ *
+ * **Multilingual SEO (canonical + hreflang):**
+ * - Self-referencing `<link rel="canonical">` for the active locale path.
+ * - `<link rel="alternate" hreflang="…">` uses regional BCP 47 (`en-US`, `fr-FR`,
+ *   `ar-AE`) while URLs stay `/en/`, `/fr/`, `/ar/`.
+ * - `og:locale:alternate` for other Facebook locales (pairs with `og:locale`).
  */
+
+function pickNonEmptyString(v) {
+  if (v == null) return undefined;
+  const s = String(v).trim();
+  return s || undefined;
+}
+
+function normalizeCaseStudyImages(imagesOrSingle, fallbackUrl) {
+  const out = [];
+  const push = (u) => {
+    const s = pickNonEmptyString(u);
+    if (s && !out.includes(s)) out.push(s);
+  };
+  if (Array.isArray(imagesOrSingle)) {
+    for (const u of imagesOrSingle) push(u);
+  } else {
+    push(imagesOrSingle);
+  }
+  if (!out.length) push(fallbackUrl);
+  return out;
+}
+
 const SEOHead = ({
   title,
   description,
@@ -40,6 +71,12 @@ const SEOHead = ({
   faqItems,
   articleData,
   /**
+   * Portfolio case study structured data (`schema.org/CaseStudy`).
+   * When set, `BlogPosting`/`Article` from `articleData` is skipped to avoid duplicate article-like entities.
+   * @see `buildCaseStudySeoPayload` in `src/utils/workCaseStudyJsonLd.js`
+   */
+  caseStudyData,
+  /**
    * When true (default), merges primary Dubai `LocalBusiness` into JSON-LD unless
    * `structuredData` already defines a LocalBusiness. Disable on rare pages that
    * ship a conflicting custom graph.
@@ -51,9 +88,23 @@ const SEOHead = ({
   const location = useLocation();
 
   const schemaLang =
-    language === "ar" ? "ar" : language === "fr" ? "fr" : "en";
+    language === "ar" ? "ar-AE" : language === "fr" ? "fr-FR" : "en-US";
   const ogLocale =
-    language === "ar" ? "ar_SA" : language === "fr" ? "fr_FR" : "en_US";
+    language === "ar" ? "ar_AE" : language === "fr" ? "fr_FR" : "en_US";
+
+  /** Open Graph `og:locale` / `og:locale:alternate` (Facebook: underscore regions). */
+  const ogLocaleByLang = {
+    en: "en_US",
+    fr: "fr_FR",
+    ar: "ar_AE",
+  };
+
+  /** `hreflang` attribute values (BCP 47, hyphen) — paths still use /en/, /fr/, /ar/. */
+  const hreflangBcp47ByLang = {
+    en: "en-US",
+    fr: "fr-FR",
+    ar: "ar-AE",
+  };
 
   const siteName = "Tikit Agency";
   const baseUrl = "https://tikit.ae";
@@ -118,11 +169,14 @@ const SEOHead = ({
   const fullCanonicalUrl = `${baseUrl}${canonicalPathStr}`;
   const fullOgImage = ogImage || defaultImage;
 
+  /** Locale-stripped path for the *current* canonical (same page, all languages). */
   const restForHreflang = stripLocalePrefix(canonicalPathStr);
-  const getLocalizedUrl = (lng) =>
-    `${baseUrl}${
-      restForHreflang === "/" ? `/${lng}` : `/${lng}${restForHreflang}`
+  const getLocalizedUrl = (lng) => {
+    const code = LOCALE_CODES.includes(lng) ? lng : DEFAULT_LOCALE;
+    return `${baseUrl}${
+      restForHreflang === "/" ? `/${code}` : `/${code}${restForHreflang}`
     }`;
+  };
 
   // Generate Service Schema if serviceType is provided
   const generateServiceSchema = () => {
@@ -274,6 +328,85 @@ const SEOHead = ({
     return schema;
   };
 
+  // CaseStudy schema for work / portfolio detail pages (extends Article lineage on schema.org).
+  const generateCaseStudySchema = () => {
+    if (!caseStudyData || typeof caseStudyData !== "object") return null;
+
+    const headline =
+      pickNonEmptyString(caseStudyData.headline) || title || fullTitle;
+    const descriptionText =
+      pickNonEmptyString(caseStudyData.description) || fullDescription;
+
+    const imageList = normalizeCaseStudyImages(
+      caseStudyData.images ?? caseStudyData.image,
+      fullOgImage,
+    );
+
+    const schema = {
+      "@context": "https://schema.org",
+      "@type": "CaseStudy",
+      headline,
+      description: descriptionText,
+      url: fullCanonicalUrl,
+      inLanguage: schemaLang,
+      mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": fullCanonicalUrl,
+      },
+      author: {
+        "@type": "Organization",
+        name: siteName,
+        url: baseUrl,
+      },
+      publisher: {
+        "@type": "Organization",
+        name: siteName,
+        logo: {
+          "@type": "ImageObject",
+          url: `${baseUrl}/logo-light.png`,
+          width: 200,
+          height: 60,
+        },
+      },
+    };
+
+    if (imageList.length === 1) {
+      schema.image = imageList[0];
+    } else if (imageList.length > 1) {
+      schema.image = imageList;
+    }
+
+    const alt = pickNonEmptyString(caseStudyData.alternativeHeadline);
+    if (alt) schema.alternativeHeadline = alt;
+
+    const industry = pickNonEmptyString(caseStudyData.industry);
+    if (industry) {
+      schema.about = { "@type": "Thing", name: industry };
+    }
+
+    const clientName = pickNonEmptyString(caseStudyData.clientName);
+    if (clientName) {
+      schema.mentions = { "@type": "Organization", name: clientName };
+    }
+
+    const abstract = pickNonEmptyString(caseStudyData.abstract);
+    if (abstract) schema.abstract = abstract;
+
+    const articleBody = pickNonEmptyString(caseStudyData.articleBody);
+    if (articleBody) schema.articleBody = articleBody;
+
+    const kw = pickNonEmptyString(caseStudyData.keywords);
+    if (kw) schema.keywords = kw;
+
+    const dp = pickNonEmptyString(caseStudyData.datePublished);
+    if (dp) schema.datePublished = dp;
+
+    const dm = pickNonEmptyString(caseStudyData.dateModified) || dp;
+    if (dm) schema.dateModified = dm;
+
+    return schema;
+  };
+
   useEffect(() => {
     if (typeof document === "undefined") return;
 
@@ -307,16 +440,34 @@ const SEOHead = ({
 
     const setAlternateLink = (hreflang, href) => {
       if (!href) return;
-      let link = document.head.querySelector(`link[rel="alternate"][hreflang="${hreflang}"]`);
+      let link = document.head.querySelector(
+        `link[rel="alternate"][hreflang="${hreflang}"]`,
+      );
       if (!link) {
         link = document.createElement("link");
         link.setAttribute("rel", "alternate");
         link.setAttribute("hreflang", hreflang);
-        link.setAttribute("data-seo-hreflang", "true");
         document.head.appendChild(link);
       }
       link.setAttribute("href", href);
+      link.setAttribute("data-seo-hreflang", "true");
       return link;
+    };
+
+    /** Multiple `og:locale:alternate` tags (one per other locale). */
+    const setOgLocaleAlternateMeta = (fbLocale) => {
+      if (!fbLocale) return null;
+      let tag = document.head.querySelector(
+        `meta[property="og:locale:alternate"][data-seo-og-locale-alt="${fbLocale}"]`,
+      );
+      if (!tag) {
+        tag = document.createElement("meta");
+        tag.setAttribute("property", "og:locale:alternate");
+        tag.setAttribute("data-seo-og-locale-alt", fbLocale);
+        document.head.appendChild(tag);
+      }
+      tag.setAttribute("content", fbLocale);
+      return tag;
     };
 
     const previous = [];
@@ -383,12 +534,17 @@ const SEOHead = ({
     });
 
     const canonicalTag = setLink("canonical", fullCanonicalUrl);
-    const alternates = [
-      setAlternateLink("en", getLocalizedUrl("en")),
-      setAlternateLink("fr", getLocalizedUrl("fr")),
-      setAlternateLink("ar", getLocalizedUrl("ar")),
-      setAlternateLink("x-default", getLocalizedUrl("en")),
+
+    const hreflangLinks = [
+      ...LOCALE_CODES.map((lng) =>
+        setAlternateLink(hreflangBcp47ByLang[lng], getLocalizedUrl(lng)),
+      ),
+      setAlternateLink("x-default", getLocalizedUrl(DEFAULT_LOCALE)),
     ].filter(Boolean);
+
+    LOCALE_CODES.filter((lng) => lng !== language).forEach((lng) => {
+      setOgLocaleAlternateMeta(ogLocaleByLang[lng]);
+    });
     const htmlEl = document.documentElement;
     const prevLang = htmlEl.lang;
     const prevDir = htmlEl.dir;
@@ -434,9 +590,17 @@ const SEOHead = ({
       schemas.push(generatePrimaryLocalBusinessSchema());
     }
 
-    // Add article schema if applicable
-    const articleSchema = generateArticleSchema();
+    // Add article schema if applicable (skip when CaseStudy covers the page)
+    const articleSchema = caseStudyData ? null : generateArticleSchema();
     if (articleSchema) schemas.push(articleSchema);
+
+    const caseStudySchema = generateCaseStudySchema();
+    if (
+      caseStudySchema &&
+      !schemas.some((s) => hasSchemaType(s, "CaseStudy"))
+    ) {
+      schemas.push(caseStudySchema);
+    }
 
     // Inject all schemas
     if (schemas.length > 0) {
@@ -477,11 +641,14 @@ const SEOHead = ({
       if (canonicalTag && !canonicalTag.getAttribute("href")) {
         canonicalTag.remove();
       }
-      alternates.forEach((link) => {
+      hreflangLinks.forEach((link) => {
         if (link?.getAttribute("data-seo-hreflang") === "true") {
           link.remove();
         }
       });
+      document
+        .querySelectorAll("meta[property=\"og:locale:alternate\"][data-seo-og-locale-alt]")
+        .forEach((el) => el.remove());
       htmlEl.lang = prevLang;
       htmlEl.dir = prevDir;
     };
@@ -499,6 +666,7 @@ const SEOHead = ({
     breadcrumbs,
     faqItems,
     articleData,
+    caseStudyData,
     includePrimaryLocalBusiness,
     location.pathname,
     canonicalUrl,

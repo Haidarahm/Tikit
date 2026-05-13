@@ -6,6 +6,7 @@ import { useWorkItemDetailsStore } from "../../store/work/workItemDetailsStore";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
 import { useTheme } from "../../store/ThemeContext.jsx";
 import SEOHead from "../../components/SEOHead.jsx";
+import { buildCaseStudySeoPayload } from "../../utils/workCaseStudyJsonLd.js";
 import ContactUs from "../Home/ContactUs.jsx";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -45,6 +46,20 @@ const EventDetails = () => {
     }
     return [];
   }, [item, media]);
+
+  const caseStudySeo = useMemo(
+    () =>
+      item
+        ? buildCaseStudySeoPayload({
+            category: "events",
+            item,
+            media: gallery,
+            headline: title,
+            description: (objective || title || "").trim() || undefined,
+          })
+        : null,
+    [item, gallery, title, objective],
+  );
 
   const heroMedia = gallery[0] ?? null;
 
@@ -136,6 +151,7 @@ const EventDetails = () => {
         }
         description={objective || title || ""}
         canonicalUrl={`/work/event/${slug}`}
+        caseStudyData={caseStudySeo ?? undefined}
       />
 
       {eventState.loading ? (

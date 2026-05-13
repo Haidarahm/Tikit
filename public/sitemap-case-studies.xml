@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+  <!-- Case Study Showcase (4 cases × 3 locales) -->
+  <url>
+    <loc>https://tikit.ae/en/showcase/axi</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/showcase/axi"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/showcase/axi"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/showcase/axi"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/showcase/axi"/>
+  </url>
+
+  <url>
+    <loc>https://tikit.ae/fr/showcase/axi</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/showcase/axi"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/showcase/axi"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/showcase/axi"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/showcase/axi"/>
+  </url>
+
+  <url>
+    <loc>https://tikit.ae/ar/showcase/axi</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/showcase/axi"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/showcase/axi"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/showcase/axi"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/showcase/axi"/>
+  </url>
+
+  <url>
+    <loc>https://tikit.ae/en/showcase/department-of-culture-and-tourism</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/showcase/department-of-culture-and-tourism"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/showcase/department-of-culture-and-tourism"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/showcase/department-of-culture-and-tourism"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/showcase/department-of-culture-and-tourism"/>
+  </url>
+
+  <url>
+    <loc>https://tikit.ae/fr/showcase/department-of-culture-and-tourism</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/showcase/department-of-culture-and-tourism"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/showcase/department-of-culture-and-tourism"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/showcase/department-of-culture-and-tourism"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/showcase/department-of-culture-and-tourism"/>
+  </url>
+
+  <url>
+    <loc>https://tikit.ae/ar/showcase/department-of-culture-and-tourism</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/showcase/department-of-culture-and-tourism"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/showcase/department-of-culture-and-tourism"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/showcase/department-of-culture-and-tourism"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/showcase/department-of-culture-and-tourism"/>
+  </url>
+
+  <url>
+    <loc>https://tikit.ae/en/showcase/ounass</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/showcase/ounass"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/showcase/ounass"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/showcase/ounass"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/showcase/ounass"/>
+  </url>
+
+  <url>
+    <loc>https://tikit.ae/fr/showcase/ounass</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/showcase/ounass"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/showcase/ounass"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/showcase/ounass"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/showcase/ounass"/>
+  </url>
+
+  <url>
+    <loc>https://tikit.ae/ar/showcase/ounass</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/showcase/ounass"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/showcase/ounass"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/showcase/ounass"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/showcase/ounass"/>
+  </url>
+
+  <url>
+    <loc>https://tikit.ae/en/showcase/spotify</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/showcase/spotify"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/showcase/spotify"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/showcase/spotify"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/showcase/spotify"/>
+  </url>
+
+  <url>
+    <loc>https://tikit.ae/fr/showcase/spotify</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/showcase/spotify"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/showcase/spotify"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/showcase/spotify"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/showcase/spotify"/>
+  </url>
+
+  <url>
+    <loc>https://tikit.ae/ar/showcase/spotify</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/showcase/spotify"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/showcase/spotify"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/showcase/spotify"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/showcase/spotify"/>
+  </url>
+
+</urlset>

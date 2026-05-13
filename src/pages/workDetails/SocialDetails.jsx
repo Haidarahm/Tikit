@@ -12,6 +12,7 @@ import { useWorkItemDetailsStore } from "../../store/work/workItemDetailsStore";
 import { useI18nLanguage } from "../../store/I18nLanguageContext.jsx";
 import { useTheme } from "../../store/ThemeContext.jsx";
 import SEOHead from "../../components/SEOHead";
+import { buildCaseStudySeoPayload } from "../../utils/workCaseStudyJsonLd.js";
 import ContactUs from "../Home/ContactUs";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -102,6 +103,20 @@ const SocialDetails = () => {
 
     if (itemData.approach) return itemData.approach;
   }, [itemData, language]);
+
+  const caseStudySeo = useMemo(
+    () =>
+      itemData
+        ? buildCaseStudySeoPayload({
+            category: "social",
+            item: itemData,
+            media,
+            headline: title,
+            description: (objective || approach || "").trim() || undefined,
+          })
+        : null,
+    [itemData, media, title, objective, approach],
+  );
 
   const metrics = useMemo(() => {
     if (!itemData) return [];
@@ -209,6 +224,7 @@ const SocialDetails = () => {
         }
         description={objective ?? ""}
         canonicalUrl={`/work/social/${slug}`}
+        caseStudyData={caseStudySeo ?? undefined}
       />
 
       {social.loading ? (

@@ -5,10 +5,10 @@
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
-  <!-- Services hub -->
+  <!-- en services -->
   <url>
     <loc>https://tikit.ae/en/services</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/services"/>
@@ -16,9 +16,11 @@
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/services"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/services"/>
   </url>
+
+  <!-- fr services -->
   <url>
     <loc>https://tikit.ae/fr/services</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/services"/>
@@ -26,9 +28,11 @@
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/services"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/services"/>
   </url>
+
+  <!-- ar services -->
   <url>
     <loc>https://tikit.ae/ar/services</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/services"/>
@@ -37,42 +41,46 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/services"/>
   </url>
 
-  <!-- Influencer Marketing Agency Dubai (hub) -->
+  <!-- en influencer marketing agency dubai -->
   <url>
     <loc>https://tikit.ae/en/influencer-marketing-agency-dubai</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/influencer-marketing-agency-dubai"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/influencer-marketing-agency-dubai"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/influencer-marketing-agency-dubai"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/influencer-marketing-agency-dubai"/>
   </url>
+
+  <!-- fr influencer marketing agency dubai -->
   <url>
     <loc>https://tikit.ae/fr/influencer-marketing-agency-dubai</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/influencer-marketing-agency-dubai"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/influencer-marketing-agency-dubai"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/influencer-marketing-agency-dubai"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/influencer-marketing-agency-dubai"/>
   </url>
+
+  <!-- ar influencer marketing agency dubai -->
   <url>
     <loc>https://tikit.ae/ar/influencer-marketing-agency-dubai</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/influencer-marketing-agency-dubai"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/influencer-marketing-agency-dubai"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/influencer-marketing-agency-dubai"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/influencer-marketing-agency-dubai"/>
   </url>
 
-  <!-- Campaign Management Dubai -->
+  <!-- en influencer marketing agency dubai/campaign management dubai -->
   <url>
     <loc>https://tikit.ae/en/influencer-marketing-agency-dubai/campaign-management-dubai</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/influencer-marketing-agency-dubai/campaign-management-dubai"/>
@@ -80,9 +88,11 @@
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/influencer-marketing-agency-dubai/campaign-management-dubai"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/influencer-marketing-agency-dubai/campaign-management-dubai"/>
   </url>
+
+  <!-- fr influencer marketing agency dubai/campaign management dubai -->
   <url>
     <loc>https://tikit.ae/fr/influencer-marketing-agency-dubai/campaign-management-dubai</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/influencer-marketing-agency-dubai/campaign-management-dubai"/>
@@ -90,9 +100,11 @@
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/influencer-marketing-agency-dubai/campaign-management-dubai"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/influencer-marketing-agency-dubai/campaign-management-dubai"/>
   </url>
+
+  <!-- ar influencer marketing agency dubai/campaign management dubai -->
   <url>
     <loc>https://tikit.ae/ar/influencer-marketing-agency-dubai/campaign-management-dubai</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/influencer-marketing-agency-dubai/campaign-management-dubai"/>
@@ -101,10 +113,10 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/influencer-marketing-agency-dubai/campaign-management-dubai"/>
   </url>
 
-  <!-- Luxury Influencer Marketing -->
+  <!-- en influencer marketing agency dubai/luxury influencer marketing -->
   <url>
     <loc>https://tikit.ae/en/influencer-marketing-agency-dubai/luxury-influencer-marketing</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/influencer-marketing-agency-dubai/luxury-influencer-marketing"/>
@@ -112,9 +124,11 @@
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/influencer-marketing-agency-dubai/luxury-influencer-marketing"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/influencer-marketing-agency-dubai/luxury-influencer-marketing"/>
   </url>
+
+  <!-- fr influencer marketing agency dubai/luxury influencer marketing -->
   <url>
     <loc>https://tikit.ae/fr/influencer-marketing-agency-dubai/luxury-influencer-marketing</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/influencer-marketing-agency-dubai/luxury-influencer-marketing"/>
@@ -122,9 +136,11 @@
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/influencer-marketing-agency-dubai/luxury-influencer-marketing"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/influencer-marketing-agency-dubai/luxury-influencer-marketing"/>
   </url>
+
+  <!-- ar influencer marketing agency dubai/luxury influencer marketing -->
   <url>
     <loc>https://tikit.ae/ar/influencer-marketing-agency-dubai/luxury-influencer-marketing</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/influencer-marketing-agency-dubai/luxury-influencer-marketing"/>
@@ -133,42 +149,10 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/influencer-marketing-agency-dubai/luxury-influencer-marketing"/>
   </url>
 
-  <!-- Micro Influencer Marketing Dubai (FIX 14 — was missing from sitemap) -->
-  <url>
-    <loc>https://tikit.ae/en/influencer-marketing-agency-dubai/micro-influencer-marketing-dubai</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/influencer-marketing-agency-dubai/micro-influencer-marketing-dubai"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/influencer-marketing-agency-dubai/micro-influencer-marketing-dubai"/>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/influencer-marketing-agency-dubai/micro-influencer-marketing-dubai"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/influencer-marketing-agency-dubai/micro-influencer-marketing-dubai"/>
-  </url>
-  <url>
-    <loc>https://tikit.ae/fr/influencer-marketing-agency-dubai/micro-influencer-marketing-dubai</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/influencer-marketing-agency-dubai/micro-influencer-marketing-dubai"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/influencer-marketing-agency-dubai/micro-influencer-marketing-dubai"/>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/influencer-marketing-agency-dubai/micro-influencer-marketing-dubai"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/influencer-marketing-agency-dubai/micro-influencer-marketing-dubai"/>
-  </url>
-  <url>
-    <loc>https://tikit.ae/ar/influencer-marketing-agency-dubai/micro-influencer-marketing-dubai</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/influencer-marketing-agency-dubai/micro-influencer-marketing-dubai"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/influencer-marketing-agency-dubai/micro-influencer-marketing-dubai"/>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/influencer-marketing-agency-dubai/micro-influencer-marketing-dubai"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/influencer-marketing-agency-dubai/micro-influencer-marketing-dubai"/>
-  </url>
-
-  <!-- ROI Analytics -->
+  <!-- en influencer marketing agency dubai/roi analytics -->
   <url>
     <loc>https://tikit.ae/en/influencer-marketing-agency-dubai/roi-analytics</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/influencer-marketing-agency-dubai/roi-analytics"/>
@@ -176,9 +160,11 @@
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/influencer-marketing-agency-dubai/roi-analytics"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/influencer-marketing-agency-dubai/roi-analytics"/>
   </url>
+
+  <!-- fr influencer marketing agency dubai/roi analytics -->
   <url>
     <loc>https://tikit.ae/fr/influencer-marketing-agency-dubai/roi-analytics</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/influencer-marketing-agency-dubai/roi-analytics"/>
@@ -186,9 +172,11 @@
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/influencer-marketing-agency-dubai/roi-analytics"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/influencer-marketing-agency-dubai/roi-analytics"/>
   </url>
+
+  <!-- ar influencer marketing agency dubai/roi analytics -->
   <url>
     <loc>https://tikit.ae/ar/influencer-marketing-agency-dubai/roi-analytics</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/influencer-marketing-agency-dubai/roi-analytics"/>
@@ -197,10 +185,10 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/influencer-marketing-agency-dubai/roi-analytics"/>
   </url>
 
-  <!-- Instagram Influencer Marketing -->
+  <!-- en influencer marketing agency dubai/instagram influencer marketing -->
   <url>
     <loc>https://tikit.ae/en/influencer-marketing-agency-dubai/instagram-influencer-marketing</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/influencer-marketing-agency-dubai/instagram-influencer-marketing"/>
@@ -208,9 +196,11 @@
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/influencer-marketing-agency-dubai/instagram-influencer-marketing"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/influencer-marketing-agency-dubai/instagram-influencer-marketing"/>
   </url>
+
+  <!-- fr influencer marketing agency dubai/instagram influencer marketing -->
   <url>
     <loc>https://tikit.ae/fr/influencer-marketing-agency-dubai/instagram-influencer-marketing</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/influencer-marketing-agency-dubai/instagram-influencer-marketing"/>
@@ -218,9 +208,11 @@
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/influencer-marketing-agency-dubai/instagram-influencer-marketing"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/influencer-marketing-agency-dubai/instagram-influencer-marketing"/>
   </url>
+
+  <!-- ar influencer marketing agency dubai/instagram influencer marketing -->
   <url>
     <loc>https://tikit.ae/ar/influencer-marketing-agency-dubai/instagram-influencer-marketing</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/influencer-marketing-agency-dubai/instagram-influencer-marketing"/>
@@ -229,10 +221,10 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/influencer-marketing-agency-dubai/instagram-influencer-marketing"/>
   </url>
 
-  <!-- TikTok Influencer Marketing -->
+  <!-- en influencer marketing agency dubai/tiktok influencer marketing -->
   <url>
     <loc>https://tikit.ae/en/influencer-marketing-agency-dubai/tiktok-influencer-marketing</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/influencer-marketing-agency-dubai/tiktok-influencer-marketing"/>
@@ -240,9 +232,11 @@
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/influencer-marketing-agency-dubai/tiktok-influencer-marketing"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/influencer-marketing-agency-dubai/tiktok-influencer-marketing"/>
   </url>
+
+  <!-- fr influencer marketing agency dubai/tiktok influencer marketing -->
   <url>
     <loc>https://tikit.ae/fr/influencer-marketing-agency-dubai/tiktok-influencer-marketing</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/influencer-marketing-agency-dubai/tiktok-influencer-marketing"/>
@@ -250,9 +244,11 @@
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/influencer-marketing-agency-dubai/tiktok-influencer-marketing"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/influencer-marketing-agency-dubai/tiktok-influencer-marketing"/>
   </url>
+
+  <!-- ar influencer marketing agency dubai/tiktok influencer marketing -->
   <url>
     <loc>https://tikit.ae/ar/influencer-marketing-agency-dubai/tiktok-influencer-marketing</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/influencer-marketing-agency-dubai/tiktok-influencer-marketing"/>
@@ -261,10 +257,10 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/influencer-marketing-agency-dubai/tiktok-influencer-marketing"/>
   </url>
 
-  <!-- Influencer Marketing Cost UAE -->
+  <!-- en influencer marketing agency dubai/influencer marketing cost uae -->
   <url>
     <loc>https://tikit.ae/en/influencer-marketing-agency-dubai/influencer-marketing-cost-uae</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/influencer-marketing-agency-dubai/influencer-marketing-cost-uae"/>
@@ -272,9 +268,11 @@
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/influencer-marketing-agency-dubai/influencer-marketing-cost-uae"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/influencer-marketing-agency-dubai/influencer-marketing-cost-uae"/>
   </url>
+
+  <!-- fr influencer marketing agency dubai/influencer marketing cost uae -->
   <url>
     <loc>https://tikit.ae/fr/influencer-marketing-agency-dubai/influencer-marketing-cost-uae</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/influencer-marketing-agency-dubai/influencer-marketing-cost-uae"/>
@@ -282,9 +280,11 @@
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/influencer-marketing-agency-dubai/influencer-marketing-cost-uae"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/influencer-marketing-agency-dubai/influencer-marketing-cost-uae"/>
   </url>
+
+  <!-- ar influencer marketing agency dubai/influencer marketing cost uae -->
   <url>
     <loc>https://tikit.ae/ar/influencer-marketing-agency-dubai/influencer-marketing-cost-uae</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/influencer-marketing-agency-dubai/influencer-marketing-cost-uae"/>
@@ -293,10 +293,10 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/influencer-marketing-agency-dubai/influencer-marketing-cost-uae"/>
   </url>
 
-  <!-- Social Media Management -->
+  <!-- en social media management -->
   <url>
     <loc>https://tikit.ae/en/social-media-management</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/social-media-management"/>
@@ -304,9 +304,11 @@
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/social-media-management"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/social-media-management"/>
   </url>
+
+  <!-- fr social media management -->
   <url>
     <loc>https://tikit.ae/fr/social-media-management</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/social-media-management"/>
@@ -314,9 +316,11 @@
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/social-media-management"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/social-media-management"/>
   </url>
+
+  <!-- ar social media management -->
   <url>
     <loc>https://tikit.ae/ar/social-media-management</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/social-media-management"/>
@@ -325,10 +329,10 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/social-media-management"/>
   </url>
 
-  <!-- Production -->
+  <!-- en production -->
   <url>
     <loc>https://tikit.ae/en/production</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/production"/>
@@ -336,9 +340,11 @@
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/production"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/production"/>
   </url>
+
+  <!-- fr production -->
   <url>
     <loc>https://tikit.ae/fr/production</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/production"/>
@@ -346,9 +352,11 @@
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/production"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/production"/>
   </url>
+
+  <!-- ar production -->
   <url>
     <loc>https://tikit.ae/ar/production</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/production"/>
@@ -357,10 +365,10 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/production"/>
   </url>
 
-  <!-- Branding Agency Dubai -->
+  <!-- en branding agency dubai -->
   <url>
     <loc>https://tikit.ae/en/branding-agency-dubai</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/branding-agency-dubai"/>
@@ -368,9 +376,11 @@
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/branding-agency-dubai"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/branding-agency-dubai"/>
   </url>
+
+  <!-- fr branding agency dubai -->
   <url>
     <loc>https://tikit.ae/fr/branding-agency-dubai</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/branding-agency-dubai"/>
@@ -378,9 +388,11 @@
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/branding-agency-dubai"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/branding-agency-dubai"/>
   </url>
+
+  <!-- ar branding agency dubai -->
   <url>
     <loc>https://tikit.ae/ar/branding-agency-dubai</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/branding-agency-dubai"/>
@@ -389,10 +401,10 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/branding-agency-dubai"/>
   </url>
 
-  <!-- Web Development Dubai -->
+  <!-- en web development dubai -->
   <url>
     <loc>https://tikit.ae/en/web-development-dubai</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/web-development-dubai"/>
@@ -400,9 +412,11 @@
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/web-development-dubai"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/web-development-dubai"/>
   </url>
+
+  <!-- fr web development dubai -->
   <url>
     <loc>https://tikit.ae/fr/web-development-dubai</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/web-development-dubai"/>
@@ -410,9 +424,11 @@
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/web-development-dubai"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/web-development-dubai"/>
   </url>
+
+  <!-- ar web development dubai -->
   <url>
     <loc>https://tikit.ae/ar/web-development-dubai</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/web-development-dubai"/>
@@ -421,10 +437,10 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/web-development-dubai"/>
   </url>
 
-  <!-- Digital Marketing Agency Dubai (hub) -->
+  <!-- en digital marketing agency dubai -->
   <url>
     <loc>https://tikit.ae/en/digital-marketing-agency-dubai</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/digital-marketing-agency-dubai"/>
@@ -432,9 +448,11 @@
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/digital-marketing-agency-dubai"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/digital-marketing-agency-dubai"/>
   </url>
+
+  <!-- fr digital marketing agency dubai -->
   <url>
     <loc>https://tikit.ae/fr/digital-marketing-agency-dubai</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/digital-marketing-agency-dubai"/>
@@ -442,9 +460,11 @@
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/digital-marketing-agency-dubai"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/digital-marketing-agency-dubai"/>
   </url>
+
+  <!-- ar digital marketing agency dubai -->
   <url>
     <loc>https://tikit.ae/ar/digital-marketing-agency-dubai</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/digital-marketing-agency-dubai"/>
@@ -453,10 +473,10 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/digital-marketing-agency-dubai"/>
   </url>
 
-  <!-- SEO Services -->
+  <!-- en digital marketing agency dubai/seo services -->
   <url>
     <loc>https://tikit.ae/en/digital-marketing-agency-dubai/seo-services</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/digital-marketing-agency-dubai/seo-services"/>
@@ -464,9 +484,11 @@
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/digital-marketing-agency-dubai/seo-services"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/digital-marketing-agency-dubai/seo-services"/>
   </url>
+
+  <!-- fr digital marketing agency dubai/seo services -->
   <url>
     <loc>https://tikit.ae/fr/digital-marketing-agency-dubai/seo-services</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/digital-marketing-agency-dubai/seo-services"/>
@@ -474,9 +496,11 @@
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/digital-marketing-agency-dubai/seo-services"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/digital-marketing-agency-dubai/seo-services"/>
   </url>
+
+  <!-- ar digital marketing agency dubai/seo services -->
   <url>
     <loc>https://tikit.ae/ar/digital-marketing-agency-dubai/seo-services</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/digital-marketing-agency-dubai/seo-services"/>
@@ -485,10 +509,10 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/digital-marketing-agency-dubai/seo-services"/>
   </url>
 
-  <!-- Paid Ads Management -->
+  <!-- en digital marketing agency dubai/paid ads management -->
   <url>
     <loc>https://tikit.ae/en/digital-marketing-agency-dubai/paid-ads-management</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/digital-marketing-agency-dubai/paid-ads-management"/>
@@ -496,9 +520,11 @@
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/digital-marketing-agency-dubai/paid-ads-management"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/digital-marketing-agency-dubai/paid-ads-management"/>
   </url>
+
+  <!-- fr digital marketing agency dubai/paid ads management -->
   <url>
     <loc>https://tikit.ae/fr/digital-marketing-agency-dubai/paid-ads-management</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/digital-marketing-agency-dubai/paid-ads-management"/>
@@ -506,9 +532,11 @@
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/digital-marketing-agency-dubai/paid-ads-management"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/digital-marketing-agency-dubai/paid-ads-management"/>
   </url>
+
+  <!-- ar digital marketing agency dubai/paid ads management -->
   <url>
     <loc>https://tikit.ae/ar/digital-marketing-agency-dubai/paid-ads-management</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/digital-marketing-agency-dubai/paid-ads-management"/>
@@ -517,30 +545,10 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/digital-marketing-agency-dubai/paid-ads-management"/>
   </url>
 
-  <!-- Conversion Optimization -->
+  <!-- en digital marketing agency dubai/conversion optimization -->
   <url>
     <loc>https://tikit.ae/en/digital-marketing-agency-dubai/conversion-optimization</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/digital-marketing-agency-dubai/conversion-optimization"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/digital-marketing-agency-dubai/conversion-optimization"/>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/digital-marketing-agency-dubai/conversion-optimization"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/digital-marketing-agency-dubai/conversion-optimization"/>
-  </url>
-  <url>
-    <loc>https://tikit.ae/fr/digital-marketing-agency-dubai/conversion-optimization</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/digital-marketing-agency-dubai/conversion-optimization"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/digital-marketing-agency-dubai/conversion-optimization"/>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/digital-marketing-agency-dubai/conversion-optimization"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/digital-marketing-agency-dubai/conversion-optimization"/>
-  </url>
-  <url>
-    <loc>https://tikit.ae/ar/digital-marketing-agency-dubai/conversion-optimization</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/digital-marketing-agency-dubai/conversion-optimization"/>
@@ -549,10 +557,34 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/digital-marketing-agency-dubai/conversion-optimization"/>
   </url>
 
-  <!-- Performance Marketing -->
+  <!-- fr digital marketing agency dubai/conversion optimization -->
+  <url>
+    <loc>https://tikit.ae/fr/digital-marketing-agency-dubai/conversion-optimization</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/digital-marketing-agency-dubai/conversion-optimization"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/digital-marketing-agency-dubai/conversion-optimization"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/digital-marketing-agency-dubai/conversion-optimization"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/digital-marketing-agency-dubai/conversion-optimization"/>
+  </url>
+
+  <!-- ar digital marketing agency dubai/conversion optimization -->
+  <url>
+    <loc>https://tikit.ae/ar/digital-marketing-agency-dubai/conversion-optimization</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/digital-marketing-agency-dubai/conversion-optimization"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/digital-marketing-agency-dubai/conversion-optimization"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/digital-marketing-agency-dubai/conversion-optimization"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/digital-marketing-agency-dubai/conversion-optimization"/>
+  </url>
+
+  <!-- en digital marketing agency dubai/performance marketing -->
   <url>
     <loc>https://tikit.ae/en/digital-marketing-agency-dubai/performance-marketing</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/digital-marketing-agency-dubai/performance-marketing"/>
@@ -560,9 +592,11 @@
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/digital-marketing-agency-dubai/performance-marketing"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/digital-marketing-agency-dubai/performance-marketing"/>
   </url>
+
+  <!-- fr digital marketing agency dubai/performance marketing -->
   <url>
     <loc>https://tikit.ae/fr/digital-marketing-agency-dubai/performance-marketing</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/digital-marketing-agency-dubai/performance-marketing"/>
@@ -570,9 +604,11 @@
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/digital-marketing-agency-dubai/performance-marketing"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/digital-marketing-agency-dubai/performance-marketing"/>
   </url>
+
+  <!-- ar digital marketing agency dubai/performance marketing -->
   <url>
     <loc>https://tikit.ae/ar/digital-marketing-agency-dubai/performance-marketing</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/digital-marketing-agency-dubai/performance-marketing"/>

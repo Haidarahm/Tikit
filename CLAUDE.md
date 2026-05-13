@@ -9,7 +9,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **Build for production:** `npm run build` (outputs to dist/, then runs react-snap for prerendering)
 - **Preview production build:** `npm run preview --host`
 - **Lint code:** `npm run lint`
-- **Generate sitemap:** `npm run generate-sitemap` (fetches blogs from API, outputs to public/sitemap.xml)
+- **Generate sitemap:** `npm run generate-sitemap` (fetches blogs, work portfolio items, and showcase case studies from the API; emits a sitemap index plus five locale-aware child sitemaps under `public/`)
 - **Check unused translations:** `npm run i18n:check-unused`
 - **Prune unused translations:** `npm run i18n:prune-unused --apply`
 
@@ -192,7 +192,14 @@ src/locales/
 
 **Handling API calls during prerendering:**
 - Components render empty/fallback state when API fails
-- Sitemap generated post-build via `npm run generate-sitemap` (fetches current blogs)
+- Sitemap generated via `npm run generate-sitemap` — produces a sitemap index plus child sitemaps under `public/`:
+  - `sitemap-pages.xml` — static marketing pages
+  - `sitemap-services.xml` — service hubs and landing pages
+  - `sitemap-blogs.xml` — blog listing + every blog post
+  - `sitemap-work.xml` — work portfolio (influence/social/creative/events)
+  - `sitemap-case-studies.xml` — showcase case studies (`/showcase/:slug`)
+  - Every entry is emitted in all 3 locales (`en`, `fr`, `ar`) with `xhtml:link rel="alternate" hreflang="…"` tags + `x-default` for proper Google Search Console indexing.
+- After running, submit `https://tikit.ae/sitemap.xml` in Google Search Console (Sitemaps tab) as priority so the new case study and blog URLs are crawled.
 
 ## Development Workflow
 

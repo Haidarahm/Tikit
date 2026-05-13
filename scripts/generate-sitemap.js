@@ -1,14 +1,23 @@
 /**
  * Sitemap Generator Script
- * 
- * This script generates a sitemap.xml file that includes all blog posts.
- * Run this script before deploying to ensure Google can discover all blog posts.
- * 
+ *
+ * Generates a sitemap index (`sitemap.xml`) plus five child sitemaps under
+ * `public/`, each emitted in all 3 site locales (en, fr, ar) with hreflang
+ * alternate tags so Google Search Console picks up the right localized URLs:
+ *
+ *   - sitemap-pages.xml         (static marketing pages)
+ *   - sitemap-services.xml      (service hub + landing pages)
+ *   - sitemap-blogs.xml         (blog listing + every blog post)
+ *   - sitemap-work.xml          (work portfolio: influence/social/creative/events)
+ *   - sitemap-case-studies.xml  (showcase case studies / `/showcase/:slug`)
+ *
+ * Run after content changes and resubmit `https://tikit.ae/sitemap.xml` in
+ * Google Search Console so the new URLs are crawled with priority.
+ *
  * Usage:
+ *   npm run generate-sitemap
+ *   # or
  *   node scripts/generate-sitemap.js
- * 
- * Or add to package.json:
- *   "generate-sitemap": "node scripts/generate-sitemap.js"
  */
 
 import axios from 'axios';
@@ -34,6 +43,14 @@ function localizePath(url, locale) {
   return `/${locale}${url.startsWith('/') ? url : `/${url}`}`;
 }
 
+function stripLocalePrefix(url) {
+  if (!url) return '/';
+  const match = url.match(new RegExp(`^/(${LOCALES.join('|')})(?=/|$)`));
+  if (!match) return url;
+  const stripped = url.slice(match[0].length);
+  return stripped === '' ? '/' : stripped;
+}
+
 function localizedEntries(entries) {
   return entries.flatMap((entry) =>
     LOCALES.map((locale) => ({
@@ -50,6 +67,7 @@ const SITEMAP_SERVICES_PATH = path.join(__dirname, '../public/sitemap-services.x
 const SITEMAP_PAGES_PATH = path.join(__dirname, '../public/sitemap-pages.xml');
 const SITEMAP_BLOGS_PATH = path.join(__dirname, '../public/sitemap-blogs.xml');
 const SITEMAP_WORK_PATH = path.join(__dirname, '../public/sitemap-work.xml');
+const SITEMAP_CASE_STUDIES_PATH = path.join(__dirname, '../public/sitemap-case-studies.xml');
 
 // Static URLs grouped by logical sitemap (service sections at root, no /services prefix)
 const servicesPages = [
@@ -188,6 +206,38 @@ async function fetchAllWorkDetailUrls() {
   return Array.from(urlSet).sort();
 }
 
+async function fetchAllCaseStudyUrls() {
+  try {
+    const response = await axios.get(`${BASE_URL}/showcase-projects/get`, {
+      params: { lang: 'en' },
+      timeout: 15000,
+    });
+
+    // The API may return data in different shapes depending on environment:
+    //   - { data: [ ... ] }
+    //   - [ ... ]
+    //   - { data: { data: [ ... ] } }
+    const raw = response?.data;
+    const items = Array.isArray(raw)
+      ? raw
+      : Array.isArray(raw?.data)
+        ? raw.data
+        : Array.isArray(raw?.data?.data)
+          ? raw.data.data
+          : [];
+
+    const urlSet = new Set();
+    items.forEach((item) => {
+      if (item?.slug) urlSet.add(`/showcase/${item.slug}`);
+    });
+
+    return Array.from(urlSet).sort();
+  } catch (error) {
+    console.error('Error fetching showcase case studies:', error.message);
+    return [];
+  }
+}
+
 async function fetchAllBlogs() {
   try {
     const blogs = [];
@@ -230,8 +280,20 @@ function formatDate(dateString) {
   }
 }
 
-function generateStaticSitemap(staticPages, today) {
-  let xml = `<?xml version="1.0" encoding="UTF-8"?>
+// Builds the <xhtml:link rel="alternate" hreflang="..."/> tags for a URL
+// expressed as a non-localized path (e.g. "/blogs/foo" or "/" for the home).
+function buildHreflangAlternates(canonicalPath, indent = '    ') {
+  const lines = LOCALES.map(
+    (locale) =>
+      `${indent}<xhtml:link rel="alternate" hreflang="${locale}" href="${SITE_URL}${localizePath(canonicalPath, locale)}"/>`
+  );
+  lines.push(
+    `${indent}<xhtml:link rel="alternate" hreflang="x-default" href="${SITE_URL}${localizePath(canonicalPath, 'en')}"/>`
+  );
+  return lines.join('\n');
+}
+
+const URLSET_OPEN = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xmlns:xhtml="http://www.w3.org/1999/xhtml"
@@ -240,14 +302,25 @@ function generateStaticSitemap(staticPages, today) {
 
 `;
 
+function generateStaticSitemap(staticPages, today) {
+  let xml = URLSET_OPEN;
+
   staticPages.forEach((page) => {
-    const label = page.url === '/' ? 'Homepage' : page.url.replace('/', '').replace(/-/g, ' ');
+    // `page.url` here is already localized (e.g. "/en/about-us"). For the
+    // hreflang alternates we need the un-prefixed canonical path so we can
+    // re-localize per language.
+    const canonicalPath = stripLocalePrefix(page.url);
+    const label =
+      page.url === '/' || canonicalPath === '/'
+        ? `Homepage (${page.locale ?? 'all'})`
+        : `${page.locale ?? ''} ${canonicalPath.replace(/^\//, '').replace(/-/g, ' ')}`.trim();
     xml += `  <!-- ${label} -->\n`;
     xml += `  <url>\n`;
     xml += `    <loc>${SITE_URL}${page.url}</loc>\n`;
     xml += `    <lastmod>${today}</lastmod>\n`;
     xml += `    <changefreq>${page.changefreq}</changefreq>\n`;
     xml += `    <priority>${page.priority}</priority>\n`;
+    xml += `${buildHreflangAlternates(canonicalPath)}\n`;
     xml += `  </url>\n\n`;
   });
 
@@ -256,41 +329,37 @@ function generateStaticSitemap(staticPages, today) {
 }
 
 function generateBlogsSitemap(blogs, today) {
-  let xml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml"
-        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  let xml = URLSET_OPEN;
 
-`;
-
-  // Blog listing pages
-  localizedEntries(blogListingPages).forEach((page) => {
-    const label = page.url.replace('/', '').replace(/-/g, ' ');
-    xml += `  <!-- ${label} -->\n`;
-    xml += `  <url>\n`;
-    xml += `    <loc>${SITE_URL}${page.url}</loc>\n`;
-    xml += `    <lastmod>${today}</lastmod>\n`;
-    xml += `    <changefreq>${page.changefreq}</changefreq>\n`;
-    xml += `    <priority>${page.priority}</priority>\n`;
-    xml += `  </url>\n\n`;
+  blogListingPages.forEach((page) => {
+    LOCALES.forEach((locale) => {
+      const localizedUrl = localizePath(page.url, locale);
+      xml += `  <!-- ${locale}${page.url} -->\n`;
+      xml += `  <url>\n`;
+      xml += `    <loc>${SITE_URL}${localizedUrl}</loc>\n`;
+      xml += `    <lastmod>${today}</lastmod>\n`;
+      xml += `    <changefreq>${page.changefreq}</changefreq>\n`;
+      xml += `    <priority>${page.priority}</priority>\n`;
+      xml += `${buildHreflangAlternates(page.url)}\n`;
+      xml += `  </url>\n\n`;
+    });
   });
 
   if (blogs.length > 0) {
-    xml += `  <!-- Blog Posts (${blogs.length} posts) -->\n`;
+    xml += `  <!-- Blog Posts (${blogs.length} posts × ${LOCALES.length} locales) -->\n`;
     blogs.forEach((blog) => {
-      if (blog.slug) {
-        const lastmod = formatDate(blog.updated_at || blog.created_at);
-        LOCALES.forEach((locale) => {
-          xml += `  <url>\n`;
-          xml += `    <loc>${SITE_URL}${localizePath(`/blogs/${blog.slug}`, locale)}</loc>\n`;
-          xml += `    <lastmod>${lastmod}</lastmod>\n`;
-          xml += `    <changefreq>weekly</changefreq>\n`;
-          xml += `    <priority>0.6</priority>\n`;
-          xml += `  </url>\n\n`;
-        });
-      }
+      if (!blog.slug) return;
+      const lastmod = formatDate(blog.updated_at || blog.created_at);
+      const canonicalPath = `/blogs/${blog.slug}`;
+      LOCALES.forEach((locale) => {
+        xml += `  <url>\n`;
+        xml += `    <loc>${SITE_URL}${localizePath(canonicalPath, locale)}</loc>\n`;
+        xml += `    <lastmod>${lastmod}</lastmod>\n`;
+        xml += `    <changefreq>weekly</changefreq>\n`;
+        xml += `    <priority>0.6</priority>\n`;
+        xml += `${buildHreflangAlternates(canonicalPath)}\n`;
+        xml += `  </url>\n\n`;
+      });
     });
   }
 
@@ -299,17 +368,10 @@ function generateBlogsSitemap(blogs, today) {
 }
 
 function generateWorkSitemap(workUrls, today) {
-  let xml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml"
-        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-
-`;
+  let xml = URLSET_OPEN;
 
   if (workUrls.length > 0) {
-    xml += `  <!-- Work Details (${workUrls.length} pages) -->\n`;
+    xml += `  <!-- Work Details (${workUrls.length} pages × ${LOCALES.length} locales) -->\n`;
     workUrls.forEach((url) => {
       LOCALES.forEach((locale) => {
         xml += `  <url>\n`;
@@ -317,6 +379,29 @@ function generateWorkSitemap(workUrls, today) {
         xml += `    <lastmod>${today}</lastmod>\n`;
         xml += `    <changefreq>weekly</changefreq>\n`;
         xml += `    <priority>0.7</priority>\n`;
+        xml += `${buildHreflangAlternates(url)}\n`;
+        xml += `  </url>\n\n`;
+      });
+    });
+  }
+
+  xml += `</urlset>\n`;
+  return xml;
+}
+
+function generateCaseStudiesSitemap(caseStudyUrls, today) {
+  let xml = URLSET_OPEN;
+
+  if (caseStudyUrls.length > 0) {
+    xml += `  <!-- Case Study Showcase (${caseStudyUrls.length} cases × ${LOCALES.length} locales) -->\n`;
+    caseStudyUrls.forEach((url) => {
+      LOCALES.forEach((locale) => {
+        xml += `  <url>\n`;
+        xml += `    <loc>${SITE_URL}${localizePath(url, locale)}</loc>\n`;
+        xml += `    <lastmod>${today}</lastmod>\n`;
+        xml += `    <changefreq>monthly</changefreq>\n`;
+        xml += `    <priority>0.8</priority>\n`;
+        xml += `${buildHreflangAlternates(url)}\n`;
         xml += `  </url>\n\n`;
       });
     });
@@ -343,6 +428,10 @@ function generateSitemapIndex(today) {
   </sitemap>
   <sitemap>
     <loc>${SITE_URL}/sitemap-work.xml</loc>
+    <lastmod>${today}</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>${SITE_URL}/sitemap-case-studies.xml</loc>
     <lastmod>${today}</lastmod>
   </sitemap>
 </sitemapindex>
@@ -389,20 +478,35 @@ async function main() {
   const blogsXml = generateBlogsSitemap(blogs, today);
   fs.writeFileSync(SITEMAP_BLOGS_PATH, blogsXml, 'utf8');
 
-  console.log("💼 Fetching work detail URLs from API...");
+  console.log('💼 Fetching work detail URLs from API...');
   const workDetailUrls = await fetchAllWorkDetailUrls();
   console.log(`✅ Found ${workDetailUrls.length} work detail pages`);
+
+  console.log('🎬 Fetching showcase case study URLs from API...');
+  const caseStudyUrls = await fetchAllCaseStudyUrls();
+  console.log(`✅ Found ${caseStudyUrls.length} showcase case studies`);
+
   if (blogs.length === 0) {
-    console.warn("⚠️ No blogs found");
+    console.warn('⚠️  No blogs found');
   }
-  
+
   if (workDetailUrls.length === 0) {
-    console.error("❌ No work detail pages found — API issue!");
-    process.exit(1); // يمنع إنشاء sitemap فاضي
+    // Don't hard-fail: the API may be temporarily unreachable during build.
+    // We still want a usable sitemap with static + blog content.
+    console.warn('⚠️  No work detail pages found — API may be unreachable.');
   }
-  console.log("🧭 Generating work sitemap...");
+
+  if (caseStudyUrls.length === 0) {
+    console.warn('⚠️  No showcase case studies found — API may be unreachable.');
+  }
+
+  console.log('🧭 Generating work sitemap...');
   const workXml = generateWorkSitemap(workDetailUrls, today);
-  fs.writeFileSync(SITEMAP_WORK_PATH, workXml, "utf8");
+  fs.writeFileSync(SITEMAP_WORK_PATH, workXml, 'utf8');
+
+  console.log('🏆 Generating case studies sitemap...');
+  const caseStudiesXml = generateCaseStudiesSitemap(caseStudyUrls, today);
+  fs.writeFileSync(SITEMAP_CASE_STUDIES_PATH, caseStudiesXml, 'utf8');
 
   console.log('🔗 Generating sitemap index...');
   const indexXml = generateSitemapIndex(today);
@@ -410,14 +514,19 @@ async function main() {
 
   const totalStatic =
     (pages.length + servicesPages.length + blogListingPages.length) * LOCALES.length;
-  const totalUrls = totalStatic + (blogs.length * LOCALES.length) + (workDetailUrls.length * LOCALES.length);
+  const totalUrls =
+    totalStatic +
+    blogs.length * LOCALES.length +
+    workDetailUrls.length * LOCALES.length +
+    caseStudyUrls.length * LOCALES.length;
 
   console.log('✅ Sitemaps generated successfully!');
-  console.log(`   - Pages (static): ${pages.length}`);
-  console.log(`   - Services (static): ${servicesPages.length}`);
-  console.log(`   - Blog listing pages (static): ${blogListingPages.length}`);
-  console.log(`   - Blog posts: ${blogs.length}`);
-  console.log(`   - Work detail pages: ${workDetailUrls.length}`);
+  console.log(`   - Pages (static): ${pages.length} × ${LOCALES.length} locales`);
+  console.log(`   - Services (static): ${servicesPages.length} × ${LOCALES.length} locales`);
+  console.log(`   - Blog listing pages (static): ${blogListingPages.length} × ${LOCALES.length} locales`);
+  console.log(`   - Blog posts: ${blogs.length} × ${LOCALES.length} locales`);
+  console.log(`   - Work detail pages: ${workDetailUrls.length} × ${LOCALES.length} locales`);
+  console.log(`   - Case study (showcase) pages: ${caseStudyUrls.length} × ${LOCALES.length} locales`);
   console.log(`   - Total URLs: ${totalUrls}`);
   console.log(`   - Index: ${SITEMAP_INDEX_PATH}`);
 }

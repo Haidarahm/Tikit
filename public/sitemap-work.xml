@@ -5,32 +5,33 @@
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
-  <!-- Work Details — influence/ -->
-
+  <!-- Work Details (40 pages × 3 locales) -->
   <url>
     <loc>https://tikit.ae/en/work/influence/abercrombie-fitch</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/abercrombie-fitch"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/abercrombie-fitch"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/abercrombie-fitch"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/abercrombie-fitch"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/fr/work/influence/abercrombie-fitch</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/abercrombie-fitch"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/abercrombie-fitch"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/abercrombie-fitch"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/abercrombie-fitch"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/ar/work/influence/abercrombie-fitch</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/abercrombie-fitch"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/abercrombie-fitch"/>
@@ -40,28 +41,30 @@
 
   <url>
     <loc>https://tikit.ae/en/work/influence/address-beach-resort</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/address-beach-resort"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/address-beach-resort"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/address-beach-resort"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/address-beach-resort"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/fr/work/influence/address-beach-resort</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/address-beach-resort"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/address-beach-resort"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/address-beach-resort"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/address-beach-resort"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/ar/work/influence/address-beach-resort</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/address-beach-resort"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/address-beach-resort"/>
@@ -71,28 +74,30 @@
 
   <url>
     <loc>https://tikit.ae/en/work/influence/adnoc</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/adnoc"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/adnoc"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/adnoc"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/adnoc"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/fr/work/influence/adnoc</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/adnoc"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/adnoc"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/adnoc"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/adnoc"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/ar/work/influence/adnoc</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/adnoc"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/adnoc"/>
@@ -102,28 +107,30 @@
 
   <url>
     <loc>https://tikit.ae/en/work/influence/axi</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/axi"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/axi"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/axi"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/axi"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/fr/work/influence/axi</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/axi"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/axi"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/axi"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/axi"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/ar/work/influence/axi</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/axi"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/axi"/>
@@ -133,28 +140,30 @@
 
   <url>
     <loc>https://tikit.ae/en/work/influence/baic</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/baic"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/baic"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/baic"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/baic"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/fr/work/influence/baic</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/baic"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/baic"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/baic"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/baic"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/ar/work/influence/baic</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/baic"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/baic"/>
@@ -164,28 +173,30 @@
 
   <url>
     <loc>https://tikit.ae/en/work/influence/binghatti</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/binghatti"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/binghatti"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/binghatti"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/binghatti"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/fr/work/influence/binghatti</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/binghatti"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/binghatti"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/binghatti"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/binghatti"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/ar/work/influence/binghatti</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/binghatti"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/binghatti"/>
@@ -195,28 +206,30 @@
 
   <url>
     <loc>https://tikit.ae/en/work/influence/binghatti-london</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/binghatti-london"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/binghatti-london"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/binghatti-london"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/binghatti-london"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/fr/work/influence/binghatti-london</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/binghatti-london"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/binghatti-london"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/binghatti-london"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/binghatti-london"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/ar/work/influence/binghatti-london</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/binghatti-london"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/binghatti-london"/>
@@ -226,28 +239,30 @@
 
   <url>
     <loc>https://tikit.ae/en/work/influence/bioderma</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/bioderma"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/bioderma"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/bioderma"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/bioderma"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/fr/work/influence/bioderma</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/bioderma"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/bioderma"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/bioderma"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/bioderma"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/ar/work/influence/bioderma</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/bioderma"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/bioderma"/>
@@ -257,28 +272,30 @@
 
   <url>
     <loc>https://tikit.ae/en/work/influence/chevrolet</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/chevrolet"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/chevrolet"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/chevrolet"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/chevrolet"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/fr/work/influence/chevrolet</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/chevrolet"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/chevrolet"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/chevrolet"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/chevrolet"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/ar/work/influence/chevrolet</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/chevrolet"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/chevrolet"/>
@@ -288,28 +305,30 @@
 
   <url>
     <loc>https://tikit.ae/en/work/influence/choice</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/choice"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/choice"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/choice"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/choice"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/fr/work/influence/choice</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/choice"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/choice"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/choice"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/choice"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/ar/work/influence/choice</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/choice"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/choice"/>
@@ -319,28 +338,30 @@
 
   <url>
     <loc>https://tikit.ae/en/work/influence/department-of-culture-tourism</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/department-of-culture-tourism"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/department-of-culture-tourism"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/department-of-culture-tourism"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/department-of-culture-tourism"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/fr/work/influence/department-of-culture-tourism</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/department-of-culture-tourism"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/department-of-culture-tourism"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/department-of-culture-tourism"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/department-of-culture-tourism"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/ar/work/influence/department-of-culture-tourism</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/department-of-culture-tourism"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/department-of-culture-tourism"/>
@@ -350,28 +371,30 @@
 
   <url>
     <loc>https://tikit.ae/en/work/influence/department-of-economic-development</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/department-of-economic-development"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/department-of-economic-development"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/department-of-economic-development"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/department-of-economic-development"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/fr/work/influence/department-of-economic-development</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/department-of-economic-development"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/department-of-economic-development"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/department-of-economic-development"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/department-of-economic-development"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/ar/work/influence/department-of-economic-development</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/department-of-economic-development"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/department-of-economic-development"/>
@@ -381,28 +404,30 @@
 
   <url>
     <loc>https://tikit.ae/en/work/influence/esthederm</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/esthederm"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/esthederm"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/esthederm"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/esthederm"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/fr/work/influence/esthederm</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/esthederm"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/esthederm"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/esthederm"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/esthederm"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/ar/work/influence/esthederm</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/esthederm"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/esthederm"/>
@@ -412,28 +437,30 @@
 
   <url>
     <loc>https://tikit.ae/en/work/influence/ferrari-world-abu-dhabi</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/ferrari-world-abu-dhabi"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/ferrari-world-abu-dhabi"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/ferrari-world-abu-dhabi"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/ferrari-world-abu-dhabi"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/fr/work/influence/ferrari-world-abu-dhabi</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/ferrari-world-abu-dhabi"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/ferrari-world-abu-dhabi"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/ferrari-world-abu-dhabi"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/ferrari-world-abu-dhabi"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/ar/work/influence/ferrari-world-abu-dhabi</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/ferrari-world-abu-dhabi"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/ferrari-world-abu-dhabi"/>
@@ -443,28 +470,30 @@
 
   <url>
     <loc>https://tikit.ae/en/work/influence/hilton-x-abu-dhabi-tourism</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/hilton-x-abu-dhabi-tourism"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/hilton-x-abu-dhabi-tourism"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/hilton-x-abu-dhabi-tourism"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/hilton-x-abu-dhabi-tourism"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/fr/work/influence/hilton-x-abu-dhabi-tourism</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/hilton-x-abu-dhabi-tourism"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/hilton-x-abu-dhabi-tourism"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/hilton-x-abu-dhabi-tourism"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/hilton-x-abu-dhabi-tourism"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/ar/work/influence/hilton-x-abu-dhabi-tourism</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/hilton-x-abu-dhabi-tourism"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/hilton-x-abu-dhabi-tourism"/>
@@ -474,28 +503,30 @@
 
   <url>
     <loc>https://tikit.ae/en/work/influence/hollister</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/hollister"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/hollister"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/hollister"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/hollister"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/fr/work/influence/hollister</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/hollister"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/hollister"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/hollister"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/hollister"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/ar/work/influence/hollister</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/hollister"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/hollister"/>
@@ -505,28 +536,30 @@
 
   <url>
     <loc>https://tikit.ae/en/work/influence/international-securities</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/international-securities"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/international-securities"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/international-securities"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/international-securities"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/fr/work/influence/international-securities</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/international-securities"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/international-securities"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/international-securities"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/international-securities"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/ar/work/influence/international-securities</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/international-securities"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/international-securities"/>
@@ -536,28 +569,30 @@
 
   <url>
     <loc>https://tikit.ae/en/work/influence/jeep</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/jeep"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/jeep"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/jeep"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/jeep"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/fr/work/influence/jeep</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/jeep"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/jeep"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/jeep"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/jeep"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/ar/work/influence/jeep</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/jeep"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/jeep"/>
@@ -567,28 +602,30 @@
 
   <url>
     <loc>https://tikit.ae/en/work/influence/kabrita</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/kabrita"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/kabrita"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/kabrita"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/kabrita"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/fr/work/influence/kabrita</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/kabrita"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/kabrita"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/kabrita"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/kabrita"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/ar/work/influence/kabrita</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/kabrita"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/kabrita"/>
@@ -598,28 +635,30 @@
 
   <url>
     <loc>https://tikit.ae/en/work/influence/krave</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/krave"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/krave"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/krave"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/krave"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/fr/work/influence/krave</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/krave"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/krave"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/krave"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/krave"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/ar/work/influence/krave</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/krave"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/krave"/>
@@ -629,28 +668,30 @@
 
   <url>
     <loc>https://tikit.ae/en/work/influence/loreal</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/loreal"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/loreal"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/loreal"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/loreal"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/fr/work/influence/loreal</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/loreal"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/loreal"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/loreal"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/loreal"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/ar/work/influence/loreal</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/loreal"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/loreal"/>
@@ -660,28 +701,30 @@
 
   <url>
     <loc>https://tikit.ae/en/work/influence/mihyar</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/mihyar"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/mihyar"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/mihyar"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/mihyar"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/fr/work/influence/mihyar</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/mihyar"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/mihyar"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/mihyar"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/mihyar"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/ar/work/influence/mihyar</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/mihyar"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/mihyar"/>
@@ -691,28 +734,30 @@
 
   <url>
     <loc>https://tikit.ae/en/work/influence/nayomi</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/nayomi"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/nayomi"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/nayomi"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/nayomi"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/fr/work/influence/nayomi</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/nayomi"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/nayomi"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/nayomi"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/nayomi"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/ar/work/influence/nayomi</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/nayomi"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/nayomi"/>
@@ -722,28 +767,30 @@
 
   <url>
     <loc>https://tikit.ae/en/work/influence/novakid</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/novakid"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/novakid"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/novakid"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/novakid"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/fr/work/influence/novakid</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/novakid"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/novakid"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/novakid"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/novakid"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/ar/work/influence/novakid</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/novakid"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/novakid"/>
@@ -753,28 +800,30 @@
 
   <url>
     <loc>https://tikit.ae/en/work/influence/ounass</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/ounass"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/ounass"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/ounass"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/ounass"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/fr/work/influence/ounass</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/ounass"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/ounass"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/ounass"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/ounass"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/ar/work/influence/ounass</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/ounass"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/ounass"/>
@@ -784,28 +833,30 @@
 
   <url>
     <loc>https://tikit.ae/en/work/influence/range-rover</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/range-rover"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/range-rover"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/range-rover"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/range-rover"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/fr/work/influence/range-rover</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/range-rover"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/range-rover"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/range-rover"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/range-rover"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/ar/work/influence/range-rover</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/range-rover"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/range-rover"/>
@@ -815,28 +866,30 @@
 
   <url>
     <loc>https://tikit.ae/en/work/influence/saudi-german-hospital</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/saudi-german-hospital"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/saudi-german-hospital"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/saudi-german-hospital"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/saudi-german-hospital"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/fr/work/influence/saudi-german-hospital</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/saudi-german-hospital"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/saudi-german-hospital"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/saudi-german-hospital"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/saudi-german-hospital"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/ar/work/influence/saudi-german-hospital</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/saudi-german-hospital"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/saudi-german-hospital"/>
@@ -846,28 +899,30 @@
 
   <url>
     <loc>https://tikit.ae/en/work/influence/seaworld-abu-dhabi</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/seaworld-abu-dhabi"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/seaworld-abu-dhabi"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/seaworld-abu-dhabi"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/seaworld-abu-dhabi"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/fr/work/influence/seaworld-abu-dhabi</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/seaworld-abu-dhabi"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/seaworld-abu-dhabi"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/seaworld-abu-dhabi"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/seaworld-abu-dhabi"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/ar/work/influence/seaworld-abu-dhabi</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/seaworld-abu-dhabi"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/seaworld-abu-dhabi"/>
@@ -877,28 +932,30 @@
 
   <url>
     <loc>https://tikit.ae/en/work/influence/skoda</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/skoda"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/skoda"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/skoda"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/skoda"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/fr/work/influence/skoda</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/skoda"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/skoda"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/skoda"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/skoda"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/ar/work/influence/skoda</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/skoda"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/skoda"/>
@@ -908,28 +965,30 @@
 
   <url>
     <loc>https://tikit.ae/en/work/influence/spotify</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/spotify"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/spotify"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/spotify"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/spotify"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/fr/work/influence/spotify</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/spotify"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/spotify"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/spotify"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/spotify"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/ar/work/influence/spotify</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/spotify"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/spotify"/>
@@ -939,28 +998,30 @@
 
   <url>
     <loc>https://tikit.ae/en/work/influence/teamlab</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/teamlab"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/teamlab"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/teamlab"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/teamlab"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/fr/work/influence/teamlab</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/teamlab"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/teamlab"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/teamlab"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/teamlab"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/ar/work/influence/teamlab</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/teamlab"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/teamlab"/>
@@ -970,28 +1031,30 @@
 
   <url>
     <loc>https://tikit.ae/en/work/influence/trendyol</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/trendyol"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/trendyol"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/trendyol"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/trendyol"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/fr/work/influence/trendyol</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/trendyol"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/trendyol"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/trendyol"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/trendyol"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/ar/work/influence/trendyol</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/trendyol"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/trendyol"/>
@@ -1001,28 +1064,30 @@
 
   <url>
     <loc>https://tikit.ae/en/work/influence/voyage-lounge-london</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/voyage-lounge-london"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/voyage-lounge-london"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/voyage-lounge-london"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/voyage-lounge-london"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/fr/work/influence/voyage-lounge-london</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/voyage-lounge-london"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/voyage-lounge-london"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/voyage-lounge-london"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/voyage-lounge-london"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/ar/work/influence/voyage-lounge-london</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/voyage-lounge-london"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/voyage-lounge-london"/>
@@ -1032,28 +1097,30 @@
 
   <url>
     <loc>https://tikit.ae/en/work/influence/xpeng</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/xpeng"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/xpeng"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/xpeng"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/xpeng"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/fr/work/influence/xpeng</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/xpeng"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/xpeng"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/xpeng"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/xpeng"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/ar/work/influence/xpeng</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/xpeng"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/xpeng"/>
@@ -1063,28 +1130,8 @@
 
   <url>
     <loc>https://tikit.ae/en/work/influence/xtb</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/xtb"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/xtb"/>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/xtb"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/xtb"/>
-  </url>
-  <url>
-    <loc>https://tikit.ae/fr/work/influence/xtb</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/xtb"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/xtb"/>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/xtb"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/xtb"/>
-  </url>
-  <url>
-    <loc>https://tikit.ae/ar/work/influence/xtb</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/xtb"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/xtb"/>
@@ -1092,32 +1139,54 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/xtb"/>
   </url>
 
-  <!-- Work Details — social/ -->
+  <url>
+    <loc>https://tikit.ae/fr/work/influence/xtb</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/xtb"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/xtb"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/xtb"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/xtb"/>
+  </url>
+
+  <url>
+    <loc>https://tikit.ae/ar/work/influence/xtb</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/influence/xtb"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/influence/xtb"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/influence/xtb"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/influence/xtb"/>
+  </url>
 
   <url>
     <loc>https://tikit.ae/en/work/social/hermoso-2</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/social/hermoso-2"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/social/hermoso-2"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/social/hermoso-2"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/social/hermoso-2"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/fr/work/social/hermoso-2</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/social/hermoso-2"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/social/hermoso-2"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/social/hermoso-2"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/social/hermoso-2"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/ar/work/social/hermoso-2</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/social/hermoso-2"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/social/hermoso-2"/>
@@ -1127,28 +1196,30 @@
 
   <url>
     <loc>https://tikit.ae/en/work/social/hidden-2</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/social/hidden-2"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/social/hidden-2"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/social/hidden-2"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/social/hidden-2"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/fr/work/social/hidden-2</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/social/hidden-2"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/social/hidden-2"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/social/hidden-2"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/social/hidden-2"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/ar/work/social/hidden-2</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/social/hidden-2"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/social/hidden-2"/>
@@ -1158,28 +1229,30 @@
 
   <url>
     <loc>https://tikit.ae/en/work/social/krave-2</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/social/krave-2"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/social/krave-2"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/social/krave-2"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/social/krave-2"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/fr/work/social/krave-2</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/social/krave-2"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/social/krave-2"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/social/krave-2"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/social/krave-2"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/ar/work/social/krave-2</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/social/krave-2"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/social/krave-2"/>
@@ -1189,28 +1262,30 @@
 
   <url>
     <loc>https://tikit.ae/en/work/social/sidekick-2</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/social/sidekick-2"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/social/sidekick-2"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/social/sidekick-2"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/social/sidekick-2"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/fr/work/social/sidekick-2</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/social/sidekick-2"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/social/sidekick-2"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/social/sidekick-2"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/social/sidekick-2"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/ar/work/social/sidekick-2</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/social/sidekick-2"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/social/sidekick-2"/>
@@ -1220,28 +1295,30 @@
 
   <url>
     <loc>https://tikit.ae/en/work/social/syde-2</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/social/syde-2"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/social/syde-2"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/social/syde-2"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/social/syde-2"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/fr/work/social/syde-2</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/social/syde-2"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/social/syde-2"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work/social/syde-2"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work/social/syde-2"/>
   </url>
+
   <url>
     <loc>https://tikit.ae/ar/work/social/syde-2</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work/social/syde-2"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work/social/syde-2"/>
