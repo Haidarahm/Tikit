@@ -48,6 +48,21 @@
   box-shadow: 0 12px 40px color-mix(in srgb, var(--secondary) 12%, transparent);
 }
 
+/**
+ * Full-service grid (InfFullService): accent must live on the card surface
+ * (AnimatedCard puts `className` on the inner node). Inset bar follows
+ * border-radius; hover keeps the bar and adds the lift shadow.
+ */
+.inf-service-card--accent-bar {
+  box-shadow: inset 4px 0 0 0 var(--secondary);
+}
+
+.inf-service-card--accent-bar:hover {
+  box-shadow:
+    inset 4px 0 0 0 var(--secondary),
+    0 12px 40px color-mix(in srgb, var(--secondary) 12%, transparent);
+}
+
 .inf-service-card__icon {
   @apply w-12 h-12 rounded-xl flex items-center justify-center text-xl mb-4;
   background: color-mix(in srgb, var(--secondary) 14%, transparent);

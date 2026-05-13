@@ -22,8 +22,7 @@ const InfFullService = forwardRef(({ label, title, description, items }, ref) =>
           {items.map((item, idx) => (
             <AnimatedCard
               key={item?.title || `item-${idx}`}
-              className="inf-service-card group"
-              style={{ borderLeftWidth: "3px", borderLeftColor: "var(--secondary)" }}
+              className="inf-service-card inf-service-card--accent-bar group"
             >
               <div className="inf-service-card__icon">{item.icon}</div>
               <h3 className="inf-service-card__title">{item.title}</h3>
