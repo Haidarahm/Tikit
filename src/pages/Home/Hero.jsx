@@ -73,6 +73,8 @@ const Hero = ({ introDone = true }) => {
           preload="metadata"
           fetchPriority="high"
           poster="/showcase-cover.webp"
+          width="1920"
+          height="1080"
           className="absolute inset-0 w-full h-full object-cover"
         >
           <source
@@ -103,13 +105,14 @@ const Hero = ({ introDone = true }) => {
 
           <h1
             data-hero-animate
+            aria-label="Dubai Influencer Marketing Agency — Tikit"
             className="font-[700] font-antonio text-[50px] lg:text-6xl xl:text-[96px] leading-tight"
             style={{
               textShadow:
                 "0 4px 12px rgba(0, 0, 0, 0.9), 0 8px 24px rgba(0, 0, 0, 0.7), 0 12px 32px rgba(0, 0, 0, 0.5)",
             }}
           >
-            ROI REBELS
+            <span aria-hidden="true">ROI REBELS</span>
           </h1>
         </div>
 

@@ -1,8 +1,8 @@
-# START YOAST BLOCK
 # ---------------------------
 User-agent: *
-Allow:
+Allow: /
+Disallow: /*/unsubscribe/
+Disallow: /*/influencer-register
 
 Sitemap: https://tikit.ae/sitemap.xml
 # ---------------------------
-# END YOAST BLOCK

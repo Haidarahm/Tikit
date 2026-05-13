@@ -120,13 +120,17 @@ const Footer = ({ className }) => {
     { to: "/contact-us", label: t("footer.links.contact") },
     { to: "/influencer", label: t("nav.influencers", "Influencers") },
     { to: "/faq", label: t("footer.links.faq", "FAQ") },
+    { to: "/influencer-marketing-dubai", label: "Influencer Marketing Dubai" },
+    { to: "/influencer-marketing-saudi-arabia", label: "Influencer Marketing KSA" },
   ];
 
   const serviceLinks = [
-    { to: "/influencer-marketing-dubai", label: t("footer.services.digitalMarketing") },
-    { to: "/services", label: t("footer.services.socialMedia") },
-    { to: "/services", label: t("footer.services.branding") },
-    { to: "/services", label: t("footer.services.production") },
+    { to: "/influencer-marketing-agency-dubai", label: t("footer.services.digitalMarketing") },
+    { to: "/social-media-management", label: t("footer.services.socialMedia") },
+    { to: "/branding-agency-dubai", label: t("footer.services.branding") },
+    { to: "/production", label: t("footer.services.production") },
+    { to: "/digital-marketing-agency-dubai", label: "Digital Marketing" },
+    { to: "/web-development-dubai", label: "Web Development" },
   ];
 
   const locations = [
@@ -275,10 +279,10 @@ const Footer = ({ className }) => {
 
             {/* Quick Links */}
             <div>
-              <h2 className="text-lg font-semibold text-[var(--foreground)] mb-6 relative">
+              <h3 className="text-lg font-semibold text-[var(--foreground)] mb-6 relative">
                 {t("nav.home", "Quick Links")}
                 <span className={`absolute bottom-[-8px] ${isRtl ? "right-0" : "left-0"} w-8 h-0.5 bg-[var(--secondary)]`}></span>
-              </h2>
+              </h3>
               <nav className="flex flex-col gap-3">
                 {quickLinks.map((link) => (
                   <Link
@@ -294,10 +298,10 @@ const Footer = ({ className }) => {
 
             {/* Services */}
             <div>
-              <h2 className="text-lg font-semibold text-[var(--foreground)] mb-6 relative">
+              <h3 className="text-lg font-semibold text-[var(--foreground)] mb-6 relative">
                 {t("nav.services", "Services")}
                 <span className={`absolute bottom-[-8px] ${isRtl ? "right-0" : "left-0"} w-8 h-0.5 bg-[var(--secondary)]`}></span>
-              </h2>
+              </h3>
               <nav className="flex flex-col gap-3">
                 {serviceLinks.map((link, index) => (
                   <Link
@@ -313,10 +317,10 @@ const Footer = ({ className }) => {
 
             {/* Contact Info */}
             <div>
-              <h2 className="text-lg font-semibold text-[var(--foreground)] mb-6 relative">
+              <h3 className="text-lg font-semibold text-[var(--foreground)] mb-6 relative">
                 {t("nav.contact", "Contact Us")}
                 <span className={`absolute bottom-[-8px] ${isRtl ? "right-0" : "left-0"} w-8 h-0.5 bg-[var(--secondary)]`}></span>
-              </h2>
+              </h3>
               
               <div className="space-y-4">
                 {/* Phone */}

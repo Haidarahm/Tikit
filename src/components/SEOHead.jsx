@@ -347,6 +347,7 @@ const SEOHead = ({
       ["og:title", fullTitle],
       ["og:description", fullDescription],
       ["og:image", fullOgImage],
+      ["og:image:alt", fullTitle],
       ["og:url", fullCanonicalUrl],
       ["og:type", ogType],
       ["og:site_name", siteName],

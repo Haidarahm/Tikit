@@ -147,7 +147,7 @@ const Branding = () => {
         title={t(`${TK}.cta.title`)}
         description={t(`${TK}.cta.desc`)}
         primaryButtonText={t(`${TK}.cta.primaryBtn`)}
-        primaryHref="/contact"
+        primaryHref="/contact-us"
         secondaryButtonText={t(`${TK}.cta.secondaryBtn`)}
         secondaryHref="tel:+97145774042"
       />

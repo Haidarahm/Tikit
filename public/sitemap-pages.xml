@@ -5,268 +5,356 @@
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
-  <!-- en -->
+  <!-- Home -->
   <url>
     <loc>https://tikit.ae/en</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en"/>
   </url>
-
-  <!-- fr -->
   <url>
     <loc>https://tikit.ae/fr</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en"/>
   </url>
-
-  <!-- ar -->
   <url>
     <loc>https://tikit.ae/ar</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en"/>
   </url>
 
-  <!-- en/about us -->
+  <!-- About Us -->
   <url>
     <loc>https://tikit.ae/en/about-us</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/about-us"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/about-us"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/about-us"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/about-us"/>
   </url>
-
-  <!-- fr/about us -->
   <url>
     <loc>https://tikit.ae/fr/about-us</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/about-us"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/about-us"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/about-us"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/about-us"/>
   </url>
-
-  <!-- ar/about us -->
   <url>
     <loc>https://tikit.ae/ar/about-us</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/about-us"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/about-us"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/about-us"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/about-us"/>
   </url>
 
-  <!-- en/work -->
+  <!-- Work -->
   <url>
     <loc>https://tikit.ae/en/work</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work"/>
   </url>
-
-  <!-- fr/work -->
   <url>
     <loc>https://tikit.ae/fr/work</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work"/>
   </url>
-
-  <!-- ar/work -->
   <url>
     <loc>https://tikit.ae/ar/work</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/work"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/work"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/work"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/work"/>
   </url>
 
-  <!-- en/influencer -->
+  <!-- Influencer -->
   <url>
     <loc>https://tikit.ae/en/influencer</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/influencer"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/influencer"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/influencer"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/influencer"/>
   </url>
-
-  <!-- fr/influencer -->
   <url>
     <loc>https://tikit.ae/fr/influencer</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/influencer"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/influencer"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/influencer"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/influencer"/>
   </url>
-
-  <!-- ar/influencer -->
   <url>
     <loc>https://tikit.ae/ar/influencer</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/influencer"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/influencer"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/influencer"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/influencer"/>
   </url>
 
-  <!-- en/influencer register -->
+  <!-- Influencer Register -->
   <url>
     <loc>https://tikit.ae/en/influencer-register</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/influencer-register"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/influencer-register"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/influencer-register"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/influencer-register"/>
   </url>
-
-  <!-- fr/influencer register -->
   <url>
     <loc>https://tikit.ae/fr/influencer-register</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/influencer-register"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/influencer-register"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/influencer-register"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/influencer-register"/>
   </url>
-
-  <!-- ar/influencer register -->
   <url>
     <loc>https://tikit.ae/ar/influencer-register</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/influencer-register"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/influencer-register"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/influencer-register"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/influencer-register"/>
   </url>
 
-  <!-- en/contact us -->
+  <!-- Contact Us -->
   <url>
     <loc>https://tikit.ae/en/contact-us</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/contact-us"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/contact-us"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/contact-us"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/contact-us"/>
   </url>
-
-  <!-- fr/contact us -->
   <url>
     <loc>https://tikit.ae/fr/contact-us</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/contact-us"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/contact-us"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/contact-us"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/contact-us"/>
   </url>
-
-  <!-- ar/contact us -->
   <url>
     <loc>https://tikit.ae/ar/contact-us</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/contact-us"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/contact-us"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/contact-us"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/contact-us"/>
   </url>
 
-  <!-- en/faq -->
+  <!-- FAQ -->
   <url>
     <loc>https://tikit.ae/en/faq</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/faq"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/faq"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/faq"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/faq"/>
   </url>
-
-  <!-- fr/faq -->
   <url>
     <loc>https://tikit.ae/fr/faq</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/faq"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/faq"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/faq"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/faq"/>
   </url>
-
-  <!-- ar/faq -->
   <url>
     <loc>https://tikit.ae/ar/faq</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/faq"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/faq"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/faq"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/faq"/>
   </url>
 
-  <!-- en/influencer marketing dubai -->
+  <!-- Influencer Marketing Dubai (landing) -->
   <url>
     <loc>https://tikit.ae/en/influencer-marketing-dubai</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/influencer-marketing-dubai"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/influencer-marketing-dubai"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/influencer-marketing-dubai"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/influencer-marketing-dubai"/>
   </url>
-
-  <!-- fr/influencer marketing dubai -->
   <url>
     <loc>https://tikit.ae/fr/influencer-marketing-dubai</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/influencer-marketing-dubai"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/influencer-marketing-dubai"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/influencer-marketing-dubai"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/influencer-marketing-dubai"/>
   </url>
-
-  <!-- ar/influencer marketing dubai -->
   <url>
     <loc>https://tikit.ae/ar/influencer-marketing-dubai</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/influencer-marketing-dubai"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/influencer-marketing-dubai"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/influencer-marketing-dubai"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/influencer-marketing-dubai"/>
   </url>
 
-  <!-- en/influencer marketing saudi arabia -->
+  <!-- Influencer Marketing Saudi Arabia (landing) -->
   <url>
     <loc>https://tikit.ae/en/influencer-marketing-saudi-arabia</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/influencer-marketing-saudi-arabia"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/influencer-marketing-saudi-arabia"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/influencer-marketing-saudi-arabia"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/influencer-marketing-saudi-arabia"/>
   </url>
-
-  <!-- fr/influencer marketing saudi arabia -->
   <url>
     <loc>https://tikit.ae/fr/influencer-marketing-saudi-arabia</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/influencer-marketing-saudi-arabia"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/influencer-marketing-saudi-arabia"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/influencer-marketing-saudi-arabia"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/influencer-marketing-saudi-arabia"/>
   </url>
-
-  <!-- ar/influencer marketing saudi arabia -->
   <url>
     <loc>https://tikit.ae/ar/influencer-marketing-saudi-arabia</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/influencer-marketing-saudi-arabia"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/influencer-marketing-saudi-arabia"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/influencer-marketing-saudi-arabia"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/influencer-marketing-saudi-arabia"/>
   </url>
 
-  <!-- en/privacy policy -->
+  <!-- Privacy Policy -->
   <url>
     <loc>https://tikit.ae/en/privacy-policy</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/privacy-policy"/>
   </url>
-
-  <!-- fr/privacy policy -->
   <url>
     <loc>https://tikit.ae/fr/privacy-policy</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/privacy-policy"/>
   </url>
-
-  <!-- ar/privacy policy -->
   <url>
     <loc>https://tikit.ae/ar/privacy-policy</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/privacy-policy"/>
   </url>
 
-  <!-- en/terms of service -->
+  <!-- Terms of Service -->
   <url>
     <loc>https://tikit.ae/en/terms-of-service</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/terms-of-service"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/terms-of-service"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/terms-of-service"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/terms-of-service"/>
   </url>
-
-  <!-- fr/terms of service -->
   <url>
     <loc>https://tikit.ae/fr/terms-of-service</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/terms-of-service"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/terms-of-service"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/terms-of-service"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/terms-of-service"/>
   </url>
-
-  <!-- ar/terms of service -->
   <url>
     <loc>https://tikit.ae/ar/terms-of-service</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tikit.ae/en/terms-of-service"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tikit.ae/fr/terms-of-service"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tikit.ae/ar/terms-of-service"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tikit.ae/en/terms-of-service"/>
   </url>
 
 </urlset>
