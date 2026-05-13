@@ -83,10 +83,16 @@ const ServiceAudiencePainSection = forwardRef((props, ref) => {
               {contentItems.map((paragraph, index) => (
                 <article
                   key={index}
-                  className={`im-audience-reveal rounded-xl border border-[var(--secondary)]/20 bg-white/90 backdrop-blur-sm p-5 shadow-sm transition-all duration-600 ${
+                  className={`im-audience-reveal rounded-xl p-5 backdrop-blur-sm transition-all duration-500 ${
                     getCardSpanClass(index)
                   } ${isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
-                  style={{ transitionDelay: `${index * 90}ms` }}
+                  style={{
+                    background: "color-mix(in srgb, var(--secondary) 8%, var(--background) 92%)",
+                    border: "1px solid color-mix(in srgb, var(--secondary) 18%, transparent)",
+                    boxShadow:
+                      "0 12px 40px -22px color-mix(in srgb, var(--secondary) 22%, transparent)",
+                    transitionDelay: `${index * 90}ms`,
+                  }}
                 >
                   <div className="flex flex-col items-center gap-3">
                     <span className="shrink-0 text-[var(--secondary)]">
@@ -108,9 +114,14 @@ const ServiceAudiencePainSection = forwardRef((props, ref) => {
 
             {hasImage ? (
               <div
-                className={`lg:col-span-2 im-audience-reveal rounded-2xl overflow-hidden border border-[var(--secondary)]/20 shadow-lg transition-all duration-700 ${
+                className={`lg:col-span-2 im-audience-reveal rounded-2xl overflow-hidden transition-all duration-700 ${
                   isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
                 }`}
+                style={{
+                  border: "1px solid color-mix(in srgb, var(--secondary) 22%, transparent)",
+                  boxShadow:
+                    "0 24px 55px -28px color-mix(in srgb, var(--secondary) 28%, transparent)",
+                }}
               >
                 <img
                   src={imageSrc}

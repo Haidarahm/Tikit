@@ -42,11 +42,12 @@ const AnimatedButton = forwardRef(function AnimatedButton(
   });
 
   const hasMotion = Boolean(animationProps.variants);
+  const useSurface = Boolean(className);
 
   return (
     <Tag
       ref={ref}
-      className={className}
+      className={useSurface ? "im-animated-button-root inline-block" : className}
       {...animationProps}
       {...(hasMotion
         ? {
@@ -56,7 +57,7 @@ const AnimatedButton = forwardRef(function AnimatedButton(
         : {})}
       {...rest}
     >
-      {children}
+      {useSurface ? <span className={className}>{children}</span> : children}
     </Tag>
   );
 });
