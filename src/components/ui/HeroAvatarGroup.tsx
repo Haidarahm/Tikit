@@ -46,20 +46,29 @@ function AvatarImage({
   className,
   src,
   alt,
+  width = 96,
+  height = 96,
+  sizes = "48px",
+  loading = "eager",
+  decoding = "async",
+  fetchPriority,
   ...props
 }: React.ImgHTMLAttributes<HTMLImageElement>) {
   const { setStatus } = React.useContext(AvatarContext);
+  const srcString = typeof src === "string" ? src : undefined;
   return (
     <img
       data-slot="avatar-image"
       src={src}
       alt={alt ?? ""}
       className={cn("aspect-square size-full object-cover", className)}
-      loading="lazy"
-      decoding="async"
-      fetchPriority="low"
-      width={48}
-      height={48}
+      width={width}
+      height={height}
+      sizes={sizes}
+      {...(srcString ? { srcSet: `${srcString} ${width}w` } : {})}
+      loading={loading}
+      decoding={decoding}
+      {...(fetchPriority ? { fetchPriority } : {})}
       onLoad={() => setStatus("loaded")}
       onError={() => setStatus("error")}
       {...props}
@@ -128,7 +137,11 @@ export default function HeroAvatarGroup() {
           key={index}
           className="size-12 bg-[#6ACBCC]/90 border-3 border-primary"
         >
-          <AvatarImage src={avatar.src} alt={avatar.tooltip} />
+          <AvatarImage
+            src={avatar.src}
+            alt={avatar.tooltip}
+            fetchPriority={index === 0 ? "high" : index < 3 ? "auto" : "low"}
+          />
           <AvatarFallback>{avatar.fallback}</AvatarFallback>
           <AvatarGroupTooltip>{avatar.tooltip}</AvatarGroupTooltip>
         </Avatar>
