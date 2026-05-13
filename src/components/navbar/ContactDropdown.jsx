@@ -9,7 +9,7 @@ export default function ContactDropdown({ isMobile = false, onClose }) {
   const { t } = useTranslation();
   useTheme();
   const { setClientType } = useClient();
-  const { isRtl, localizedNavigate } = useI18nLanguage();
+  const { localizedNavigate } = useI18nLanguage();
   const contactDropdownRef = useRef(null);
   const [isContactDropdownOpen, setIsContactDropdownOpen] = useState(false);
 
@@ -80,28 +80,32 @@ const handleClientClick = () => {
         onClick={() => setIsContactDropdownOpen(!isContactDropdownOpen)}
       />
       <div
-        className={`absolute ${
-          isRtl ? "left-0" : "right-0"
-        } mt-2 min-w-[140px] rounded-lg z-50 overflow-hidden transition-all duration-300 ease-out ${
+        className={`absolute left-1/2 top-full z-50 mt-2 w-max min-w-[140px] -translate-x-1/2 transition-opacity duration-300 ease-out ${
           isContactDropdownOpen
-            ? "opacity-100 translate-y-0 pointer-events-auto"
-            : "opacity-0 -translate-y-2 pointer-events-none"
-        } bg-[var(--background)] dark:bg-[var(--container-bg)] backdrop-blur-md border border-[var(--foreground)]/20 dark:border-white/20 shadow-lg`}
+            ? "opacity-100 pointer-events-auto"
+            : "opacity-0 pointer-events-none"
+        }`}
       >
-        <button
-          onClick={handleClientClick}
-          className="block w-full text-left px-4 py-3 text-sm transition-all duration-200 rounded-t-lg text-[var(--foreground)] hover:bg-[var(--container-bg)] dark:hover:bg-[var(--container-bg)]"
-          aria-label={`Contact us as ${t("contact.action.client")}`}
+        <div
+          className={`rounded-lg overflow-hidden transition-all duration-300 ease-out border border-[var(--foreground)]/20 dark:border-white/20 shadow-lg ${
+            isContactDropdownOpen ? "translate-y-0" : "-translate-y-2"
+          } bg-[var(--background)] dark:bg-[var(--container-bg)] backdrop-blur-md`}
         >
-          {t("contact.action.client")}
-        </button>
-        <button
-          onClick={handleInfluencerClick}
-          className="block w-full text-left px-4 py-3 text-sm transition-all duration-200 rounded-b-lg text-[var(--foreground)] hover:bg-[var(--container-bg)] dark:hover:bg-[var(--container-bg)]"
-          aria-label={`Contact us as ${t("contact.action.influencer")}`}
-        >
-          {t("contact.action.influencer")}
-        </button>
+          <button
+            onClick={handleClientClick}
+            className="block w-full text-left px-4 py-3 text-sm transition-all duration-200 rounded-t-lg text-[var(--foreground)] hover:bg-[var(--container-bg)] dark:hover:bg-[var(--container-bg)]"
+            aria-label={`Contact us as ${t("contact.action.client")}`}
+          >
+            {t("contact.action.client")}
+          </button>
+          <button
+            onClick={handleInfluencerClick}
+            className="block w-full text-left px-4 py-3 text-sm transition-all duration-200 rounded-b-lg text-[var(--foreground)] hover:bg-[var(--container-bg)] dark:hover:bg-[var(--container-bg)]"
+            aria-label={`Contact us as ${t("contact.action.influencer")}`}
+          >
+            {t("contact.action.influencer")}
+          </button>
+        </div>
       </div>
     </div>
   );

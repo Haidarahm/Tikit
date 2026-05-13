@@ -29,7 +29,7 @@ import PointIcon from "../../assets/icons/point.svg";
  *   />
  */
 export default function NavDropdown({ label, items = [], isMobile = false, onClose }) {
-  const { isRtl, localizedNavigate } = useI18nLanguage();
+  const { localizedNavigate } = useI18nLanguage();
   const dropdownRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
   const [expandedKeys, setExpandedKeys] = useState({});
@@ -200,16 +200,20 @@ export default function NavDropdown({ label, items = [], isMobile = false, onClo
         <Chevron rotated={isOpen} />
       </button>
 
-      {/* Dropdown panel */}
+      {/* Dropdown panel — horizontally centered under trigger */}
       <div
-        className={`absolute ${isRtl ? "left-0" : "right-0"} mt-2 min-w-[260px] rounded-lg z-50 overflow-hidden transition-all duration-300 ease-out ${
-          isOpen
-            ? "opacity-100 translate-y-0 pointer-events-auto"
-            : "opacity-0 -translate-y-2 pointer-events-none"
-        } bg-[var(--background)] dark:bg-[var(--container-bg)] backdrop-blur-md border border-[var(--foreground)]/20 dark:border-white/20 shadow-lg`}
+        className={`absolute left-1/2 top-full z-50 mt-2 w-max -translate-x-1/2 transition-opacity duration-300 ease-out ${
+          isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        }`}
       >
-        <div className="py-3 px-2 flex flex-row items-stretch gap-4">
-          {renderItems(items)}
+        <div
+          className={`min-w-[260px] rounded-lg overflow-hidden transition-all duration-300 ease-out ${
+            isOpen ? "translate-y-0" : "-translate-y-2"
+          } bg-[var(--background)] dark:bg-[var(--container-bg)] backdrop-blur-md border border-[var(--foreground)]/20 dark:border-white/20 shadow-lg`}
+        >
+          <div className="py-3 px-2 flex flex-row items-stretch gap-4">
+            {renderItems(items)}
+          </div>
         </div>
       </div>
     </div>
