@@ -379,8 +379,8 @@
             "answer": "La durée dépend des objectifs et de la portée de la collaboration. Certaines campagnes durent quelques semaines, tandis que des partenariats à long terme avec des influenceurs peuvent durer plusieurs mois."
           },
           {
-            "question": "Comment le marketing d'influence peut-il aider à développer une marque ?",
-            "answer": "Le marketing d'influence aide les marques à augmenter leur visibilité, atteindre des audiences ciblées et bâtir la confiance grâce au contenu authentique des créateurs. Lorsque les influenceurs partagent des expériences genuines avec leurs abonnés, cela peut améliorer l'engagement et encourager les clients potentiels à explorer la marque."
+            "question": "Quel ROI peut-on attendre du marketing d'influence aux Émirats ?",
+            "answer": "Le ROI attendu dépend des objectifs, de l'adéquation audience, de la qualité créative et de la mesure. Les marques suivent souvent l'engagement, le trafic, les leads et les ventes attribuées via UTM, codes promo et enquêtes post-achat. Tikit Agency définit des KPI avant le lancement et optimise vers des résultats business—pas uniquement des métriques de notoriété."
           }
         ]
       },
@@ -744,6 +744,22 @@
             {
               "question": "Quelles plateformes sont les plus efficaces aux UAE ?",
               "answer": "Instagram et TikTok pour la visibilité, YouTube pour un storytelling plus profond."
+            },
+            {
+              "question": "Combien coûte le marketing d'influence luxe à Dubaï ?",
+              "answer": "L'investissement dépend du niveau d'influenceur, de l'exclusivité, de la production, des droits d'utilisation et de la durée. Les programmes luxe privilégient souvent la qualité d'audience plutôt que la simple portée. Tikit Agency cadre livrables et indicateurs (engagement, trafic qualifié, leads) pour aligner prix et résultats."
+            },
+            {
+              "question": "Quel ROI attendre des campagnes luxe avec influenceurs ?",
+              "answer": "Le ROI luxe se mesure souvent en trafic à forte intention, rendez-vous boutique ou consultations, ventes sur références clés et lift de marque durable—pas seulement en impressions. Nous associons créateurs premium, briefs stricts et suivi pour attribuer la demande aux bons leviers."
+            },
+            {
+              "question": "Comment protégez-vous la marque et l'exclusivité des collaborations luxe ?",
+              "answer": "Vetting (authenticité d'audience, antécédents, risques réputationnels), clauses d'exclusivité si besoin, validations étapes par étapes sur scripts et visuels, et droits d'usage clairs. Cela préserve le positionnement luxe tout en laissant de l'espace au storytelling authentique."
+            },
+            {
+              "question": "Combien de temps dure une campagne luxe typique ?",
+              "answer": "Beaucoup de lancements utilisent des fenêtres concentrées de 2 à 4 semaines autour d'un événement ou d'une collection, puis des temps forts continus avec un petit cercle d'ambassadeurs. La durée dépend d'un pic ponctuel (ouverture, drop) ou d'une construction d'autorité sur plusieurs saisons."
             }
           ]
         },
@@ -1021,6 +1037,22 @@
             {
               "question": "Comment mesurez-vous le succès d'une campagne ?",
               "answer": "Nous suivons l'engagement, la portée, le trafic et les conversions."
+            },
+            {
+              "question": "Quel ROI attendre du marketing d'influence micro à Dubaï ?",
+              "answer": "Les campagnes micro délivrent souvent un meilleur taux d'engagement et un coût par engagement plus bas que des posts très larges. Le ROI s'améliore quand les créateurs collent à votre niche, que les CTA sont clairs et que vous tracez liens, codes ou conversions assistées. Tikit Agency compare à vos baselines social ads et organiques."
+            },
+            {
+              "question": "Combien de micro-influenceurs inclure dans une campagne aux EAU ?",
+              "answer": "Cela dépend du budget et des objectifs d'apprentissage : des tests plus petits peuvent utiliser 5 à 15 créateurs pour comparer accroches et audiences ; à l'échelle, des dizaines avec calendrier décalé. Nous dimensionnons le roster pour avoir du signal sans diluer le message ni la logistique."
+            },
+            {
+              "question": "Le micro-influence fonctionne-t-il pour le B2B aux Émirats ?",
+              "answer": "Oui, en ciblant les décideurs via des voix crédibles de niche (tech, finance, RH, immobilier, services pro). Le contenu privilégie preuves, démos et récits experts plutôt que lifestyle générique. Nous cartographions les influenceurs selon les comités d'achat et les étapes du funnel."
+            },
+            {
+              "question": "Quels livrables sont habituellement inclus dans un package micro ?",
+              "answer": "Packages typiques : publications convenues, Stories ou Reels/Shorts, droits d'usage, fenêtres de publication, conformité disclosure, recap de reporting. Options : whitelisting, amplification payante, événement, envoi produit. Tout est cadré dans le brief pour aligner créateurs et conformité."
             }
           ],
           "askTeamCta": "👉 Des questions ? Parlez à notre équipe"
@@ -1324,6 +1356,22 @@
             {
               "question": "Travaillez-vous avec des micro-influenceurs à Dubaï ?",
               "answer": "Oui. Les micro-influenceurs délivrent souvent un engagement fort et un meilleur ROI lorsque l’objectif est la pertinence, la confiance et un test efficace."
+            },
+            {
+              "question": "Quel ROI attendre d'une campagne d'influence gérée à Dubaï ?",
+              "answer": "Le ROI se lit sur les KPI convenus en amont—CPM, CPC, coût par lead, ROAS ou hausse de trafic/recherche brandée. La gestion améliore le ROI en resserrant fit créateurs, délais et itérations créatives, avec mesure UTM, pixels et enquêtes post-achat quand c'est pertinent."
+            },
+            {
+              "question": "Qui possède le contenu influenceur après la campagne ?",
+              "answer": "Propriété et droits sont définis par contrat : posts organiques restent souvent sur le canal du créateur, tandis que la marque licencie des assets pour ads, site ou email sur une période donnée. Tikit Agency négocie whitelisting, Spark ads et extensions pour que la réutilisation payante soit claire dès le jour 1."
+            },
+            {
+              "question": "Comment gérez-vous l'arabe vs l'anglais dans les campagnes UAE ?",
+              "answer": "Nous briefons dans la langue préférée de l'audience—souvent des formats bilingues pour l'UAE—avec accroches localisées pour segments arabe-first ou anglais-first. Sous-titres, textes à l'écran et formats plateforme sont adaptés pour préserver le concept dans les deux langues."
+            },
+            {
+              "question": "Proposez-vous des honoraires hybrides ou à la performance ?",
+              "answer": "Lorsque règles plateforme et contrats le permettent, nous combinons honoraires de base et bonus sur métriques convenues (seuils de trafic, codes, plafonds CPL). Tout le monde n'accepte pas le pur performance ; l'hybride équilibre rémunération équitable et responsabilité marque."
             }
           ]
         },

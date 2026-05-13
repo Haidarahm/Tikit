@@ -60,6 +60,18 @@ const InfluencerMarketingSaudiArabia = () => {
     {
       question: "Can Tikit help with Arabic-language influencer campaigns?",
       answer: "Absolutely! Tikit Agency is fully equipped for Arabic-language influencer campaigns. Our team includes native Arabic speakers who understand Saudi dialect, cultural nuances, and content preferences. We manage both Arabic and English campaigns across the Kingdom."
+    },
+    {
+      question: "What ROI can I expect from influencer marketing in Saudi Arabia?",
+      answer: "ROI varies by goal—app installs, store visits, e-commerce sales, or brand lift. In KSA we emphasize platform mix (often Instagram, TikTok, Snapchat, and YouTube), culturally resonant creative, and attribution via UTMs, codes, and MMP or web analytics where applicable. Tikit Agency sets KPIs up front and optimizes toward the metrics that matter for your business."
+    },
+    {
+      question: "How long until we see results from a Saudi influencer campaign?",
+      answer: "Engagement and traffic can move quickly once content goes live; proving impact on leads or sales usually benefits from 2–6 weeks of coordinated posts, retargeting, and clear landing experiences. We plan pacing around Saudi shopping moments, approvals, and Ramadan or national campaigns when relevant."
+    },
+    {
+      question: "Do we need Saudi-based influencers or can GCC creators reach KSA audiences?",
+      answer: "Both can work. Saudi-based creators often drive strongest local trust and dialect fit; GCC-wide creators can extend reach when your audience spans the Gulf. Tikit Agency vets audience geography and language fit so budgets go toward creators who actually reach people in Riyadh, Jeddah, Dammam, or your target cities—not generic regional followers."
     }
   ];
 

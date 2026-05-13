@@ -59,6 +59,18 @@ const InfluencerMarketingDubai = () => {
     {
       question: "What platforms does Tikit cover for influencer marketing?",
       answer: "Tikit Agency manages influencer campaigns across all major platforms including Instagram, TikTok, YouTube, Snapchat, Twitter/X, LinkedIn, and Facebook. We specialize in platforms popular in Dubai and the UAE, with expertise in Arabic and English content creation."
+    },
+    {
+      question: "What ROI can I expect from influencer marketing in Dubai?",
+      answer: "ROI depends on your objective (awareness, traffic, leads, or sales), creator tier, and tracking setup. Many UAE campaigns benchmark engagement rate, cost per thousand impressions (CPM), cost per click (CPC), and attributed conversions using UTMs, promo codes, and landing pages. Tikit Agency aligns KPIs before launch and reports against those targets so you see how spend translates into outcomes—not vanity metrics alone."
+    },
+    {
+      question: "How long until we see results from an influencer campaign in the UAE?",
+      answer: "Short activations can show lift in engagement and traffic within days of posting; meaningful shifts in leads or sales often need multiple touchpoints over 2–6 weeks. We typically recommend a phased plan—test creators and messages, then scale what wins—so timelines match your funnel and measurement window."
+    },
+    {
+      question: "Is influencer marketing worth it for small businesses in Dubai?",
+      answer: "Yes, when campaigns stay niche and measurable. Micro and nano creators often deliver stronger engagement per dirham than broad celebrity posts for local F&B, retail, beauty, and services. Tikit Agency helps smaller brands start with focused budgets, clear CTAs, and creators whose audiences actually match your catchment area."
     }
   ];
 
