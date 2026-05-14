@@ -84,7 +84,7 @@ const AboutUs = () => {
       <Details />
       <Strategy />
       <Growth />
-      <Team />
+      {/* <Team /> */}
       <ContactUs />
       
     </div>
