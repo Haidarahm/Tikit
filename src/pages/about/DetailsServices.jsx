@@ -7,7 +7,7 @@ import { useI18nLanguage } from "../../store/I18nLanguageContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Map service keys to internal routes (only services with dedicated pages)
+// Map service keys to internal routes. Use `null` (or omit) when no page exists yet.
 const SERVICE_ROUTES = {
   influencerMarketing: "/influencer-marketing-agency-dubai",
   brandStrategy: "/branding-agency-dubai",
@@ -16,6 +16,21 @@ const SERVICE_ROUTES = {
   contentCreation: "/production",
   digitalMarketing: "/digital-marketing-agency-dubai",
 };
+
+// Pathnames registered under `/:lang` in App.jsx — keep in sync so cards only link to real routes.
+const REGISTERED_SERVICE_PATHNAMES = new Set([
+  "/influencer-marketing-agency-dubai",
+  "/branding-agency-dubai",
+  "/social-media-management",
+  "/production",
+  "/digital-marketing-agency-dubai",
+]);
+
+function resolveServiceHref(key) {
+  const path = SERVICE_ROUTES[key];
+  if (typeof path !== "string" || !path.startsWith("/")) return null;
+  return REGISTERED_SERVICE_PATHNAMES.has(path) ? path : null;
+}
 
 const serviceKeys = [
   "influencerMarketing",
@@ -124,8 +139,12 @@ const DetailsServices = () => {
       {/* Services Grid */}
       <div ref={listRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 lg:gap-6 max-w-6xl mx-auto">
         {serviceKeys.map((key, index) => {
-          const href = SERVICE_ROUTES[key];
-          const cardClass = `serv-item group relative p-4 md:p-6 lg:p-8 rounded-xl md:rounded-2xl border border-[var(--foreground)]/10 bg-[var(--foreground)]/[0.02] hover:border-[#6ACBCC]/50 hover:bg-[#6ACBCC]/5 transition-all duration-300 overflow-hidden ${href ? "cursor-pointer" : "cursor-default"}`;
+          const href = resolveServiceHref(key);
+          const baseCard =
+            "serv-item relative p-4 md:p-6 lg:p-8 rounded-xl md:rounded-2xl border border-[var(--foreground)]/10 bg-[var(--foreground)]/[0.02] transition-all duration-300 overflow-hidden";
+          const cardClass = href
+            ? `${baseCard} group cursor-pointer hover:border-[#6ACBCC]/50 hover:bg-[#6ACBCC]/5`
+            : `${baseCard} cursor-default`;
 
           const content = (
             <>
